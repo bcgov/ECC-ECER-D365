@@ -1,0 +1,490 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "52dbda5d-95fa-4efb-a7ba-7bbe2d6b010c"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "contact",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "firstname, lastname, middlename, ecer_preferredname"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_the_latest_audit_record_for_this_triggering_record": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b0eb95bb-f2ea-49d1-9f16-f6f92c9c0e05"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "audits",
+              "$filter": "_objectid_value eq '@{triggerOutputs()?['body/contactid']}' and objecttypecode eq 'contact'",
+              "$orderby": "createdon desc",
+              "$top": 10
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_Through_the_results": {
+          "foreach": "@outputs('Get_the_latest_audit_record_for_this_triggering_record')?['body/value']",
+          "actions": {
+            "Check_if_v_LoopTerminate_is_TRUE": {
+              "actions": {},
+              "runAfter": {},
+              "else": {
+                "actions": {
+                  "Get_Audit_Record_of_related_triggering_record": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "84de1fc5-e9eb-4d9e-bc23-6d6d106894e0"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "GetItem",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "audits",
+                        "recordId": "@items('Loop_Through_the_results')?['auditid']"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Parse_JSON_from_Audit_Record_Change_Data": {
+                    "runAfter": {
+                      "Get_Audit_Record_of_related_triggering_record": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "2f67df4e-9342-42c0-a22a-6462d901009c"
+                    },
+                    "type": "ParseJson",
+                    "inputs": {
+                      "content": "@outputs('Get_Audit_Record_of_related_triggering_record')?['body/changedata']",
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "changedAttributes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "logicalName": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "oldValue": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "newValue": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "logicalName",
+                                "oldValue",
+                                "newValue"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Loop_through_Change_Data_array": {
+                    "foreach": "@body('Parse_JSON_from_Audit_Record_Change_Data')?['changedAttributes']",
+                    "actions": {
+                      "If_logical_name_is_firstname": {
+                        "actions": {
+                          "set_v_FirstName": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "4a6647d2-bba0-4004-900d-acebfb6b49f9"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "v_FirstName",
+                              "value": "@items('Loop_through_Change_Data_array')?['oldValue']"
+                            }
+                          }
+                        },
+                        "runAfter": {},
+                        "expression": {
+                          "equals": [
+                            "@items('Loop_through_Change_Data_array')?['logicalName']",
+                            "firstname"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "2046f665-8c8a-4900-b167-10198f5bd6e9"
+                        },
+                        "type": "If"
+                      },
+                      "if_logical_name_is_lastname": {
+                        "actions": {
+                          "set_v_LastName": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "79f0e514-1f88-45f7-946c-51413230599d"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "v_LastName",
+                              "value": "@items('Loop_through_Change_Data_array')?['oldValue']"
+                            }
+                          }
+                        },
+                        "runAfter": {
+                          "If_logical_name_is_firstname": [
+                            "Succeeded"
+                          ]
+                        },
+                        "expression": {
+                          "equals": [
+                            "@items('Loop_through_Change_Data_array')?['logicalName']",
+                            "lastname"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "08cf984e-1b57-4cc2-8eb4-83773d39f954"
+                        },
+                        "type": "If"
+                      },
+                      "if_logical_name_is_middlename": {
+                        "actions": {
+                          "set_v_MiddleName": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "d7e6040e-5001-4fda-bfac-52256333eaf5"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "v_MiddleName",
+                              "value": "@items('Loop_through_Change_Data_array')?['oldValue']"
+                            }
+                          }
+                        },
+                        "runAfter": {
+                          "if_logical_name_is_lastname": [
+                            "Succeeded"
+                          ]
+                        },
+                        "expression": {
+                          "equals": [
+                            "@items('Loop_through_Change_Data_array')?['logicalName']",
+                            "middlename"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "0c2807d7-a9ee-4936-abfd-c72a4a295b0c"
+                        },
+                        "type": "If"
+                      },
+                      "if_logical_name_is_ecer_preferredname": {
+                        "actions": {
+                          "set_v_PreferredName": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "f529ac13-8ac6-4bef-bbf0-7084d10e40ac"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "v_PreferredName",
+                              "value": "@items('Loop_through_Change_Data_array')?['oldValue']"
+                            }
+                          }
+                        },
+                        "runAfter": {
+                          "if_logical_name_is_middlename": [
+                            "Succeeded"
+                          ]
+                        },
+                        "expression": {
+                          "equals": [
+                            "@items('Loop_through_Change_Data_array')?['logicalName']",
+                            "ecer_preferredname"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "32fbdce3-3c5d-40e5-b2b0-4517635dc767"
+                        },
+                        "type": "If"
+                      }
+                    },
+                    "runAfter": {
+                      "Parse_JSON_from_Audit_Record_Change_Data": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "332d0a25-1e67-44e8-8bfb-5fc88098e4e7"
+                    },
+                    "type": "Foreach"
+                  },
+                  "Check_if_any_of_variables_has_values_set": {
+                    "actions": {},
+                    "runAfter": {
+                      "Loop_through_Change_Data_array": [
+                        "Succeeded"
+                      ]
+                    },
+                    "else": {
+                      "actions": {
+                        "Set_v_LoopTerminate_to_TRUE": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "ca2db166-5c73-412b-bb2f-f78a3f92c4f4"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "v_LoopTerminate",
+                            "value": "@true"
+                          }
+                        },
+                        "Create_Previous_Name_record_and_associate_to_Contact": {
+                          "runAfter": {
+                            "Set_v_LoopTerminate_to_TRUE": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "595d2236-0e3c-4e8f-9ef4-67890d00cb69"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_commondataserviceforapps",
+                              "operationId": "CreateRecord",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                            },
+                            "parameters": {
+                              "entityName": "ecer_previousnames",
+                              "item/ecer_Contactid@odata.bind": "contacts(@{triggerOutputs()?['body/contactid']})",
+                              "item/ecer_firstname": "@variables('v_FirstName')",
+                              "item/ecer_lastname": "@variables('v_LastName')",
+                              "item/ecer_middlename": "@variables('v_MiddleName')",
+                              "item/ecer_nametype": 621870001,
+                              "item/ecer_preferredname": "@variables('v_PreferredName')"
+                            },
+                            "authentication": "@parameters('$authentication')"
+                          }
+                        }
+                      }
+                    },
+                    "expression": {
+                      "and": [
+                        {
+                          "equals": [
+                            "@variables('v_FirstName')",
+                            "@null"
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@variables('v_LastName')",
+                            "@null"
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@variables('v_MiddleName')",
+                            "@null"
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@variables('v_PreferredName')",
+                            "@null"
+                          ]
+                        }
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "1b292dcc-7794-44e6-9146-0ffef67ca170"
+                    },
+                    "type": "If"
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@variables('v_LoopTerminate')",
+                  "@true"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "051b18a2-5e06-4e41-9969-dee603eb982c"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Get_the_latest_audit_record_for_this_triggering_record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e5c454ed-bd0b-4f41-9316-2c85e0a0196b"
+          },
+          "type": "Foreach"
+        },
+        "v_FirstName": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "00f334da-c6a2-4846-a7ee-8e849ed76e0d"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "v_FirstName",
+                "type": "string",
+                "value": "@{null}"
+              }
+            ]
+          }
+        },
+        "v_MiddleName": {
+          "runAfter": {
+            "v_FirstName": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5ba85ad6-b79a-4d00-8432-2238deee8057"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "v_MiddleName",
+                "type": "string",
+                "value": "@{null}"
+              }
+            ]
+          }
+        },
+        "v_LastName": {
+          "runAfter": {
+            "v_MiddleName": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "42a71895-1a78-4a57-a0a2-3c5fbb0a052f"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "v_LastName",
+                "type": "string",
+                "value": "@{null}"
+              }
+            ]
+          }
+        },
+        "v_PreferredName": {
+          "runAfter": {
+            "v_LastName": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1ce1c46b-1055-4ffe-ba24-fb7660dafeca"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "v_PreferredName",
+                "type": "string",
+                "value": "@{null}"
+              }
+            ]
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "v_PreferredName": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "917f7b34-7d11-49a8-b2ee-4f9d29e1ce1b"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "v_LoopTerminate",
+                "type": "boolean",
+                "value": "@false"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
