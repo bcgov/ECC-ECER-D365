@@ -1,0 +1,6 @@
+C:\Users\andrewch\source\repos\EMBC-DFA\DynamicsCustomizations\DFA.CRM.Web\bin\Debug\DFA.CRM.Web.dll
+C:\Users\andrewch\source\repos\EMBC-DFA\DynamicsCustomizations\DFA.CRM.Web\bin\Debug\DFA.CRM.Web.pdb
+C:\Users\andrewch\source\repos\EMBC-DFA\DynamicsCustomizations\DFA.CRM.Web\obj\Debug\DFA.CRM.Web.csproj.AssemblyReference.cache
+C:\Users\andrewch\source\repos\EMBC-DFA\DynamicsCustomizations\DFA.CRM.Web\obj\Debug\DFA.CRM.Web.csproj.CoreCompileInputs.cache
+C:\Users\andrewch\source\repos\EMBC-DFA\DynamicsCustomizations\DFA.CRM.Web\obj\Debug\DFA.CRM.Web.dll
+C:\Users\andrewch\source\repos\EMBC-DFA\DynamicsCustomizations\DFA.CRM.Web\obj\Debug\DFA.CRM.Web.pdb
