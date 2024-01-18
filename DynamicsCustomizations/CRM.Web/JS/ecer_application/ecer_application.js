@@ -14,15 +14,34 @@ ECER.Jscripts.Application =
         this.crm_ExecutionContext = executionContext;
         // var formContext = executionContext.getFormContext();
         // var formType = formContext.ui.getFormType();
-        ECER.Jscripts.Application.disableSystemPopulateFields(executionContext);
+        ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);
     },
 
+    // No longer need.  Will allow user to overwrite
     disableSystemPopulateFields: function (executionContext) {
         crm_Utility.enableDisable(executionContext, true, "ecer_characterreferencereceiveddate");
         crm_Utility.enableDisable(executionContext, true, "ecer_workexperiencereceiveddate");
         crm_Utility.enableDisable(executionContext, true, "ecer_transcriptreceiveddate");
         crm_Utility.enableDisable(executionContext, true, "ecer_parentalreferencereceiveddate");
         crm_Utility.enableDisable(executionContext, true, "ecer_readyforassessmentdate");
+    },
+
+    showHideApplicantQuickView: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var applicantAttribute = formContext.getAttribute("ecer_applicantid");
+        var applicant = applicantAttribute.getValue();
+        var showQuickView = true;
+        if (applicant == null) {
+            // Show the fields        
+            showQuickView = false;
+        }
+        var quickViewControl = formContext.ui.quickForms.get("qv_applicantinformation");
+        if (quickViewControl != null) {
+            quickViewControl.setVisible(showQuickView);
+        }
+        crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_contactnames");
+        crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_applicantaddress");
+
     },
 
     setDateOnToggle: function (executionContext, toggleFieldName, dateFieldName) {
@@ -40,6 +59,182 @@ ECER.Jscripts.Application =
         }
         else {
             dateAttribute.setValue(null);
+        }
+    },
+
+    setApplicationStatusOnReadyForAssessment: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var readyForAssessmentAttribute = formContext.getAttribute("ecer_readyforassessment");
+        var statuscode = 621870002; // Review for Completeness
+        if (readyForAssessmentAttribute != null && readyForAssessmentAttribute.getValue() != null) {
+            if (readyForAssessmentAttribute.getValue()) {
+                statuscode = 621870003; // Ready for Assessment
+            }
+        }
+
+        var statuscodeAttribute = formContext.getAttribute("statuscode");
+        statuscodeAttribute.setValue(statuscode);
+    },
+
+    hasProgramClerkSecurityRole: function () {
+        // Directive to prevent use of undeclared variables
+        "use strict";
+        var executionContext = this.crm_ExecutionContext;
+        var formContext = executionContext.getFormContext();
+        return crm_Utility.checkCurrentUserRole("Program Clerk");
+    },
+
+    preventAutoSave: function (executionContext) {
+        var eventArgs = executionContext.getEventArgs();
+        if (eventArgs.getSaveMode() == 70 || eventArgs.getSaveMode() == 2) {
+            eventArgs.preventDefault();
+        }
+    },
+
+    onProfileSearchButton: function () {
+        // Directive to prevent use of undeclared variables
+        "use strict";
+        var executionContext = this.crm_ExecutionContext;
+        var formContext = executionContext.getFormContext();
+        try {
+            
+            var applicantAttribute = formContext.getAttribute("ecer_applicantid");
+            if (applicantAttribute != null && applicantAttribute.getValue() != null) {
+                // Prompt message
+                var msgTitle = "Applicant Lookup already contains data";
+                var errMsg = "Applicant Lookup already contains data.  Please verify and try again";
+                var alertStrings = { confirmButtonLabel: "OK", text: errMsg, title: msgTitle };
+                var alertOptions = { height: 240, width: 360 };
+                Xrm.Navigation.openAlertDialog(alertStrings, alertOptions);
+                return;
+            }
+
+            var currentCertificateNumberAttribute = formContext.getAttribute("ecer_currentcertificationnumber");
+            if (currentCertificateNumberAttribute == null || currentCertificateNumberAttribute.getValue() == null || currentCertificateNumberAttribute.getValue().trim() == '') {
+                // Prompt message
+                var msgTitle = "Current Certificate Number does not contains data";
+                var errMsg = "Current Certificate Number does not contains data.  Please verify and try again";
+                var alertStrings = { confirmButtonLabel: "OK", text: errMsg, title: msgTitle };
+                var alertOptions = { height: 240, width: 360 };
+                Xrm.Navigation.openAlertDialog(alertStrings, alertOptions);
+                return;
+            }
+            var currentCertificateNumber = currentCertificateNumberAttribute.getValue().trim();
+            
+            var option = "?$filter=ecer_clientid eq '" + currentCertificateNumber + "'";
+            Xrm.WebApi.retrieveMultipleRecords("contact", option).then(
+                function success(results) {
+                    if (results.entities.length == 0) {
+                        // Prompt message
+                        var msgTitle = "No matching Registrant is found in system";
+                        var errMsg = "No matching Registrant with Certificate #" + currentCertificateNumber + " is found.  Please verify and try again";
+                        var alertStrings = { confirmButtonLabel: "OK", text: errMsg, title: msgTitle };
+                        var alertOptions = { height: 240, width: 360 };
+                        Xrm.Navigation.openAlertDialog(alertStrings, alertOptions);
+                    }
+                    else {
+                        var lastNameFromRecord = results.entities[0].lastname;
+                        var firstNameFromRecord = results.entities[0].firstname;
+                        var middleNameFromRecord = results.entities[0].middlename;
+                        var preferredNameFromRecord = results.entities[0].ecer_preferredname;
+                        var street1FromRecord = results.entities[0].address1_line1;
+                        var cityFromRecord = results.entities[0].address1_city;
+                        var provinceFromRecord = results.entities[0].address1_stateorprovince;
+                        var postalcodeFromRecord = results.entities[0].address1_postalcode
+                        var countryFromRecord = results.entities[0].address1_country;
+                        var emailFromRecord = results.entities[0].emailaddress1;
+                        var primaryPhoneFromRecord = results.entities[0].telephone1;
+                        var mobilePhoneFromRecord = results.entities[0].mobilephone;
+
+                        var entityRecordId = results.entities[0].contactid;
+                        var entityRecordName = results.entities[0].fullname;
+
+                        var lastName = formContext.getAttribute("ecer_legallastname").getValue();
+                        var firstName = formContext.getAttribute("ecer_legalfirstname").getValue();
+                        var middleName = formContext.getAttribute("ecer_legalmiddlename").getValue();
+                        var preferredname = formContext.getAttribute("ecer_preferredname").getValue();
+                        var stree1 = formContext.getAttribute("ecer_street").getValue();
+                        var city = formContext.getAttribute("ecer_city").getValue();
+                        var province = formContext.getAttribute("ecer_province").getValue();
+                        var postalCode = formContext.getAttribute("ecer_postalcode").getValue();
+                        var country = formContext.getAttribute("ecer_country").getValue();
+                        var email = formContext.getAttribute("ecer_emailaddress").getValue();
+                        var primaryPhone = formContext.getAttribute("ecer_primaryphonenumber").getValue();
+                        var mobilePhone = formContext.getAttribute("ecer_alternatephonenumber").getValue();
+
+                        var totalMatch = lastNameFromRecord == lastName &&
+                            firstNameFromRecord == firstName &&
+                            middleNameFromRecord == middleName &&
+                            preferredname == preferredNameFromRecord &&
+                            stree1 == street1FromRecord &&
+                            city == cityFromRecord &&
+                            province == provinceFromRecord &&
+                            postalCode == postalcodeFromRecord &&
+                            country == countryFromRecord &&
+                            email == emailFromRecord &&
+                            primaryPhone == primaryPhoneFromRecord &&
+                            mobilePhone == mobilePhoneFromRecord;
+
+                        if (totalMatch) {
+                            var lookupArray = new Array();
+                            lookupArray[0] = new Object();
+                            // Treat the entity record to include curly braces if needed
+                            if (entityRecordId.indexOf("{") === -1) {
+                                entityRecordId = "{" + entityRecordId + "}";
+                            }
+                            lookupArray[0].id = entityRecordId;
+                            lookupArray[0].name = entityRecordName;
+                            lookupArray[0].entityType = "contact";
+                            applicantAttribute.setValue(lookupArray);
+                            formContext.data.save();
+                            ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);
+                            return; // Exit upon setting lookup with the contact record.
+                        }
+
+                        // Not Exact Match in details.  Do we still want to use this lookup?
+                        var msg = "Certificate #: " + currentCertificateNumber + " profile found is not matching 100%" +
+                            "\nRecord found from system\n\n" +
+                            "\nFirst Name: " + firstNameFromRecord +
+                            "\nMiddle Name: " + middleNameFromRecord +
+                            "\nLast Name: " + lastNameFromRecord +
+                            "\nAddress: " + street1FromRecord +
+                            "\nCity: " + cityFromRecord +
+                            "\nProvince: " + provinceFromRecord +
+                            "\nPostal Code: " + postalcodeFromRecord +
+                            "\nCountry: " + countryFromRecord +
+                            "\nEmail: " + emailFromRecord +
+                            "\nPrimary Phone: " + primaryPhoneFromRecord +
+                            "\nMobile Phone: " + mobilePhoneFromRecord +
+                            "\n\nClick Confirm to use found result.";;
+                        var msgTitle = "Confirm Profile Information";
+
+                        var confirmStrings = { confirmButtonLabel: "Confirm", cancelButtonLabel: "Cancel", text: msg, title: msgTitle };
+                        var confirmOptions = { height: 640, width: 480 };
+                        Xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                            function (success) {
+                                if (success.confirmed) {
+
+                                    var lookupArray = new Array();
+                                    lookupArray[0] = new Object();
+                                    // Treat the entity record to include curly braces if needed
+                                    if (entityRecordId.indexOf("{") === -1) {
+                                        entityRecordId = "{" + entityRecordId + "}";
+                                    }
+                                    lookupArray[0].id = entityRecordId;
+                                    lookupArray[0].name = entityRecordName;
+                                    lookupArray[0].entityType = "contact";
+                                    applicantAttribute.setValue(lookupArray);
+                                    formContext.data.save();
+                                    ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);
+                                }
+                            }
+                        );
+                    }
+                }
+            );
+        }
+        catch (err) {
+            throw new Error(err.message);
         }
     }
 }
