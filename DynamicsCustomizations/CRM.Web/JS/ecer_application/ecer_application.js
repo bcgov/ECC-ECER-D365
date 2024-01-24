@@ -15,6 +15,8 @@ ECER.Jscripts.Application =
         // var formContext = executionContext.getFormContext();
         // var formType = formContext.ui.getFormType();
         ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);
+        ECER.Jscripts.Application.showHideParentalGuidianceFieldsOnApplicantAge(executionContext);
+        ECER.Jscripts.Application.closeFormIfDraft(executionContext);
     },
 
     // No longer need.  Will allow user to overwrite
@@ -62,6 +64,11 @@ ECER.Jscripts.Application =
         }
     },
 
+    closeFormIfDraft: function (executionContext) {
+        var hasViewDraftRole = crm_Utility.checkCurrentUserRole("View Draft Records");
+        crm_Utility.showMessage("Has View Draft Records Role: " + hasViewDraftRole);
+    },
+
     setApplicationStatusOnReadyForAssessment: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var readyForAssessmentAttribute = formContext.getAttribute("ecer_readyforassessment");
@@ -88,6 +95,60 @@ ECER.Jscripts.Application =
         var eventArgs = executionContext.getEventArgs();
         if (eventArgs.getSaveMode() == 70 || eventArgs.getSaveMode() == 2) {
             eventArgs.preventDefault();
+        }
+    },
+
+    showHideParentalGuidianceFieldsOnApplicantAge: function (executionContext) {
+        var show = false;
+        var formContext = executionContext.getFormContext();
+        var applicantAgeAttribute = formContext.getAttribute("ecer_applicantage");
+        var parentalReferenceReceivedAttributeName = "ecer_parentalreferencereceived";
+        var parentalReferenceReceivedDateAttributeName = "ecer_parentalreferencereceiveddate";
+        if (applicantAgeAttribute != null && applicantAgeAttribute.getValue() != null && applicantAgeAttribute.getValue() < 19) {
+            show = true;
+        }
+        crm_Utility.showHide(executionContext, show, parentalReferenceReceivedAttributeName);
+        crm_Utility.showHide(executionContext, show, parentalReferenceReceivedDateAttributeName);
+    },
+
+    evaluateAgeOnSubmissionDate: function (executionContext) {
+        try {
+            var formContext = executionContext.getFormContext();
+            var isOver19 = false;
+            
+            var dateSubmittedAttribute = formContext.getAttribute("ecer_datesubmitted");
+            if (dateSubmittedAttribute == null || dateSubmittedAttribute.getValue() == null) {
+                return; // No Date Submitted to compare
+            }
+
+            var birthDateAttribute = formContext.getAttribute("ecer_dateofbirth");
+            var applicantAgeOnSubmission
+            var birthDate = new Date();
+            if (birthDateAttribute != null && birthDateAttribute.getValue() != null) {
+                birthDate = birthDateAttribute.getValue();
+                var diff = (today.getTime() - birthDate.getTime()) / 1000;
+                diff /= (60 * 60 * 24);
+                var differenceInYears = Math.abs(Math.round(diff / 365.25));
+                if (differenceInYears >= 19) {
+                    isOver19 = true;
+                }
+            }
+            var isUnder19Attribute = formContext.getAttribute("ecer_isunder19");
+            if (isUnder19Attribute != null) {
+                var isUnder19Value = isUnder19Attribute.getValue();
+                // Set value if the value is different
+                if (isUnder19Value != 621870000 && !isOver19) {
+                    isUnder19Attribute.setValue(621870000);
+                    formContext.data.save();
+                }
+                else if (isUnder19Value != 621870001 && isOver19) {
+                    isUnder19Attribute.setValue(621870001);
+                    formContext.data.save();
+                }
+            }
+        }
+        catch (err) {
+            ECER.Jscripts.Contact.showMessage(err);
         }
     },
 

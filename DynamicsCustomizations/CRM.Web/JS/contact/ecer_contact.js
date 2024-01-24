@@ -10,7 +10,8 @@ if (typeof ECER.Jscripts === "undefined") {
 
 ECER.Jscripts.Contact = {
 	onLoad: function (executionContext) {
-		ECER.Jscripts.Contact.showTabsIfBCECE(executionContext);
+        ECER.Jscripts.Contact.showTabsIfBCECE(executionContext);
+        ECER.Jscripts.Contact.evaluateAge(executionContext);
 	},
 
     showTabsIfBCECE: function (executionContext) {
@@ -35,6 +36,40 @@ ECER.Jscripts.Contact = {
             ECER.Jscripts.Contact.showMessage(err);
         }
 
+    },
+
+    evaluateAge: function (executionContext) {
+        try {
+            var formContext = executionContext.getFormContext();
+            var isOver19 = false;
+            var birthDateAttribute = formContext.getAttribute("birthdate");
+            if (birthDateAttribute != null && birthDateAttribute.getValue() != null) {
+                var birthDate = birthDateAttribute.getValue();
+                var today = new Date();
+                var diff = (today.getTime() - birthDate.getTime()) / 1000;
+                diff /= (60 * 60 * 24);
+                var differenceInYears = Math.abs(Math.round(diff / 365.25));
+                if (differenceInYears >= 19) {
+                    isOver19 = true;
+                }
+            }
+            var isUnder19Attribute = formContext.getAttribute("ecer_isunder19");
+            if (isUnder19Attribute != null) {
+                var isUnder19Value = isUnder19Attribute.getValue();
+                // Set value if the value is different
+                if (isUnder19Value != 621870000 && !isOver19) {
+                    isUnder19Attribute.setValue(621870000);
+                    formContext.data.save();
+                }
+                else if (isUnder19Value != 621870001 && isOver19) {
+                    isUnder19Attribute.setValue(621870001);
+                    formContext.data.save();
+                }
+            }
+        }
+        catch (err) {
+            ECER.Jscripts.Contact.showMessage(err);
+        }
     },
 	
 	showMessage: function (message) {

@@ -677,7 +677,7 @@ var CrmJS;
             var userRoles = userSettings.roles;
             var hasRole = false;
             if (userRoles != null && userRoles != undefined) {d
-                userRoles.forEach(function (item) {
+                userRoles.forEach(function hasRoleName(item, index) {
                     if (item.name.toLowerCase() === roleName.toLowerCase()) {
                         hasRole = true;
                     }
