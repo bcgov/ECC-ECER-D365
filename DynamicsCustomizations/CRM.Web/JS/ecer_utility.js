@@ -674,10 +674,10 @@ var CrmJS;
             /// <returns type="bool" />
             /* v9.1 */
             var userSettings = Xrm.Utility.getGlobalContext().userSettings;
-            var userRoles = userSettings.roles;
+            var userRoles = userSettings.roles.get();
             var hasRole = false;
-            if (userRoles != null && userRoles != undefined) {d
-                userRoles.forEach(function hasRoleName(item, index) {
+            if (userRoles != null && userRoles != undefined) {
+                userRoles.forEach(function hasRoleName(item) {
                     if (item.name.toLowerCase() === roleName.toLowerCase()) {
                         hasRole = true;
                     }
