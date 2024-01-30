@@ -150,6 +150,46 @@ ECER.Jscripts.Application =
         }
     },
 
+    certificateTypeFlagsValidation: function (executionContext) {
+        // ECE Assistant and ECE 1 YR can only be selected by itself
+        var formContext = executionContext.getFormContext();
+        try {
+            var isECEAssistant = formContext.getAttribute("ecer_iseceassistant").getValue();
+            var isECE1Yr = formContext.getAttribute("ecer_isece1yr").getValue();
+            var isECE5Yr = formContext.getAttribute("ecer_isece5yr").getValue();
+            var isSNE = formContext.getAttribute("ecer_issne").getValue();
+            var isITE = formContext.getAttribute("ecer_isite").getValue();
+
+            if (isECEAssistant != true && isECE1Yr != true) {
+                return;
+            }
+
+            if (isECEAssistant == true && isECE1Yr == true) {
+                crm_Utility.showMessage("ECE Assistant or ECE 1 Year cannot be selected if other Certificate Type(s) are already selected");
+                formContext.getAttribute("ecer_iseceassistant").setValue(false);
+                formContext.getAttribute("ecer_isece1yr").setValue(false);
+                return;
+            }
+
+            if (isECEAssistant == true &&
+                (isECE5Yr == true || isSNE == true || isITE == true)) {
+                crm_Utility.showMessage("ECE Assistant cannot be selected if other Certificate Type(s) are already selected");
+                formContext.getAttribute("ecer_iseceassistant").setValue(false);
+                return;
+            }
+
+            if (isECE1Yr == true &&
+                (isECE5Yr == true || isSNE == true || isITE == true)) {
+                crm_Utility.showMessage("ECE 1 Year cannot be selected if other Certificate Type(s) are already selected");
+                formContext.getAttribute("ecer_isece1yr").setValue(false);
+                return;
+            }
+        }
+        catch (err) {
+            crm_Utility.showMessage(err.message);
+        }
+    },
+
     onProfileCreationButton: function () {
         // Directive to prevent use of undeclared variables
         "use strict";
