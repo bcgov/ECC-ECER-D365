@@ -16,7 +16,7 @@ ECER.Jscripts.Application =
         // var formType = formContext.ui.getFormType();
         ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);
         ECER.Jscripts.Application.showHideParentalGuidianceFieldsOnApplicantAge(executionContext);
-        ECER.Jscripts.Application.closeFormIfDraft(executionContext);
+        //ECER.Jscripts.Application.closeFormIfDraft(executionContext);
     },
 
     // No longer need.  Will allow user to overwrite
@@ -86,9 +86,7 @@ ECER.Jscripts.Application =
     hasProgramClerkSecurityRole: function () {
         // Directive to prevent use of undeclared variables
         "use strict";
-        var executionContext = this.crm_ExecutionContext;
-        var formContext = executionContext.getFormContext();
-        return crm_Utility.checkCurrentUserRole("Program Clerk");
+        return crm_Utility.checkCurrentUserRole("ECER - Certification Baseline Role");
     },
 
     preventAutoSave: function (executionContext) {
@@ -149,6 +147,90 @@ ECER.Jscripts.Application =
         }
         catch (err) {
             ECER.Jscripts.Contact.showMessage(err);
+        }
+    },
+
+    onProfileCreationButton: function () {
+        // Directive to prevent use of undeclared variables
+        "use strict";
+        var executionContext = this.crm_ExecutionContext;
+        var formContext = executionContext.getFormContext();
+        try {
+            var applicantAttribute = formContext.getAttribute("ecer_applicantid");
+            if (applicantAttribute != null && applicantAttribute.getValue() != null) {
+                // Prompt message
+                var msgTitle = "Applicant Lookup already contains data";
+                var errMsg = "Applicant Lookup already contains data.  Please verify and try again";
+                var alertStrings = { confirmButtonLabel: "OK", text: errMsg, title: msgTitle };
+                var alertOptions = { height: 240, width: 360 };
+                Xrm.Navigation.openAlertDialog(alertStrings, alertOptions);
+                return;
+            }
+
+            var lastName = formContext.getAttribute("ecer_legallastname").getValue();
+            var firstName = formContext.getAttribute("ecer_legalfirstname").getValue();
+            var middleName = formContext.getAttribute("ecer_legalmiddlename").getValue();
+            var preferredname = formContext.getAttribute("ecer_preferredname").getValue();
+            var stree1 = formContext.getAttribute("ecer_street").getValue();
+            var city = formContext.getAttribute("ecer_city").getValue();
+            var province = formContext.getAttribute("ecer_province").getValue();
+            var postalCode = formContext.getAttribute("ecer_postalcode").getValue();
+            var country = formContext.getAttribute("ecer_country").getValue();
+            var email = formContext.getAttribute("ecer_emailaddress").getValue();
+            var primaryPhone = formContext.getAttribute("ecer_primaryphonenumber").getValue();
+            var mobilePhone = formContext.getAttribute("ecer_alternatephonenumber").getValue();
+            var dob = formContext.getAttribute("ecer_dateofbirth").getValue();
+            
+            var entity = {};
+            entity.firstname = firstName;
+            entity.lastname = lastName;
+            entity.middlename = middleName;
+            entity.ecer_preferredname = preferredname;
+            entity.address1_line1 = stree1;
+            entity.address1_city = city;
+            entity.address1_stateorprovince = province;
+            entity.address1_country = country;
+            entity.address1_postalcode = postalCode;
+            entity.emailaddress1 = email;
+            entity.telephone1 = primaryPhone;
+            entity.mobilephone = mobilePhone;
+            if (dob !== null) {
+                // Date Only Date Only field will only take short date yyyy-MM-dd
+                var year = dob.getFullYear();
+                var month = dob.getMonth() + 1;
+                var day = dob.getDate();
+                var dateString = year.toString() + "-" + month.toString() + "-" + day.toString();
+                entity.birthdate = dateString;
+            }
+            // record created from application will be BC ECE applicant
+            entity.ecer_isbcece = true;
+
+            Xrm.WebApi.online.createRecord("contact", entity).then(
+                function success(result) {
+                    var entityRecordId = result.id;
+                    var entityRecordName = firstName + " " + lastName;
+
+                    var lookupArray = new Array();
+                    lookupArray[0] = new Object();
+                    // Treat the entity record to include curly braces if needed
+                    if (entityRecordId.indexOf("{") === -1) {
+                        entityRecordId = "{" + entityRecordId + "}";
+                    }
+                    lookupArray[0].id = entityRecordId;
+                    lookupArray[0].name = entityRecordName;
+                    lookupArray[0].entityType = "contact";
+                    applicantAttribute.setValue(lookupArray);
+                    formContext.data.save();
+                    ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);
+
+                },
+                function fail(error) {
+                    crm_Utility.showMessage(error.message);
+                }
+            );
+        }
+        catch (err) {
+            crm_Utility.showMessage(err.message);
         }
     },
 
