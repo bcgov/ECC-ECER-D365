@@ -160,10 +160,6 @@ ECER.Jscripts.Application =
             var isSNE = formContext.getAttribute("ecer_issne").getValue();
             var isITE = formContext.getAttribute("ecer_isite").getValue();
 
-            if (isECEAssistant != true && isECE1Yr != true) {
-                return;
-            }
-
             if (isECEAssistant == true && isECE1Yr == true) {
                 crm_Utility.showMessage("ECE Assistant or ECE 1 Year cannot be selected if other Certificate Type(s) are already selected");
                 formContext.getAttribute("ecer_iseceassistant").setValue(false);
@@ -184,10 +180,53 @@ ECER.Jscripts.Application =
                 formContext.getAttribute("ecer_isece1yr").setValue(false);
                 return;
             }
+
+            var certificateTypeValue = "";
+
+            if (isECE5Yr == true) {
+                certificateTypeValue = ECER.Jscripts.Application.composeCertificateTypeValue(certificateTypeValue, "ECE 5 YR");
+            }
+
+            if (isSNE == true) {
+                certificateTypeValue = ECER.Jscripts.Application.composeCertificateTypeValue(certificateTypeValue, "SNE");
+            }
+
+            if (isITE == true) {
+                certificateTypeValue = ECER.Jscripts.Application.composeCertificateTypeValue(certificateTypeValue, "ITE");
+            }
+
+            if (isECE1Yr == true) {
+                certificateTypeValue = ECER.Jscripts.Application.composeCertificateTypeValue(certificateTypeValue, "ECE 1 YR");
+            }
+
+            if (isECEAssistant == true) {
+                certificateTypeValue = ECER.Jscripts.Application.composeCertificateTypeValue(certificateTypeValue, "ECE Assistant");
+            }
+
+            if (certificateTypeValue != null && certificateTypeValue != "") {
+                formContext.getAttribute("ecer_certificatetype").setValue(certificateTypeValue);
+            }
+            else {
+                formContext.getAttribute("ecer_certificatetype").setValue(null);
+            }
         }
         catch (err) {
             crm_Utility.showMessage(err.message);
         }
+    },
+
+    composeCertificateTypeValue: function (existingValue, valueToBeAppended) {
+        if (valueToBeAppended == null || valueToBeAppended.trim() === "") {
+            return existingValue;
+        }
+        if (existingValue == null || existingValue.trim() === "") {
+            existingValue = "";
+        }
+        else {
+            existingValue += ", ";
+        }
+
+        return existingValue += valueToBeAppended.trim();
     },
 
     onProfileCreationButton: function () {
