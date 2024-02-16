@@ -15,6 +15,7 @@ ECER.Jscripts.Application =
         // var formContext = executionContext.getFormContext();
         // var formType = formContext.ui.getFormType();
         ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);
+        // Age Evaluation is done by Power Automate flow on submit of the application
         ECER.Jscripts.Application.showHideParentalGuidianceFieldsOnApplicantAge(executionContext);
         //ECER.Jscripts.Application.closeFormIfDraft(executionContext);
     },
@@ -72,15 +73,19 @@ ECER.Jscripts.Application =
     setApplicationStatusOnReadyForAssessment: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var readyForAssessmentAttribute = formContext.getAttribute("ecer_readyforassessment");
-        var statuscode = 621870002; // Review for Completeness
+        var statuscode = 621870001; // Submitted
+        var subStatusDetails = null; 
         if (readyForAssessmentAttribute != null && readyForAssessmentAttribute.getValue() != null) {
             if (readyForAssessmentAttribute.getValue()) {
-                statuscode = 621870003; // Ready for Assessment
+                statuscode = 621870002; // Ready
+                subStatusDetails = 621870003; // Ready for Assessment
             }
         }
 
         var statuscodeAttribute = formContext.getAttribute("statuscode");
+        var statusReasonDetailsAttribute = formContext.getAttribute("ecer_statusreasondetail");
         statuscodeAttribute.setValue(statuscode);
+        statusReasonDetailsAttribute.setValue(subStatusDetails);
     },
 
     hasProgramClerkSecurityRole: function () {
@@ -107,47 +112,6 @@ ECER.Jscripts.Application =
         }
         crm_Utility.showHide(executionContext, show, parentalReferenceReceivedAttributeName);
         crm_Utility.showHide(executionContext, show, parentalReferenceReceivedDateAttributeName);
-    },
-
-    evaluateAgeOnSubmissionDate: function (executionContext) {
-        try {
-            var formContext = executionContext.getFormContext();
-            var isOver19 = false;
-            
-            var dateSubmittedAttribute = formContext.getAttribute("ecer_datesubmitted");
-            if (dateSubmittedAttribute == null || dateSubmittedAttribute.getValue() == null) {
-                return; // No Date Submitted to compare
-            }
-
-            var birthDateAttribute = formContext.getAttribute("ecer_dateofbirth");
-            var applicantAgeOnSubmission
-            var birthDate = new Date();
-            if (birthDateAttribute != null && birthDateAttribute.getValue() != null) {
-                birthDate = birthDateAttribute.getValue();
-                var diff = (today.getTime() - birthDate.getTime()) / 1000;
-                diff /= (60 * 60 * 24);
-                var differenceInYears = Math.abs(Math.round(diff / 365.25));
-                if (differenceInYears >= 19) {
-                    isOver19 = true;
-                }
-            }
-            var isUnder19Attribute = formContext.getAttribute("ecer_isunder19");
-            if (isUnder19Attribute != null) {
-                var isUnder19Value = isUnder19Attribute.getValue();
-                // Set value if the value is different
-                if (isUnder19Value != 621870000 && !isOver19) {
-                    isUnder19Attribute.setValue(621870000);
-                    formContext.data.save();
-                }
-                else if (isUnder19Value != 621870001 && isOver19) {
-                    isUnder19Attribute.setValue(621870001);
-                    formContext.data.save();
-                }
-            }
-        }
-        catch (err) {
-            ECER.Jscripts.Contact.showMessage(err);
-        }
     },
 
     certificateTypeFlagsValidation: function (executionContext) {

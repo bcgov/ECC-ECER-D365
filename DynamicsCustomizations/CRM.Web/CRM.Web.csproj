@@ -47,6 +47,7 @@
   <ItemGroup>
     <Content Include="JS\contact\ecer_contact.js" />
     <Content Include="JS\ecer_application\ecer_application.js" />
+    <Content Include="JS\ecer_comment\ecer_decisioncomment.js" />
     <Content Include="JS\ecer_utility.js" />
   </ItemGroup>
   <ItemGroup>
