@@ -1,0 +1,215 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_adding_new_Task": {
+          "metadata": {
+            "operationMetadataId": "52ec8389-052b-4f2a-b1f4-4a5a7a89b2cb"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "task",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Regarding_Table_is_ecer_application": {
+          "actions": {
+            "Linking_Application_table": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "7941de52-d235-4771-a643-00ee8e9d7a64"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "recordId": "@triggerOutputs()?['body/activityid']",
+                  "item/ecer_Application_Task@odata.bind": "ecer_applications(@{triggerOutputs()?['body/_regardingobjectid_value']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {},
+          "expression": {
+            "startsWith": [
+              "@triggerOutputs()?['body/_regardingobjectid_value']",
+              "ecer_application"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3ac1a3fd-e8af-4d02-b011-b28ef7928822"
+          },
+          "type": "If"
+        },
+        "IF_Regarding_table_name_starts_with__ecer_characterreference": {
+          "actions": {
+            "Get_Application_ID_from_Regarding_Character_Reference_Record": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "e50577e4-d0da-4f8d-8673-8d622bc76d3c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_characterreferences",
+                  "recordId": "@triggerOutputs()?['body/_regardingobjectid_value']",
+                  "$select": "_ecer_applicationid_value"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Update_a_row": {
+              "runAfter": {
+                "Get_Application_ID_from_Regarding_Character_Reference_Record": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "86ae929d-c1d0-4ab3-b561-6cacf5dc107c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "recordId": "@triggerOutputs()?['body/activityid']",
+                  "item/ecer_Application_Task@odata.bind": "ecer_applications(@{outputs('Get_Application_ID_from_Regarding_Character_Reference_Record')?['body/_ecer_applicationid_value']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "IF_Regarding_Table_is_ecer_application": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "startsWith": [
+              "@triggerOutputs()?['body/_regardingobjectid_value']",
+              "ecer_characterreference"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "034128ba-e200-439f-bf28-216ae2aa5a6b"
+          },
+          "type": "If"
+        },
+        "IF_Regarding_table_name_starts_with__ecer_workexperiencereference": {
+          "actions": {
+            "Get_Application_ID_from_Regarding_Work_Experience_Reference_Record_": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "4eb966e7-48d7-4222-b346-34a2211dc849"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_workexperiencerefs",
+                  "recordId": "@triggerOutputs()?['body/_regardingobjectid_value']",
+                  "$select": "_ecer_applicationid_value"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Update_a_row_2": {
+              "runAfter": {
+                "Get_Application_ID_from_Regarding_Work_Experience_Reference_Record_": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "fcd82726-4cc1-40e6-a57a-9a0334b6d1d7"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "recordId": "@triggerOutputs()?['body/activityid']",
+                  "item/ecer_Application_Task@odata.bind": "ecer_applications(@{outputs('Get_Application_ID_from_Regarding_Work_Experience_Reference_Record_')?['body/_ecer_applicationid_value']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "IF_Regarding_table_name_starts_with__ecer_characterreference": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "startsWith": [
+              "@triggerOutputs()?['body/_regardingobjectid_value']",
+              "ecer_workexperiencereference"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b2722ccc-60e6-4ae8-a2e2-09449ff07154"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

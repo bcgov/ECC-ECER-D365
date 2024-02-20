@@ -1,0 +1,184 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_Ownership_Changed": {
+          "metadata": {
+            "operationMetadataId": "b3eb1d15-2f19-4598-8101-3fea9fc6c3fd"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_application",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ownerid",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Owner_is_a_System_User": {
+          "actions": {
+            "Get_List_of_Assessment_Team_by_record_owner": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "d6da4913-bec1-4f0f-8f0b-2adb7067af3e"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "teams",
+                  "fetchXml": "<fetch distinct='true'>\n  <entity name='team'>\n    <attribute name='name' />\n    <attribute name='administratorid' />\n    <attribute name='teamid' />\n    <attribute name='teamtype' />\n    <order attribute='name' descending='false' />\n    <filter type='and'>\n      <condition attribute='name' operator='like' value='Assessment Team%' />\n<condition attribute='administratorid' operator='ne' value='@{triggerOutputs()?['body/_ownerid_value']}' />\n    </filter>\n    <link-entity name='teammembership' from='teamid' to='teamid' visible='false' intersect='true'>\n      <link-entity name='systemuser' from='systemuserid' to='systemuserid' alias='aa'>\n        <filter type='and'>\n          <condition attribute='systemuserid' operator='eq' value='@{triggerOutputs()?['body/_ownerid_value']}' />\n        </filter>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Loop_Through_Assessment_Team_obtained_-_Should_be_1_record": {
+              "foreach": "@outputs('Get_List_of_Assessment_Team_by_record_owner')?['body/value']",
+              "actions": {
+                "Set_Assessor_and_Assessment_Team_Lead": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "92648467-5be4-4fbc-a344-3cdd277fadf7"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_applications",
+                      "recordId": "@triggerOutputs()?['body/ecer_applicationid']",
+                      "item/ecer_AssessorLead@odata.bind": "systemusers(@{items('Loop_Through_Assessment_Team_obtained_-_Should_be_1_record')?['_administratorid_value']})",
+                      "item/ecer_Assessor@odata.bind": "systemusers(@{triggerOutputs()?['body/_ownerid_value']})"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_List_of_Assessment_Team_by_record_owner": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "b0f8ebc6-bd37-4a05-b8f9-8b44020c2ef4"
+              },
+              "type": "Foreach"
+            },
+            "Get_List_of_Program_Support_Team_by_record_owner": {
+              "runAfter": {
+                "Loop_Through_Assessment_Team_obtained_-_Should_be_1_record": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "0c3e0dc6-554d-4022-8b01-5a6f6854321b"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "teams",
+                  "fetchXml": "<fetch distinct='true'>\n  <entity name='team'>\n    <attribute name='name' />\n    <attribute name='administratorid' />\n    <attribute name='teamid' />\n    <attribute name='teamtype' />\n    <order attribute='name' descending='false' />\n    <filter type='and'>\n      <condition attribute='name' operator='like' value='Program Support%' />\n<condition attribute='administratorid' operator='ne' value='@{triggerOutputs()?['body/_ownerid_value']}' />\n    </filter>\n    <link-entity name='teammembership' from='teamid' to='teamid' visible='false' intersect='true'>\n      <link-entity name='systemuser' from='systemuserid' to='systemuserid' alias='aa'>\n        <filter type='and'>\n          <condition attribute='systemuserid' operator='eq' value='@{triggerOutputs()?['body/_ownerid_value']}' />\n        </filter>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Loop_Through_Program_Support_Team_by_record_owner": {
+              "foreach": "@outputs('Get_List_of_Program_Support_Team_by_record_owner')?['body/value']",
+              "actions": {
+                "Set_Program_Support": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "cf703036-62a8-44e8-a06d-b54659402db7"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_applications",
+                      "recordId": "@triggerOutputs()?['body/ecer_applicationid']",
+                      "item/ecer_ProgramClerk@odata.bind": "systemusers(@{triggerOutputs()?['body/_ownerid_value']})"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_List_of_Program_Support_Team_by_record_owner": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "9cd4e506-4453-4699-81bd-f7342b1032d0"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {},
+          "expression": {
+            "startsWith": [
+              "@triggerOutputs()?['body/_ownerid_type']",
+              "systemuser"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "29e2b450-17cd-475e-9795-da4c494399ed"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

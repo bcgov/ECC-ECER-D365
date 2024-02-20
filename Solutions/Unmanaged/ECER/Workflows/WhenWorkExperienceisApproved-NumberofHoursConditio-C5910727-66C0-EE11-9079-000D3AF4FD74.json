@@ -91,7 +91,7 @@
                     "parameters": {
                       "entityName": "ecer_workexperiencerefs",
                       "recordId": "@items('Loop_through_result_work_experience_under_same_application')?['ecer_workexperiencerefid']",
-                      "$select": "ecer_totalnumberofhoursobserved"
+                      "$select": "ecer_totalnumberofhoursapproved"
                     },
                     "authentication": "@parameters('$authentication')"
                   }
@@ -121,7 +121,7 @@
                     "operationMetadataId": "13edc0eb-6c60-45ae-8034-59ba82e92f5b"
                   },
                   "type": "Compose",
-                  "inputs": "@add(variables('subtotal'),outputs('Get_Work_Experience_Row')?['body/ecer_totalnumberofhoursobserved'])"
+                  "inputs": "@add(variables('subtotal'),outputs('Get_Work_Experience_Row')?['body/ecer_totalnumberofhoursapproved'])"
                 }
               },
               "runAfter": {},

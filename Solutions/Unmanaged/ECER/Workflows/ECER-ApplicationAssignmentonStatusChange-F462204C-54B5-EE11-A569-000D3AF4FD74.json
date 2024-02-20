@@ -88,7 +88,8 @@
                       "entityName": "ecer_applications",
                       "recordId": "@triggerOutputs()?['body/ecer_applicationid']",
                       "item/ecer_datesubmitted": "@utcNow()",
-                      "item/ownerid@odata.bind": "teams(@{items('Team_record_found_for_Program_Support_Team')?['teamid']})"
+                      "item/ownerid@odata.bind": "teams(@{items('Team_record_found_for_Program_Support_Team')?['teamid']})",
+                      "item/ecer_statusreasondetail": 621870000
                     },
                     "authentication": "@parameters('$authentication')"
                   }
@@ -387,7 +388,8 @@
                     "parameters": {
                       "entityName": "ecer_applications",
                       "recordId": "@triggerOutputs()?['body/ecer_applicationid']",
-                      "item/ownerid@odata.bind": "teams(@{items('Team_record_for_Assessment_Lead_Team')?['teamid']})"
+                      "item/ownerid@odata.bind": "teams(@{items('Team_record_for_Assessment_Lead_Team')?['teamid']})",
+                      "item/ecer_statusreasondetail": 621870003
                     },
                     "authentication": "@parameters('$authentication')"
                   }

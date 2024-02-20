@@ -31,8 +31,11 @@ ECER.Jscripts.Decision_Comment = {
             }
         });
 
-        var userSettings = Xrm.Utility.getGlobalContext().userSettings
-        var currentUserId = userSettings.userId
+        var userSettings = Xrm.Utility.getGlobalContext().userSettings;
+        var currentUserId = userSettings.userId;
+
+        var ownerUser = formContext.getAttribute("ownerid").getValue();
+        var ownerUserId = ownerUser ? ownerUser[0].id : "";
 
         var createdBy = formContext.getAttribute("createdby").getValue();
         var createdById = createdBy ? createdBy[0].id : "";
@@ -42,10 +45,14 @@ ECER.Jscripts.Decision_Comment = {
 
         var today = new Date().toDateString();
 
-        if (currentUserId === createdById && createdOnDate === today) {
+        if ((currentUserId === createdById || currentUserId === ownerUserId) && createdOnDate === today) {
             var notesControl = formContext.getControl("ecer_notes");
+            var decisionControl = formContext.getControl("ecer_decision");
             if (notesControl !== null) {
                 notesControl.setDisabled(false);
+            }
+            if (decisionControl !== null) {
+                decisionControl.setDisabled(false);
             }
         }
     },
@@ -69,21 +76,24 @@ ECER.Jscripts.Decision_Comment = {
             });
         });
 
-        var userSettings = Xrm.Utility.getGlobalContext().userSettings
-        var currentUserId = userSettings.userId
+        var userSettings = Xrm.Utility.getGlobalContext().userSettings;
+        var currentUserId = userSettings.userId;
 
         var createdBy = formContext.getAttribute("createdby").getValue();
         var createdById = createdBy ? createdBy[0].id : "";
+
+        var ownerUser = formContext.getAttribute("ownerid").getValue();
+        var ownerUserId = ownerUser ? ownerUser[0].id : "";
 
         var createdOn = formContext.getAttribute("createdon").getValue();
         var createdOnDate = createdOn ? createdOn.toDateString() : "";
 
         var today = new Date().toDateString();
 
-        if (currentUserId === createdById && createdOnDate === today) {
+        if ((currentUserId === createdById || currentUserId === ownerUserId) && createdOnDate === today) {
             formContext.getData().getEntity().attributes.forEach(function (attr) {
                 var attrName = attr.getName();
-                if (attrName === "ecer_notes") {
+                if (attrName === "ecer_notes" || attrName === "ecer_decision") {
                     attr.controls.forEach(function (control) {
                         control.setDisabled(false);
                     });
