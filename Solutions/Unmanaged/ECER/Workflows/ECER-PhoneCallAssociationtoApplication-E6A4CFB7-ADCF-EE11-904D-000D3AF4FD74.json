@@ -39,7 +39,8 @@
             "parameters": {
               "subscriptionRequest/message": 1,
               "subscriptionRequest/entityname": "phonecall",
-              "subscriptionRequest/scope": 4
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/runas": 3
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -209,7 +210,7 @@
         }
       }
     },
-    "templateName": null
+    "templateName": ""
   },
   "schemaVersion": "1.0.0.0"
 }

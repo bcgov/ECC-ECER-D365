@@ -5,7 +5,7 @@
       <LocalizedName description="ECER" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.5</Version>
+    <Version>1.0.0.6</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>ecer</UniqueName>
@@ -146,6 +146,7 @@
       <RootComponent type="9" schemaName="ecer_workexperiencetypes" behavior="0" />
       <RootComponent type="9" schemaName="ecer_workhourstype" behavior="0" />
       <RootComponent type="9" schemaName="ecer_yesnonull" behavior="0" />
+      <RootComponent type="20" id="{3e3b52a8-44d0-ee11-904c-000d3af4a207}" behavior="0" />
       <RootComponent type="20" id="{8d55d382-8dca-ee11-9079-000d3af4febe}" behavior="0" />
       <RootComponent type="20" id="{f7034a16-6cb5-ee11-a569-000d3af4febe}" behavior="0" />
       <RootComponent type="29" id="{003318f6-21c1-ee11-9079-000d3af4f18a}" behavior="0" />
@@ -176,6 +177,7 @@
       <RootComponent type="29" id="{d5582eab-afbf-ee11-9079-000d3af4febe}" behavior="0" />
       <RootComponent type="29" id="{dadb3640-cfc9-ee11-9079-000d3af4febe}" behavior="0" />
       <RootComponent type="29" id="{e6a4cfb7-adcf-ee11-904d-000d3af4fd74}" behavior="0" />
+      <RootComponent type="29" id="{eae80556-41d0-ee11-904d-000d3af4fd74}" behavior="0" />
       <RootComponent type="29" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" behavior="0" />
       <RootComponent type="60" id="{1f102f9c-92c0-ee11-9079-000d3af4fa73}" behavior="0" />
       <RootComponent type="60" id="{35be10f3-ea72-ee11-8179-000d3af4fa73}" behavior="0" />
@@ -230,7 +232,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="originatingleadid" displayName="Originating Lead" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_LeadManagement (9.0.4.0066)">
-          <package>msdynce_LeadManagementAnchor (9.0.24014.10001)</package>
+          <package>msdynce_LeadManagementAnchor (9.0.24021.10002)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
@@ -299,6 +301,12 @@
           <package>msdynce_AppCommonAnchor (9.0.24021.10002)</package>
         </Required>
         <Dependent type="60" displayName="Registry Intake Dashboard" id="{35be10f3-ea72-ee11-8179-000d3af4fa73}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="59" schemaName="Phone Calls by Month Due" displayName="Phone Calls by Month Due" parentSchemaName="phonecall" parentDisplayName="Phone Call" solution="msdynce_AppCommon (9.0.4.0066)" id="{399945c7-d07f-444e-9e54-d5fa4042290c}">
+          <package>msdynce_AppCommonAnchor (9.0.24021.10002)</package>
+        </Required>
+        <Dependent type="60" displayName="ECER - Main" parentDisplayName="Application" id="{2420375a-7e39-4cbc-a810-8079c3f08eef}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="59" schemaName="Top Customers" displayName="Top Customers" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{8bc5fb18-48f2-4782-9e16-3d452fa4ddce}">

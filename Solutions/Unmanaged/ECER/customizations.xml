@@ -1899,6 +1899,45 @@
                 <Description description="Readable ID For Contact.  Map to Oracle CLI_ID" languagecode="1033" />
               </Descriptions>
             </attribute>
+            <attribute PhysicalName="ecer_HasCurrentCertificateConditions">
+              <Type>picklist</Type>
+              <Name>ecer_hascurrentcertificateconditions</Name>
+              <LogicalName>ecer_hascurrentcertificateconditions</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0.0.5</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <AppDefaultValue>-1</AppDefaultValue>
+              <OptionSetName>ecer_yesnonull</OptionSetName>
+              <displaynames>
+                <displayname description="Has Current Certificate Conditions" languagecode="1033" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="1033" />
+              </Descriptions>
+            </attribute>
             <attribute PhysicalName="ecer_IsBCECE">
               <Type>bit</Type>
               <Name>ecer_isbcece</Name>
@@ -3357,6 +3396,14 @@
                                 <control id="ecer_underinvestigation" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="ecer_underinvestigation" disabled="false" uniqueid="{1f2671ca-0bc9-45e6-9f42-1d540b2e6b15}" />
                               </cell>
                             </row>
+                            <row>
+                              <cell id="{9d25b9c0-dde7-0152-5e24-028aa97530b2}" showlabel="true" locklevel="0">
+                                <labels>
+                                  <label description="Has Current Certificate Conditions" languagecode="1033" />
+                                </labels>
+                                <control id="ecer_hascurrentcertificateconditions" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="ecer_hascurrentcertificateconditions" disabled="false" uniqueid="{70f0f7f4-ced4-41f7-a763-a135110d9338}" />
+                              </cell>
+                            </row>
                           </rows>
                         </section>
                         <section name="SUMMARY_TAB_Decision_Comments" id="c2b479f3-e152-46a7-a18d-fcc62fa6a2a3" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
@@ -3365,7 +3412,7 @@
                           </labels>
                           <rows>
                             <row>
-                              <cell id="{32616468-ef4a-4d1f-be60-4689b88b56d9}">
+                              <cell id="{32616468-ef4a-4d1f-be60-4689b88b56d9}" showlabel="false">
                                 <labels>
                                   <label description="" languagecode="1033" />
                                 </labels>
@@ -3441,7 +3488,7 @@
                           </labels>
                           <rows>
                             <row>
-                              <cell id="{e3ed329f-9453-41ef-ba4a-72a86f3ed0a4}">
+                              <cell id="{e3ed329f-9453-41ef-ba4a-72a86f3ed0a4}" showlabel="false">
                                 <labels>
                                   <label description="" languagecode="1033" />
                                 </labels>
@@ -3489,7 +3536,18 @@
                             <label description="Change of Information" languagecode="1033" />
                           </labels>
                           <rows>
-                            <row />
+                            <row>
+                              <cell id="{bd9efccf-8f68-4f28-9b3a-f9b7b9938715}">
+                                <labels>
+                                  <label description="" languagecode="1033" />
+                                </labels>
+                              </cell>
+                              <cell id="{61f59df9-cd4d-4449-a553-a6e3a61b629e}">
+                                <labels>
+                                  <label description="" languagecode="1033" />
+                                </labels>
+                              </cell>
+                            </row>
                             <row>
                               <cell locklevel="0" id="{7a7da5b3-68b3-4ac9-a722-4c1a97be0f85}" rowspan="4" colspan="2" auto="false" showlabel="false">
                                 <labels>
@@ -3518,7 +3576,13 @@
                             <label description="Decision Comments" languagecode="1033" />
                           </labels>
                           <rows>
-                            <row />
+                            <row>
+                              <cell id="{f568b7f0-6786-4447-bb00-468f8309d64f}">
+                                <labels>
+                                  <label description="" languagecode="1033" />
+                                </labels>
+                              </cell>
+                            </row>
                             <row>
                               <cell locklevel="0" id="{002b91e2-d335-4165-8ca6-61297a02d2ec}" rowspan="4" colspan="1" auto="false" showlabel="false">
                                 <labels>
@@ -4196,7 +4260,7 @@
                           </labels>
                           <rows>
                             <row>
-                              <cell id="{18df86af-356d-4e1b-be5b-6c548fc06c62}">
+                              <cell id="{18df86af-356d-4e1b-be5b-6c548fc06c62}" showlabel="false">
                                 <labels>
                                   <label description="" languagecode="1033" />
                                 </labels>
@@ -5316,6 +5380,28 @@
                     </parameters>
                   </customControl>
                 </controlDescription>
+                <controlDescription forControl="{70f0f7f4-ced4-41f7-a763-a135110d9338}">
+                  <customControl id="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}">
+                    <parameters>
+                      <datafieldname>ecer_hascurrentcertificateconditions</datafieldname>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="0" name="MscrmControls.OptionSet.OptionSetControl">
+                    <parameters>
+                      <value type="OptionSet">ecer_hascurrentcertificateconditions</value>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="2" name="MscrmControls.OptionSet.OptionSetControl">
+                    <parameters>
+                      <value type="OptionSet">ecer_hascurrentcertificateconditions</value>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="1" name="MscrmControls.OptionSet.OptionSetControl">
+                    <parameters>
+                      <value type="OptionSet">ecer_hascurrentcertificateconditions</value>
+                    </parameters>
+                  </customControl>
+                </controlDescription>
               </controlDescriptions>
               <footer id="{633a8d2e-eb72-47c7-b8e8-67d450330994}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
                 <rows>
@@ -5558,6 +5644,144 @@
             <LocalizedNames>
               <LocalizedName description="ECER - Applicant QV Form" languagecode="1033" />
             </LocalizedNames>
+          </systemform>
+          <systemform>
+            <formid>{97622dfb-0bd1-ee11-904d-000d3af4fd74}</formid>
+            <IntroducedVersion>1.0.0.5</IntroducedVersion>
+            <FormPresentation>1</FormPresentation>
+            <FormActivationState>1</FormActivationState>
+            <form>
+              <tabs>
+                <tab id="ACBA75B7-97B6-4116-AA55-51312992B721" name="tab_1" showlabel="false" labelid="{0eb0e818-8ab0-4362-b306-5e5bab40df28}">
+                  <labels>
+                    <label description="New Tab" languagecode="1033" />
+                  </labels>
+                  <columns>
+                    <column width="100%">
+                      <sections>
+                        <section id="AD49B5BF-256F-46A8-9C75-947146172EB9" name="section_name" columns="1" showlabel="true" showbar="false" IsUserDefined="0" labelwidth="130" labelid="{d954413c-98b3-438c-bfc5-7c0570c633e2}">
+                          <labels>
+                            <label description="Names" languagecode="1033" />
+                          </labels>
+                          <rows>
+                            <row>
+                              <cell id="C0550AC7-0F44-45A4-8EF5-D2911C0689D9" labelid="{5d556cb8-6d9d-4bdb-a774-f4c8beae0090}">
+                                <labels>
+                                  <label description="" languagecode="1033" />
+                                </labels>
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{e1b02a49-8abd-47b7-8daa-10d8e92ca604}" locklevel="0" colspan="1" rowspan="1" labelid="{b8a68ac4-8bcd-4fdf-bc6f-e4280c979061}">
+                                <labels>
+                                  <label description="Legal First Name" languagecode="1033" />
+                                </labels>
+                                <control id="firstname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="firstname" disabled="false" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{fec70ae7-18a7-46b2-b437-1fea2c2b6501}" locklevel="0" colspan="1" rowspan="1" labelid="{4e989b63-a13a-4813-b788-5ec1426b48b0}">
+                                <labels>
+                                  <label description="Legal Middle Name" languagecode="1033" />
+                                </labels>
+                                <control id="middlename" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="middlename" disabled="false" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{9972e9b4-e9b1-455e-a3f9-35fd102086b6}" locklevel="0" colspan="1" rowspan="1" labelid="{4add13b6-9483-4f0b-b647-8f956e868dc5}">
+                                <labels>
+                                  <label description="Legal Last Name" languagecode="1033" />
+                                </labels>
+                                <control id="lastname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="lastname" disabled="false" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{3fb1bdc0-e0eb-4a6c-9dbe-c186731269f7}" locklevel="0" colspan="1" rowspan="1" labelid="{a288b234-6b23-4710-9ae1-80f6f5af536b}">
+                                <labels>
+                                  <label description="Preferred Name" languagecode="1033" />
+                                </labels>
+                                <control id="ecer_preferredname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="ecer_preferredname" disabled="false" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{cb122c69-130c-437b-b3f8-9a3cd22fa3e7}" locklevel="0" colspan="1" rowspan="1">
+                                <labels>
+                                  <label description="Has Current Certificate Conditions" languagecode="1033" />
+                                </labels>
+                                <control id="ecer_hascurrentcertificateconditions" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="ecer_hascurrentcertificateconditions" disabled="false" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{53c27d37-2473-4ffb-8997-fcaf7c5a0e74}" locklevel="0" colspan="1" rowspan="1">
+                                <labels>
+                                  <label description="Under Investigation" languagecode="1033" />
+                                </labels>
+                                <control id="ecer_underinvestigation" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="ecer_underinvestigation" disabled="false" />
+                              </cell>
+                            </row>
+                          </rows>
+                        </section>
+                        <section name="section_address" id="05678024-1b4f-41b4-83a6-8dee487a0eb8" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" labelid="{2862380c-b482-4baa-a0c7-efa962d7d24a}">
+                          <labels>
+                            <label description="Contact Information" languagecode="1033" />
+                          </labels>
+                          <rows>
+                            <row />
+                            <row>
+                              <cell id="{f134a19a-18d9-41e8-99cb-bf290383cb09}" locklevel="0" colspan="1" rowspan="1" labelid="{dc384f48-1ec8-4aa0-ba4c-b98d7f3d3a90}">
+                                <labels>
+                                  <label description="City" languagecode="1033" />
+                                </labels>
+                                <control id="address1_city" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="address1_city" disabled="false" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{4ae18f7b-22e1-4e53-980f-bf03f49f3764}" locklevel="0" colspan="1" rowspan="1" labelid="{80742aa5-a7e1-4554-8ed9-25a9f05a91c9}">
+                                <labels>
+                                  <label description="Email" languagecode="1033" />
+                                </labels>
+                                <control id="emailaddress1" classid="{ADA2203E-B4CD-49BE-9DDF-234642B43B52}" datafieldname="emailaddress1" disabled="false" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{4bf542f1-9239-40b0-9680-6e620ca0c9a6}" locklevel="0" colspan="1" rowspan="1" labelid="{52de1edc-8cd8-440d-b352-8d34381f46a4}">
+                                <labels>
+                                  <label description="Primary Phone" languagecode="1033" />
+                                </labels>
+                                <control id="telephone1" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="telephone1" disabled="false" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{8aa6370e-06c4-4cf4-af60-17bf98029120}" locklevel="0" colspan="1" rowspan="1" labelid="{90f58a2b-5bad-464e-b950-977d512c3bb5}">
+                                <labels>
+                                  <label description="Mobile Phone" languagecode="1033" />
+                                </labels>
+                                <control id="mobilephone" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="mobilephone" disabled="false" />
+                              </cell>
+                            </row>
+                          </rows>
+                        </section>
+                      </sections>
+                    </column>
+                  </columns>
+                </tab>
+              </tabs>
+              <DisplayConditions Order="7" FallbackForm="true">
+                <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+                <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+                <Role Id="{b7099c2f-1738-4ec0-85ee-484f416d7723}" />
+                <Role Id="{cd4c7f4c-9d6d-47d1-8642-8ee85190e27a}" />
+                <Role Id="{62bb9aa4-d3b0-4b5e-ba10-ec7ae03f4c52}" />
+              </DisplayConditions>
+            </form>
+            <IsCustomizable>1</IsCustomizable>
+            <CanBeDeleted>1</CanBeDeleted>
+            <LocalizedNames>
+              <LocalizedName description="ECER - Ineligible Contact QV Form" languagecode="1033" />
+            </LocalizedNames>
+            <Descriptions>
+              <Description description="Show Ineligible Contact fields" languagecode="1033" />
+            </Descriptions>
           </systemform>
         </forms>
       </FormXml>
@@ -5855,6 +6079,56 @@
             </LocalizedNames>
           </savedquery>
           <savedquery>
+            <IsCustomizable>1</IsCustomizable>
+            <CanBeDeleted>1</CanBeDeleted>
+            <isquickfindquery>0</isquickfindquery>
+            <isprivate>0</isprivate>
+            <isdefault>0</isdefault>
+            <savedqueryid>{07e5ff9e-f8d0-ee11-904d-000d3af4f18a}</savedqueryid>
+            <layoutxml>
+              <grid name="resultset" jump="fullname" select="1" icon="1" preview="1">
+                <row name="result" id="contactid">
+                  <cell name="fullname" width="238" />
+                  <cell name="ecer_clientid" width="100" />
+                  <cell name="ecer_underinvestigation" width="152" />
+                  <cell name="ecer_hascurrentcertificateconditions" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+                  <cell name="emailaddress1" width="150" />
+                  <cell name="telephone1" width="178" />
+                  <cell name="birthdate" width="130" />
+                  <cell name="ecer_isverified" width="100" />
+                  <cell name="statecode" width="100" />
+                </row>
+              </grid>
+            </layoutxml>
+            <querytype>0</querytype>
+            <fetchxml>
+              <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+                <entity name="contact">
+                  <attribute name="fullname" />
+                  <attribute name="emailaddress1" />
+                  <attribute name="telephone1" />
+                  <attribute name="birthdate" />
+                  <attribute name="ecer_isverified" />
+                  <attribute name="statecode" />
+                  <attribute name="ecer_clientid" />
+                  <attribute name="ecer_underinvestigation" />
+                  <attribute name="ecer_hascurrentcertificateconditions" />
+                  <filter type="and">
+                    <filter type="or">
+                      <condition attribute="ecer_underinvestigation" operator="eq" value="621870000" />
+                      <condition attribute="ecer_hascurrentcertificateconditions" operator="eq" value="621870000" />
+                    </filter>
+                  </filter>
+                  <attribute name="contactid" />
+                </entity>
+              </fetch>
+            </fetchxml>
+            <IntroducedVersion>1.0.0.5</IntroducedVersion>
+            <LocalizedNames>
+              <LocalizedName description="Ineligible Contacts" languagecode="1033" />
+            </LocalizedNames>
+          </savedquery>
+          <savedquery>
             <isquickfindquery>1</isquickfindquery>
             <isprivate>0</isprivate>
             <isdefault>1</isdefault>
@@ -5902,15 +6176,106 @@
         </savedqueries>
       </SavedQueries>
       <RibbonDiffXml>
-        <CustomActions />
+        <CustomActions>
+          <HideCustomAction HideActionId="ecer.Mscrm.SubGrid.contact.QuickCampaign.Hide" Location="Mscrm.SubGrid.contact.QuickCampaign" />
+          <HideCustomAction HideActionId="ecer.Mscrm.SubGrid.contact.RunReport.Hide" Location="Mscrm.SubGrid.contact.RunReport" />
+        </CustomActions>
         <Templates>
           <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
         </Templates>
-        <CommandDefinitions />
+        <CommandDefinitions>
+          <CommandDefinition Id="Mscrm.Form.Flows.ManageRunFlow">
+            <EnableRules>
+              <EnableRule Id="Mscrm.IsMicrosoftFlowIntegrationEnabled" />
+              <EnableRule Id="Mscrm.DisplayFlowSingleMenu" />
+              <EnableRule Id="Mscrm.AnySelection" />
+            </EnableRules>
+            <DisplayRules>
+              <DisplayRule Id="Mscrm.MicrosoftFlows" />
+              <DisplayRule Id="Mscrm.HideOnOutlookClient" />
+              <DisplayRule Id="ecer.contact.HideIFCharacterReferenceEntity.DisplayRule" />
+            </DisplayRules>
+            <Actions />
+          </CommandDefinition>
+          <CommandDefinition Id="Mscrm.NewRecordFromGrid">
+            <EnableRules>
+              <EnableRule Id="Mscrm.IsValidForHierarchyView" />
+              <EnableRule Id="Mscrm.IsValidForHierarchyPageInUC" />
+              <EnableRule Id="Mscrm.IsEntityAvailableForUserInMocaOffline" />
+              <EnableRule Id="Mscrm.PrimaryIsNotActivityHomePageGrid" />
+            </EnableRules>
+            <DisplayRules>
+              <DisplayRule Id="Mscrm.CreateSelectedEntityPermission" />
+              <DisplayRule Id="Mscrm.ShowForNonRelationshipBoundGrids" />
+              <DisplayRule Id="Mscrm.HideNewForChildEntities" />
+              <DisplayRule Id="Mscrm.HideAddressEntities" />
+              <DisplayRule Id="Mscrm.NotOnMarketingList" />
+              <DisplayRule Id="ecer.contact.HideIFCharacterReferenceEntity.DisplayRule" />
+            </DisplayRules>
+            <Actions>
+              <JavaScriptFunction FunctionName="XrmCore.Commands.Open.openNewRecord" Library="$webresource:Main_system_library.js">
+                <CrmParameter Value="SelectedEntityTypeName" />
+                <CrmParameter Value="SelectedControl" />
+              </JavaScriptFunction>
+            </Actions>
+          </CommandDefinition>
+        </CommandDefinitions>
         <RuleDefinitions>
           <TabDisplayRules />
-          <DisplayRules />
-          <EnableRules />
+          <DisplayRules>
+            <DisplayRule Id="ecer.contact.HideIFCharacterReferenceEntity.DisplayRule">
+              <FormEntityContextRule EntityName="ecer_characterreference" Default="true" InvertResult="true" />
+            </DisplayRule>
+            <DisplayRule Id="Mscrm.CreateSelectedEntityPermission">
+              <EntityPrivilegeRule PrivilegeType="Create" PrivilegeDepth="Basic" AppliesTo="SelectedEntity" />
+            </DisplayRule>
+            <DisplayRule Id="Mscrm.HideAddressEntities">
+              <EntityRule EntityName="customeraddress" AppliesTo="SelectedEntity" Default="false" InvertResult="true" />
+            </DisplayRule>
+            <DisplayRule Id="Mscrm.HideNewForChildEntities">
+              <EntityPropertyRule AppliesTo="SelectedEntity" PropertyName="IsChildEntity" PropertyValue="false" />
+            </DisplayRule>
+            <DisplayRule Id="Mscrm.HideOnOutlookClient">
+              <CrmClientTypeRule Type="Outlook" InvertResult="true" />
+            </DisplayRule>
+            <DisplayRule Id="Mscrm.MicrosoftFlows">
+              <MiscellaneousPrivilegeRule PrivilegeName="Flow" />
+            </DisplayRule>
+            <DisplayRule Id="Mscrm.NotOnMarketingList">
+              <FormEntityContextRule EntityName="list" Default="false" InvertResult="true" />
+            </DisplayRule>
+            <DisplayRule Id="Mscrm.ShowForNonRelationshipBoundGrids">
+              <RelationshipTypeRule AppliesTo="SelectedEntity" RelationshipType="NoRelationship" />
+            </DisplayRule>
+          </DisplayRules>
+          <EnableRules>
+            <EnableRule Id="Mscrm.AnySelection">
+              <SelectionCountRule AppliesTo="SelectedEntity" />
+            </EnableRule>
+            <EnableRule Id="Mscrm.DisplayFlowSingleMenu">
+              <CustomRule FunctionName="XrmCore.Commands.Flows.displayFlowSingleMenu" Library="$webresource:Main_system_library.js" />
+            </EnableRule>
+            <EnableRule Id="Mscrm.IsEntityAvailableForUserInMocaOffline">
+              <CustomRule FunctionName="XrmCore.Rules.Online.IsEntityAvailableForUserInMocaOffline" Library="$webresource:Main_system_library.js">
+                <CrmParameter Value="SelectedEntityTypeName" />
+              </CustomRule>
+            </EnableRule>
+            <EnableRule Id="Mscrm.IsMicrosoftFlowIntegrationEnabled">
+              <CustomRule FunctionName="XrmCore.Commands.Flows.isMicrosoftFlowEnabled" Library="$webresource:Main_system_library.js" />
+            </EnableRule>
+            <EnableRule Id="Mscrm.IsValidForHierarchyPageInUC">
+              <CustomRule FunctionName="XrmCore.Rules.HierarchyView.isValidForHierarchyPageInUC" Library="$webresource:Main_system_library.js" />
+            </EnableRule>
+            <EnableRule Id="Mscrm.IsValidForHierarchyView">
+              <CustomRule FunctionName="XrmCore.Rules.HierarchyView.isValidForHierarchyView" Library="$webresource:Main_system_library.js" />
+            </EnableRule>
+            <EnableRule Id="Mscrm.PrimaryIsNotActivityHomePageGrid">
+              <CustomRule FunctionName="XrmCore.Rules.Enabled.PrimaryIsNotActivityHomePageGrid" Library="$webresource:Main_system_library.js">
+                <CrmParameter Value="SelectedEntityTypeName" />
+                <CrmParameter Value="SelectedControl" />
+              </CustomRule>
+            </EnableRule>
+          </EnableRules>
         </RuleDefinitions>
         <LocLabels />
       </RibbonDiffXml>
@@ -9178,6 +9543,68 @@
                 <Description description="" languagecode="1033" />
               </Descriptions>
             </attribute>
+            <attribute PhysicalName="ecer_RoutetoInvestigationTeam">
+              <Type>bit</Type>
+              <Name>ecer_routetoinvestigationteam</Name>
+              <LogicalName>ecer_routetoinvestigationteam</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0.0.5</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <AppDefaultValue>0</AppDefaultValue>
+              <optionset Name="ecer_application_ecer_routetoinvestigationteam">
+                <OptionSetType>bit</OptionSetType>
+                <IntroducedVersion>1.0.0.5</IntroducedVersion>
+                <IsCustomizable>1</IsCustomizable>
+                <ExternalTypeName></ExternalTypeName>
+                <displaynames>
+                  <displayname description="Route to Investigation Team" languagecode="1033" />
+                </displaynames>
+                <Descriptions>
+                  <Description description="" languagecode="1033" />
+                </Descriptions>
+                <options>
+                  <option value="1" ExternalValue="">
+                    <labels>
+                      <label description="Yes" languagecode="1033" />
+                    </labels>
+                  </option>
+                  <option value="0" ExternalValue="">
+                    <labels>
+                      <label description="No" languagecode="1033" />
+                    </labels>
+                  </option>
+                </options>
+              </optionset>
+              <displaynames>
+                <displayname description="Route to Investigation Team" languagecode="1033" />
+              </displaynames>
+              <Descriptions>
+                <Description description="" languagecode="1033" />
+              </Descriptions>
+            </attribute>
             <attribute PhysicalName="ecer_StatusReasonDetail">
               <Type>picklist</Type>
               <Name>ecer_statusreasondetail</Name>
@@ -11041,6 +11468,19 @@
                                 <control id="ecer_parentalreferencereceiveddate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="ecer_parentalreferencereceiveddate" disabled="false" />
                               </cell>
                             </row>
+                            <row>
+                              <cell id="{4e9919de-b6c9-404a-a1ea-08c4aaa4dfee}" locklevel="0" colspan="1" rowspan="1">
+                                <labels>
+                                  <label description="Has Professional Development" languagecode="1033" />
+                                </labels>
+                                <control id="ecer_hasprofessionaldevelopment" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="ecer_hasprofessionaldevelopment" disabled="false" uniqueid="{33660f8f-f1ed-4f22-907c-d2d076cc8f1b}" />
+                              </cell>
+                              <cell locklevel="0" id="{c9197454-b58a-442b-8511-91eeb44915bb}">
+                                <labels>
+                                  <label description="" languagecode="1033" />
+                                </labels>
+                              </cell>
+                            </row>
                           </rows>
                         </section>
                         <section name="section_readyforassessment" id="14c58391-b028-4d3e-8a01-0ddc151ef161" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115">
@@ -11100,10 +11540,11 @@
                                 </labels>
                                 <control id="statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
                               </cell>
-                              <cell locklevel="0" id="{2fc02be1-b677-4aa0-8424-5bd2159ec396}" showlabel="false">
+                              <cell id="{3e581dfe-26e7-42e1-991c-b95a2c30fe0e}" locklevel="0" colspan="1" rowspan="1">
                                 <labels>
-                                  <label description="" languagecode="1033" />
+                                  <label description="Owning Business Unit" languagecode="1033" />
                                 </labels>
+                                <control id="owningbusinessunit" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="owningbusinessunit" disabled="false" />
                               </cell>
                             </row>
                             <row>
@@ -11113,10 +11554,11 @@
                                 </labels>
                                 <control id="ecer_statusreasondetail" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="ecer_statusreasondetail" disabled="false" />
                               </cell>
-                              <cell locklevel="0" id="{ed6a13ef-b9e8-4bcf-8ec3-df1c32feeec7}" showlabel="false">
+                              <cell id="{18b7bdb3-52a5-4487-93db-90f4b5f8afe4}" locklevel="0" colspan="1" rowspan="1">
                                 <labels>
-                                  <label description="" languagecode="1033" />
+                                  <label description="Owner" languagecode="1033" />
                                 </labels>
+                                <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
                               </cell>
                             </row>
                             <row>
@@ -11126,10 +11568,11 @@
                                 </labels>
                                 <control id="ecer_datesubmitted" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="ecer_datesubmitted" disabled="false" />
                               </cell>
-                              <cell locklevel="0" id="{2a1d7dd6-77ba-4734-a48e-8bb1fd849456}" showlabel="false">
+                              <cell id="{e39d28d1-ba96-48fe-84a8-73d6471f25b3}" locklevel="0" colspan="1" rowspan="1">
                                 <labels>
-                                  <label description="" languagecode="1033" />
+                                  <label description="Portal Stage" languagecode="1033" />
                                 </labels>
+                                <control id="ecer_portalstage" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="ecer_portalstage" disabled="false" />
                               </cell>
                             </row>
                             <row>
@@ -11139,10 +11582,24 @@
                                 </labels>
                                 <control id="ecer_applicantage" classid="{0D2C745A-E5A8-4C8F-BA63-C6D3BB604660}" datafieldname="ecer_applicantage" disabled="false" />
                               </cell>
-                              <cell locklevel="0" id="{f1384768-ed9d-4925-b35c-6be0e3539c19}">
+                              <cell id="{04e4780c-dbde-4958-bb1b-425cd5ced5bc}" locklevel="0" colspan="1" rowspan="1">
+                                <labels>
+                                  <label description="Route to Investigation Team" languagecode="1033" />
+                                </labels>
+                                <control id="ecer_routetoinvestigationteam" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="ecer_routetoinvestigationteam" disabled="false" uniqueid="{ffead34e-f8b7-40a1-af8d-73e3022893d7}" />
+                              </cell>
+                            </row>
+                            <row>
+                              <cell locklevel="0" id="{f3e4937f-50db-498b-9b38-73459f99be0b}">
                                 <labels>
                                   <label description="" languagecode="1033" />
                                 </labels>
+                              </cell>
+                              <cell id="{37c462f2-727b-4cf1-93bd-1d3620fe1e7e}" locklevel="0" colspan="1" rowspan="1">
+                                <labels>
+                                  <label description="Route to Assessment Team?" languagecode="1033" />
+                                </labels>
+                                <control id="ecer_routetoassessmentteam" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="ecer_routetoassessmentteam" disabled="false" uniqueid="{cae3de08-0f36-434d-8354-b3a4c5db63fd}" />
                               </cell>
                             </row>
                           </rows>
@@ -11223,12 +11680,6 @@
                                 </labels>
                                 <control id="ecer_educationtranscriptapproved" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="ecer_educationtranscriptapproved" disabled="false" uniqueid="{7fcaf094-809d-4710-9fff-2d472901fe88}" />
                               </cell>
-                              <cell id="{2ca68250-24b4-4d66-9ea2-fc8bd7e037bc}" locklevel="0" colspan="1" rowspan="1">
-                                <labels>
-                                  <label description="Has Professional Development" languagecode="1033" />
-                                </labels>
-                                <control id="ecer_hasprofessionaldevelopment" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="ecer_hasprofessionaldevelopment" disabled="false" uniqueid="{b6f72e0f-8768-434c-9dbd-8b6ae28870e5}" />
-                              </cell>
                             </row>
                           </rows>
                         </section>
@@ -11246,6 +11697,59 @@
                                 <control id="ecer_characterreferenceapproved" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="ecer_characterreferenceapproved" disabled="false" uniqueid="{ffe32829-c67d-4eae-8c85-53d5764c1754}" />
                               </cell>
                               <cell locklevel="0" id="{a682e302-10ff-4414-9069-b85cb78b9867}">
+                                <labels>
+                                  <label description="" languagecode="1033" />
+                                </labels>
+                              </cell>
+                            </row>
+                          </rows>
+                        </section>
+                        <section name="section_professionaldevelopmentass" id="9a26f595-9ceb-4e8d-afa6-6eee3074adf1" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                          <labels>
+                            <label description="Professional Development Assessment" languagecode="1033" />
+                          </labels>
+                          <rows>
+                            <row />
+                            <row>
+                              <cell id="{771ac20a-27c9-488a-af28-c6600fe2d2e0}" locklevel="0" colspan="1" rowspan="1">
+                                <labels>
+                                  <label description="Professional Development Approved?" languagecode="1033" />
+                                </labels>
+                                <control id="ecer_professionaldevelopmentapproved" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="ecer_professionaldevelopmentapproved" disabled="false" uniqueid="{58d45bc8-38ff-4811-996a-d1ae8b260e6f}" />
+                              </cell>
+                              <cell locklevel="0" id="{83ffd72d-6214-4d5d-a416-c88ad22885d4}">
+                                <labels>
+                                  <label description="" languagecode="1033" />
+                                </labels>
+                              </cell>
+                            </row>
+                          </rows>
+                        </section>
+                        <section name="tab_10_section_7" id="1fa44ec2-b6c6-4992-b865-81682b48d587" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                          <labels>
+                            <label description="Parental / Guardian Reference" languagecode="1033" />
+                          </labels>
+                          <rows>
+                            <row>
+                              <cell locklevel="0" id="{c0e7a633-5db6-4b32-91fa-35fd55e754c3}">
+                                <labels>
+                                  <label description="" languagecode="1033" />
+                                </labels>
+                              </cell>
+                              <cell locklevel="0" id="{d72c3bff-38c3-48aa-9f8b-278dc91640db}">
+                                <labels>
+                                  <label description="" languagecode="1033" />
+                                </labels>
+                              </cell>
+                            </row>
+                            <row>
+                              <cell id="{67ea631b-cf13-4608-b024-555c63381099}" locklevel="0" colspan="1" rowspan="1">
+                                <labels>
+                                  <label description="Parental Reference Approved?" languagecode="1033" />
+                                </labels>
+                                <control id="ecer_parentalreferenceapproved" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="ecer_parentalreferenceapproved" disabled="false" uniqueid="{8f36ce84-7749-44b4-b5d6-a7d87b599e0c}" />
+                              </cell>
+                              <cell locklevel="0" id="{fe5cdb84-6e3c-4e0e-bb61-cf299cedb7bf}">
                                 <labels>
                                   <label description="" languagecode="1033" />
                                 </labels>
@@ -11655,6 +12159,105 @@
                                     <ViewIds>{7AFF64B0-5B8C-4AD7-89F8-976777EEE178},{CC98CB1F-6552-4FD8-9E2F-39A1CAD2F710}</ViewIds>
                                     <RelationshipName>ecer_email_Applicationid</RelationshipName>
                                     <VisualizationId>{1EC1872A-23DE-4294-9D7F-1B76272A5FD5}</VisualizationId>
+                                  </parameters>
+                                </control>
+                              </cell>
+                            </row>
+                            <row />
+                            <row />
+                            <row />
+                          </rows>
+                        </section>
+                        <section name="section_phonecalls" id="3c8f49fd-7ac7-46e8-8b9d-56fc0829558e" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                          <labels>
+                            <label description="Related Phone Calls" languagecode="1033" />
+                          </labels>
+                          <rows>
+                            <row />
+                            <row>
+                              <cell locklevel="0" id="{48b56dac-8071-44d6-89a8-66ab403e92e9}" rowspan="4" colspan="1" auto="false" showlabel="false">
+                                <labels>
+                                  <label description="Related Entities Phone Calls" languagecode="1033" />
+                                </labels>
+                                <control indicationOfSubgrid="true" id="subgrid_phonecalls" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                                  <parameters>
+                                    <RecordsPerPage>4</RecordsPerPage>
+                                    <AutoExpand>Fixed</AutoExpand>
+                                    <EnableQuickFind>false</EnableQuickFind>
+                                    <EnableViewPicker>false</EnableViewPicker>
+                                    <EnableChartPicker>true</EnableChartPicker>
+                                    <ChartGridMode>All</ChartGridMode>
+                                    <TargetEntityType>phonecall</TargetEntityType>
+                                    <ViewId>{F6A2F891-6846-4B21-B922-712695AFD65C}</ViewId>
+                                    <ViewIds>{65F927D1-8CF1-4639-97D4-7B6388FB26D2},{F6A2F891-6846-4B21-B922-712695AFD65C}</ViewIds>
+                                    <RelationshipName>ecer_phonecall_Application_ecer_application</RelationshipName>
+                                    <VisualizationId>{399945C7-D07F-444E-9E54-D5FA4042290C}</VisualizationId>
+                                  </parameters>
+                                </control>
+                              </cell>
+                            </row>
+                            <row />
+                            <row />
+                            <row />
+                          </rows>
+                        </section>
+                        <section name="section_tasks" id="46e09783-7e6f-45dc-97b8-b7741007f0d2" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                          <labels>
+                            <label description="Related Tasks" languagecode="1033" />
+                          </labels>
+                          <rows>
+                            <row />
+                            <row>
+                              <cell locklevel="0" id="{aaa62cab-276c-42be-b508-58a300f6765a}" rowspan="4" colspan="1" auto="false" showlabel="false">
+                                <labels>
+                                  <label description="Related Entities Task" languagecode="1033" />
+                                </labels>
+                                <control indicationOfSubgrid="true" id="Subgrid_Tasks" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                                  <parameters>
+                                    <RecordsPerPage>4</RecordsPerPage>
+                                    <AutoExpand>Fixed</AutoExpand>
+                                    <EnableQuickFind>false</EnableQuickFind>
+                                    <EnableViewPicker>false</EnableViewPicker>
+                                    <EnableChartPicker>true</EnableChartPicker>
+                                    <ChartGridMode>All</ChartGridMode>
+                                    <TargetEntityType>activitypointer</TargetEntityType>
+                                    <ViewId>{00000000-0000-0000-00AA-000010001899}</ViewId>
+                                    <ViewIds>{00000000-0000-0000-00AA-000010001899}</ViewIds>
+                                    <RelationshipName>ecer_application_ActivityPointers</RelationshipName>
+                                    <VisualizationId>{EDF35649-5293-DE11-97D4-00155DA3B01E}</VisualizationId>
+                                  </parameters>
+                                </control>
+                              </cell>
+                            </row>
+                            <row />
+                            <row />
+                            <row />
+                          </rows>
+                        </section>
+                        <section name="section_fax" id="f6dc041c-60f9-4fa3-bf74-11353630ede5" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                          <labels>
+                            <label description="Related Faxes" languagecode="1033" />
+                          </labels>
+                          <rows>
+                            <row />
+                            <row>
+                              <cell locklevel="0" id="{19df3dcc-0d23-4c0a-8953-f6679c20c3cc}" rowspan="4" colspan="1" auto="false" showlabel="false">
+                                <labels>
+                                  <label description="Related Entities Fax" languagecode="1033" />
+                                </labels>
+                                <control indicationOfSubgrid="true" id="Subgrid_Fax" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                                  <parameters>
+                                    <RecordsPerPage>4</RecordsPerPage>
+                                    <AutoExpand>Fixed</AutoExpand>
+                                    <EnableQuickFind>false</EnableQuickFind>
+                                    <EnableViewPicker>false</EnableViewPicker>
+                                    <EnableChartPicker>true</EnableChartPicker>
+                                    <ChartGridMode>All</ChartGridMode>
+                                    <TargetEntityType>activitypointer</TargetEntityType>
+                                    <ViewId>{00000000-0000-0000-00AA-000010001899}</ViewId>
+                                    <ViewIds>{00000000-0000-0000-00AA-000010001899}</ViewIds>
+                                    <RelationshipName>ecer_application_ActivityPointers</RelationshipName>
+                                    <VisualizationId>{EDF35649-5293-DE11-97D4-00155DA3B01E}</VisualizationId>
                                   </parameters>
                                 </control>
                               </cell>
@@ -12556,28 +13159,6 @@
                     </parameters>
                   </customControl>
                 </controlDescription>
-                <controlDescription forControl="{b6f72e0f-8768-434c-9dbd-8b6ae28870e5}">
-                  <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
-                    <parameters>
-                      <datafieldname>ecer_hasprofessionaldevelopment</datafieldname>
-                    </parameters>
-                  </customControl>
-                  <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
-                    <parameters>
-                      <value type="TwoOptions">ecer_hasprofessionaldevelopment</value>
-                    </parameters>
-                  </customControl>
-                  <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
-                    <parameters>
-                      <value type="TwoOptions">ecer_hasprofessionaldevelopment</value>
-                    </parameters>
-                  </customControl>
-                  <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
-                    <parameters>
-                      <value type="TwoOptions">ecer_hasprofessionaldevelopment</value>
-                    </parameters>
-                  </customControl>
-                </controlDescription>
                 <controlDescription forControl="{ffe32829-c67d-4eae-8c85-53d5764c1754}">
                   <customControl id="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}">
                     <parameters>
@@ -12619,6 +13200,116 @@
                   <customControl formFactor="1" name="MscrmControls.OptionSet.OptionSetControl">
                     <parameters>
                       <value type="OptionSet">ecer_escalatetoteamlead</value>
+                    </parameters>
+                  </customControl>
+                </controlDescription>
+                <controlDescription forControl="{8f36ce84-7749-44b4-b5d6-a7d87b599e0c}">
+                  <customControl id="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}">
+                    <parameters>
+                      <datafieldname>ecer_parentalreferenceapproved</datafieldname>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="0" name="MscrmControls.OptionSet.OptionSetControl">
+                    <parameters>
+                      <value type="OptionSet">ecer_parentalreferenceapproved</value>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="2" name="MscrmControls.OptionSet.OptionSetControl">
+                    <parameters>
+                      <value type="OptionSet">ecer_parentalreferenceapproved</value>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="1" name="MscrmControls.OptionSet.OptionSetControl">
+                    <parameters>
+                      <value type="OptionSet">ecer_parentalreferenceapproved</value>
+                    </parameters>
+                  </customControl>
+                </controlDescription>
+                <controlDescription forControl="{ffead34e-f8b7-40a1-af8d-73e3022893d7}">
+                  <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+                    <parameters>
+                      <datafieldname>ecer_routetoinvestigationteam</datafieldname>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+                    <parameters>
+                      <value type="TwoOptions">ecer_routetoinvestigationteam</value>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+                    <parameters>
+                      <value type="TwoOptions">ecer_routetoinvestigationteam</value>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+                    <parameters>
+                      <value type="TwoOptions">ecer_routetoinvestigationteam</value>
+                    </parameters>
+                  </customControl>
+                </controlDescription>
+                <controlDescription forControl="{cae3de08-0f36-434d-8354-b3a4c5db63fd}">
+                  <customControl id="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}">
+                    <parameters>
+                      <datafieldname>ecer_routetoassessmentteam</datafieldname>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="0" name="MscrmControls.OptionSet.OptionSetControl">
+                    <parameters>
+                      <value type="OptionSet">ecer_routetoassessmentteam</value>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="2" name="MscrmControls.OptionSet.OptionSetControl">
+                    <parameters>
+                      <value type="OptionSet">ecer_routetoassessmentteam</value>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="1" name="MscrmControls.OptionSet.OptionSetControl">
+                    <parameters>
+                      <value type="OptionSet">ecer_routetoassessmentteam</value>
+                    </parameters>
+                  </customControl>
+                </controlDescription>
+                <controlDescription forControl="{58d45bc8-38ff-4811-996a-d1ae8b260e6f}">
+                  <customControl id="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}">
+                    <parameters>
+                      <datafieldname>ecer_professionaldevelopmentapproved</datafieldname>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="0" name="MscrmControls.OptionSet.OptionSetControl">
+                    <parameters>
+                      <value type="OptionSet">ecer_professionaldevelopmentapproved</value>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="2" name="MscrmControls.OptionSet.OptionSetControl">
+                    <parameters>
+                      <value type="OptionSet">ecer_professionaldevelopmentapproved</value>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="1" name="MscrmControls.OptionSet.OptionSetControl">
+                    <parameters>
+                      <value type="OptionSet">ecer_professionaldevelopmentapproved</value>
+                    </parameters>
+                  </customControl>
+                </controlDescription>
+                <controlDescription forControl="{33660f8f-f1ed-4f22-907c-d2d076cc8f1b}">
+                  <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+                    <parameters>
+                      <datafieldname>ecer_hasprofessionaldevelopment</datafieldname>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+                    <parameters>
+                      <value type="TwoOptions">ecer_hasprofessionaldevelopment</value>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+                    <parameters>
+                      <value type="TwoOptions">ecer_hasprofessionaldevelopment</value>
+                    </parameters>
+                  </customControl>
+                  <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+                    <parameters>
+                      <value type="TwoOptions">ecer_hasprofessionaldevelopment</value>
                     </parameters>
                   </customControl>
                 </controlDescription>
@@ -12702,7 +13393,7 @@
                 </event>
               </events>
               <Navigation>
-                <NavBar />
+                <NavBar></NavBar>
                 <NavBarAreas>
                   <NavBarArea Id="Info">
                     <Titles>
@@ -27688,6 +28379,39 @@
                                 <control id="ecer_referencecertifiedprovince" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="ecer_referencecertifiedprovince" disabled="false" />
                               </cell>
                             </row>
+                          </rows>
+                        </section>
+                        <section name="section_ineligiblecontacts" id="639742bc-8f27-494b-acb3-f95e9d1a5d06" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                          <labels>
+                            <label description="Search for Ineligible Contacts" languagecode="1033" />
+                          </labels>
+                          <rows>
+                            <row />
+                            <row>
+                              <cell locklevel="0" id="{dd917669-ddfe-432d-9207-f36b3f74eb4d}" rowspan="4" colspan="1" auto="false" showlabel="false">
+                                <labels>
+                                  <label description="Ineligible Contacts" languagecode="1033" />
+                                </labels>
+                                <control indicationOfSubgrid="true" id="subgrid_ineligiblecontacts" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                                  <parameters>
+                                    <RecordsPerPage>4</RecordsPerPage>
+                                    <AutoExpand>Fixed</AutoExpand>
+                                    <EnableQuickFind>true</EnableQuickFind>
+                                    <EnableViewPicker>false</EnableViewPicker>
+                                    <EnableChartPicker>false</EnableChartPicker>
+                                    <ChartGridMode>Grid</ChartGridMode>
+                                    <TargetEntityType>contact</TargetEntityType>
+                                    <ViewId>{07E5FF9E-F8D0-EE11-904D-000D3AF4F18A}</ViewId>
+                                    <ViewIds>{00000000-0000-0000-00AA-000010001003},{07E5FF9E-F8D0-EE11-904D-000D3AF4F18A}</ViewIds>
+                                    <RelationshipName />
+                                    <VisualizationId>{E365462F-1DB9-46A8-928D-BEAB1A7A2375}</VisualizationId>
+                                  </parameters>
+                                </control>
+                              </cell>
+                            </row>
+                            <row />
+                            <row />
+                            <row />
                           </rows>
                         </section>
                         <section name="section_details" id="53ef81c7-5cf1-4acf-9841-f900a3036245" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="1" labelwidth="115">
@@ -63768,6 +64492,20 @@
     </Entity>
   </Entities>
   <Roles>
+    <Role id="{3e3b52a8-44d0-ee11-904c-000d3af4a207}" name="Certification - Program Support Role" isinherited="1">
+      <IsCustomizable>1</IsCustomizable>
+      <RolePrivileges>
+        <RolePrivilege name="prvCreateSharePointData" level="Global" />
+        <RolePrivilege name="prvReadPluginAssembly" level="Global" />
+        <RolePrivilege name="prvReadPluginType" level="Global" />
+        <RolePrivilege name="prvReadSdkMessage" level="Global" />
+        <RolePrivilege name="prvReadSdkMessageProcessingStep" level="Global" />
+        <RolePrivilege name="prvReadSdkMessageProcessingStepImage" level="Global" />
+        <RolePrivilege name="prvReadSharePointData" level="Global" />
+        <RolePrivilege name="prvReadSharePointDocument" level="Global" />
+        <RolePrivilege name="prvWriteSharePointData" level="Global" />
+      </RolePrivileges>
+    </Role>
     <Role id="{8d55d382-8dca-ee11-9079-000d3af4febe}" name="ECER - Assessor Baseline Role" isinherited="0">
       <IsCustomizable>1</IsCustomizable>
       <RolePrivileges>
@@ -64819,18 +65557,18 @@
         <RolePrivilege name="prvAppendecer_Authentication" level="Local" />
         <RolePrivilege name="prvAppendecer_Certificate" level="Local" />
         <RolePrivilege name="prvAppendecer_CertificateConditions" level="Local" />
-        <RolePrivilege name="prvAppendecer_CertificateType" level="Local" />
+        <RolePrivilege name="prvAppendecer_ChangeofInformation" level="Local" />
         <RolePrivilege name="prvAppendecer_CharacterReference" level="Local" />
         <RolePrivilege name="prvAppendecer_Communication" level="Local" />
         <RolePrivilege name="prvAppendecer_CompletedCourse" level="Local" />
-        <RolePrivilege name="prvAppendecer_Course" level="Local" />
+        <RolePrivilege name="prvAppendecer_Course" level="Global" />
         <RolePrivilege name="prvAppendecer_File" level="Local" />
         <RolePrivilege name="prvAppendecer_PortalRole" level="Local" />
         <RolePrivilege name="prvAppendecer_PortalUser" level="Local" />
-        <RolePrivilege name="prvAppendecer_PreviousAddress" level="Local" />
-        <RolePrivilege name="prvAppendecer_PreviousName" level="Local" />
-        <RolePrivilege name="prvAppendecer_Program" level="Local" />
+        <RolePrivilege name="prvAppendecer_ProfessionalDevelopment" level="Local" />
+        <RolePrivilege name="prvAppendecer_Program" level="Global" />
         <RolePrivilege name="prvAppendecer_Transcript" level="Local" />
+        <RolePrivilege name="prvAppendecer_WorkExperienceAssessment" level="Local" />
         <RolePrivilege name="prvAppendecer_WorkExperienceRef" level="Local" />
         <RolePrivilege name="prvAppendEmailTemplate" level="Local" />
         <RolePrivilege name="prvAppendEntitlement" level="Global" />
@@ -64935,18 +65673,18 @@
         <RolePrivilege name="prvAppendToecer_Authentication" level="Local" />
         <RolePrivilege name="prvAppendToecer_Certificate" level="Local" />
         <RolePrivilege name="prvAppendToecer_CertificateConditions" level="Local" />
-        <RolePrivilege name="prvAppendToecer_CertificateType" level="Local" />
+        <RolePrivilege name="prvAppendToecer_ChangeofInformation" level="Local" />
         <RolePrivilege name="prvAppendToecer_CharacterReference" level="Local" />
         <RolePrivilege name="prvAppendToecer_Communication" level="Local" />
         <RolePrivilege name="prvAppendToecer_CompletedCourse" level="Local" />
-        <RolePrivilege name="prvAppendToecer_Course" level="Local" />
+        <RolePrivilege name="prvAppendToecer_Course" level="Global" />
         <RolePrivilege name="prvAppendToecer_File" level="Local" />
         <RolePrivilege name="prvAppendToecer_PortalRole" level="Local" />
         <RolePrivilege name="prvAppendToecer_PortalUser" level="Local" />
-        <RolePrivilege name="prvAppendToecer_PreviousAddress" level="Local" />
-        <RolePrivilege name="prvAppendToecer_PreviousName" level="Local" />
-        <RolePrivilege name="prvAppendToecer_Program" level="Local" />
+        <RolePrivilege name="prvAppendToecer_ProfessionalDevelopment" level="Local" />
+        <RolePrivilege name="prvAppendToecer_Program" level="Global" />
         <RolePrivilege name="prvAppendToecer_Transcript" level="Local" />
+        <RolePrivilege name="prvAppendToecer_WorkExperienceAssessment" level="Local" />
         <RolePrivilege name="prvAppendToecer_WorkExperienceRef" level="Local" />
         <RolePrivilege name="prvAppendToEmailServerProfile" level="Global" />
         <RolePrivilege name="prvAppendToEmailTemplate" level="Basic" />
@@ -65061,18 +65799,17 @@
         <RolePrivilege name="prvAssignecer_Authentication" level="Local" />
         <RolePrivilege name="prvAssignecer_Certificate" level="Local" />
         <RolePrivilege name="prvAssignecer_CertificateConditions" level="Local" />
-        <RolePrivilege name="prvAssignecer_CertificateType" level="Local" />
+        <RolePrivilege name="prvAssignecer_ChangeofInformation" level="Local" />
         <RolePrivilege name="prvAssignecer_CharacterReference" level="Local" />
         <RolePrivilege name="prvAssignecer_Communication" level="Local" />
         <RolePrivilege name="prvAssignecer_CompletedCourse" level="Local" />
-        <RolePrivilege name="prvAssignecer_Course" level="Local" />
         <RolePrivilege name="prvAssignecer_File" level="Local" />
         <RolePrivilege name="prvAssignecer_PortalRole" level="Local" />
         <RolePrivilege name="prvAssignecer_PortalUser" level="Local" />
-        <RolePrivilege name="prvAssignecer_PreviousAddress" level="Local" />
-        <RolePrivilege name="prvAssignecer_PreviousName" level="Local" />
+        <RolePrivilege name="prvAssignecer_ProfessionalDevelopment" level="Local" />
         <RolePrivilege name="prvAssignecer_Program" level="Local" />
         <RolePrivilege name="prvAssignecer_Transcript" level="Local" />
+        <RolePrivilege name="prvAssignecer_WorkExperienceAssessment" level="Local" />
         <RolePrivilege name="prvAssignecer_WorkExperienceRef" level="Local" />
         <RolePrivilege name="prvAssignEmailSignature" level="Local" />
         <RolePrivilege name="prvAssignEmailTemplate" level="Local" />
@@ -65145,22 +65882,20 @@
         <RolePrivilege name="prvCreateCustomerOpportunityRole" level="Basic" />
         <RolePrivilege name="prvCreateCustomerRelationship" level="Basic" />
         <RolePrivilege name="prvCreateDynamicPropertyInstance" level="Basic" />
-        <RolePrivilege name="prvCreateecer_Application" level="Basic" />
+        <RolePrivilege name="prvCreateecer_Application" level="Local" />
         <RolePrivilege name="prvCreateecer_Authentication" level="Local" />
         <RolePrivilege name="prvCreateecer_Certificate" level="Local" />
         <RolePrivilege name="prvCreateecer_CertificateConditions" level="Local" />
-        <RolePrivilege name="prvCreateecer_CertificateType" level="Local" />
+        <RolePrivilege name="prvCreateecer_ChangeofInformation" level="Local" />
         <RolePrivilege name="prvCreateecer_CharacterReference" level="Local" />
         <RolePrivilege name="prvCreateecer_Communication" level="Local" />
         <RolePrivilege name="prvCreateecer_CompletedCourse" level="Local" />
-        <RolePrivilege name="prvCreateecer_Course" level="Local" />
         <RolePrivilege name="prvCreateecer_File" level="Local" />
         <RolePrivilege name="prvCreateecer_PortalRole" level="Local" />
         <RolePrivilege name="prvCreateecer_PortalUser" level="Local" />
-        <RolePrivilege name="prvCreateecer_PreviousAddress" level="Local" />
-        <RolePrivilege name="prvCreateecer_PreviousName" level="Local" />
-        <RolePrivilege name="prvCreateecer_Program" level="Local" />
+        <RolePrivilege name="prvCreateecer_ProfessionalDevelopment" level="Local" />
         <RolePrivilege name="prvCreateecer_Transcript" level="Local" />
+        <RolePrivilege name="prvCreateecer_WorkExperienceAssessment" level="Local" />
         <RolePrivilege name="prvCreateecer_WorkExperienceRef" level="Local" />
         <RolePrivilege name="prvCreateEmailSignature" level="Basic" />
         <RolePrivilege name="prvCreateEmailTemplate" level="Basic" />
@@ -65240,7 +65975,6 @@
         <RolePrivilege name="prvCreateWorkflowSession" level="Basic" />
         <RolePrivilege name="prvDeleteAccount" level="Basic" />
         <RolePrivilege name="prvDeleteActionCardUserSettings" level="Basic" />
-        <RolePrivilege name="prvDeleteActivity" level="Local" />
         <RolePrivilege name="prvDeleteArticle" level="Global" />
         <RolePrivilege name="prvDeleteBookableResourceBookingExchangeSyncIdMapping" level="Basic" />
         <RolePrivilege name="prvDeleteCallbackRegistration" level="Basic" />
@@ -65250,8 +65984,6 @@
         <RolePrivilege name="prvDeleteCustomerOpportunityRole" level="Basic" />
         <RolePrivilege name="prvDeleteCustomerRelationship" level="Basic" />
         <RolePrivilege name="prvDeleteDynamicPropertyInstance" level="Basic" />
-        <RolePrivilege name="prvDeleteecer_PreviousAddress" level="Local" />
-        <RolePrivilege name="prvDeleteecer_PreviousName" level="Local" />
         <RolePrivilege name="prvDeleteEmailSignature" level="Basic" />
         <RolePrivilege name="prvDeleteEmailTemplate" level="Basic" />
         <RolePrivilege name="prvDeleteExchangeSyncIdMapping" level="Basic" />
@@ -65369,19 +66101,22 @@
         <RolePrivilege name="prvReadecer_Authentication" level="Global" />
         <RolePrivilege name="prvReadecer_Certificate" level="Global" />
         <RolePrivilege name="prvReadecer_CertificateConditions" level="Local" />
-        <RolePrivilege name="prvReadecer_CertificateType" level="Local" />
-        <RolePrivilege name="prvReadecer_CharacterReference" level="Local" />
-        <RolePrivilege name="prvReadecer_Communication" level="Local" />
-        <RolePrivilege name="prvReadecer_CompletedCourse" level="Local" />
-        <RolePrivilege name="prvReadecer_Course" level="Local" />
+        <RolePrivilege name="prvReadecer_CertificateType" level="Global" />
+        <RolePrivilege name="prvReadecer_ChangeofInformation" level="Global" />
+        <RolePrivilege name="prvReadecer_CharacterReference" level="Global" />
+        <RolePrivilege name="prvReadecer_Communication" level="Global" />
+        <RolePrivilege name="prvReadecer_CompletedCourse" level="Global" />
+        <RolePrivilege name="prvReadecer_Course" level="Global" />
         <RolePrivilege name="prvReadecer_File" level="Local" />
         <RolePrivilege name="prvReadecer_PortalRole" level="Local" />
         <RolePrivilege name="prvReadecer_PortalUser" level="Local" />
-        <RolePrivilege name="prvReadecer_PreviousAddress" level="Local" />
-        <RolePrivilege name="prvReadecer_PreviousName" level="Local" />
-        <RolePrivilege name="prvReadecer_Program" level="Local" />
+        <RolePrivilege name="prvReadecer_PreviousAddress" level="Global" />
+        <RolePrivilege name="prvReadecer_PreviousName" level="Global" />
+        <RolePrivilege name="prvReadecer_ProfessionalDevelopment" level="Global" />
+        <RolePrivilege name="prvReadecer_Program" level="Global" />
         <RolePrivilege name="prvReadecer_Transcript" level="Local" />
-        <RolePrivilege name="prvReadecer_WorkExperienceRef" level="Local" />
+        <RolePrivilege name="prvReadecer_WorkExperienceAssessment" level="Global" />
+        <RolePrivilege name="prvReadecer_WorkExperienceRef" level="Global" />
         <RolePrivilege name="prvReadEmailServerProfile" level="Global" />
         <RolePrivilege name="prvReadEmailSignature" level="Local" />
         <RolePrivilege name="prvReadEmailTemplate" level="Local" />
@@ -65501,7 +66236,7 @@
         <RolePrivilege name="prvReadmsdyn_teamsdialeradminsettings" level="Global" />
         <RolePrivilege name="prvReadmsdyn_templateforproperties" level="Global" />
         <RolePrivilege name="prvReadmsdyn_templateparameter" level="Global" />
-        <RolePrivilege name="prvReadmsdyn_transcript" level="Local" />
+        <RolePrivilege name="prvReadmsdyn_transcript" level="Global" />
         <RolePrivilege name="prvReadmsdyn_wallsavedquery" level="Global" />
         <RolePrivilege name="prvReadmsdyn_wallsavedqueryusersettings" level="Basic" />
         <RolePrivilege name="prvReadNewProcess" level="Global" />
@@ -65599,19 +66334,12 @@
         <RolePrivilege name="prvShareecer_Authentication" level="Local" />
         <RolePrivilege name="prvShareecer_Certificate" level="Local" />
         <RolePrivilege name="prvShareecer_CertificateConditions" level="Local" />
-        <RolePrivilege name="prvShareecer_CertificateType" level="Local" />
+        <RolePrivilege name="prvShareecer_ChangeofInformation" level="Local" />
         <RolePrivilege name="prvShareecer_CharacterReference" level="Local" />
-        <RolePrivilege name="prvShareecer_Communication" level="Local" />
-        <RolePrivilege name="prvShareecer_CompletedCourse" level="Local" />
-        <RolePrivilege name="prvShareecer_Course" level="Local" />
         <RolePrivilege name="prvShareecer_File" level="Local" />
         <RolePrivilege name="prvShareecer_PortalRole" level="Local" />
         <RolePrivilege name="prvShareecer_PortalUser" level="Local" />
-        <RolePrivilege name="prvShareecer_PreviousAddress" level="Local" />
-        <RolePrivilege name="prvShareecer_PreviousName" level="Local" />
-        <RolePrivilege name="prvShareecer_Program" level="Local" />
         <RolePrivilege name="prvShareecer_Transcript" level="Local" />
-        <RolePrivilege name="prvShareecer_WorkExperienceRef" level="Local" />
         <RolePrivilege name="prvShareEntitlement" level="Basic" />
         <RolePrivilege name="prvShareEntitlementEntityAllocationTypeMapping" level="Basic" />
         <RolePrivilege name="prvShareImport" level="Deep" />
@@ -65635,7 +66363,6 @@
         <RolePrivilege name="prvSharemsdyn_swarm" level="Global" />
         <RolePrivilege name="prvSharemsdyn_swarmparticipant" level="Global" />
         <RolePrivilege name="prvSharemsdyn_swarmskill" level="Global" />
-        <RolePrivilege name="prvSharemsdyn_transcript" level="Local" />
         <RolePrivilege name="prvShareNote" level="Global" />
         <RolePrivilege name="prvShareOpportunity" level="Global" />
         <RolePrivilege name="prvShareOrder" level="Global" />
@@ -65692,18 +66419,16 @@
         <RolePrivilege name="prvWriteecer_Authentication" level="Local" />
         <RolePrivilege name="prvWriteecer_Certificate" level="Local" />
         <RolePrivilege name="prvWriteecer_CertificateConditions" level="Local" />
-        <RolePrivilege name="prvWriteecer_CertificateType" level="Local" />
+        <RolePrivilege name="prvWriteecer_ChangeofInformation" level="Local" />
         <RolePrivilege name="prvWriteecer_CharacterReference" level="Local" />
         <RolePrivilege name="prvWriteecer_Communication" level="Local" />
         <RolePrivilege name="prvWriteecer_CompletedCourse" level="Local" />
-        <RolePrivilege name="prvWriteecer_Course" level="Local" />
         <RolePrivilege name="prvWriteecer_File" level="Local" />
         <RolePrivilege name="prvWriteecer_PortalRole" level="Local" />
         <RolePrivilege name="prvWriteecer_PortalUser" level="Local" />
-        <RolePrivilege name="prvWriteecer_PreviousAddress" level="Local" />
-        <RolePrivilege name="prvWriteecer_PreviousName" level="Local" />
-        <RolePrivilege name="prvWriteecer_Program" level="Local" />
+        <RolePrivilege name="prvWriteecer_ProfessionalDevelopment" level="Local" />
         <RolePrivilege name="prvWriteecer_Transcript" level="Local" />
+        <RolePrivilege name="prvWriteecer_WorkExperienceAssessment" level="Local" />
         <RolePrivilege name="prvWriteecer_WorkExperienceRef" level="Local" />
         <RolePrivilege name="prvWriteEmailSignature" level="Basic" />
         <RolePrivilege name="prvWriteEmailTemplate" level="Basic" />
@@ -66445,6 +67170,31 @@
       <PrimaryEntity>none</PrimaryEntity>
       <LocalizedNames>
         <LocalizedName languagecode="1033" description="ECER - Phone Call Association to Application" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{eae80556-41d0-ee11-904d-000d3af4fd74}" Name="ECER - Fax Association to Application">
+      <JsonFileName>/Workflows/ECER-FaxAssociationtoApplication-EAE80556-41D0-EE11-904D-000D3AF4FD74.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.5</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Fax Association to Application" />
       </LocalizedNames>
     </Workflow>
     <Workflow WorkflowId="{79606879-b4bf-ee11-9079-000d3af4fd74}" Name="ECER - Populate Decision Comment Name">

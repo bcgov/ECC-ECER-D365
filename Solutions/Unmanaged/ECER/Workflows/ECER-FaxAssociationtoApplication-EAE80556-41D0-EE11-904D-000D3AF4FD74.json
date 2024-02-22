@@ -25,9 +25,9 @@
         }
       },
       "triggers": {
-        "When_adding_new_Task": {
+        "When_adding_new_Fax": {
           "metadata": {
-            "operationMetadataId": "52ec8389-052b-4f2a-b1f4-4a5a7a89b2cb"
+            "operationMetadataId": "4973b2cc-2518-412f-b0f9-d4c88ed6d47a"
           },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
@@ -38,9 +38,8 @@
             },
             "parameters": {
               "subscriptionRequest/message": 1,
-              "subscriptionRequest/entityname": "task",
-              "subscriptionRequest/scope": 4,
-              "subscriptionRequest/runas": 3
+              "subscriptionRequest/entityname": "fax",
+              "subscriptionRequest/scope": 4
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -49,10 +48,10 @@
       "actions": {
         "IF_Regarding_Table_is_ecer_application": {
           "actions": {
-            "Linking_Application_table": {
+            "Update_a_row": {
               "runAfter": {},
               "metadata": {
-                "operationMetadataId": "7941de52-d235-4771-a643-00ee8e9d7a64"
+                "operationMetadataId": "f7766b9d-7913-4cb2-953e-4b472a15b809"
               },
               "type": "OpenApiConnection",
               "inputs": {
@@ -62,9 +61,9 @@
                   "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                 },
                 "parameters": {
-                  "entityName": "tasks",
+                  "entityName": "faxes",
                   "recordId": "@triggerOutputs()?['body/activityid']",
-                  "item/ecer_Application_Task@odata.bind": "ecer_applications(@{triggerOutputs()?['body/_regardingobjectid_value']})"
+                  "item/ecer_Application_Fax@odata.bind": "ecer_applications(@{triggerOutputs()?['body/_regardingobjectid_value']})"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -78,7 +77,7 @@
             ]
           },
           "metadata": {
-            "operationMetadataId": "3ac1a3fd-e8af-4d02-b011-b28ef7928822"
+            "operationMetadataId": "625bed2c-adc5-4809-aae2-e1470f12200a"
           },
           "type": "If"
         },
@@ -87,7 +86,7 @@
             "Get_Application_ID_from_Regarding_Character_Reference_Record": {
               "runAfter": {},
               "metadata": {
-                "operationMetadataId": "e50577e4-d0da-4f8d-8673-8d622bc76d3c"
+                "operationMetadataId": "78f7667b-c9ae-4436-a907-9ac522522eae"
               },
               "type": "OpenApiConnection",
               "inputs": {
@@ -104,14 +103,14 @@
                 "authentication": "@parameters('$authentication')"
               }
             },
-            "Update_a_row": {
+            "Associate_Fax_to_the_Application_Record": {
               "runAfter": {
                 "Get_Application_ID_from_Regarding_Character_Reference_Record": [
                   "Succeeded"
                 ]
               },
               "metadata": {
-                "operationMetadataId": "86ae929d-c1d0-4ab3-b561-6cacf5dc107c"
+                "operationMetadataId": "ab6930d5-70be-4cb4-b50c-6d1e84a9cc09"
               },
               "type": "OpenApiConnection",
               "inputs": {
@@ -121,9 +120,9 @@
                   "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                 },
                 "parameters": {
-                  "entityName": "tasks",
+                  "entityName": "faxes",
                   "recordId": "@triggerOutputs()?['body/activityid']",
-                  "item/ecer_Application_Task@odata.bind": "ecer_applications(@{outputs('Get_Application_ID_from_Regarding_Character_Reference_Record')?['body/_ecer_applicationid_value']})"
+                  "item/ecer_Application_Fax@odata.bind": "ecer_applications(@{outputs('Get_Application_ID_from_Regarding_Character_Reference_Record')?['body/_ecer_applicationid_value']})"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -141,16 +140,16 @@
             ]
           },
           "metadata": {
-            "operationMetadataId": "034128ba-e200-439f-bf28-216ae2aa5a6b"
+            "operationMetadataId": "87119fcf-9802-4b32-8027-dc2a58666f95"
           },
           "type": "If"
         },
         "IF_Regarding_table_name_starts_with__ecer_workexperiencereference": {
           "actions": {
-            "Get_Application_ID_from_Regarding_Work_Experience_Reference_Record_": {
+            "Get_Application_ID_from_Regarding_Work_Experience_Reference_Record": {
               "runAfter": {},
               "metadata": {
-                "operationMetadataId": "4eb966e7-48d7-4222-b346-34a2211dc849"
+                "operationMetadataId": "b02a6be5-3fd1-4aa5-b927-321e20ca6b7c"
               },
               "type": "OpenApiConnection",
               "inputs": {
@@ -167,14 +166,14 @@
                 "authentication": "@parameters('$authentication')"
               }
             },
-            "Update_a_row_2": {
+            "Associate_Fax_to_the_Application_Record_2": {
               "runAfter": {
-                "Get_Application_ID_from_Regarding_Work_Experience_Reference_Record_": [
+                "Get_Application_ID_from_Regarding_Work_Experience_Reference_Record": [
                   "Succeeded"
                 ]
               },
               "metadata": {
-                "operationMetadataId": "fcd82726-4cc1-40e6-a57a-9a0334b6d1d7"
+                "operationMetadataId": "de564655-f20b-4ff7-8ca7-cc92793d49a8"
               },
               "type": "OpenApiConnection",
               "inputs": {
@@ -184,9 +183,9 @@
                   "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
                 },
                 "parameters": {
-                  "entityName": "tasks",
+                  "entityName": "faxes",
                   "recordId": "@triggerOutputs()?['body/activityid']",
-                  "item/ecer_Application_Task@odata.bind": "ecer_applications(@{outputs('Get_Application_ID_from_Regarding_Work_Experience_Reference_Record_')?['body/_ecer_applicationid_value']})"
+                  "item/ecer_Application_Fax@odata.bind": "ecer_applications(@{outputs('Get_Application_ID_from_Regarding_Work_Experience_Reference_Record')?['body/_ecer_applicationid_value']})"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -204,7 +203,7 @@
             ]
           },
           "metadata": {
-            "operationMetadataId": "b2722ccc-60e6-4ae8-a2e2-09449ff07154"
+            "operationMetadataId": "68d7b8f6-b063-4caa-8cc1-1dac35895383"
           },
           "type": "If"
         }
