@@ -91,7 +91,7 @@ ECER.Jscripts.Application =
     hasProgramClerkSecurityRole: function () {
         // Directive to prevent use of undeclared variables
         "use strict";
-        return crm_Utility.checkCurrentUserRole("ECER - Certification Baseline Role");
+        return crm_Utility.checkCurrentUserRole("Certification - Program Support Role");
     },
 
     preventAutoSave: function (executionContext) {
