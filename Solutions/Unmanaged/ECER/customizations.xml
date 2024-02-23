@@ -17565,6 +17565,45 @@
                 <Description description="" languagecode="1033" />
               </Descriptions>
             </attribute>
+            <attribute PhysicalName="ecer_IneligibleReference">
+              <Type>picklist</Type>
+              <Name>ecer_ineligiblereference</Name>
+              <LogicalName>ecer_ineligiblereference</LogicalName>
+              <RequiredLevel>none</RequiredLevel>
+              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+              <ImeMode>auto</ImeMode>
+              <ValidForUpdateApi>1</ValidForUpdateApi>
+              <ValidForReadApi>1</ValidForReadApi>
+              <ValidForCreateApi>1</ValidForCreateApi>
+              <IsCustomField>1</IsCustomField>
+              <IsAuditEnabled>1</IsAuditEnabled>
+              <IsSecured>0</IsSecured>
+              <IntroducedVersion>1.0.0.6</IntroducedVersion>
+              <IsCustomizable>1</IsCustomizable>
+              <IsRenameable>1</IsRenameable>
+              <CanModifySearchSettings>1</CanModifySearchSettings>
+              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+              <SourceType>0</SourceType>
+              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+              <IsSortableEnabled>0</IsSortableEnabled>
+              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+              <IsDataSourceSecret>0</IsDataSourceSecret>
+              <AutoNumberFormat></AutoNumberFormat>
+              <IsSearchable>0</IsSearchable>
+              <IsFilterable>0</IsFilterable>
+              <IsRetrievable>0</IsRetrievable>
+              <IsLocalizable>0</IsLocalizable>
+              <AppDefaultValue>-1</AppDefaultValue>
+              <OptionSetName>ecer_yesnonull</OptionSetName>
+              <displaynames>
+                <displayname description="Ineligible Reference" languagecode="1033" />
+              </displaynames>
+              <Descriptions>
+                <Description description="When marked with certain condition and not eligible as a reference" languagecode="1033" />
+              </Descriptions>
+            </attribute>
             <attribute PhysicalName="ecer_Name">
               <Type>nvarchar</Type>
               <Name>ecer_name</Name>
@@ -37675,1601 +37714,6 @@
             <IntroducedVersion>1.0</IntroducedVersion>
             <LocalizedNames>
               <LocalizedName description="Quick Find Active Courses" languagecode="1033" />
-            </LocalizedNames>
-          </savedquery>
-        </savedqueries>
-      </SavedQueries>
-      <RibbonDiffXml>
-        <CustomActions />
-        <Templates>
-          <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
-        </Templates>
-        <CommandDefinitions />
-        <RuleDefinitions>
-          <TabDisplayRules />
-          <DisplayRules />
-          <EnableRules />
-        </RuleDefinitions>
-        <LocLabels />
-      </RibbonDiffXml>
-    </Entity>
-    <Entity>
-      <Name LocalizedName="File" OriginalName="File">ecer_File</Name>
-      <EntityInfo>
-        <entity Name="ecer_File">
-          <LocalizedNames>
-            <LocalizedName description="File" languagecode="1033" />
-          </LocalizedNames>
-          <LocalizedCollectionNames>
-            <LocalizedCollectionName description="Files" languagecode="1033" />
-          </LocalizedCollectionNames>
-          <Descriptions>
-            <Description description="" languagecode="1033" />
-          </Descriptions>
-          <attributes>
-            <attribute PhysicalName="CreatedBy">
-              <Type>lookup</Type>
-              <Name>createdby</Name>
-              <LogicalName>createdby</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Created By" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier of the user who created the record." languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="CreatedOn">
-              <Type>datetime</Type>
-              <Name>createdon</Name>
-              <LogicalName>createdon</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>inactive</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>1</IsFilterable>
-              <IsRetrievable>1</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format>datetime</Format>
-              <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
-              <Behavior>1</Behavior>
-              <displaynames>
-                <displayname description="Created On" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Date and time when the record was created." languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="CreatedOnBehalfBy">
-              <Type>lookup</Type>
-              <Name>createdonbehalfby</Name>
-              <LogicalName>createdonbehalfby</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Created By (Delegate)" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier of the delegate user who created the record." languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ecer_Applicationid">
-              <Type>lookup</Type>
-              <Name>ecer_applicationid</Name>
-              <LogicalName>ecer_applicationid</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>1</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0.0.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Application" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="" languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ecer_Communicationid">
-              <Type>lookup</Type>
-              <Name>ecer_communicationid</Name>
-              <LogicalName>ecer_communicationid</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>1</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0.0.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Communication" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="" languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ecer_Customerid">
-              <Type>customer</Type>
-              <Name>ecer_customerid</Name>
-              <LogicalName>ecer_customerid</LogicalName>
-              <RequiredLevel>required</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>1</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0.0.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <displaynames>
-                <displayname description="Customer" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="" languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ecer_DocumentFile">
-              <Type>file</Type>
-              <Name>ecer_documentfile</Name>
-              <LogicalName>ecer_documentfile</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>disabled</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>1</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0.0.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>0</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>0</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>0</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <MaxValue>131072</MaxValue>
-              <displaynames>
-                <displayname description="Document File" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="" languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ecer_FileId">
-              <Type>primarykey</Type>
-              <Name>ecer_fileid</Name>
-              <LogicalName>ecer_fileid</LogicalName>
-              <RequiredLevel>systemrequired</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|RequiredForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>0</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>1</IsFilterable>
-              <IsRetrievable>1</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <displaynames>
-                <displayname description="File" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier for entity instances" languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ecer_ImageFile">
-              <Type>image</Type>
-              <Name>ecer_imagefile</Name>
-              <LogicalName>ecer_imagefile</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>DenormalizedChild|PrimaryImage|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>disabled</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>1</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsLogical>1</IsLogical>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0.0.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>0</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>0</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format>jpeg</Format>
-              <MaxLength>9437328</MaxLength>
-              <MaxValue>30720</MaxValue>
-              <displaynames>
-                <displayname description="Image File" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="" languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ecer_Name">
-              <Type>nvarchar</Type>
-              <Name>ecer_name</Name>
-              <LogicalName>ecer_name</LogicalName>
-              <RequiredLevel>recommended</RequiredLevel>
-              <DisplayMask>PrimaryName|ValidForAdvancedFind|ValidForForm|ValidForGrid|RequiredForForm</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>1</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>1</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>1</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format>text</Format>
-              <MaxLength>100</MaxLength>
-              <Length>200</Length>
-              <displaynames>
-                <displayname description="Name" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="" languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ecer_URL">
-              <Type>nvarchar</Type>
-              <Name>ecer_url</Name>
-              <LogicalName>ecer_url</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>1</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format>url</Format>
-              <MaxLength>500</MaxLength>
-              <Length>1000</Length>
-              <displaynames>
-                <displayname description="URL" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="" languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ImportSequenceNumber">
-              <Type>int</Type>
-              <Name>importsequencenumber</Name>
-              <LogicalName>importsequencenumber</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind</DisplayMask>
-              <ImeMode>disabled</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format></Format>
-              <MinValue>-2147483648</MinValue>
-              <MaxValue>2147483647</MaxValue>
-              <displaynames>
-                <displayname description="Import Sequence Number" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Sequence number of the import that created this record." languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ModifiedBy">
-              <Type>lookup</Type>
-              <Name>modifiedby</Name>
-              <LogicalName>modifiedby</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Modified By" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier of the user who modified the record." languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ModifiedOn">
-              <Type>datetime</Type>
-              <Name>modifiedon</Name>
-              <LogicalName>modifiedon</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>inactive</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>1</IsFilterable>
-              <IsRetrievable>1</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format>datetime</Format>
-              <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
-              <Behavior>1</Behavior>
-              <displaynames>
-                <displayname description="Modified On" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Date and time when the record was modified." languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="ModifiedOnBehalfBy">
-              <Type>lookup</Type>
-              <Name>modifiedonbehalfby</Name>
-              <LogicalName>modifiedonbehalfby</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Modified By (Delegate)" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier of the delegate user who modified the record." languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="OverriddenCreatedOn">
-              <Type>datetime</Type>
-              <Name>overriddencreatedon</Name>
-              <LogicalName>overriddencreatedon</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForGrid</DisplayMask>
-              <ImeMode>inactive</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format>date</Format>
-              <CanChangeDateTimeBehavior>0</CanChangeDateTimeBehavior>
-              <Behavior>1</Behavior>
-              <displaynames>
-                <displayname description="Record Created On" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Date and time that the record was migrated." languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="OwnerId">
-              <Type>owner</Type>
-              <Name>ownerid</Name>
-              <LogicalName>ownerid</LogicalName>
-              <RequiredLevel>systemrequired</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid|RequiredForForm</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>1</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes>
-                <LookupType id="00000000-0000-0000-0000-000000000000">8</LookupType>
-                <LookupType id="00000000-0000-0000-0000-000000000000">9</LookupType>
-              </LookupTypes>
-              <displaynames>
-                <displayname description="Owner" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Owner Id" languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="OwningBusinessUnit">
-              <Type>lookup</Type>
-              <Name>owningbusinessunit</Name>
-              <LogicalName>owningbusinessunit</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>1</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Owning Business Unit" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier for the business unit that owns the record" languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="OwningTeam">
-              <Type>lookup</Type>
-              <Name>owningteam</Name>
-              <LogicalName>owningteam</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsLogical>1</IsLogical>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Owning Team" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier for the team that owns the record." languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="OwningUser">
-              <Type>lookup</Type>
-              <Name>owninguser</Name>
-              <LogicalName>owninguser</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>0</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsLogical>1</IsLogical>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <LookupStyle>single</LookupStyle>
-              <LookupTypes />
-              <displaynames>
-                <displayname description="Owning User" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Unique identifier for the user that owns the record." languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="statecode">
-              <Type>state</Type>
-              <Name>statecode</Name>
-              <LogicalName>statecode</LogicalName>
-              <RequiredLevel>systemrequired</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>0</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>1</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <optionset Name="ecer_file_statecode">
-                <OptionSetType>state</OptionSetType>
-                <IntroducedVersion>1.0</IntroducedVersion>
-                <IsCustomizable>1</IsCustomizable>
-                <displaynames>
-                  <displayname description="Status" languagecode="1033" />
-                </displaynames>
-                <Descriptions>
-                  <Description description="Status of the File" languagecode="1033" />
-                </Descriptions>
-                <states>
-                  <state value="0" defaultstatus="1" invariantname="Active">
-                    <labels>
-                      <label description="Active" languagecode="1033" />
-                    </labels>
-                  </state>
-                  <state value="1" defaultstatus="2" invariantname="Inactive">
-                    <labels>
-                      <label description="Inactive" languagecode="1033" />
-                    </labels>
-                  </state>
-                </states>
-              </optionset>
-              <displaynames>
-                <displayname description="Status" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Status of the File" languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="statuscode">
-              <Type>status</Type>
-              <Name>statuscode</Name>
-              <LogicalName>statuscode</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>1</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <optionset Name="ecer_file_statuscode">
-                <OptionSetType>status</OptionSetType>
-                <IntroducedVersion>1.0</IntroducedVersion>
-                <IsCustomizable>1</IsCustomizable>
-                <displaynames>
-                  <displayname description="Status Reason" languagecode="1033" />
-                </displaynames>
-                <Descriptions>
-                  <Description description="Reason for the status of the File" languagecode="1033" />
-                </Descriptions>
-                <statuses>
-                  <status value="1" state="0">
-                    <labels>
-                      <label description="Active" languagecode="1033" />
-                    </labels>
-                  </status>
-                  <status value="2" state="1">
-                    <labels>
-                      <label description="Inactive" languagecode="1033" />
-                    </labels>
-                  </status>
-                </statuses>
-              </optionset>
-              <displaynames>
-                <displayname description="Status Reason" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Reason for the status of the File" languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="TimeZoneRuleVersionNumber">
-              <Type>int</Type>
-              <Name>timezoneruleversionnumber</Name>
-              <LogicalName>timezoneruleversionnumber</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format></Format>
-              <MinValue>-1</MinValue>
-              <MaxValue>2147483647</MaxValue>
-              <displaynames>
-                <displayname description="Time Zone Rule Version Number" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="For internal use only." languagecode="1033" />
-              </Descriptions>
-            </attribute>
-            <attribute PhysicalName="UTCConversionTimeZoneCode">
-              <Type>int</Type>
-              <Name>utcconversiontimezonecode</Name>
-              <LogicalName>utcconversiontimezonecode</LogicalName>
-              <RequiredLevel>none</RequiredLevel>
-              <ImeMode>auto</ImeMode>
-              <ValidForUpdateApi>1</ValidForUpdateApi>
-              <ValidForReadApi>1</ValidForReadApi>
-              <ValidForCreateApi>1</ValidForCreateApi>
-              <IsCustomField>0</IsCustomField>
-              <IsAuditEnabled>0</IsAuditEnabled>
-              <IsSecured>0</IsSecured>
-              <IntroducedVersion>1.0</IntroducedVersion>
-              <IsCustomizable>1</IsCustomizable>
-              <IsRenameable>1</IsRenameable>
-              <CanModifySearchSettings>1</CanModifySearchSettings>
-              <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
-              <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-              <SourceType>0</SourceType>
-              <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
-              <IsSortableEnabled>0</IsSortableEnabled>
-              <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
-              <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
-              <IsDataSourceSecret>0</IsDataSourceSecret>
-              <AutoNumberFormat></AutoNumberFormat>
-              <IsSearchable>0</IsSearchable>
-              <IsFilterable>0</IsFilterable>
-              <IsRetrievable>0</IsRetrievable>
-              <IsLocalizable>0</IsLocalizable>
-              <Format></Format>
-              <MinValue>-1</MinValue>
-              <MaxValue>2147483647</MaxValue>
-              <displaynames>
-                <displayname description="UTC Conversion Time Zone Code" languagecode="1033" />
-              </displaynames>
-              <Descriptions>
-                <Description description="Time zone code that was in use when the record was created." languagecode="1033" />
-              </Descriptions>
-            </attribute>
-          </attributes>
-          <EntitySetName>ecer_files</EntitySetName>
-          <IsDuplicateCheckSupported>0</IsDuplicateCheckSupported>
-          <IsBusinessProcessEnabled>0</IsBusinessProcessEnabled>
-          <IsRequiredOffline>0</IsRequiredOffline>
-          <IsInteractionCentricEnabled>0</IsInteractionCentricEnabled>
-          <IsCollaboration>0</IsCollaboration>
-          <AutoRouteToOwnerQueue>0</AutoRouteToOwnerQueue>
-          <IsConnectionsEnabled>0</IsConnectionsEnabled>
-          <IsDocumentManagementEnabled>0</IsDocumentManagementEnabled>
-          <AutoCreateAccessTeams>0</AutoCreateAccessTeams>
-          <IsOneNoteIntegrationEnabled>0</IsOneNoteIntegrationEnabled>
-          <IsKnowledgeManagementEnabled>0</IsKnowledgeManagementEnabled>
-          <IsSLAEnabled>0</IsSLAEnabled>
-          <IsDocumentRecommendationsEnabled>0</IsDocumentRecommendationsEnabled>
-          <IsBPFEntity>0</IsBPFEntity>
-          <OwnershipTypeMask>UserOwned</OwnershipTypeMask>
-          <IsAuditEnabled>0</IsAuditEnabled>
-          <IsRetrieveAuditEnabled>0</IsRetrieveAuditEnabled>
-          <IsRetrieveMultipleAuditEnabled>0</IsRetrieveMultipleAuditEnabled>
-          <IsActivity>0</IsActivity>
-          <ActivityTypeMask></ActivityTypeMask>
-          <IsActivityParty>0</IsActivityParty>
-          <IsReplicated>0</IsReplicated>
-          <IsReplicationUserFiltered>0</IsReplicationUserFiltered>
-          <IsMailMergeEnabled>0</IsMailMergeEnabled>
-          <IsVisibleInMobile>0</IsVisibleInMobile>
-          <IsVisibleInMobileClient>0</IsVisibleInMobileClient>
-          <IsReadOnlyInMobileClient>0</IsReadOnlyInMobileClient>
-          <IsOfflineInMobileClient>0</IsOfflineInMobileClient>
-          <DaysSinceRecordLastModified>0</DaysSinceRecordLastModified>
-          <MobileOfflineFilters></MobileOfflineFilters>
-          <IsMapiGridEnabled>1</IsMapiGridEnabled>
-          <IsReadingPaneEnabled>1</IsReadingPaneEnabled>
-          <IsQuickCreateEnabled>0</IsQuickCreateEnabled>
-          <SyncToExternalSearchIndex>0</SyncToExternalSearchIndex>
-          <IntroducedVersion>1.0</IntroducedVersion>
-          <IsCustomizable>1</IsCustomizable>
-          <IsRenameable>1</IsRenameable>
-          <IsMappable>1</IsMappable>
-          <CanModifyAuditSettings>1</CanModifyAuditSettings>
-          <CanModifyMobileVisibility>1</CanModifyMobileVisibility>
-          <CanModifyMobileClientVisibility>1</CanModifyMobileClientVisibility>
-          <CanModifyMobileClientReadOnly>1</CanModifyMobileClientReadOnly>
-          <CanModifyMobileClientOffline>1</CanModifyMobileClientOffline>
-          <CanModifyConnectionSettings>1</CanModifyConnectionSettings>
-          <CanModifyDuplicateDetectionSettings>1</CanModifyDuplicateDetectionSettings>
-          <CanModifyMailMergeSettings>1</CanModifyMailMergeSettings>
-          <CanModifyQueueSettings>1</CanModifyQueueSettings>
-          <CanCreateAttributes>1</CanCreateAttributes>
-          <CanCreateForms>1</CanCreateForms>
-          <CanCreateCharts>1</CanCreateCharts>
-          <CanCreateViews>1</CanCreateViews>
-          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
-          <CanEnableSyncToExternalSearchIndex>1</CanEnableSyncToExternalSearchIndex>
-          <EnforceStateTransitions>0</EnforceStateTransitions>
-          <CanChangeHierarchicalRelationship>1</CanChangeHierarchicalRelationship>
-          <EntityHelpUrlEnabled>0</EntityHelpUrlEnabled>
-          <ChangeTrackingEnabled>0</ChangeTrackingEnabled>
-          <CanChangeTrackingBeEnabled>1</CanChangeTrackingBeEnabled>
-          <IsEnabledForExternalChannels>0</IsEnabledForExternalChannels>
-          <IsMSTeamsIntegrationEnabled>0</IsMSTeamsIntegrationEnabled>
-          <IsSolutionAware>0</IsSolutionAware>
-        </entity>
-      </EntityInfo>
-      <FormXml>
-        <forms type="card">
-          <systemform>
-            <formid>{7d34c841-38b1-4ec5-9fbb-f7da079ed269}</formid>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <FormPresentation>1</FormPresentation>
-            <FormActivationState>1</FormActivationState>
-            <form>
-              <tabs>
-                <tab name="general" verticallayout="true" id="{62896d30-8c11-498a-a8dc-2913eebef53a}" IsUserDefined="0">
-                  <labels>
-                    <label description="" languagecode="1033" />
-                  </labels>
-                  <columns>
-                    <column width="25%">
-                      <sections>
-                        <section name="ColorStrip" showlabel="false" showbar="false" columns="1" IsUserDefined="0" id="{7920f9e6-ec12-4519-aa06-255ea84aceee}">
-                          <labels>
-                            <label description="ColorStrip" languagecode="1033" />
-                          </labels>
-                        </section>
-                      </sections>
-                    </column>
-                    <column width="75%">
-                      <sections>
-                        <section name="CardHeader" showlabel="false" showbar="false" columns="111" id="{9b2007ea-f346-42fb-9a75-dfd2065da7d0}" IsUserDefined="0">
-                          <labels>
-                            <label description="Header" languagecode="1033" />
-                          </labels>
-                          <rows>
-                            <row>
-                              <cell id="{346bfdb7-3388-4871-a5e7-04298b795720}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="Status Reason" languagecode="1033" />
-                                </labels>
-                                <control id="statuscode" classid="{5D68B988-0661-4db2-BC3E-17598AD3BE6C}" datafieldname="statuscode" disabled="false" />
-                              </cell>
-                              <cell id="{5001dbb1-630c-4fac-bfc3-3997fd5359a1}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="" languagecode="1033" />
-                                </labels>
-                              </cell>
-                              <cell id="{ada86fb2-b68e-47e6-8fc9-708de18dfd24}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="" languagecode="1033" />
-                                </labels>
-                              </cell>
-                            </row>
-                          </rows>
-                        </section>
-                        <section name="CardDetails" showlabel="false" showbar="false" columns="1" id="{e7fc12bd-9434-4909-889f-4cf60746748d}" IsUserDefined="0">
-                          <labels>
-                            <label description="Details" languagecode="1033" />
-                          </labels>
-                          <rows>
-                            <row>
-                              <cell id="{6e16b714-bcf1-4a09-9e96-7c39ce7fe6bd}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="Name" languagecode="1033" />
-                                </labels>
-                                <control id="ecer_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ecer_name" disabled="false" />
-                              </cell>
-                            </row>
-                          </rows>
-                        </section>
-                        <section name="CardFooter" showlabel="false" columns="1111" showbar="false" id="{5ff48709-391a-4e3a-942c-242f336035c2}" IsUserDefined="0">
-                          <labels>
-                            <label description="Footer" languagecode="1033" />
-                          </labels>
-                          <rows>
-                            <row>
-                              <cell id="{325a0eb0-490f-4237-9c0f-29e89a1e8621}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="Owner" languagecode="1033" />
-                                </labels>
-                                <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
-                              </cell>
-                              <cell id="{ffc4d3fc-24d9-46f0-9f11-780b97fb8343}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="Created On" languagecode="1033" />
-                                </labels>
-                                <control id="createdon" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="createdon" disabled="false" />
-                              </cell>
-                              <cell id="{7fcd7750-6f0e-42fb-8f22-3eda03f6b6d8}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="" languagecode="1033" />
-                                </labels>
-                              </cell>
-                              <cell id="{cbe509b3-a58d-49db-9125-845d3e9d32e3}" showlabel="true" locklevel="0">
-                                <labels>
-                                  <label description="" languagecode="1033" />
-                                </labels>
-                              </cell>
-                            </row>
-                          </rows>
-                        </section>
-                      </sections>
-                    </column>
-                  </columns>
-                </tab>
-              </tabs>
-            </form>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>1</CanBeDeleted>
-            <LocalizedNames>
-              <LocalizedName description="Information" languagecode="1033" />
-            </LocalizedNames>
-            <Descriptions>
-              <Description description="A card form for this entity." languagecode="1033" />
-            </Descriptions>
-          </systemform>
-        </forms>
-        <forms type="main">
-          <systemform>
-            <formid>{47320f7d-b0ec-4ab7-bde2-defda5ac3d0a}</formid>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <FormPresentation>1</FormPresentation>
-            <FormActivationState>1</FormActivationState>
-            <form headerdensity="HighWithControls">
-              <tabs>
-                <tab verticallayout="true" id="{89a5c918-9791-4f8d-9ab8-89855a0f8bcb}" IsUserDefined="1">
-                  <labels>
-                    <label description="General" languagecode="1033" />
-                  </labels>
-                  <columns>
-                    <column width="100%">
-                      <sections>
-                        <section showlabel="false" showbar="false" IsUserDefined="0" id="{ee5d781f-8012-4f9a-89cb-a71e7b2bd2f7}">
-                          <labels>
-                            <label description="General" languagecode="1033" />
-                          </labels>
-                          <rows>
-                            <row>
-                              <cell id="{27893020-9a1c-4339-be17-ab67e2ed1f33}">
-                                <labels>
-                                  <label description="Name" languagecode="1033" />
-                                </labels>
-                                <control id="ecer_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ecer_name" />
-                              </cell>
-                            </row>
-                            <row>
-                              <cell id="{043fd911-a487-43e5-869c-53036e546945}">
-                                <labels>
-                                  <label description="Owner" languagecode="1033" />
-                                </labels>
-                                <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
-                              </cell>
-                            </row>
-                            <row>
-                              <cell id="{0d284c23-9bf0-41b7-a568-3966f124b662}" locklevel="0" colspan="1" rowspan="1">
-                                <labels>
-                                  <label description="Application" languagecode="1033" />
-                                </labels>
-                                <control id="ecer_applicationid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ecer_applicationid" disabled="false" />
-                              </cell>
-                            </row>
-                            <row>
-                              <cell id="{2a7518d3-f1d4-46a2-aa81-0cfaa3e5d233}" locklevel="0" colspan="1" rowspan="1">
-                                <labels>
-                                  <label description="Customer" languagecode="1033" />
-                                </labels>
-                                <control id="ecer_customerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ecer_customerid" disabled="false" />
-                              </cell>
-                            </row>
-                            <row>
-                              <cell id="{05c2315f-cd64-4c93-abf9-55250194094d}" locklevel="0" colspan="1" rowspan="1">
-                                <labels>
-                                  <label description="URL" languagecode="1033" />
-                                </labels>
-                                <control id="ecer_url" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="ecer_url" disabled="false" />
-                              </cell>
-                            </row>
-                          </rows>
-                        </section>
-                      </sections>
-                    </column>
-                  </columns>
-                </tab>
-              </tabs>
-              <header id="{a730a96e-1d3a-4ae3-a56c-6cec2afe5742}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
-                <rows>
-                  <row>
-                    <cell id="{55bf9bfa-8377-4d71-b3d1-fc89af7d7a99}" showlabel="false">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
-                    </cell>
-                    <cell id="{28a6fd42-4daa-4572-96ab-f2f5dc8d463c}" showlabel="false">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
-                    </cell>
-                    <cell id="{073e6f3b-e30e-4d0d-a5f1-4cd3a1b6bec8}" showlabel="false">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
-                    </cell>
-                  </row>
-                </rows>
-              </header>
-              <footer id="{b7e46c35-5814-4c12-99a6-f124585f4a09}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
-                <rows>
-                  <row>
-                    <cell id="{a9653775-1e1a-4952-9e78-3851234b290e}" showlabel="false">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
-                    </cell>
-                    <cell id="{bf109e45-df09-4b86-bc3f-40efd6574699}" showlabel="false">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
-                    </cell>
-                    <cell id="{d9c0a7db-0c73-4919-b29c-f56655c8fc1a}" showlabel="false">
-                      <labels>
-                        <label description="" languagecode="1033" />
-                      </labels>
-                    </cell>
-                  </row>
-                </rows>
-              </footer>
-              <DisplayConditions Order="0" FallbackForm="true">
-                <Everyone />
-              </DisplayConditions>
-            </form>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>1</CanBeDeleted>
-            <LocalizedNames>
-              <LocalizedName description="Information" languagecode="1033" />
-            </LocalizedNames>
-            <Descriptions>
-              <Description description="A form for this entity." languagecode="1033" />
-            </Descriptions>
-          </systemform>
-        </forms>
-        <forms type="quick">
-          <systemform>
-            <formid>{dc6eab73-8af0-45f3-9da1-3614aa8c24c5}</formid>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <FormPresentation>1</FormPresentation>
-            <FormActivationState>1</FormActivationState>
-            <form>
-              <tabs>
-                <tab verticallayout="true" id="{4e7120cc-7770-4156-bb37-ae281b93d065}" IsUserDefined="1">
-                  <labels>
-                    <label description="" languagecode="1033" />
-                  </labels>
-                  <columns>
-                    <column width="100%">
-                      <sections>
-                        <section showlabel="false" showbar="false" IsUserDefined="0" id="{41729968-645d-4810-83f2-00b901dda5f8}">
-                          <labels>
-                            <label description="GENERAL" languagecode="1033" />
-                          </labels>
-                          <rows>
-                            <row>
-                              <cell id="{b1d4a3e8-a28a-4032-a63f-c443975cd116}">
-                                <labels>
-                                  <label description="Name" languagecode="1033" />
-                                </labels>
-                                <control id="ecer_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="ecer_name" />
-                              </cell>
-                            </row>
-                            <row>
-                              <cell id="{b7e11697-d6e5-4dc4-91b2-814e3d184ec1}">
-                                <labels>
-                                  <label description="Owner" languagecode="1033" />
-                                </labels>
-                                <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
-                              </cell>
-                            </row>
-                          </rows>
-                        </section>
-                      </sections>
-                    </column>
-                  </columns>
-                </tab>
-              </tabs>
-            </form>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>1</CanBeDeleted>
-            <LocalizedNames>
-              <LocalizedName description="Information" languagecode="1033" />
-            </LocalizedNames>
-          </systemform>
-        </forms>
-      </FormXml>
-      <SavedQueries>
-        <savedqueries>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>0</CanBeDeleted>
-            <isquickfindquery>0</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>1</isdefault>
-            <savedqueryid>{a333649d-fb26-4e96-b666-c769c361a2b8}</savedqueryid>
-            <layoutxml>
-              <grid name="resultset" jump="ecer_name" select="1" icon="1" preview="1">
-                <row name="result" id="ecer_fileid">
-                  <cell name="ecer_name" width="300" />
-                  <cell name="createdon" width="125" />
-                </row>
-              </grid>
-            </layoutxml>
-            <querytype>0</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical">
-                <entity name="ecer_file">
-                  <attribute name="ecer_fileid" />
-                  <attribute name="ecer_name" />
-                  <attribute name="createdon" />
-                  <order attribute="ecer_name" descending="false" />
-                  <filter type="and">
-                    <condition attribute="statecode" operator="eq" value="0" />
-                  </filter>
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="Active Files" languagecode="1033" />
-            </LocalizedNames>
-          </savedquery>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>0</CanBeDeleted>
-            <isquickfindquery>0</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>1</isdefault>
-            <savedqueryid>{bc039f2c-ab27-4f0a-9e33-9a74d8c18752}</savedqueryid>
-            <layoutxml>
-              <grid name="resultset" jump="ecer_name" select="1" icon="1" preview="1">
-                <row name="result" id="ecer_fileid">
-                  <cell name="ecer_name" width="300" />
-                  <cell name="createdon" width="125" />
-                </row>
-              </grid>
-            </layoutxml>
-            <querytype>1</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical">
-                <entity name="ecer_file">
-                  <attribute name="ecer_fileid" />
-                  <attribute name="ecer_name" />
-                  <attribute name="createdon" />
-                  <order attribute="ecer_name" descending="false" />
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="File Advanced Find View" languagecode="1033" />
-            </LocalizedNames>
-          </savedquery>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>0</CanBeDeleted>
-            <isquickfindquery>0</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>1</isdefault>
-            <savedqueryid>{567e6ecb-a2d5-418e-92c7-835740ab02ab}</savedqueryid>
-            <layoutxml>
-              <grid name="ecer_files" jump="ecer_name" select="1" icon="1" preview="1">
-                <row name="ecer_file" id="ecer_fileid">
-                  <cell name="ecer_name" width="300" />
-                  <cell name="createdon" width="125" />
-                </row>
-              </grid>
-            </layoutxml>
-            <querytype>2</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical">
-                <entity name="ecer_file">
-                  <attribute name="ecer_fileid" />
-                  <attribute name="ecer_name" />
-                  <attribute name="createdon" />
-                  <order attribute="ecer_name" descending="false" />
-                  <filter type="and">
-                    <condition attribute="statecode" operator="eq" value="0" />
-                  </filter>
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="File Associated View" languagecode="1033" />
-            </LocalizedNames>
-          </savedquery>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>0</CanBeDeleted>
-            <isquickfindquery>0</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>1</isdefault>
-            <savedqueryid>{5a25aa73-3e82-4f2e-bab6-cba7938965d0}</savedqueryid>
-            <layoutxml>
-              <grid name="ecer_files" jump="ecer_name" select="1" icon="1" preview="0">
-                <row name="ecer_file" id="ecer_fileid">
-                  <cell name="ecer_name" width="300" />
-                  <cell name="createdon" width="125" />
-                </row>
-              </grid>
-            </layoutxml>
-            <querytype>64</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical">
-                <entity name="ecer_file">
-                  <attribute name="ecer_fileid" />
-                  <attribute name="ecer_name" />
-                  <attribute name="createdon" />
-                  <filter type="and">
-                    <condition attribute="statecode" operator="eq" value="0" />
-                  </filter>
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="File Lookup View" languagecode="1033" />
-            </LocalizedNames>
-          </savedquery>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>0</CanBeDeleted>
-            <isquickfindquery>0</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>0</isdefault>
-            <savedqueryid>{54e68497-7481-404d-a3c4-611bd2b05aa4}</savedqueryid>
-            <layoutxml>
-              <grid name="resultset" jump="ecer_name" select="1" icon="1" preview="1">
-                <row name="result" id="ecer_fileid">
-                  <cell name="ecer_name" width="300" />
-                  <cell name="createdon" width="125" />
-                </row>
-              </grid>
-            </layoutxml>
-            <querytype>0</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical">
-                <entity name="ecer_file">
-                  <attribute name="ecer_fileid" />
-                  <attribute name="ecer_name" />
-                  <attribute name="createdon" />
-                  <order attribute="ecer_name" descending="false" />
-                  <filter type="and">
-                    <condition attribute="statecode" operator="eq" value="1" />
-                  </filter>
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="Inactive Files" languagecode="1033" />
-            </LocalizedNames>
-          </savedquery>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>1</CanBeDeleted>
-            <isquickfindquery>0</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>1</isdefault>
-            <savedqueryid>{7415e8af-347f-ee11-8179-000d3af4645f}</savedqueryid>
-            <querytype>8192</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical" output-format="xml-platform">
-                <entity name="ecer_file">
-                  <attribute name="ecer_fileid" />
-                  <filter type="and">
-                    <condition attribute="statecode" operator="eq" value="0" />
-                    <condition attribute="ownerid" operator="eq-userid" />
-                  </filter>
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="My Files" languagecode="1033" />
-            </LocalizedNames>
-            <Descriptions>
-              <Description description="Active Files owned by me" languagecode="1033" />
-            </Descriptions>
-          </savedquery>
-          <savedquery>
-            <IsCustomizable>1</IsCustomizable>
-            <CanBeDeleted>0</CanBeDeleted>
-            <isquickfindquery>1</isquickfindquery>
-            <isprivate>0</isprivate>
-            <isdefault>1</isdefault>
-            <savedqueryid>{e1470ef4-ff5e-46f8-b268-89cf8281b4a5}</savedqueryid>
-            <layoutxml>
-              <grid name="resultset" jump="ecer_name" select="1" icon="1" preview="1">
-                <row name="result" id="ecer_fileid">
-                  <cell name="ecer_name" width="300" />
-                  <cell name="createdon" width="125" />
-                </row>
-              </grid>
-            </layoutxml>
-            <querytype>4</querytype>
-            <fetchxml>
-              <fetch version="1.0" mapping="logical">
-                <entity name="ecer_file">
-                  <attribute name="ecer_fileid" />
-                  <attribute name="ecer_name" />
-                  <attribute name="createdon" />
-                  <order attribute="ecer_name" descending="false" />
-                  <filter type="and">
-                    <condition attribute="statecode" operator="eq" value="0" />
-                  </filter>
-                  <filter type="or" isquickfindfields="1">
-                    <condition attribute="ecer_name" operator="like" value="{0}" />
-                  </filter>
-                </entity>
-              </fetch>
-            </fetchxml>
-            <IntroducedVersion>1.0</IntroducedVersion>
-            <LocalizedNames>
-              <LocalizedName description="Quick Find Active Files" languagecode="1033" />
             </LocalizedNames>
           </savedquery>
         </savedqueries>
@@ -64492,21 +62936,7 @@
     </Entity>
   </Entities>
   <Roles>
-    <Role id="{3e3b52a8-44d0-ee11-904c-000d3af4a207}" name="Certification - Program Support Role" isinherited="1">
-      <IsCustomizable>1</IsCustomizable>
-      <RolePrivileges>
-        <RolePrivilege name="prvCreateSharePointData" level="Global" />
-        <RolePrivilege name="prvReadPluginAssembly" level="Global" />
-        <RolePrivilege name="prvReadPluginType" level="Global" />
-        <RolePrivilege name="prvReadSdkMessage" level="Global" />
-        <RolePrivilege name="prvReadSdkMessageProcessingStep" level="Global" />
-        <RolePrivilege name="prvReadSdkMessageProcessingStepImage" level="Global" />
-        <RolePrivilege name="prvReadSharePointData" level="Global" />
-        <RolePrivilege name="prvReadSharePointDocument" level="Global" />
-        <RolePrivilege name="prvWriteSharePointData" level="Global" />
-      </RolePrivileges>
-    </Role>
-    <Role id="{8d55d382-8dca-ee11-9079-000d3af4febe}" name="ECER - Assessor Baseline Role" isinherited="0">
+    <Role id="{8d55d382-8dca-ee11-9079-000d3af4febe}" name="Certification - Assessor Role" isinherited="0">
       <IsCustomizable>1</IsCustomizable>
       <RolePrivileges>
         <RolePrivilege name="prvActivateSynchronousWorkflow" level="Basic" />
@@ -64550,7 +62980,6 @@
         <RolePrivilege name="prvAppendecer_CommunicationLineItem" level="Local" />
         <RolePrivilege name="prvAppendecer_CompletedCourse" level="Local" />
         <RolePrivilege name="prvAppendecer_Course" level="Local" />
-        <RolePrivilege name="prvAppendecer_File" level="Local" />
         <RolePrivilege name="prvAppendecer_PortalRole" level="Local" />
         <RolePrivilege name="prvAppendecer_PortalUser" level="Local" />
         <RolePrivilege name="prvAppendecer_PreviousAddress" level="Local" />
@@ -64669,7 +63098,6 @@
         <RolePrivilege name="prvAppendToecer_CommunicationLineItem" level="Local" />
         <RolePrivilege name="prvAppendToecer_CompletedCourse" level="Local" />
         <RolePrivilege name="prvAppendToecer_Course" level="Local" />
-        <RolePrivilege name="prvAppendToecer_File" level="Local" />
         <RolePrivilege name="prvAppendToecer_PortalRole" level="Local" />
         <RolePrivilege name="prvAppendToecer_PortalUser" level="Local" />
         <RolePrivilege name="prvAppendToecer_PreviousAddress" level="Local" />
@@ -64798,7 +63226,6 @@
         <RolePrivilege name="prvAssignecer_CommunicationLineItem" level="Local" />
         <RolePrivilege name="prvAssignecer_CompletedCourse" level="Local" />
         <RolePrivilege name="prvAssignecer_Course" level="Local" />
-        <RolePrivilege name="prvAssignecer_File" level="Local" />
         <RolePrivilege name="prvAssignecer_PortalRole" level="Local" />
         <RolePrivilege name="prvAssignecer_PortalUser" level="Local" />
         <RolePrivilege name="prvAssignecer_PreviousAddress" level="Local" />
@@ -64889,7 +63316,6 @@
         <RolePrivilege name="prvCreateecer_CommunicationLineItem" level="Local" />
         <RolePrivilege name="prvCreateecer_CompletedCourse" level="Local" />
         <RolePrivilege name="prvCreateecer_Course" level="Local" />
-        <RolePrivilege name="prvCreateecer_File" level="Local" />
         <RolePrivilege name="prvCreateecer_PortalRole" level="Local" />
         <RolePrivilege name="prvCreateecer_PortalUser" level="Local" />
         <RolePrivilege name="prvCreateecer_PreviousAddress" level="Local" />
@@ -65114,7 +63540,6 @@
         <RolePrivilege name="prvReadecer_CommunicationLineItem" level="Local" />
         <RolePrivilege name="prvReadecer_CompletedCourse" level="Local" />
         <RolePrivilege name="prvReadecer_Course" level="Local" />
-        <RolePrivilege name="prvReadecer_File" level="Local" />
         <RolePrivilege name="prvReadecer_PortalRole" level="Local" />
         <RolePrivilege name="prvReadecer_PortalUser" level="Local" />
         <RolePrivilege name="prvReadecer_PreviousAddress" level="Local" />
@@ -65342,7 +63767,6 @@
         <RolePrivilege name="prvShareecer_CommunicationLineItem" level="Local" />
         <RolePrivilege name="prvShareecer_CompletedCourse" level="Local" />
         <RolePrivilege name="prvShareecer_Course" level="Local" />
-        <RolePrivilege name="prvShareecer_File" level="Local" />
         <RolePrivilege name="prvShareecer_PortalRole" level="Local" />
         <RolePrivilege name="prvShareecer_PortalUser" level="Local" />
         <RolePrivilege name="prvShareecer_PreviousAddress" level="Local" />
@@ -65438,7 +63862,6 @@
         <RolePrivilege name="prvWriteecer_CommunicationLineItem" level="Local" />
         <RolePrivilege name="prvWriteecer_CompletedCourse" level="Local" />
         <RolePrivilege name="prvWriteecer_Course" level="Local" />
-        <RolePrivilege name="prvWriteecer_File" level="Local" />
         <RolePrivilege name="prvWriteecer_PortalRole" level="Local" />
         <RolePrivilege name="prvWriteecer_PortalUser" level="Local" />
         <RolePrivilege name="prvWriteecer_PreviousAddress" level="Local" />
@@ -65521,7 +63944,7 @@
         <RolePrivilege name="prvWriteWorkflowSession" level="Basic" />
       </RolePrivileges>
     </Role>
-    <Role id="{f7034a16-6cb5-ee11-a569-000d3af4febe}" name="ECER - Certification Baseline Role" isinherited="0">
+    <Role id="{f7034a16-6cb5-ee11-a569-000d3af4febe}" name="Certification - Baseline Role" isinherited="0">
       <IsCustomizable>1</IsCustomizable>
       <RolePrivileges>
         <RolePrivilege name="prvActivateSynchronousWorkflow" level="Basic" />
@@ -65557,12 +63980,12 @@
         <RolePrivilege name="prvAppendecer_Authentication" level="Local" />
         <RolePrivilege name="prvAppendecer_Certificate" level="Local" />
         <RolePrivilege name="prvAppendecer_CertificateConditions" level="Local" />
+        <RolePrivilege name="prvAppendecer_certifications" level="Global" />
         <RolePrivilege name="prvAppendecer_ChangeofInformation" level="Local" />
         <RolePrivilege name="prvAppendecer_CharacterReference" level="Local" />
         <RolePrivilege name="prvAppendecer_Communication" level="Local" />
         <RolePrivilege name="prvAppendecer_CompletedCourse" level="Local" />
         <RolePrivilege name="prvAppendecer_Course" level="Global" />
-        <RolePrivilege name="prvAppendecer_File" level="Local" />
         <RolePrivilege name="prvAppendecer_PortalRole" level="Local" />
         <RolePrivilege name="prvAppendecer_PortalUser" level="Local" />
         <RolePrivilege name="prvAppendecer_ProfessionalDevelopment" level="Local" />
@@ -65673,12 +64096,12 @@
         <RolePrivilege name="prvAppendToecer_Authentication" level="Local" />
         <RolePrivilege name="prvAppendToecer_Certificate" level="Local" />
         <RolePrivilege name="prvAppendToecer_CertificateConditions" level="Local" />
+        <RolePrivilege name="prvAppendToecer_certifications" level="Global" />
         <RolePrivilege name="prvAppendToecer_ChangeofInformation" level="Local" />
         <RolePrivilege name="prvAppendToecer_CharacterReference" level="Local" />
         <RolePrivilege name="prvAppendToecer_Communication" level="Local" />
         <RolePrivilege name="prvAppendToecer_CompletedCourse" level="Local" />
         <RolePrivilege name="prvAppendToecer_Course" level="Global" />
-        <RolePrivilege name="prvAppendToecer_File" level="Local" />
         <RolePrivilege name="prvAppendToecer_PortalRole" level="Local" />
         <RolePrivilege name="prvAppendToecer_PortalUser" level="Local" />
         <RolePrivilege name="prvAppendToecer_ProfessionalDevelopment" level="Local" />
@@ -65803,7 +64226,6 @@
         <RolePrivilege name="prvAssignecer_CharacterReference" level="Local" />
         <RolePrivilege name="prvAssignecer_Communication" level="Local" />
         <RolePrivilege name="prvAssignecer_CompletedCourse" level="Local" />
-        <RolePrivilege name="prvAssignecer_File" level="Local" />
         <RolePrivilege name="prvAssignecer_PortalRole" level="Local" />
         <RolePrivilege name="prvAssignecer_PortalUser" level="Local" />
         <RolePrivilege name="prvAssignecer_ProfessionalDevelopment" level="Local" />
@@ -65877,7 +64299,7 @@
         <RolePrivilege name="prvCreateCampaign" level="Basic" />
         <RolePrivilege name="prvCreateCharacteristic" level="Basic" />
         <RolePrivilege name="prvCreateConnection" level="Basic" />
-        <RolePrivilege name="prvCreateContact" level="Basic" />
+        <RolePrivilege name="prvCreateContact" level="Local" />
         <RolePrivilege name="prvCreateContract" level="Local" />
         <RolePrivilege name="prvCreateCustomerOpportunityRole" level="Basic" />
         <RolePrivilege name="prvCreateCustomerRelationship" level="Basic" />
@@ -65886,11 +64308,11 @@
         <RolePrivilege name="prvCreateecer_Authentication" level="Local" />
         <RolePrivilege name="prvCreateecer_Certificate" level="Local" />
         <RolePrivilege name="prvCreateecer_CertificateConditions" level="Local" />
+        <RolePrivilege name="prvCreateecer_certifications" level="Global" />
         <RolePrivilege name="prvCreateecer_ChangeofInformation" level="Local" />
         <RolePrivilege name="prvCreateecer_CharacterReference" level="Local" />
         <RolePrivilege name="prvCreateecer_Communication" level="Local" />
         <RolePrivilege name="prvCreateecer_CompletedCourse" level="Local" />
-        <RolePrivilege name="prvCreateecer_File" level="Local" />
         <RolePrivilege name="prvCreateecer_PortalRole" level="Local" />
         <RolePrivilege name="prvCreateecer_PortalUser" level="Local" />
         <RolePrivilege name="prvCreateecer_ProfessionalDevelopment" level="Local" />
@@ -65980,7 +64402,6 @@
         <RolePrivilege name="prvDeleteCallbackRegistration" level="Basic" />
         <RolePrivilege name="prvDeleteCampaign" level="Basic" />
         <RolePrivilege name="prvDeleteConnection" level="Basic" />
-        <RolePrivilege name="prvDeleteContact" level="Basic" />
         <RolePrivilege name="prvDeleteCustomerOpportunityRole" level="Basic" />
         <RolePrivilege name="prvDeleteCustomerRelationship" level="Basic" />
         <RolePrivilege name="prvDeleteDynamicPropertyInstance" level="Basic" />
@@ -66102,12 +64523,12 @@
         <RolePrivilege name="prvReadecer_Certificate" level="Global" />
         <RolePrivilege name="prvReadecer_CertificateConditions" level="Local" />
         <RolePrivilege name="prvReadecer_CertificateType" level="Global" />
+        <RolePrivilege name="prvReadecer_certifications" level="Global" />
         <RolePrivilege name="prvReadecer_ChangeofInformation" level="Global" />
         <RolePrivilege name="prvReadecer_CharacterReference" level="Global" />
         <RolePrivilege name="prvReadecer_Communication" level="Global" />
         <RolePrivilege name="prvReadecer_CompletedCourse" level="Global" />
         <RolePrivilege name="prvReadecer_Course" level="Global" />
-        <RolePrivilege name="prvReadecer_File" level="Local" />
         <RolePrivilege name="prvReadecer_PortalRole" level="Local" />
         <RolePrivilege name="prvReadecer_PortalUser" level="Local" />
         <RolePrivilege name="prvReadecer_PreviousAddress" level="Global" />
@@ -66336,7 +64757,6 @@
         <RolePrivilege name="prvShareecer_CertificateConditions" level="Local" />
         <RolePrivilege name="prvShareecer_ChangeofInformation" level="Local" />
         <RolePrivilege name="prvShareecer_CharacterReference" level="Local" />
-        <RolePrivilege name="prvShareecer_File" level="Local" />
         <RolePrivilege name="prvShareecer_PortalRole" level="Local" />
         <RolePrivilege name="prvShareecer_PortalUser" level="Local" />
         <RolePrivilege name="prvShareecer_Transcript" level="Local" />
@@ -66419,11 +64839,11 @@
         <RolePrivilege name="prvWriteecer_Authentication" level="Local" />
         <RolePrivilege name="prvWriteecer_Certificate" level="Local" />
         <RolePrivilege name="prvWriteecer_CertificateConditions" level="Local" />
+        <RolePrivilege name="prvWriteecer_certifications" level="Global" />
         <RolePrivilege name="prvWriteecer_ChangeofInformation" level="Local" />
         <RolePrivilege name="prvWriteecer_CharacterReference" level="Local" />
         <RolePrivilege name="prvWriteecer_Communication" level="Local" />
         <RolePrivilege name="prvWriteecer_CompletedCourse" level="Local" />
-        <RolePrivilege name="prvWriteecer_File" level="Local" />
         <RolePrivilege name="prvWriteecer_PortalRole" level="Local" />
         <RolePrivilege name="prvWriteecer_PortalUser" level="Local" />
         <RolePrivilege name="prvWriteecer_ProfessionalDevelopment" level="Local" />
@@ -66503,6 +64923,48 @@
         <RolePrivilege name="prvWriteUserSettings" level="Local" />
         <RolePrivilege name="prvWriteWorkflow" level="Basic" />
         <RolePrivilege name="prvWriteWorkflowSession" level="Basic" />
+      </RolePrivileges>
+    </Role>
+    <Role id="{531e0df6-9bd1-ee11-904c-000d3af4a207}" name="Certification - Program Support Lead Role" isinherited="1">
+      <IsCustomizable>1</IsCustomizable>
+      <RolePrivileges>
+        <RolePrivilege name="prvCreateSharePointData" level="Global" />
+        <RolePrivilege name="prvReadPluginAssembly" level="Global" />
+        <RolePrivilege name="prvReadPluginType" level="Global" />
+        <RolePrivilege name="prvReadSdkMessage" level="Global" />
+        <RolePrivilege name="prvReadSdkMessageProcessingStep" level="Global" />
+        <RolePrivilege name="prvReadSdkMessageProcessingStepImage" level="Global" />
+        <RolePrivilege name="prvReadSharePointData" level="Global" />
+        <RolePrivilege name="prvReadSharePointDocument" level="Global" />
+        <RolePrivilege name="prvWriteSharePointData" level="Global" />
+      </RolePrivileges>
+    </Role>
+    <Role id="{3e3b52a8-44d0-ee11-904c-000d3af4a207}" name="Certification - Program Support Role" isinherited="1">
+      <IsCustomizable>1</IsCustomizable>
+      <RolePrivileges>
+        <RolePrivilege name="prvCreateSharePointData" level="Global" />
+        <RolePrivilege name="prvReadPluginAssembly" level="Global" />
+        <RolePrivilege name="prvReadPluginType" level="Global" />
+        <RolePrivilege name="prvReadSdkMessage" level="Global" />
+        <RolePrivilege name="prvReadSdkMessageProcessingStep" level="Global" />
+        <RolePrivilege name="prvReadSdkMessageProcessingStepImage" level="Global" />
+        <RolePrivilege name="prvReadSharePointData" level="Global" />
+        <RolePrivilege name="prvReadSharePointDocument" level="Global" />
+        <RolePrivilege name="prvWriteSharePointData" level="Global" />
+      </RolePrivileges>
+    </Role>
+    <Role id="{41a8a57c-a3d1-ee11-904c-000d3af4a207}" name="Certifications - Operations Supervisor Program Support Role" isinherited="1">
+      <IsCustomizable>1</IsCustomizable>
+      <RolePrivileges>
+        <RolePrivilege name="prvCreateSharePointData" level="Global" />
+        <RolePrivilege name="prvReadPluginAssembly" level="Global" />
+        <RolePrivilege name="prvReadPluginType" level="Global" />
+        <RolePrivilege name="prvReadSdkMessage" level="Global" />
+        <RolePrivilege name="prvReadSdkMessageProcessingStep" level="Global" />
+        <RolePrivilege name="prvReadSdkMessageProcessingStepImage" level="Global" />
+        <RolePrivilege name="prvReadSharePointData" level="Global" />
+        <RolePrivilege name="prvReadSharePointDocument" level="Global" />
+        <RolePrivilege name="prvWriteSharePointData" level="Global" />
       </RolePrivileges>
     </Role>
   </Roles>
@@ -67479,19 +65941,6 @@
   </Workflows>
   <FieldSecurityProfiles></FieldSecurityProfiles>
   <Templates />
-  <EntityImageConfigs>
-    <EntityImageConfig>
-      <parententitylogicalname>ecer_file</parententitylogicalname>
-      <primaryimageattribute>ecer_imagefile</primaryimageattribute>
-    </EntityImageConfig>
-  </EntityImageConfigs>
-  <AttributeImageConfigs>
-    <AttributeImageConfig>
-      <attributelogicalname>ecer_imagefile</attributelogicalname>
-      <parententitylogicalname>ecer_file</parententitylogicalname>
-      <canstorefullimage>1</canstorefullimage>
-    </AttributeImageConfig>
-  </AttributeImageConfigs>
   <EntityMaps>
     <EntityMap>
       <EntitySource>contact</EntitySource>
@@ -67884,26 +66333,6 @@
         </Descriptions>
       </RelationshipDescription>
     </EntityRelationship>
-    <EntityRelationship Name="business_unit_ecer_file">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>ecer_File</ReferencingEntityName>
-      <ReferencedEntityName>BusinessUnit</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>NoCascade</CascadeDelete>
-      <CascadeArchive>NoCascade</CascadeArchive>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <ReferencingAttributeName>OwningBusinessUnit</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="Unique identifier for the business unit that owns the record" languagecode="1033" />
-        </Descriptions>
-      </RelationshipDescription>
-    </EntityRelationship>
     <EntityRelationship Name="business_unit_ecer_guardianreference">
       <EntityRelationshipType>OneToMany</EntityRelationshipType>
       <IsCustomizable>1</IsCustomizable>
@@ -68210,41 +66639,6 @@
         </EntityRelationshipRole>
         <EntityRelationshipRole>
           <NavigationPropertyName>ecer_account_ecer_communication_122</NavigationPropertyName>
-          <RelationshipRoleType>0</RelationshipRoleType>
-        </EntityRelationshipRole>
-      </EntityRelationshipRoles>
-    </EntityRelationship>
-    <EntityRelationship Name="ecer_account_ecer_file_123">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0.0.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>ecer_File</ReferencingEntityName>
-      <ReferencedEntityName>Account</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>RemoveLink</CascadeDelete>
-      <CascadeArchive>RemoveLink</CascadeArchive>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <CascadeRollupView>NoCascade</CascadeRollupView>
-      <IsValidForAdvancedFind>1</IsValidForAdvancedFind>
-      <ReferencingAttributeName>ecer_Customerid</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="" languagecode="1033" />
-        </Descriptions>
-      </RelationshipDescription>
-      <EntityRelationshipRoles>
-        <EntityRelationshipRole>
-          <NavPaneDisplayOption>UseCollectionName</NavPaneDisplayOption>
-          <NavPaneArea>Details</NavPaneArea>
-          <NavPaneOrder>10000</NavPaneOrder>
-          <NavigationPropertyName>ecer_Customerid_account</NavigationPropertyName>
-          <RelationshipRoleType>1</RelationshipRoleType>
-        </EntityRelationshipRole>
-        <EntityRelationshipRole>
-          <NavigationPropertyName>ecer_account_ecer_file_123</NavigationPropertyName>
           <RelationshipRoleType>0</RelationshipRoleType>
         </EntityRelationshipRole>
       </EntityRelationshipRoles>
@@ -69124,41 +67518,6 @@
         </EntityRelationshipRole>
       </EntityRelationshipRoles>
     </EntityRelationship>
-    <EntityRelationship Name="ecer_contact_ecer_file_123">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0.0.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>ecer_File</ReferencingEntityName>
-      <ReferencedEntityName>Contact</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>RemoveLink</CascadeDelete>
-      <CascadeArchive>RemoveLink</CascadeArchive>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <CascadeRollupView>NoCascade</CascadeRollupView>
-      <IsValidForAdvancedFind>1</IsValidForAdvancedFind>
-      <ReferencingAttributeName>ecer_Customerid</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="" languagecode="1033" />
-        </Descriptions>
-      </RelationshipDescription>
-      <EntityRelationshipRoles>
-        <EntityRelationshipRole>
-          <NavPaneDisplayOption>UseCollectionName</NavPaneDisplayOption>
-          <NavPaneArea>Details</NavPaneArea>
-          <NavPaneOrder>10000</NavPaneOrder>
-          <NavigationPropertyName>ecer_Customerid_contact</NavigationPropertyName>
-          <RelationshipRoleType>1</RelationshipRoleType>
-        </EntityRelationshipRole>
-        <EntityRelationshipRole>
-          <NavigationPropertyName>ecer_contact_ecer_file_123</NavigationPropertyName>
-          <RelationshipRoleType>0</RelationshipRoleType>
-        </EntityRelationshipRole>
-      </EntityRelationshipRoles>
-    </EntityRelationship>
     <EntityRelationship Name="ecer_contact_ecer_portaluser_474">
       <EntityRelationshipType>OneToMany</EntityRelationshipType>
       <IsCustomizable>1</IsCustomizable>
@@ -69540,76 +67899,6 @@
         </EntityRelationshipRole>
         <EntityRelationshipRole>
           <NavigationPropertyName>ecer_fax_Application_ecer_application</NavigationPropertyName>
-          <RelationshipRoleType>0</RelationshipRoleType>
-        </EntityRelationshipRole>
-      </EntityRelationshipRoles>
-    </EntityRelationship>
-    <EntityRelationship Name="ecer_file_Applicationid_ecer_application">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0.0.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>ecer_File</ReferencingEntityName>
-      <ReferencedEntityName>ecer_Application</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>RemoveLink</CascadeDelete>
-      <CascadeArchive>RemoveLink</CascadeArchive>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <CascadeRollupView>NoCascade</CascadeRollupView>
-      <IsValidForAdvancedFind>1</IsValidForAdvancedFind>
-      <ReferencingAttributeName>ecer_Applicationid</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="" languagecode="1033" />
-        </Descriptions>
-      </RelationshipDescription>
-      <EntityRelationshipRoles>
-        <EntityRelationshipRole>
-          <NavPaneDisplayOption>UseCollectionName</NavPaneDisplayOption>
-          <NavPaneArea>Details</NavPaneArea>
-          <NavPaneOrder>10000</NavPaneOrder>
-          <NavigationPropertyName>ecer_Applicationid</NavigationPropertyName>
-          <RelationshipRoleType>1</RelationshipRoleType>
-        </EntityRelationshipRole>
-        <EntityRelationshipRole>
-          <NavigationPropertyName>ecer_file_Applicationid_ecer_application</NavigationPropertyName>
-          <RelationshipRoleType>0</RelationshipRoleType>
-        </EntityRelationshipRole>
-      </EntityRelationshipRoles>
-    </EntityRelationship>
-    <EntityRelationship Name="ecer_file_Communicationid">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0.0.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>ecer_File</ReferencingEntityName>
-      <ReferencedEntityName>ecer_Communication</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>RemoveLink</CascadeDelete>
-      <CascadeArchive>RemoveLink</CascadeArchive>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <CascadeRollupView>NoCascade</CascadeRollupView>
-      <IsValidForAdvancedFind>1</IsValidForAdvancedFind>
-      <ReferencingAttributeName>ecer_Communicationid</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="" languagecode="1033" />
-        </Descriptions>
-      </RelationshipDescription>
-      <EntityRelationshipRoles>
-        <EntityRelationshipRole>
-          <NavPaneDisplayOption>UseCollectionName</NavPaneDisplayOption>
-          <NavPaneArea>Details</NavPaneArea>
-          <NavPaneOrder>10000</NavPaneOrder>
-          <NavigationPropertyName>ecer_Communicationid</NavigationPropertyName>
-          <RelationshipRoleType>1</RelationshipRoleType>
-        </EntityRelationshipRole>
-        <EntityRelationshipRole>
-          <NavigationPropertyName>ecer_file_Communicationid</NavigationPropertyName>
           <RelationshipRoleType>0</RelationshipRoleType>
         </EntityRelationshipRole>
       </EntityRelationshipRoles>
@@ -70164,27 +68453,6 @@
           <RelationshipRoleType>0</RelationshipRoleType>
         </EntityRelationshipRole>
       </EntityRelationshipRoles>
-    </EntityRelationship>
-    <EntityRelationship Name="FileAttachment_ecer_File_ecer_DocumentFile">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>0</IsCustomizable>
-      <IntroducedVersion>1.0.0.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>ecer_File</ReferencingEntityName>
-      <ReferencedEntityName>FileAttachment</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>RemoveLink</CascadeDelete>
-      <CascadeArchive>RemoveLink</CascadeArchive>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <IsValidForAdvancedFind>0</IsValidForAdvancedFind>
-      <ReferencingAttributeName>ecer_DocumentFile</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="" languagecode="1033" />
-        </Descriptions>
-      </RelationshipDescription>
     </EntityRelationship>
     <EntityRelationship Name="lk_ecer_application_createdby">
       <EntityRelationshipType>OneToMany</EntityRelationshipType>
@@ -70772,46 +69040,6 @@
       <IntroducedVersion>1.0</IntroducedVersion>
       <IsHierarchical>0</IsHierarchical>
       <ReferencingEntityName>ecer_Course</ReferencingEntityName>
-      <ReferencedEntityName>SystemUser</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>NoCascade</CascadeDelete>
-      <CascadeArchive>NoCascade</CascadeArchive>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <ReferencingAttributeName>ModifiedBy</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="Unique identifier of the user who modified the record." languagecode="1033" />
-        </Descriptions>
-      </RelationshipDescription>
-    </EntityRelationship>
-    <EntityRelationship Name="lk_ecer_file_createdby">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>ecer_File</ReferencingEntityName>
-      <ReferencedEntityName>SystemUser</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>NoCascade</CascadeDelete>
-      <CascadeArchive>NoCascade</CascadeArchive>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <ReferencingAttributeName>CreatedBy</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="Unique identifier of the user who created the record." languagecode="1033" />
-        </Descriptions>
-      </RelationshipDescription>
-    </EntityRelationship>
-    <EntityRelationship Name="lk_ecer_file_modifiedby">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>ecer_File</ReferencingEntityName>
       <ReferencedEntityName>SystemUser</ReferencedEntityName>
       <CascadeAssign>NoCascade</CascadeAssign>
       <CascadeDelete>NoCascade</CascadeDelete>
@@ -71586,26 +69814,6 @@
         </Descriptions>
       </RelationshipDescription>
     </EntityRelationship>
-    <EntityRelationship Name="owner_ecer_file">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>ecer_File</ReferencingEntityName>
-      <ReferencedEntityName>Owner</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>NoCascade</CascadeDelete>
-      <CascadeArchive>NoCascade</CascadeArchive>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <ReferencingAttributeName>OwnerId</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="Owner Id" languagecode="1033" />
-        </Descriptions>
-      </RelationshipDescription>
-    </EntityRelationship>
     <EntityRelationship Name="owner_ecer_guardianreference">
       <EntityRelationshipType>OneToMany</EntityRelationshipType>
       <IsCustomizable>1</IsCustomizable>
@@ -72106,26 +70314,6 @@
         </Descriptions>
       </RelationshipDescription>
     </EntityRelationship>
-    <EntityRelationship Name="team_ecer_file">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>ecer_File</ReferencingEntityName>
-      <ReferencedEntityName>Team</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>NoCascade</CascadeDelete>
-      <CascadeArchive>NoCascade</CascadeArchive>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <ReferencingAttributeName>OwningTeam</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="Unique identifier for the team that owns the record." languagecode="1033" />
-        </Descriptions>
-      </RelationshipDescription>
-    </EntityRelationship>
     <EntityRelationship Name="team_ecer_guardianreference">
       <EntityRelationshipType>OneToMany</EntityRelationshipType>
       <IsCustomizable>1</IsCustomizable>
@@ -72612,26 +70800,6 @@
       <IntroducedVersion>1.0</IntroducedVersion>
       <IsHierarchical>0</IsHierarchical>
       <ReferencingEntityName>ecer_Course</ReferencingEntityName>
-      <ReferencedEntityName>SystemUser</ReferencedEntityName>
-      <CascadeAssign>NoCascade</CascadeAssign>
-      <CascadeDelete>NoCascade</CascadeDelete>
-      <CascadeArchive>NoCascade</CascadeArchive>
-      <CascadeReparent>NoCascade</CascadeReparent>
-      <CascadeShare>NoCascade</CascadeShare>
-      <CascadeUnshare>NoCascade</CascadeUnshare>
-      <ReferencingAttributeName>OwningUser</ReferencingAttributeName>
-      <RelationshipDescription>
-        <Descriptions>
-          <Description description="Unique identifier for the user that owns the record." languagecode="1033" />
-        </Descriptions>
-      </RelationshipDescription>
-    </EntityRelationship>
-    <EntityRelationship Name="user_ecer_file">
-      <EntityRelationshipType>OneToMany</EntityRelationshipType>
-      <IsCustomizable>1</IsCustomizable>
-      <IntroducedVersion>1.0</IntroducedVersion>
-      <IsHierarchical>0</IsHierarchical>
-      <ReferencingEntityName>ecer_File</ReferencingEntityName>
       <ReferencedEntityName>SystemUser</ReferencedEntityName>
       <CascadeAssign>NoCascade</CascadeAssign>
       <CascadeDelete>NoCascade</CascadeDelete>
@@ -75586,7 +73754,6 @@
             <SubArea Id="subarea_e7e04e0f" Entity="ecer_course" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
             <SubArea Id="subarea_bb71926b" Entity="ecer_program" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
             <SubArea Id="subarea_6ce8d3da" Entity="ecer_assessmenttraininglocation" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
-            <SubArea Id="subarea_90419839" Icon="/_imgs/imagestrips/transparent_spacer.gif" Entity="ecer_file" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
             <SubArea Id="subarea_48750b6d" Icon="/_imgs/imagestrips/transparent_spacer.gif" Entity="ecer_authentication" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
             <SubArea Id="subarea_7f21a0f3" Icon="/_imgs/imagestrips/transparent_spacer.gif" Entity="ecer_iantemplatecontent" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
             <SubArea Id="subarea_67e359e5" Icon="/_imgs/imagestrips/transparent_spacer.gif" Entity="ecer_communicationlineitem" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" />
@@ -75623,7 +73790,6 @@
         <AppModuleComponent type="1" schemaName="ecer_postsecondaryinstitute" />
         <AppModuleComponent type="1" schemaName="ecer_communicationlineitem" />
         <AppModuleComponent type="1" schemaName="ecer_iantemplatecontent" />
-        <AppModuleComponent type="1" schemaName="ecer_file" />
         <AppModuleComponent type="1" schemaName="ecer_communication" />
         <AppModuleComponent type="1" schemaName="ecer_assessmenttraininglocation" />
         <AppModuleComponent type="1" schemaName="ecer_authentication" />

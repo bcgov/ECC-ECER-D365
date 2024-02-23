@@ -5,7 +5,7 @@
       <LocalizedName description="ECER" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.6</Version>
+    <Version>1.0.0.7</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>ecer</UniqueName>
@@ -96,7 +96,6 @@
       <RootComponent type="1" schemaName="ecer_communicationlineitem" behavior="0" />
       <RootComponent type="1" schemaName="ecer_completedcourse" behavior="0" />
       <RootComponent type="1" schemaName="ecer_course" behavior="0" />
-      <RootComponent type="1" schemaName="ecer_file" behavior="0" />
       <RootComponent type="1" schemaName="ecer_guardianreference" behavior="0" />
       <RootComponent type="1" schemaName="ecer_iantemplatecontent" behavior="0" />
       <RootComponent type="1" schemaName="ecer_portalrole" behavior="0" />
@@ -147,6 +146,8 @@
       <RootComponent type="9" schemaName="ecer_workhourstype" behavior="0" />
       <RootComponent type="9" schemaName="ecer_yesnonull" behavior="0" />
       <RootComponent type="20" id="{3e3b52a8-44d0-ee11-904c-000d3af4a207}" behavior="0" />
+      <RootComponent type="20" id="{41a8a57c-a3d1-ee11-904c-000d3af4a207}" behavior="0" />
+      <RootComponent type="20" id="{531e0df6-9bd1-ee11-904c-000d3af4a207}" behavior="0" />
       <RootComponent type="20" id="{8d55d382-8dca-ee11-9079-000d3af4febe}" behavior="0" />
       <RootComponent type="20" id="{f7034a16-6cb5-ee11-a569-000d3af4febe}" behavior="0" />
       <RootComponent type="29" id="{003318f6-21c1-ee11-9079-000d3af4f18a}" behavior="0" />
@@ -196,8 +197,6 @@
       <RootComponent type="61" schemaName="ecer_workexperienceref.svg" behavior="0" />
       <RootComponent type="62" schemaName="ecer_MyECER" behavior="0" />
       <RootComponent type="80" schemaName="ecer_MyECER" behavior="0" />
-      <RootComponent type="431" schemaName="ecer_file ecer_imagefile" behavior="0" />
-      <RootComponent type="432" schemaName="ecer_file" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
@@ -214,13 +213,13 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_ocliveworkitem" displayName="Conversation" solution="OmnichannelBase (1.10.0.71)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.80)</package>
+          <package>UnifiedRoutingPrimeAnchor (1.5.26.83)</package>
         </Required>
         <Dependent type="80" schemaName="ecer_MyECER" displayName="MyECER" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="msdyn_ocsession" displayName="Session" solution="OmnichannelBase (1.10.0.71)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.80)</package>
+          <package>UnifiedRoutingPrimeAnchor (1.5.26.83)</package>
         </Required>
         <Dependent type="80" schemaName="ecer_MyECER" displayName="MyECER" />
       </MissingDependency>
