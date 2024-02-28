@@ -17,16 +17,8 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);
         // Age Evaluation is done by Power Automate flow on submit of the application
         ECER.Jscripts.Application.showHideParentalGuidianceFieldsOnApplicantAge(executionContext);
-        //ECER.Jscripts.Application.closeFormIfDraft(executionContext);
-    },
-
-    // No longer need.  Will allow user to overwrite
-    disableSystemPopulateFields: function (executionContext) {
-        crm_Utility.enableDisable(executionContext, true, "ecer_characterreferencereceiveddate");
-        crm_Utility.enableDisable(executionContext, true, "ecer_workexperiencereceiveddate");
-        crm_Utility.enableDisable(executionContext, true, "ecer_transcriptreceiveddate");
-        crm_Utility.enableDisable(executionContext, true, "ecer_parentalreferencereceiveddate");
-        crm_Utility.enableDisable(executionContext, true, "ecer_readyforassessmentdate");
+        ECER.Jscripts.Application.levelOfRequirmentOnDenailReasonTypeChange(executionContext);
+        ECER.Jscripts.Application.levelOfRequirementOnStatusReasonDetailsChange(executionContext);
     },
 
     showHideApplicantQuickView: function (executionContext) {
@@ -96,9 +88,48 @@ ECER.Jscripts.Application =
 
     preventAutoSave: function (executionContext) {
         var eventArgs = executionContext.getEventArgs();
-        if (eventArgs.getSaveMode() == 70 || eventArgs.getSaveMode() == 2) {
+        if (eventArgs.getSaveMode() == 70) {
             eventArgs.preventDefault();
         }
+    },
+
+    levelOfRequirmentOnDenailReasonTypeChange: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var denialReasonTypeAttribute = formContext.getAttribute("ecer_denialreasontype");
+        var denialReasonExplanationAttributeName = "ecer_denialreasonexplanation";
+        var denailReasonTypeOTHER = "dccf621f-a1d5-ee11-904c-000d3af4a207";
+        if (denialReasonTypeAttribute === null) {
+            return; // If Status Reason Details is NOT on form, then nothing to compare to
+        }
+
+        var denialReasonExplanationRequired = "none";
+        if (denialReasonTypeAttribute.getValue() !== null) {
+            var denialReasonTypeValue = denialReasonTypeAttribute.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
+            if (denialReasonTypeValue === denailReasonTypeOTHER) {
+                // Denied
+                denialReasonExplanationRequired = "required";
+            }
+        }
+
+        crm_Utility.setRequiredLevel(executionContext, denialReasonExplanationRequired, denialReasonExplanationAttributeName);
+    },
+
+    levelOfRequirementOnStatusReasonDetailsChange: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var statusReasonDetailsAttribute = formContext.getAttribute("ecer_statusreasondetail");
+        var denialReasonTypeAttributeName = "ecer_denialreasontype";
+        if (statusReasonDetailsAttribute == null) {
+            return; // If Status Reason Details is NOT on form, then nothing to compare to
+        }
+
+        var statusReasonDetailsValue = statusReasonDetailsAttribute.getValue();
+        var denialReasonTypeRequired = "none";
+        if (statusReasonDetailsValue === 621870011) {
+            // Denied
+            denialReasonTypeRequired = "required";
+        }
+
+        crm_Utility.setRequiredLevel(executionContext, denialReasonTypeRequired, denialReasonTypeAttributeName);
     },
 
     showHideParentalGuidianceFieldsOnApplicantAge: function (executionContext) {
