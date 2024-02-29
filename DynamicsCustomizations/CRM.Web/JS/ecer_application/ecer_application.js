@@ -80,10 +80,18 @@ ECER.Jscripts.Application =
         statusReasonDetailsAttribute.setValue(subStatusDetails);
     },
 
+    hasAssessorSecurityRole: function () {
+        "use strict";
+        var hasAssessorRole = crm_Utility.checkCurrentUserRole("Certification - Assessor Role");
+        return hasAssessorRole;
+    },
+
     hasProgramClerkSecurityRole: function () {
         // Directive to prevent use of undeclared variables
         "use strict";
-        return crm_Utility.checkCurrentUserRole("Certification - Program Support Role");
+        var hasProgramSupportRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Role");
+        var hasProgramSupportLeadRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Lead Role");
+        return hasProgramSupportLeadRole || hasProgramSupportRole;
     },
 
     preventAutoSave: function (executionContext) {
@@ -222,6 +230,46 @@ ECER.Jscripts.Application =
         }
 
         return existingValue += valueToBeAppended.trim();
+    },
+
+    onRequestMoreCharacterReferenceButton: function () {
+        "use strict";
+        var executionContext = this.crm_ExecutionContext;
+        var formContext = executionContext.getFormContext();
+        try {
+            var moreReferenceAttributeName = "ecer_requestcharacterreference";
+            var requestReferenceAttribute = formContext.getAttribute(moreReferenceAttributeName);
+            if (requestReferenceAttribute !== null) {
+                var requestReferenceValue = requestReferenceAttribute.getValue();
+                if (requestReferenceValue !== true) {
+                    requestReferenceAttribute.setValue(true);
+                    formContext.data.save();
+                }
+            }
+        }
+        catch (err) {
+            crm_Utility.showMessage(err.message);
+        }
+    },
+
+    onRequestMoreWorkExperienceReferenceButton: function () {
+        "use strict";
+        var executionContext = this.crm_ExecutionContext;
+        var formContext = executionContext.getFormContext();
+        try {
+            var moreReferenceAttributeName = "ecer_requestwkexpreference";
+            var requestReferenceAttribute = formContext.getAttribute(moreReferenceAttributeName);
+            if (requestReferenceAttribute !== null) {
+                var requestReferenceValue = requestReferenceAttribute.getValue();
+                if (requestReferenceValue !== true) {
+                    requestReferenceAttribute.setValue(true);
+                    formContext.data.save();
+                }
+            }
+        }
+        catch (err) {
+            crm_Utility.showMessage(err.message);
+        }
     },
 
     onProfileCreationButton: function () {
