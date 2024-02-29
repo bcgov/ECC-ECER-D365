@@ -1,0 +1,11 @@
+<entities >
+  <entity name="ecer_denialreason" displayname="Denial Reason" etc="11014" primaryidfield="ecer_denialreasonid" primarynamefield="ecer_denialreason" disableplugins="false">
+    <fields>
+      <field displayname=" Denial Reason" name="ecer_denialreason" type="string" customfield="true" />
+      <field updateCompare="true" displayname="Denial Reason" name="ecer_denialreasonid" type="guid" primaryKey="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+    <relationships />
+  </entity>
+</entities>
