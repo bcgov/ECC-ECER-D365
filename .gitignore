@@ -9,3 +9,8 @@ DynamicsCustomizations/CRM.Web/obj/Debug/DesignTimeResolveAssemblyReferencesInpu
 *.cache
 DynamicsCustomizations/.vs/CRM/v16/.suo
 DynamicsCustomizations/.vs/CRM/v16/.suo
+/DynamicsCustomizations/DocumentUrlPlugin/bin/Debug
+/DynamicsCustomizations/DocumentUrlPlugin/obj/Debug
+/DynamicsCustomizations/packages/Microsoft.CrmSdk.Workflow.9.0.2.26
+DynamicsCustomizations/.vs/CRM/v16/.suo
+*.cache
