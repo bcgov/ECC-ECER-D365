@@ -1,0 +1,35 @@
+<entities >
+  <entity name="ecer_city" displayname="City" etc="11019" primaryidfield="ecer_cityid" primarynamefield="ecer_name" disableplugins="false">
+    <fields>
+      <field updateCompare="true" displayname="City" name="ecer_cityid" type="guid" primaryKey="true" />
+      <field displayname="ID" name="ecer_id" type="string" customfield="true" />
+      <field displayname="Name" name="ecer_name" type="string" customfield="true" />
+      <field displayname="Province" name="ecer_provinceid" type="entityreference" lookupType="ecer_province" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+    <relationships />
+  </entity>
+  <entity name="ecer_country" displayname="Country" etc="11015" primaryidfield="ecer_countryid" primarynamefield="ecer_name" disableplugins="false">
+    <fields>
+      <field updateCompare="true" displayname="Country" name="ecer_countryid" type="guid" primaryKey="true" />
+      <field displayname="ID" name="ecer_id" type="string" customfield="true" />
+      <field displayname="Name" name="ecer_name" type="string" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+    <relationships />
+  </entity>
+  <entity name="ecer_province" displayname="Province" etc="10954" primaryidfield="ecer_provinceid" primarynamefield="ecer_name" disableplugins="false">
+    <fields>
+      <field displayname="Abbreviation" name="ecer_abbreviation" type="string" customfield="true" />
+      <field displayname="Country" name="ecer_countryid" type="entityreference" lookupType="ecer_country" customfield="true" />
+      <field displayname="ID" name="ecer_id" type="string" customfield="true" />
+      <field displayname="Name" name="ecer_name" type="string" customfield="true" />
+      <field updateCompare="true" displayname="Province" name="ecer_provinceid" type="guid" primaryKey="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+    <relationships />
+  </entity>
+</entities>
