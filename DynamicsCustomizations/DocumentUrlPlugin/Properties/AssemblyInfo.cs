@@ -13,6 +13,12 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+// Version information for an assembly consists of the following four values:
+// Major Version
+// Minor Version
+// Build Number
+// Revision
+[assembly: AssemblyVersion("1.0.8741.21882")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from

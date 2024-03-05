@@ -126,17 +126,17 @@ namespace BCGOV.Plugin.DocumentUrl
                         {
                             sharePointFileUrlEntity["bcgov_phonecallid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
                         }
-                        else if (regardingObjectLogicalName.Equals("spd_application", StringComparison.InvariantCultureIgnoreCase))
+                        else if (regardingObjectLogicalName.Equals("ecer_application", StringComparison.InvariantCultureIgnoreCase))
                         {
-                            sharePointFileUrlEntity["spd_applicationid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            sharePointFileUrlEntity["ecer_applicationid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
                         }
-                        else if (regardingObjectLogicalName.Equals("spd_clearance", StringComparison.InvariantCultureIgnoreCase))
+                        else if (regardingObjectLogicalName.Equals("ecer_investigation", StringComparison.InvariantCultureIgnoreCase))
                         {
-                            sharePointFileUrlEntity["spd_clearanceid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            sharePointFileUrlEntity["ecer_investigationid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
                         }
-                        else if (regardingObjectLogicalName.Equals("spd_pdfreport", StringComparison.InvariantCultureIgnoreCase))
+                        else if (regardingObjectLogicalName.Equals("ecer_certificate", StringComparison.InvariantCultureIgnoreCase))
                         {
-                            sharePointFileUrlEntity["spd_pdfreportid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            sharePointFileUrlEntity["ecer_certificateid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
                         }
                         else
                             throw new InvalidPluginExecutionException(string.Format("Unknown RegardingObjectType '{0}' to associate document..", regardingObjectLogicalName));
