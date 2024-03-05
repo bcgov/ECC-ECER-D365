@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 // Minor Version
 // Build Number
 // Revision
-[assembly: AssemblyVersion("1.0.8741.21882")]
+[assembly: AssemblyVersion("1.0.*")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from

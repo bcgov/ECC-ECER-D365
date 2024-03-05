@@ -24,3 +24,4 @@ DynamicsCustomizations/DocumentUrlPlugin/bin/Release/Microsoft.Crm.Sdk.Proxy.xml
 DynamicsCustomizations/DocumentUrlPlugin/bin/Release/Microsoft.Xrm.Sdk.Workflow.xml
 DynamicsCustomizations/DocumentUrlPlugin/bin/Release/Microsoft.Xrm.Sdk.xml
 DynamicsCustomizations/DocumentUrlPlugin/obj/Release/DocumentUrlPlugin.csproj.FileListAbsolute.txt
+DynamicsCustomizations/.vs/CRM/v16/.suo
