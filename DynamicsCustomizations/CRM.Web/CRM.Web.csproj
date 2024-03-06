@@ -45,6 +45,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="IMAGES\ecer_ApplicationIcon.svg" />
+    <Content Include="IMAGES\ecer_certificate.svg" />
+    <Content Include="IMAGES\ecer_characterreference.svg" />
+    <Content Include="IMAGES\ecer_city.svg" />
+    <Content Include="IMAGES\ecer_country.svg" />
+    <Content Include="IMAGES\ecer_Province.svg" />
+    <Content Include="IMAGES\ecer_school.svg" />
+    <Content Include="IMAGES\ecer_search.svg" />
+    <Content Include="IMAGES\ecer_transcript.svg" />
+    <Content Include="IMAGES\ecer_workexperienceref.svg" />
     <Content Include="JS\bcgov_documentUrl\OnLoad.js" />
     <Content Include="JS\contact\ecer_contact.js" />
     <Content Include="JS\ecer_application\ecer_application.js" />
@@ -55,7 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HTML\" />
-    <Folder Include="IMAGES\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
