@@ -58,6 +58,7 @@
     <Content Include="JS\bcgov_documentUrl\OnLoad.js" />
     <Content Include="JS\contact\ecer_contact.js" />
     <Content Include="JS\ecer_application\ecer_application.js" />
+    <Content Include="JS\ecer_certificatecondition\ecer_certificatecondition.js" />
     <Content Include="JS\ecer_characterreference\ecer_characterreference.js" />
     <Content Include="JS\ecer_comment\ecer_decisioncomment.js" />
     <Content Include="JS\ecer_utility.js" />
