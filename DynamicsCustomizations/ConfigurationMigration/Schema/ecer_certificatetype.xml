@@ -1,0 +1,13 @@
+<entities >
+  <entity name="ecer_certificatetype" displayname="Certificate Type" etc="10800" primaryidfield="ecer_certificatetypeid" primarynamefield="ecer_name" disableplugins="false">
+    <fields>
+      <field updateCompare="true" displayname="Certificate Type" name="ecer_certificatetypeid" type="guid" primaryKey="true" />
+      <field displayname="Name" name="ecer_name" type="string" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+    </fields>
+    <relationships>
+      <relationship name="ecer_certificate_ecer_certificatetype" manyToMany="true" relatedEntityName="ecer_certificate_ecer_certificatetype" m2mTargetEntity="ecer_certificate" m2mTargetEntityPrimaryKey="ecer_certificateid" />
+    </relationships>
+  </entity>
+</entities>
