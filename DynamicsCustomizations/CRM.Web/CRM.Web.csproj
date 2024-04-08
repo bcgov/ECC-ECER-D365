@@ -45,6 +45,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HTML\Upload.html" />
     <Content Include="IMAGES\ecer_ApplicationIcon.svg" />
     <Content Include="IMAGES\ecer_certificate.svg" />
     <Content Include="IMAGES\ecer_characterreference.svg" />
@@ -64,8 +65,6 @@
     <Content Include="JS\ecer_utility.js" />
     <Content Include="JS\ecer_workexperiencereference\ecer_workexperiencereference.js" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="HTML\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -66,9 +66,10 @@
             parameters.RegardingObjectName = options.entityName.toLowerCase();
             parameters.RegardingObjectId = options.recordid.replace("{", "").replace("}", "");
             parameters.Origin = 931490002; //User Upload
+            var bodyLength = parameters.Body.length;
 
             var req = new XMLHttpRequest();
-            req.open("POST", parent.Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v9.1/bcgov_UploadDocumentToSharePoint", false);
+            req.open("POST", parent.Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v9.2/bcgov_UploadDocumentToSharePoint", false);
             req.setRequestHeader("OData-MaxVersion", "4.0");
             req.setRequestHeader("OData-Version", "4.0");
             req.setRequestHeader("Accept", "application/json");
@@ -126,7 +127,7 @@
                 parent.Xrm.Utility.closeProgressIndicator();
             }
         }
-        var maxFileUpload = 25 * 1024 * 1024; // 25MB // or testing data with 22 * 1024; // 22kb //
+        var maxFileUpload = 500 * 1024 * 1024; // 25MB // or testing data with 22 * 1024; // 22kb //
         var doDrop = (event) => {
             let dt = event.dataTransfer
             let largeFile;

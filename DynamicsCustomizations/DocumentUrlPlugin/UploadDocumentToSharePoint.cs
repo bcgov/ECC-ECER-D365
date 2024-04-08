@@ -30,7 +30,7 @@ namespace BCGOV.Plugin.DocumentUrl
                     string body = context.InputParameters["Body"].ToString();
                     string regardingObjectLogicalName = context.InputParameters["RegardingObjectName"].ToString();
                     Guid regardingObjectId = new Guid(context.InputParameters["RegardingObjectId"].ToString());
-
+                    traceService.Trace($"Body Length: {body.Length}");
                     string tag1 = string.Empty;
                     string tag2 = string.Empty;
                     string tag3 = string.Empty;
@@ -47,8 +47,14 @@ namespace BCGOV.Plugin.DocumentUrl
                     string authSecret = Helpers.GetSecureConfigKeyValue(configs, "AuthSecret", "Storage");
                     string authClientId = Helpers.GetSecureConfigKeyValue(configs, "AuthClientId", "Storage");
                     string url = Helpers.GetConfigKeyValue(configs, "InterfaceUrl", "Storage");
+                    traceService.Trace($"authURL: {authUrl}");
+                    traceService.Trace($"authSecret: {authSecret}");
+                    traceService.Trace($"authClientId: {authClientId}");
+                    traceService.Trace($"Interface URL: {url}");
+                    traceService.Trace("Convert Base64 String into Byte Array for further processing");
+                    var bodyByteArray = Convert.FromBase64String(body);
 
-                    using (var fileStream = new System.IO.MemoryStream(Convert.FromBase64String(body)))
+                    using (var fileStream = new System.IO.MemoryStream(bodyByteArray))
                     {
                         if (fileStream.Length <= 16384) //16KB
                         {
@@ -58,7 +64,7 @@ namespace BCGOV.Plugin.DocumentUrl
                                 return;
                             }
                         }
-
+                        traceService.Trace($"Construct File Stream Length: {fileStream.Length}");
                         Entity sharePointFileUrlEntity = new Entity("bcgov_documenturl");
                         sharePointFileUrlEntity["bcgov_filename"] = fileName;
                         sharePointFileUrlEntity["bcgov_receiveddate"] = DateTime.Now;
@@ -140,7 +146,8 @@ namespace BCGOV.Plugin.DocumentUrl
                         }
                         else
                             throw new InvalidPluginExecutionException(string.Format("Unknown RegardingObjectType '{0}' to associate document..", regardingObjectLogicalName));
-
+                        traceService.Trace("Constructed Document URL entity");
+                        traceService.Trace("Preparing API call contents");
                         MultipartFormDataContent multipartContent = new MultipartFormDataContent();
 
                         fileStream.Position = 0;
@@ -165,9 +172,11 @@ namespace BCGOV.Plugin.DocumentUrl
                                 client.DefaultRequestHeaders.Add("file-tag", "Tag2=" + tag2);
                             if (!string.IsNullOrEmpty(tag3))
                                 client.DefaultRequestHeaders.Add("file-tag", "Tag3=" + tag3);
-
+                            traceService.Trace("Call API to upload document");
                             var response = client.PostAsync(url, multipartContent).Result;
-                            if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                            traceService.Trace($"Response: {response.StatusCode}");
+                            if (response.StatusCode == System.Net.HttpStatusCode.OK ||
+                                response.StatusCode == System.Net.HttpStatusCode.Created)
                             {
                                 if (documentId.HasValue)
                                     service.Update(sharePointFileUrlEntity);
