@@ -315,6 +315,7 @@
                 "parameters": {
                   "entityName": "ecer_applicationhistories",
                   "item/ecer_ApplicationId@odata.bind": "ecer_applications(@{triggerOutputs()?['body/ecer_applicationid']})",
+                  "item/ecer_bpfstagename": "@variables('BPF Stage Name')",
                   "item/ecer_name": "New Assignee @{outputs('Get_System_User_Record')?['body/fullname']} at BPF Stage @{variables('BPF Stage Name')}",
                   "item/ecer_NewAssigneeId@odata.bind": "systemusers(@{outputs('Get_System_User_Record')?['body/systemuserid']})",
                   "item/ownerid@odata.bind": "systemusers(@{outputs('Get_System_User_Record')?['body/systemuserid']})"
@@ -329,9 +330,21 @@
             ]
           },
           "expression": {
-            "equals": [
-              "@triggerOutputs()?['body/_ownerid_type']",
-              "systemusers"
+            "and": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/_ownerid_type']",
+                  "systemusers"
+                ]
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@triggerOutputs()?['body/ecer_name']",
+                    "@null"
+                  ]
+                }
+              }
             ]
           },
           "metadata": {

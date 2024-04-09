@@ -160,6 +160,30 @@
                   "@triggerOutputs()?['body/statuscode']",
                   621870006
                 ]
+              },
+              {
+                "equals": [
+                  "@contains(outputs('Get_Character_Reference_Full_record')?['body/ecer_emailaddress'], '@')",
+                  "@true"
+                ]
+              },
+              {
+                "equals": [
+                  "@contains(last(split(outputs('Get_Character_Reference_Full_record')?['body/ecer_emailaddress'],'@')),'.')",
+                  "@true"
+                ]
+              },
+              {
+                "equals": [
+                  "@not(contains(outputs('Get_Character_Reference_Full_record')?['body/ecer_emailaddress'], ' '))",
+                  "@true"
+                ]
+              },
+              {
+                "equals": [
+                  "@not(contains(outputs('Get_Character_Reference_Full_record')?['body/ecer_emailaddress'], '-'))",
+                  "@true"
+                ]
               }
             ]
           },

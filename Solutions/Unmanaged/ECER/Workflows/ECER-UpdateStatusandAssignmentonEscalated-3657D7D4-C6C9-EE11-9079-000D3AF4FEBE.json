@@ -130,9 +130,9 @@
                     "parameters": {
                       "entityName": "ecer_comments",
                       "item/ecer_Contact@odata.bind": "contacts(@{outputs('Get_Application_by_ID')?['body/_ecer_applicantid_value']})",
+                      "item/ecer_Application@odata.bind": "ecer_applications(@{outputs('Get_Application_by_ID')?['body/ecer_applicationid']})",
                       "item/ecer_decision": 621870004,
                       "item/ecer_notes": "@outputs('Set_Date_Escalated,_Status_Reason,_and_Ownership_changed_to_Assessment_Team_Lead')?['body/ecer_escalatereason']",
-                      "item/ecer_Application@odata.bind": "ecer_applications(@{outputs('Get_Application_by_ID')?['body/ecer_applicationid']})",
                       "item/ownerid@odata.bind": "systemusers(@{outputs('Get_Application_by_ID')?['body/_ecer_assessor_value']})"
                     },
                     "authentication": "@parameters('$authentication')"
@@ -164,9 +164,21 @@
             ]
           },
           "expression": {
-            "equals": [
-              "@triggerOutputs()?['body/ecer_escalatetoteamlead']",
-              621870000
+            "and": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/ecer_escalatetoteamlead']",
+                  621870000
+                ]
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Application_by_ID')?['body/_ecer_applicantid_value']",
+                    "@null"
+                  ]
+                }
+              }
             ]
           },
           "metadata": {

@@ -66,7 +66,7 @@
             "parameters": {
               "entityName": "ecer_workexperiencerefs",
               "recordId": "@triggerOutputs()?['body/ecer_workexperiencerefid']",
-              "item/ecer_name": "@{outputs('Get_Application_Name')?['body/ecer_name']} @{triggerOutputs()?['body/ecer_workhourstype']}"
+              "item/ecer_name": "@outputs('Get_Application_Name')?['body/ecer_name']"
             },
             "authentication": "@parameters('$authentication')"
           }

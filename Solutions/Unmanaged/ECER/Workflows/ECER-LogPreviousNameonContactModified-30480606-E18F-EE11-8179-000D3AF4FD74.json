@@ -37,24 +37,44 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "subscriptionRequest/message": 3,
+              "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "contact",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "firstname, lastname, middlename, ecer_preferredname"
+              "subscriptionRequest/filteringattributes": "firstname, lastname, middlename, ecer_preferredname",
+              "subscriptionRequest/runas": 3
             },
             "authentication": "@parameters('$authentication')"
           }
         }
       },
       "actions": {
-        "Get_the_latest_audit_record_for_this_triggering_record": {
+        "Get_full_contact_record": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "fdd54bf1-161a-4759-9557-02bdb4fa453e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@triggerOutputs()?['body/contactid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_of_Previous_Names_of_contact_with_no_end_date": {
           "runAfter": {
-            "Initialize_variable": [
+            "Add_a_new_row": [
               "Succeeded"
             ]
           },
           "metadata": {
-            "operationMetadataId": "b0eb95bb-f2ea-49d1-9f16-f6f92c9c0e05"
+            "operationMetadataId": "47d8a14e-4168-402f-b2e1-77e365359e38"
           },
           "type": "OpenApiConnection",
           "inputs": {
@@ -64,562 +84,74 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "entityName": "audits",
-              "$filter": "_objectid_value eq '@{triggerOutputs()?['body/contactid']}' and objecttypecode eq 'contact'",
-              "$orderby": "createdon desc",
-              "$top": 10
+              "entityName": "ecer_previousnames",
+              "$filter": "_ecer_contactid_value eq '@{outputs('Get_full_contact_record')?['body/contactid']}' and ecer_enddate eq null and ecer_nametype eq 621870001 and ecer_previousnameid ne '@{outputs('Add_a_new_row')?['body/ecer_previousnameid']}'",
+              "$orderby": "ecer_startdate desc",
+              "$top": 1
             },
             "authentication": "@parameters('$authentication')"
           }
         },
-        "Loop_Through_the_results": {
-          "foreach": "@outputs('Get_the_latest_audit_record_for_this_triggering_record')?['body/value']",
+        "Apply_to_each": {
+          "foreach": "@outputs('List_of_Previous_Names_of_contact_with_no_end_date')?['body/value']",
           "actions": {
-            "Check_if_v_LoopTerminate_is_TRUE": {
-              "actions": {},
+            "Update_a_row": {
               "runAfter": {},
-              "else": {
-                "actions": {
-                  "Get_Audit_Record_of_related_triggering_record": {
-                    "runAfter": {},
-                    "metadata": {
-                      "operationMetadataId": "84de1fc5-e9eb-4d9e-bc23-6d6d106894e0"
-                    },
-                    "type": "OpenApiConnection",
-                    "inputs": {
-                      "host": {
-                        "connectionName": "shared_commondataserviceforapps",
-                        "operationId": "GetItem",
-                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                      },
-                      "parameters": {
-                        "entityName": "audits",
-                        "recordId": "@items('Loop_Through_the_results')?['auditid']"
-                      },
-                      "authentication": "@parameters('$authentication')"
-                    }
-                  },
-                  "Parse_JSON_from_Audit_Record_Change_Data": {
-                    "runAfter": {
-                      "Get_Audit_Record_of_related_triggering_record": [
-                        "Succeeded"
-                      ]
-                    },
-                    "metadata": {
-                      "operationMetadataId": "2f67df4e-9342-42c0-a22a-6462d901009c"
-                    },
-                    "type": "ParseJson",
-                    "inputs": {
-                      "content": "@outputs('Get_Audit_Record_of_related_triggering_record')?['body/changedata']",
-                      "schema": {
-                        "type": "object",
-                        "properties": {
-                          "changedAttributes": {
-                            "type": "array",
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "logicalName": {
-                                  "type": [
-                                    "string",
-                                    "null"
-                                  ]
-                                },
-                                "oldValue": {
-                                  "type": [
-                                    "string",
-                                    "null"
-                                  ]
-                                },
-                                "newValue": {
-                                  "type": [
-                                    "string",
-                                    "null"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "logicalName",
-                                "oldValue",
-                                "newValue"
-                              ]
-                            }
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "Loop_through_Change_Data_array": {
-                    "foreach": "@body('Parse_JSON_from_Audit_Record_Change_Data')?['changedAttributes']",
-                    "actions": {
-                      "If_logical_name_is_firstname": {
-                        "actions": {
-                          "set_v_FirstName": {
-                            "runAfter": {},
-                            "metadata": {
-                              "operationMetadataId": "4a6647d2-bba0-4004-900d-acebfb6b49f9"
-                            },
-                            "type": "SetVariable",
-                            "inputs": {
-                              "name": "v_FirstName",
-                              "value": "@items('Loop_through_Change_Data_array')?['oldValue']"
-                            }
-                          }
-                        },
-                        "runAfter": {},
-                        "expression": {
-                          "equals": [
-                            "@items('Loop_through_Change_Data_array')?['logicalName']",
-                            "firstname"
-                          ]
-                        },
-                        "metadata": {
-                          "operationMetadataId": "2046f665-8c8a-4900-b167-10198f5bd6e9"
-                        },
-                        "type": "If"
-                      },
-                      "if_logical_name_is_lastname": {
-                        "actions": {
-                          "set_v_LastName": {
-                            "runAfter": {},
-                            "metadata": {
-                              "operationMetadataId": "79f0e514-1f88-45f7-946c-51413230599d"
-                            },
-                            "type": "SetVariable",
-                            "inputs": {
-                              "name": "v_LastName",
-                              "value": "@items('Loop_through_Change_Data_array')?['oldValue']"
-                            }
-                          }
-                        },
-                        "runAfter": {
-                          "If_logical_name_is_firstname": [
-                            "Succeeded"
-                          ]
-                        },
-                        "expression": {
-                          "equals": [
-                            "@items('Loop_through_Change_Data_array')?['logicalName']",
-                            "lastname"
-                          ]
-                        },
-                        "metadata": {
-                          "operationMetadataId": "08cf984e-1b57-4cc2-8eb4-83773d39f954"
-                        },
-                        "type": "If"
-                      },
-                      "if_logical_name_is_middlename": {
-                        "actions": {
-                          "set_v_MiddleName": {
-                            "runAfter": {},
-                            "metadata": {
-                              "operationMetadataId": "d7e6040e-5001-4fda-bfac-52256333eaf5"
-                            },
-                            "type": "SetVariable",
-                            "inputs": {
-                              "name": "v_MiddleName",
-                              "value": "@items('Loop_through_Change_Data_array')?['oldValue']"
-                            }
-                          }
-                        },
-                        "runAfter": {
-                          "if_logical_name_is_lastname": [
-                            "Succeeded"
-                          ]
-                        },
-                        "expression": {
-                          "equals": [
-                            "@items('Loop_through_Change_Data_array')?['logicalName']",
-                            "middlename"
-                          ]
-                        },
-                        "metadata": {
-                          "operationMetadataId": "0c2807d7-a9ee-4936-abfd-c72a4a295b0c"
-                        },
-                        "type": "If"
-                      },
-                      "if_logical_name_is_ecer_preferredname": {
-                        "actions": {
-                          "set_v_PreferredName": {
-                            "runAfter": {},
-                            "metadata": {
-                              "operationMetadataId": "f529ac13-8ac6-4bef-bbf0-7084d10e40ac"
-                            },
-                            "type": "SetVariable",
-                            "inputs": {
-                              "name": "v_PreferredName",
-                              "value": "@items('Loop_through_Change_Data_array')?['oldValue']"
-                            }
-                          }
-                        },
-                        "runAfter": {
-                          "if_logical_name_is_middlename": [
-                            "Succeeded"
-                          ]
-                        },
-                        "expression": {
-                          "equals": [
-                            "@items('Loop_through_Change_Data_array')?['logicalName']",
-                            "ecer_preferredname"
-                          ]
-                        },
-                        "metadata": {
-                          "operationMetadataId": "32fbdce3-3c5d-40e5-b2b0-4517635dc767"
-                        },
-                        "type": "If"
-                      }
-                    },
-                    "runAfter": {
-                      "Parse_JSON_from_Audit_Record_Change_Data": [
-                        "Succeeded"
-                      ]
-                    },
-                    "metadata": {
-                      "operationMetadataId": "332d0a25-1e67-44e8-8bfb-5fc88098e4e7"
-                    },
-                    "type": "Foreach"
-                  },
-                  "Check_if_any_of_variables_has_values_set": {
-                    "actions": {},
-                    "runAfter": {
-                      "Loop_through_Change_Data_array": [
-                        "Succeeded"
-                      ]
-                    },
-                    "else": {
-                      "actions": {
-                        "Set_v_LoopTerminate_to_TRUE": {
-                          "runAfter": {},
-                          "metadata": {
-                            "operationMetadataId": "ca2db166-5c73-412b-bb2f-f78a3f92c4f4"
-                          },
-                          "type": "SetVariable",
-                          "inputs": {
-                            "name": "v_LoopTerminate",
-                            "value": "@true"
-                          }
-                        },
-                        "Create_Previous_Name_record_and_associate_to_Contact": {
-                          "runAfter": {
-                            "Condition": [
-                              "Succeeded"
-                            ]
-                          },
-                          "metadata": {
-                            "operationMetadataId": "595d2236-0e3c-4e8f-9ef4-67890d00cb69"
-                          },
-                          "type": "OpenApiConnection",
-                          "inputs": {
-                            "host": {
-                              "connectionName": "shared_commondataserviceforapps",
-                              "operationId": "CreateRecord",
-                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                            },
-                            "parameters": {
-                              "entityName": "ecer_previousnames",
-                              "item/ecer_Contactid@odata.bind": "contacts(@{triggerOutputs()?['body/contactid']})",
-                              "item/ecer_firstname": "@variables('v_FirstName')",
-                              "item/ecer_lastname": "@variables('v_LastName')",
-                              "item/ecer_middlename": "@variables('v_MiddleName')",
-                              "item/ecer_nametype": 621870001,
-                              "item/ecer_preferredname": "@variables('v_PreferredName')"
-                            },
-                            "authentication": "@parameters('$authentication')"
-                          }
-                        },
-                        "IF_v_First_Name_is_NULL": {
-                          "actions": {
-                            "set_v_First_Name_": {
-                              "runAfter": {},
-                              "metadata": {
-                                "operationMetadataId": "c7bc5f6a-e0dc-4e9c-84c3-5afa04c4157a"
-                              },
-                              "type": "SetVariable",
-                              "inputs": {
-                                "name": "v_FirstName",
-                                "value": "@triggerOutputs()?['body/firstname']"
-                              }
-                            }
-                          },
-                          "runAfter": {
-                            "Set_v_LoopTerminate_to_TRUE": [
-                              "Succeeded"
-                            ]
-                          },
-                          "expression": {
-                            "equals": [
-                              "@variables('v_FirstName')",
-                              "@variables('Dummy String')"
-                            ]
-                          },
-                          "metadata": {
-                            "operationMetadataId": "01d0efe1-0d9b-420f-a1ae-0ba00e4ba668"
-                          },
-                          "type": "If"
-                        },
-                        "IF_v_Middle_Name_is_NULL": {
-                          "actions": {
-                            "Set_v_Middle_Name": {
-                              "runAfter": {},
-                              "metadata": {
-                                "operationMetadataId": "eecbc063-cbc5-43ad-a1af-7d9a4b6bd1c3"
-                              },
-                              "type": "SetVariable",
-                              "inputs": {
-                                "name": "v_MiddleName",
-                                "value": "@triggerOutputs()?['body/middlename']"
-                              }
-                            }
-                          },
-                          "runAfter": {
-                            "IF_v_First_Name_is_NULL": [
-                              "Succeeded"
-                            ]
-                          },
-                          "expression": {
-                            "equals": [
-                              "@variables('v_MiddleName')",
-                              "@variables('Dummy String')"
-                            ]
-                          },
-                          "metadata": {
-                            "operationMetadataId": "2eb16b1d-771e-4e78-b424-35b011b24619"
-                          },
-                          "type": "If"
-                        },
-                        "IF_v_Last_Name_is_NULL": {
-                          "actions": {
-                            "set_v_Last_Name": {
-                              "runAfter": {},
-                              "metadata": {
-                                "operationMetadataId": "cef18e71-85ad-4696-a111-79780799d752"
-                              },
-                              "type": "SetVariable",
-                              "inputs": {
-                                "name": "v_LastName",
-                                "value": "@triggerOutputs()?['body/lastname']"
-                              }
-                            }
-                          },
-                          "runAfter": {
-                            "IF_v_Middle_Name_is_NULL": [
-                              "Succeeded"
-                            ]
-                          },
-                          "expression": {
-                            "equals": [
-                              "@variables('v_LastName')",
-                              "@variables('Dummy String')"
-                            ]
-                          },
-                          "metadata": {
-                            "operationMetadataId": "7eb796b9-d065-4187-ae83-bf2cc254823c"
-                          },
-                          "type": "If"
-                        },
-                        "Condition": {
-                          "actions": {
-                            "set_v_Preferred_Name": {
-                              "runAfter": {},
-                              "metadata": {
-                                "operationMetadataId": "8e06225a-795b-48b8-86cc-ba59bbd38dfc"
-                              },
-                              "type": "SetVariable",
-                              "inputs": {
-                                "name": "v_PreferredName",
-                                "value": "@triggerOutputs()?['body/ecer_preferredname']"
-                              }
-                            }
-                          },
-                          "runAfter": {
-                            "IF_v_Last_Name_is_NULL": [
-                              "Succeeded"
-                            ]
-                          },
-                          "expression": {
-                            "equals": [
-                              "@variables('v_PreferredName')",
-                              "@variables('Dummy String')"
-                            ]
-                          },
-                          "metadata": {
-                            "operationMetadataId": "cd91245d-21d7-4f74-af80-2b05c8462acf"
-                          },
-                          "type": "If"
-                        }
-                      }
-                    },
-                    "expression": {
-                      "and": [
-                        {
-                          "equals": [
-                            "@variables('v_FirstName')",
-                            "@variables('Dummy String')"
-                          ]
-                        },
-                        {
-                          "equals": [
-                            "@variables('v_LastName')",
-                            "@variables('Dummy String')"
-                          ]
-                        },
-                        {
-                          "equals": [
-                            "@variables('v_MiddleName')",
-                            "@variables('Dummy String')"
-                          ]
-                        },
-                        {
-                          "equals": [
-                            "@variables('v_PreferredName')",
-                            "@variables('Dummy String')"
-                          ]
-                        }
-                      ]
-                    },
-                    "metadata": {
-                      "operationMetadataId": "1b292dcc-7794-44e6-9146-0ffef67ca170"
-                    },
-                    "type": "If"
-                  }
-                }
-              },
-              "expression": {
-                "equals": [
-                  "@variables('v_LoopTerminate')",
-                  "@true"
-                ]
-              },
               "metadata": {
-                "operationMetadataId": "051b18a2-5e06-4e41-9969-dee603eb982c"
+                "operationMetadataId": "2fb82e2d-31b3-4506-af8f-4138f4ec1a08"
               },
-              "type": "If"
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_previousnames",
+                  "recordId": "@items('Apply_to_each')?['ecer_previousnameid']",
+                  "item/ecer_enddate": "@utcNow()"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
             }
           },
           "runAfter": {
-            "Get_the_latest_audit_record_for_this_triggering_record": [
+            "List_of_Previous_Names_of_contact_with_no_end_date": [
               "Succeeded"
             ]
           },
           "metadata": {
-            "operationMetadataId": "e5c454ed-bd0b-4f41-9316-2c85e0a0196b"
+            "operationMetadataId": "76fae9a0-2502-4834-82b6-e98bec99225e"
           },
           "type": "Foreach"
         },
-        "v_FirstName": {
+        "Add_a_new_row": {
           "runAfter": {
-            "Dummy_String": [
+            "Get_full_contact_record": [
               "Succeeded"
             ]
           },
           "metadata": {
-            "operationMetadataId": "00f334da-c6a2-4846-a7ee-8e849ed76e0d"
+            "operationMetadataId": "12e054c1-6453-406d-a78a-bbdf1b994184"
           },
-          "type": "InitializeVariable",
+          "type": "OpenApiConnection",
           "inputs": {
-            "variables": [
-              {
-                "name": "v_FirstName",
-                "type": "string",
-                "value": "@variables('Dummy String')"
-              }
-            ]
-          }
-        },
-        "v_MiddleName": {
-          "runAfter": {
-            "v_FirstName": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "5ba85ad6-b79a-4d00-8432-2238deee8057"
-          },
-          "type": "InitializeVariable",
-          "inputs": {
-            "variables": [
-              {
-                "name": "v_MiddleName",
-                "type": "string",
-                "value": "@variables('Dummy String')"
-              }
-            ]
-          }
-        },
-        "v_LastName": {
-          "runAfter": {
-            "v_MiddleName": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "42a71895-1a78-4a57-a0a2-3c5fbb0a052f"
-          },
-          "type": "InitializeVariable",
-          "inputs": {
-            "variables": [
-              {
-                "name": "v_LastName",
-                "type": "string",
-                "value": "@variables('Dummy String')"
-              }
-            ]
-          }
-        },
-        "v_PreferredName": {
-          "runAfter": {
-            "v_LastName": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "1ce1c46b-1055-4ffe-ba24-fb7660dafeca"
-          },
-          "type": "InitializeVariable",
-          "inputs": {
-            "variables": [
-              {
-                "name": "v_PreferredName",
-                "type": "string",
-                "value": "@variables('Dummy String')"
-              }
-            ]
-          }
-        },
-        "Initialize_variable": {
-          "runAfter": {
-            "v_PreferredName": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "917f7b34-7d11-49a8-b2ee-4f9d29e1ce1b"
-          },
-          "type": "InitializeVariable",
-          "inputs": {
-            "variables": [
-              {
-                "name": "v_LoopTerminate",
-                "type": "boolean",
-                "value": "@false"
-              }
-            ]
-          }
-        },
-        "Dummy_String": {
-          "runAfter": {},
-          "metadata": {
-            "operationMetadataId": "62813c3a-8ae7-4931-a039-e50988ffec36"
-          },
-          "type": "InitializeVariable",
-          "inputs": {
-            "variables": [
-              {
-                "name": "Dummy String",
-                "type": "string",
-                "value": "XXYYZZ"
-              }
-            ]
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_previousnames",
+              "item/ecer_Contactid@odata.bind": "contacts(@{outputs('Get_full_contact_record')?['body/contactid']})",
+              "item/ecer_firstname": "@outputs('Get_full_contact_record')?['body/firstname']",
+              "item/ecer_lastname": "@outputs('Get_full_contact_record')?['body/lastname']",
+              "item/ecer_middlename": "@outputs('Get_full_contact_record')?['body/middlename']",
+              "item/ecer_preferredname": "@outputs('Get_full_contact_record')?['body/ecer_preferredname']",
+              "item/ecer_startdate": "@utcNow()"
+            },
+            "authentication": "@parameters('$authentication')"
           }
         }
       }
