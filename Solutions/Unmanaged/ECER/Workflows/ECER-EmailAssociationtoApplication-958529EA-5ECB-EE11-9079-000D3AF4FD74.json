@@ -200,7 +200,7 @@
           "expression": {
             "startsWith": [
               "@triggerOutputs()?['body/_regardingobjectid_type']",
-              "ecer_workexperiencereference"
+              "ecer_workexperiencerefs"
             ]
           },
           "metadata": {

@@ -5,7 +5,7 @@
       <LocalizedName description="ECER" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.9</Version>
+    <Version>1.0.0.10</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>ecer</UniqueName>
@@ -80,6 +80,7 @@
     </Publisher>
     <RootComponents>
       <RootComponent type="1" schemaName="account" behavior="1" />
+      <RootComponent type="1" schemaName="bcgov_documenturl" behavior="0" />
       <RootComponent type="1" schemaName="businessunit" behavior="0" />
       <RootComponent type="1" schemaName="contact" behavior="1" />
       <RootComponent type="1" schemaName="ecer_application" behavior="0" />
@@ -194,6 +195,7 @@
       <RootComponent type="60" id="{35be10f3-ea72-ee11-8179-000d3af4fa73}" behavior="0" />
       <RootComponent type="60" id="{5e72a728-93c0-ee11-9079-000d3af4fa73}" behavior="0" />
       <RootComponent type="60" id="{e2be16b5-d2b0-ee11-a569-000d3af4fa73}" behavior="0" />
+      <RootComponent type="61" schemaName="bcgov_/Scripts/DocumentUrl/OnLoad.js" behavior="0" />
       <RootComponent type="61" schemaName="ecer_application.js" behavior="0" />
       <RootComponent type="61" schemaName="ecer_ApplicationIcon.svg" behavior="0" />
       <RootComponent type="61" schemaName="ecer_certificate.svg" behavior="0" />
@@ -210,10 +212,104 @@
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="1" schemaName="bcgov_documenturl" displayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_appointment_bcgov_documenturl" displayName="bcgov_appointment_bcgov_documenturl" parentSchemaName="appointment" parentDisplayName="Appointment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_tag2_bcgov_documenturl" displayName="bcgov_tag2_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="ecer_documenturl_ApplicationId" displayName="ecer_documenturl_ApplicationId" parentSchemaName="ecer_application" parentDisplayName="Application" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_email_bcgov_documenturl" displayName="bcgov_email_bcgov_documenturl" parentSchemaName="email" parentDisplayName="Email" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_fax_bcgov_documenturl" displayName="bcgov_fax_bcgov_documenturl" parentSchemaName="fax" parentDisplayName="Fax" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_incident_bcgov_documenturl" displayName="bcgov_incident_bcgov_documenturl" parentSchemaName="incident" parentDisplayName="Case" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_letter_bcgov_documenturl" displayName="bcgov_letter_bcgov_documenturl" parentSchemaName="letter" parentDisplayName="Letter" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_phonecall_bcgov_documenturl" displayName="bcgov_phonecall_bcgov_documenturl" parentSchemaName="phonecall" parentDisplayName="Phone Call" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_task_bcgov_documenturl" displayName="bcgov_task_bcgov_documenturl" parentSchemaName="task" parentDisplayName="Task" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="2" schemaName="bcgov_customer" displayName="Customer" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="2" schemaName="createdby" displayName="Created By" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="2" schemaName="createdonbehalfby" displayName="Created By (Delegate)" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="2" schemaName="ecer_applicationid" displayName="Application" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="2" schemaName="modifiedby" displayName="Modified By" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="2" schemaName="modifiedonbehalfby" displayName="Modified By (Delegate)" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="2" schemaName="owningbusinessunit" displayName="Owning Business Unit" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="2" schemaName="owningteam" displayName="Owning Team" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="2" schemaName="owninguser" displayName="Owning User" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="2" schemaName="versionnumber" displayName="Version Number" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_tag" displayName="Tag" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_tag2_bcgov_documenturl" displayName="bcgov_tag2_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="entitlement" displayName="Entitlement" solution="msdynce_Service (9.0.5.56)">
           <package>msdynce_ServiceAnchor (9.0.24021.1001)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.24021.1001)</package>
+        </Required>
+        <Dependent type="10" schemaName="bcgov_incident_bcgov_documenturl" displayName="bcgov_incident_bcgov_documenturl" parentSchemaName="incident" parentDisplayName="Case" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
@@ -235,15 +331,219 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="opportunity" displayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)">
-          <package>msdynce_SalesAnchor (9.0.24022.10004)</package>
+          <package>msdynce_SalesAnchor (9.0.24023.10003)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_appointment_bcgov_documenturl" displayName="bcgov_appointment_bcgov_documenturl" parentSchemaName="appointment" parentDisplayName="Appointment" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_appointment_bcgov_documenturl" displayName="bcgov_appointment_bcgov_documenturl" parentSchemaName="appointment" parentDisplayName="Appointment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_appointment_bcgov_documenturl" displayName="bcgov_appointment_bcgov_documenturl" parentSchemaName="appointment" parentDisplayName="Appointment" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_tag1_bcgov_documenturl" displayName="bcgov_tag1_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_tag2_bcgov_documenturl" displayName="bcgov_tag2_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_tag1_bcgov_documenturl" displayName="bcgov_tag1_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_tag2_bcgov_documenturl" displayName="bcgov_tag2_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_tag2_bcgov_documenturl" displayName="bcgov_tag2_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_tag2_bcgov_documenturl" displayName="bcgov_tag2_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_tag3_bcgov_documenturl" displayName="bcgov_tag3_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_tag2_bcgov_documenturl" displayName="bcgov_tag2_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_tag3_bcgov_documenturl" displayName="bcgov_tag3_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_email_bcgov_documenturl" displayName="bcgov_email_bcgov_documenturl" parentSchemaName="email" parentDisplayName="Email" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_email_bcgov_documenturl" displayName="bcgov_email_bcgov_documenturl" parentSchemaName="email" parentDisplayName="Email" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_email_bcgov_documenturl" displayName="bcgov_email_bcgov_documenturl" parentSchemaName="email" parentDisplayName="Email" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_fax_bcgov_documenturl" displayName="bcgov_fax_bcgov_documenturl" parentSchemaName="fax" parentDisplayName="Fax" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_fax_bcgov_documenturl" displayName="bcgov_fax_bcgov_documenturl" parentSchemaName="fax" parentDisplayName="Fax" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_fax_bcgov_documenturl" displayName="bcgov_fax_bcgov_documenturl" parentSchemaName="fax" parentDisplayName="Fax" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_incident_bcgov_documenturl" displayName="bcgov_incident_bcgov_documenturl" parentSchemaName="incident" parentDisplayName="Case" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_incident_bcgov_documenturl" displayName="bcgov_incident_bcgov_documenturl" parentSchemaName="incident" parentDisplayName="Case" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_incident_bcgov_documenturl" displayName="bcgov_incident_bcgov_documenturl" parentSchemaName="incident" parentDisplayName="Case" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_letter_bcgov_documenturl" displayName="bcgov_letter_bcgov_documenturl" parentSchemaName="letter" parentDisplayName="Letter" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_letter_bcgov_documenturl" displayName="bcgov_letter_bcgov_documenturl" parentSchemaName="letter" parentDisplayName="Letter" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_letter_bcgov_documenturl" displayName="bcgov_letter_bcgov_documenturl" parentSchemaName="letter" parentDisplayName="Letter" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_phonecall_bcgov_documenturl" displayName="bcgov_phonecall_bcgov_documenturl" parentSchemaName="phonecall" parentDisplayName="Phone Call" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_phonecall_bcgov_documenturl" displayName="bcgov_phonecall_bcgov_documenturl" parentSchemaName="phonecall" parentDisplayName="Phone Call" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_phonecall_bcgov_documenturl" displayName="bcgov_phonecall_bcgov_documenturl" parentSchemaName="phonecall" parentDisplayName="Phone Call" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_task_bcgov_documenturl" displayName="bcgov_task_bcgov_documenturl" parentSchemaName="task" parentDisplayName="Task" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_task_bcgov_documenturl" displayName="bcgov_task_bcgov_documenturl" parentSchemaName="task" parentDisplayName="Task" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="bcgov_task_bcgov_documenturl" displayName="bcgov_task_bcgov_documenturl" parentSchemaName="task" parentDisplayName="Task" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="originatingleadid" displayName="Originating Lead" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_LeadManagement (9.0.4.0066)">
           <package>msdynce_LeadManagementAnchor (9.0.24022.10001)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_appointmentid" displayName="Appointment" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_appointment_bcgov_documenturl" displayName="bcgov_appointment_bcgov_documenturl" parentSchemaName="appointment" parentDisplayName="Appointment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_appointmentid" displayName="Appointment" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_caseid" displayName="Case" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_incident_bcgov_documenturl" displayName="bcgov_incident_bcgov_documenturl" parentSchemaName="incident" parentDisplayName="Case" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_caseid" displayName="Case" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_customer" displayName="Customer" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="2" schemaName="bcgov_customer" displayName="Customer" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_customer" displayName="Customer" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_emailid" displayName="Email" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_email_bcgov_documenturl" displayName="bcgov_email_bcgov_documenturl" parentSchemaName="email" parentDisplayName="Email" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_emailid" displayName="Email" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_faxid" displayName="Fax" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_fax_bcgov_documenturl" displayName="bcgov_fax_bcgov_documenturl" parentSchemaName="fax" parentDisplayName="Fax" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_faxid" displayName="Fax" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_fileclassification" displayName="Classification" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_filename" displayName="File Name" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_letterid" displayName="Letter" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_letter_bcgov_documenturl" displayName="bcgov_letter_bcgov_documenturl" parentSchemaName="letter" parentDisplayName="Letter" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_letterid" displayName="Letter" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_origincode" displayName="Origin" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_phonecallid" displayName="Phone Call" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_phonecall_bcgov_documenturl" displayName="bcgov_phonecall_bcgov_documenturl" parentSchemaName="phonecall" parentDisplayName="Phone Call" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_phonecallid" displayName="Phone Call" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_receiveddate" displayName="Received Date" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_tag1id" displayName="Tag 1" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_tag1_bcgov_documenturl" displayName="bcgov_tag1_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_tag1id" displayName="Tag 1" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_tag2id" displayName="Tag 2" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_tag1_bcgov_documenturl" displayName="bcgov_tag1_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_tag2id" displayName="Tag 2" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_tag3id" displayName="Tag 3" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_tag1_bcgov_documenturl" displayName="bcgov_tag1_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_tag3id" displayName="Tag 3" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_taskid" displayName="Task" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_task_bcgov_documenturl" displayName="bcgov_task_bcgov_documenturl" parentSchemaName="task" parentDisplayName="Task" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_taskid" displayName="Task" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="modifiedon" displayName="Modified On" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_name" displayName="Name" parentSchemaName="bcgov_tag" parentDisplayName="Tag" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_tag2_bcgov_documenturl" displayName="bcgov_tag2_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_tagid" displayName="Tag" parentSchemaName="bcgov_tag" parentDisplayName="Tag" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="bcgov_tag1_bcgov_documenturl" displayName="bcgov_tag1_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="adx_identity_mobilephoneconfirmed" displayName="Mobile Phone Confirmed" parentSchemaName="contact" parentDisplayName="Contact" solution="PowerPages_RuntimeCore (1.0.2312.2)">
@@ -270,6 +570,18 @@
         <Dependent type="2" schemaName="mspp_userpreferredlcid" displayName="Preferred Language" parentSchemaName="contact" parentDisplayName="Contact" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="incidentid" displayName="Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.24021.1001)</package>
+        </Required>
+        <Dependent type="10" schemaName="bcgov_incident_bcgov_documenturl" displayName="bcgov_incident_bcgov_documenturl" parentSchemaName="incident" parentDisplayName="Case" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
+          <package>msdynce_ServiceAnchor (9.0.24021.1001)</package>
+        </Required>
+        <Dependent type="10" schemaName="bcgov_incident_bcgov_documenturl" displayName="bcgov_incident_bcgov_documenturl" parentSchemaName="incident" parentDisplayName="Case" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="All Cases for Customer" displayName="All Cases for Customer" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)" id="{00000000-0000-0000-00aa-000010001039}">
           <package>msdynce_ServiceAnchor (9.0.24021.1001)</package>
         </Required>
@@ -277,7 +589,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="My Open Opportunities" displayName="My Open Opportunities" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{00000000-0000-0000-00aa-000010003000}">
-          <package>msdynce_SalesAnchor (9.0.24022.10004)</package>
+          <package>msdynce_SalesAnchor (9.0.24023.10003)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
@@ -294,8 +606,14 @@
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Case Lookup View" displayName="Case Lookup View" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)" id="{9ac51863-58c7-49a0-adcc-afd9a4c3ee59}">
+          <package>msdynce_ServiceAnchor (9.0.24021.1001)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Recent Opportunities" displayName="Recent Opportunities" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{9c3f7ee8-eca7-e211-9fb6-00155dd0ea05}">
-          <package>msdynce_SalesAnchor (9.0.24022.10004)</package>
+          <package>msdynce_SalesAnchor (9.0.24023.10003)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
@@ -319,7 +637,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="59" schemaName="Top Customers" displayName="Top Customers" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{8bc5fb18-48f2-4782-9e16-3d452fa4ddce}">
-          <package>msdynce_SalesAnchor (9.0.24022.10004)</package>
+          <package>msdynce_SalesAnchor (9.0.24023.10003)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
@@ -410,6 +728,10 @@
         <Dependent type="60" displayName="Task for Interactive experience" parentDisplayName="Task" id="{d5b4a1b2-de4f-4f86-8768-b0730001e7d1}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Task card" parentDisplayName="Task" solution="msdyn_acceleratedsales (9.1.24022.10005)" id="{e9c378d3-27a7-43fe-8075-322dcd7ff380}">
           <package>msdyn_AcceleratedSalesAnchor (9.1.24022.10005)</package>
         </Required>
@@ -428,6 +750,10 @@
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Email_main_system_library.js" displayName="Activities/SystemLibraries/Email_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Email" id="{394ca387-4777-457c-b5ae-c7a3e632be41}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="bcgov_/Scripts/DocumentUrl/OnLoad.js" displayName="bcgov_/Scripts/DocumentUrl/OnLoad.js" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="61" schemaName="bcgov_/Scripts/DocumentUrl/OnLoad.js" displayName="bcgov_/Scripts/DocumentUrl/OnLoad.js" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_/Account/AssetCommon.Account.Library.js" displayName="msdyn_/Account/AssetCommon.Account.Library.js" solution="msdyn_AssetCommon (1.0.26.9)">
@@ -470,14 +796,14 @@
         <Dependent type="60" displayName="Email" parentDisplayName="Email" id="{0d1e47ff-12b2-4f53-9090-bee951b98cb4}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_SalesCopilot/Copilot.Library.js" displayName="msdyn_SalesCopilot/Copilot.Library.js" solution="msdyn_SalesCopilot (9.1.24022.10003)">
-          <package>msdynce_SalesAnchor (9.0.24022.10004)</package>
+        <Required type="61" schemaName="msdyn_SalesCopilot/Copilot.Library.js" displayName="msdyn_SalesCopilot/Copilot.Library.js" solution="msdyn_SalesCopilot (9.1.24023.10003)">
+          <package>msdynce_SalesAnchor (9.0.24023.10003)</package>
         </Required>
         <Dependent type="60" displayName="Email" parentDisplayName="Email" id="{0d1e47ff-12b2-4f53-9090-bee951b98cb4}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_SalesCopilot/Copilot.Library.js" displayName="msdyn_SalesCopilot/Copilot.Library.js" solution="msdyn_SalesCopilot (9.1.24022.10003)">
-          <package>msdynce_SalesAnchor (9.0.24022.10004)</package>
+        <Required type="61" schemaName="msdyn_SalesCopilot/Copilot.Library.js" displayName="msdyn_SalesCopilot/Copilot.Library.js" solution="msdyn_SalesCopilot (9.1.24023.10003)">
+          <package>msdynce_SalesAnchor (9.0.24023.10003)</package>
         </Required>
         <Dependent type="60" displayName="Enhanced Email" parentDisplayName="Email" id="{63769d04-c74f-4808-b0aa-77339e1b9191}" />
       </MissingDependency>
@@ -501,7 +827,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Sales/ClientCommon/Sales_ClientCommon.js" displayName="Sales/ClientCommon/Sales_ClientCommon.js" solution="msdynce_Sales (9.0.4.0076)">
-          <package>msdynce_SalesAnchor (9.0.24022.10004)</package>
+          <package>msdynce_SalesAnchor (9.0.24023.10003)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>

@@ -63,17 +63,21 @@
                 },
                 "parameters": {
                   "entityName": "tasks",
-                  "recordId": "@triggerOutputs()?['body/activityid']",
+                  "recordId": "@variables('Activity ID')",
                   "item/ecer_Application_Task@odata.bind": "ecer_applications(@{triggerOutputs()?['body/_regardingobjectid_value']})"
                 },
                 "authentication": "@parameters('$authentication')"
               }
             }
           },
-          "runAfter": {},
+          "runAfter": {
+            "Initialize_variable_-_Activity_ID": [
+              "Succeeded"
+            ]
+          },
           "expression": {
             "startsWith": [
-              "@triggerOutputs()?['body/_regardingobjectid_value']",
+              "@triggerOutputs()?['body/_regardingobjectid_type']",
               "ecer_application"
             ]
           },
@@ -98,8 +102,7 @@
                 },
                 "parameters": {
                   "entityName": "ecer_characterreferences",
-                  "recordId": "@triggerOutputs()?['body/_regardingobjectid_value']",
-                  "$select": "_ecer_applicationid_value"
+                  "recordId": "@variables('Regarding Object ID')"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -122,7 +125,7 @@
                 },
                 "parameters": {
                   "entityName": "tasks",
-                  "recordId": "@triggerOutputs()?['body/activityid']",
+                  "recordId": "@variables('Activity ID')",
                   "item/ecer_Application_Task@odata.bind": "ecer_applications(@{outputs('Get_Application_ID_from_Regarding_Character_Reference_Record')?['body/_ecer_applicationid_value']})"
                 },
                 "authentication": "@parameters('$authentication')"
@@ -136,7 +139,7 @@
           },
           "expression": {
             "startsWith": [
-              "@triggerOutputs()?['body/_regardingobjectid_value']",
+              "@triggerOutputs()?['body/_regardingobjectid_type']",
               "ecer_characterreference"
             ]
           },
@@ -147,10 +150,10 @@
         },
         "IF_Regarding_table_name_starts_with__ecer_workexperiencereference": {
           "actions": {
-            "Get_Application_ID_from_Regarding_Work_Experience_Reference_Record_": {
+            "Get_Application_ID_From_Work_Experience_Reference": {
               "runAfter": {},
               "metadata": {
-                "operationMetadataId": "4eb966e7-48d7-4222-b346-34a2211dc849"
+                "operationMetadataId": "aa10217f-7d0c-4525-a9c8-f8d8e999b5c0"
               },
               "type": "OpenApiConnection",
               "inputs": {
@@ -161,20 +164,19 @@
                 },
                 "parameters": {
                   "entityName": "ecer_workexperiencerefs",
-                  "recordId": "@triggerOutputs()?['body/_regardingobjectid_value']",
-                  "$select": "_ecer_applicationid_value"
+                  "recordId": "@variables('Regarding Object ID')"
                 },
                 "authentication": "@parameters('$authentication')"
               }
             },
             "Update_a_row_2": {
               "runAfter": {
-                "Get_Application_ID_from_Regarding_Work_Experience_Reference_Record_": [
+                "Get_Application_ID_From_Work_Experience_Reference": [
                   "Succeeded"
                 ]
               },
               "metadata": {
-                "operationMetadataId": "fcd82726-4cc1-40e6-a57a-9a0334b6d1d7"
+                "operationMetadataId": "8dea2c7d-3c22-48bd-9d4b-d75c3a2901a1"
               },
               "type": "OpenApiConnection",
               "inputs": {
@@ -185,8 +187,8 @@
                 },
                 "parameters": {
                   "entityName": "tasks",
-                  "recordId": "@triggerOutputs()?['body/activityid']",
-                  "item/ecer_Application_Task@odata.bind": "ecer_applications(@{outputs('Get_Application_ID_from_Regarding_Work_Experience_Reference_Record_')?['body/_ecer_applicationid_value']})"
+                  "recordId": "@variables('Activity ID')",
+                  "item/ecer_Application_Task@odata.bind": "ecer_applications(@{outputs('Get_Application_ID_From_Work_Experience_Reference')?['body/_ecer_applicationid_value']})"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -199,14 +201,50 @@
           },
           "expression": {
             "startsWith": [
-              "@triggerOutputs()?['body/_regardingobjectid_value']",
-              "ecer_workexperiencereference"
+              "@triggerOutputs()?['body/_regardingobjectid_type']",
+              "ecer_workexperiencerefs"
             ]
           },
           "metadata": {
             "operationMetadataId": "b2722ccc-60e6-4ae8-a2e2-09449ff07154"
           },
           "type": "If"
+        },
+        "Initialize_Variable_-_Regarding_Object_ID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "6cdf85ad-bf9d-4f35-bdda-63cf477e6fd1"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Regarding Object ID",
+                "type": "string",
+                "value": "@triggerOutputs()?['body/_regardingobjectid_value']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Activity_ID": {
+          "runAfter": {
+            "Initialize_Variable_-_Regarding_Object_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c6023853-6941-4f27-b7d4-b4b8b1e31e59"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Activity ID",
+                "type": "string",
+                "value": "@triggerOutputs()?['body/activityid']"
+              }
+            ]
+          }
         }
       }
     },

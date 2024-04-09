@@ -72,7 +72,7 @@
           "runAfter": {},
           "expression": {
             "startsWith": [
-              "@triggerOutputs()?['body/_regardingobjectid_value']",
+              "@triggerOutputs()?['body/_regardingobjectid_type']",
               "ecer_application"
             ]
           },
@@ -135,7 +135,7 @@
           },
           "expression": {
             "startsWith": [
-              "@triggerOutputs()?['body/_regardingobjectid_value']",
+              "@triggerOutputs()?['body/_regardingobjectid_type']",
               "ecer_characterreference"
             ]
           },
@@ -198,8 +198,8 @@
           },
           "expression": {
             "startsWith": [
-              "@triggerOutputs()?['body/_regardingobjectid_value']",
-              "ecer_workexperiencereference"
+              "@triggerOutputs()?['body/_regardingobjectid_type']",
+              "ecer_workexperiencerefs"
             ]
           },
           "metadata": {

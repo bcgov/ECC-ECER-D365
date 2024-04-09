@@ -21,7 +21,7 @@
       <mxswa:ActivityReference.Properties>
         <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
         <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StageComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StageStep3: Intake">
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StageComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StageStep3: Submission">
             <mxswa:ActivityReference.Properties>
               <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
               <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
@@ -216,7 +216,7 @@
                 </mxswa:ActivityReference>
               </sco:Collection>
               <sco:Collection x:TypeArguments="mcwo:StepLabel" x:Key="StepLabels">
-                <mcwo:StepLabel Description="Intake" LabelId="b1780da9-e9b2-4dbe-8afd-76dc60de0004" LanguageCode="1033" />
+                <mcwo:StepLabel Description="Submission" LabelId="b1780da9-e9b2-4dbe-8afd-76dc60de0004" LanguageCode="1033" />
               </sco:Collection>
               <x:String x:Key="StageId">b1780da9-e9b2-4dbe-8afd-76dc60de0004</x:String>
               <x:String x:Key="StageCategory">0</x:String>

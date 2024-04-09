@@ -63,17 +63,21 @@
                 },
                 "parameters": {
                   "entityName": "phonecalls",
-                  "recordId": "@triggerOutputs()?['body/activityid']",
+                  "recordId": "@variables('Activity ID')",
                   "item/ecer_Application_PhoneCall@odata.bind": "@triggerOutputs()?['body/_regardingobjectid_value']"
                 },
                 "authentication": "@parameters('$authentication')"
               }
             }
           },
-          "runAfter": {},
+          "runAfter": {
+            "Initialize_variable_2": [
+              "Succeeded"
+            ]
+          },
           "expression": {
             "startsWith": [
-              "@triggerOutputs()?['body/_regardingobjectid_value']",
+              "@triggerOutputs()?['body/_regardingobjectid_type']",
               "ecer_application"
             ]
           },
@@ -98,8 +102,7 @@
                 },
                 "parameters": {
                   "entityName": "ecer_characterreferences",
-                  "recordId": "@triggerOutputs()?['body/_regardingobjectid_value']",
-                  "$select": "_ecer_applicationid_value"
+                  "recordId": "@triggerOutputs()?['body/_regardingobjectid_value']"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -122,7 +125,7 @@
                 },
                 "parameters": {
                   "entityName": "phonecalls",
-                  "recordId": "@outputs('Linking_Application_table')?['body/activityid']",
+                  "recordId": "@variables('Activity ID')",
                   "item/ecer_Application_PhoneCall@odata.bind": "ecer_applications(@{outputs('Get_Application_ID_from_Regarding_Character_Reference_Record')?['body/_ecer_applicationid_value']})"
                 },
                 "authentication": "@parameters('$authentication')"
@@ -136,7 +139,7 @@
           },
           "expression": {
             "startsWith": [
-              "@triggerOutputs()?['body/_regardingobjectid_value']",
+              "@triggerOutputs()?['body/_regardingobjectid_type']",
               "ecer_characterreference"
             ]
           },
@@ -161,8 +164,7 @@
                 },
                 "parameters": {
                   "entityName": "ecer_workexperiencerefs",
-                  "recordId": "@triggerOutputs()?['body/_regardingobjectid_value']",
-                  "$select": "_ecer_applicationid_value"
+                  "recordId": "@variables('Regarding Object ID')"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -185,7 +187,7 @@
                 },
                 "parameters": {
                   "entityName": "phonecalls",
-                  "recordId": "@outputs('Linking_Application_table')?['body/activityid']",
+                  "recordId": "@variables('Activity ID')",
                   "item/ecer_Application_PhoneCall@odata.bind": "ecer_applications(@{outputs('Get_Application_ID_from_Regarding_Work_Experience_Reference_Record')?['body/_ecer_applicationid_value']})"
                 },
                 "authentication": "@parameters('$authentication')"
@@ -199,14 +201,50 @@
           },
           "expression": {
             "startsWith": [
-              "@triggerOutputs()?['body/_regardingobjectid_value']",
-              "ecer_workexperiencereference"
+              "@triggerOutputs()?['body/_regardingobjectid_type']",
+              "ecer_workexperiencerefs"
             ]
           },
           "metadata": {
             "operationMetadataId": "50d1f8c1-0c20-489d-9c73-1887e4938bee"
           },
           "type": "If"
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "b38da262-b2b2-4945-94a7-9cd8282eb532"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Regarding Object ID",
+                "type": "string",
+                "value": "@triggerOutputs()?['body/_regardingobjectid_value']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_2": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7b23c764-dcda-4b33-bc66-8cca5e6874f2"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Activity ID",
+                "type": "string",
+                "value": "@triggerOutputs()?['body/activityid']"
+              }
+            ]
+          }
         }
       }
     },
