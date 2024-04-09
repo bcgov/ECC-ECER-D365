@@ -5,7 +5,7 @@
       <LocalizedName description="ECER" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.12</Version>
+    <Version>1.0.0.13</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>ecer</UniqueName>
@@ -184,6 +184,7 @@
       <RootComponent type="29" id="{04357430-cbbf-ee11-9079-000d3af4f18a}" behavior="0" />
       <RootComponent type="29" id="{0b7dea89-62d6-ee11-904d-000d3af4f18a}" behavior="0" />
       <RootComponent type="29" id="{0dc29a4f-24c1-ee11-9079-000d3af4fd74}" behavior="0" />
+      <RootComponent type="29" id="{10f35d17-24e3-ee11-904c-002248d56374}" behavior="0" />
       <RootComponent type="29" id="{11588905-9fca-ee11-9079-000d3af4fa73}" behavior="0" />
       <RootComponent type="29" id="{169ff038-92bf-ee11-9079-000d3af4fa73}" behavior="0" />
       <RootComponent type="29" id="{27efb836-cfbb-ee11-9079-000d3af4f18a}" behavior="0" />
@@ -209,10 +210,10 @@
       <RootComponent type="29" id="{adb19722-f1c9-ee11-9079-000d3af4fd74}" behavior="0" />
       <RootComponent type="29" id="{b3c5f56c-9cb5-ee11-a569-000d3af4f18a}" behavior="0" />
       <RootComponent type="29" id="{c5910727-66c0-ee11-9079-000d3af4fd74}" behavior="0" />
-      <RootComponent type="29" id="{cabc0046-8cb5-ee11-a569-000d3af4fa73}" behavior="0" />
       <RootComponent type="29" id="{d0395999-66e1-ee11-904c-0022486e1cec}" behavior="0" />
       <RootComponent type="29" id="{d04a9eae-66d6-ee11-904d-000d3af4f18a}" behavior="0" />
       <RootComponent type="29" id="{d5582eab-afbf-ee11-9079-000d3af4febe}" behavior="0" />
+      <RootComponent type="29" id="{d5e8921b-79e1-ee11-904d-000d3af4a207}" behavior="0" />
       <RootComponent type="29" id="{dadb3640-cfc9-ee11-9079-000d3af4febe}" behavior="0" />
       <RootComponent type="29" id="{dfc6730d-52e1-ee11-904c-0022486e0199}" behavior="0" />
       <RootComponent type="29" id="{e6a4cfb7-adcf-ee11-904d-000d3af4fd74}" behavior="0" />
@@ -234,6 +235,7 @@
       <RootComponent type="61" schemaName="ecer_contact.js" behavior="0" />
       <RootComponent type="61" schemaName="ecer_country.svg" behavior="0" />
       <RootComponent type="61" schemaName="ecer_decisioncomment.js" behavior="0" />
+      <RootComponent type="61" schemaName="ecer_investigation.js" behavior="0" />
       <RootComponent type="61" schemaName="ecer_Province.svg" behavior="0" />
       <RootComponent type="61" schemaName="ecer_school.svg" behavior="0" />
       <RootComponent type="61" schemaName="ecer_search.svg" behavior="0" />

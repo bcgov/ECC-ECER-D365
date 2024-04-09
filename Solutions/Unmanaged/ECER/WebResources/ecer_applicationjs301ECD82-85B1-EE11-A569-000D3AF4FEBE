@@ -100,7 +100,7 @@ ECER.Jscripts.Application =
             eventArgs.preventDefault();
         }
     },
-
+    // ECER-1370
     levelOfRequirmentOnDenailReasonTypeChange: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var denialReasonTypeAttribute = formContext.getAttribute("ecer_denialreasontype");
@@ -114,17 +114,19 @@ ECER.Jscripts.Application =
         if (denialReasonTypeAttribute.getValue() !== null) {
             var denialReasonTypeValue = denialReasonTypeAttribute.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
             if (denialReasonTypeValue === denailReasonTypeOTHER) {
-                // Denied
+                // OTHER
                 denialReasonExplanationRequired = "required";
             }
         }
 
         crm_Utility.setRequiredLevel(executionContext, denialReasonExplanationRequired, denialReasonExplanationAttributeName);
     },
-
+    // ECER-1370
     levelOfRequirementOnStatusReasonDetailsChange: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var statusReasonDetailsAttribute = formContext.getAttribute("ecer_statusreasondetail");
+        var denialReasonExplanationAttributeName = "ecer_denialreasonexplanation";
+        var generateCertificateRecordAttributeName = "ecer_generatecertificaterecord";
         var denialReasonTypeAttributeName = "ecer_denialreasontype";
         if (statusReasonDetailsAttribute == null) {
             return; // If Status Reason Details is NOT on form, then nothing to compare to
@@ -132,11 +134,20 @@ ECER.Jscripts.Application =
 
         var statusReasonDetailsValue = statusReasonDetailsAttribute.getValue();
         var denialReasonTypeRequired = "none";
+        var denialReasonDisable = true;
+        var certifiedDisable = true;
         if (statusReasonDetailsValue === 621870011) {
             // Denied
             denialReasonTypeRequired = "required";
+            denialReasonDisable = false;
         }
-
+        if (statusReasonDetailsValue === 621870010) {
+            // Certified
+            certifiedDisable = false;
+        }
+        crm_Utility.enableDisable(executionContext, certifiedDisable, generateCertificateRecordAttributeName);
+        crm_Utility.enableDisable(executionContext, denialReasonDisable, denialReasonExplanationAttributeName);
+        crm_Utility.enableDisable(executionContext, denialReasonDisable, denialReasonTypeAttributeName);
         crm_Utility.setRequiredLevel(executionContext, denialReasonTypeRequired, denialReasonTypeAttributeName);
     },
 

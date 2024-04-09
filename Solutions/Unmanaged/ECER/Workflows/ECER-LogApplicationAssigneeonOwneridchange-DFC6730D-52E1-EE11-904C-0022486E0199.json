@@ -154,6 +154,110 @@
                       }
                     },
                     "runAfter": {},
+                    "else": {
+                      "actions": {
+                        "If_Active_Stage_ID_is_Program_Analysis": {
+                          "actions": {
+                            "Set_BPF_Stage_Name_-_Program_Analysis": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "ffd3c9a2-797c-4b6c-a3f2-f1a945c64848"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "BPF Stage Name",
+                                "value": "Program Analysis"
+                              }
+                            }
+                          },
+                          "runAfter": {},
+                          "else": {
+                            "actions": {
+                              "If_Active_Stage_ID_is_Assessment_Review": {
+                                "actions": {
+                                  "Set_BPF_Stage_Name_-_Assessment_Review": {
+                                    "runAfter": {},
+                                    "metadata": {
+                                      "operationMetadataId": "0f66fb53-eee7-47a4-a330-217a51beb24b"
+                                    },
+                                    "type": "SetVariable",
+                                    "inputs": {
+                                      "name": "BPF Stage Name",
+                                      "value": "Assessment Review"
+                                    }
+                                  }
+                                },
+                                "runAfter": {},
+                                "else": {
+                                  "actions": {
+                                    "If_Active_Stage_ID_is_Program_Review": {
+                                      "actions": {
+                                        "Set_BPF_Stage_Name_-_Program_Review": {
+                                          "runAfter": {},
+                                          "metadata": {
+                                            "operationMetadataId": "9b102baf-5853-49a7-a08c-15ad50284784"
+                                          },
+                                          "type": "SetVariable",
+                                          "inputs": {
+                                            "name": "BPF Stage Name",
+                                            "value": "Program Review"
+                                          }
+                                        }
+                                      },
+                                      "runAfter": {},
+                                      "expression": {
+                                        "equals": [
+                                          "@variables('Active Stage ID')",
+                                          "@variables('BPF Stage - Program Review')"
+                                        ]
+                                      },
+                                      "metadata": {
+                                        "operationMetadataId": "f21bcfd7-be8b-47d3-975e-58c3dd446808"
+                                      },
+                                      "type": "If"
+                                    }
+                                  }
+                                },
+                                "expression": {
+                                  "equals": [
+                                    "@variables('Active Stage ID')",
+                                    "@variables('BPF Stage - Assessment Review')"
+                                  ]
+                                },
+                                "metadata": {
+                                  "operationMetadataId": "aaee6646-85ed-417f-8721-f6c82928accc"
+                                },
+                                "type": "If"
+                              }
+                            }
+                          },
+                          "expression": {
+                            "and": [
+                              {
+                                "or": [
+                                  {
+                                    "equals": [
+                                      "@variables('Active Stage ID')",
+                                      "@variables('BPF Stage - Program Analysis 1')"
+                                    ]
+                                  },
+                                  {
+                                    "equals": [
+                                      "@variables('Active Stage ID')",
+                                      "@variables('BPF Stage - Program Analysis 2')"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "c632f2bf-a30d-4a69-a276-f435bd304816"
+                          },
+                          "type": "If"
+                        }
+                      }
+                    },
                     "expression": {
                       "and": [
                         {

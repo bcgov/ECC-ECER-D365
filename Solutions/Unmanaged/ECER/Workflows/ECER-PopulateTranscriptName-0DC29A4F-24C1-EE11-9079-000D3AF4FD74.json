@@ -85,8 +85,7 @@
             },
             "parameters": {
               "entityName": "ecer_applications",
-              "recordId": "@triggerOutputs()?['body/_ecer_applicationid_value']",
-              "$select": "ecer_name"
+              "recordId": "@triggerOutputs()?['body/_ecer_applicationid_value']"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -114,10 +113,61 @@
             },
             "authentication": "@parameters('$authentication')"
           }
+        },
+        "Condition": {
+          "actions": {
+            "Update_a_row": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "e71bacee-0517-4831-a558-c13d1ef2ebab"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_transcripts",
+                  "recordId": "@triggerOutputs()?['body/ecer_transcriptid']",
+                  "item/ecer_Applicantid@odata.bind": "contacts(@{outputs('Get_Application_Name')?['body/_ecer_applicantid_value']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Set_Name_as_Application_Name_-_Start_Date_-_End_Date": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Application_Name')?['body/_ecer_applicantid_value']",
+                    "@null"
+                  ]
+                }
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/_ecer_applicantid_value']",
+                  "@null"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1448704d-0f46-4b86-9a34-802ed8fa8994"
+          },
+          "type": "If"
         }
       }
     },
-    "templateName": null
+    "templateName": ""
   },
   "schemaVersion": "1.0.0.0"
 }
