@@ -1,11 +1,11 @@
-<ImportExportXml version="9.2.24024.178" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.24031.170" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>ECER</UniqueName>
     <LocalizedNames>
       <LocalizedName description="ECER" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.13</Version>
+    <Version>1.0.0.14</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>ecer</UniqueName>
@@ -139,6 +139,7 @@
       <RootComponent type="9" schemaName="ecer_applicationtypes" behavior="0" />
       <RootComponent type="9" schemaName="ecer_auspice" behavior="0" />
       <RootComponent type="9" schemaName="ecer_certificatestatus" behavior="0" />
+      <RootComponent type="9" schemaName="ecer_childrenprogramtypes" behavior="0" />
       <RootComponent type="9" schemaName="ecer_communicationtypes" behavior="0" />
       <RootComponent type="9" schemaName="ecer_educationorigin" behavior="0" />
       <RootComponent type="9" schemaName="ecer_educationrecognition" behavior="0" />
@@ -164,6 +165,7 @@
       <RootComponent type="9" schemaName="ecer_priority" behavior="0" />
       <RootComponent type="9" schemaName="ecer_psiregion" behavior="0" />
       <RootComponent type="9" schemaName="ecer_referencerelationships" behavior="0" />
+      <RootComponent type="9" schemaName="ecer_unabletoprovidereferencereasons" behavior="0" />
       <RootComponent type="9" schemaName="ecer_verifieddecisions" behavior="0" />
       <RootComponent type="9" schemaName="ecer_workexperiencetypes" behavior="0" />
       <RootComponent type="9" schemaName="ecer_workhourstype" behavior="0" />
@@ -195,6 +197,7 @@
       <RootComponent type="29" id="{4087a819-32be-ee11-9079-000d3af4fa73}" behavior="0" />
       <RootComponent type="29" id="{425afcd6-badc-ee11-904c-0022486e0199}" behavior="0" />
       <RootComponent type="29" id="{57844f54-98cf-ee11-904d-000d3af4f18a}" behavior="0" />
+      <RootComponent type="29" id="{6033a3eb-3de6-ee11-a204-000d3af4a207}" behavior="0" />
       <RootComponent type="29" id="{6512340e-d6ca-ee11-9079-000d3af4fa73}" behavior="0" />
       <RootComponent type="29" id="{65158339-debb-ee11-9079-000d3af4fa73}" behavior="0" />
       <RootComponent type="29" id="{6d54a5ff-2fdb-ee11-904c-002248d56374}" behavior="0" />
@@ -202,6 +205,7 @@
       <RootComponent type="29" id="{7d69e98b-34ca-ee11-9079-000d3af4fd74}" behavior="0" />
       <RootComponent type="29" id="{7e6b3f44-93b5-ee11-a569-000d3af4fd74}" behavior="0" />
       <RootComponent type="29" id="{8383795c-05aa-ee11-a569-000d3af4fa73}" behavior="0" />
+      <RootComponent type="29" id="{892b7daf-e5e4-ee11-a203-002248d56374}" behavior="0" />
       <RootComponent type="29" id="{8d3c2230-cbe0-ee11-904c-0022486e0199}" behavior="0" />
       <RootComponent type="29" id="{958529ea-5ecb-ee11-9079-000d3af4fd74}" behavior="0" />
       <RootComponent type="29" id="{9b732d6e-a39a-ee11-be37-000d3af4fa73}" behavior="0" />
@@ -218,7 +222,6 @@
       <RootComponent type="29" id="{dfc6730d-52e1-ee11-904c-0022486e0199}" behavior="0" />
       <RootComponent type="29" id="{e6a4cfb7-adcf-ee11-904d-000d3af4fd74}" behavior="0" />
       <RootComponent type="29" id="{e8b83870-99e0-ee11-904c-0022486e0199}" behavior="0" />
-      <RootComponent type="29" id="{eae80556-41d0-ee11-904d-000d3af4fd74}" behavior="0" />
       <RootComponent type="29" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" behavior="0" />
       <RootComponent type="60" id="{1f102f9c-92c0-ee11-9079-000d3af4fa73}" behavior="0" />
       <RootComponent type="60" id="{35be10f3-ea72-ee11-8179-000d3af4fa73}" behavior="0" />
@@ -287,6 +290,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="10" schemaName="ecer_documenturl_InvestigationId" displayName="ecer_documenturl_InvestigationId" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
         <Dependent type="10" schemaName="bcgov_email_bcgov_documenturl" displayName="bcgov_email_bcgov_documenturl" parentSchemaName="email" parentDisplayName="Email" />
       </MissingDependency>
       <MissingDependency>
@@ -331,6 +338,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="2" schemaName="ecer_investigationid" displayName="Investigation" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
         <Dependent type="2" schemaName="modifiedby" displayName="Modified By" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" />
       </MissingDependency>
       <MissingDependency>
@@ -363,6 +374,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="60" displayName="ECER - Main" parentDisplayName="Investigation" id="{9d9ea95f-0b15-4d06-a59f-b92ee222b3e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
         <Dependent type="60" displayName="ECER Contact" parentDisplayName="Contact" id="{9f84d203-0b7d-ee11-8179-000d3af4fa73}" />
       </MissingDependency>
       <MissingDependency>
@@ -371,37 +386,37 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="entitlement" displayName="Entitlement" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.24023.2003)</package>
+          <package>msdynce_ServiceAnchor (9.0.24031.1014)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.24023.2003)</package>
+          <package>msdynce_ServiceAnchor (9.0.24031.1014)</package>
         </Required>
         <Dependent type="10" schemaName="bcgov_incident_bcgov_documenturl" displayName="bcgov_incident_bcgov_documenturl" parentSchemaName="incident" parentDisplayName="Case" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.24023.2003)</package>
+          <package>msdynce_ServiceAnchor (9.0.24031.1014)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_ocliveworkitem" displayName="Conversation" solution="OmnichannelBase (1.10.0.74)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.87)</package>
+        <Required type="1" schemaName="msdyn_ocliveworkitem" displayName="Conversation" solution="OmnichannelBase (1.10.0.77)">
+          <package>UnifiedRoutingPrimeAnchor (1.5.26.98)</package>
         </Required>
         <Dependent type="80" schemaName="ecer_MyECER" displayName="My ECER" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_ocsession" displayName="Session" solution="OmnichannelBase (1.10.0.74)">
-          <package>UnifiedRoutingPrimeAnchor (1.5.26.87)</package>
+        <Required type="1" schemaName="msdyn_ocsession" displayName="Session" solution="OmnichannelBase (1.10.0.77)">
+          <package>UnifiedRoutingPrimeAnchor (1.5.26.98)</package>
         </Required>
         <Dependent type="80" schemaName="ecer_MyECER" displayName="My ECER" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="opportunity" displayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)">
-          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+          <package>msdynce_SalesAnchor (9.0.24031.10004)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
@@ -491,7 +506,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="originatingleadid" displayName="Originating Lead" parentSchemaName="account" parentDisplayName="Account" solution="msdynce_LeadManagement (9.0.4.0066)">
-          <package>msdynce_LeadManagementAnchor (9.0.24023.10001)</package>
+          <package>msdynce_LeadManagementAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
@@ -569,7 +584,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bcgov_tag1id" displayName="Tag 1" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
-        <Dependent type="10" schemaName="bcgov_tag1_bcgov_documenturl" displayName="bcgov_tag1_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
+        <Dependent type="10" schemaName="bcgov_tag2_bcgov_documenturl" displayName="bcgov_tag2_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bcgov_tag1id" displayName="Tag 1" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
@@ -577,7 +592,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bcgov_tag2id" displayName="Tag 2" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
-        <Dependent type="10" schemaName="bcgov_tag1_bcgov_documenturl" displayName="bcgov_tag1_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
+        <Dependent type="10" schemaName="bcgov_tag2_bcgov_documenturl" displayName="bcgov_tag2_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bcgov_tag2id" displayName="Tag 2" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
@@ -585,7 +600,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bcgov_tag3id" displayName="Tag 3" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
-        <Dependent type="10" schemaName="bcgov_tag1_bcgov_documenturl" displayName="bcgov_tag1_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
+        <Dependent type="10" schemaName="bcgov_tag2_bcgov_documenturl" displayName="bcgov_tag2_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bcgov_tag3id" displayName="Tag 3" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
@@ -617,7 +632,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="bcgov_tagid" displayName="Tag" parentSchemaName="bcgov_tag" parentDisplayName="Tag" solution="S3DocumentManagement (1.0.0.11)" />
-        <Dependent type="10" schemaName="bcgov_tag1_bcgov_documenturl" displayName="bcgov_tag1_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
+        <Dependent type="10" schemaName="bcgov_tag2_bcgov_documenturl" displayName="bcgov_tag2_bcgov_documenturl" parentSchemaName="bcgov_tag" parentDisplayName="Tag" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="adx_identity_mobilephoneconfirmed" displayName="Mobile Phone Confirmed" parentSchemaName="contact" parentDisplayName="Contact" solution="PowerPages_RuntimeCore (1.0.2312.2)">
@@ -645,31 +660,31 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="incidentid" displayName="Case" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.24023.2003)</package>
+          <package>msdynce_ServiceAnchor (9.0.24031.1014)</package>
         </Required>
         <Dependent type="10" schemaName="bcgov_incident_bcgov_documenturl" displayName="bcgov_incident_bcgov_documenturl" parentSchemaName="incident" parentDisplayName="Case" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="title" displayName="Case Title" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package>msdynce_ServiceAnchor (9.0.24023.2003)</package>
+          <package>msdynce_ServiceAnchor (9.0.24031.1014)</package>
         </Required>
         <Dependent type="10" schemaName="bcgov_incident_bcgov_documenturl" displayName="bcgov_incident_bcgov_documenturl" parentSchemaName="incident" parentDisplayName="Case" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="All Cases for Customer" displayName="All Cases for Customer" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)" id="{00000000-0000-0000-00aa-000010001039}">
-          <package>msdynce_ServiceAnchor (9.0.24023.2003)</package>
+          <package>msdynce_ServiceAnchor (9.0.24031.1014)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="My Open Opportunities" displayName="My Open Opportunities" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{00000000-0000-0000-00aa-000010003000}">
-          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+          <package>msdynce_SalesAnchor (9.0.24031.10004)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="All Contacts" displayName="All Contacts" parentSchemaName="contact" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{0d5d377b-5e7c-47b5-bab1-a5cb8b4ac105}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="26" schemaName="All Contacts" displayName="All Contacts" parentSchemaName="contact" parentDisplayName="Contact" id="{0d5d377b-5e7c-47b5-bab1-a5cb8b4ac105}" />
       </MissingDependency>
@@ -679,75 +694,103 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Document Urls" displayName="Active Document Urls" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" id="{446b3482-72e8-4ac2-ba74-94e58e269c1b}" />
+        <Dependent type="60" displayName="ECER - Main" parentDisplayName="Investigation" id="{9d9ea95f-0b15-4d06-a59f-b92ee222b3e7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Document Urls" displayName="Active Document Urls" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" id="{446b3482-72e8-4ac2-ba74-94e58e269c1b}" />
         <Dependent type="60" displayName="ECER Contact" parentDisplayName="Contact" id="{9f84d203-0b7d-ee11-8179-000d3af4fa73}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Account Entitlements" displayName="Account Entitlements" parentSchemaName="entitlement" parentDisplayName="Entitlement" solution="msdynce_Service (9.0.5.56)" id="{961bf8aa-042f-4f4d-bcca-935bfc9a6994}">
-          <package>msdynce_ServiceAnchor (9.0.24023.2003)</package>
+          <package>msdynce_ServiceAnchor (9.0.24031.1014)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Case Lookup View" displayName="Case Lookup View" parentSchemaName="incident" parentDisplayName="Case" solution="msdynce_Service (9.0.5.56)" id="{9ac51863-58c7-49a0-adcc-afd9a4c3ee59}">
-          <package>msdynce_ServiceAnchor (9.0.24023.2003)</package>
+          <package>msdynce_ServiceAnchor (9.0.24031.1014)</package>
         </Required>
         <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Recent Opportunities" displayName="Recent Opportunities" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{9c3f7ee8-eca7-e211-9fb6-00155dd0ea05}">
-          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+          <package>msdynce_SalesAnchor (9.0.24031.10004)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="59" schemaName="Emails by Month Due" displayName="Emails by Month Due" parentSchemaName="email" parentDisplayName="Email" solution="msdynce_AppCommon (9.0.4.0066)" id="{1ec1872a-23de-4294-9d7f-1b76272a5fd5}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="60" displayName="ECER - Main" parentDisplayName="Application" id="{2420375a-7e39-4cbc-a810-8079c3f08eef}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="59" schemaName="Emails by Month Due" displayName="Emails by Month Due" parentSchemaName="email" parentDisplayName="Email" solution="msdynce_AppCommon (9.0.4.0066)" id="{1ec1872a-23de-4294-9d7f-1b76272a5fd5}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="60" displayName="Registry Submission Dashboard" id="{35be10f3-ea72-ee11-8179-000d3af4fa73}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="59" schemaName="Emails by Month Due" displayName="Emails by Month Due" parentSchemaName="email" parentDisplayName="Email" solution="msdynce_AppCommon (9.0.4.0066)" id="{1ec1872a-23de-4294-9d7f-1b76272a5fd5}">
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
+        </Required>
+        <Dependent type="60" displayName="ECER - Main" parentDisplayName="Investigation" id="{9d9ea95f-0b15-4d06-a59f-b92ee222b3e7}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="59" schemaName="Phone Calls by Month Due" displayName="Phone Calls by Month Due" parentSchemaName="phonecall" parentDisplayName="Phone Call" solution="msdynce_AppCommon (9.0.4.0066)" id="{399945c7-d07f-444e-9e54-d5fa4042290c}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="60" displayName="ECER - Main" parentDisplayName="Application" id="{2420375a-7e39-4cbc-a810-8079c3f08eef}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="59" schemaName="Phone Calls by Month Due" displayName="Phone Calls by Month Due" parentSchemaName="phonecall" parentDisplayName="Phone Call" solution="msdynce_AppCommon (9.0.4.0066)" id="{399945c7-d07f-444e-9e54-d5fa4042290c}">
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
+        </Required>
+        <Dependent type="60" displayName="ECER - Main" parentDisplayName="Investigation" id="{9d9ea95f-0b15-4d06-a59f-b92ee222b3e7}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="59" schemaName="Top Customers" displayName="Top Customers" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{8bc5fb18-48f2-4782-9e16-3d452fa4ddce}">
-          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+          <package>msdynce_SalesAnchor (9.0.24031.10004)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="59" schemaName="Tasks by Month Due" displayName="Tasks by Month Due" parentSchemaName="task" parentDisplayName="Task" solution="msdynce_AppCommon (9.0.4.0066)" id="{9e6a8b06-6d14-46e6-bbf5-95c388c6eb7a}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="60" displayName="ECER - Main" parentDisplayName="Application" id="{2420375a-7e39-4cbc-a810-8079c3f08eef}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="59" schemaName="Tasks by Month Due" displayName="Tasks by Month Due" parentSchemaName="task" parentDisplayName="Task" solution="msdynce_AppCommon (9.0.4.0066)" id="{9e6a8b06-6d14-46e6-bbf5-95c388c6eb7a}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="60" displayName="Registry Submission Dashboard" id="{35be10f3-ea72-ee11-8179-000d3af4fa73}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="59" schemaName="Tasks by Month Due" displayName="Tasks by Month Due" parentSchemaName="task" parentDisplayName="Task" solution="msdynce_AppCommon (9.0.4.0066)" id="{9e6a8b06-6d14-46e6-bbf5-95c388c6eb7a}">
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
+        </Required>
+        <Dependent type="60" displayName="ECER - Main" parentDisplayName="Investigation" id="{9d9ea95f-0b15-4d06-a59f-b92ee222b3e7}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="59" schemaName="Faxes by Month Due" displayName="Faxes by Month Due" parentSchemaName="fax" parentDisplayName="Fax" solution="msdynce_AppCommon (9.0.4.0066)" id="{f6fad3e0-7a76-438d-89db-efdada0997a3}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="60" displayName="ECER - Main" parentDisplayName="Application" id="{2420375a-7e39-4cbc-a810-8079c3f08eef}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="59" schemaName="Faxes by Month Due" displayName="Faxes by Month Due" parentSchemaName="fax" parentDisplayName="Fax" solution="msdynce_AppCommon (9.0.4.0066)" id="{f6fad3e0-7a76-438d-89db-efdada0997a3}">
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
+        </Required>
+        <Dependent type="60" displayName="ECER - Main" parentDisplayName="Investigation" id="{9d9ea95f-0b15-4d06-a59f-b92ee222b3e7}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Email" parentDisplayName="Email" solution="msdynce_Activities (9.0.1.2033)" id="{0d1e47ff-12b2-4f53-9090-bee951b98cb4}" />
         <Dependent type="60" displayName="Email" parentDisplayName="Email" id="{0d1e47ff-12b2-4f53-9090-bee951b98cb4}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="60" displayName="Dialer customization - post call" parentDisplayName="Phone Call" solution="msdyn_teamsdialer (9.1.24012.10002)" id="{15ef9fa4-0a73-4a2d-94a2-45be45f22f75}">
-          <package>msdynce_OfficeProductivityAnchor (9.0.24023.10006)</package>
+        <Required type="60" displayName="Dialer customization - post call" parentDisplayName="Phone Call" solution="msdyn_teamsdialer (9.1.24012.10012)" id="{15ef9fa4-0a73-4a2d-94a2-45be45f22f75}">
+          <package>msdynce_OfficeProductivityAnchor (9.0.24031.10003)</package>
         </Required>
         <Dependent type="60" displayName="Dialer customization - post call" parentDisplayName="Phone Call" id="{15ef9fa4-0a73-4a2d-94a2-45be45f22f75}" />
       </MissingDependency>
@@ -757,13 +800,13 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="account contact card" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{29de27bc-a257-4f29-99cf-bab4a84e688f}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="account contact card" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{29de27bc-a257-4f29-99cf-bab4a84e688f}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="80" schemaName="ecer_MyECER" displayName="My ECER" />
       </MissingDependency>
@@ -773,25 +816,25 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Contact Quick Create" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{661157fe-2fc9-4eaa-835f-5bfa2f7b64f7}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Contact Quick Create" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{661157fe-2fc9-4eaa-835f-5bfa2f7b64f7}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="80" schemaName="ecer_MyECER" displayName="My ECER" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="contact card" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{707fc57b-c5e6-471b-a180-e37ed28a38e2}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="80" schemaName="ecer_MyECER" displayName="My ECER" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Account" parentDisplayName="Account" solution="msdynce_AppCommon (9.0.4.0066)" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
@@ -808,20 +851,20 @@
         <Dependent type="60" displayName="Phone Call" parentDisplayName="Phone Call" id="{a91390a5-99bb-4d10-9eee-3a5c87f841f1}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="60" displayName="Dialer customization - during call" parentDisplayName="Phone Call" solution="msdyn_teamsdialer (9.1.24012.10002)" id="{b23ae794-0175-4ffb-9ac6-ea6c54636496}">
-          <package>msdynce_OfficeProductivityAnchor (9.0.24023.10006)</package>
+        <Required type="60" displayName="Dialer customization - during call" parentDisplayName="Phone Call" solution="msdyn_teamsdialer (9.1.24012.10012)" id="{b23ae794-0175-4ffb-9ac6-ea6c54636496}">
+          <package>msdynce_OfficeProductivityAnchor (9.0.24031.10003)</package>
         </Required>
         <Dependent type="60" displayName="Dialer customization - during call" parentDisplayName="Phone Call" id="{b23ae794-0175-4ffb-9ac6-ea6c54636496}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Contact Card form" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{bc0f68dd-a4b1-4a8f-bed3-c8f5db2f89cf}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Contact Quick Form" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{bdb0ae1c-32fa-4374-b637-8dafe107bc44}">
-          <package>msdynce_AppCommonAnchor (9.0.24023.10001)</package>
+          <package>msdynce_AppCommonAnchor (9.0.24031.10001)</package>
         </Required>
         <Dependent type="80" schemaName="ecer_MyECER" displayName="My ECER" />
       </MissingDependency>
@@ -838,24 +881,24 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Document Url" id="{da1739bf-5abf-412c-98de-700309ec4c6f}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="60" displayName="Task card" parentDisplayName="Task" solution="msdyn_acceleratedsales (9.1.24023.10013)" id="{e9c378d3-27a7-43fe-8075-322dcd7ff380}">
-          <package>msdyn_AcceleratedSalesAnchor (9.1.24023.10013)</package>
+        <Required type="60" displayName="Task card" parentDisplayName="Task" solution="msdyn_acceleratedsales (9.1.24031.10015)" id="{e9c378d3-27a7-43fe-8075-322dcd7ff380}">
+          <package>msdyn_AcceleratedSalesAnchor (9.1.24031.10015)</package>
         </Required>
         <Dependent type="60" displayName="Task card" parentDisplayName="Task" id="{e9c378d3-27a7-43fe-8075-322dcd7ff380}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="60" displayName="Phonecall card" parentDisplayName="Phone Call" solution="msdyn_acceleratedsales (9.1.24023.10013)" id="{fbefc534-019c-472b-96d1-c3514d056297}">
-          <package>msdyn_AcceleratedSalesAnchor (9.1.24023.10013)</package>
+        <Required type="60" displayName="Phonecall card" parentDisplayName="Phone Call" solution="msdyn_acceleratedsales (9.1.24031.10015)" id="{fbefc534-019c-472b-96d1-c3514d056297}">
+          <package>msdyn_AcceleratedSalesAnchor (9.1.24031.10015)</package>
         </Required>
         <Dependent type="60" displayName="Phonecall card" parentDisplayName="Phone Call" id="{fbefc534-019c-472b-96d1-c3514d056297}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Email_main_system_library.js" displayName="Activities/SystemLibraries/Email_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
-        <Dependent type="60" displayName="Information" parentDisplayName="Email" id="{394ca387-4777-457c-b5ae-c7a3e632be41}" />
+        <Dependent type="60" displayName="Email" parentDisplayName="Email" id="{0d1e47ff-12b2-4f53-9090-bee951b98cb4}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Email_main_system_library.js" displayName="Activities/SystemLibraries/Email_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
-        <Dependent type="60" displayName="Enhanced Email" parentDisplayName="Email" id="{63769d04-c74f-4808-b0aa-77339e1b9191}" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Email" id="{394ca387-4777-457c-b5ae-c7a3e632be41}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="bcgov_/Scripts/DocumentUrl/OnLoad.js" displayName="bcgov_/Scripts/DocumentUrl/OnLoad.js" solution="S3DocumentManagement (1.0.0.11)" />
@@ -863,19 +906,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_/Account/AssetCommon.Account.Library.js" displayName="msdyn_/Account/AssetCommon.Account.Library.js" solution="msdyn_AssetCommon (1.0.26.9)">
-          <package>msdynce_ServiceAnchor (9.0.24023.2003)</package>
+          <package>msdynce_ServiceAnchor (9.0.24031.1014)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_/EnhancedEmailForm/Scripts/EnhancedEmail_form.js" displayName="msdyn_/EnhancedEmailForm/Scripts/EnhancedEmail_form.js" solution="EmailEngagementPatch_managed (9.0.3.367)">
-          <package>msdynce_SalesInsightsAnchor (9.0.24023.10008)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.24031.10004)</package>
         </Required>
         <Dependent type="60" displayName="Enhanced Email" parentDisplayName="Email" id="{63769d04-c74f-4808-b0aa-77339e1b9191}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_/FollowAttachments/Scripts/Email_Engagement_Attachments.js" displayName="msdyn_/FollowAttachments/Scripts/Email_Engagement_Attachments.js" solution="EmailEngagement (9.0.1.7018)">
-          <package>msdynce_SalesInsightsAnchor (9.0.24023.10008)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.24031.10004)</package>
         </Required>
         <Dependent type="60" displayName="Email" parentDisplayName="Email" id="{0d1e47ff-12b2-4f53-9090-bee951b98cb4}" />
       </MissingDependency>
@@ -888,8 +931,8 @@
         <Dependent type="80" schemaName="ecer_MyECER" displayName="My ECER" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_/Scripts/WhoKnowsWhomLoader.js" displayName="msdyn_/Scripts/WhoKnowsWhomLoader.js" solution="msdyn_connectiongraph (9.3.24023.2)">
-          <package>msdynce_SalesInsightsAnchor (9.0.24023.10008)</package>
+        <Required type="61" schemaName="msdyn_/Scripts/WhoKnowsWhomLoader.js" displayName="msdyn_/Scripts/WhoKnowsWhomLoader.js" solution="msdyn_connectiongraph (9.3.24031.2)">
+          <package>msdynce_SalesInsightsAnchor (9.0.24031.10004)</package>
         </Required>
         <Dependent type="60" displayName="ECER Contact" parentDisplayName="Contact" id="{9f84d203-0b7d-ee11-8179-000d3af4fa73}" />
       </MissingDependency>
@@ -900,44 +943,44 @@
         <Dependent type="60" displayName="Phone Call" parentDisplayName="Phone Call" id="{a91390a5-99bb-4d10-9eee-3a5c87f841f1}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_CopilotEmailAssist.js" displayName="msdyn_CopilotEmailAssist.js" solution="msdyn_CSIntelligence (9.1.24023.2002)">
-          <package>msdyn_ServiceExtendedAnchor (9.0.24023.2008)</package>
+        <Required type="61" schemaName="msdyn_CopilotEmailAssist.js" displayName="msdyn_CopilotEmailAssist.js" solution="msdyn_CSIntelligence (9.1.24031.1012)">
+          <package>msdyn_ServiceExtendedAnchor (9.0.24031.1008)</package>
         </Required>
         <Dependent type="60" displayName="Email" parentDisplayName="Email" id="{0d1e47ff-12b2-4f53-9090-bee951b98cb4}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_SalesCopilot/Copilot.Library.js" displayName="msdyn_SalesCopilot/Copilot.Library.js" solution="msdyn_SalesCopilot (9.1.24023.10004)">
-          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+          <package>msdynce_SalesAnchor (9.0.24031.10004)</package>
         </Required>
         <Dependent type="60" displayName="Email" parentDisplayName="Email" id="{0d1e47ff-12b2-4f53-9090-bee951b98cb4}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_SalesCopilot/Copilot.Library.js" displayName="msdyn_SalesCopilot/Copilot.Library.js" solution="msdyn_SalesCopilot (9.1.24023.10004)">
-          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+          <package>msdynce_SalesAnchor (9.0.24031.10004)</package>
         </Required>
         <Dependent type="60" displayName="Enhanced Email" parentDisplayName="Email" id="{63769d04-c74f-4808-b0aa-77339e1b9191}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_SalesOmniChannel/SalesPhoneNumber.Library.js" displayName="msdyn_SalesOmniChannel/SalesPhoneNumber.Library.js" solution="msdyn_SalesOmniChannel (9.1.24023.10013)">
-          <package>msdyn_AcceleratedSalesAnchor (9.1.24023.10013)</package>
+        <Required type="61" schemaName="msdyn_SalesOmniChannel/SalesPhoneNumber.Library.js" displayName="msdyn_SalesOmniChannel/SalesPhoneNumber.Library.js" solution="msdyn_SalesOmniChannel (9.1.24031.10015)">
+          <package>msdyn_AcceleratedSalesAnchor (9.1.24031.10015)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="61" schemaName="msdyn_SalesOmniChannel/SalesPhoneNumber.Library.js" displayName="msdyn_SalesOmniChannel/SalesPhoneNumber.Library.js" solution="msdyn_SalesOmniChannel (9.1.24023.10013)">
-          <package>msdyn_AcceleratedSalesAnchor (9.1.24023.10013)</package>
+        <Required type="61" schemaName="msdyn_SalesOmniChannel/SalesPhoneNumber.Library.js" displayName="msdyn_SalesOmniChannel/SalesPhoneNumber.Library.js" solution="msdyn_SalesOmniChannel (9.1.24031.10015)">
+          <package>msdyn_AcceleratedSalesAnchor (9.1.24031.10015)</package>
         </Required>
         <Dependent type="60" displayName="ECER Contact" parentDisplayName="Contact" id="{9f84d203-0b7d-ee11-8179-000d3af4fa73}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="msdyn_talkingpointsloader.js" displayName="msdyn_talkingpointsloader.js" solution="msdynce_Talkingpoints (9.1.0.59)">
-          <package>msdynce_SalesInsightsAnchor (9.0.24023.10008)</package>
+          <package>msdynce_SalesInsightsAnchor (9.0.24031.10004)</package>
         </Required>
         <Dependent type="60" displayName="ECER Contact" parentDisplayName="Contact" id="{9f84d203-0b7d-ee11-8179-000d3af4fa73}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Sales/ClientCommon/Sales_ClientCommon.js" displayName="Sales/ClientCommon/Sales_ClientCommon.js" solution="msdynce_Sales (9.0.4.0076)">
-          <package>msdynce_SalesAnchor (9.0.24023.10004)</package>
+          <package>msdynce_SalesAnchor (9.0.24031.10004)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
@@ -948,66 +991,66 @@
         <Dependent type="60" displayName="Phone Call" parentDisplayName="Phone Call" id="{a91390a5-99bb-4d10-9eee-3a5c87f841f1}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="Microsoft.AddressInputUCI" displayName="Microsoft.AddressInputUCI" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="Microsoft.AddressInputUCI" displayName="Microsoft.AddressInputUCI" solution="BaseCustomControlsCore (9.0.2403.1011)" />
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.CardFeedContainer.CardFeedContainer" displayName="MscrmControls.CardFeedContainer.CardFeedContainer" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.CardFeedContainer.CardFeedContainer" displayName="MscrmControls.CardFeedContainer.CardFeedContainer" solution="BaseCustomControlsCore (9.0.2403.1011)" />
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2403.1011)" />
         <Dependent type="60" displayName="ECER - Main" parentDisplayName="Application" id="{2420375a-7e39-4cbc-a810-8079c3f08eef}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2403.1011)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Communication" id="{6f2f6a02-3be5-4aa8-a7f6-6a8625c3db3c}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2403.1011)" />
         <Dependent type="60" displayName="ECER Contact" parentDisplayName="Contact" id="{9f84d203-0b7d-ee11-8179-000d3af4fa73}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2403.1011)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Education Transcript" id="{a29388d2-81d2-4890-8d2c-5926a7e7f7c5}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2403.1011)" />
         <Dependent type="60" displayName="ECER - Main" parentDisplayName="Application" id="{2420375a-7e39-4cbc-a810-8079c3f08eef}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2403.1011)" />
         <Dependent type="60" displayName="ECER Contact" parentDisplayName="Contact" id="{9f84d203-0b7d-ee11-8179-000d3af4fa73}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.Grid.ReadOnlyGrid" displayName="MscrmControls.Grid.ReadOnlyGrid" solution="BaseCustomControlsCore (9.0.2402.4012)" />
+        <Required type="66" schemaName="MscrmControls.Grid.ReadOnlyGrid" displayName="MscrmControls.Grid.ReadOnlyGrid" solution="BaseCustomControlsCore (9.0.2403.1011)" />
         <Dependent type="60" displayName="Enhanced Email" parentDisplayName="Email" id="{63769d04-c74f-4808-b0aa-77339e1b9191}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.24024.00178)" />
+        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.24031.00170)" />
         <Dependent type="60" displayName="ECER - Main" parentDisplayName="Application" id="{2420375a-7e39-4cbc-a810-8079c3f08eef}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.24024.00178)" />
+        <Required type="66" schemaName="MscrmControls.OptionSet.OptionSetControl" displayName="MscrmControls.OptionSet.OptionSetControl" solution="CustomControlsCore (9.2.24031.00170)" />
         <Dependent type="60" displayName="ECER Contact" parentDisplayName="Contact" id="{9f84d203-0b7d-ee11-8179-000d3af4fa73}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (1.0.0.3135)" />
+        <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (1.0.0.3241)" />
         <Dependent type="60" displayName="Email" parentDisplayName="Email" id="{0d1e47ff-12b2-4f53-9090-bee951b98cb4}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (1.0.0.3135)" />
+        <Required type="66" schemaName="MscrmControls.RichTextEditor.RichTextEditorControl" displayName="MscrmControls.RichTextEditor.RichTextEditorControl" solution="msdyn_RichTextEditor (1.0.0.3241)" />
         <Dependent type="60" displayName="Enhanced Email" parentDisplayName="Email" id="{63769d04-c74f-4808-b0aa-77339e1b9191}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="msdyn_MscrmControls.TreeView.TreeViewControl" displayName="msdyn_MscrmControls.TreeView.TreeViewControl" solution="msdyn_AssetCommon (1.0.26.9)">
-          <package>msdynce_ServiceAnchor (9.0.24023.2003)</package>
+          <package>msdynce_ServiceAnchor (9.0.24031.1014)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="msdyn_SalesOmniChannel.SalesPhoneNumberControl" displayName="msdyn_SalesOmniChannel.SalesPhoneNumberControl" solution="msdyn_SalesOmniChannel (9.1.24023.10013)">
-          <package>msdyn_AcceleratedSalesAnchor (9.1.24023.10013)</package>
+        <Required type="66" schemaName="msdyn_SalesOmniChannel.SalesPhoneNumberControl" displayName="msdyn_SalesOmniChannel.SalesPhoneNumberControl" solution="msdyn_SalesOmniChannel (9.1.24031.10015)">
+          <package>msdyn_AcceleratedSalesAnchor (9.1.24031.10015)</package>
         </Required>
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>

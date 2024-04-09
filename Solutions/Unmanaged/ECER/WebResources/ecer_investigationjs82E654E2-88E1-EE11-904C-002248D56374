@@ -33,29 +33,33 @@ ECER.Jscripts.Investigation =
         var certificationType = formContext.getAttribute("ecer_certificationtype");
 
         // From Application
-        var OpenApplication = formContext.getAttribute("ecer_openapplication");
-
+        var openApplication = formContext.getAttribute("ecer_openapplication");
+        var parallelProcess = formContext.getAttribute("ecer_parallelprocess");
+        // Default to No
+        parallelProcess.setValue(621870001);
 
         // From Transcript
         var educationalInstitution = formContext.getAttribute("ecer_educationalinstitution");
 
         var attributeList = [clientId, certificationType, certificateStatus, expiryDate, educationalInstitution,
-            dateOfBirth, isUnderNineteen, phoneNumber, mailAddress, email, currentCertificate, OpenApplication, certificateNumber];
+            dateOfBirth, isUnderNineteen, phoneNumber, mailAddress, email, currentCertificate, openApplication, certificateNumber];
 
-        // Clear all the sub-attribute if Applicant is empty
+        // Clear on all fields on change
+        var i = 0, len = attributeList.length;
+        while (i < len) {
+            attributeList[i].setValue(null);
+            i++;
+        }
+
+        // Returen if Applicant is empty
         if (applicant == null || applicant.getValue() == null) {
-            var i = 0, len = attributeList.length;
-            while (i < len) {
-                attributeList[i].setValue(null);
-                i++;
-            }
             return;
         }
 
         // Get Contact
         var contactId = applicant.getValue()[0].id.replace("{", "").replace("}", "");
 
-        Xrm.WebApi.retrieveRecord("contact", "fe6f54d5-c726-4077-af69-f231422c7d12", "?$select=birthdate,ecer_clientid,emailaddress1,ecer_isunder19,address1_composite,telephone1").then(
+        Xrm.WebApi.retrieveRecord("contact", contactId, "?$select=birthdate,ecer_clientid,emailaddress1,ecer_isunder19,address1_composite,telephone1").then(
             function success(result) {
                 console.log(result);
                 // Result
@@ -78,7 +82,7 @@ ECER.Jscripts.Investigation =
         );
 
         // Get Certificate
-        Xrm.WebApi.retrieveMultipleRecords("ecer_certificate", "?$select=ecer_certificateid,ecer_certificatelevel,ecer_certificatenumber,ecer_expirydate,ecer_name,statuscode&$filter=_ecer_registrantid_value eq " + contactId + "&$orderby=ecer_expirydate desc").then(
+        var certificateIdPromise = Xrm.WebApi.retrieveMultipleRecords("ecer_certificate", "?$select=ecer_certificateid,ecer_certificatelevel,ecer_certificatenumber,ecer_expirydate,ecer_name,statuscode&$filter=_ecer_registrantid_value eq " + contactId + "&$orderby=ecer_expirydate desc").then(
             function success(results) {
                 console.log(results);
                 if (results.entities.length > 0) {
@@ -93,45 +97,54 @@ ECER.Jscripts.Investigation =
 
                     certificationType.setValue(result["ecer_certificatelevel"]);
                     ECER.Jscripts.Investigation.setValueToLookup(currentCertificate, result["ecer_certificateid"], result["ecer_name"], "ecer_certificate");
+                    return result.certificateId;
                 } else {
                     console.log("No Certificate is found for Registrant:" + contactId);
+                    return null;
                 }
             },
             function (error) {
                 console.log(error.message);
+                return null;
             }
         );
 
+
+        Promise.all([certificateIdPromise]).then(function (values) {
+            var certificateId = values[0];
+            // Get Transcript
+            Xrm.WebApi.retrieveMultipleRecords("ecer_transcript", "?$select=ecer_educationinstitutionfullname&$filter=ecer_Applicationid/_ecer_certificateid_value eq "+certificateId).then(
+                function success(results) {
+                    console.log(results);
+                    if (results.entities.length > 0) {
+                        var result = results.entities[0];
+
+                        educationalInstitution.setValue(result["ecer_educationinstitutionfullname"]);
+                    }
+                },
+                function (error) {
+                    console.log(error.message);
+                }
+            );
+        });
+
         // Get Open Applicaiton
-        var applicationId = "";
         Xrm.WebApi.retrieveMultipleRecords("ecer_application", "?$select=ecer_applicationid,ecer_name,statecode&$filter=(_ecer_applicantid_value eq " + contactId + " and statecode eq 0)&$orderby=createdon desc").then(
             function success(results) {
                 console.log(results);
                 if (results.entities.length > 0) {
                     var result = results.entities[0];
-                    applicationId = results["ecer_applicationid"];
-                    // Set Open Application
-                    ECER.Jscripts.Investigation.setValueToLookup(OpenApplication, result["ecer_applicationid"], result["ecer_name"], "ecer_application");
+                    parallelProcess.setValue(621870000);
+                    ECER.Jscripts.Investigation.setValueToLookup(openApplication, result["ecer_applicationid"], result["ecer_name"], "ecer_application");
+                    return result.ecer_applicationid;
                 } else {
                     console.log("No current open Application for Registrant:" + contactId);
+                    return null;
                 }
             },
             function (error) {
                 console.log(error.message);
-            }
-        );
-
-        // Get Education Transcript
-        Xrm.WebApi.retrieveMultipleRecords("ecer_transcript", "?$select=ecer_transcriptid,ecer_educationinstitutionfullname&$filter=(_ecer_applicantid_value eq " + contactId + " and _ecer_applicationid_value eq " + applicationId + ")&$orderby=ecer_enddate desc").then(
-            function success(results) {
-                console.log(results);
-                if (results.entities.length > 0) {
-                    var result = results.entities[0];
-                    educationalInstitution.setValue(result["ecer_educationinstitutionfullname"]);
-                }
-            },
-            function (error) {
-                console.log(error.message);
+                return null;
             }
         );
     },
