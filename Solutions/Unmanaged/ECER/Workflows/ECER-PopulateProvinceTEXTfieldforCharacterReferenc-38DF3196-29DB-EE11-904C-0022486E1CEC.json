@@ -1,0 +1,176 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "IF_Character_Reference_is_created_or_ecer_referencecertifiedprovinceid_modified": {
+          "metadata": {
+            "operationMetadataId": "1a38a5bc-b1a1-4c8d-a9b5-1061cd465172"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_characterreference",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_referencecertifiedprovinceid",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_Variable_-_Other_Province_GUID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "24272a17-3383-4def-97f9-4decb15ea58a"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Other Province GUID",
+                "type": "string",
+                "value": "5e291527-7ada-ee11-904c-002248d56374"
+              }
+            ]
+          }
+        },
+        "IF_Other_Province": {
+          "actions": {},
+          "runAfter": {
+            "Initialize_Variable_-_Other_Province_GUID": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Condition": {
+                "actions": {
+                  "Update_a_row": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "70a90e75-6472-4cde-b711-017c3897ecda"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "ecer_characterreferences",
+                        "recordId": "@triggerOutputs()?['body/ecer_characterreferenceid']",
+                        "item/ecer_referencecertifiedprovince": "@null"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "else": {
+                  "actions": {
+                    "Get_the_Province_Picked": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "90ee33bc-19cd-40c2-a400-933ce0ab8def"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "ecer_provinces",
+                          "recordId": "@triggerOutputs()?['body/_ecer_referencecertifiedprovinceid_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Update_a_row_2": {
+                      "runAfter": {
+                        "Get_the_Province_Picked": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "d6048d34-5539-4bea-8357-8a9aa53bb087"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "ecer_characterreferences",
+                          "recordId": "@triggerOutputs()?['body/ecer_characterreferenceid']",
+                          "item/ecer_referencecertifiedprovince": "@outputs('Get_the_Province_Picked')?['body/ecer_name']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  }
+                },
+                "expression": {
+                  "equals": [
+                    "@triggerOutputs()?['body/_ecer_referencecertifiedprovinceid_value']",
+                    "@null"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "846477cb-f443-40c6-aea4-d6fc0ca1d5cb"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_ecer_referencecertifiedprovinceid_value']",
+              "@variables('Other Province GUID')"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a1b16637-cb03-4238-95ad-68f1c16d7807"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

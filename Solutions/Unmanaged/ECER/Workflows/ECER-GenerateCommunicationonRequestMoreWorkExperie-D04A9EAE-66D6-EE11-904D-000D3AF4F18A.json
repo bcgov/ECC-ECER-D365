@@ -136,34 +136,51 @@
                     "authentication": "@parameters('$authentication')"
                   }
                 },
-                "Perform_a_bound_action_-_Send_Email": {
+                "IF_Applicant_has_email_address": {
+                  "actions": {
+                    "Send_Email": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "514ab58b-3999-4568-8f31-0abd912fa5b5"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "PerformBoundAction",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "emails",
+                          "actionName": "Microsoft.Dynamics.CRM.SendEmail",
+                          "recordId": "@outputs('Create_Generic_Notification_Email_to_Applicant')?['body/activityid']",
+                          "item/IssueSend": false
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
                   "runAfter": {
                     "Create_Generic_Notification_Email_to_Applicant": [
                       "Succeeded"
                     ]
                   },
-                  "metadata": {
-                    "operationMetadataId": "db3fcab5-586e-47d8-bec4-1df4ad4abf96"
+                  "expression": {
+                    "not": {
+                      "equals": [
+                        "@outputs('Get_Applicant_Email_Address')?['body/emailaddress1']",
+                        "@null"
+                      ]
+                    }
                   },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps",
-                      "operationId": "PerformBoundAction",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "emails",
-                      "actionName": "Microsoft.Dynamics.CRM.SendEmail",
-                      "recordId": "@outputs('Create_Generic_Notification_Email_to_Applicant')?['body/activityid']",
-                      "item/IssueSend": false
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  }
+                  "metadata": {
+                    "operationMetadataId": "992d783f-65da-4fbe-a759-cfecd9c150cc"
+                  },
+                  "type": "If"
                 }
               },
               "runAfter": {
-                "Get_List_By_Name_-_No_Reply": [
+                "Get_Applicant_Email_Address": [
                   "Succeeded"
                 ]
               },
@@ -171,6 +188,30 @@
                 "operationMetadataId": "6ab70ee7-4491-44dc-8ddd-7d2efb6cb7f4"
               },
               "type": "Foreach"
+            },
+            "Get_Applicant_Email_Address": {
+              "runAfter": {
+                "Get_List_By_Name_-_No_Reply": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "c77c385a-6922-481c-a7ad-4819714c708b"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@outputs('Get_the_whole_record')?['body/_ecer_applicantid_value']",
+                  "$select": "emailaddress1"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
             }
           },
           "runAfter": {

@@ -65,11 +65,11 @@
                 "parameters": {
                   "entityName": "ecer_communications",
                   "item/ecer_initiatedfrom": 621870000,
-                  "item/ecer_message": "Your submitted Character Reference is not qualified for your application for @{outputs('Get_the_whole_record')?['body/ecer_certificatetype']}.  Please submit another reference for application review.",
+                  "item/ecer_message": "Your submitted Character Reference is not qualified for your application for @{outputs('Get_the_whole_Application_Record')?['body/ecer_certificatetype']}.  Please submit another reference for application review.",
                   "item/ecer_name": "Additional Character Reference Required",
                   "item/ecer_type": 621870002,
-                  "item/ecer_Registrantid_contact@odata.bind": "contacts(@{outputs('Get_the_whole_record')?['body/_ecer_applicantid_value']})",
-                  "item/ecer_Applicationid@odata.bind": "ecer_applications(@{outputs('Get_the_whole_record')?['body/ecer_applicationid']})",
+                  "item/ecer_Registrantid_contact@odata.bind": "contacts(@{outputs('Get_the_whole_Application_Record')?['body/_ecer_applicantid_value']})",
+                  "item/ecer_Applicationid@odata.bind": "ecer_applications(@{outputs('Get_the_whole_Application_Record')?['body/ecer_applicationid']})",
                   "item/ecer_datenotified": "@utcNow()",
                   "item/ecer_notifyrecipient": true,
                   "item/ownerid@odata.bind": "teams(@{variables('Assessment Team Value')})",
@@ -126,45 +126,62 @@
                         },
                         {
                           "participationtypemask": 2,
-                          "partyid@odata.bind": "contacts(@{outputs('Get_the_whole_record')?['body/_ecer_applicantid_value']})"
+                          "partyid@odata.bind": "contacts(@{outputs('Get_the_whole_Application_Record')?['body/_ecer_applicantid_value']})"
                         }
                       ],
                       "item/description": "There is a message waiting for your at the ECER Portal",
                       "item/ownerid_email@odata.bind": "teams(@{variables('Assessment Team Value')})",
-                      "item/regardingobjectid_ecer_application_email@odata.bind": "ecer_applications(@{outputs('Get_the_whole_record')?['body/ecer_applicationid']})",
+                      "item/regardingobjectid_ecer_application_email@odata.bind": "ecer_applications(@{outputs('Get_the_whole_Application_Record')?['body/ecer_applicationid']})",
                       "item/subject": "Additional Character Reference Required"
                     },
                     "authentication": "@parameters('$authentication')"
                   }
                 },
-                "Perform_a_bound_action_-_send_email": {
+                "IF_Applicant_has_email_address": {
+                  "actions": {
+                    "Perform_a_bound_action": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "488a25a6-9bfa-43fe-8a57-4d3e74c41583"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "PerformBoundAction",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "emails",
+                          "actionName": "Microsoft.Dynamics.CRM.SendEmail",
+                          "recordId": "@outputs('Create_generic_notification_email_to_Applicant')?['body/activityid']",
+                          "item/IssueSend": false
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
                   "runAfter": {
                     "Create_generic_notification_email_to_Applicant": [
                       "Succeeded"
                     ]
                   },
-                  "metadata": {
-                    "operationMetadataId": "968c0f84-84ed-4c15-8af7-399fe519b7b7"
+                  "expression": {
+                    "not": {
+                      "equals": [
+                        "@outputs('Get_Applicant_Email_Address')?['body/emailaddress1']",
+                        "@null"
+                      ]
+                    }
                   },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps",
-                      "operationId": "PerformBoundAction",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "emails",
-                      "actionName": "Microsoft.Dynamics.CRM.SendEmail",
-                      "recordId": "@outputs('Create_generic_notification_email_to_Applicant')?['body/activityid']",
-                      "item/IssueSend": false
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  }
+                  "metadata": {
+                    "operationMetadataId": "7f0f3988-b194-4ea9-b6e7-abf82826a0f2"
+                  },
+                  "type": "If"
                 }
               },
               "runAfter": {
-                "Get_List_By_Name_-_No-Reply": [
+                "Get_Applicant_Email_Address": [
                   "Succeeded"
                 ]
               },
@@ -172,10 +189,34 @@
                 "operationMetadataId": "9bc4c885-1cdb-4e34-a2e0-9b10ce7cc33c"
               },
               "type": "Foreach"
+            },
+            "Get_Applicant_Email_Address": {
+              "runAfter": {
+                "Get_List_By_Name_-_No-Reply": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "fcefd3be-71bc-4166-882c-586d31ebeafc"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@outputs('Get_the_whole_Application_Record')?['body/_ecer_applicantid_value']",
+                  "$select": "emailaddress1"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
             }
           },
           "runAfter": {
-            "Get_the_whole_record": [
+            "Get_the_whole_Application_Record": [
               "Succeeded"
             ]
           },
@@ -183,14 +224,14 @@
             "and": [
               {
                 "equals": [
-                  "@outputs('Get_the_whole_record')?['body/ecer_requestcharacterreference']",
+                  "@outputs('Get_the_whole_Application_Record')?['body/ecer_requestcharacterreference']",
                   "@true"
                 ]
               },
               {
                 "not": {
                   "equals": [
-                    "@outputs('Get_the_whole_record')?['body/_ecer_applicantid_value']",
+                    "@outputs('Get_the_whole_Application_Record')?['body/_ecer_applicantid_value']",
                     "@null"
                   ]
                 }
@@ -202,7 +243,7 @@
           },
           "type": "If"
         },
-        "Get_the_whole_record": {
+        "Get_the_whole_Application_Record": {
           "runAfter": {
             "Loop_through_Assessment_Team_results_and_set_variable": [
               "Succeeded"
