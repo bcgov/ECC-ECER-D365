@@ -5,7 +5,7 @@
       <LocalizedName description="ECER" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.14</Version>
+    <Version>1.0.0.15</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>ecer</UniqueName>
@@ -119,6 +119,11 @@
       <RootComponent type="1" schemaName="ecer_portalrole" behavior="0" />
       <RootComponent type="1" schemaName="ecer_portaluser" behavior="0" />
       <RootComponent type="1" schemaName="ecer_postsecondaryinstitute" behavior="0" />
+      <RootComponent type="1" schemaName="ecer_postsecondaryinstitutecampus" behavior="0" />
+      <RootComponent type="1" schemaName="ecer_postsecondaryinstituteinterview" behavior="0" />
+      <RootComponent type="1" schemaName="ecer_postsecondaryinstituteprogramapplicaiton" behavior="0" />
+      <RootComponent type="1" schemaName="ecer_postsecondaryinstituteprogramprofile" behavior="0" />
+      <RootComponent type="1" schemaName="ecer_postsecondaryinstitutesitevisit" behavior="0" />
       <RootComponent type="1" schemaName="ecer_previousaddress" behavior="0" />
       <RootComponent type="1" schemaName="ecer_previousname" behavior="0" />
       <RootComponent type="1" schemaName="ecer_professionaldevelopment" behavior="0" />
@@ -163,6 +168,11 @@
       <RootComponent type="9" schemaName="ecer_nametypes" behavior="0" />
       <RootComponent type="9" schemaName="ecer_preferredcontactmethod" behavior="0" />
       <RootComponent type="9" schemaName="ecer_priority" behavior="0" />
+      <RootComponent type="9" schemaName="ecer_psiapplicationtype" behavior="0" />
+      <RootComponent type="9" schemaName="ecer_psideliverytype" behavior="0" />
+      <RootComponent type="9" schemaName="ecer_psiinstitutiontype" behavior="0" />
+      <RootComponent type="9" schemaName="ecer_psiprojectedlength" behavior="0" />
+      <RootComponent type="9" schemaName="ecer_psiprovincialcertificationtypeoffered" behavior="0" />
       <RootComponent type="9" schemaName="ecer_psiregion" behavior="0" />
       <RootComponent type="9" schemaName="ecer_referencerelationships" behavior="0" />
       <RootComponent type="9" schemaName="ecer_unabletoprovidereferencereasons" behavior="0" />
@@ -212,6 +222,7 @@
       <RootComponent type="29" id="{a17ab84e-d9c5-ee11-9079-000d3af4fa73}" behavior="0" />
       <RootComponent type="29" id="{ab532154-95b5-ee11-a569-000d3af4f18a}" behavior="0" />
       <RootComponent type="29" id="{adb19722-f1c9-ee11-9079-000d3af4fd74}" behavior="0" />
+      <RootComponent type="29" id="{b2f73513-bde7-ee11-a203-002248d56374}" behavior="0" />
       <RootComponent type="29" id="{b3c5f56c-9cb5-ee11-a569-000d3af4f18a}" behavior="0" />
       <RootComponent type="29" id="{c5910727-66c0-ee11-9079-000d3af4fd74}" behavior="0" />
       <RootComponent type="29" id="{d0395999-66e1-ee11-904c-0022486e1cec}" behavior="0" />
@@ -894,11 +905,11 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Email_main_system_library.js" displayName="Activities/SystemLibraries/Email_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
-        <Dependent type="60" displayName="Email" parentDisplayName="Email" id="{0d1e47ff-12b2-4f53-9090-bee951b98cb4}" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Email" id="{394ca387-4777-457c-b5ae-c7a3e632be41}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Email_main_system_library.js" displayName="Activities/SystemLibraries/Email_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
-        <Dependent type="60" displayName="Information" parentDisplayName="Email" id="{394ca387-4777-457c-b5ae-c7a3e632be41}" />
+        <Dependent type="60" displayName="Enhanced Email" parentDisplayName="Email" id="{63769d04-c74f-4808-b0aa-77339e1b9191}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="bcgov_/Scripts/DocumentUrl/OnLoad.js" displayName="bcgov_/Scripts/DocumentUrl/OnLoad.js" solution="S3DocumentManagement (1.0.0.11)" />
