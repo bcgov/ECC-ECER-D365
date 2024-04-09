@@ -1,0 +1,229 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_Work_Experience_is_Approved": {
+          "metadata": {
+            "operationMetadataId": "57d7b83a-f321-454f-9cb8-988ba9404db1"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_workexperienceref",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statecode",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "List_rows": {
+          "runAfter": {
+            "Get_full_Work_Experience_record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6e47b04e-c036-4634-88ca-dff267e00393"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_workexperiencerefs",
+              "$filter": "_ecer_applicationid_value eq '@{outputs('Get_full_Work_Experience_record')?['body/_ecer_applicationid_value']}'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_through_result_work_experience_under_same_application": {
+          "foreach": "@outputs('List_rows')?['body/value']",
+          "actions": {
+            "IF_Status_Reason_is_approved": {
+              "actions": {
+                "Get_Work_Experience_Row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "34f16079-8efb-41c2-92cc-0e9c693db730"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_workexperiencerefs",
+                      "recordId": "@items('Loop_through_result_work_experience_under_same_application')?['ecer_workexperiencerefid']",
+                      "$select": "ecer_totalnumberofhoursapproved"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Set_variable_subtotal_to_subtotal_plus_work_hours": {
+                  "runAfter": {
+                    "Compose": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "34ba664e-67e6-49be-8d68-63fca9b8992a"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "subtotal",
+                    "value": "@outputs('Compose')"
+                  }
+                },
+                "Compose": {
+                  "runAfter": {
+                    "Get_Work_Experience_Row": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "13edc0eb-6c60-45ae-8034-59ba82e92f5b"
+                  },
+                  "type": "Compose",
+                  "inputs": "@add(variables('subtotal'),outputs('Get_Work_Experience_Row')?['body/ecer_totalnumberofhoursapproved'])"
+                }
+              },
+              "runAfter": {},
+              "expression": {
+                "and": [
+                  {
+                    "equals": [
+                      "@items('Loop_through_result_work_experience_under_same_application')?['statuscode']",
+                      2
+                    ]
+                  },
+                  {
+                    "greater": [
+                      "@items('Loop_through_result_work_experience_under_same_application')?['ecer_totalnumberofhoursobserved']",
+                      0
+                    ]
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "a02093a3-75ab-4f62-b51e-d9b73514e463"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f9cf5e34-33c1-49a5-93c3-b75a9bd394a5"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "0adba29e-bbb4-4eb0-a40d-79412d47cb0e"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "subtotal",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Set_total_approved_work_hours": {
+          "runAfter": {
+            "Loop_through_result_work_experience_under_same_application": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "853cb54d-adb4-4bfe-a3fa-90dc0144c65e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@outputs('Get_full_Work_Experience_record')?['body/_ecer_applicationid_value']",
+              "item/ecer_totalapprovedworkexperiencehours": "@variables('subtotal')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_full_Work_Experience_record": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "385c7a1f-5a47-46b3-9f91-75175773f945"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_workexperiencerefs",
+              "recordId": "@triggerOutputs()?['body/ecer_workexperiencerefid']",
+              "$select": "_ecer_applicationid_value"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
