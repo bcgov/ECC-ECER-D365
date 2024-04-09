@@ -1,0 +1,873 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "52dbda5d-95fa-4efb-a7ba-7bbe2d6b010c"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "contact",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "address2_line1,address2_line2,address2_line3,address2_city,address2_stateorprovince,address2_country,address2_postalcode"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_the_latest_audit_record_for_this_triggering_record": {
+          "runAfter": {
+            "v_LoopTerminate": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b0eb95bb-f2ea-49d1-9f16-f6f92c9c0e05"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "audits",
+              "$filter": "_objectid_value eq '@{triggerOutputs()?['body/contactid']}' and objecttypecode eq 'contact'",
+              "$orderby": "createdon desc",
+              "$top": 10
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_Through_the_results": {
+          "foreach": "@outputs('Get_the_latest_audit_record_for_this_triggering_record')?['body/value']",
+          "actions": {
+            "Check_if_v_LoopTerminate_is_TRUE": {
+              "actions": {},
+              "runAfter": {},
+              "else": {
+                "actions": {
+                  "Get_Audit_Record_of_related_triggering_record": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "84de1fc5-e9eb-4d9e-bc23-6d6d106894e0"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "GetItem",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "audits",
+                        "recordId": "@items('Loop_Through_the_results')?['auditid']"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Parse_JSON_from_Audit_Record_Change_Data": {
+                    "runAfter": {
+                      "Get_Audit_Record_of_related_triggering_record": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "2f67df4e-9342-42c0-a22a-6462d901009c"
+                    },
+                    "type": "ParseJson",
+                    "inputs": {
+                      "content": "@outputs('Get_Audit_Record_of_related_triggering_record')?['body/changedata']",
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "changedAttributes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "logicalName": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "oldValue": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "newValue": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "logicalName",
+                                "oldValue",
+                                "newValue"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "Loop_through_Change_Data_array": {
+                    "foreach": "@body('Parse_JSON_from_Audit_Record_Change_Data')?['changedAttributes']",
+                    "actions": {
+                      "If_logical_name_is_address2_line1": {
+                        "actions": {
+                          "set_v_address2_line1": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "4a6647d2-bba0-4004-900d-acebfb6b49f9"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "v_address2_line1",
+                              "value": "@{items('Loop_through_Change_Data_array')?['oldValue']}"
+                            }
+                          }
+                        },
+                        "runAfter": {},
+                        "expression": {
+                          "equals": [
+                            "@items('Loop_through_Change_Data_array')?['logicalName']",
+                            "address2_line1"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "2046f665-8c8a-4900-b167-10198f5bd6e9"
+                        },
+                        "type": "If"
+                      },
+                      "if_logical_name_is_address2_line2": {
+                        "actions": {
+                          "set_v_address2_line2": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "79f0e514-1f88-45f7-946c-51413230599d"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "v_address2_line2",
+                              "value": "@items('Loop_through_Change_Data_array')?['oldValue']"
+                            }
+                          }
+                        },
+                        "runAfter": {
+                          "If_logical_name_is_address2_line1": [
+                            "Succeeded"
+                          ]
+                        },
+                        "expression": {
+                          "equals": [
+                            "@items('Loop_through_Change_Data_array')?['logicalName']",
+                            "address2_line2"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "08cf984e-1b57-4cc2-8eb4-83773d39f954"
+                        },
+                        "type": "If"
+                      },
+                      "if_logical_name_is_address2_line3": {
+                        "actions": {
+                          "set_v_address2_line3": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "d7e6040e-5001-4fda-bfac-52256333eaf5"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "v_address2_line3",
+                              "value": "@items('Loop_through_Change_Data_array')?['oldValue']"
+                            }
+                          }
+                        },
+                        "runAfter": {
+                          "if_logical_name_is_address2_line2": [
+                            "Succeeded"
+                          ]
+                        },
+                        "expression": {
+                          "equals": [
+                            "@items('Loop_through_Change_Data_array')?['logicalName']",
+                            "address2_line3"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "0c2807d7-a9ee-4936-abfd-c72a4a295b0c"
+                        },
+                        "type": "If"
+                      },
+                      "if_logical_name_is_address2_city": {
+                        "actions": {
+                          "set_v_PreferredName": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "f529ac13-8ac6-4bef-bbf0-7084d10e40ac"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "v_address2_city",
+                              "value": "@{items('Loop_through_Change_Data_array')?['oldValue']}"
+                            }
+                          }
+                        },
+                        "runAfter": {
+                          "if_logical_name_is_address2_line3": [
+                            "Succeeded"
+                          ]
+                        },
+                        "expression": {
+                          "equals": [
+                            "@items('Loop_through_Change_Data_array')?['logicalName']",
+                            "address2_city"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "32fbdce3-3c5d-40e5-b2b0-4517635dc767"
+                        },
+                        "type": "If"
+                      },
+                      "if_logical_name_is_address2_stateorprovince": {
+                        "actions": {
+                          "set_v_address2_stateorprovince": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "e6c48fee-9962-4bf2-bb2e-ae60c1efc324"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "v_address2_stateorprovince",
+                              "value": "@{items('Loop_through_Change_Data_array')?['oldValue']}"
+                            }
+                          }
+                        },
+                        "runAfter": {
+                          "if_logical_name_is_address2_city": [
+                            "Succeeded"
+                          ]
+                        },
+                        "expression": {
+                          "equals": [
+                            "@items('Loop_through_Change_Data_array')?['logicalName']",
+                            "address2_stateorprovince"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "a71a846a-fec5-4a2a-9c7a-ad093ba826d0"
+                        },
+                        "type": "If"
+                      },
+                      "if_logical_name_is_address2_country": {
+                        "actions": {
+                          "Set_variable_2": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "be8bf2c5-10b9-405d-a9c3-45ab91e7587b"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "v_address2_country",
+                              "value": "@{items('Loop_through_Change_Data_array')?['oldValue']}"
+                            }
+                          }
+                        },
+                        "runAfter": {
+                          "if_logical_name_is_address2_stateorprovince": [
+                            "Succeeded"
+                          ]
+                        },
+                        "expression": {
+                          "equals": [
+                            "@items('Loop_through_Change_Data_array')?['logicalName']",
+                            "address2_country"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "23e4b3e4-ffed-4f9a-a566-55473116a155"
+                        },
+                        "type": "If"
+                      },
+                      "if_logical_name_is_address2_postalcode": {
+                        "actions": {
+                          "Set_variable": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "5c687df9-d142-4d91-98b4-7535945ab54e"
+                            },
+                            "type": "SetVariable",
+                            "inputs": {
+                              "name": "v_address2_postalcode",
+                              "value": "@{items('Loop_through_Change_Data_array')?['oldValue']}"
+                            }
+                          }
+                        },
+                        "runAfter": {
+                          "if_logical_name_is_address2_country": [
+                            "Succeeded"
+                          ]
+                        },
+                        "expression": {
+                          "equals": [
+                            "@items('Loop_through_Change_Data_array')?['logicalName']",
+                            "address2_postalcode"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "5b030fe8-c6f3-4258-8a1e-6eec2566244f"
+                        },
+                        "type": "If"
+                      }
+                    },
+                    "runAfter": {
+                      "Parse_JSON_from_Audit_Record_Change_Data": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "332d0a25-1e67-44e8-8bfb-5fc88098e4e7"
+                    },
+                    "type": "Foreach"
+                  },
+                  "Check_if_any_of_variables_has_values_set": {
+                    "actions": {},
+                    "runAfter": {
+                      "Loop_through_Change_Data_array": [
+                        "Succeeded"
+                      ]
+                    },
+                    "else": {
+                      "actions": {
+                        "Set_v_LoopTerminate_to_TRUE": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "ca2db166-5c73-412b-bb2f-f78a3f92c4f4"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "v_LoopTerminate",
+                            "value": "@true"
+                          }
+                        },
+                        "Add_a_new_row": {
+                          "runAfter": {
+                            "IF_Country_is_still_NULL": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "d9b2a3d3-8b5d-4a40-a264-ba3991b15856"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_commondataserviceforapps",
+                              "operationId": "CreateRecord",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                            },
+                            "parameters": {
+                              "entityName": "ecer_previousaddresses",
+                              "item/ecer_Customerid_contact@odata.bind": "contacts(@{triggerOutputs()?['body/contactid']})",
+                              "item/ecer_addresstype": 621870001,
+                              "item/ecer_city": "@variables('v_address2_city')",
+                              "item/ecer_country": "@variables('v_address2_country')",
+                              "item/ecer_postalcode": "@variables('v_address2_postalcode')",
+                              "item/ecer_province": "@variables('v_address2_stateorprovince')",
+                              "item/ecer_street1": "@variables('v_address2_line1')",
+                              "item/ecer_street2": "@variables('v_address2_line2')",
+                              "item/ecer_street3": "@variables('v_address2_line3')"
+                            },
+                            "authentication": "@parameters('$authentication')"
+                          }
+                        },
+                        "IF_address_line_1_is_still_NULL": {
+                          "actions": {
+                            "Set_variable_address2_line1": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "0cba8426-db2e-4170-b6f0-24b4bb825b56"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "v_address2_line1",
+                                "value": "@triggerOutputs()?['body/address2_line1']"
+                              }
+                            }
+                          },
+                          "runAfter": {
+                            "Set_v_LoopTerminate_to_TRUE": [
+                              "Succeeded"
+                            ]
+                          },
+                          "expression": {
+                            "not": {
+                              "equals": [
+                                "@variables('v_address2_line1')",
+                                "XXYYZZ"
+                              ]
+                            }
+                          },
+                          "metadata": {
+                            "operationMetadataId": "c89a2107-e490-4d78-9aad-298d42cacae8"
+                          },
+                          "type": "If"
+                        },
+                        "IF_address_line_2_is_still_NULL": {
+                          "actions": {
+                            "Set_address2_line2": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "ebeaf443-08e1-44d1-b091-124fb3d6f458"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "v_address2_line2",
+                                "value": "@triggerOutputs()?['body/address2_line2']"
+                              }
+                            }
+                          },
+                          "runAfter": {
+                            "IF_address_line_1_is_still_NULL": [
+                              "Succeeded"
+                            ]
+                          },
+                          "expression": {
+                            "equals": [
+                              "@variables('v_address2_line2')",
+                              "XXYYZZ"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "2f6d47f5-6df2-4363-8e1c-316d81709195"
+                          },
+                          "type": "If"
+                        },
+                        "IF_address_line_3_is_still_NULL": {
+                          "actions": {
+                            "set_line_3": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "9c5fb98c-181c-43e9-acc3-a53e0492fcd1"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "v_address2_line3",
+                                "value": "@triggerOutputs()?['body/address2_line3']"
+                              }
+                            }
+                          },
+                          "runAfter": {
+                            "IF_address_line_2_is_still_NULL": [
+                              "Succeeded"
+                            ]
+                          },
+                          "expression": {
+                            "equals": [
+                              "@variables('v_address2_line3')",
+                              "XXYYZZ"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "208faa4b-7076-4c57-8341-acd00f30ca01"
+                          },
+                          "type": "If"
+                        },
+                        "IF_city_is_still_NULL": {
+                          "actions": {
+                            "Set_variable_city": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "5825461d-873a-40f4-bfef-2dcbcf24d7d2"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "v_address2_city",
+                                "value": "@triggerOutputs()?['body/address2_city']"
+                              }
+                            }
+                          },
+                          "runAfter": {
+                            "IF_address_line_3_is_still_NULL": [
+                              "Succeeded"
+                            ]
+                          },
+                          "expression": {
+                            "equals": [
+                              "@variables('v_address2_city')",
+                              "XXYYZZ"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "58096ac7-6c28-4973-a86e-27a5d67929e4"
+                          },
+                          "type": "If"
+                        },
+                        "IF_province_is_still_NULL": {
+                          "actions": {
+                            "Set_variable_province": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "65d8df71-55f1-4fde-b414-b65e1d055e52"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "v_address2_stateorprovince",
+                                "value": "@triggerOutputs()?['body/address2_stateorprovince']"
+                              }
+                            }
+                          },
+                          "runAfter": {
+                            "IF_city_is_still_NULL": [
+                              "Succeeded"
+                            ]
+                          },
+                          "expression": {
+                            "equals": [
+                              "@variables('v_address2_stateorprovince')",
+                              "XXYYZZ"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "ad9abdec-d933-4dee-b053-772ceeeb407c"
+                          },
+                          "type": "If"
+                        },
+                        "IF_Postal_Code_is_still_NULL": {
+                          "actions": {
+                            "Set_variable_postal_code": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "446aa9cd-8d7a-4df9-87d4-7c390c4eb1a6"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "v_address2_postalcode",
+                                "value": "@triggerOutputs()?['body/address2_postalcode']"
+                              }
+                            }
+                          },
+                          "runAfter": {
+                            "IF_province_is_still_NULL": [
+                              "Succeeded"
+                            ]
+                          },
+                          "expression": {
+                            "equals": [
+                              "@variables('v_address2_postalcode')",
+                              "XXYYZZ"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "66a2cda0-7bbd-4d70-b1ad-eabcde532daf"
+                          },
+                          "type": "If"
+                        },
+                        "IF_Country_is_still_NULL": {
+                          "actions": {
+                            "Set_variable_country": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "9e4814e6-7a48-4eda-8e1f-9a65f0f11b1b"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "v_address2_country",
+                                "value": "@triggerOutputs()?['body/address2_country']"
+                              }
+                            }
+                          },
+                          "runAfter": {
+                            "IF_Postal_Code_is_still_NULL": [
+                              "Succeeded"
+                            ]
+                          },
+                          "expression": {
+                            "equals": [
+                              "@variables('v_address2_country')",
+                              "XXYYZZ"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "a9f40862-72c2-4a99-91a5-2d3182d2323a"
+                          },
+                          "type": "If"
+                        }
+                      }
+                    },
+                    "expression": {
+                      "and": [
+                        {
+                          "equals": [
+                            "@variables('v_address2_line1')",
+                            "XXYYZZ"
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@variables('v_address2_line2')",
+                            "XXYYZZ"
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@variables('v_address2_line3')",
+                            "XXYYZZ"
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@variables('v_address2_city')",
+                            "XXYYZZ"
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@variables('v_address2_stateorprovince')",
+                            "XXYYZZ"
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@variables('v_address2_country')",
+                            "XXYYZZ"
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@variables('v_address2_postalcode')",
+                            "XXYYZZ"
+                          ]
+                        }
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "1b292dcc-7794-44e6-9146-0ffef67ca170"
+                    },
+                    "type": "If"
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@variables('v_LoopTerminate')",
+                  "@true"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "051b18a2-5e06-4e41-9969-dee603eb982c"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Get_the_latest_audit_record_for_this_triggering_record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e5c454ed-bd0b-4f41-9316-2c85e0a0196b"
+          },
+          "type": "Foreach"
+        },
+        "v_address2_line1": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "00f334da-c6a2-4846-a7ee-8e849ed76e0d"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "v_address2_line1",
+                "type": "string",
+                "value": "XXYYZZ"
+              }
+            ]
+          }
+        },
+        "v_address2_line2": {
+          "runAfter": {
+            "v_address2_line1": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5ba85ad6-b79a-4d00-8432-2238deee8057"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "v_address2_line2",
+                "type": "string",
+                "value": "XXYYZZ"
+              }
+            ]
+          }
+        },
+        "v_address2_line3": {
+          "runAfter": {
+            "v_address2_line2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "42a71895-1a78-4a57-a0a2-3c5fbb0a052f"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "v_address2_line3",
+                "type": "string",
+                "value": "XXYYZZ"
+              }
+            ]
+          }
+        },
+        "v_address2_city": {
+          "runAfter": {
+            "v_address2_line3": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1ce1c46b-1055-4ffe-ba24-fb7660dafeca"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "v_address2_city",
+                "type": "string",
+                "value": "XXYYZZ"
+              }
+            ]
+          }
+        },
+        "v_LoopTerminate": {
+          "runAfter": {
+            "v_address2_postalcode": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "917f7b34-7d11-49a8-b2ee-4f9d29e1ce1b"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "v_LoopTerminate",
+                "type": "boolean",
+                "value": "@false"
+              }
+            ]
+          }
+        },
+        "v_address2_stateorprovince": {
+          "runAfter": {
+            "v_address2_city": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cab40087-4c9e-43ea-ac76-8b2bd2bc806a"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "v_address2_stateorprovince",
+                "type": "string",
+                "value": "XXYYZZ"
+              }
+            ]
+          }
+        },
+        "v_address2_country": {
+          "runAfter": {
+            "v_address2_stateorprovince": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d107af7e-d816-488f-a601-142e2a036d41"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "v_address2_country",
+                "type": "string",
+                "value": "XXYYZZ"
+              }
+            ]
+          }
+        },
+        "v_address2_postalcode": {
+          "runAfter": {
+            "v_address2_country": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "912d0889-c5a7-4abd-8141-b2b457f3dc4d"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "v_address2_postalcode",
+                "type": "string",
+                "value": "XXYYZZ"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

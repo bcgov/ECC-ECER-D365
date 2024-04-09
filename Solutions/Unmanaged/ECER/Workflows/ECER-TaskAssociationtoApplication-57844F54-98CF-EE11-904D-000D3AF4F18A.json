@@ -1,0 +1,254 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_adding_new_Task": {
+          "metadata": {
+            "operationMetadataId": "52ec8389-052b-4f2a-b1f4-4a5a7a89b2cb"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "task",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Regarding_Table_is_ecer_application": {
+          "actions": {
+            "Linking_Application_table": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "7941de52-d235-4771-a643-00ee8e9d7a64"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "recordId": "@variables('Activity ID')",
+                  "item/ecer_Application_Task@odata.bind": "ecer_applications(@{triggerOutputs()?['body/_regardingobjectid_value']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable_-_Activity_ID": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "startsWith": [
+              "@triggerOutputs()?['body/_regardingobjectid_type']",
+              "ecer_application"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3ac1a3fd-e8af-4d02-b011-b28ef7928822"
+          },
+          "type": "If"
+        },
+        "IF_Regarding_table_name_starts_with__ecer_characterreference": {
+          "actions": {
+            "Get_Application_ID_from_Regarding_Character_Reference_Record": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "e50577e4-d0da-4f8d-8673-8d622bc76d3c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_characterreferences",
+                  "recordId": "@variables('Regarding Object ID')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Update_a_row": {
+              "runAfter": {
+                "Get_Application_ID_from_Regarding_Character_Reference_Record": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "86ae929d-c1d0-4ab3-b561-6cacf5dc107c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "recordId": "@variables('Activity ID')",
+                  "item/ecer_Application_Task@odata.bind": "ecer_applications(@{outputs('Get_Application_ID_from_Regarding_Character_Reference_Record')?['body/_ecer_applicationid_value']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "IF_Regarding_Table_is_ecer_application": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "startsWith": [
+              "@triggerOutputs()?['body/_regardingobjectid_type']",
+              "ecer_characterreference"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "034128ba-e200-439f-bf28-216ae2aa5a6b"
+          },
+          "type": "If"
+        },
+        "IF_Regarding_table_name_starts_with__ecer_workexperiencereference": {
+          "actions": {
+            "Get_Application_ID_From_Work_Experience_Reference": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "aa10217f-7d0c-4525-a9c8-f8d8e999b5c0"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_workexperiencerefs",
+                  "recordId": "@variables('Regarding Object ID')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Update_a_row_2": {
+              "runAfter": {
+                "Get_Application_ID_From_Work_Experience_Reference": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "8dea2c7d-3c22-48bd-9d4b-d75c3a2901a1"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "recordId": "@variables('Activity ID')",
+                  "item/ecer_Application_Task@odata.bind": "ecer_applications(@{outputs('Get_Application_ID_From_Work_Experience_Reference')?['body/_ecer_applicationid_value']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "IF_Regarding_table_name_starts_with__ecer_characterreference": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "startsWith": [
+              "@triggerOutputs()?['body/_regardingobjectid_type']",
+              "ecer_workexperiencerefs"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b2722ccc-60e6-4ae8-a2e2-09449ff07154"
+          },
+          "type": "If"
+        },
+        "Initialize_Variable_-_Regarding_Object_ID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "6cdf85ad-bf9d-4f35-bdda-63cf477e6fd1"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Regarding Object ID",
+                "type": "string",
+                "value": "@triggerOutputs()?['body/_regardingobjectid_value']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Activity_ID": {
+          "runAfter": {
+            "Initialize_Variable_-_Regarding_Object_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c6023853-6941-4f27-b7d4-b4b8b1e31e59"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Activity ID",
+                "type": "string",
+                "value": "@triggerOutputs()?['body/activityid']"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

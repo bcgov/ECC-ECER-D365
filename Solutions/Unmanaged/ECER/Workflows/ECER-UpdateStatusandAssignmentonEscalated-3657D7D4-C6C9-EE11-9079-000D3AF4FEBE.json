@@ -1,0 +1,201 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "On_Modified_of_the_Has_Escalated_to_Team_Lead": {
+          "metadata": {
+            "operationMetadataId": "1d4826dc-5622-404d-addf-a1b5ee1ea342"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_application",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_escalatetoteamlead"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Selected_YES": {
+          "actions": {
+            "If_Assessment_Team_Lead_CONTAINS_data": {
+              "actions": {
+                "Set_Date_Escalated,_Status_Reason,_and_Ownership_changed_to_Assessment_Team_Lead": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "9645ee5d-67f3-4526-89fd-87a4181d0aba"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_applications",
+                      "recordId": "@outputs('Get_Application_by_ID')?['body/ecer_applicationid']",
+                      "item/ecer_dateescalated": "@utcNow()",
+                      "item/ownerid@odata.bind": "systemusers(@{outputs('Get_Application_by_ID')?['body/_ecer_assessorlead_value']})",
+                      "item/statuscode": 290700002
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {},
+              "else": {
+                "actions": {
+                  "Set_Date_Escalated,_Status_Reason": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "297ae89f-765d-41c7-b296-80a39e96a0b7"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "ecer_applications",
+                        "recordId": "@outputs('Get_Application_by_ID')?['body/ecer_applicationid']",
+                        "item/ecer_dateescalated": "@utcNow()",
+                        "item/statuscode": 290700002
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Application_by_ID')?['body/_ecer_assessorlead_value']",
+                    "@null"
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "12c0905d-f03d-4e6e-a14a-8c417d277c2e"
+              },
+              "type": "If"
+            },
+            "IF_Assessor_CONTAINS_data": {
+              "actions": {
+                "Create_a_Decision_Comments_for_Assessor_to_fill_in": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "54dd9471-a091-4511-8876-ec355cb02cf7"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_comments",
+                      "item/ecer_Contact@odata.bind": "contacts(@{outputs('Get_Application_by_ID')?['body/_ecer_applicantid_value']})",
+                      "item/ecer_decision": 621870004,
+                      "item/ecer_notes": "@outputs('Set_Date_Escalated,_Status_Reason,_and_Ownership_changed_to_Assessment_Team_Lead')?['body/ecer_escalatereason']",
+                      "item/ecer_Application@odata.bind": "ecer_applications(@{outputs('Get_Application_by_ID')?['body/ecer_applicationid']})",
+                      "item/ownerid@odata.bind": "systemusers(@{outputs('Get_Application_by_ID')?['body/_ecer_assessor_value']})"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "If_Assessment_Team_Lead_CONTAINS_data": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Application_by_ID')?['body/_ecer_assessor_value']",
+                    "@null"
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "a9efcc06-c5b3-4198-bee5-726afd87e443"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Get_Application_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_escalatetoteamlead']",
+              621870000
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9b504fea-812b-4d31-b510-8d7b08d47a7f"
+          },
+          "type": "If"
+        },
+        "Get_Application_by_ID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "74c9454b-abd3-475b-ab21-868ec5ba0a62"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@triggerOutputs()?['body/ecer_applicationid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
