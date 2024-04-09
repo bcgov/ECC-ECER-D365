@@ -25,3 +25,6 @@ DynamicsCustomizations/DocumentUrlPlugin/bin/Release/Microsoft.Xrm.Sdk.Workflow.
 DynamicsCustomizations/DocumentUrlPlugin/bin/Release/Microsoft.Xrm.Sdk.xml
 DynamicsCustomizations/DocumentUrlPlugin/obj/Release/DocumentUrlPlugin.csproj.FileListAbsolute.txt
 DynamicsCustomizations/.vs/CRM/v16/.suo
+*.cache
+DynamicsCustomizations/.vs/CRM/v16/.suo
+*.ini
