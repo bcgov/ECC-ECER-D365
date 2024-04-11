@@ -1,0 +1,162 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "52dbda5d-95fa-4efb-a7ba-7bbe2d6b010c"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "contact",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "firstname, lastname, middlename, ecer_preferredname",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_full_contact_record": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "fdd54bf1-161a-4759-9557-02bdb4fa453e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@triggerOutputs()?['body/contactid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_of_Previous_Names_of_contact_with_no_end_date": {
+          "runAfter": {
+            "Add_a_new_row": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "47d8a14e-4168-402f-b2e1-77e365359e38"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_previousnames",
+              "$filter": "_ecer_contactid_value eq '@{outputs('Get_full_contact_record')?['body/contactid']}' and ecer_enddate eq null and ecer_nametype eq 621870001 and ecer_previousnameid ne '@{outputs('Add_a_new_row')?['body/ecer_previousnameid']}'",
+              "$orderby": "ecer_startdate desc",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_of_Previous_Names_of_contact_with_no_end_date')?['body/value']",
+          "actions": {
+            "Update_a_row": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2fb82e2d-31b3-4506-af8f-4138f4ec1a08"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_previousnames",
+                  "recordId": "@items('Apply_to_each')?['ecer_previousnameid']",
+                  "item/ecer_enddate": "@utcNow()"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_of_Previous_Names_of_contact_with_no_end_date": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "76fae9a0-2502-4834-82b6-e98bec99225e"
+          },
+          "type": "Foreach"
+        },
+        "Add_a_new_row": {
+          "runAfter": {
+            "Get_full_contact_record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "12e054c1-6453-406d-a78a-bbdf1b994184"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_previousnames",
+              "item/ecer_Contactid@odata.bind": "contacts(@{outputs('Get_full_contact_record')?['body/contactid']})",
+              "item/ecer_firstname": "@outputs('Get_full_contact_record')?['body/firstname']",
+              "item/ecer_lastname": "@outputs('Get_full_contact_record')?['body/lastname']",
+              "item/ecer_middlename": "@outputs('Get_full_contact_record')?['body/middlename']",
+              "item/ecer_preferredname": "@outputs('Get_full_contact_record')?['body/ecer_preferredname']",
+              "item/ecer_startdate": "@utcNow()"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,186 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_Education_Transcript_is_added_or_modified": {
+          "metadata": {
+            "operationMetadataId": "0059a753-ed82-4f95-8e03-e7cf18fc252a"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_transcript",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_coursename,ecer_programname",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Condition": {
+          "actions": {
+            "Set_variable_-_Program_-_Course": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "db7c879a-c6e0-4228-939a-2076fa8f3039"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Program and Course Name",
+                "value": "@{triggerOutputs()?['body/ecer_programname']} - @{triggerOutputs()?['body/ecer_coursename']}"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "If_Course_Name_contains_data": {
+                "actions": {
+                  "Set_variable_-_Course": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "ae6535e8-d04c-4330-9b47-3d21112fa049"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "Program and Course Name",
+                      "value": "@triggerOutputs()?['body/ecer_coursename']"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "else": {
+                  "actions": {
+                    "Set_Program_Name": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "d813a793-4786-4e25-8949-6db91ffe344a"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Program and Course Name",
+                        "value": "@triggerOutputs()?['body/ecer_programname']"
+                      }
+                    }
+                  }
+                },
+                "expression": {
+                  "not": {
+                    "equals": [
+                      "@triggerOutputs()?['body/ecer_coursename']",
+                      "@null"
+                    ]
+                  }
+                },
+                "metadata": {
+                  "operationMetadataId": "58addfd2-b590-48c8-adf4-c3ceede6ab96"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "equals": [
+                    "@triggerOutputs()?['body/ecer_programname']",
+                    "@null"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@triggerOutputs()?['body/ecer_coursename']",
+                    "@null"
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7b940c7d-9cc6-4201-af4e-ac8ba5f2a847"
+          },
+          "type": "If"
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "418d3807-89fa-4c8f-a56f-1df85ea78cee"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Program and Course Name",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Update_a_row": {
+          "runAfter": {
+            "Condition": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "55e21a1d-3dcc-43ca-88f5-e2a41f2b367c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_transcripts",
+              "recordId": "@triggerOutputs()?['body/ecer_transcriptid']",
+              "item/ecer_programcoursename": "@variables('Program and Course Name')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

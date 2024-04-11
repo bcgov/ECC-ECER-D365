@@ -1,0 +1,536 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_an_application_is_created_or_ownership_changed": {
+          "metadata": {
+            "operationMetadataId": "97f0e78b-133f-4786-8cc9-ad4c39aea9ba"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_application",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ownerid",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Owner_Table_is_systemuser": {
+          "actions": {
+            "Get_System_User_Record": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "5acde572-7c1b-4ae4-a5a2-6b74e2788c28"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "recordId": "@triggerOutputs()?['body/_ownerid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_BPF_Certifications_record_for_the_corresponding_Application": {
+              "runAfter": {
+                "Get_System_User_Record": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "cf0826da-a4e4-43d3-b399-855c957fd980"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_certificationses",
+                  "$filter": "_bpf_ecer_applicationid_value eq '@{triggerOutputs()?['body/ecer_applicationid']}'",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Loop_through_BPF_results_to_set_Active_Stage": {
+              "foreach": "@outputs('Get_BPF_Certifications_record_for_the_corresponding_Application')?['body/value']",
+              "actions": {
+                "Set_Active_Stage_ID": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "192fd752-a683-43a3-8b31-a06fb77c39b7"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Active Stage ID",
+                    "value": "@items('Loop_through_BPF_results_to_set_Active_Stage')?['_activestageid_value']"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_BPF_Certifications_record_for_the_corresponding_Application": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "b587250b-469c-49db-bc2c-070b3f3667b9"
+              },
+              "type": "Foreach"
+            },
+            "IF_Active_Stage_ID_is_Submission": {
+              "actions": {
+                "Set_BPF_Stage_Name_-_Submission": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "9e8a831f-c600-4986-be30-202730aae483"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "BPF Stage Name",
+                    "value": "Submission"
+                  }
+                }
+              },
+              "runAfter": {
+                "Loop_through_BPF_results_to_set_Active_Stage": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "If_Active_Stage_ID_is_Assessment": {
+                    "actions": {
+                      "Set_BPF_Stage_Name_-_Assessment": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "f47f201a-4267-428c-8370-c03b28bf465f"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "BPF Stage Name",
+                          "value": "Assessment"
+                        }
+                      }
+                    },
+                    "runAfter": {},
+                    "else": {
+                      "actions": {
+                        "If_Active_Stage_ID_is_Program_Analysis": {
+                          "actions": {
+                            "Set_BPF_Stage_Name_-_Program_Analysis": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "ffd3c9a2-797c-4b6c-a3f2-f1a945c64848"
+                              },
+                              "type": "SetVariable",
+                              "inputs": {
+                                "name": "BPF Stage Name",
+                                "value": "Program Analysis"
+                              }
+                            }
+                          },
+                          "runAfter": {},
+                          "else": {
+                            "actions": {
+                              "If_Active_Stage_ID_is_Assessment_Review": {
+                                "actions": {
+                                  "Set_BPF_Stage_Name_-_Assessment_Review": {
+                                    "runAfter": {},
+                                    "metadata": {
+                                      "operationMetadataId": "0f66fb53-eee7-47a4-a330-217a51beb24b"
+                                    },
+                                    "type": "SetVariable",
+                                    "inputs": {
+                                      "name": "BPF Stage Name",
+                                      "value": "Assessment Review"
+                                    }
+                                  }
+                                },
+                                "runAfter": {},
+                                "else": {
+                                  "actions": {
+                                    "If_Active_Stage_ID_is_Program_Review": {
+                                      "actions": {
+                                        "Set_BPF_Stage_Name_-_Program_Review": {
+                                          "runAfter": {},
+                                          "metadata": {
+                                            "operationMetadataId": "9b102baf-5853-49a7-a08c-15ad50284784"
+                                          },
+                                          "type": "SetVariable",
+                                          "inputs": {
+                                            "name": "BPF Stage Name",
+                                            "value": "Program Review"
+                                          }
+                                        }
+                                      },
+                                      "runAfter": {},
+                                      "expression": {
+                                        "equals": [
+                                          "@variables('Active Stage ID')",
+                                          "@variables('BPF Stage - Program Review')"
+                                        ]
+                                      },
+                                      "metadata": {
+                                        "operationMetadataId": "f21bcfd7-be8b-47d3-975e-58c3dd446808"
+                                      },
+                                      "type": "If"
+                                    }
+                                  }
+                                },
+                                "expression": {
+                                  "equals": [
+                                    "@variables('Active Stage ID')",
+                                    "@variables('BPF Stage - Assessment Review')"
+                                  ]
+                                },
+                                "metadata": {
+                                  "operationMetadataId": "aaee6646-85ed-417f-8721-f6c82928accc"
+                                },
+                                "type": "If"
+                              }
+                            }
+                          },
+                          "expression": {
+                            "and": [
+                              {
+                                "or": [
+                                  {
+                                    "equals": [
+                                      "@variables('Active Stage ID')",
+                                      "@variables('BPF Stage - Program Analysis 1')"
+                                    ]
+                                  },
+                                  {
+                                    "equals": [
+                                      "@variables('Active Stage ID')",
+                                      "@variables('BPF Stage - Program Analysis 2')"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "c632f2bf-a30d-4a69-a276-f435bd304816"
+                          },
+                          "type": "If"
+                        }
+                      }
+                    },
+                    "expression": {
+                      "and": [
+                        {
+                          "or": [
+                            {
+                              "equals": [
+                                "@variables('Active Stage ID')",
+                                "@variables('BPF Stage - Assessment 1')"
+                              ]
+                            },
+                            {
+                              "equals": [
+                                "@variables('Active Stage ID')",
+                                "@variables('BPF Stage - Assessment 2')"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "6129f7d1-affb-4b93-91b1-1a830ed61730"
+                    },
+                    "type": "If"
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@variables('Active Stage ID')",
+                  "@variables('BPF Stage - Submission')"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "457b63a1-bd63-4f4a-9efb-220299cfc401"
+              },
+              "type": "If"
+            },
+            "Add_Application_History_Record": {
+              "runAfter": {
+                "IF_Active_Stage_ID_is_Submission": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "b176cd99-d98d-4480-aa96-52c1fa591feb"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applicationhistories",
+                  "item/ecer_ApplicationId@odata.bind": "ecer_applications(@{triggerOutputs()?['body/ecer_applicationid']})",
+                  "item/ecer_bpfstagename": "@variables('BPF Stage Name')",
+                  "item/ecer_name": "New Assignee @{outputs('Get_System_User_Record')?['body/fullname']} at BPF Stage @{variables('BPF Stage Name')}",
+                  "item/ecer_NewAssigneeId@odata.bind": "systemusers(@{outputs('Get_System_User_Record')?['body/systemuserid']})",
+                  "item/ownerid@odata.bind": "systemusers(@{outputs('Get_System_User_Record')?['body/systemuserid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "BPF_Stage_Name": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/_ownerid_type']",
+                  "systemusers"
+                ]
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@triggerOutputs()?['body/ecer_name']",
+                    "@null"
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "802c52e8-347c-4691-9a75-52ee18e2abe6"
+          },
+          "type": "If"
+        },
+        "BPF_Stage_-_Submission": {
+          "runAfter": {
+            "Initialize_variable_-_Active_Stage_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3e154c7a-fd9f-4356-88fe-7961251ae6bd"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "BPF Stage - Submission",
+                "type": "string",
+                "value": "b1780da9-e9b2-4dbe-8afd-76dc60de0004"
+              }
+            ]
+          }
+        },
+        "BPF_Stage_-_Assessment_1": {
+          "runAfter": {
+            "BPF_Stage_-_Submission": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "296601d7-d4fb-41e0-af5e-541588aa159e"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "BPF Stage - Assessment 1",
+                "type": "string",
+                "value": "10e42ef6-c7a2-4800-adb5-f0bcb808f39f"
+              }
+            ]
+          }
+        },
+        "BPF_Stage_-_Assessment_2": {
+          "runAfter": {
+            "BPF_Stage_-_Assessment_1": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a4797189-5abc-4451-b01a-1287f7db963d"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "BPF Stage - Assessment 2",
+                "type": "string",
+                "value": "a527edeb-3843-488a-b0b1-673efc1b89f3"
+              }
+            ]
+          }
+        },
+        "BPF_Stage_-_Program_Analysis_1": {
+          "runAfter": {
+            "BPF_Stage_-_Assessment_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "25c491df-36c4-4b7c-abaf-8b8621cf2458"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "BPF Stage - Program Analysis 1",
+                "type": "string",
+                "value": "3bec9d8e-1b2b-4bd2-b645-ec9afe32ba88"
+              }
+            ]
+          }
+        },
+        "BPF_Stage_-_Program_Analysis_2": {
+          "runAfter": {
+            "BPF_Stage_-_Program_Analysis_1": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e7e84bd9-92fe-4a7c-b47f-25b63ca10071"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "BPF Stage - Program Analysis 2",
+                "type": "string",
+                "value": "d5e7fe9d-2f83-4291-98c8-0e51a38f3ee3"
+              }
+            ]
+          }
+        },
+        "BPF_Stage_-_Program_Review": {
+          "runAfter": {
+            "BPF_Stage_-_Program_Analysis_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "fd17082a-a1ed-4084-9806-a30221d8fd7f"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "BPF Stage - Program Review",
+                "type": "string",
+                "value": "4aeb8a6a-b8e2-4674-99aa-73a7daf494fc"
+              }
+            ]
+          }
+        },
+        "BPF_Stage_-_Assessment_Review": {
+          "runAfter": {
+            "BPF_Stage_-_Program_Review": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "064006be-fd11-4d3c-8f5e-11bda0b3363e"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "BPF Stage - Assessment Review",
+                "type": "string",
+                "value": "9c47e7ef-39cb-4767-b5f2-f40bcca66c22"
+              }
+            ]
+          }
+        },
+        "BPF_Stage_Name": {
+          "runAfter": {
+            "BPF_Stage_-_Assessment_Review": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "45309c12-f537-40ae-b460-3c63fd6ee7be"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "BPF Stage Name",
+                "type": "string",
+                "value": "Complaint"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Active_Stage_ID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "29ad2879-f0a6-4f23-a301-b0ee252e53f3"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Active Stage ID",
+                "type": "string",
+                "value": "NA"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

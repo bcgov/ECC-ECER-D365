@@ -1,0 +1,166 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "7b4d80c9-9bc9-4a31-822e-27792dc8e613"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_course",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_coursehours"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Parent_ProgramProfile": {
+          "runAfter": {
+            "Initialize_TotalBasicECEHours": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3318996b-ca81-4a0f-935c-aaef7e72c144"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_programs",
+              "recordId": "@triggerOutputs()?['body/_ecer_programid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_Total_Basic_ECE_hours_": {
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2343b5f9-71c3-4442-9ec9-435cbf2c466c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_programs",
+              "recordId": "@outputs('Get_Parent_ProgramProfile')?['body/ecer_programid']",
+              "item/ecer_totalbasicecehours": "@variables('TotalBasicECEHours')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_TotalBasicECEHours": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "92de04b1-620d-4366-a11e-7b10f4fc1550"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "TotalBasicECEHours",
+                "type": "integer",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "List_RelatedCourse": {
+          "runAfter": {
+            "Get_Parent_ProgramProfile": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5b444d2b-7ccb-4867-907d-42390646dd16"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_courses",
+              "$filter": "_ecer_programid_value eq @{outputs('Get_Parent_ProgramProfile')?['body/ecer_programid']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_RelatedCourse')?['body/value']",
+          "actions": {
+            "Increment_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "f3f4d74b-b225-4dc2-b8f8-4a4bfdd6f18e"
+              },
+              "type": "IncrementVariable",
+              "inputs": {
+                "name": "TotalBasicECEHours",
+                "value": "@items('Apply_to_each')?['ecer_coursehours']"
+              }
+            }
+          },
+          "runAfter": {
+            "List_RelatedCourse": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3dae9820-dc55-4ec4-8bc2-a324e5b2fec3"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

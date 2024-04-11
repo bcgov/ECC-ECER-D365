@@ -1,0 +1,297 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "IF_ecer_transcriptreceiveddate_changed": {
+          "metadata": {
+            "operationMetadataId": "a68224e9-aa30-4d1e-b0c2-a1e285e7702b"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_application",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_transcriptreceiveddate"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_ecer_transcriptreceiveddate_contains_data": {
+          "actions": {
+            "Create_a_communication_record": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "cb15de33-3f48-4213-b182-e4b084676fae"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_communications",
+                  "item/ecer_initiatedfrom": 621870000,
+                  "item/ecer_message": "Transcript is receieved for your application as of @{outputs('Get_the_whole_record')?['body/ecer_transcriptreceiveddate']}",
+                  "item/ecer_name": "Transcript Received",
+                  "item/ecer_type": 621870000,
+                  "item/ecer_Registrantid_contact@odata.bind": "contacts(@{outputs('Get_the_whole_record')?['body/_ecer_applicantid_value']})",
+                  "item/ecer_Applicationid@odata.bind": "ecer_applications(@{outputs('Get_the_whole_record')?['body/ecer_applicationid']})",
+                  "item/ecer_datenotified": "@utcNow()",
+                  "item/ecer_notifyrecipient": true,
+                  "item/statuscode": 621870001
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_List_By_Name_-_No-Reply": {
+              "runAfter": {
+                "Create_a_communication_record": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "2542d9e3-22ca-40dc-a0f1-3c0520cd7eb8"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "queues",
+                  "$filter": "name eq 'No-Reply'",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each": {
+              "foreach": "@outputs('Get_List_By_Name_-_No-Reply')?['body/value']",
+              "actions": {
+                "Create_a_generic_notification_email_to_Applicant": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "d4a98e28-f8ae-4458-a3a4-d9c71a1f8e8c"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "emails",
+                      "item/activitypointer_activity_parties": [
+                        {
+                          "participationtypemask": 1,
+                          "partyid@odata.bind": "queues(@{items('Apply_to_each')?['queueid']})"
+                        },
+                        {
+                          "participationtypemask": 2,
+                          "partyid@odata.bind": "contacts(@{outputs('Get_the_whole_record')?['body/_ecer_applicantid_value']})"
+                        }
+                      ],
+                      "item/description": "There is a message waiting for your at the ECER Portal",
+                      "item/ownerid_email@odata.bind": "teams(@{variables('Assessment Team')})",
+                      "item/regardingobjectid_ecer_application_email@odata.bind": "ecer_applications(@{outputs('Get_the_whole_record')?['body/ecer_applicationid']})",
+                      "item/subject": "Transcript has been received"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Perform_a_bound_action_-_send_email": {
+                  "runAfter": {
+                    "Create_a_generic_notification_email_to_Applicant": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "47d2568e-7529-45a5-93c9-b44bc114cc6b"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "PerformBoundAction",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "emails",
+                      "actionName": "Microsoft.Dynamics.CRM.SendEmail",
+                      "recordId": "@outputs('Create_a_generic_notification_email_to_Applicant')?['body/activityid']",
+                      "item/IssueSend": false
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_List_By_Name_-_No-Reply": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "42a4e86e-b17a-4060-8b7b-c2acb37d7b63"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Get_the_whole_record": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_the_whole_record')?['body/ecer_transcriptreceiveddate']",
+                    "@null"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_the_whole_record')?['body/_ecer_applicantid_value']",
+                    "@null"
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6975bf87-d26c-4d8b-96f7-78809c65c798"
+          },
+          "type": "If"
+        },
+        "Get_the_whole_record": {
+          "runAfter": {
+            "Loop_through_Teams_results_of_1_row": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bfa3490d-db42-4144-bcfd-adc1cda9bc91"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@triggerOutputs()?['body/ecer_applicationid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable_-_Assessment_Team": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "3600b0e1-1bce-4f4c-b63c-b56aa31c56d9"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Assessment Team",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Get_Assessment_Teams": {
+          "runAfter": {
+            "Initialize_variable_-_Assessment_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "939852b8-c9d8-41cd-a79f-2290f11a9192"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "teams",
+              "$filter": "name eq 'Assessment Team - General'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_through_Teams_results_of_1_row": {
+          "foreach": "@outputs('Get_Assessment_Teams')?['body/value']",
+          "actions": {
+            "Set_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "3eb9ac45-fd56-4a80-8989-43ade05ac0d4"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Assessment Team",
+                "value": "@items('Loop_through_Teams_results_of_1_row')?['teamid']"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Assessment_Teams": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5f1a6aeb-cf16-4f26-8e00-2fc5aca4bc6d"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

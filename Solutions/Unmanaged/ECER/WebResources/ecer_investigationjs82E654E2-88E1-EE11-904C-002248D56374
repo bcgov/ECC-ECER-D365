@@ -187,5 +187,71 @@ ECER.Jscripts.Investigation =
         lookupValue[0].name = name;
         lookupValue[0].entityType = entityType;
         lookupField.setValue(lookupValue);
-    }
+    },
+
+    referToInvestigationButtonClick: function (PrimaryControl) {
+        var pageInput = {
+            pageType: "webresource",
+            webresourceName: "ecer_refertoinvestigation.html"
+        };
+
+        var navigationOptions = {
+            target: 2,
+            width: 400, // value specified in pixel
+            height: 250, // value specified in pixel
+            position: 1,
+            title: "Refer to Investigation"
+        };
+
+        var applicationId = PrimaryControl.data.entity.getId().replace("{", "").replace("}", "");
+
+        // Load Html input page
+        Xrm.Navigation.navigateTo(pageInput, navigationOptions).then(
+            function success(returnValue) {
+                // Run code on success
+
+                // Return if cancel button is selected
+                if (returnValue.returnValue == "Cancelled") { return; }
+
+                // Call the action ECER - Refer to investigation action
+                var parameters = {};
+                parameters.Description = returnValue.returnValue; // Edm.String
+
+                fetch(Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v9.2/ecer_applications(" + applicationId + ")/Microsoft.Dynamics.CRM.ecer_ECERRefertoinvestigationaction", {
+                    method: "POST",
+                    headers: {
+                        "OData-MaxVersion": "4.0",
+                        "OData-Version": "4.0",
+                        "Content-Type": "application/json; charset=utf-8",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify(parameters)
+                }).then(
+                    function success(response) {
+                        if (response.ok) {
+                            // Confirmation dialog
+                            var confirmStrings = { text: "Investigation Record is successfully created", title: "Confirmation" };
+                            var confirmOptions = { height: 200, width: 450 };
+                            Xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                                function (success) {
+                                    if (success.confirmed)
+                                        console.log("Dialog closed using OK button.");
+                                    else
+                                        console.log("Dialog closed using Cancel button or X.");
+                                });
+                            console.log("Success");
+                        } else {
+                            return response.json().then((json) => { throw json.error; });
+                        }
+                    }
+                ).catch(function (error) {
+                    console.log(error.message);
+                });
+
+            },
+            function error(e) {
+                console.log(e.message);
+            }
+        );
+    },
 }

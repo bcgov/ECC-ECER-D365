@@ -1,0 +1,41 @@
+<html><head>
+    <style>
+        .ui-dialog-titlebar-close {
+            visibility: hidden;
+        }
+    </style>
+<meta></head>
+<body>
+    <script src="ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script>
+        function sendDataBack() {
+            // Retrieve input data
+            var inputText = document.getElementById('inputText').value;
+
+            window.returnValue = inputText;
+            //var url = window.location.herf;
+            //var dataIndex = url.lastIndexOd("=") + 1;
+            //var datalength = url.length();
+            //var recordData = url.slice(dataIndex, datalength);
+            //var recordId = recordData.replace("%20", "");
+
+            // Close the popup window
+            window.close();
+        }
+
+        function cancel() {
+            // Close the popup window without sending data
+            window.returnValue = "Cancelled";
+            window.close();
+        }
+    </script>
+
+    <form id="popupForm">
+        <p><label for="inputText">Description:</label></p>
+        <textarea id="inputText" name="inputText" rows="4" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Submit" onclick="sendDataBack()">
+        <input type="button" value="Cancel" onclick="cancel()">
+    </form>
+
+</body></html>

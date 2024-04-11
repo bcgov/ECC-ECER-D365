@@ -1,0 +1,198 @@
+﻿
+<html>
+<head>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+    <meta>
+</head>
+<body lang="undefined" style="overflow-wrap: break-word;" onfocusout="parent.setEmailRange();">
+    <meta charset="utf-8">
+    <title>Upload Documents</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spinner {
+            height: 30px;
+            animation: spin 1s linear infinite;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30px' height='30px' viewBox='0 0 100 100'%3E%3Ccircle fill='black' cx='50' cy='10' r='3'/%3E%3Ccircle fill='black' cx='78' cy='22' r='5'/%3E%3Ccircle fill='black' cx='90' cy='50' r='9'/%3E%3C/svg%3E")
+        }
+
+            .spinner::before {
+                color: rgba(0, 0, 0, 0);
+                content: ".";
+            }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <div style="border: 1px solid rgb(244, 244, 244); color: rgb(102, 102, 102); padding: 15px; font-family: 'SegoeUI-Light', 'Segoe UI Semilight', 'Segoe UI Regular', 'Segoe UI'; font-size: 16px;">
+        <input type="file" id="selected-files" multiple="">
+        <button id="send-selected-files" onclick="doSend()">Upload</button>
+    </div>
+    <div id="dropzone" style="min-height: 50px; border: 1px solid rgb(244, 244, 244); padding: 15px; color: rgb(68, 68, 68); font-family: 'SegoeUI-Light', 'Segoe UI Semilight', 'Segoe UI Regular', 'Segoe UI'; font-size: 16px;" ondragenter="clear(); event.stopPropagation(); event.preventDefault();" ondragover="event.stopPropagation(); event.preventDefault();" ondrop="event.stopPropagation(); event.preventDefault(); doDrop(event);">
+        <div id="invitation">Drop files here to upload (max file size: 25MB).</div>
+        <div id="spinner" class="spinner" style="display:none;"></div>
+    </div>
+
+    <script id="onready" type="text/javascript">
+        function encodeForDynamics(buffer) {
+            var binary = '';
+            var bytes = new Uint8Array(buffer);
+            var len = bytes.byteLength;
+            for (var i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
+
+        var spUploadFilesPopup = undefined;
+
+        var upload = (options) => {
+            var parameters = {};
+            parameters.FileName = options.filename;
+            parameters.Body = encodeForDynamics(options.content);
+            parameters.RegardingObjectName = options.entityName.toLowerCase();
+            parameters.RegardingObjectId = options.recordid.replace("{", "").replace("}", "");
+            parameters.Origin = 931490002; //User Upload
+            var bodyLength = parameters.Body.length;
+
+            var req = new XMLHttpRequest();
+            req.open("POST", parent.Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v9.2/bcgov_UploadDocumentToSharePoint", false);
+            req.setRequestHeader("OData-MaxVersion", "4.0");
+            req.setRequestHeader("OData-Version", "4.0");
+            req.setRequestHeader("Accept", "application/json");
+            req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+            req.onreadystatechange = function () {
+                if (this.readyState === 4) {
+                    req.onreadystatechange = null;
+                    if (this.status === 200) {
+                        var results = JSON.parse(this.response);
+
+                        if (results.IsSuccess == true) {
+                            maybeStopSpinner();
+                        }
+                        else {
+                            maybeStopSpinner();
+                            var error1 = results.Result;
+                            if (error1 != null) {
+                                var alertStrings1 = { text: error1 };
+                                parent.Xrm.Navigation.openAlertDialog(alertStrings1);
+                            }
+                        }
+                    } else {
+                        maybeStopSpinner();
+                        var error = JSON.parse(this.response).error;
+                        if (error != null) {
+                            var alertStrings = { text: error.message };
+                            parent.Xrm.Navigation.openAlertDialog(alertStrings);
+                        }
+                    }
+                }
+            };
+            req.send(JSON.stringify(parameters));
+        }
+
+        var count
+        var startSpinner = (n) => {
+            count = n;
+            if (n > 0) {
+                document.getElementById('invitation').innerHTML = "File Upload in progress.."
+                document.getElementById('spinner').style.display = 'block';
+                parent.Xrm.Utility.showProgressIndicator("File Upload in progress..");
+            }
+        }
+        var maybeStopSpinner = () => {
+            count--;
+            if (count <= 0) {
+                document.getElementById('spinner').style.display = 'none';
+                document.getElementById('invitation').innerHTML = "Drop files here to upload (max file size: 25MB)."
+                if (spUploadFilesPopup !== undefined && !spUploadFilesPopup.closed)
+                    spUploadFilesPopup.close()
+
+                if (parent.Xrm.Page.getControl("DocumentsGrid") != null)
+                    parent.Xrm.Page.getControl("DocumentsGrid").refresh();
+
+                parent.Xrm.Utility.closeProgressIndicator();
+            }
+        }
+        var maxFileUpload = 25 * 1024 * 1024; // 25MB // or testing data with 22 * 1024; // 22kb //
+        var doDrop = (event) => {
+            let dt = event.dataTransfer
+            let largeFile;
+            const filesLength = dt.files.length
+            for (var i = 0; i < filesLength; i++) {
+                if (dt.files[i].size > maxFileUpload) {
+                    largeFile = dt.files[i];
+                    break;
+                }
+            }
+            if (largeFile === undefined) {
+                sendFiles(dt.files);
+            }
+            else {
+                parent.Xrm.Navigation.openAlertDialog({ confirmButtonLabel: "Ok", text: 'One of the upload files is over 25MB. Large upload file name: ' + largeFile.name }, { height: 200, width: 600 });
+            }
+        }
+        var doSend = () => {
+            var files = document.getElementById('selected-files').files
+            sendFiles(files)
+            document.getElementById('selected-files').value = "";
+        }
+        var sendFiles = (files) => {
+            startSpinner(files.length)
+            var params = extractParamsFromQueryString(window.top.location)
+            var appid = params.appid
+            var recordid = params.id
+            var entityName = params.etn
+            display(`${files.length} files to upload..`)
+
+            for (var i = 0; i < files.length; i++) {
+                sendFile(files[i], appid, recordid, entityName)
+            }
+        }
+        var sendFile = (file, appid, recordid, entityName) => {
+            reader = new FileReader();
+            reader.onload = function (event) {
+                var content = event.target.result
+                display(`uploading ${file.type} ${file.name}`)
+                upload({
+                    filename: file.name,
+                    mimetype: file.type,
+                    content: content,
+                    recordid: recordid,
+                    entityName: entityName
+                })
+            }
+            display(`reading ${file.name}`)
+            reader.readAsArrayBuffer(file)
+        }
+        var display = (message) => {
+            console.log(message)
+        }
+        var extractParamsFromQueryString = (location) => {
+            var query = location.search.substring(1)
+            var paramsAsArray = query.split('&').map((item) => { var parts = item.split('='); return { key: parts[0], value: parts[1] } })
+            var params = paramsAsArray.reduce((acc, param) => { acc[param.key] = param.value; return acc; }, {})
+
+            return params
+        }
+
+    </script>
+
+
+
+
+</body>
+</html>
