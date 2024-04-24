@@ -78,6 +78,7 @@
     <Compile Include="GetDocumentUrlFromSharePoint.cs" />
     <Compile Include="CloneDocumentInSharePoint.cs" />
     <Compile Include="UpdateTagsToSharePoint.cs" />
+    <Compile Include="GetInvitationLink.cs" />
     <Compile Include="UploadDocumentToSharePoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

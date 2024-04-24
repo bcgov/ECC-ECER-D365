@@ -1,0 +1,14 @@
+<entities >
+  <entity name="bcgov_config" displayname="System Configuration" etc="11028" primaryidfield="bcgov_configid" primarynamefield="bcgov_key" disableplugins="false">
+    <fields>
+      <field displayname="Group" name="bcgov_group" type="string" customfield="true" />
+      <field displayname="Key" name="bcgov_key" type="string" customfield="true" />
+      <field displayname="Secure Value" name="bcgov_securevalue" type="string" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field updateCompare="true" displayname="System Configuration" name="bcgov_configid" type="guid" primaryKey="true" />
+      <field displayname="Value" name="bcgov_value" type="string" customfield="true" />
+    </fields>
+    <relationships />
+  </entity>
+</entities>
