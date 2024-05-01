@@ -64,6 +64,9 @@
     <Content Include="JS\ecer_comment\ecer_decisioncomment.js" />
     <Content Include="JS\ecer_utility.js" />
     <Content Include="JS\ecer_workexperiencereference\ecer_workexperiencereference.js" />
+	<Content Include="JS\ecer_investigation\ecer_investigation.js" />
+	<Content Include="JS\ecer_investigation\ecer_refertoinvestigation.html" />
+	<Content Include="JS\ecer_parallelprocesscommunication\ecer_parallelprocesscommunication.js" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
