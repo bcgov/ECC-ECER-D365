@@ -1,0 +1,12 @@
+{
+  "LogicalName": "bcgov_config",
+  "DisplayName": "System Configuration",
+  "IsCustomizable": true,
+  "DeselectedAttributes": [
+    "importsequencenumber",
+    "utcconversiontimezonecode",
+    "timezoneruleversionnumber",
+    "overriddencreatedon"
+  ],
+  "Filter": "<filter>\n  <condition attribute=\"bcgov_group\" operator=\"eq\" value=\"Portal Invitation\" />\n</filter>"
+}
