@@ -19,6 +19,7 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.showHideParentalGuidianceFieldsOnApplicantAge(executionContext);
         ECER.Jscripts.Application.levelOfRequirmentOnDenailReasonTypeChange(executionContext);
         ECER.Jscripts.Application.levelOfRequirementOnStatusReasonDetailsChange(executionContext);
+        ECER.Jscripts.Application.showHideProfessionalDevelopmentFieldsOnRenewals(executionContext);
     },
 
     showHideApplicantQuickView: function (executionContext) {
@@ -66,7 +67,7 @@ ECER.Jscripts.Application =
         var formContext = executionContext.getFormContext();
         var readyForAssessmentAttribute = formContext.getAttribute("ecer_readyforassessment");
         var statuscode = 621870001; // Submitted
-        var subStatusDetails = null; 
+        var subStatusDetails = null;
         if (readyForAssessmentAttribute != null && readyForAssessmentAttribute.getValue() != null) {
             if (readyForAssessmentAttribute.getValue()) {
                 statuscode = 621870002; // Ready
@@ -81,23 +82,26 @@ ECER.Jscripts.Application =
     },
 
     hasAssessorSecurityRole: function () {
-        "use strict";
         var hasAssessorRole = crm_Utility.checkCurrentUserRole("Certification - Assessor Role");
         return hasAssessorRole;
     },
 
     hasProgramClerkSecurityRole: function () {
         // Directive to prevent use of undeclared variables
-        "use strict";
         var hasProgramSupportRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Role");
         var hasProgramSupportLeadRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Lead Role");
         return hasProgramSupportLeadRole || hasProgramSupportRole;
     },
 
     preventAutoSave: function (executionContext) {
-        var eventArgs = executionContext.getEventArgs();
-        if (eventArgs.getSaveMode() == 70) {
-            eventArgs.preventDefault();
+        try {
+            var eventArgs = executionContext.getEventArgs();
+            if (eventArgs.getSaveMode() == 70) {
+                eventArgs.preventDefault();
+            }
+        }
+        catch (e) {
+
         }
     },
     // ECER-1370
@@ -151,15 +155,39 @@ ECER.Jscripts.Application =
         crm_Utility.setRequiredLevel(executionContext, denialReasonTypeRequired, denialReasonTypeAttributeName);
     },
 
+    showHideProfessionalDevelopmentFieldsOnRenewals: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var typeAttributeName = "ecer_type";
+        var isECEAssistantAttributeName = "ecer_iseceassistant";
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        var isECEAssistantAttribute = formContext.getAttribute(isECEAssistantAttributeName);
+        var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
+        var isECEAssistant = isECEAssistantAttribute != null && isECEAssistantAttribute.getValue() != null && isECEAssistantAttribute.getValue() == true;
+        var show = isRenewal && !isECEAssistant;
+        var professionalDevelopmentTabName = "tab_professionaldevelopment";
+        var professionalDevelopmentBPFAttributeName = "header_process_ecer_hasprofessionaldevelopment";
+        var professionalDevelopmentAssessmentSectionName = "assessment:section_professionaldevelopmentass";
+        crm_Utility.showHide(executionContext, show, professionalDevelopmentAssessmentSectionName);
+        crm_Utility.showHide(executionContext, show, professionalDevelopmentBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, professionalDevelopmentTabName);
+    },
+
     showHideParentalGuidianceFieldsOnApplicantAge: function (executionContext) {
         var show = false;
         var formContext = executionContext.getFormContext();
         var applicantAgeAttribute = formContext.getAttribute("ecer_applicantage");
+        var parentalReferenceReceivedBPFAttributeName = "header_process_ecer_parentalreferencereceived";
+        var parentalReferenceAssessmentSectionName = "assessment:assessments_parental";
         var parentalReferenceReceivedAttributeName = "ecer_parentalreferencereceived";
         var parentalReferenceReceivedDateAttributeName = "ecer_parentalreferencereceiveddate";
         if (applicantAgeAttribute != null && applicantAgeAttribute.getValue() != null && applicantAgeAttribute.getValue() < 19) {
             show = true;
         }
+        // ECER-1501
+        // Setting the BPF control to NOT Visible will also remove the Required Level of Requirement
+        // Per https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/controls/setvisible
+        crm_Utility.showHide(executionContext, show, parentalReferenceReceivedBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, parentalReferenceAssessmentSectionName);
         crm_Utility.showHide(executionContext, show, parentalReferenceReceivedAttributeName);
         crm_Utility.showHide(executionContext, show, parentalReferenceReceivedDateAttributeName);
     },
@@ -244,7 +272,6 @@ ECER.Jscripts.Application =
     },
 
     onRequestMoreCharacterReferenceButton: function () {
-        "use strict";
         var executionContext = this.crm_ExecutionContext;
         var formContext = executionContext.getFormContext();
         try {
@@ -264,7 +291,6 @@ ECER.Jscripts.Application =
     },
 
     onRequestMoreWorkExperienceReferenceButton: function () {
-        "use strict";
         var executionContext = this.crm_ExecutionContext;
         var formContext = executionContext.getFormContext();
         try {
@@ -285,7 +311,6 @@ ECER.Jscripts.Application =
 
     onProfileCreationButton: function () {
         // Directive to prevent use of undeclared variables
-        "use strict";
         var executionContext = this.crm_ExecutionContext;
         var formContext = executionContext.getFormContext();
         try {
@@ -313,7 +338,7 @@ ECER.Jscripts.Application =
             var primaryPhone = formContext.getAttribute("ecer_primaryphonenumber").getValue();
             var mobilePhone = formContext.getAttribute("ecer_alternatephonenumber").getValue();
             var dob = formContext.getAttribute("ecer_dateofbirth").getValue();
-            
+
             var entity = {};
             entity.firstname = firstName;
             entity.lastname = lastName;
@@ -369,11 +394,10 @@ ECER.Jscripts.Application =
 
     onProfileSearchButton: function () {
         // Directive to prevent use of undeclared variables
-        "use strict";
         var executionContext = this.crm_ExecutionContext;
         var formContext = executionContext.getFormContext();
         try {
-            
+
             var applicantAttribute = formContext.getAttribute("ecer_applicantid");
             if (applicantAttribute != null && applicantAttribute.getValue() != null) {
                 // Prompt message
@@ -396,7 +420,7 @@ ECER.Jscripts.Application =
                 return;
             }
             var currentCertificateNumber = currentCertificateNumberAttribute.getValue().trim();
-            
+
             var option = "?$filter=ecer_clientid eq '" + currentCertificateNumber + "'";
             Xrm.WebApi.retrieveMultipleRecords("contact", option).then(
                 function success(results) {
@@ -514,4 +538,3 @@ ECER.Jscripts.Application =
         }
     }
 }
- 
