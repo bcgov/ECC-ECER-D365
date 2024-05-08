@@ -10,6 +10,8 @@ if (typeof ECER.Jscripts === "undefined") {
 ECER.Jscripts.Investigation =
 {
     onLoad: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+
         ECER.Jscripts.Investigation.lockComplaintInfo(executionContext);
         ECER.Jscripts.Investigation.showHideParallelProcess(executionContext);
     },
@@ -135,7 +137,7 @@ ECER.Jscripts.Investigation =
                 console.log(results);
                 if (results.entities.length > 0) {
                     var result = results.entities[0];
-                    parallelProcess.setValue(621870000);
+                    // parallelProcess.setValue(621870000);
                     ECER.Jscripts.Investigation.setValueToLookup(openApplication, result["ecer_applicationid"], result["ecer_name"], "ecer_application");
                     return result.ecer_applicationid;
                 } else {
@@ -190,6 +192,7 @@ ECER.Jscripts.Investigation =
         lookupField.setValue(lookupValue);
     },
 
+    // Application - Refer to Investigation Button 
     referToInvestigationButtonClick: function (PrimaryControl) {
         var pageInput = {
             pageType: "webresource",
@@ -204,7 +207,9 @@ ECER.Jscripts.Investigation =
             title: "Refer to Investigation"
         };
 
-        var applicationId = PrimaryControl.data.entity.getId().replace("{", "").replace("}", "");
+        var recordId = PrimaryControl.data.entity.getId().replace("{", "").replace("}", "");
+        var userSettings = Xrm.Utility.getGlobalContext().userSettings;
+        var currentuserid = userSettings.userId.replace("{", "").replace("}", "");
 
         // Load Html input page
         Xrm.Navigation.navigateTo(pageInput, navigationOptions).then(
@@ -224,41 +229,12 @@ ECER.Jscripts.Investigation =
                     return;
                 }
 
-                // Call the action ECER - Refer to investigation action
+                // Call the action
                 var parameters = {};
                 parameters.Description = returnValue.returnValue; // Edm.String
+                parameters.ReferrerGUID = currentuserid;
 
-                fetch(Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v9.2/ecer_applications(" + applicationId + ")/Microsoft.Dynamics.CRM.ecer_ECERRefertoinvestigationaction", {
-                    method: "POST",
-                    headers: {
-                        "OData-MaxVersion": "4.0",
-                        "OData-Version": "4.0",
-                        "Content-Type": "application/json; charset=utf-8",
-                        "Accept": "application/json"
-                    },
-                    body: JSON.stringify(parameters)
-                }).then(
-                    function success(response) {
-                        if (response.ok) {
-                            // Confirmation dialog
-                            var confirmStrings = { text: "Investigation Record is successfully created", title: "Confirmation" };
-                            var confirmOptions = { height: 200, width: 450 };
-                            Xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
-                                function (success) {
-                                    if (success.confirmed)
-                                        console.log("Dialog closed using OK button.");
-                                    else
-                                        console.log("Dialog closed using Cancel button or X.");
-                                });
-                            console.log("Success");
-                        } else {
-                            return response.json().then((json) => { throw json.error; });
-                        }
-                    }
-                ).catch(function (error) {
-                    console.log(error.message);
-                });
-
+                ECER.Jscripts.Investigation.executeReferenceVerificationAction("ecer_applications", "ecer_ECERRefertoinvestigationaction", parameters, recordId);
             },
             function error(e) {
                 console.log(e.message);
@@ -266,15 +242,193 @@ ECER.Jscripts.Investigation =
         );
     },
 
+    // Work Experience Reference Verification Button 
+    workExperienceReferenceVerification: function (PrimaryControl) {
+        var pageInput = {
+            pageType: "webresource",
+            webresourceName: "ecer_refertoinvestigation.html"
+        };
+
+        var navigationOptions = {
+            target: 2,
+            width: 400, // value specified in pixel
+            height: 250, // value specified in pixel
+            position: 1,
+            title: "Refer to Investigation"
+        };
+
+        var recordId = PrimaryControl.data.entity.getId().replace("{", "").replace("}", "");
+        var userSettings = Xrm.Utility.getGlobalContext().userSettings;
+        var currentUserId = userSettings.userId.replace("{", "").replace("}", "");
+
+        // Load Html input page
+        Xrm.Navigation.navigateTo(pageInput, navigationOptions).then(
+            function success(returnValue) {
+                // Run code on success
+
+                // Return if cancel button is selected
+                if (returnValue.returnValue == "Cancelled" || returnValue.returnValue == null) { return; }
+
+                // Description is required
+                if (returnValue.returnValue == "EmptyDescription") {
+                    // Reopen input dialog
+                    ECER.Jscripts.Investigation.workExperienceReferenceVerification(PrimaryControl);
+
+                    // Alert dialog
+                    alert("Please enter a description");
+                    return;
+                }
+
+                // Call the action
+                var parameters = {};
+                parameters.Description = returnValue.returnValue; // Edm.String
+                parameters.ReferrerGUID = currentUserId;
+
+                ECER.Jscripts.Investigation.executeReferenceVerificationAction("ecer_workexperiencerefs", "ecer_ECERWorkExperienceReferenceVerification", parameters, recordId);
+            },
+            function error(e) {
+                console.log(e.message);
+            }
+        );
+    },
+
+    // Character Reference Verification Button
+    characterReferenceVerification: function (PrimaryControl) {
+        var pageInput = {
+            pageType: "webresource",
+            webresourceName: "ecer_refertoinvestigation.html"
+        };
+
+        var navigationOptions = {
+            target: 2,
+            width: 400, // value specified in pixel
+            height: 250, // value specified in pixel
+            position: 1,
+            title: "Refer to Investigation"
+        };
+
+        var recordId = PrimaryControl.data.entity.getId().replace("{", "").replace("}", "");
+        var userSettings = Xrm.Utility.getGlobalContext().userSettings;
+        var currentUserId = userSettings.userId.replace("{", "").replace("}", "");
+
+        // Load Html input page
+        Xrm.Navigation.navigateTo(pageInput, navigationOptions).then(
+            function success(returnValue) {
+                // Run code on success
+
+                // Return if cancel button is selected
+                if (returnValue.returnValue == "Cancelled" || returnValue.returnValue == null) { return; }
+
+                // Description is required
+                if (returnValue.returnValue == "EmptyDescription") {
+                    // Reopen input dialog
+                    ECER.Jscripts.Investigation.characterReferenceVerification(PrimaryControl);
+
+                    // Alert dialog
+                    alert("Please enter a description");
+                    return;
+                }
+
+                // Call the action
+                var parameters = {};
+                parameters.Description = returnValue.returnValue; // Edm.String
+                parameters.ReferrerGUID = currentUserId;
+
+                ECER.Jscripts.Investigation.executeReferenceVerificationAction("ecer_characterreferences", "ecer_ECERCharacterReferenceVerification", parameters, recordId);
+            },
+
+            function error(e) {
+                console.log(e.message);
+            }
+        );
+    },
+
+    // Execute Reference Verificate Actions for Application, Character Reference AND Work Experience Reference
+    executeReferenceVerificationAction: function (entityType, actionName, parameters, recordId) {
+        fetch(Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v9.2/" + entityType + "(" + recordId + ")/Microsoft.Dynamics.CRM." + actionName + "", {
+            method: "POST",
+            headers: {
+                "OData-MaxVersion": "4.0",
+                "OData-Version": "4.0",
+                "Content-Type": "application/json; charset=utf-8",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(parameters)
+        }).then(
+            function success(response) {
+                if (response.ok) {
+                    // Confirmation dialog
+                    var confirmStrings = { text: "Investigation Record is successfully created", title: "Confirmation" };
+                    var confirmOptions = { height: 200, width: 450 };
+                    Xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                        function (success) {
+                            if (success.confirmed)
+                                console.log("Dialog closed using OK button.");
+                            else
+                                console.log("Dialog closed using Cancel button or X.");
+                        });
+                    console.log("Success");
+                } else {
+                    return response.json().then((json) => { throw json.error; });
+                }
+            }
+        ).catch(function (error) {
+            console.log(error.message);
+        });
+    },
+
     showHideParallelProcess: function (executionContext) {
         var formContext = executionContext.getFormContext();
-
+        var tab = formContext.ui.tabs.get("tab_8");
         // Parallel Process is Yes
         if (formContext.getAttribute("ecer_parallelprocess").getValue() == 621870000) {
-            var tab = formContext.ui.tabs.get("tab_8");
             if (tab) {
                 tab.setVisible(true);
             }
         }
+        else {
+            tab.setVisible(false);
+        }
+    },
+
+    referToInvestigationRoleCheck: function (PrimaryControl) {
+        /*
+        Enable the button for below roles
+        - System Administrator
+        - System Customizer
+        - Certifications - Manager of Certifications Role
+        - Certifications - Operations Supervisor Program Support Role
+        - Certification - Operations Supervisor Assessment Role
+        */
+        var roles = ["System Administrator", "System Customizer", "Certifications - Manager of Certifications Role", "Certifications - Operations Supervisor Program Support Role", "Certification - Operations Supervisor Assessment Role"];
+        var hasRole = false;
+
+        // Retrieving Global Context
+        var context = Xrm.Utility.getGlobalContext();
+
+        // Store Security Roles
+        var loggedUserRoles = context.userSettings.roles;
+
+        // Looping through user roles
+        loggedUserRoles.forEach(function hasRoleName(item, index) {
+            if (roles.indexOf(item.name) > -1) {
+                hasRole = true;
+            }
+        });
+
+        /* 
+        Check formType
+        0	Undefined
+        1	Create
+        2	Update
+        3	Read Only
+        4	Disabled
+        6	Bulk Edit
+        */
+        if (PrimaryControl.ui.getFormType() != 2) {
+            hasRole = false;
+        }
+
+        return hasRole;
     },
 }
