@@ -20,6 +20,7 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.levelOfRequirmentOnDenailReasonTypeChange(executionContext);
         ECER.Jscripts.Application.levelOfRequirementOnStatusReasonDetailsChange(executionContext);
         ECER.Jscripts.Application.showHideProfessionalDevelopmentFieldsOnRenewals(executionContext);
+        ECER.Jscripts.Application.showHideEducationFieldsOnRenewals(executionContext);
     },
 
     showHideApplicantQuickView: function (executionContext) {
@@ -104,6 +105,11 @@ ECER.Jscripts.Application =
 
         }
     },
+
+    assignToAssessmentTeamLeadTeamOnEscalated: function (executionContext) {
+        alert("Test Trigger: assignToAssessmentTeamLeadTeamOnEscalated");
+    },
+
     // ECER-1370
     levelOfRequirmentOnDenailReasonTypeChange: function (executionContext) {
         var formContext = executionContext.getFormContext();
@@ -166,10 +172,35 @@ ECER.Jscripts.Application =
         var show = isRenewal && !isECEAssistant;
         var professionalDevelopmentTabName = "tab_professionaldevelopment";
         var professionalDevelopmentBPFAttributeName = "header_process_ecer_hasprofessionaldevelopment";
+        var professionalDevelopmentApprovedBPFAttributeName = "header_process_ecer_professionaldevelopmentapproved";
         var professionalDevelopmentAssessmentSectionName = "assessment:section_professionaldevelopmentass";
         crm_Utility.showHide(executionContext, show, professionalDevelopmentAssessmentSectionName);
         crm_Utility.showHide(executionContext, show, professionalDevelopmentBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, professionalDevelopmentApprovedBPFAttributeName);
         crm_Utility.showHide(executionContext, show, professionalDevelopmentTabName);
+    },
+
+    showHideEducationFieldsOnRenewals: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var typeAttributeName = "ecer_type";
+        var isECEAssistantAttributeName = "ecer_iseceassistant";
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        var isECEAssistantAttribute = formContext.getAttribute(isECEAssistantAttributeName);
+        var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
+        var isECEAssistant = isECEAssistantAttribute != null && isECEAssistantAttribute.getValue() != null && isECEAssistantAttribute.getValue() == true;
+        var show = !isRenewal || isECEAssistant;
+        var educationTranscriptTabName = "tab_educationinformation";
+        var educationTranscriptReceivedBPFAttributeName = "header_process_ecer_transcriptreceived";
+        var educationTranscriptApprovedBPFAttributeName = "header_process_ecer_educationtranscriptapproved";
+        var educationTranscriptReceivedAttributeName = "ecer_transcriptreceived";
+        var educationTranscriptReceivedDateAttributeName = "ecer_transcriptreceiveddate";
+        var educationTranscriptAssessmentSectionName = "assessment:section_educationassessment";
+        crm_Utility.showHide(executionContext, show, educationTranscriptAssessmentSectionName);
+        crm_Utility.showHide(executionContext, show, educationTranscriptReceivedBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, educationTranscriptApprovedBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, educationTranscriptReceivedAttributeName);
+        crm_Utility.showHide(executionContext, show, educationTranscriptReceivedDateAttributeName);
+        crm_Utility.showHide(executionContext, show, educationTranscriptTabName);
     },
 
     showHideParentalGuidianceFieldsOnApplicantAge: function (executionContext) {
@@ -177,6 +208,7 @@ ECER.Jscripts.Application =
         var formContext = executionContext.getFormContext();
         var applicantAgeAttribute = formContext.getAttribute("ecer_applicantage");
         var parentalReferenceReceivedBPFAttributeName = "header_process_ecer_parentalreferencereceived";
+        var parentalReferenceApprovedBPFAttributeName = "header_process_ecer_parentalreferenceapproved";
         var parentalReferenceAssessmentSectionName = "assessment:assessments_parental";
         var parentalReferenceReceivedAttributeName = "ecer_parentalreferencereceived";
         var parentalReferenceReceivedDateAttributeName = "ecer_parentalreferencereceiveddate";
@@ -187,6 +219,7 @@ ECER.Jscripts.Application =
         // Setting the BPF control to NOT Visible will also remove the Required Level of Requirement
         // Per https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/controls/setvisible
         crm_Utility.showHide(executionContext, show, parentalReferenceReceivedBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, parentalReferenceApprovedBPFAttributeName);
         crm_Utility.showHide(executionContext, show, parentalReferenceAssessmentSectionName);
         crm_Utility.showHide(executionContext, show, parentalReferenceReceivedAttributeName);
         crm_Utility.showHide(executionContext, show, parentalReferenceReceivedDateAttributeName);
