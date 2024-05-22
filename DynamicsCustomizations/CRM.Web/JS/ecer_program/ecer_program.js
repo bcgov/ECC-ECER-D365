@@ -18,7 +18,7 @@ ECER.Jscripts.Program =
     courseSectionShowHide: function (executionContext) {
         var formContext = executionContext.getFormContext();
 
-        var programType = formContext.getAttribute("ecer_programtype");
+        var programType = formContext.getAttribute("ecer_programtypes");
         if (programType == null) {
             return;
         }

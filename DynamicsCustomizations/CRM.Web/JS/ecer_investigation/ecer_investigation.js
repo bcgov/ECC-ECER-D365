@@ -399,8 +399,9 @@ ECER.Jscripts.Investigation =
         - Certifications - Manager of Certifications Role
         - Certifications - Operations Supervisor Program Support Role
         - Certification - Operations Supervisor Assessment Role
+        - Certification - Team Lead Role
         */
-        var roles = ["System Administrator", "System Customizer", "Certifications - Manager of Certifications Role", "Certifications - Operations Supervisor Program Support Role", "Certification - Operations Supervisor Assessment Role"];
+        var roles = ["System Administrator", "System Customizer", "Certifications - Manager of Certifications Role", "Certifications - Operations Supervisor Program Support Role", "Certification - Operations Supervisor Assessment Role", "Certification - Team Lead Role"];
         var hasRole = false;
 
         // Retrieving Global Context
