@@ -358,7 +358,7 @@ ECER.Jscripts.Investigation =
             function success(response) {
                 if (response.ok) {
                     // Confirmation dialog
-                    var confirmStrings = { text: "Investigation Record is successfully created", title: "Confirmation" };
+                    var confirmStrings = { text: "Reference has been successfully referred to Investigations for verification", title: "Confirmation" };
                     var confirmOptions = { height: 200, width: 450 };
                     Xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
                         function (success) {
