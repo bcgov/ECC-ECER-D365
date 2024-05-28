@@ -234,7 +234,20 @@ ECER.Jscripts.Investigation =
                 parameters.Description = returnValue.returnValue; // Edm.String
                 parameters.ReferrerGUID = currentuserid;
 
-                ECER.Jscripts.Investigation.executeReferenceVerificationAction("ecer_applications", "ecer_ECERRefertoinvestigationaction", parameters, recordId);
+                // Get Owner of the Action to be the calling user
+                Xrm.WebApi.retrieveMultipleRecords("workflow", "?$select=_ownerid_value,primaryentity,name,uniquename&$filter=name eq 'ECER - Application Refer to investigation action'").then(
+                    function success(results) {
+                        console.log(results);
+
+                        var result = results.entities[0];
+                        var ownerid = result["_ownerid_value"]; // Owner
+
+                        ECER.Jscripts.Investigation.executeReferenceVerificationAction("ecer_workexperiencerefs", "ecer_ECERWorkExperienceReferenceVerification", parameters, recordId, ownerid);
+                    },
+                    function (error) {
+                        console.log(error.message);
+                    }
+                );
             },
             function error(e) {
                 console.log(e.message);
@@ -284,7 +297,20 @@ ECER.Jscripts.Investigation =
                 parameters.Description = returnValue.returnValue; // Edm.String
                 parameters.ReferrerGUID = currentUserId;
 
-                ECER.Jscripts.Investigation.executeReferenceVerificationAction("ecer_workexperiencerefs", "ecer_ECERWorkExperienceReferenceVerification", parameters, recordId);
+                // Get Owner of the Action to be the calling user
+                Xrm.WebApi.retrieveMultipleRecords("workflow", "?$select=_ownerid_value,primaryentity,name,uniquename&$filter=name eq 'ECER - Application Refer to investigation action'").then(
+                    function success(results) {
+                        console.log(results);
+
+                        var result = results.entities[0];
+                        var ownerid = result["_ownerid_value"]; // Owner
+
+                        ECER.Jscripts.Investigation.executeReferenceVerificationAction("ecer_workexperiencerefs", "ecer_ECERWorkExperienceReferenceVerification", parameters, recordId, ownerid);
+                    },
+                    function (error) {
+                        console.log(error.message);
+                    }
+                );
             },
             function error(e) {
                 console.log(e.message);
@@ -334,7 +360,20 @@ ECER.Jscripts.Investigation =
                 parameters.Description = returnValue.returnValue; // Edm.String
                 parameters.ReferrerGUID = currentUserId;
 
-                ECER.Jscripts.Investigation.executeReferenceVerificationAction("ecer_characterreferences", "ecer_ECERCharacterReferenceVerification", parameters, recordId);
+                // Get Owner of the Action to be the calling user
+                Xrm.WebApi.retrieveMultipleRecords("workflow", "?$select=_ownerid_value,primaryentity,name,uniquename&$filter=name eq 'ECER - Application Refer to investigation action'").then(
+                    function success(results) {
+                        console.log(results);
+
+                        var result = results.entities[0];
+                        var ownerid = result["_ownerid_value"]; // Owner
+
+                        ECER.Jscripts.Investigation.executeReferenceVerificationAction("ecer_characterreferences", "ecer_ECERCharacterReferenceVerification", parameters, recordId, ownerid);
+                    },
+                    function (error) {
+                        console.log(error.message);
+                    }
+                );
             },
 
             function error(e) {
@@ -344,14 +383,15 @@ ECER.Jscripts.Investigation =
     },
 
     // Execute Reference Verificate Actions for Application, Character Reference AND Work Experience Reference
-    executeReferenceVerificationAction: function (entityType, actionName, parameters, recordId) {
+    executeReferenceVerificationAction: function (entityType, actionName, parameters, recordId, callingUserId) {
         fetch(Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v9.2/" + entityType + "(" + recordId + ")/Microsoft.Dynamics.CRM." + actionName + "", {
             method: "POST",
             headers: {
                 "OData-MaxVersion": "4.0",
                 "OData-Version": "4.0",
                 "Content-Type": "application/json; charset=utf-8",
-                "Accept": "application/json"
+                "Accept": "application/json",
+                "MSCRMCallerID": callingUserId
             },
             body: JSON.stringify(parameters)
         }).then(
