@@ -63,6 +63,7 @@
     <Content Include="JS\ecer_characterreference\ecer_characterreference.js" />
     <Content Include="JS\ecer_comment\ecer_decisioncomment.js" />
     <Content Include="JS\ecer_program\ecer_program.js" />
+    <Content Include="JS\ecer_pspsitevisit\ecer_pspsitevisit.js" />
     <Content Include="JS\ecer_utility.js" />
     <Content Include="JS\ecer_workexperiencereference\ecer_workexperiencereference.js" />
     <Content Include="JS\ecer_investigation\ecer_investigation.js" />
