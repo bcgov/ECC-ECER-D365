@@ -52,6 +52,18 @@ namespace BCGOV.Plugin.DocumentUrl
                     }
                 }
 
+                if (targetEntity.Contains("ecer_previousnameid") && targetEntity["ecer_previousnameid"] != null)
+                {
+                    // If Application, then also link to the applicant
+                    var entityReference = (EntityReference)targetEntity["ecer_previousnameid"];
+                    var entityRecord = service.Retrieve(entityReference.LogicalName.ToLowerInvariant(), entityReference.Id, new ColumnSet("ecer_contactid"));
+                    if (entityRecord.Contains("ecer_contactid") && entityRecord["ecer_contactid"] != null)
+                    {
+                        sharePointFileUrlEntity["bcgov_customer"] = entityRecord["ecer_contactid"];
+                        service.Update(sharePointFileUrlEntity);
+                    }
+                }
+
                 if (targetEntity.Contains("bcgov_caseid") && targetEntity["bcgov_caseid"] != null)
                 {
                     var caseId = (EntityReference)targetEntity["bcgov_caseid"];
