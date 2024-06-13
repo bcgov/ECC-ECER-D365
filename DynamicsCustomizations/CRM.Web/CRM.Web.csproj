@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HTML\Upload.html" />
+    <Content Include="IMAGES\ECER Logo.png" />
     <Content Include="IMAGES\ecer_ApplicationIcon.svg" />
     <Content Include="IMAGES\ecer_certificate.svg" />
     <Content Include="IMAGES\ecer_characterreference.svg" />
@@ -56,6 +57,8 @@
     <Content Include="IMAGES\ecer_search.svg" />
     <Content Include="IMAGES\ecer_transcript.svg" />
     <Content Include="IMAGES\ecer_workexperienceref.svg" />
+    <Content Include="IMAGES\Left Blue Bar.png" />
+    <Content Include="IMAGES\Left Gold Bar.png" />
     <Content Include="JS\bcgov_documentUrl\OnLoad.js" />
     <Content Include="JS\contact\ecer_contact.js" />
     <Content Include="JS\ecer_application\ecer_application.js" />

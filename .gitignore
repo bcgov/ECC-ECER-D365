@@ -30,3 +30,5 @@ DynamicsCustomizations/.vs/CRM/v16/.suo
 *.ini
 DynamicsCustomizations/.vs/CRM/v16/.suo
 *.cache
+/DynamicsCustomizations/CRM.Reports/bin/Debug
+*.rsuser
