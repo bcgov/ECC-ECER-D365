@@ -14,6 +14,7 @@ ECER.Jscripts.Investigation =
 
         ECER.Jscripts.Investigation.lockComplaintInfo(executionContext);
         ECER.Jscripts.Investigation.showHideParallelProcess(executionContext);
+        ECER.Jscripts.Investigation.showHideReasonForPriorityAssignment(executionContext);
     },
 
     getApplicantInfo: function (executionContext) {
@@ -100,7 +101,7 @@ ECER.Jscripts.Investigation =
 
                     certificationType.setValue(result["ecer_certificatelevel"]);
                     ECER.Jscripts.Investigation.setValueToLookup(currentCertificate, result["ecer_certificateid"], result["ecer_name"], "ecer_certificate");
-                    return result.certificateId;
+                    return result.ecer_certificateid;
                 } else {
                     console.log("No Certificate is found for Registrant:" + contactId);
                     return null;
@@ -242,7 +243,7 @@ ECER.Jscripts.Investigation =
                         var result = results.entities[0];
                         var ownerid = result["_ownerid_value"]; // Owner
 
-                        ECER.Jscripts.Investigation.executeReferenceVerificationAction("ecer_workexperiencerefs", "ecer_ECERWorkExperienceReferenceVerification", parameters, recordId, ownerid);
+                        ECER.Jscripts.Investigation.executeReferenceVerificationAction("ecer_applications", "ecer_ECERRefertoinvestigationaction", parameters, recordId, ownerid);
                     },
                     function (error) {
                         console.log(error.message);
@@ -471,5 +472,20 @@ ECER.Jscripts.Investigation =
         }
 
         return hasRole;
+    },
+
+    showHideReasonForPriorityAssignment: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+
+        // Recommend for Priority Assignment value
+        var val = formContext.getAttribute("ecer_recommendforpriorityassignment").getValue();
+
+        // val = Yes
+        if (val == 621870000) {
+            formContext.getControl("ecer_reasonforpriorityassignment").setVisible(true);
+        }
+        else {
+            formContext.getControl("ecer_reasonforpriorityassignment").setVisible(false);
+        }
     },
 }
