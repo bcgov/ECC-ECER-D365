@@ -117,19 +117,22 @@ ECER.Jscripts.Investigation =
         Promise.all([certificateIdPromise]).then(function (values) {
             var certificateId = values[0];
             // Get Transcript
-            Xrm.WebApi.retrieveMultipleRecords("ecer_transcript", "?$select=ecer_educationinstitutionfullname&$filter=ecer_Applicationid/_ecer_certificateid_value eq " + certificateId).then(
-                function success(results) {
-                    console.log(results);
-                    if (results.entities.length > 0) {
-                        var result = results.entities[0];
 
-                        educationalInstitution.setValue(result["ecer_educationinstitutionfullname"]);
+            if(certificateId!==null){
+                Xrm.WebApi.retrieveMultipleRecords("ecer_transcript", "?$select=ecer_educationinstitutionfullname&$filter=ecer_Applicationid/_ecer_certificateid_value eq " + certificateId).then(
+                    function success(results) {
+                        console.log(results);
+                        if (results.entities.length > 0) {
+                            console.log("Eductional institutes for that cert id: ",results.entities)
+                            var result = results.entities[0];
+                            educationalInstitution.setValue(result["ecer_educationinstitutionfullname"]);
+                        }
+                    },
+                    function (error) {
+                        console.log(error.message);
                     }
-                },
-                function (error) {
-                    console.log(error.message);
-                }
-            );
+                );
+            }
         });
 
         // Get Open Applicaiton
