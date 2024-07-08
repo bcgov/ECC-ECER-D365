@@ -49,6 +49,8 @@
     <Reports>@(Report)</Reports>
   </PropertyGroup>
   <ItemGroup>
+    <Report Include="Certificate Conditions.rdl" />
+    <Report Include="Certificate Levels.rdl" />
     <Report Include="Certificate.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
