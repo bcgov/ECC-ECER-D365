@@ -39,12 +39,45 @@ namespace BCGOV.Plugin.DocumentUrl
 
                 Entity sharePointFileUrlEntity = new Entity("bcgov_documenturl");
                 sharePointFileUrlEntity.Id = targetEntity.Id;
+                EntityReference registryTeamER = null;
+                EntityReference investigationTeamER = null;
+                EntityReference pspTeamER = null;
+
+                var teamsQuery = new QueryExpression("team") { ColumnSet = new ColumnSet("name") };
+                var filterExpression = new FilterExpression(LogicalOperator.Or);
+                filterExpression.AddCondition("name", ConditionOperator.Equal, "Registry");
+                filterExpression.AddCondition("name", ConditionOperator.Equal, "Investigation");
+                filterExpression.AddCondition("name", ConditionOperator.Equal, "Post Secondary Program");
+                teamsQuery.Criteria.AddFilter(filterExpression);
+                var teamResults = service.RetrieveMultiple(teamsQuery);
+                foreach(var teamEntity in teamResults.Entities)
+                {
+                    var teamName = teamEntity.GetAttributeValue<string>("name");
+                    switch (teamName)
+                    {
+                        case "Registry":
+                            registryTeamER = teamEntity.ToEntityReference();
+                            break;
+                        case "Investigation":
+                            investigationTeamER = teamEntity.ToEntityReference();
+                            break;
+                        case "Post Secondary Program":
+                            pspTeamER = teamEntity.ToEntityReference();
+                            break;
+                    }
+
+                }
+
 
                 if (targetEntity.Contains("ecer_applicationid") && targetEntity["ecer_applicationid"] != null)
                 {
                     // If Application, then also link to the applicant
                     var applicationER = (EntityReference)targetEntity["ecer_applicationid"];
                     var applicationEntity = service.Retrieve(applicationER.LogicalName.ToLowerInvariant(), applicationER.Id, new ColumnSet("ecer_applicantid"));
+                    if (registryTeamER != null)
+                    {
+                        sharePointFileUrlEntity["ownerid"] = registryTeamER;
+                    }
                     if (applicationEntity.Contains("ecer_applicantid") && applicationEntity["ecer_applicantid"] != null)
                     {
                         sharePointFileUrlEntity["bcgov_customer"] = applicationEntity["ecer_applicantid"];
@@ -52,11 +85,31 @@ namespace BCGOV.Plugin.DocumentUrl
                     }
                 }
 
+                if (targetEntity.Contains("ecer_certificateid") && targetEntity["ecer_certificateid"] != null)
+                {
+                    var entityReference = (EntityReference)targetEntity["ecer_certificateid"];
+                    var entityRecord = service.Retrieve(entityReference.LogicalName.ToLowerInvariant(), entityReference.Id, new ColumnSet("ecer_registrantid"));
+                    if (registryTeamER != null)
+                    {
+                        sharePointFileUrlEntity["ownerid"] = registryTeamER;
+                    }
+                    if (entityRecord.Contains("ecer_registrantid") && entityRecord["ecer_registrantid"] != null)
+                    {
+                        sharePointFileUrlEntity["bcgov_customer"] = entityRecord["ecer_registrantid"];
+                        service.Update(sharePointFileUrlEntity);
+                    }
+                    
+                }
+
                 if (targetEntity.Contains("ecer_previousnameid") && targetEntity["ecer_previousnameid"] != null)
                 {
                     // If Application, then also link to the applicant
                     var entityReference = (EntityReference)targetEntity["ecer_previousnameid"];
                     var entityRecord = service.Retrieve(entityReference.LogicalName.ToLowerInvariant(), entityReference.Id, new ColumnSet("ecer_contactid"));
+                    if (registryTeamER != null)
+                    {
+                        sharePointFileUrlEntity["ownerid"] = registryTeamER;
+                    }
                     if (entityRecord.Contains("ecer_contactid") && entityRecord["ecer_contactid"] != null)
                     {
                         sharePointFileUrlEntity["bcgov_customer"] = entityRecord["ecer_contactid"];

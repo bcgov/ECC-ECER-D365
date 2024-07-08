@@ -14,6 +14,9 @@
         ShowLookup(formContext, "ecer_investigationid");
         ShowLookup(formContext, "ecer_investigationinterviewid");
         ShowLookup(formContext, "ecer_pspsitevisitid");
+        ShowLookup(formContext, "ecer_communicationid");
+        ShowLookup(formContext, "ecer_certificateid");
+        ShowLookup(formContext, "ecer_previousnameid");
     }
 };
 
