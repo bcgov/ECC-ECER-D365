@@ -14,6 +14,7 @@ ECER.Jscripts.Investigation =
 
         ECER.Jscripts.Investigation.lockComplaintInfo(executionContext);
         ECER.Jscripts.Investigation.showHideParallelProcess(executionContext);
+        ECER.Jscripts.Investigation.showHideReasonForPriorityAssignment(executionContext);
     },
 
     getApplicantInfo: function (executionContext) {
@@ -100,7 +101,7 @@ ECER.Jscripts.Investigation =
 
                     certificationType.setValue(result["ecer_certificatelevel"]);
                     ECER.Jscripts.Investigation.setValueToLookup(currentCertificate, result["ecer_certificateid"], result["ecer_name"], "ecer_certificate");
-                    return result.certificateId;
+                    return result.ecer_certificateid;
                 } else {
                     console.log("No Certificate is found for Registrant:" + contactId);
                     return null;
@@ -116,19 +117,22 @@ ECER.Jscripts.Investigation =
         Promise.all([certificateIdPromise]).then(function (values) {
             var certificateId = values[0];
             // Get Transcript
-            Xrm.WebApi.retrieveMultipleRecords("ecer_transcript", "?$select=ecer_educationinstitutionfullname&$filter=ecer_Applicationid/_ecer_certificateid_value eq " + certificateId).then(
-                function success(results) {
-                    console.log(results);
-                    if (results.entities.length > 0) {
-                        var result = results.entities[0];
 
-                        educationalInstitution.setValue(result["ecer_educationinstitutionfullname"]);
+            if(certificateId!==null){
+                Xrm.WebApi.retrieveMultipleRecords("ecer_transcript", "?$select=ecer_educationinstitutionfullname&$filter=ecer_Applicationid/_ecer_certificateid_value eq " + certificateId).then(
+                    function success(results) {
+                        console.log(results);
+                        if (results.entities.length > 0) {
+                            console.log("Eductional institutes for that cert id: ",results.entities)
+                            var result = results.entities[0];
+                            educationalInstitution.setValue(result["ecer_educationinstitutionfullname"]);
+                        }
+                    },
+                    function (error) {
+                        console.log(error.message);
                     }
-                },
-                function (error) {
-                    console.log(error.message);
-                }
-            );
+                );
+            }
         });
 
         // Get Open Applicaiton
@@ -242,7 +246,7 @@ ECER.Jscripts.Investigation =
                         var result = results.entities[0];
                         var ownerid = result["_ownerid_value"]; // Owner
 
-                        ECER.Jscripts.Investigation.executeReferenceVerificationAction("ecer_workexperiencerefs", "ecer_ECERWorkExperienceReferenceVerification", parameters, recordId, ownerid);
+                        ECER.Jscripts.Investigation.executeReferenceVerificationAction("ecer_applications", "ecer_ECERRefertoinvestigationaction", parameters, recordId, ownerid);
                     },
                     function (error) {
                         console.log(error.message);
@@ -471,5 +475,20 @@ ECER.Jscripts.Investigation =
         }
 
         return hasRole;
+    },
+
+    showHideReasonForPriorityAssignment: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+
+        // Recommend for Priority Assignment value
+        var val = formContext.getAttribute("ecer_recommendforpriorityassignment").getValue();
+
+        // val = Yes
+        if (val == 621870000) {
+            formContext.getControl("ecer_reasonforpriorityassignment").setVisible(true);
+        }
+        else {
+            formContext.getControl("ecer_reasonforpriorityassignment").setVisible(false);
+        }
     },
 }
