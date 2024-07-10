@@ -65,6 +65,38 @@ ECER.Jscripts.Communication = {
         }
     },
 
+    populateOnPresetContentsSelected: function (executionContext) {
+        // ECER.Jscripts.Communication.populateOnPresetContentsSelected
+        var formContext = executionContext.getFormContext();
+        var lookupAttributeName = "ecer_presetcontentsid";
+        var nameAttributeName = "ecer_name";
+        var detailsAttributeName = "ecer_message";
+        var currentDetailsValue = formContext.getAttribute(detailsAttributeName).getValue();
+        if (currentDetailsValue === null) {
+            currentDetailsValue = "";
+        }
+        var lookupAttribute = formContext.getAttribute(lookupAttributeName);
+        if (lookupAttribute != null) {
+            var lookupValue = lookupAttribute.getValue();
+            if (lookupValue != null) {
+                var lookupId = lookupValue[0].id.toLowerCase().replace("{", "").replace("}", "");
+                Xrm.WebApi.retrieveRecord("ecer_communicationcontent", lookupId).then(
+                    function success(record) {
+                        var name = record.ecer_name;
+                        var details = record.ecer_text;
+                        var text = details;
+                        if (currentDetailsValue !== null && currentDetailsValue !== "") {
+                            text = currentDetailsValue + "<br /><br />" + details;
+                        }
+
+                        formContext.getAttribute(nameAttributeName).setValue(name);
+                        formContext.getAttribute(detailsAttributeName).setValue(text);
+                    }
+                );
+            }
+        }
+    },
+
     populateInitiatedFromAtForm: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var formType = formContext.ui.getFormType();
