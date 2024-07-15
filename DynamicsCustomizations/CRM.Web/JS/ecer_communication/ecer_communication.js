@@ -72,7 +72,6 @@ ECER.Jscripts.Communication = {
         var nameAttributeName = "ecer_name";
         var detailsAttributeName = "ecer_message";
         var currentDetailsValue = formContext.getAttribute(detailsAttributeName).getValue();
-        var investigation = formContext.getAttribute("ecer_investigation");
         if (currentDetailsValue === null) {
             currentDetailsValue = "";
         }
@@ -86,11 +85,7 @@ ECER.Jscripts.Communication = {
                         var name = record.ecer_name;
                         var details = record.ecer_text;
                         var text = details;
-                        if (investigation != null && investigation.getValue() != null && name == "Notice of Investigation") {
-                            ECER.Jscripts.Communication.populateNoticeOfInvestigation(formContext, name, text);
-                            return;
-                        }
-                        else if (currentDetailsValue !== null && currentDetailsValue !== "") {
+                        if (currentDetailsValue !== null && currentDetailsValue !== "") {
                             text = currentDetailsValue + "<br /><br />" + details;
                         }
 
@@ -125,84 +120,8 @@ ECER.Jscripts.Communication = {
         else if (applicationValue !== null || portalUserValue !== null) {
             initiatedFromAttribute.setValue(initiatedFromRegistryValue);
         }
-        
-    },
 
-    populateNoticeOfInvestigation: async function (formContext, contentName, contentText) {
-        try {
-            var nameAttributeName = "ecer_name";
-            var detailsAttributeName = "ecer_message";
-            // Exit if not Notice of Investigation
-            var investigation = formContext.getAttribute("ecer_investigation");
-            if (investigation == null || investigation.getValue() == null || !contentName.includes("Notice of Investigation")) return;
-
-            // Create Params
-            // General
-            var letterDate = new Date().toJSON().slice(0, 10); // Today's date
-            var phonecallDate = ""; // where to get this date
-            var clientId = "";
-            var referralReceivedDate = "";
-            var complaintDate = "";
-            var registrationNumber = ""; // Client Id
-            var registrantName = "";
-            var registrantAddress = "";
-            var certificationType = "";
-            var sections = "";
-            var reportType = "";
-            var area = "";
-            // var Health Authority dated [DATE]
-            var facility = "";
-            var facilityCity = "";
-            var allergations = "<ul>";
-
-            // Get Investigation 
-            var investigationId = investigation.getValue()[0].id.replace("{", "").replace("}", "")
-
-            var result = await ECER.Jscripts.Communication.retrieveSingleRecord("ecer_investigation", investigationId);
-            clientId = result["ecer_clientid"];
-            registrantName = result["_ecer_applicant_value@OData.Community.Display.V1.FormattedValue"];
-            registrantAddress = result["ecer_mailingaddresscontact"];
-            certificationType = result["ecer_certificationtype"];
-            facility = result["ecer_facility"];
-            
-            // Get Intake Allergation
-            var results = await ECER.Jscripts.Communication.retrieveMultiRecords("ecer_allegation", "_ecer_investigation_value eq " + investigationId);
-            results.forEach(r => {
-                allergations = allergations + "<br>" + "<li>" + r.ecer_name + "</li>";
-            })
-
-            // Replace contentText
-            contentText = contentText.replaceAll("[LETTERDATE]", letterDate);
-            contentText = (clientid == null) ? contentText : contentText.replaceAll("[CLIENTID]", clientId);
-            contentText = (registrantName == null) ? contentText : contentText.replaceAll("[REGISTRANT'S NAME]", registrantName);
-            contentText = (registrantAddress == null) ? contentText : contentText.replaceAll("[STREET ADDRESS OR PO BOX]", registrantAddress);
-            contentText = (certificationType == null) ? contentText : contentText.replaceAll("[TYPE OF CERTIFICATION]", certificationType);
-            contentText = (allergations == "") ? contentText : contentText.replaceAll("[ALLEGATION]", allergations + "</ul>");
-
-            formContext.getAttribute(nameAttributeName).setValue(contentName);
-            formContext.getAttribute(detailsAttributeName).setValue(contentText);
-        } catch (error) {
-            console.log("Error populateNoticeOfInvestigation: " + error.message);
-        }
-    },
-
-    retrieveSingleRecord: async function (entityName, id) {
-        try {
-            const result = await Xrm.WebApi.retrieveRecord(entityName, id);
-            return result;
-        } catch (error) {
-            console.error("Error retrieving record:", error.message);
-            throw error;
-        }
-    },
-
-    retrieveMultiRecords: async function (entityName, query) {
-        try {
-            const results = await Xrm.WebApi.retrieveMultipleRecords(entityName, "?$filter=" + query);
-            return results.entities;
-        } catch (error) {
-            console.error("Error retrieving records:", error.message);
-            throw error;
-        }
-    },
+    }
 }
+
+
