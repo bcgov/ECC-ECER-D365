@@ -20,7 +20,7 @@ ECER.Jscripts.Communication = {
     lockIsRoot: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var formType = formContext.ui.getFormType();
-        var createMode = formType == 1;
+        var createMode = (formType == 1);
         var isRootAttributeName = "ecer_isroot";
         var parentCommunicationAttributeName = "ecer_parentcommunicationid";
         var isRootControl = formContext.getControl(isRootAttributeName);
