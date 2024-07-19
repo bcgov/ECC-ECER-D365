@@ -120,7 +120,7 @@ ECER.Jscripts.Communication = {
         else if (applicationValue !== null || portalUserValue !== null) {
             initiatedFromAttribute.setValue(initiatedFromRegistryValue);
         }
-        
+
     }
 }
 
