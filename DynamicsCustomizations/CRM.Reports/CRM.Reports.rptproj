@@ -50,6 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Report Include="Certificate Conditions.rdl" />
+    <Report Include="Certificate Cover Letter.rdl" />
     <Report Include="Certificate Levels.rdl" />
     <Report Include="Certificate.rdl" />
   </ItemGroup>
