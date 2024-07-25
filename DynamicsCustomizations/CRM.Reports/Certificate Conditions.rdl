@@ -215,6 +215,9 @@
             </TablixRowHierarchy>
             <NoRowsMessage>="No Data"</NoRowsMessage>
             <DataSetName>DSMain</DataSetName>
+            <PageBreak>
+              <BreakLocation>End</BreakLocation>
+            </PageBreak>
             <Height>0.5in</Height>
             <Width>6.5in</Width>
             <DataElementOutput>Output</DataElementOutput>
@@ -228,9 +231,9 @@
       </Body>
       <Width>6.5in</Width>
       <Page>
-        <PageWidth>8.25in</PageWidth>
+        <PageWidth>7.49in</PageWidth>
         <InteractiveHeight>11in</InteractiveHeight>
-        <InteractiveWidth>8.25in</InteractiveWidth>
+        <InteractiveWidth>7.49in</InteractiveWidth>
         <LeftMargin>0.5in</LeftMargin>
         <RightMargin>0.5in</RightMargin>
         <TopMargin>0.5in</TopMargin>
@@ -247,7 +250,7 @@
       <Nullable>true</Nullable>
       <DefaultValue>
         <Values>
-          <Value>Andrew Chan</Value>
+          <Value>ECER Power Automate Spare</Value>
         </Values>
       </DefaultValue>
       <AllowBlank>true</AllowBlank>
@@ -258,7 +261,7 @@
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>Mountain Standard Time</Value>
+          <Value>Pacific Standard Time</Value>
         </Values>
       </DefaultValue>
       <AllowBlank>true</AllowBlank>
@@ -269,7 +272,7 @@
       <DataType>Integer</DataType>
       <DefaultValue>
         <Values>
-          <Value>4105</Value>
+          <Value>1033</Value>
         </Values>
       </DefaultValue>
       <Prompt>CRM_UILanguageId</Prompt>
@@ -310,7 +313,7 @@
       <DataType>Integer</DataType>
       <DefaultValue>
         <Values>
-          <Value>1</Value>
+          <Value>0</Value>
         </Values>
       </DefaultValue>
       <Prompt>CRM_CurrencyNegativePattern</Prompt>
@@ -424,7 +427,7 @@
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>dd/MMM/yyyy</Value>
+          <Value>M/d/yyyy</Value>
         </Values>
       </DefaultValue>
       <Prompt>CRM_ShortDatePattern</Prompt>
@@ -434,7 +437,7 @@
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>MMMM d, yyyy</Value>
+          <Value>dddd, MMMM d, yyyy</Value>
         </Values>
       </DefaultValue>
       <Prompt>CRM_LongDatePattern</Prompt>
@@ -454,7 +457,7 @@
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>dd MMMM</Value>
+          <Value>MMMM dd</Value>
         </Values>
       </DefaultValue>
       <Prompt>CRM_MonthDayPattern</Prompt>

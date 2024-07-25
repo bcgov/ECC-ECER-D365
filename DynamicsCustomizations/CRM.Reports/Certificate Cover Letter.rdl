@@ -16,7 +16,7 @@
     <DataSet Name="DSMain">
       <Query>
         <DataSourceName>CRM</DataSourceName>
-        <CommandText>&lt;fetch distinct="false" useraworderby="false" no-lock="false" mapping="logical"&gt;&lt;entity name="contact"&gt;&lt;attribute name="fullname" alias="fullname" /&gt;&lt;attribute name="firstname" alias="firstname" /&gt;&lt;attribute name="address1_line1" alias="address1_line1" /&gt;&lt;attribute name="address1_line2" alias="address1_line2" /&gt;&lt;attribute name="address1_line3" alias="address1_line3" /&gt;&lt;attribute name="address1_city" alias="address1_city" /&gt;&lt;attribute name="address1_stateorprovince" alias="address1_stateorprovince" /&gt;&lt;attribute name="ecer_clientid" alias="ecer_clientid" /&gt;&lt;attribute name="address1_postalcode" alias="address1_postalcode" /&gt;&lt;attribute name="address1_country" alias="address1_country" /&gt;&lt;attribute name="contactid" /&gt;&lt;/entity&gt;&lt;/fetch&gt;</CommandText>
+        <CommandText>&lt;fetch distinct="false" mapping="logical"&gt;&lt;entity name="contact"&gt;&lt;attribute name="fullname" alias="fullname" /&gt;&lt;attribute name="firstname" alias="firstname" /&gt;&lt;attribute name="address1_line1" alias="address1_line1" /&gt;&lt;attribute name="address1_line2" alias="address1_line2" /&gt;&lt;attribute name="address1_line3" alias="address1_line3" /&gt;&lt;attribute name="address1_city" alias="address1_city" /&gt;&lt;attribute name="address1_stateorprovince" alias="address1_stateorprovince" /&gt;&lt;attribute name="ecer_clientid" alias="ecer_clientid" /&gt;&lt;attribute name="address1_postalcode" alias="address1_postalcode" /&gt;&lt;attribute name="address1_country" alias="address1_country" /&gt;&lt;attribute name="contactid" /&gt;&lt;/entity&gt;&lt;/fetch&gt;</CommandText>
       </Query>
       <Fields>
         <Field Name="fullname">
@@ -197,8 +197,7 @@
                                 <TextRun>
                                   <Value>=Format(Today(), "MMMM d, yyyy")</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -261,7 +260,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.22in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -274,8 +273,7 @@
                                 <TextRun>
                                   <Value>=Fields!fullname.Value</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -301,7 +299,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.22in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -314,8 +312,7 @@
                                 <TextRun>
                                   <Value>=Fields!address1_line1.Value</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -341,7 +338,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.22in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -354,8 +351,7 @@
                                 <TextRun>
                                   <Value>=Fields!address1_line2.Value</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -381,7 +377,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.22in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -394,8 +390,7 @@
                                 <TextRun>
                                   <Value>=Fields!address1_line3.Value</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -421,7 +416,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.22in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -434,8 +429,7 @@
                                 <TextRun>
                                   <Value>=Fields!address1_city.Value &amp; ", " &amp; Fields!address1_stateorprovince.Value &amp; "  " &amp; Fields!address1_postalcode.Value</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -461,7 +455,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.22in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -474,8 +468,7 @@
                                 <TextRun>
                                   <Value>=Fields!address1_country.Value</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -538,7 +531,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.25in</Height>
+                  <Height>0.22in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -551,8 +544,7 @@
                                 <TextRun>
                                   <Value>="Dear " &amp; Fields!fullname.Value</Value>
                                   <Style>
-                                    <FontFamily>tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -615,7 +607,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>7in</Height>
+                  <Height>5.89583in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -628,8 +620,7 @@
                                 <TextRun>
                                   <Value>On behalf of the Early Childhood Educator Registry (Registry), I am pleased to advise that you have met the certification requirements to practice in the Province of British Columbia (BC). Your Certificate is enclosed and is a legal government document that should be stored in a safe place.</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -640,8 +631,7 @@
                                 <TextRun>
                                   <Value />
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -652,8 +642,7 @@
                                 <TextRun>
                                   <Value>It is your responsibility to maintain your certification. The requirements to renew your Certificate will depend on the type of Certification you hold and whether it is valid or expired. As renewal requirements include work experience hours, professional development and/or additional post-secondary education, it is important that you become familiar with these requirements well before your Certificate is set to expire. If your Certificate expires, you will no longer be qualified to work as an educator or assistant, in licensed child care in BC, until your Certificate is renewed with the Registry.</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -664,8 +653,7 @@
                                 <TextRun>
                                   <Value />
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -676,8 +664,7 @@
                                 <TextRun>
                                   <Value>You are encouraged to visit our website at www.gov.bc.ca/earlychildhoodeducators for more information about:</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -688,8 +675,7 @@
                                 <TextRun>
                                   <Value>Legal requirements and standards (occupational competencies) that govern your practice</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -702,8 +688,7 @@
                                 <TextRun>
                                   <Value>Renewal requirements for the type of Certificate you hold, including application forms</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -717,8 +702,7 @@
                                   <Value>Different types of early childhood educator certificates available in BC , including application
 requirements and forms</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -731,8 +715,7 @@ requirements and forms</Value>
                                 <TextRun>
                                   <Value>How the Registry responds to and investigates complaints regarding the practice of certified educators and assistants</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -745,8 +728,7 @@ requirements and forms</Value>
                                 <TextRun>
                                   <Value>Professional development topics and resources</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -759,8 +741,7 @@ requirements and forms</Value>
                                 <TextRun>
                                   <Value>How to keep your personal information current, including your name and contact information</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -773,8 +754,7 @@ requirements and forms</Value>
                                 <TextRun>
                                   <Value />
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -785,8 +765,7 @@ requirements and forms</Value>
                                 <TextRun>
                                   <Value>If you have any questions regarding the assessment of your recent application for certification, please contact the Registry at 1.888.338.6622 or ECERegistry@gov.bc.ca.</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -797,8 +776,7 @@ requirements and forms</Value>
                                 <TextRun>
                                   <Value />
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -809,8 +787,7 @@ requirements and forms</Value>
                                 <TextRun>
                                   <Value>Sincerely,</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -821,8 +798,7 @@ requirements and forms</Value>
                                 <TextRun>
                                   <Value />
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -833,8 +809,7 @@ requirements and forms</Value>
                                 <TextRun>
                                   <Value>Jennifer Fletcher</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -845,8 +820,7 @@ requirements and forms</Value>
                                 <TextRun>
                                   <Value>Director of Certification</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -857,8 +831,7 @@ requirements and forms</Value>
                                 <TextRun>
                                   <Value>Early Childhood Educator Registry</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -869,8 +842,7 @@ requirements and forms</Value>
                                 <TextRun>
                                   <Value />
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -881,8 +853,7 @@ requirements and forms</Value>
                                 <TextRun>
                                   <Value>Enclosure</Value>
                                   <Style>
-                                    <FontFamily>Tahoma</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontFamily>BC Sans</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -934,12 +905,12 @@ requirements and forms</Value>
                     <TablixMember />
                     <TablixMember>
                       <Visibility>
-                        <Hidden>=IIF((Fields!address1_line2.Value is Nothing) or (Fields!address1_line2.Value.ToString().Trim() = ""), true, false)</Hidden>
+                        <Hidden>=IIF(IsNothing(Fields!address1_line2.Value), true, false)</Hidden>
                       </Visibility>
                     </TablixMember>
                     <TablixMember>
                       <Visibility>
-                        <Hidden>=IIF((Fields!address1_line3.Value is Nothing) or (Fields!address1_line3.Value.ToString().Trim() = ""), true, false)</Hidden>
+                        <Hidden>=IIF(IsNothing(Fields!address1_line3.Value), true, false)</Hidden>
                       </Visibility>
                     </TablixMember>
                     <TablixMember />
@@ -957,8 +928,8 @@ requirements and forms</Value>
             </TablixRowHierarchy>
             <NoRowsMessage>="No Data"</NoRowsMessage>
             <DataSetName>DSMain</DataSetName>
-            <Height>10.34722in</Height>
-            <Width>7.25in</Width>
+            <Height>9.03305in</Height>
+            <Width>7.24999in</Width>
             <DataElementOutput>Output</DataElementOutput>
             <Style>
               <TextAlign>Left</TextAlign>
@@ -986,7 +957,7 @@ requirements and forms</Value>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>10.42778in</Top>
+            <Top>9.30278in</Top>
             <Left>1.73611in</Left>
             <Height>0.45in</Height>
             <Width>1.32639in</Width>
@@ -1054,7 +1025,7 @@ requirements and forms</Value>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>10.42778in</Top>
+            <Top>9.30278in</Top>
             <Left>3.3373in</Left>
             <Height>0.45in</Height>
             <Width>1.46131in</Width>
@@ -1122,7 +1093,7 @@ requirements and forms</Value>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>10.42778in</Top>
+            <Top>9.30278in</Top>
             <Left>5.06647in</Left>
             <Height>0.45in</Height>
             <Width>2.03769in</Width>
@@ -1156,7 +1127,7 @@ requirements and forms</Value>
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Top>10.42778in</Top>
+            <Top>9.30278in</Top>
             <Left>0.1493in</Left>
             <Height>0.45in</Height>
             <Width>1.32639in</Width>
@@ -1169,7 +1140,7 @@ requirements and forms</Value>
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>10.94722in</Height>
+        <Height>9.89166in</Height>
         <Style />
       </Body>
       <Width>7.25in</Width>
@@ -1189,7 +1160,7 @@ requirements and forms</Value>
       <Nullable>true</Nullable>
       <DefaultValue>
         <Values>
-          <Value>Andrew Chan</Value>
+          <Value>ECER Power Automate Spare</Value>
         </Values>
       </DefaultValue>
       <AllowBlank>true</AllowBlank>
@@ -1200,7 +1171,7 @@ requirements and forms</Value>
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>Mountain Standard Time</Value>
+          <Value>Pacific Standard Time</Value>
         </Values>
       </DefaultValue>
       <AllowBlank>true</AllowBlank>
@@ -1211,7 +1182,7 @@ requirements and forms</Value>
       <DataType>Integer</DataType>
       <DefaultValue>
         <Values>
-          <Value>4105</Value>
+          <Value>1033</Value>
         </Values>
       </DefaultValue>
       <Prompt>CRM_UILanguageId</Prompt>
@@ -1252,7 +1223,7 @@ requirements and forms</Value>
       <DataType>Integer</DataType>
       <DefaultValue>
         <Values>
-          <Value>1</Value>
+          <Value>0</Value>
         </Values>
       </DefaultValue>
       <Prompt>CRM_CurrencyNegativePattern</Prompt>
@@ -1366,7 +1337,7 @@ requirements and forms</Value>
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>dd/MMM/yyyy</Value>
+          <Value>M/d/yyyy</Value>
         </Values>
       </DefaultValue>
       <Prompt>CRM_ShortDatePattern</Prompt>
@@ -1376,7 +1347,7 @@ requirements and forms</Value>
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>MMMM d, yyyy</Value>
+          <Value>dddd, MMMM d, yyyy</Value>
         </Values>
       </DefaultValue>
       <Prompt>CRM_LongDatePattern</Prompt>
@@ -1396,7 +1367,7 @@ requirements and forms</Value>
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>dd MMMM</Value>
+          <Value>MMMM dd</Value>
         </Values>
       </DefaultValue>
       <Prompt>CRM_MonthDayPattern</Prompt>
