@@ -82,6 +82,26 @@ ECER.Jscripts.Application =
         statusReasonDetailsAttribute.setValue(subStatusDetails);
     },
 
+    enableDisableFieldsBySecurityRole: function (executionContext) {
+        var aaa = crm_Utility.checkCurrentUserRole("Certification - Assessor Role");
+        var bbb = crm_Utility.checkCurrentUserRole("Certifications - Manager of Certifications Role");
+        var ccc = crm_Utility.checkCurrentUserRole("Certification - Team Lead Role");
+        var ddd = crm_Utility.checkCurrentUserRole("Certification - Program Support Role");
+        var eee = crm_Utility.checkCurrentUserRole("Certification - Program Support Lead Role");
+        var fff = crm_Utility.checkCurrentUserRole("Certification - Operations Supervisor Assessment Role");
+        var ggg = crm_Utility.checkCurrentUserRole("Investigation - Investigator");
+
+        var formContext = executionContext.getFormContext();
+
+        // Application Information Tab - Applicant
+        formContext.getControl("ecer_applicantid").setDisabled(!bbb && !ddd && !eee && !fff && !ggg);
+
+        // Completeness Review Tab - Confirm Information Received (Internal Use)
+        formContext.getControl("ecer_transcriptreceived").setDisabled(!(ddd || eee));
+
+
+    },
+
     hasAssessorSecurityRole: function () {
         var hasAssessorRole = crm_Utility.checkCurrentUserRole("Certification - Assessor Role");
         return hasAssessorRole;
