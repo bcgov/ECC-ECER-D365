@@ -12,9 +12,15 @@ ECER.Jscripts.Communication = {
     crm_ExecutionContext: null,
     onLoad: function (executionContext) {
         this.crm_ExecutionContext = executionContext;
-        ECER.Jscripts.Communication.populateInitiatedFromAtForm(executionContext);
-        ECER.Jscripts.Communication.lockIsRoot(executionContext);
-        ECER.Jscripts.Communication.acknowledgedIfFromPortalUser(executionContext);
+        try {
+            ECER.Jscripts.Communication.populateInitiatedFromAtForm(executionContext);
+            ECER.Jscripts.Communication.lockIsRoot(executionContext);
+            ECER.Jscripts.Communication.acknowledgedIfFromPortalUser(executionContext);
+        }
+        catch (ex) {
+            // Do Nothing.  Mysterious issue when trying to save with No Dirty Fields
+            // Throws script error of method not found when hitting "Save" multiple times.
+        }
     },
 
     lockIsRoot: function (executionContext) {
@@ -46,6 +52,7 @@ ECER.Jscripts.Communication = {
         var attributeName = "ecer_notifyrecipient";
         var theAttribute = formContext.getAttribute(attributeName);
         theAttribute.setValue(true);
+        theAttribute.setSubmitMode("always");
         formContext.data.save();
     },
 
@@ -60,6 +67,7 @@ ECER.Jscripts.Communication = {
             if (theFlagAttribute !== null && theFlagAttribute.getValue() !== true) {
                 // If the Acknowledged Flag is FALSE
                 theFlagAttribute.setValue(true);
+                theFlagAttribute.setSubmitMode("always");
                 formContext.data.save();
             }
         }
@@ -86,10 +94,11 @@ ECER.Jscripts.Communication = {
                         var details = record.ecer_text;
                         var text = details;
                         if (currentDetailsValue !== null && currentDetailsValue !== "") {
-                            text = currentDetailsValue + "<br /><br />" + details;
+                            text = details + currentDetailsValue;
                         }
 
                         formContext.getAttribute(nameAttributeName).setValue(name);
+                        formContext.getAttribute(detailsAttributeName).setValue(null);
                         formContext.getAttribute(detailsAttributeName).setValue(text);
                     }
                 );
