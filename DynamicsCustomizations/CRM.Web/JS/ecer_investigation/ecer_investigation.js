@@ -15,6 +15,7 @@ ECER.Jscripts.Investigation =
         ECER.Jscripts.Investigation.lockComplaintInfo(executionContext);
         ECER.Jscripts.Investigation.showHideParallelProcess(executionContext);
         ECER.Jscripts.Investigation.showHideReasonForPriorityAssignment(executionContext);
+        ECER.Jscripts.Investigation.displayFindingsOrAllegations(executionContext);
     },
 
     getApplicantInfo: function (executionContext) {
@@ -185,6 +186,53 @@ ECER.Jscripts.Investigation =
         formContext.ui.tabs.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}")
             .sections.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}_section_5")
             .controls.forEach((e) => e.setDisabled(false));
+    },
+
+    //Called on load If Source equals the following options, display the Findings subgrid, otherwise display the Allegations subgrid: 
+    //NOTE that the visibility property is actually on the sections containing the subgrids.
+    displayFindingsOrAllegations: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var sourceAttribute = formContext.getAttribute("ecer_source");
+        
+        // Check if the source attribute is null
+        if (!sourceAttribute) {
+            console.error("Source attribute 'ecer_source' is null or undefined.");
+            return;
+        }
+        
+        var source = sourceAttribute.getValue();
+    
+        // Retrieve the findings and allegations sections by their IDs
+        var findingsSection = formContext.ui.tabs.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}")
+            .sections.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}_section_12");
+        var allegationsSection = formContext.ui.tabs.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}")
+            .sections.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}_section_8");
+    
+        // Check if the sections are null
+        if (!findingsSection) {
+            console.error("Findings section is null or undefined.");
+            return;
+        }
+        if (!allegationsSection) {
+            console.error("Allegations section is null or undefined.");
+            return;
+        }
+    
+        var healthAuthorities = [
+            621870018,  //"Island Health Authority",
+            621870019,  //"Interior Health Authority",
+            621870020,  //"Vancouver Coastal Health Authority",
+            621870021,  //"Fraser Health Authority",
+            621870022,  //"Northern Health Authority"
+        ];
+    
+        if (healthAuthorities.includes(source)) {
+            findingsSection.setVisible(true);
+            allegationsSection.setVisible(false);
+        } else {
+            findingsSection.setVisible(false);
+            allegationsSection.setVisible(true);
+        }
     },
 
     setValueToLookup: function (lookupField, id, name, entityType) {
