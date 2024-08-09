@@ -156,11 +156,15 @@ ECER.Jscripts.Communication = {
         }
 
         currentDetailsValue = ECER.Jscripts.Communication.dateMerge(currentDetailsValue);
-        var index = -1
+        var index = currentDetailsValue.indexOf("[", index);
+        if (index === -1) {
+            return; // No Merge Fields
+        }
+        index = -1;
 
         do {
             var matches = currentDetailsValue.match(/\[(.*?)\]/);
-            var index = currentDetailsValue.indexOf("[", index) + 1; // Increment to avoid infinite loop
+            index = currentDetailsValue.indexOf("[", index) + 1; // Increment to avoid infinite loop
             matches.forEach(function (item) {
                 var originalText = item;
                 if (originalText.indexOf("[") >= 0) {
@@ -191,8 +195,10 @@ ECER.Jscripts.Communication = {
                                 break;
                         }
                         if (fieldText !== undefined) {
+                            if (fieldText === null) {
+                                fieldText = "";
+                            }
                             currentDetailsValue = currentDetailsValue.replace(originalText, fieldText);
-
                         }
                     }
                     else {
@@ -216,7 +222,28 @@ ECER.Jscripts.Communication = {
                         var results = crm_Utility.retrieveMultipleCustom(childEntityName, option); // Synchoronous call using AJAX.  The await throws error.
                         fieldText = "<ul>";
                         for (var i = 0; i < results.length; i++) {
-                            fieldText += "<li>" + results[i][childFieldName] + "</li>";
+                            fieldText += "<li>";
+                            if (childFieldName.indexOf(",") == -1) {
+                                var childFieldValue = results[i][childFieldName];
+                                if (childFieldValue !== null && childFieldValue.trim() !== "") {
+                                    fieldText += childFieldValue;
+                                }
+                            }
+                            else {
+                                var fieldNameArray = childFieldName.split(",");
+                                for (var j = 0; j < fieldNameArray.length; j++) {
+                                    var splitFieldName = fieldNameArray[j];
+                                    var fieldValue = results[i][splitFieldName];
+                                    if (fieldValue !== null && fieldValue.trim() !== "") {
+                                        if (j !== 0) {
+                                            fieldText += " ";
+                                        }
+                                        fieldText += fieldValue;
+                                        fieldText += " ";
+                                    }
+                                }
+                            }
+                            fieldText += "</li>";
                         }
                         fieldText += "</ul>";
                         if (fieldText !== undefined) {
