@@ -792,7 +792,7 @@ var CrmJS;
             //The XRM OData end-point
             // OrganizationData.Svc is obsoleted
             // var ODATA_ENDPOINT = "/XRMServices/2011/OrganizationData.svc/";
-            var WEBAPI_ENDPOINT = "/api/data/v9.0/";
+            var WEBAPI_ENDPOINT = "/api/data/v9.2/";
 
             // will become something like this
             // https://DynamicsURL/api/data/v9.0/accounts
@@ -1092,6 +1092,17 @@ var CrmJS;
                 timelineControl.refresh();
             }
         };
+        // Call on Subgrid On Select
+        // This is for grids which need the group by function but not really the Editable Funtions
+        Utility.prototype.DisableSubgridControls = function (executionContext) {
+            var formContext = executionContext.getFormContext();
+            formContext.getData().getEntity().attributes.forEach(function (attr) {
+                attr.controls.forEach(function (c) {
+                    c.setDisabled(true);
+                });
+            });
+        };
+
         Utility.prototype.RunReportFromForm = function (formContext, reportId, entityTypeCode) {
             // The goal: Get Below URL
             // https://embc-dfa.dev.jag.gov.bc.ca
