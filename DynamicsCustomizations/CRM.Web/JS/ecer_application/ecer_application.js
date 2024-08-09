@@ -364,10 +364,15 @@ ECER.Jscripts.Application =
         var professionalDevelopmentTabName = "tab_professionaldevelopment";
         var professionalDevelopmentBPFAttributeName = "header_process_ecer_hasprofessionaldevelopment";
         var professionalDevelopmentApprovedBPFAttributeName = "header_process_ecer_professionaldevelopmentapproved";
+        var professionalDevelopmentApprovedBPFAssessmentReviewAttributeName = "header_process_ecer_professionaldevelopmentapproved_1";
         var professionalDevelopmentApprovedAttributeName = "ecer_professionaldevelopmentapproved";
         crm_Utility.showHide(executionContext, show, professionalDevelopmentApprovedAttributeName);
         crm_Utility.showHide(executionContext, show, professionalDevelopmentBPFAttributeName);
         crm_Utility.showHide(executionContext, show, professionalDevelopmentApprovedBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, professionalDevelopmentApprovedBPFAssessmentReviewAttributeName);
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_professionaldevelopmentapproved_2");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_professionaldevelopmentapproved_3");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_professionaldevelopmentapproved_4");
         crm_Utility.showHide(executionContext, show, professionalDevelopmentTabName);
     },
 
@@ -386,8 +391,14 @@ ECER.Jscripts.Application =
         var educationTranscriptReceivedAttributeName = "ecer_transcriptreceived";
         var educationTranscriptReceivedDateAttributeName = "ecer_transcriptreceiveddate";
         var educationTranscriptApprovedAttributeName = "ecer_educationtranscriptapproved";
+        var educationTranscriptApprovedBPF2ndAssessment = "header_process_ecer_educationtranscriptapproved_4";
         crm_Utility.showHide(executionContext, show, educationTranscriptReceivedBPFAttributeName);
         crm_Utility.showHide(executionContext, show, educationTranscriptApprovedBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, educationTranscriptApprovedBPF2ndAssessment);
+        // Though I can't find it.  If there is 4, then there might be 1,2,3...
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_educationtranscriptapproved_1");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_educationtranscriptapproved_2");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_educationtranscriptapproved_3");
         crm_Utility.showHide(executionContext, show, educationTranscriptReceivedAttributeName);
         crm_Utility.showHide(executionContext, show, educationTranscriptReceivedDateAttributeName);
         crm_Utility.showHide(executionContext, show, educationTranscriptApprovedAttributeName);
@@ -400,6 +411,8 @@ ECER.Jscripts.Application =
         var applicantAgeAttribute = formContext.getAttribute("ecer_applicantage");
         var parentalReferenceReceivedBPFAttributeName = "header_process_ecer_parentalreferencereceived";
         var parentalReferenceApprovedBPFAttributeName = "header_process_ecer_parentalreferenceapproved";
+        var parentalReferenceApprovedBPFAssessmentReviewStageAttributeName = "header_process_ecer_parentalreferenceapproved_1";
+        var parentalReferenceApprovedBPF2ndAssessmentStageAttributeName = "header_process_ecer_parentalreferenceapproved_2";
         var parentalReferenceApprovedAttributeName = "ecer_parentalreferenceapproved";
         var parentalReferenceReceivedAttributeName = "ecer_parentalreferencereceived";
         var parentalReferenceReceivedDateAttributeName = "ecer_parentalreferencereceiveddate";
@@ -411,6 +424,10 @@ ECER.Jscripts.Application =
         // Per https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/controls/setvisible
         crm_Utility.showHide(executionContext, show, parentalReferenceReceivedBPFAttributeName);
         crm_Utility.showHide(executionContext, show, parentalReferenceApprovedBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, parentalReferenceApprovedBPFAssessmentReviewStageAttributeName);
+        crm_Utility.showHide(executionContext, show, parentalReferenceApprovedBPF2ndAssessmentStageAttributeName);
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_parentalreferenceapproved_3");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_parentalreferenceapproved_4");
         crm_Utility.showHide(executionContext, show, parentalReferenceApprovedAttributeName);
         crm_Utility.showHide(executionContext, show, parentalReferenceReceivedAttributeName);
         crm_Utility.showHide(executionContext, show, parentalReferenceReceivedDateAttributeName);
