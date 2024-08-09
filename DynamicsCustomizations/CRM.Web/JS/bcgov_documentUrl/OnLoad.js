@@ -18,6 +18,7 @@
         ShowLookup(formContext, "ecer_certificateid");
         ShowLookup(formContext, "ecer_previousnameid");
         ShowLookup(formContext, "ecer_programapplicationid");
+        ShowLookup(formContext, "ecer_professionaldevelopmentid");
     }
 };
 
