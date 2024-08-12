@@ -53,6 +53,7 @@
     <Report Include="Certificate Cover Letter.rdl" />
     <Report Include="Certificate Levels.rdl" />
     <Report Include="Certificate.rdl" />
+    <Report Include="Communication Message.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>
