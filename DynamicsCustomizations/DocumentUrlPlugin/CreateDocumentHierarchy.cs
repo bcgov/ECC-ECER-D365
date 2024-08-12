@@ -68,6 +68,59 @@ namespace BCGOV.Plugin.DocumentUrl
 
                 }
 
+                if (targetEntity.Contains("ecer_communicationid") && targetEntity["ecer_communicationid"] != null 
+                    && (!targetEntity.Contains("bcgov_customer") || targetEntity["bcgov_customer"] == null))
+                {
+                    var entityReferencce = (EntityReference)targetEntity["ecer_professionaldevelopmentid"];
+                    var entityRecord = service.Retrieve(entityReferencce.LogicalName.ToLowerInvariant(),
+                        entityReferencce.Id, new ColumnSet("ecer_applicationid", "ecer_applicantid"));
+                    var hasChange = false;
+
+                    if (registryTeamER != null)
+                    {
+                        sharePointFileUrlEntity["ownerid"] = registryTeamER;
+                        hasChange = true;
+                    }
+
+                    if (entityRecord.Contains("ecer_applicationid") && entityRecord["ecer_applicationid"] != null)
+                    {
+                        sharePointFileUrlEntity["ecer_applicationid"] = entityRecord["ecer_applicationid"];
+                        hasChange = true;
+                    }
+
+                    if (entityRecord.Contains("ecer_registrantid") && entityRecord["ecer_registrantid"] != null)
+                    {
+                        sharePointFileUrlEntity["bcgov_customer"] = entityRecord["ecer_registrantid"];
+                        
+                        hasChange = true;
+                    }
+
+                    if (entityRecord.Contains("ecer_ecer_program_application_id") && entityRecord["ecer_ecer_program_application_id"] != null)
+                    {
+                        sharePointFileUrlEntity["ecer_programapplicationid"] = entityRecord["ecer_ecer_program_application_id"];
+                        if (pspTeamER != null)
+                        {
+                            sharePointFileUrlEntity["ownerid"] = pspTeamER;
+                        }
+                        hasChange = true;
+                    }
+
+                    if (entityRecord.Contains("ecer_investigation") && entityRecord["ecer_investigation"] != null)
+                    {
+                        sharePointFileUrlEntity["ecer_investigationid"] = entityRecord["ecer_investigation"];
+                        if (investigationTeamER != null)
+                        {
+                            sharePointFileUrlEntity["ownerid"] = investigationTeamER;
+                        }
+                        hasChange = true;
+                    }
+
+                    if (hasChange)
+                    {
+                        service.Update(sharePointFileUrlEntity);
+                    }
+                }
+
                 if (targetEntity.Contains("ecer_professionaldevelopmentid") && targetEntity["ecer_professionaldevelopmentid"] != null
                     && (!targetEntity.Contains("ecer_applicationid") || targetEntity["ecer_applicationid"] == null))
                 {
