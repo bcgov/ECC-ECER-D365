@@ -71,9 +71,10 @@ namespace BCGOV.Plugin.DocumentUrl
                 if (targetEntity.Contains("ecer_communicationid") && targetEntity["ecer_communicationid"] != null 
                     && (!targetEntity.Contains("bcgov_customer") || targetEntity["bcgov_customer"] == null))
                 {
-                    var entityReferencce = (EntityReference)targetEntity["ecer_professionaldevelopmentid"];
+                    traceService.Trace("Communication contains data but no Customer ");
+                    var entityReferencce = (EntityReference)targetEntity["ecer_communicationid"];
                     var entityRecord = service.Retrieve(entityReferencce.LogicalName.ToLowerInvariant(),
-                        entityReferencce.Id, new ColumnSet("ecer_applicationid", "ecer_applicantid"));
+                        entityReferencce.Id, new ColumnSet("ecer_applicationid", "ecer_registrantid", "ecer_ecer_program_application_id", "ecer_investigation"));
                     var hasChange = false;
 
                     if (registryTeamER != null)
@@ -120,8 +121,7 @@ namespace BCGOV.Plugin.DocumentUrl
                         service.Update(sharePointFileUrlEntity);
                     }
                 }
-
-                if (targetEntity.Contains("ecer_professionaldevelopmentid") && targetEntity["ecer_professionaldevelopmentid"] != null
+                else if (targetEntity.Contains("ecer_professionaldevelopmentid") && targetEntity["ecer_professionaldevelopmentid"] != null
                     && (!targetEntity.Contains("ecer_applicationid") || targetEntity["ecer_applicationid"] == null))
                 {
                     var entityReferencce = (EntityReference)targetEntity["ecer_professionaldevelopmentid"];
