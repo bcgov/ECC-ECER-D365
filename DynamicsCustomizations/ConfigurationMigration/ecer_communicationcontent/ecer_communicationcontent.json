@@ -90,7 +90,7 @@
         {
           "Key": "ecer_text",
           "Type": 16,
-          "Value": "<div data-wrapper=\"true\" dir=\"ltr\" style=\"font-family:'Segoe UI','Helvetica Neue',sans-serif; font-size:9pt\"><div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:213.227px; transform-origin:0% 0%; word-spacing:0px\"><span style=\"color:#000000\">Dear [contact.fullname],</span></div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:257.987px; transform-origin:0% 0%; word-spacing:0px\">&nbsp;</div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:257.987px; transform-origin:0% 0%; word-spacing:0px\"><span style=\"color:#000000\">The Early Childhood Educator Registry (Registry) received your application for an&nbsp;<strong>[ecer_application.ecer_certificatetype]&nbsp;Certificate&nbsp;</strong>on [Today].</span></div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:325.127px; transform-origin:0% 0%; word-spacing:0px\">&nbsp;</div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:325.127px; transform-origin:0% 0%; word-spacing:0px\"><span style=\"color:#000000\"><strong>As of the date of this message, you have not submitted all documentation required to assess your application.&nbsp;&nbsp;</strong>Once the required documents have been received, the Registry will assess your application</span></div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:369.887px; transform-origin:0% 0%; word-spacing:0px\"><span style=\"color:#000000\">and supporting documents to determine if you meet all the legal requirements to be certified. Please&nbsp;submit the following outstanding or incomplete document(s):</span></div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:369.887px; transform-origin:0% 0%; word-spacing:0px\">&nbsp;</div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:369.887px; transform-origin:0% 0%; word-spacing:0px\"><span style=\"color:#000000\">You indicated on the application form that you have provided a Character Reference form to your reference.&nbsp; As of the date of this message, the Registry has not received your Character Reference response.</span><span style=\"font-size:11pt\"><span style=\"color:#000000\">nce form.</span></span></div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:369.887px; transform-origin:0% 0%; word-spacing:0px\">&nbsp;</div></div>"
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\"><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:213.227px;word-spacing:0px;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">Dear [contact.fullname],</span></div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:257.987px;word-spacing:0px;\">&nbsp;</div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:257.987px;word-spacing:0px;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">The Early Childhood Educator Registry (Registry) received your application for an&nbsp;<strong>[ecer_application.ecer_certificatetype]&nbsp;Certificate&nbsp;</strong>on [Today].</span></div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:325.127px;word-spacing:0px;\">&nbsp;</div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:325.127px;word-spacing:0px;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\"><strong>As of the date of this message, you have not submitted all documentation required to assess your application.&nbsp; </strong>Once the required documents have been received, the Registry will assess your application and supporting documents to determine if you meet all the legal requirements to be certified. Please&nbsp;submit the following outstanding or incomplete document(s):</span></div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:369.887px;word-spacing:0px;\">&nbsp;</div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:369.887px;word-spacing:0px;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">You indicated on the application form that you have provided a Character Reference form to your reference.&nbsp; As of the date of this message, the Registry has not received your Character Reference response form.</span></div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:369.887px;word-spacing:0px;\">&nbsp;</div></div>"
         },
         {
           "Key": "ecer_for",
@@ -142,7 +142,7 @@
         {
           "Key": "ecer_text",
           "Type": 16,
-          "Value": "<div data-wrapper=\"true\" dir=\"ltr\" style=\"font-size:9pt;font-family:'Segoe UI','Helvetica Neue',sans-serif;\"><div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:375.047px; transform-origin:0% 0%; word-spacing:0px\"><span style=\"color:#000000\">For additional information, please visit our website at&nbsp;<a href=\"https://www.gov.bc.ca/earlychildhoodeducators\">www.gov.bc.ca/earlychildhoodeducators</a>.</span></div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:375.047px; transform-origin:0% 0%; word-spacing:0px\">&nbsp;</div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:419.807px; transform-origin:0% 0%; word-spacing:0px\"><span style=\"color:#000000\">Assessment of application submissions may determine additional information or clarification is required&nbsp;and you will be contacted by the Registry. Incomplete applications will result in delays in processing. It is</span></div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:464.567px; transform-origin:0% 0%; word-spacing:0px\"><span style=\"color:#000000\">important to note applications for certification remain open for one year from the date the first&nbsp;application document was received by the Registry. Should your application remain incomplete by&nbsp;[DATE], your application will be closed.</span></div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:554.087px; transform-origin:0% 0%; word-spacing:0px\">&nbsp;</div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:554.087px; transform-origin:0% 0%; word-spacing:0px\"><span style=\"color:#000000\">Please contact the Registry by telephone at 1.888.338.6622 or by email at <a href=\"mailto:ECERegistry@gov.bc.ca\">ECERegistry@gov.bc.ca</a> for more information about your application.</span></div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:554.087px; transform-origin:0% 0%; word-spacing:0px\">&nbsp;</div>\n<div style=\"background-color:#ffffff; color:transparent; font-family:sans-serif; font-size:18.3333px; font-style:normal; font-variant-caps:normal; font-weight:400; left:120px; letter-spacing:normal; margin-bottom:0; margin-left:0; margin-right:0; margin-top:0; padding:0px; position:inherit; text-decoration-color:initial; text-decoration-style:initial; text-decoration-thickness:initial; text-indent:0px; text-transform:none; text-wrap:nowrap; top:621.227px; transform-origin:0% 0%; word-spacing:0px\"><span style=\"color:#000000\">Sincerely,</span></div></div>"
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\"><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:375.047px;word-spacing:0px;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">For additional information, please visit our website at </span><a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www.gov.bc.ca/earlychildhoodeducators\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">www.gov.bc.ca/earlychildhoodeducators</span></a><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">&nbsp;</span></div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:375.047px;word-spacing:0px;\">&nbsp;</div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:419.807px;word-spacing:0px;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">Assessment of application submissions may determine additional information or clarification is required&nbsp;and you will be contacted by the Registry. Incomplete applications will result in delays in processing. It is important to note applications for certification remain open for one year from the date the first&nbsp;application document was received by the Registry. Should your application remain incomplete by&nbsp;[DATE], your application will be closed.</span></div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:554.087px;word-spacing:0px;\">&nbsp;</div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:554.087px;word-spacing:0px;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">Please contact the Registry by telephone at 1.888.338.6622 or by email at </span><a href=\"mailto:ECERegistry@gov.bc.ca\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">ECERegistry@gov.bc.ca</span></a><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\"> for more information about your application.</span></div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:554.087px;word-spacing:0px;\">&nbsp;</div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:621.227px;word-spacing:0px;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">Sincerely,</span></div><div style=\"background-color:#ffffff;color:transparent;font-family:sans-serif;font-size:18.3333px;font-style:normal;font-weight:400;left:120px;letter-spacing:normal;margin:0;padding:0px;position:inherit;text-indent:0px;text-transform:none;text-wrap:nowrap;top:621.227px;word-spacing:0px;\">&nbsp;</div></div>"
         },
         {
           "Key": "ecer_for",
@@ -152,7 +152,186 @@
           }
         }
       ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Certificate Conditions"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": 2
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "b493f61c-f655-ef11-bfe3-6045bdcd6cb0"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\"><span style=\"font-family:Tahoma;\"><strong>Terms &amp; Conditions</strong></span></p><p style=\"margin: 0;\"><span style=\"font-family:Tahoma;\">[contact.ecer_certificateconditions.ecer_registrantid.ecer_details]</span></p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Portal User Address"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "6b560237-6656-ef11-bfe2-6045bdf9a93e"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\"><span style=\"font-family:Tahoma;font-size:11pt;\">[contact.address1_line1]</span></p><p style=\"margin: 0;\"><span style=\"font-family:Tahoma;font-size:11pt;\">[contact.address1_line2]</span></p><p style=\"margin: 0;\"><span style=\"font-family:Tahoma;font-size:11pt;\">[contact.address1_line3]</span></p><p style=\"margin: 0;\"><span style=\"font-family:Tahoma;font-size:11pt;\">[contact.address1_city], [contact.address1_stateorprovince] &nbsp;[contact.address1_postalcode]</span></p><p style=\"margin: 0;\"><span style=\"font-family:Tahoma;font-size:11pt;\">[contact.address1_country]</span></p><p style=\"margin: 0;\">&nbsp;</p></div>"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Investigation Intake Allegation"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "fa97c817-7456-ef11-bfe2-6045bdf9a93e"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Tahoma; font-size: 11pt;\"><p style=\"margin: 0;\"><strong>Allegations</strong></p><p style=\"margin: 0;\">[ecer_investigation.ecer_allegation.ecer_investigation.ecer_detail]</p><p style=\"margin: 0;\">&nbsp;</p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Investigation Involved Persons"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "fe671370-7856-ef11-bfe2-6045bdf9a93e"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Tahoma; font-size: 11pt;\"><p style=\"margin: 0;\"><strong>Involved Persons</strong></p><p style=\"margin: 0;\">[ecer_investigation.ecer_involvedperson.ecer_investigation.ecer_firstname,ecer_lastname,emailaddress,ecer_phonenumber]</p><p style=\"margin: 0;\">&nbsp;</p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        }
+      ]
     }
   ],
-  "Count": 3
+  "Count": 7
 }
