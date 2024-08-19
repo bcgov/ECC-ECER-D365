@@ -140,6 +140,32 @@ ECER.Jscripts.Communication = {
         return currentDetailsValue;
     },
 
+    shortDateToLongDateString: function (shortDateString) {
+        if (shortDateString === undefined ||
+            shortDateString === null ||
+            shortDateString.trim() === "" ||
+            Number.isNaN(Number(shortDateString.replace("-", "")))) {
+            // Date should be in 2024-08-14
+            // isNaN SPOJ the input parameter has to be parsed as Number and then it will return NaN
+            return shortDateString;
+        }
+        else {
+            var dateTimeStamp = Date.parse(shortDateString);
+            if (Number.isNaN(dateTimeStamp)) {
+                return shortDateString;
+            }
+            else {
+                var dateDisplayOptions = {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                };
+                var date = new Date(dateTimeStamp);
+                return date.toLocaleDateString('en-US', dateDisplayOptions);
+            }
+        }
+    },
+
     fieldMerge: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var detailsAttributeName = "ecer_message";
@@ -156,12 +182,13 @@ ECER.Jscripts.Communication = {
         }
 
         currentDetailsValue = ECER.Jscripts.Communication.dateMerge(currentDetailsValue);
-        var index = currentDetailsValue.indexOf("[", index);
+        var index = -1
+        index = currentDetailsValue.indexOf("[", index);
         if (index === -1) {
             return; // No Merge Fields
         }
         index = -1;
-
+        var hasIssue = false;
         do {
             var matches = currentDetailsValue.match(/\[(.*?)\]/);
             index = currentDetailsValue.indexOf("[", index) + 1; // Increment to avoid infinite loop
@@ -185,13 +212,13 @@ ECER.Jscripts.Communication = {
 
                         switch (entityName) {
                             case "contact":
-                                fieldText = this.ecer_portaluser[fieldName];
+                                fieldText = ECER.Jscripts.Communication.shortDateToLongDateString(this.ecer_portaluser[fieldName]);
                                 break;
                             case "ecer_application":
-                                fieldText = this.ecer_application[fieldName];
+                                fieldText = ECER.Jscripts.Communication.shortDateToLongDateString(this.ecer_application[fieldName]);
                                 break;
                             case "ecer_investigation":
-                                fieldText = this.ecer_investigation[fieldName];
+                                fieldText = ECER.Jscripts.Communication.shortDateToLongDateString(this.ecer_investigation[fieldName]);
                                 break;
                         }
                         if (fieldText !== undefined) {
@@ -199,6 +226,13 @@ ECER.Jscripts.Communication = {
                                 fieldText = "";
                             }
                             currentDetailsValue = currentDetailsValue.replace(originalText, fieldText);
+                        }
+                        else {
+                            crm_Utility.showMessage("Some field(s) schema name may not be correct.\n Entity: " + entityName +
+                                "\n Entity Field Name(s): " + fieldName +
+                                "\nPlease verify and try again.");
+                            hasIssue = true;
+                            return;
                         }
                     }
                     else {
@@ -220,41 +254,56 @@ ECER.Jscripts.Communication = {
                         }
                         var option = "?$filter=_" + childEntityFilterFieldName + "_value eq '" + parentId + "' and statecode eq 0&$select=" + childFieldName;
                         var results = crm_Utility.retrieveMultipleCustom(childEntityName, option); // Synchoronous call using AJAX.  The await throws error.
-                        fieldText = "<ul>";
-                        for (var i = 0; i < results.length; i++) {
-                            fieldText += "<li>";
-                            if (childFieldName.indexOf(",") == -1) {
-                                var childFieldValue = results[i][childFieldName];
-                                if (childFieldValue !== null && childFieldValue.trim() !== "") {
-                                    fieldText += childFieldValue;
-                                }
+                        if (results == null) {
+                            crm_Utility.showMessage("Some field(s) schema name may not be correct.\n Parent Entity: " + entityName +
+                                "\n Child Entity: " + childEntityName +
+                                "\n Filter Field Name: " + childEntityFilterFieldName +
+                                "\n Child Entity Field Name(s): " + childFieldName +
+                                "\nPlease verify and try again.");
+                            hasIssue = true;
+                            return;
+                        }
+                        else {
+                            if (results.length === 0) {
+                                fieldText = "No record found.";
                             }
                             else {
-                                var fieldNameArray = childFieldName.split(",");
-                                for (var j = 0; j < fieldNameArray.length; j++) {
-                                    var splitFieldName = fieldNameArray[j];
-                                    var fieldValue = results[i][splitFieldName];
-                                    if (fieldValue !== null && fieldValue.trim() !== "") {
-                                        if (j !== 0) {
-                                            fieldText += " ";
+                                fieldText = "<ul>";
+                                for (var i = 0; i < results.length; i++) {
+                                    fieldText += "<li>";
+                                    if (childFieldName.indexOf(",") == -1) {
+                                        var childFieldValue = results[i][childFieldName];
+                                        if (childFieldValue !== null && childFieldValue.trim() !== "") {
+                                            fieldText += ECER.Jscripts.Communication.shortDateToLongDateString(childFieldValue);
                                         }
-                                        fieldText += fieldValue;
-                                        fieldText += " ";
                                     }
+                                    else {
+                                        var fieldNameArray = childFieldName.split(",");
+                                        for (var j = 0; j < fieldNameArray.length; j++) {
+                                            var splitFieldName = fieldNameArray[j];
+                                            var fieldValue = results[i][splitFieldName];
+                                            if (fieldValue !== null && fieldValue.trim() !== "") {
+                                                if (j !== 0) {
+                                                    fieldText += " ";
+                                                }
+                                                fieldText += ECER.Jscripts.Communication.shortDateToLongDateString(fieldValue);
+                                                fieldText += " ";
+                                            }
+                                        }
+                                    }
+                                    fieldText += "</li>";
                                 }
+                                fieldText += "</ul>";
                             }
-                            fieldText += "</li>";
+                            if (fieldText !== undefined) {
+                                currentDetailsValue = currentDetailsValue.replace(originalText, fieldText);
+                            }
                         }
-                        fieldText += "</ul>";
-                        if (fieldText !== undefined) {
-                            currentDetailsValue = currentDetailsValue.replace(originalText, fieldText);
-                        }
-
                     }
                 }
             });
         }
-        while (currentDetailsValue.indexOf("[", index) >= 0);
+        while (currentDetailsValue.indexOf("[", index) >= 0 && hasIssue == false);
         currentDetailsAttribute.setValue(currentDetailsValue);
         
     },

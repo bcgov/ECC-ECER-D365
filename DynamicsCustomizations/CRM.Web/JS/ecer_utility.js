@@ -287,7 +287,7 @@ var CrmJS;
                 //Validate Xrm.Utility and proceed
                 if (crm_Utility.isValid(Xrm.Navigation)) {
                     var alertStrings = { confirmButtonLabel: "OK", text: message, title: "" };
-                    var alertOptions = { height: 120, width: 260 };
+                    var alertOptions = { height: 360, width: 360 };
                     Xrm.Navigation.openAlertDialog(alertStrings, alertOptions);
                 }
                 else {
