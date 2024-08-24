@@ -11,6 +11,25 @@ if (typeof ECER.Jscripts === "undefined") {
 ECER.Jscripts.ApplicationAssessments = {
     onLoad: function (executionContext) {
         ECER.Jscripts.ApplicationAssessments.populateCharacterReferenceLookupIfEmpty(executionContext);
+        ECER.Jscripts.ApplicationAssessments.showHideProfessionalDevelopment(executionContext);
+    },
+
+    showHideProfessionalDevelopment: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var applicationAttribute = formContext.getAttribute("ecer_applicationid");
+        if (applicationAttribute === null || applicationAttribute.getValue() === null) {
+            return;
+        }
+        var applicationId = applicationAttribute.getValue()[0].id;
+        Xrm.WebApi.retrieveRecord("ecer_application", applicationId).then(
+            function success(record) {
+                var isRenewal = record.ecer_type == 621870001;
+                var isECEAssistant = record.ecer_iseceassistant;
+                var showProfessionalDevelopment = isRenewal && !isECEAssistant;
+                crm_Utility.showHide(executionContext, showProfessionalDevelopment, "tab_pdassessment");
+                crm_Utility.showHide(executionContext, !showProfessionalDevelopment, "tab_educationassessment");
+            }
+        );
     },
 
     populateCharacterReferenceLookupIfEmpty: function (executionContext) {

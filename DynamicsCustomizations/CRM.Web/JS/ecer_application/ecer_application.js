@@ -145,6 +145,8 @@ ECER.Jscripts.Application =
         formContext.getControl("ecer_parentalreferencereceived").setDisabled(!sysAdminRole);
         formContext.getControl("ecer_parentalreferencereceiveddate").setDisabled(!sysAdminRole);
         formContext.getControl("ecer_hasprofessionaldevelopment").setDisabled(!sysAdminRole);
+        formContext.getControl("ecer_professionaldevelopmentreceived").setDisabled(!sysAdminRole);
+        formContext.getControl("ecer_parentalreferencereceiveddate").setDisabled(!sysAdminRole);
 
         // Completeness Review Tab - Ready for Assessment
         formContext.getControl("ecer_readyforassessment").setDisabled(alwaysOpen); // Always open
@@ -208,6 +210,7 @@ ECER.Jscripts.Application =
         formContext.getControl("header_process_ecer_issecondaryidentificationprovided").setDisabled(!(sysAdminRole || programSupportRole || programSupportLeadRole || investigatorRole));
         formContext.getControl("header_process_ecer_applicantid").setDisabled(!(sysAdminRole || programSupportRole || programSupportLeadRole || investigatorRole));
         formContext.getControl("header_process_ecer_characterreferencereceived").setDisabled(!sysAdminRole);
+        formContext.getControl("header_process_ecer_professionaldevelopmentreceived").setDisabled(!sysAdminRole);
         formContext.getControl("header_process_ecer_workexperiencereceived").setDisabled(!sysAdminRole);
         formContext.getControl("header_process_ecer_transcriptreceived").setDisabled(!(sysAdminRole || programSupportRole || programSupportLeadRole || investigatorRole));
         formContext.getControl("header_process_ecer_parentalreferencereceived").setDisabled(!sysAdminRole);
@@ -366,6 +369,8 @@ ECER.Jscripts.Application =
         var professionalDevelopmentApprovedBPFAttributeName = "header_process_ecer_professionaldevelopmentapproved";
         var professionalDevelopmentApprovedBPFAssessmentReviewAttributeName = "header_process_ecer_professionaldevelopmentapproved_1";
         var professionalDevelopmentApprovedAttributeName = "ecer_professionaldevelopmentapproved";
+        crm_Utility.showHide(executionContext, show, "ecer_professionaldevelopmentreceived");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_professionaldevelopmentreceived");
         crm_Utility.showHide(executionContext, show, professionalDevelopmentApprovedAttributeName);
         crm_Utility.showHide(executionContext, show, professionalDevelopmentBPFAttributeName);
         crm_Utility.showHide(executionContext, show, professionalDevelopmentApprovedBPFAttributeName);

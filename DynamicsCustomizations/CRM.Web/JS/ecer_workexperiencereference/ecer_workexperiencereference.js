@@ -13,8 +13,75 @@ ECER.Jscripts.WorkExperienceReference = {
     onLoad: function (executionContext) {
         this.crm_ExecutionContext = executionContext;
         ECER.Jscripts.WorkExperienceReference.showHideOnProvinceSelected(executionContext);
+        ECER.Jscripts.WorkExperienceReference.showHide400500OnType(executionContext);
+        ECER.Jscripts.WorkExperienceReference.filterOutRelationshipOfApplicant(executionContext);
     },
 
+    filterOutRelationshipOfApplicant: function (executionContext) {
+        var teacher = "621870003"; // Legacy
+        var parent = "621870004"; // Only for 400
+        var supervisor = "621870000"; // Supervisor
+        var coworker = "621870001"; // Coworker
+        var others = "621870002"; // Others
+        var relationshipToApplicantAttributeName = "ecer_relationshiptoapplicant";
+        crm_Utility.filterOutOptionSet(executionContext, relationshipToApplicantAttributeName, teacher);
+        var formContext = executionContext.getFormContext();
+        var typeValue = formContext.getAttribute("ecer_type").getValue();
+        if (typeValue === 621870001) // 500 
+        {
+            crm_Utility.filterOutOptionSet(executionContext, relationshipToApplicantAttributeName, parent);
+        }
+        else {
+            // Add Parent back in if does not already have it.
+            var theControl = formContext.getControl(relationshipToApplicantAttributeName);
+            var currentOptions = theControl.getOptions();
+            var optionToCompare = parseInt(parent);
+            var hasMatch = false;
+            for (var i = 0; i < currentOptions.length; i++) {
+                
+                var currentOption = currentOptions[i].value;
+                if (currentOption !== currentOption) {
+                    // current Option is NaN
+                    continue;
+                }
+                if (currentOption == optionToCompare) {
+                    hasMatch = true;
+                    break;
+                }
+            }
+
+            if (!hasMatch) {
+                theControl.addOption({
+                    value: 621870004,
+                    text: "Parent/Guardian of Child in Care"
+                });
+            }
+        }
+    },
+
+    showHide400500OnType: function (executionContext) {
+        // ECER-2666, ECER-2667, ECER-2668
+        // 400 Hours Work Experience contains a lot less response
+        var details500SectionName = "tab_workinformation:section_details_500";
+        var details400SectionName = "tab_workinformation:section_details_400";
+        var response500SectionName = "tab_competenciesassessment:section_response_500HR";
+        var response400SectionName = "tab_competenciesassessment:section_response_400HR";
+        var formContext = executionContext.getFormContext();
+        var typeAttributeName = "ecer_type";
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        if (typeAttribute == null || typeAttribute.getValue() === null) {
+            return; // No attribute to be evaluate
+        }
+        var typeAttributeValue = typeAttribute.getValue();
+        // If 400 Hours
+        var is400 = (typeAttributeValue === 621870000);
+        var is500 = (typeAttributeValue === 621870001);
+
+        crm_Utility.showHide(executionContext, is400, details400SectionName);
+        crm_Utility.showHide(executionContext, is400, response400SectionName);
+        crm_Utility.showHide(executionContext, is500, details500SectionName);
+        crm_Utility.showHide(executionContext, is500, response500SectionName);
+    },
 
     showHideOnProvinceSelected: function (executionContext) {
         // ECER-1161

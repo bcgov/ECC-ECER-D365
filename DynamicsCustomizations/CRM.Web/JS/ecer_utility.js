@@ -197,9 +197,13 @@ var CrmJS;
                     //To check Attributes/WebResources exists or not.
                     var theControl = formContext.getControl(splitAttribute[fieldName]);
                     var theTab = formContext.ui.tabs.get(splitAttribute[fieldName]);
+                    var theQuickViewForm = formContext.ui.quickForms.get(splitAttribute[fieldName]);
                     if (crm_Utility.isValid(theControl)) {
                         //To hide Attributes/Webresources
                         theControl.setVisible(isVisible);
+                    }
+                    else if (crm_Utility.isValid(theQuickViewForm)) {
+                        theQuickViewForm.setVisible(isVisible);
                     }
                     ////To check Tab exists or not
                     else if (crm_Utility.isValid(theTab)) {
@@ -587,6 +591,8 @@ var CrmJS;
             /// <summary>
             /// This function is to remove any options from Option Set from CRM Form
             /// if values are not in the list for visible Option Values
+            /// This function no longer works as Add Options needs text as vwell as label.
+            /// see 
             /// </summary>
             /// <param type="string" name="attributeSchemaName" />
             /// <param type="string" name="visibleOptionValues" />
@@ -598,15 +604,15 @@ var CrmJS;
                 if (crm_Utility.isValid(targetControl)) {
                     var optionValuesArray = visibleOptionValues.split(",");
                     var options = targetControl.getOptions();
-                    for (var i = 0; i < options.length; i++) {
-                        var currentOption = options[i].value;
-                        if (currentOption !== currentOption) {
-                            // currentOption is NaN
-                            continue;
-                        }
+                    for (var j = 0; j < optionValuesArray.length; j++) {
                         var hasMatch = false;
-                        for (var j = 0; j < optionValuesArray.length; j++) {
-                            var optionToCompare = parseInt(optionValuesArray[j]);
+                        var optionToCompare = parseInt(optionValuesArray[j]);
+                        for (var i = 0; i < options.length; i++) {
+                            var currentOption = options[i].value;
+                            if (currentOption !== currentOption) {
+                                // currentOption is NaN
+                                continue;
+                            }
                             if (currentOption == optionToCompare) {
                                 hasMatch = true;
                                 break;
@@ -614,7 +620,7 @@ var CrmJS;
                         }
 
                         if (!hasMatch) {
-                            targetControl.removeOption(currentOption);
+                            targetControl.addOption(optionToCompare, 2);
                         }
                     }
                 }
