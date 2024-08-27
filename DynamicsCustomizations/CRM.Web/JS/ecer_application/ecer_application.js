@@ -22,46 +22,6 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.showHideProfessionalDevelopmentFieldsOnRenewals(executionContext);
         ECER.Jscripts.Application.showHideEducationFieldsOnRenewals(executionContext);
         ECER.Jscripts.Application.enableDisableFieldsBySecurityRole(executionContext);
-        ECER.Jscripts.Application.showHide1YRExplanationChoice(executionContext);
-    },
-
-    showHide1YRExplanationChoice: function (executionContext) {
-        // ECER-2022
-        // For 1 Year Renewal, applicant needs to submit an Explanation Letter 
-        // if Work Experience Hours have not met the minimum requirement.
-        // Show the field at Application form when criteria are met
-        var formContext = executionContext.getFormContext();
-        var typeAttributeName = "ecer_type";
-        var isECE1YrAttributeName = "ecer_isece1yr";
-        var totalAnticipatedHoursAttributeName = "ecer_totalanticipatedworkexperiencehours";
-        var totalObservedHoursAttributeName = "ecer_totalobservedworkexperiencehours";
-        var totalApprovedHoursAttributeName = "ecer_totalapprovedworkexperiencehours";
-        var oneYearExplanationAttributeName = "ecer_1yrexplanationchoice";
-
-        var anticipatedHours = 0.0;
-        var observedHours = 0.0;
-        var approvedHours = 0.0;
-
-        var typeAttribute = formContext.getAttribute(typeAttributeName);
-        var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
-
-        var oneYearExplanationValue = formContext.getAttribute(oneYearExplanationAttributeName).getValue();
-        var isECE1Yr = formContext.getAttribute(isECE1YrAttributeName).getValue();
-        if (formContext.getAttribute(totalAnticipatedHoursAttributeName) != null &&
-            formContext.getAttribute(totalAnticipatedHoursAttributeName).getValue() != null) {
-            anticipatedHours = formContext.getAttribute(totalAnticipatedHoursAttributeName).getValue();
-        }
-        if (formContext.getAttribute(totalObservedHoursAttributeName) != null &&
-            formContext.getAttribute(totalObservedHoursAttributeName).getValue() != null) {
-            observedHours = formContext.getAttribute(totalObservedHoursAttributeName).getValue();
-        }
-        if (formContext.getAttribute(totalApprovedHoursAttributeName) != null &&
-            formContext.getAttribute(totalApprovedHoursAttributeName).getValue() != null) {
-            approvedHours = formContext.getAttribute(totalApprovedHoursAttributeName).getValue();
-        }
-        var totalHours = anticipatedHours + observedHours + approvedHours;
-        var show = (isECE1Yr && isRenewal && (totalHours < 500)) || (oneYearExplanationValue != null);
-        crm_Utility.showHide(executionContext, show, oneYearExplanationAttributeName);
     },
 
     showHideApplicantQuickView: function (executionContext) {
