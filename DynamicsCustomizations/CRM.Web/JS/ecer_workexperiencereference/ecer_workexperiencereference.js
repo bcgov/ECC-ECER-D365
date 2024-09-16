@@ -13,8 +13,53 @@ ECER.Jscripts.WorkExperienceReference = {
     onLoad: function (executionContext) {
         this.crm_ExecutionContext = executionContext;
         ECER.Jscripts.WorkExperienceReference.showHideOnProvinceSelected(executionContext);
+        ECER.Jscripts.WorkExperienceReference.defaultTypeOnCreation(executionContext);
         ECER.Jscripts.WorkExperienceReference.showHide400500OnType(executionContext);
         ECER.Jscripts.WorkExperienceReference.filterOutRelationshipOfApplicant(executionContext);
+    },
+
+    defaultTypeOnCreation: function (executionContext) {
+        var typeAttributeName = "ecer_type";
+        var fourHundredHrs = 621870000;
+        var fiveHundredHrs = 621870001;
+        var applicationAttributeName = "ecer_applicationid";
+        var applicantAttributeName = "ecer_applicantid";
+
+        var formContext = executionContext.getFormContext();
+        var formType = formContext.ui.getFormType();
+        if (formType !== 1) {
+            // only interest if during create mode
+            return;
+        }
+        var applicationAttribute = formContext.getAttribute(applicationAttributeName);
+        if (applicationAttribute === null || applicationAttribute.getValue() === null) {
+            return;
+        }
+        var applicationId = applicationAttribute.getValue()[0].id.replace("{", "").replace("}", "");
+        var option = "?$filter=_" + applicationAttributeName + "_value eq '" + applicationId + "' and ecer_type ne null";
+        Xrm.WebApi.retrieveMultipleRecords("ecer_workexperienceref", option).then(
+            function success(results) {
+                if (results.entities.length > 0) {
+                    var typeUsedPreviously = results.entities[0].ecer_type;
+                    formContext.getAttribute(typeAttributeName).setValue(typeUsedPreviously);
+                }
+                else {
+                    var applicantAttribute = formContext.getAttribute(applicantAttributeName);
+                    if (applicantAttribute === null || applicantAttribute.getValue() === null) {
+                        return;
+                    }
+                    var applicantId = applicantAttribute.getValue()[0].id.replace("{", "").replace("}", "");
+                    var dateToCompare = new Date();
+                    var latestCertificate = ECER.Jscripts.Application.getApplicantLatestCertificate(executionContext, applicantId, dateToCompare);
+                    if (latestCertificate !== null) {
+                        formContext.getAttribute(typeAttributeName).setValue(fourHundredHrs);
+                    }
+                    else {
+                        formContext.getAttribute(typeAttributeName).setValue(fiveHundredHrs);
+                    }
+                }
+            }
+        );
     },
 
     filterOutRelationshipOfApplicant: function (executionContext) {
@@ -26,15 +71,39 @@ ECER.Jscripts.WorkExperienceReference = {
         var relationshipToApplicantAttributeName = "ecer_relationshiptoapplicant";
         crm_Utility.filterOutOptionSet(executionContext, relationshipToApplicantAttributeName, teacher);
         var formContext = executionContext.getFormContext();
+        var theControl = formContext.getControl(relationshipToApplicantAttributeName);
+        var currentOptions = theControl.getOptions();
         var typeValue = formContext.getAttribute("ecer_type").getValue();
         if (typeValue === 621870001) // 500 
         {
             crm_Utility.filterOutOptionSet(executionContext, relationshipToApplicantAttributeName, parent);
+            var optionToCompare = parseInt(others);
+            var hasMatch = false;
+            for (var i = 0; i < currentOptions.length; i++) {
+
+                var currentOption = currentOptions[i].value;
+                if (currentOption !== currentOption) {
+                    // current Option is NaN
+                    continue;
+                }
+                if (currentOption == optionToCompare) {
+                    hasMatch = true;
+                    break;
+                }
+            }
+
+            if (!hasMatch) {
+                theControl.addOption({
+                    value: 621870002,
+                    text: "Others"
+                });
+            }
         }
         else {
+            // Filter Out Other
+            crm_Utility.filterOutOptionSet(executionContext, relationshipToApplicantAttributeName, others);
             // Add Parent back in if does not already have it.
-            var theControl = formContext.getControl(relationshipToApplicantAttributeName);
-            var currentOptions = theControl.getOptions();
+            
             var optionToCompare = parseInt(parent);
             var hasMatch = false;
             for (var i = 0; i < currentOptions.length; i++) {
@@ -169,7 +238,6 @@ ECER.Jscripts.WorkExperienceReference = {
                             lookupArray[0].entityType = "contact";
                             refContactAttribute.setValue(lookupArray);
                             formContext.data.save();
-                            ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);
                             return; // Exit upon setting lookup with the contact record.
                         }
 
@@ -199,7 +267,6 @@ ECER.Jscripts.WorkExperienceReference = {
                                     lookupArray[0].entityType = "contact";
                                     refContactAttribute.setValue(lookupArray);
                                     formContext.data.save();
-                                    ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);
                                 }
                                 else {
                                     // ref contact control set disable
