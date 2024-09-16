@@ -331,7 +331,10 @@ ECER.Jscripts.Communication = {
                         if (currentDetailsValue !== null && currentDetailsValue !== "") {
                             text = details + currentDetailsValue;
                         }
-
+                        var currentSubject = formContext.getAttribute(nameAttributeName).getValue();
+                        if (currentSubject !== null && currentSubject.trim() != "") {
+                            formContext.getAttribute(nameAttributeName).setValue(name);
+                        }
                         formContext.getAttribute(detailsAttributeName).setValue(null);
                         formContext.getAttribute(detailsAttributeName).setValue(text);
                     }
@@ -361,6 +364,9 @@ ECER.Jscripts.Communication = {
             initiatedFromAttribute.setValue(initiatedFromInvestigationValue);
         }
         else if (applicationValue !== null || portalUserValue !== null) {
+            initiatedFromAttribute.setValue(initiatedFromRegistryValue);
+        }
+        else {
             initiatedFromAttribute.setValue(initiatedFromRegistryValue);
         }
 
