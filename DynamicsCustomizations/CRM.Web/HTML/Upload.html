@@ -127,7 +127,7 @@
                 parent.Xrm.Utility.closeProgressIndicator();
             }
         }
-        var maxFileUpload = 500 * 1024 * 1024; // 25MB // or testing data with 22 * 1024; // 22kb //
+        var maxFileUpload = 90 * 1024 * 1024; // 25MB // or testing data with 22 * 1024; // 22kb //
         var doDrop = (event) => {
             let dt = event.dataTransfer
             let largeFile;
@@ -142,7 +142,7 @@
                 sendFiles(dt.files);
             }
             else {
-                parent.Xrm.Navigation.openAlertDialog({ confirmButtonLabel: "Ok", text: 'One of the upload files is over 25MB. Large upload file name: ' + largeFile.name }, { height: 200, width: 600 });
+                parent.Xrm.Navigation.openAlertDialog({ confirmButtonLabel: "Ok", text: 'One of the upload files is over 90MB. Large upload file name: ' + largeFile.name }, { height: 200, width: 600 });
             }
         }
         var doSend = () => {
