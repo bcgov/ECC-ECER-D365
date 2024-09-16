@@ -1,0 +1,111 @@
+{
+  "LogicalName": "ecer_country",
+  "PrimaryIdAttribute": "ecer_countryid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "760acb46-66da-ee11-904c-0022486e0199"
+        },
+        {
+          "Key": "ecer_id",
+          "Type": 16,
+          "Value": "1"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Canada"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "3800d44c-66da-ee11-904c-0022486e0199"
+        },
+        {
+          "Key": "ecer_id",
+          "Type": 16,
+          "Value": "2"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "USA"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Other"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "999"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_id",
+          "Type": 16,
+          "Value": "81"
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "7a0ad152-66da-ee11-904c-0022486e0199"
+        }
+      ]
+    }
+  ],
+  "Count": 3
+}

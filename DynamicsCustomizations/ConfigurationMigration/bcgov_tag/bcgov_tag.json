@@ -371,7 +371,7 @@
         {
           "Key": "bcgov_name",
           "Type": 16,
-          "Value": "Guiding Policies and Procedures"
+          "Value": "Communications"
         },
         {
           "Key": "bcgov_tagid",
@@ -449,7 +449,35 @@
           }
         }
       ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Cover Letter"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "3b158937-7665-ef11-a670-7c1e520663eb"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
     }
   ],
-  "Count": 16
+  "Count": 17
 }
