@@ -32,34 +32,49 @@ ECER.Jscripts.WorkExperienceReference = {
             return;
         }
         var applicationAttribute = formContext.getAttribute(applicationAttributeName);
+        var applicationId = applicationAttribute.getValue()[0].id.replace("{", "").replace("}", "");
         if (applicationAttribute === null || applicationAttribute.getValue() === null) {
             return;
         }
-        var applicationId = applicationAttribute.getValue()[0].id.replace("{", "").replace("}", "");
-        var option = "?$filter=_" + applicationAttributeName + "_value eq '" + applicationId + "' and ecer_type ne null";
-        Xrm.WebApi.retrieveMultipleRecords("ecer_workexperienceref", option).then(
-            function success(results) {
-                if (results.entities.length > 0) {
-                    var typeUsedPreviously = results.entities[0].ecer_type;
-                    formContext.getAttribute(typeAttributeName).setValue(typeUsedPreviously);
-                }
-                else {
-                    var applicantAttribute = formContext.getAttribute(applicantAttributeName);
-                    if (applicantAttribute === null || applicantAttribute.getValue() === null) {
+        Xrm.WebApi.retrieveRecord("ecer_application", applicationId, "?$select=ecer_type")
+            .then(function (result) {
+                if (result) {
+                    var type = result.ecer_type;
+                    if (type !== 621870001) {
                         return;
                     }
-                    var applicantId = applicantAttribute.getValue()[0].id.replace("{", "").replace("}", "");
-                    var dateToCompare = new Date();
-                    var latestCertificate = ECER.Jscripts.Application.getApplicantLatestCertificate(executionContext, applicantId, dateToCompare);
-                    if (latestCertificate !== null) {
-                        formContext.getAttribute(typeAttributeName).setValue(fourHundredHrs);
-                    }
                     else {
-                        formContext.getAttribute(typeAttributeName).setValue(fiveHundredHrs);
+                        var option = "?$filter=_" + applicationAttributeName + "_value eq '" + applicationId + "' and ecer_type ne null";
+                        Xrm.WebApi.retrieveMultipleRecords("ecer_workexperienceref", option).then(
+                            function success(results) {
+                                if (results.entities.length > 0) {
+                                    var typeUsedPreviously = results.entities[0].ecer_type;
+                                    formContext.getAttribute(typeAttributeName).setValue(typeUsedPreviously);
+                                }
+                                else {
+                                    var applicantAttribute = formContext.getAttribute(applicantAttributeName);
+                                    if (applicantAttribute === null || applicantAttribute.getValue() === null) {
+                                        return;
+                                    }
+                                    var applicantId = applicantAttribute.getValue()[0].id.replace("{", "").replace("}", "");
+                                    var dateToCompare = new Date();
+                                    var latestCertificate = ECER.Jscripts.Application.getApplicantLatestCertificate(executionContext, applicantId, dateToCompare);
+                                    if (latestCertificate !== null) {
+                                        formContext.getAttribute(typeAttributeName).setValue(fourHundredHrs);
+                                    }
+                                    else {
+                                        formContext.getAttribute(typeAttributeName).setValue(fiveHundredHrs);
+                                    }
+                                }
+                            }
+                        );
+
                     }
                 }
+
             }
-        );
+            );
+
     },
 
     filterOutRelationshipOfApplicant: function (executionContext) {
