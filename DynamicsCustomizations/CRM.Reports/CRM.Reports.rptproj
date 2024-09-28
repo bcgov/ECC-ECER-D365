@@ -50,11 +50,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Report Include="Certificate Conditions.rdl" />
+    <Report Include="Certificate Cover Letter For NonPortal.rdl" />
     <Report Include="Certificate Cover Letter.rdl" />
     <Report Include="Certificate Levels.rdl" />
     <Report Include="Certificate.rdl" />
     <Report Include="Communication Message.rdl" />
     <Report Include="Communication with Letterhead.rdl" />
+    <Report Include="Cover Letter For NonPortal.rdl" />
     <Report Include="Cover Letter.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
