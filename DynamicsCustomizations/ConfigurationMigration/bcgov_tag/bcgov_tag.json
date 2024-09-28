@@ -7,6 +7,90 @@
         {
           "Key": "bcgov_name",
           "Type": 16,
+          "Value": "Program Confirmation Form"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "78f1ae00-d775-ef11-ac20-000d3a0a4c90"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Transcript"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "f28be00c-d775-ef11-ac20-000d3a0a4c90"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Evaluation Form"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "70156c19-d775-ef11-ac20-000d3a0a4c90"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
           "Value": "Statement of Purpose"
         },
         {
@@ -477,7 +561,91 @@
           }
         }
       ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Conclusion with Intent to Attach T&Cs"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "5b9dfbbb-7177-ef11-ac20-7c1e5240b0bf"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Conclusion with Intent to Suspend Certificate"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "c32247c5-7177-ef11-ac20-7c1e5240b0bf"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Conclusion with Intent to Cancel Certificate"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "3a74cecb-7177-ef11-ac20-7c1e5240b0bf"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
     }
   ],
-  "Count": 17
+  "Count": 23
 }

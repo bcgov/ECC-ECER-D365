@@ -7,120 +7,6 @@
         {
           "Key": "ecer_name",
           "Type": 16,
-          "Value": "Renewals ECE 5 YR"
-        },
-        {
-          "Key": "ecer_multiplelineoftext",
-          "Type": 16,
-          "Value": "• I understand that the ECE Registry may require additional information (including supporting documents) in connection with this application.\n• I confirm that the information provided in this application is complete and accurate. I understand if inaccurate information is submitted it may result in the denial of certification.\n• I understand that information in this application or subsequently provided information may be reviewed, audited, and verified for the purpose of determining or auditing my eligibility for an ECE Certificate in British Columbia. \n• I understand that the ECE Registry may take disciplinary action against me, including action to cancel my certification, if I have, by omission or commission, knowingly given false or misleading information in the course of completing this application.\n• I consent the work experience and character references indicated in this application to provide the ECE registry with this reference and other information as part of my application for certification."
-        },
-        {
-          "Key": "ecer_defaultcontentsid",
-          "Type": 1,
-          "Value": "a769b6b9-400e-ef11-9f89-000d3a09f34b"
-        },
-        {
-          "Key": "statuscode",
-          "Type": 4,
-          "Value": {
-            "Value": 1
-          }
-        },
-        {
-          "Key": "ecer_group",
-          "Type": 16,
-          "Value": "Declarations"
-        },
-        {
-          "Key": "statecode",
-          "Type": 4,
-          "Value": {
-            "Value": 0
-          }
-        }
-      ]
-    },
-    {
-      "Attributes": [
-        {
-          "Key": "ecer_name",
-          "Type": 16,
-          "Value": "Renewals ECE 1 YR"
-        },
-        {
-          "Key": "ecer_multiplelineoftext",
-          "Type": 16,
-          "Value": "• I understand that the ECE Registry may require additional information (including supporting documents) in connection with this application.\n• I confirm that the information provided in this application is complete and accurate. I understand if inaccurate information is submitted it may result in the denial of certification.\n• I understand that information in this application or subsequently provided information may be reviewed, audited, and verified for the purpose of determining or auditing my eligibility for an ECE Certificate in British Columbia.\n• I understand that the ECE Registry may take disciplinary action against me, including action to cancel my certification, if I have, by omission or commission, knowingly given false or misleading information in the course of completing this application.\n• I consent the work experience and character references indicated in this application to provide the ECE registry with this reference and other information as part of my application for certification."
-        },
-        {
-          "Key": "ecer_defaultcontentsid",
-          "Type": 1,
-          "Value": "b6b99919-410e-ef11-9f89-000d3a09f34b"
-        },
-        {
-          "Key": "statuscode",
-          "Type": 4,
-          "Value": {
-            "Value": 1
-          }
-        },
-        {
-          "Key": "ecer_group",
-          "Type": 16,
-          "Value": "Declarations"
-        },
-        {
-          "Key": "statecode",
-          "Type": 4,
-          "Value": {
-            "Value": 0
-          }
-        }
-      ]
-    },
-    {
-      "Attributes": [
-        {
-          "Key": "ecer_name",
-          "Type": 16,
-          "Value": "Renewals ECE Assistant"
-        },
-        {
-          "Key": "ecer_multiplelineoftext",
-          "Type": 16,
-          "Value": "• I understand that the ECE Registry may require additional information (including supporting documents) in connection with this application.\n• I confirm that the information provided in this application is complete and accurate. I understand if inaccurate information is submitted it may result in the denial of certification.\n• I understand that information in this application or subsequently provided information may be reviewed, audited, and verified for the purpose of determining or auditing my eligibility for an ECE Certificate in British Columbia.\n• I understand that the ECE Registry may take disciplinary action against me, including action to cancel my certification, if I have, by omission or commission, knowingly given false or misleading information in the course of completing this application.\n• I consent the work experience and character references indicated in this application to provide the ECE registry with this reference and other information as part of my application for certification."
-        },
-        {
-          "Key": "ecer_defaultcontentsid",
-          "Type": 1,
-          "Value": "f522ac5b-410e-ef11-9f89-000d3a09f34b"
-        },
-        {
-          "Key": "statuscode",
-          "Type": 4,
-          "Value": {
-            "Value": 1
-          }
-        },
-        {
-          "Key": "ecer_group",
-          "Type": 16,
-          "Value": "Declarations"
-        },
-        {
-          "Key": "statecode",
-          "Type": 4,
-          "Value": {
-            "Value": 0
-          }
-        }
-      ]
-    },
-    {
-      "Attributes": [
-        {
-          "Key": "ecer_name",
-          "Type": 16,
           "Value": "New BC Recognized Application"
         },
         {
@@ -155,5 +41,5 @@
       ]
     }
   ],
-  "Count": 4
+  "Count": 1
 }
