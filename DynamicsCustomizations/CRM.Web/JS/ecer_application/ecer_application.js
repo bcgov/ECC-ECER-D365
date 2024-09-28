@@ -24,6 +24,36 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.enableDisableFieldsBySecurityRole(executionContext);
         ECER.Jscripts.Application.showHideLateRenewalExplanation(executionContext);
         ECER.Jscripts.Application.showHideFromCertificate(executionContext);
+        ECER.Jscripts.Application.showHideEquivalencyFields(executionContext);
+    },
+
+    showHideEquivalencyFields: function (executionContext) {
+        // ECER-2882
+        // When an applications education origin and recognition makes the application an equivalency application. 
+        // The correct fields need to be visible.
+        // Fields that do not relate to the Equivalency Application and processing path should be hidden to reduce clutter 
+        // and increase visibility for the users.
+        var formContext = executionContext.getFormContext();
+        var educationRecognitionAttributeName = "ecer_educationrecognition";
+        var educationRecognitionValue = formContext.getAttribute(educationRecognitionAttributeName).getValue();
+        var isNotRecognized = educationRecognitionValue === 621870001; // Not Recognized
+        var typeAttributeName = "ecer_type";
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        var isNew = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870000;
+
+        var show = isNew && isNotRecognized;
+        
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_programconfirmationformreceived");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_courseoutlinereceived");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_comprehensiveevaluationreportreceived");
+        crm_Utility.showHide(executionContext, show, "ecer_programconfirmationformreceived");
+        crm_Utility.showHide(executionContext, show, "ecer_courseoutlinereceived");
+        crm_Utility.showHide(executionContext, show, "ecer_comprehensiveevaluationreportreceived");
+        crm_Utility.showHide(executionContext, show, "ecer_programconfirmationformapproved");
+        crm_Utility.showHide(executionContext, show, "ecer_comprehensiveevaluationreportapproved");
+        crm_Utility.showHide(executionContext, show, "ecer_courseoutlineapproved");
+
+        // Assessment BPF for Equivalency field is on a different path and does not needed to show hide
     },
 
     showHideFromCertificate: function (executionContext) {
@@ -249,7 +279,7 @@ ECER.Jscripts.Application =
         var alwaysOpen = !(sysAdminRole || assessorRole || assessorTeamLeadRole || programSupportRole ||
             programSupportLeadRole || operationSupervisorRole || investigatorRole);
         var formContext = executionContext.getFormContext();
-
+        
         // Application Information Tab - General
         formContext.getControl("ecer_type").setDisabled(!sysAdminRole);
         formContext.getControl("ecer_educationorigin").setDisabled(!(sysAdminRole || assessorRole ||
@@ -362,6 +392,7 @@ ECER.Jscripts.Application =
             crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_hasprofessionaldevelopment");
             crm_Utility.enableDisable(executionContext, !(sysAdminRole || assessorRole || assessorTeamLeadRole || programSupportRole ||
                 programSupportLeadRole || operationSupervisorRole), "header_process_ecer_readyforassessment")
+
 
             // BPF - Assessment Stage
             formContext.getControl("header_process_statuscode").setDisabled(alwaysOpen);
@@ -536,9 +567,10 @@ ECER.Jscripts.Application =
         var isECEAssistantAttributeName = "ecer_iseceassistant";
         var typeAttribute = formContext.getAttribute(typeAttributeName);
         var isECEAssistantAttribute = formContext.getAttribute(isECEAssistantAttributeName);
-        var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
+        var isRenewal = typeAttribute != null && typeAttribute.getValue() !== null && typeAttribute.getValue() === 621870001;
+        var isLaborMobility = typeAttribute != null && typeAttribute.getValue() !== null && typeAttribute.getValue() === 621870003;
         var isECEAssistant = isECEAssistantAttribute != null && isECEAssistantAttribute.getValue() != null && isECEAssistantAttribute.getValue() == true;
-        var show = !isRenewal || isECEAssistant;
+        var show = (!isRenewal || isECEAssistant) && !isLaborMobility;
         var educationTranscriptTabName = "tab_educationinformation";
         var educationTranscriptReceivedBPFAttributeName = "header_process_ecer_transcriptreceived";
         var educationTranscriptApprovedBPFAttributeName = "header_process_ecer_educationtranscriptapproved";
