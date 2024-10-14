@@ -25,6 +25,23 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.showHideLateRenewalExplanation(executionContext);
         ECER.Jscripts.Application.showHideFromCertificate(executionContext);
         ECER.Jscripts.Application.showHideEquivalencyFields(executionContext);
+        ECER.Jscripts.Application.parallelProcessToggle(executionContext);
+    },
+    parallelProcessToggle: function (executionContext) {
+
+        // Display the Parallel Process form section if the Parallel Process toggle = Yes
+        // Display a warning on the application if the Parallel Process toggle = Yes.
+        var formContext = executionContext.getFormContext();
+        var parallelProcess = formContext.getAttribute("ecer_parallelprocess").getValue();
+        if (parallelProcess === true) {
+            crm_Utility.showHide(executionContext, true, "tab_applicantinformation:section_applicantinformation_parallel_process");
+            formContext.ui.setFormNotification("Application currently under Parallel Process.", "WARNING", "sectionWarning");
+
+        } else {
+            crm_Utility.showHide(executionContext, false, "tab_applicantinformation:section_applicantinformation_parallel_process");
+            formContext.ui.clearFormNotification("sectionWarning");
+        }
+
     },
 
     showHideEquivalencyFields: function (executionContext) {
