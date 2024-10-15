@@ -1,0 +1,865 @@
+{
+  "LogicalName": "ecer_outofprovincecertificationtype",
+  "PrimaryIdAttribute": "ecer_outofprovincecertificationtypeid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Early Childhood Educator Level 1"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "9cfbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Alberta",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "f1efbd35-cd84-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Early Childhood Educator Level 2"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "9cfbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Alberta",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "37e6d6af-d084-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Early Childhood Educator Level 3"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "9cfbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Alberta",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "484ff8c5-d084-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Child Care Assistant"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "94fbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Manitoba",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "7d67a3cc-d084-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "ECE 2"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "94fbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Manitoba",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "96db7ed3-d084-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "ECE 3"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "94fbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Manitoba",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "8060ff1b-d184-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Preschool (5 Modules) or School Age (4 Modules) Orientation Course"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "9efbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Newfoundland and Labrador",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "300cb3b6-d184-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Level 1"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "9efbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Newfoundland and Labrador",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "efab5ec0-d184-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Level 2-4"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "9efbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Newfoundland and Labrador",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "317b93cd-d184-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Level 1 or School Age Approved"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "90fbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Nova Scotia",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "405b9617-d284-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Level 2"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "90fbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Nova Scotia",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "87da85d9-d284-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Level 3"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "90fbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Nova Scotia",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "213e9e12-d384-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "ECE"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "8cfbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Ontario",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "a4682154-d384-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Early Childhood Educator I"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "98fbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Prince Edward Island",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "c5c94278-d384-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Early Childhood Educator II"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "98fbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Prince Edward Island",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "c9c94278-d384-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Early Childhood Educator III"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "98fbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Prince Edward Island",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "35e15fa0-d384-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "ECE I"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "9afbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Saskatchewan",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "64e2a4ac-d384-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "ECE III"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "9afbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Saskatchewan",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "15e9f105-d484-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "ECE II"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "9afbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Saskatchewan",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "517a550c-d484-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Child Care Worker I"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "a2fbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Yukon",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "1303143a-d484-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Child Care Worker II"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "a2fbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Yukon",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "154a2047-d484-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_certificationtype",
+          "Type": 16,
+          "Value": "Child Care Worker III"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_province",
+          "Type": 2,
+          "Value": {
+            "Id": "a2fbb5c5-68da-ee11-904c-000d3af4645f",
+            "LogicalName": "ecer_province",
+            "Name": "Yukon",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_outofprovincecertificationtypeid",
+          "Type": 1,
+          "Value": "19fc4857-d484-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 22
+}
