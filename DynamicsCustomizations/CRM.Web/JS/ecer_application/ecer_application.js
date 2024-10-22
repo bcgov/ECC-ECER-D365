@@ -26,6 +26,7 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.showHideFromCertificate(executionContext);
         ECER.Jscripts.Application.showHideEquivalencyFields(executionContext);
         ECER.Jscripts.Application.parallelProcessToggle(executionContext);
+        ECER.Jscripts.Application.workExperienceExemption(executionContext);
     },
     parallelProcessToggle: function (executionContext) {
 
@@ -46,11 +47,10 @@ ECER.Jscripts.Application =
 
     workExperienceExemption: function (executionContext) {
         var formContext = executionContext.getFormContext();
-        var applicationType = formContext.getAttribute("ecer_type").getValue();
         var isECEAssistant = formContext.getAttribute("ecer_iseceassistant").getValue();
         var isECE1YR = formContext.getAttribute("ecer_isece1yr").getValue();
 
-        var wkExempted = ((isECE1YR && applicationType === 621870000) || isECEAssistant);
+        var wkExempted = (isECE1YR || isECEAssistant);
 
             // ECER-3338
             // Work Experience for New Application 1 YEAR is NOT Required

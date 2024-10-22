@@ -33,3 +33,5 @@ DynamicsCustomizations/.vs/CRM/v16/.suo
 /DynamicsCustomizations/CRM.Reports/bin/Debug
 *.rsuser
 DynamicsCustomizations/.vs/CRM/v16/.suo
+/DynamicsCustomizations/CRM.WorkflowActivities/bin
+/DynamicsCustomizations/CRM.WorkflowActivities/obj
