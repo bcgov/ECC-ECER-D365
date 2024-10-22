@@ -41,27 +41,32 @@ ECER.Jscripts.Contact = {
     evaluateAge: function (executionContext) {
         try {
             var formContext = executionContext.getFormContext();
-            var isOver19 = false;
+            var isUnder19 = false;
             var birthDateAttribute = formContext.getAttribute("birthdate");
             if (birthDateAttribute != null && birthDateAttribute.getValue() != null) {
                 var birthDate = birthDateAttribute.getValue();
                 var today = new Date();
                 var diff = (today.getTime() - birthDate.getTime()) / 1000;
                 diff /= (60 * 60 * 24);
-                var differenceInYears = Math.abs(Math.round(diff / 365.25));
-                if (differenceInYears >= 19) {
-                    isOver19 = true;
+                var differenceInYears = Math.abs((diff / 365.25));
+                if (differenceInYears < 19) {
+                    isUnder19 = true;
                 }
             }
             var isUnder19Attribute = formContext.getAttribute("ecer_isunder19");
+            // Is Under 19 is a Choice with YES/NO option
+            // YES = 621870000
+            // NO = 621870001
             if (isUnder19Attribute != null) {
                 var isUnder19Value = isUnder19Attribute.getValue();
                 // Set value if the value is different
-                if (isUnder19Value != 621870000 && !isOver19) {
+                if (isUnder19Value != 621870000 && isUnder19) {
+                    // IF Is Under 19 is NOT YES and Evaluated Age is Under 19
                     isUnder19Attribute.setValue(621870000);
                     formContext.data.save();
                 }
-                else if (isUnder19Value != 621870001 && isOver19) {
+                else if (isUnder19Value != 621870001 && !isUnder19) {
+                    // IF Is Under 19 is NOT NO and Evaluated Age is NOT Under 19
                     isUnder19Attribute.setValue(621870001);
                     formContext.data.save();
                 }
