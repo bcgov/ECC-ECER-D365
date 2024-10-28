@@ -636,6 +636,8 @@ ECER.Jscripts.Application =
         crm_Utility.showHide(executionContext, show, educationTranscriptReceivedDateAttributeName);
         crm_Utility.showHide(executionContext, show, educationTranscriptApprovedAttributeName);
         crm_Utility.showHide(executionContext, show, educationTranscriptTabName);
+        crm_Utility.showHide(executionContext, show, "ecer_educationorigin");
+        crm_Utility.showHide(executionContext, show, "ecer_educationrecognition");
     },
 
     showHideParentalGuidianceFieldsOnApplicantAge: function (executionContext) {
