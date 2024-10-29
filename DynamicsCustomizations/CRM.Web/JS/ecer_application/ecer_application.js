@@ -495,7 +495,11 @@ ECER.Jscripts.Application =
                 operationSupervisorRole || managerOfCertificationRole || investigatorRole));
 
             // BPF - Complete Stage
-            formContext.getControl("header_process_ecer_certificateid_3").setDisabled(!sysAdminRole);
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_certificateid_5");
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_certificateid_4");
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_certificateid_3");
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_certificateid_2");
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_certificateid");
         }
         catch (err) {
             crm_Utility.showMessage("BPF Re-factor in progress.  There may have some form script error during the change");
