@@ -745,7 +745,7 @@ ECER.Jscripts.Application =
             existingValue = "";
         }
         else {
-            existingValue += ", ";
+            existingValue += " ";
         }
 
         return existingValue += valueToBeAppended.trim();
