@@ -168,6 +168,14 @@ namespace BCGOV.Plugin.DocumentUrl
                         {
                             sharePointFileUrlEntity["ecer_professionaldevelopmentid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
                         }
+                        else if (regardingObjectLogicalName.Equals("ecer_program", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            sharePointFileUrlEntity["ecer_programprofileid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                        }
+                        else if (regardingObjectLogicalName.Equals("ecer_postsecondaryinstitute", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            sharePointFileUrlEntity["ecer_psiid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                        }
                         else
                             throw new InvalidPluginExecutionException(string.Format("Unknown RegardingObjectType '{0}' to associate document..", regardingObjectLogicalName));
                         traceService.Trace("Constructed Document URL entity");
@@ -189,7 +197,7 @@ namespace BCGOV.Plugin.DocumentUrl
                             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
                             client.DefaultRequestHeaders.Add("file-classification", "Unclassified");
                             client.DefaultRequestHeaders.Add("file-folder", string.Format("{0}/{1}", regardingObjectLogicalName, regardingObjectId.ToString()));
-                            
+
                             if (!string.IsNullOrEmpty(tag1))
                                 client.DefaultRequestHeaders.Add("file-tag", "Tag1=" + tag1);
                             if (!string.IsNullOrEmpty(tag2))
