@@ -60,7 +60,18 @@ ECER.Jscripts.Application =
             // Hiding will take away the Required too
             // There is no exemption at Field, JUST BPF Stage
             var bpfWorkExperienceReceivedAttributeName = "header_process_ecer_workexperiencereceived";
-            crm_Utility.showHide(executionContext, !wkExempted, bpfWorkExperienceReceivedAttributeName);
+        crm_Utility.showHide(executionContext, !wkExempted, bpfWorkExperienceReceivedAttributeName);
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_workexperiencereceived");
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_workexperiencereceiveddate");
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_addmoreworkexperiencereference");
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_workexperiencereferenceapproved");
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_hasprovided500hoursworkexperience");
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_hasprovided400hoursworkexperience");
+        crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved");
+        crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_2");
+        crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_3");
+        crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_4");
+        crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_5");
     }, 
 
     showHideEquivalencyFields: function (executionContext) {
