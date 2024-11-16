@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CallCertificateSummaryAPI.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="MoveDocumentInSharePoint.cs" />
     <Compile Include="CreateDocumentHierarchy.cs" />
