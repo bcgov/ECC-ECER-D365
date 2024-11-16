@@ -72,6 +72,7 @@ ECER.Jscripts.Application =
         crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_3");
         crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_4");
         crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_5");
+        crm_Utility.showHide(executionContext, !wkExempted, "tab_workexperience");
     }, 
 
     showHideEquivalencyFields: function (executionContext) {
