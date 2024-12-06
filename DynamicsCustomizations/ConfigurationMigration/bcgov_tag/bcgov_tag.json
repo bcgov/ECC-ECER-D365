@@ -7,6 +7,62 @@
         {
           "Key": "bcgov_name",
           "Type": 16,
+          "Value": "Notice of Investigation"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "5cad6de3-d08f-ef11-8a6a-000d3a0a4c90"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Evidence"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "b460ec06-d18f-ef11-8a6a-000d3a0a4c90"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
           "Value": "Program Confirmation Form"
         },
         {
@@ -511,12 +567,124 @@
         {
           "Key": "bcgov_name",
           "Type": 16,
+          "Value": "test"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "36f21061-c612-ef11-9f89-6045bd5e3888"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "tag test"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "96bcf972-c612-ef11-9f89-6045bd5e3888"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Test March"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "2702cfba-c612-ef11-9f89-6045bd5e3888"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
           "Value": "Education Transcript"
         },
         {
           "Key": "bcgov_tagid",
           "Type": 1,
           "Value": "359c4a9d-950c-ef11-9f89-6045bdcd18f7"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Reconsideration Decision (Investigation)"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "758a2cb6-a985-ef11-ac21-6045bdcd6cb0"
         },
         {
           "Key": "statecode",
@@ -647,5 +815,5 @@
       ]
     }
   ],
-  "Count": 23
+  "Count": 29
 }
