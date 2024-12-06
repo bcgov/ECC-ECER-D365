@@ -27,6 +27,7 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.showHideEquivalencyFields(executionContext);
         ECER.Jscripts.Application.parallelProcessToggle(executionContext);
         ECER.Jscripts.Application.workExperienceExemption(executionContext);
+        ECER.Jscripts.Application.showHideEscalationFields(executionContext);
     },
     parallelProcessToggle: function (executionContext) {
 
@@ -49,8 +50,14 @@ ECER.Jscripts.Application =
         var formContext = executionContext.getFormContext();
         var isECEAssistant = formContext.getAttribute("ecer_iseceassistant").getValue();
         var isECE1YR = formContext.getAttribute("ecer_isece1yr").getValue();
+        var typeAttributeName = "ecer_type";
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
+        var isLate = ECER.Jscripts.Application.isRenewalLate(executionContext);
 
-        var wkExempted = (isECE1YR || isECEAssistant);
+        var wkExempted = ((isECE1YR && !isRenewal) || (isECEAssistant && !isRenewal) || (!isLate && isECE1YR && isRenewal));
+
+        // Renewal 1YR if Expired is not exempted.
 
             // ECER-3338
             // Work Experience for New Application 1 YEAR is NOT Required
@@ -73,7 +80,38 @@ ECER.Jscripts.Application =
         crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_4");
         crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_5");
         crm_Utility.showHide(executionContext, !wkExempted, "tab_workexperience");
-    }, 
+
+    },
+
+    isRenewalLate: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var applicantAttributeName = "ecer_applicantid";
+        var applicantAttribute = formContext.getAttribute(applicantAttributeName);
+        var applicant = applicantAttribute.getValue();
+        if (applicant === null) {
+            return null;
+        }
+        var applicantid = applicant[0].id.replace("{", "").replace("}", "");
+        var dateSubmittedAttributeName = "ecer_datesubmitted";
+        var dateToCompare = null;
+        var dateSubmittedValue = formContext.getAttribute(dateSubmittedAttributeName).getValue();
+        if (dateSubmittedValue === null) {
+            var today = new Date();
+            dateToCompare = today;
+        }
+        else {
+            dateToCompare = dateSubmittedValue;
+        }
+
+        var latestCertificate = ECER.Jscripts.Application.getApplicantLatestCertificate(executionContext, applicantid, dateToCompare);
+        if (latestCertificate === null) {
+            return; // No Certifcate means it should not be a renewal or expired more than 5 Yrs.
+        }
+        var certificateExpiryDate = new Date(Date.parse(latestCertificate["ecer_expirydate"]));
+        // Late is when Expiry Date has already passed.
+        var isLate = dateToCompare.getTime() > certificateExpiryDate.getTime();
+        return isLate;
+    },
 
     showHideEquivalencyFields: function (executionContext) {
         // ECER-2882
@@ -654,6 +692,70 @@ ECER.Jscripts.Application =
         crm_Utility.showHide(executionContext, show, educationTranscriptTabName);
         crm_Utility.showHide(executionContext, show, "ecer_educationorigin");
         crm_Utility.showHide(executionContext, show, "ecer_educationrecognition");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_educationorigin");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_educationrecognition");
+
+    },
+
+    showHideEscalationFields: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var programSupportRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Role");
+        var programSupportLeadRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Lead Role");
+        var hasProgramClerkSecurityRole = programSupportLeadRole || programSupportRole;
+
+        var typeAttributeName = "ecer_type";
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        var isLaborMobility = typeAttribute != null && typeAttribute.getValue() !== null && typeAttribute.getValue() === 621870003;
+        var isNew = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870000;
+        var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
+        var educationRecognitionAttributeName = "ecer_educationrecognition";
+        var educationRecognitionValue = formContext.getAttribute(educationRecognitionAttributeName).getValue();
+        var isNotRecognized = educationRecognitionValue === 621870001; // Not Recognized
+        var escalateToTeamLeadBPFSubmission = "header_process_ecer_escalatetoteamlead";
+        var escalateToTeamLeadBPFAssessment = "header_process_ecer_escalatetoteamlead_2";
+        crm_Utility.showHide(executionContext, !hasProgramClerkSecurityRole, escalateToTeamLeadBPFSubmission); // Submission BPF Stage // Common to all type
+        crm_Utility.showHide(executionContext, !isLaborMobility, "header_process_ecer_educationorigin_2"); // Assessment BPF Stage
+        crm_Utility.showHide(executionContext, !isLaborMobility, "header_process_ecer_educationrecognition_2");
+        if (!hasProgramClerkSecurityRole) {
+            return;
+        }
+        // Labor Mobility
+        if (isLaborMobility) {
+            var laborMobilityShow = false;
+            var laborMobilityDisable = true;
+            
+            crm_Utility.showHide(executionContext, laborMobilityShow, "assessment:section_escalation");
+            crm_Utility.enableDisable(executionContext, laborMobilityDisable, "header_process_ecer_workexperiencereferenceapproved_2"); // Assessment Work Exp Approved
+            crm_Utility.enableDisable(executionContext, laborMobilityDisable, "header_process_ecer_characterreferenceapproved_2"); // Assessment Char Ref Approved
+            crm_Utility.enableDisable(executionContext, laborMobilityDisable, escalateToTeamLeadBPFAssessment); // Assessment BPF Stage
+            return;
+        }
+
+        if (isNew && isNotRecognized) // Equavalency
+        {
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_escalatetoteamlead_1"); // Program Analyst BPF Stage
+            
+            return;
+        }
+
+        if (isNew && !isNotRecognized) { // Other New Applications
+            crm_Utility.enableDisable(executionContext, true, escalateToTeamLeadBPFAssessment); // Assessment BPF Stage
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_escalatetoteamlead_1"); // Assessment BPF Stage
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_workexperiencereferenceapproved_2"); // Assessment Work Exp Approved
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_characterreferenceapproved_2"); // Assessment Char Ref Approved
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_educationtranscriptapproved_2"); // Assessment Transcript Approved
+            return;
+        }
+
+        if (isRenewal) { // Renewals
+            
+            crm_Utility.enableDisable(executionContext, true, escalateToTeamLeadBPFAssessment); // Assessment BPF Stage
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_workexperiencereferenceapproved_2"); // Assessment Work Exp Approved
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_characterreferenceapproved_2"); // Assessment Char Ref Approved
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_educationtranscriptapproved_2"); // Assessment Transcript Approved
+            return;
+        }
+
     },
 
     showHideParentalGuidianceFieldsOnApplicantAge: function (executionContext) {
