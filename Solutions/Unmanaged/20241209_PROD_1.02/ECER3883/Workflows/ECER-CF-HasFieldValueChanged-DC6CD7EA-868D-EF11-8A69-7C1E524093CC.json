@@ -1,0 +1,553 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "e1409e79-193b-449c-9b47-96c496b8b8e1"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "Entity Name",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_2": {
+                  "title": "Entity Record ID",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_1": {
+                  "title": "Field Schema Name",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_3": {
+                  "title": "Trigger Date",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text",
+                "text_2",
+                "text_1",
+                "text_3"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Obtain_the_last_10_Audit_History_of_the_record_in_question": {
+          "runAfter": {
+            "Wait_for_20_seconds_to_ensure_an_audit_log_may_be_made": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e3dbca4f-7d14-47c3-800b-0181e41e69ac"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "audits",
+              "$filter": "_objectid_value eq '@{triggerBody()['text_2']}' and objecttypecode eq '@{triggerBody()['text']}' and createdon ge @{triggerBody()['text_3']}",
+              "$orderby": "createdon desc",
+              "$top": 10
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable_-_Loop_Index": {
+          "runAfter": {
+            "Initialize_variable_-_Has_Change_-_Default_False": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ca1615e8-ab98-489f-b199-b0bf4ea535c3"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Loop Index",
+                "type": "integer",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('Obtain_the_last_10_Audit_History_of_the_record_in_question')?['body/value']",
+          "actions": {
+            "Compose_JSON_from_Power_Automate": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "3f760eea-7c2c-4be0-8c00-89a153a94b78"
+              },
+              "type": "Compose",
+              "inputs": "@json(outputs('Obtain_the_last_10_Audit_History_of_the_record_in_question')?['body/value'][variables('Loop Index')]['changedata'])['changedAttributes']"
+            },
+            "Parse_JSON": {
+              "runAfter": {
+                "Compose_JSON_from_Power_Automate": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "0d36bb5d-1465-4f89-acbd-e40672e9308b"
+              },
+              "type": "ParseJson",
+              "inputs": {
+                "content": "@outputs('Compose_JSON_from_Power_Automate')",
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "logicalName": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "oldValue": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "newValue": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "logicalName",
+                      "oldValue",
+                      "newValue"
+                    ]
+                  }
+                }
+              }
+            },
+            "Increment_Loop_Index": {
+              "runAfter": {
+                "IF_There_is_a_change": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e5cbc885-4052-45cd-846f-ddd69ded7a91"
+              },
+              "type": "Compose",
+              "inputs": "@add(1,variables('Loop Index'))"
+            },
+            "Set_variable_-_Set_Loop_Index": {
+              "runAfter": {
+                "Increment_Loop_Index": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "318fb3b0-6cfe-4346-bf7d-c149eb365e0f"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Loop Index",
+                "value": "@outputs('Increment_Loop_Index')"
+              }
+            },
+            "Filter_array_-_Only_interest_in_results_of_specified_field_name": {
+              "runAfter": {
+                "Parse_JSON": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "074f32e1-cc74-4666-aafe-14811287a78d"
+              },
+              "type": "Query",
+              "inputs": {
+                "from": "@body('Parse_JSON')",
+                "where": "@equals(item()?['logicalName'], triggerBody()['text_1'])"
+              }
+            },
+            "IF_There_is_a_change": {
+              "actions": {
+                "Apply_to_each_2": {
+                  "foreach": "@body('Filter_array_-_Only_interest_in_results_of_specified_field_name')",
+                  "actions": {
+                    "Set_variable": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "276338e6-89c3-4a41-b40d-53b5b60095b7"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "New Value",
+                        "value": "@{items('Apply_to_each_2')?['newValue']}"
+                      }
+                    },
+                    "Set_variable_2": {
+                      "runAfter": {
+                        "Set_variable": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "21b0b71c-4c99-4cc1-a046-60d87e6a1db9"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Old Value",
+                        "value": "@{items('Apply_to_each_2')?['oldValue']}"
+                      }
+                    },
+                    "Condition": {
+                      "actions": {
+                        "Set_variable_3": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "f559ebae-3f9a-4679-926d-9b220722baf3"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "Has Changes",
+                            "value": "True"
+                          }
+                        }
+                      },
+                      "runAfter": {
+                        "Set_variable_5": [
+                          "Succeeded"
+                        ]
+                      },
+                      "expression": {
+                        "and": [
+                          {
+                            "not": {
+                              "equals": [
+                                "@variables('New Value')",
+                                "@variables('Old Value')"
+                              ]
+                            }
+                          },
+                          {
+                            "equals": [
+                              "@variables('Most Recent Change')",
+                              "@true"
+                            ]
+                          }
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "2627b130-48d4-4977-8f3b-bba8d6ed2e7e"
+                      },
+                      "type": "If"
+                    },
+                    "Set_variable_4": {
+                      "runAfter": {
+                        "Condition": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "7e7f144a-4f26-4f79-9ea5-15db63b90f82"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Most Recent Change",
+                        "value": "@false"
+                      }
+                    },
+                    "Set_variable_5": {
+                      "runAfter": {
+                        "Set_variable_2": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "39eae93b-1f88-4bbb-9be5-4ac0bfeb7067"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Has found in JSON",
+                        "value": "@true"
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "90cf1a31-d9f5-42e8-b1c3-83e1b016fa0e"
+                  },
+                  "type": "Foreach"
+                }
+              },
+              "runAfter": {
+                "Filter_array_-_Only_interest_in_results_of_specified_field_name": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "and": [
+                  {
+                    "greater": [
+                      "@length(body('Filter_array_-_Only_interest_in_results_of_specified_field_name'))",
+                      0
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@variables('Most Recent Change')",
+                      "@true"
+                    ]
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "98aa8250-103d-4b2d-a378-f30433b69d78"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Obtain_the_last_10_Audit_History_of_the_record_in_question": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0107c908-b8d5-44ac-ae01-ea2b889deae6"
+          },
+          "type": "Foreach"
+        },
+        "Respond_to_a_Power_App_or_flow": {
+          "runAfter": {
+            "IF_There_is_NO_Audit_Log_previously,_then_it_may_be_created_prior": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4a7b5612-9dbc-4536-b4cb-6e9bcf8b421c"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "has_changes": "@variables('Has Changes')"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "has_changes": {
+                  "title": "Has Changes",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "Initialize_variable_-_Old_Value": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "def80911-bdfa-4738-bb86-21dd5166d422"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Old Value",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_New_Value": {
+          "runAfter": {
+            "Initialize_variable_-_Old_Value": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2f51f77f-053f-4239-b0fd-178555cf3998"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "New Value",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Has_Change_-_Default_False": {
+          "runAfter": {
+            "Initialize_variable_-_New_Value": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e812236d-5c34-48ca-bff4-c0ba4200b11a"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Has Changes",
+                "type": "string",
+                "value": "False"
+              }
+            ]
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "Initialize_variable_-_Loop_Index": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6df459a3-679f-4692-95cb-5a9ccf048b9f"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Most Recent Change",
+                "type": "boolean",
+                "value": "@true"
+              }
+            ]
+          }
+        },
+        "IF_There_is_NO_Audit_Log_previously,_then_it_may_be_created_prior": {
+          "actions": {
+            "Set_to_True_for_benefit_of_doubt": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "bf57c1c0-5163-4471-8db6-e40e766f01ae"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Has Changes",
+                "value": "True"
+              }
+            }
+          },
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "or": [
+              {
+                "equals": [
+                  "@length(outputs('Obtain_the_last_10_Audit_History_of_the_record_in_question')?['body/value'])",
+                  0
+                ]
+              },
+              {
+                "equals": [
+                  "@variables('Has found in JSON')",
+                  "@false"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "26a2dc2d-528b-42e1-969b-1295a74480b4"
+          },
+          "type": "If"
+        },
+        "Wait_for_20_seconds_to_ensure_an_audit_log_may_be_made": {
+          "runAfter": {
+            "Initialize_variable_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6b8d050b-ea4b-42cd-8834-00d968cc7495"
+          },
+          "type": "Wait",
+          "inputs": {
+            "interval": {
+              "count": 20,
+              "unit": "Second"
+            }
+          }
+        },
+        "Initialize_variable_2": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "440b7b70-1de6-4405-92e9-628a9d3b3aa0"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Has found in JSON",
+                "type": "boolean",
+                "value": "@false"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
