@@ -1,0 +1,168 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "3d366297-896c-4ca9-96e2-ffc7e1860f27"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_communication",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_donotreply",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Do_Not_Reply_is_set_to_TRUE": {
+          "actions": {},
+          "runAfter": {},
+          "else": {
+            "actions": {
+              "Terminate_-_Only_Interest_if_set_to_TRUE": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "65a6f392-5508-4035-abf9-cbe708cd3195"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_donotreply']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f885ce09-799a-4421-ad7c-3d87b5a18a60"
+          },
+          "type": "If"
+        },
+        "IF_Is_Root_is_already_TRUE": {
+          "actions": {
+            "Terminate_-_The_goal_is_to_set_Root_Message_Do_Not_Reply": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "ece46aae-612b-4443-a027-c8631c738667"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "IF_Do_Not_Reply_is_set_to_TRUE": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_isroot']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3a928668-9f0c-4cdb-bc06-e1b53cc82dc4"
+          },
+          "type": "If"
+        },
+        "Do_until_Parent_Communication_contains_data": {
+          "actions": {
+            "Delay_-_5_seconds_-_Parent_Communication_may_be_populated_by_different_steps": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "9737f351-cbf2-4598-85f7-4af000cbe160"
+              },
+              "type": "Wait",
+              "inputs": {
+                "interval": {
+                  "count": 5,
+                  "unit": "Second"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "IF_Is_Root_is_already_TRUE": [
+              "Succeeded"
+            ]
+          },
+          "expression": "@not(equals(triggerOutputs()?['body/_ecer_parentcommunicationid_value'], null))",
+          "limit": {
+            "count": 10,
+            "timeout": "PT1H"
+          },
+          "metadata": {
+            "operationMetadataId": "251727a6-12e0-419e-bbb3-3c72ed7c20c4"
+          },
+          "type": "Until"
+        },
+        "Update_a_row": {
+          "runAfter": {
+            "Do_until_Parent_Communication_contains_data": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "69ac5912-02c8-4425-bf04-7705f795a70b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_communications",
+              "recordId": "@triggerOutputs()?['body/_ecer_parentcommunicationid_value']",
+              "item/ecer_donotreply": true
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,346 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "dfcbf71d-a3b3-46d0-8861-69d8b01a7487"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_communication",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_applicationid, ecer_investigation, ecer_ecer_program_application_id",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_variable_-_Owner_Team": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "eeb8d50a-efa9-4785-b223-a2155af089c1"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Owner Team",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "List_rows_-_Get_Teams_for_Registry_or_Investigation": {
+          "runAfter": {
+            "Initialize_variable_-_PSP_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3268bf35-010d-4230-9f47-11929f9a1bfe"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "teams",
+              "$filter": "name eq 'Registry' or name eq 'Investigation' or name eq 'Post Secondary Program'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_Through_Teams_Result_Set": {
+          "foreach": "@outputs('List_rows_-_Get_Teams_for_Registry_or_Investigation')?['body/value']",
+          "actions": {
+            "Switch_on_Names": {
+              "runAfter": {},
+              "cases": {
+                "Case_-_Registry": {
+                  "case": "Registry",
+                  "actions": {
+                    "Set_variable_-_Registry_Team": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "2b9cdb9e-cfd0-4ca7-91b6-d9b8081799db"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Registry Team",
+                        "value": "@items('Loop_Through_Teams_Result_Set')?['teamid']"
+                      }
+                    }
+                  }
+                },
+                "Case_-_Investigation": {
+                  "case": "Investigation",
+                  "actions": {
+                    "Set_variable_-_Investigation_Team": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "28e68767-ffe8-4025-85d9-1bab55abf84c"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Investigation Team",
+                        "value": "@items('Loop_Through_Teams_Result_Set')?['teamid']"
+                      }
+                    }
+                  }
+                },
+                "Case_-_Post_Secondary_Program": {
+                  "case": "Post Secondary Program",
+                  "actions": {
+                    "Set_variable": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "b1f72b41-43f5-43c6-8074-2dce40c81a98"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "PSP Team",
+                        "value": "@items('Loop_Through_Teams_Result_Set')?['teamid']"
+                      }
+                    }
+                  }
+                }
+              },
+              "default": {
+                "actions": {}
+              },
+              "expression": "@items('Loop_Through_Teams_Result_Set')?['name']",
+              "metadata": {
+                "operationMetadataId": "00db989a-46a8-45e9-9e42-6ee1168f44e5"
+              },
+              "type": "Switch"
+            }
+          },
+          "runAfter": {
+            "List_rows_-_Get_Teams_for_Registry_or_Investigation": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8a67e82f-e330-48ef-9e5e-97d1a0ca369e"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_variable_-_Registry_Team": {
+          "runAfter": {
+            "Initialize_variable_-_Owner_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b85bd8fb-3fc2-4796-9c39-767eb6c8288c"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Registry Team",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Investigation_Team": {
+          "runAfter": {
+            "Initialize_variable_-_Registry_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f9f2b162-10fa-4841-96d3-03d3bbd056cc"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Investigation Team",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_PSP_Team": {
+          "runAfter": {
+            "Initialize_variable_-_Investigation_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5c804e5a-eb85-497b-8fc2-042e8f06979a"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "PSP Team",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "IF_Investigation_is_NOT_NULL": {
+          "actions": {
+            "Set_Variable_-_Owner_Team_as_Investigation_Team": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "810546c3-5882-41fc-b1c4-3a1971ee7122"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Owner Team",
+                "value": "@variables('Investigation Team')"
+              }
+            }
+          },
+          "runAfter": {
+            "Loop_Through_Teams_Result_Set": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "IF_Program_Application_is_NOT_NULL": {
+                "actions": {
+                  "Set_variable_-_Owner_Team_as_PSP_Team": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "d284ad39-529e-43c9-b02c-f8e159e29712"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "Owner Team",
+                      "value": "@variables('PSP Team')"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "else": {
+                  "actions": {
+                    "Set_variable_-_Owner_Team_as_Registry_Team": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "113377ed-f0e8-4715-ac80-e06760d9b55d"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Owner Team",
+                        "value": "@variables('Registry Team')"
+                      }
+                    }
+                  }
+                },
+                "expression": {
+                  "not": {
+                    "equals": [
+                      "@triggerOutputs()?['body/_ecer_ecer_program_application_id_value']",
+                      "@null"
+                    ]
+                  }
+                },
+                "metadata": {
+                  "operationMetadataId": "4496f70a-2fdb-40b9-be6e-04ca5922f573"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/_ecer_investigation_value']",
+                "@null"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "ce289277-8d54-433a-a659-b83bf81c9327"
+          },
+          "type": "If"
+        },
+        "If_Current_Ownership_not_matching": {
+          "actions": {
+            "Set_Ownership": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "0e125420-5ea2-428d-88c6-5f6cf7eb6b94"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_communications",
+                  "recordId": "@triggerOutputs()?['body/ecer_communicationid']",
+                  "item/ownerid@odata.bind": "teams(@{variables('Owner Team')})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "IF_Investigation_is_NOT_NULL": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/_ownerid_value']",
+                "@variables('Owner Team')"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "870b1d4a-9b01-4d16-aaad-c4dc6269b461"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

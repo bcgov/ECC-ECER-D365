@@ -1,0 +1,262 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "recurrence": {
+            "frequency": "Day",
+            "interval": 1,
+            "startTime": "2024-05-09T16:00:00Z"
+          },
+          "metadata": {
+            "operationMetadataId": "3da3c03c-1b92-468c-b362-b32e931b3f7a"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "List_SiteVisit": {
+          "runAfter": {
+            "Apply_to_each_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3d9fe0c9-2e59-4d7e-b8b6-b7f23ecccad6"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_postsecondaryinstitutesitevisits",
+              "$filter": "Microsoft.Dynamics.CRM.On(PropertyName='ecer_sitevisitdate',PropertyValue=@{addDays(utcNow(),7,'yyyy-MM-dd')})",
+              "$expand": "ecer_Assignee($select=fullname,internalemailaddress)"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "runtimeConfiguration": {
+            "paginationPolicy": {
+              "minimumItemCount": 100000
+            }
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_SiteVisit')?['body/value']",
+          "actions": {
+            "Add_a_new_Email_Message": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "c5af5ec8-9d48-4bce-b142-0d2145fcafca"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "emails",
+                  "item/activitypointer_activity_parties": [
+                    {
+                      "participationtypemask": 1,
+                      "partyid@odata.bind": "queues(@{variables('QueueId')})"
+                    },
+                    {
+                      "participationtypemask": 2,
+                      "partyid@odata.bind": "systemusers(@{items('Apply_to_each')?['_ownerid_value']})"
+                    }
+                  ],
+                  "item/description": "<p>Dear @{items('Apply_to_each')?['ecer_assignee/fullname']}, <br><br>This is a reminder for your upcoming Site Visit on @{addDays(utcNow(),7,'yyyy-MM-dd')}<br><br>Thanks.</p>",
+                  "item/regardingobjectid_ecer_postsecondaryinstitutesitevisit_email@odata.bind": "ecer_postsecondaryinstitutesitevisits(@{items('Apply_to_each')?['ecer_postsecondaryinstitutesitevisitid']})",
+                  "item/subject": "Site Visit Reminder"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Perform_a_bound_action": {
+              "runAfter": {
+                "Condition": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "10584fbf-0bf4-4f0f-bb31-c80d378fce77"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "PerformBoundAction",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "emails",
+                  "actionName": "Microsoft.Dynamics.CRM.SendEmail",
+                  "recordId": "@outputs('Add_a_new_Email_Message')?['body/activityid']",
+                  "item/IssueSend": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Condition": {
+              "actions": {
+                "Update_a_row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "7de0b3bb-1167-4150-a26f-7010845d4a6f"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "emails",
+                      "recordId": "@outputs('Add_a_new_Email_Message')?['body/activityid']",
+                      "item/activitypointer_activity_parties": [
+                        {
+                          "participationtypemask": 1,
+                          "partyid@odata.bind": "queues(@{variables('QueueId')})"
+                        },
+                        {
+                          "participationtypemask": 2,
+                          "partyid@odata.bind": "systemusers(@{items('Apply_to_each')?['_ownerid_value']})"
+                        }
+                      ]
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Add_a_new_Email_Message": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "equals": [
+                  "@outputs('Add_a_new_Email_Message')?['body/torecipients']",
+                  "@null"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "7f4b0cb3-1c6e-4432-8b48-ad179cfc92e8"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "List_SiteVisit": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "85ae77df-62b1-42f8-91d9-e4354c6640f7"
+          },
+          "type": "Foreach",
+          "runtimeConfiguration": {
+            "concurrency": {
+              "repetitions": 50
+            }
+          }
+        },
+        "List_NoReplyQueue": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "8f8e8d88-a902-417b-93c9-e9a1a25d9b9c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "queues",
+              "$filter": "name eq 'No-Reply'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each_2": {
+          "foreach": "@outputs('List_NoReplyQueue')?['body/value']",
+          "actions": {
+            "Set_QueueId": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "f4b3fa5f-4f57-4fe4-8fa9-69d9e6b0dfd0"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "QueueId",
+                "value": "@items('Apply_to_each_2')?['queueid']"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_QueueId": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0ec14f58-a664-4bac-935d-4dd9c86d096f"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_QueueId": {
+          "runAfter": {
+            "List_NoReplyQueue": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "fcf1b31b-68bd-404a-b628-83b58a89cafa"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "QueueId",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

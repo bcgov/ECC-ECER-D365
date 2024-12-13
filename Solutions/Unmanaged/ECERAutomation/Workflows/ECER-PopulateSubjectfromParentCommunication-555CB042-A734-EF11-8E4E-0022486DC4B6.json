@@ -1,0 +1,404 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "3983396c-2335-439a-add5-33dc9a37943f"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_communication",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_parentcommunicationid",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Parent_Communication_does_not_contains_data": {
+          "actions": {
+            "Terminate": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "6ec4fee7-eae3-4f9b-b6c5-959d032a9b64"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {},
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_ecer_parentcommunicationid_value']",
+              "@null"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "984648bf-63d9-4401-90b5-ffb46dd059b4"
+          },
+          "type": "If"
+        },
+        "IF_There_is_NO_Subject": {
+          "actions": {
+            "Set_Subject_from_Parent_Communications": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "c52dcfa1-42c4-456e-a9e9-0154317e627c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_communications",
+                  "recordId": "@triggerOutputs()?['body/ecer_communicationid']",
+                  "item/ecer_name": "@outputs('Get_Parent_Communication_record')?['body/ecer_name']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Parent_Communication_record": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "or": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/ecer_name']",
+                  "@null"
+                ]
+              },
+              {
+                "equals": [
+                  "@length(triggerOutputs()?['body/ecer_name'])",
+                  0
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c5f22ff0-25f3-4162-a783-3bc8947d08cf"
+          },
+          "type": "If"
+        },
+        "Get_Parent_Communication_record": {
+          "runAfter": {
+            "IF_Parent_Communication_does_not_contains_data": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c90ef841-21ef-4bfb-b187-284320a0a73b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_communications",
+              "recordId": "@triggerOutputs()?['body/_ecer_parentcommunicationid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "If_Parent_Comm_Investigation_contains_value_but_record_does_not_match": {
+          "actions": {
+            "Set_Investigation_Using_Parent_Comm_value": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "00b223ab-d3a8-42bf-aba4-115e0ea4906f"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_communications",
+                  "recordId": "@triggerOutputs()?['body/ecer_communicationid']",
+                  "item/ecer_Investigation@odata.bind": "@{outputs('Get_Parent_Communication_record')?['body/_ecer_investigation_value@Microsoft.Dynamics.CRM.lookuplogicalname']}s(@{outputs('Get_Parent_Communication_record')?['body/_ecer_investigation_value']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "If_Parent_Comm_Application_contains_value_but_record_does_not_match": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Parent_Communication_record')?['body/_ecer_investigation_value']",
+                    "@null"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Parent_Communication_record')?['body/_ecer_investigation_value']",
+                    "@triggerOutputs()?['body/_ecer_investigation_value']"
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "02416c0d-a6c1-4529-9745-e3195ac0aa2e"
+          },
+          "type": "If"
+        },
+        "If_Parent_Comm_Application_contains_value_but_record_does_not_match": {
+          "actions": {
+            "Set_Application_using_Parent_Communication_value": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "28d82605-7a54-4711-907d-5a4daa5bb09a"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_communications",
+                  "recordId": "@triggerOutputs()?['body/ecer_communicationid']",
+                  "item/ecer_Applicationid@odata.bind": "@{outputs('Get_Parent_Communication_record')?['body/_ecer_applicationid_value@Microsoft.Dynamics.CRM.lookuplogicalname']}s(@{outputs('Get_Parent_Communication_record')?['body/_ecer_applicationid_value']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "If_Parent_Comm_Portal_User_contains_value_but_record_does_not_match": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Parent_Communication_record')?['body/_ecer_applicationid_value']",
+                    "@null"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Parent_Communication_record')?['body/_ecer_applicationid_value']",
+                    "@triggerOutputs()?['body/_ecer_applicationid_value']"
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "887c9636-040c-41b1-83e6-4dd039248152"
+          },
+          "type": "If"
+        },
+        "If_Parent_Comm_Portal_User_contains_value_but_record_does_not_match": {
+          "actions": {
+            "IF_Portal_User_Type_is_Account": {
+              "actions": {
+                "Set_Portal_User_account_lookup_from_Parent_Communication_value": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "fa6b439a-39a4-478d-b5d6-d9c9963b19fe"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_communications",
+                      "recordId": "@outputs('Set_Subject_from_Parent_Communications')?['body/ecer_communicationid']",
+                      "item/ecer_Registrantid_account@odata.bind": "accounts(@{outputs('Get_Parent_Communication_record')?['body/_ecer_registrantid_value']})"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {},
+              "else": {
+                "actions": {
+                  "Set_Portal_User_contact_lookup_from_Parent_Communication_value": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "4ae1a30b-9c15-4c35-bc75-58f2ba8d2506"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "ecer_communications",
+                        "recordId": "@triggerOutputs()?['body/ecer_communicationid']",
+                        "item/ecer_Registrantid_contact@odata.bind": "contacts(@{outputs('Get_Parent_Communication_record')?['body/_ecer_registrantid_value']})"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@outputs('Get_Parent_Communication_record')?['body/_ecer_registrantid_value@Microsoft.Dynamics.CRM.lookuplogicalname']",
+                  "account"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "cd8f9393-c04f-4712-bfeb-5b71dbae027e"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "IF_There_is_NO_Subject": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Parent_Communication_record')?['body/_ecer_registrantid_value']",
+                    "@null"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Parent_Communication_record')?['body/_ecer_registrantid_value']",
+                    "@triggerOutputs()?['body/_ecer_registrantid_value']"
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4e9d20cd-ac63-4522-98f8-a47123ecdba1"
+          },
+          "type": "If"
+        },
+        "IF_Parent_Comm_PA_contains_value_but_record_does_not_match": {
+          "actions": {
+            "Update_a_row": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "02187ddb-b866-4922-a36d-0608e8be0762"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_communications",
+                  "recordId": "@triggerOutputs()?['body/ecer_communicationid']",
+                  "item/ecer_ecer_program_application_Id@odata.bind": "@{outputs('Get_Parent_Communication_record')?['body/_ecer_ecer_program_application_id_value@Microsoft.Dynamics.CRM.lookuplogicalname']}s(@{outputs('Get_Parent_Communication_record')?['body/_ecer_ecer_program_application_id_value']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "If_Parent_Comm_Investigation_contains_value_but_record_does_not_match": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Parent_Communication_record')?['body/_ecer_ecer_program_application_id_value']",
+                    "@null"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Parent_Communication_record')?['body/_ecer_ecer_program_application_id_value']",
+                    "@triggerOutputs()?['body/_ecer_ecer_program_application_id_value']"
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6645a9c5-12a6-4a02-a847-df23bd31f135"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

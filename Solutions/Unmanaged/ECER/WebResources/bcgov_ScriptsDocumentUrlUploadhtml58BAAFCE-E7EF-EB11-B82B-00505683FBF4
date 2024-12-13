@@ -42,7 +42,7 @@
         <button id="send-selected-files" onclick="doSend()">Upload</button>
     </div>
     <div id="dropzone" style="min-height: 50px; border: 1px solid rgb(244, 244, 244); padding: 15px; color: rgb(68, 68, 68); font-family: 'SegoeUI-Light', 'Segoe UI Semilight', 'Segoe UI Regular', 'Segoe UI'; font-size: 16px;" ondragenter="clear(); event.stopPropagation(); event.preventDefault();" ondragover="event.stopPropagation(); event.preventDefault();" ondrop="event.stopPropagation(); event.preventDefault(); doDrop(event);">
-        <div id="invitation">Drop files here to upload (max file size: 25MB).</div>
+        <div id="invitation">Drop files here to upload (max file size: 90MB).</div>
         <div id="spinner" class="spinner" style="display:none;"></div>
     </div>
 
@@ -60,48 +60,59 @@
         var spUploadFilesPopup = undefined;
 
         var upload = (options) => {
-            var parameters = {};
-            parameters.FileName = options.filename;
-            parameters.Body = encodeForDynamics(options.content);
-            parameters.RegardingObjectName = options.entityName.toLowerCase();
-            parameters.RegardingObjectId = options.recordid.replace("{", "").replace("}", "");
-            parameters.Origin = 931490002; //User Upload
-            var bodyLength = parameters.Body.length;
+            var maxFileUpload = 90 * 1024 * 1024;
+            var bigFiles = false;
+            if (options.content.byteLength > maxFileUpload) {
+                maybeStopSpinner();
+                bigFiles = true;
+                parent.Xrm.Navigation.openAlertDialog({ confirmButtonLabel: "Ok", text: 'One of the upload files is over 90MB. Large upload file name: ' + largeFile.name }, { height: 200, width: 600 });
+                alert("Alert One of the upload files is over 90MB.  Large upload file name: " + largeFile.name);
+            }
+            else {
 
-            var req = new XMLHttpRequest();
-            req.open("POST", parent.Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v9.2/bcgov_UploadDocumentToSharePoint", false);
-            req.setRequestHeader("OData-MaxVersion", "4.0");
-            req.setRequestHeader("OData-Version", "4.0");
-            req.setRequestHeader("Accept", "application/json");
-            req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-            req.onreadystatechange = function () {
-                if (this.readyState === 4) {
-                    req.onreadystatechange = null;
-                    if (this.status === 200) {
-                        var results = JSON.parse(this.response);
+                var parameters = {};
+                parameters.FileName = options.filename;
+                parameters.Body = encodeForDynamics(options.content);
+                parameters.RegardingObjectName = options.entityName.toLowerCase();
+                parameters.RegardingObjectId = options.recordid.replace("{", "").replace("}", "");
+                parameters.Origin = 931490002; //User Upload
+                var bodyLength = parameters.Body.length;
 
-                        if (results.IsSuccess == true) {
+                var req = new XMLHttpRequest();
+                req.open("POST", parent.Xrm.Utility.getGlobalContext().getClientUrl() + "/api/data/v9.2/bcgov_UploadDocumentToSharePoint", false);
+                req.setRequestHeader("OData-MaxVersion", "4.0");
+                req.setRequestHeader("OData-Version", "4.0");
+                req.setRequestHeader("Accept", "application/json");
+                req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+                req.onreadystatechange = function () {
+                    if (this.readyState === 4) {
+                        req.onreadystatechange = null;
+                        if (this.status === 200) {
+                            var results = JSON.parse(this.response);
+
+                            if (results.IsSuccess == true) {
+                                maybeStopSpinner();
+                            }
+                            else {
+                                maybeStopSpinner();
+                                var error1 = results.Result;
+                                if (error1 != null) {
+                                    var alertStrings1 = { text: error1 };
+                                    parent.Xrm.Navigation.openAlertDialog(alertStrings1);
+                                }
+                            }
+                        } else {
                             maybeStopSpinner();
-                        }
-                        else {
-                            maybeStopSpinner();
-                            var error1 = results.Result;
-                            if (error1 != null) {
-                                var alertStrings1 = { text: error1 };
-                                parent.Xrm.Navigation.openAlertDialog(alertStrings1);
+                            var error = JSON.parse(this.response).error;
+                            if (error != null) {
+                                var alertStrings = { text: error.message };
+                                parent.Xrm.Navigation.openAlertDialog(alertStrings);
                             }
                         }
-                    } else {
-                        maybeStopSpinner();
-                        var error = JSON.parse(this.response).error;
-                        if (error != null) {
-                            var alertStrings = { text: error.message };
-                            parent.Xrm.Navigation.openAlertDialog(alertStrings);
-                        }
                     }
-                }
-            };
-            req.send(JSON.stringify(parameters));
+                };
+                req.send(JSON.stringify(parameters));
+            }
         }
 
         var count
@@ -117,7 +128,7 @@
             count--;
             if (count <= 0) {
                 document.getElementById('spinner').style.display = 'none';
-                document.getElementById('invitation').innerHTML = "Drop files here to upload (max file size: 25MB)."
+                document.getElementById('invitation').innerHTML = "Drop files here to upload (max file size: 90MB)."
                 if (spUploadFilesPopup !== undefined && !spUploadFilesPopup.closed)
                     spUploadFilesPopup.close()
 
@@ -127,11 +138,11 @@
                 parent.Xrm.Utility.closeProgressIndicator();
             }
         }
-        var maxFileUpload = 25 * 1024 * 1024; // 25MB // or testing data with 22 * 1024; // 22kb //
+        var maxFileUpload = 90 * 1024 * 1024; // 25MB // or testing data with 22 * 1024; // 22kb //
         var doDrop = (event) => {
             let dt = event.dataTransfer
             let largeFile;
-            const filesLength = dt.files.length
+            const filesLength = dt.files.length;
             for (var i = 0; i < filesLength; i++) {
                 if (dt.files[i].size > maxFileUpload) {
                     largeFile = dt.files[i];
@@ -142,13 +153,26 @@
                 sendFiles(dt.files);
             }
             else {
-                parent.Xrm.Navigation.openAlertDialog({ confirmButtonLabel: "Ok", text: 'One of the upload files is over 25MB. Large upload file name: ' + largeFile.name }, { height: 200, width: 600 });
+                parent.Xrm.Navigation.openAlertDialog({ confirmButtonLabel: "Ok", text: 'One of the upload files is over 90MB. Large upload file name: ' + largeFile.name }, { height: 200, width: 600 });
             }
         }
         var doSend = () => {
             var files = document.getElementById('selected-files').files
-            sendFiles(files)
-            document.getElementById('selected-files').value = "";
+            let largeFile;
+            const filesLength = files.length;
+            for (var i = 0; i < filesLength; i++) {
+                if (files[i].size > maxFileUpload) {
+                    largeFile = files[i];
+                    break;
+                }
+            }
+            if (largeFile !== undefined) {
+                parent.Xrm.Navigation.openAlertDialog({ confirmButtonLabel: "Ok", text: 'One of the upload files is over 90MB. Large upload file name: ' + largeFile.name }, { height: 200, width: 600 });
+            }
+            else {
+                sendFiles(files)
+                document.getElementById('selected-files').value = "";
+            }
         }
         var sendFiles = (files) => {
             startSpinner(files.length)

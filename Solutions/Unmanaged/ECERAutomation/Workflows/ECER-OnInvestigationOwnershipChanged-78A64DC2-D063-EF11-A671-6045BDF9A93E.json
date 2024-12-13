@@ -1,0 +1,291 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "If_Owner_is_modifed": {
+          "metadata": {
+            "operationMetadataId": "a3e68fd3-f9e9-4aab-8527-638558e06d99"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_investigation",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ownerid",
+              "subscriptionRequest/runas": 3,
+              "subscriptionRequest/name": "78a64dc2-d063-ef11-a671-6045bdf9a93e"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Owner_type_starts_with_systemuser": {
+          "actions": {
+            "Intake_Officers_Scope": {
+              "actions": {
+                "Get_List_of_Intake_Officers_Team_by_record_owner": {
+                  "metadata": {
+                    "operationMetadataId": "f9b3f94e-1590-4a10-9c7a-d2b69939e49b"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "teams",
+                      "fetchXml": "<fetch distinct='true'>\n  <entity name='team'>\n    <attribute name='name' />\n    <attribute name='administratorid' />\n    <attribute name='teamid' />\n    <attribute name='teamtype' />\n    <order attribute='name' descending='false' />\n    <filter type='and'>\n      <condition attribute='name' operator='like' value='Intake Officers%' />\n    </filter>\n    <link-entity name='teammembership' from='teamid' to='teamid' visible='false' intersect='true'>\n      <link-entity name='systemuser' from='systemuserid' to='systemuserid' alias='aa'>\n        <filter type='and'>\n          <condition attribute='systemuserid' operator='eq' value='@{triggerBody()?['_ownerid_value']}' />\n        </filter>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "connectionName": "shared_commondataserviceforapps"
+                    }
+                  }
+                },
+                "Check_if_owner_exist_in_Intake_Officer_team": {
+                  "actions": {
+                    "Update_Intake_Officer_in_Investigation": {
+                      "metadata": {
+                        "operationMetadataId": "71722720-4b0d-44d7-8693-5652e4a052a5"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "entityName": "ecer_investigations",
+                          "recordId": "@triggerBody()?['ecer_investigationid']",
+                          "item/ecer_intakeofficerid@odata.bind": "systemusers(@{triggerBody()?['_ownerid_value']})"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "connectionName": "shared_commondataserviceforapps"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Get_List_of_Intake_Officers_Team_by_record_owner": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {}
+                  },
+                  "expression": {
+                    "and": [
+                      {
+                        "greater": [
+                          "@length(outputs('Get_List_of_Intake_Officers_Team_by_record_owner')?['body/value'])",
+                          0
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "fab78786-7993-4be7-9a48-d6fb763b16fc"
+                  },
+                  "type": "If"
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "a8cbfe81-a3bd-4fce-95a0-9eb65da66722"
+              },
+              "type": "Scope"
+            },
+            "Senior_Investigator_Scope": {
+              "actions": {
+                "Get_List_of_Senior_Investigator_Team_by_record_owner": {
+                  "metadata": {
+                    "operationMetadataId": "f3f3133c-0a9c-47a0-adb7-2598359bed42"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "teams",
+                      "fetchXml": "<fetch distinct='true'>\n  <entity name='team'>\n    <attribute name='name' />\n    <attribute name='administratorid' />\n    <attribute name='teamid' />\n    <attribute name='teamtype' />\n    <order attribute='name' descending='false' />\n    <filter type='and'>\n      <condition attribute='name' operator='like' value='SI Team%' />\n    </filter>\n    <link-entity name='teammembership' from='teamid' to='teamid' visible='false' intersect='true'>\n      <link-entity name='systemuser' from='systemuserid' to='systemuserid' alias='aa'>\n        <filter type='and'>\n          <condition attribute='systemuserid' operator='eq' value='@{triggerBody()?['_ownerid_value']}' />\n        </filter>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "connectionName": "shared_commondataserviceforapps"
+                    }
+                  }
+                },
+                "Check_if_owner_exist_in_Senior_Investigator_team": {
+                  "actions": {
+                    "Update_Senior_Investigator_in_Investigation": {
+                      "metadata": {
+                        "operationMetadataId": "0698eb76-c4ab-4e79-bfbd-907338af62b4"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "entityName": "ecer_investigations",
+                          "recordId": "@triggerBody()?['ecer_investigationid']",
+                          "item/ecer_seniorinvestigatorid@odata.bind": "systemusers(@{triggerBody()?['_ownerid_value']})"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "connectionName": "shared_commondataserviceforapps"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Get_List_of_Senior_Investigator_Team_by_record_owner": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {}
+                  },
+                  "expression": {
+                    "and": [
+                      {
+                        "greater": [
+                          "@length(outputs('Get_List_of_Senior_Investigator_Team_by_record_owner')?['body/value'])",
+                          0
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "f072c623-4f7f-4e60-9b0f-4b724ed06e00"
+                  },
+                  "type": "If"
+                }
+              },
+              "runAfter": {
+                "Intake_Officers_Scope": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "ff756041-95cb-4278-ac86-79b7fb9d0419"
+              },
+              "type": "Scope"
+            },
+            "Investigators_Scope": {
+              "actions": {
+                "Get_List_of_Investigators_Team_by_record_owner": {
+                  "metadata": {
+                    "operationMetadataId": "f3f3133c-0a9c-47a0-adb7-2598359bed42"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "teams",
+                      "fetchXml": "<fetch distinct='true'>\n  <entity name='team'>\n    <attribute name='name' />\n    <attribute name='administratorid' />\n    <attribute name='teamid' />\n    <attribute name='teamtype' />\n    <order attribute='name' descending='false' />\n    <filter type='and'>\n      <condition attribute=\"name\" operator=\"eq\" value=\"Investigators\"/>\n    </filter>\n    <link-entity name='teammembership' from='teamid' to='teamid' visible='false' intersect='true'>\n      <link-entity name='systemuser' from='systemuserid' to='systemuserid' alias='aa'>\n        <filter type='and'>\n          <condition attribute='systemuserid' operator='eq' value='@{triggerBody()?['_ownerid_value']}' />\n        </filter>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "connectionName": "shared_commondataserviceforapps"
+                    }
+                  }
+                },
+                "Check_if_owner_exist_in_Investigators_team": {
+                  "actions": {
+                    "Update_Investigator_in_Investigation": {
+                      "metadata": {
+                        "operationMetadataId": "0698eb76-c4ab-4e79-bfbd-907338af62b4"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "entityName": "ecer_investigations",
+                          "recordId": "@triggerBody()?['ecer_investigationid']",
+                          "item/ecer_investigatorid@odata.bind": "systemusers(@{triggerBody()?['_ownerid_value']})"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "connectionName": "shared_commondataserviceforapps"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Get_List_of_Investigators_Team_by_record_owner": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {}
+                  },
+                  "expression": {
+                    "and": [
+                      {
+                        "greater": [
+                          "@length(outputs('Get_List_of_Investigators_Team_by_record_owner')?['body/value'])",
+                          0
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "f072c623-4f7f-4e60-9b0f-4b724ed06e00"
+                  },
+                  "type": "If"
+                }
+              },
+              "runAfter": {
+                "Senior_Investigator_Scope": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "ff756041-95cb-4278-ac86-79b7fb9d0419"
+              },
+              "type": "Scope"
+            }
+          },
+          "runAfter": {},
+          "else": {
+            "actions": {}
+          },
+          "expression": {
+            "startsWith": [
+              "@triggerOutputs()?['body/_ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname']",
+              "systemuser"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9dc05889-d9cf-4944-bae5-57663179b302"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

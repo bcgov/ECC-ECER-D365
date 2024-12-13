@@ -1,0 +1,528 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Program_Application_Status_is_Interim_Recognition": {
+          "metadata": {
+            "operationMetadataId": "a0ca35ac-fa50-4abb-b74d-9c429b660c3d"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_postsecondaryinstituteprogramapplicaiton",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode",
+              "subscriptionRequest/filterexpression": "statuscode eq 621870006"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Check_if_approved_for_the_first_time_on_Basic": {
+          "actions": {
+            "Add_Program_Profile": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "b0c4d342-6b3d-4379-b1c6-99bb17fdc93d"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_programs",
+                  "item/ecer_PostSecondaryInstitution@odata.bind": "/@{triggerOutputs()?['body/_ecer_postsecondaryinstitute_value@Microsoft.Dynamics.CRM.lookuplogicalname']}s(@{triggerOutputs()?['body/_ecer_postsecondaryinstitute_value']})",
+                  "item/ecer_enddate": "@concat('09-01-',add(int(formatDateTime(utcNow(),'yyyy')),1))",
+                  "item/ecer_name": "@triggerOutputs()?['body/ecer_name']",
+                  "item/ecer_programtypes": "621870000",
+                  "item/ecer_startdate": "@concat('09-01-',formatDateTime(utcNow(),'yyyy'))",
+                  "item/statuscode": 621870002
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Relate_rows": {
+              "runAfter": {
+                "Add_Program_Profile": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "80332dd2-112b-4537-91cb-0ffc2a90bd13"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "AssociateEntities",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_postsecondaryinstituteprogramapplicaitons",
+                  "recordId": "@triggerOutputs()?['body/ecer_postsecondaryinstituteprogramapplicaitonid']",
+                  "associationEntityRelationship": "ecer_PostSecondaryInstituteProgramApplica",
+                  "item/@odata.id": "@outputs('Add_Program_Profile')?['body/@odata.id']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each": {
+              "foreach": "@outputs('List_Courses')?['body/value']",
+              "actions": {
+                "Add_new_course": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "075cb46d-4123-47aa-b575-dcf2b0a2d948"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_courses",
+                      "item/ecer_Campus@odata.bind": "/ecer_postsecondaryinstitutecampuses(@{items('Apply_to_each')?['_ecer_campus_value']})",
+                      "item/ecer_coursehours": "@items('Apply_to_each')?['ecer_coursehours']",
+                      "item/ecer_code": "@items('Apply_to_each')?['ecer_code']",
+                      "item/ecer_coursename": "@items('Apply_to_each')?['ecer_coursename']",
+                      "item/ecer_description": "@items('Apply_to_each')?['ecer_description']",
+                      "item/ecer_postsecondaryinstitutionid@odata.bind": "/ecer_postsecondaryinstitutes(@{outputs('Add_Program_Profile')?['body/_ecer_postsecondaryinstitution_value']})",
+                      "item/ecer_Programid@odata.bind": "/ecer_programs(@{outputs('Add_Program_Profile')?['body/ecer_programid']})",
+                      "item/ecer_programtype": "@items('Apply_to_each')?['ecer_programtype']",
+                      "item/ecer_ProvincialRequirement@odata.bind": "/ecer_provincialrequirements(@{items('Apply_to_each')?['_ecer_provincialrequirement_value']})"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Relate_rows": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "9aaf1cb2-afdb-4597-9db7-6313bfde17da"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Initialize_ProgramTypeVal": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Switch": {
+                "runAfter": {
+                  "Set_variable": [
+                    "Succeeded"
+                  ]
+                },
+                "cases": {
+                  "ECE_Basic": {
+                    "case": 621870000,
+                    "actions": {
+                      "Append_to_string_variable": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "fe84009c-c44f-4659-96e2-cc16af059a8d"
+                        },
+                        "type": "AppendToStringVariable",
+                        "inputs": {
+                          "name": "ProgramTypeVal",
+                          "value": ",621870000"
+                        }
+                      }
+                    }
+                  },
+                  "ITE": {
+                    "case": 621870001,
+                    "actions": {
+                      "Append_to_string_variable_2": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "71e1f930-1bdc-46fe-a575-325a3eec7118"
+                        },
+                        "type": "AppendToStringVariable",
+                        "inputs": {
+                          "name": "ProgramTypeVal",
+                          "value": ",621870001"
+                        }
+                      }
+                    }
+                  },
+                  "SNE": {
+                    "case": 621870002,
+                    "actions": {
+                      "Append_to_string_variable_3": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "2a16a795-daa4-4667-9a67-db5be0cd025a"
+                        },
+                        "type": "AppendToStringVariable",
+                        "inputs": {
+                          "name": "ProgramTypeVal",
+                          "value": ",621870002"
+                        }
+                      }
+                    }
+                  },
+                  "ITE_&_SNE": {
+                    "case": 621870003,
+                    "actions": {
+                      "Append_to_string_variable_4": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "73eb9427-9cba-49b8-bc67-e5bf951e1503"
+                        },
+                        "type": "AppendToStringVariable",
+                        "inputs": {
+                          "name": "ProgramTypeVal",
+                          "value": ",621870001,621870002"
+                        }
+                      }
+                    }
+                  }
+                },
+                "default": {
+                  "actions": {}
+                },
+                "expression": "@triggerBody()?['ecer_provincialcertificationtypeoffered']",
+                "metadata": {
+                  "operationMetadataId": "de8b6b98-83f5-4358-b1b9-946d288fcf60"
+                },
+                "type": "Switch"
+              },
+              "Set_variable": {
+                "runAfter": {
+                  "Get_ProgramProfile": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "2bcc08ea-8300-4ceb-96f4-029ae3aa0f98"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "ProgramTypeVal",
+                  "value": "@outputs('Get_ProgramProfile')?['body/ecer_programtypes']"
+                }
+              },
+              "Update_Program_Profile": {
+                "runAfter": {
+                  "Switch": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "ab37c578-f066-48b9-9fbd-79f75e0e3d1e"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "UpdateRecord",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "ecer_programs",
+                    "recordId": "@outputs('Get_ProgramProfile')?['body/ecer_programid']",
+                    "item/ecer_programtypes": "@variables('ProgramTypeVal')"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Create_new_course_2": {
+                "foreach": "@outputs('List_Courses')?['body/value']",
+                "actions": {
+                  "Add_new_course_2": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "075cb46d-4123-47aa-b575-dcf2b0a2d948"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "CreateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "ecer_courses",
+                        "item/ecer_Campus@odata.bind": "/ecer_postsecondaryinstitutecampuses(@{items('Create_new_course_2')?['_ecer_campus_value']})",
+                        "item/ecer_coursehours": "@items('Create_new_course_2')?['ecer_coursehours']",
+                        "item/ecer_code": "@items('Create_new_course_2')?['ecer_code']",
+                        "item/ecer_coursename": "@items('Create_new_course_2')?['ecer_coursename']",
+                        "item/ecer_description": "@items('Create_new_course_2')?['ecer_description']",
+                        "item/ecer_postsecondaryinstitutionid@odata.bind": "/ecer_postsecondaryinstitutes(@{outputs('Get_ProgramProfile')?['body/_ecer_postsecondaryinstitution_value']})",
+                        "item/ecer_Programid@odata.bind": "/ecer_programs(@{outputs('Get_ProgramProfile')?['body/ecer_programid']})",
+                        "item/ecer_programtype": "@items('Create_new_course_2')?['ecer_programtype']",
+                        "item/ecer_ProvincialRequirement@odata.bind": "/ecer_provincialrequirements(@{items('Create_new_course_2')?['_ecer_provincialrequirement_value']})"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                },
+                "runAfter": {
+                  "Relate_rows_2": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "9aaf1cb2-afdb-4597-9db7-6313bfde17da"
+                },
+                "type": "Foreach",
+                "runtimeConfiguration": {
+                  "concurrency": {
+                    "repetitions": 50
+                  }
+                }
+              },
+              "Get_ProgramProfile": {
+                "runAfter": {
+                  "Apply_to_each_2": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "ba356aa7-6e7d-46eb-b563-2aa22454e160"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "ecer_programs",
+                    "recordId": "@variables('ProgramId')"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Apply_to_each_2": {
+                "foreach": "@outputs('List_Programs')?['body/value']",
+                "actions": {
+                  "Set_ProgramId": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "fb33bb4d-f30c-41ce-8c27-43da9b140564"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "ProgramId",
+                      "value": "@items('Apply_to_each_2')?['ecer_programid']"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "0cad4fd8-464e-48d7-9cdb-42af1db0721f"
+                },
+                "type": "Foreach"
+              },
+              "Relate_rows_2": {
+                "runAfter": {
+                  "Update_Program_Profile": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "68358261-5ec6-48ea-b6df-0d99ba6cad96"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "AssociateEntities",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "ecer_postsecondaryinstituteprogramapplicaitons",
+                    "recordId": "@triggerOutputs()?['body/ecer_postsecondaryinstituteprogramapplicaitonid']",
+                    "associationEntityRelationship": "ecer_PostSecondaryInstituteProgramApplica",
+                    "item/@odata.id": "@outputs('Update_Program_Profile')?['body/@odata.id']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              }
+            }
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/ecer_provincialcertificationtypeoffered']",
+                  621870000
+                ]
+              },
+              {
+                "equals": [
+                  "@empty(body('Get_Program_Application')?['ecer_PostSecondaryInstituteProgramApplica'])",
+                  true
+                ]
+              },
+              {
+                "equals": [
+                  "@empty(outputs('List_Programs')?['body/value'])",
+                  "@true"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "55205df8-b09b-4540-b1df-7855668bb738"
+          },
+          "type": "If"
+        },
+        "Initialize_ProgramTypeVal": {
+          "runAfter": {
+            "Initialize_ProgramId": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c13e7754-8748-416b-b4af-285a7e636ebe"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ProgramTypeVal",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Get_Program_Application": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "9f6b8851-ebf5-4f5a-bf83-dc42357fb667"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_postsecondaryinstituteprogramapplicaitons",
+              "recordId": "@triggerOutputs()?['body/ecer_postsecondaryinstituteprogramapplicaitonid']",
+              "$select": "ecer_name,ecer_postsecondaryinstituteprogramapplicaitonid",
+              "$expand": "ecer_PostSecondaryInstituteProgramApplica($select=ecer_programid,createdon,ecer_enddate)"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_Courses": {
+          "runAfter": {
+            "List_Programs": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e3407600-9194-4655-9851-1c4f18fe0098"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_courses",
+              "$filter": "_ecer_programapplication_value eq @{triggerOutputs()?['body/ecer_postsecondaryinstituteprogramapplicaitonid']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_ProgramId": {
+          "runAfter": {
+            "List_Courses": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ef326d95-10df-49ee-ad16-33b3234b729e"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ProgramId",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "List_Programs": {
+          "runAfter": {
+            "Get_Program_Application": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "48310307-ae23-48ca-b33a-525d765ec250"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_programs",
+              "$select": "ecer_programid",
+              "$filter": "_ecer_postsecondaryinstitution_value eq @{triggerOutputs()?['body/_ecer_postsecondaryinstitute_value']}",
+              "$orderby": "createdon desc",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

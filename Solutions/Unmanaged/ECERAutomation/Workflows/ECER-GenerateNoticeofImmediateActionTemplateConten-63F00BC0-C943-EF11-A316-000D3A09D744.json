@@ -1,0 +1,299 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted_to_investigations": {
+          "metadata": {
+            "operationMetadataId": "1d2427fc-65ba-4b70-8653-d8fcf3db922b"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_investigation",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_immediate_action_type"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_notice_text_content": {
+          "runAfter": {
+            "Set_Current_Applicant_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "da53b1b9-f816-4e72-b283-f70e1483e3c8"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Notice Content",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Set_Current_Applicant_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "9a457f34-41bb-4b5c-9b55-270077ff44bc"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Current Applicant",
+                "type": "string",
+                "value": "@triggerOutputs()?['body/_ecer_applicant_value']"
+              }
+            ]
+          }
+        },
+        "Condition_If_immediate_action_type_is_suspension": {
+          "actions": {
+            "Set_Notice_Content": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "7d9f11ce-4159-4444-b7d7-a83b28de0f9d"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Notice Content",
+                "value": "Due to the serious nature of the allegations received by the Registry it has been determined that there are reasonable grounds to believe that there is an immediate risk to the health, safety, and well-being of children should you continue to practice without restriction. As a result, I have decided to suspend your @{triggerOutputs()?['body/ecer_certificationtype']} effective immediately, until an investigation into your suitability to practice has concluded. This suspension means:\n\nYou cannot practice as an Early Childhood Educator/Assistant in the Province of British Columbia while the suspension is in place.\n\nYou must return your original @{triggerOutputs()?['body/ecer_certificationtype']} Certificate to the Registry to the mailing address at the bottom of the first page.\n\nThe Registry will notify your employer of the action taken on your certificate. This is in accordance with section 33(5)(b) of the CCLR.\n\nThe suspension will be publicly displayed through the Registry’s certification validation system."
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_Terms_and_Conditions_list": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Condition_If_immediate_action_type_is_terms_and_conditions": {
+                "actions": {
+                  "list_rows_to_get_certificate_conditions_": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "07d070a8-b734-444b-a692-c78ea2a35fa0"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "ListRecords",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "ecer_certificateconditionses",
+                        "$select": "ecer_details",
+                        "$filter": "_ecer_registrantid_value eq @{variables('Current Applicant')}"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Apply_to_each_t_and_c_details_": {
+                    "foreach": "@outputs('list_rows_to_get_certificate_conditions_')?['body/value']",
+                    "actions": {
+                      "Compose": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "2e064ce7-f52f-41ae-92d5-2dd6b9a61d47"
+                        },
+                        "type": "Compose",
+                        "inputs": "@concat('• ',items('Apply_to_each_t_and_c_details_')?['ecer_details'],decodeUriComponent('%0A'))"
+                      },
+                      "Set_variable": {
+                        "runAfter": {
+                          "Compose": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "f91a0708-bc68-47bc-8e97-bf955e4de315"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "T and C list",
+                          "value": "@{outputs('Compose')}"
+                        }
+                      }
+                    },
+                    "runAfter": {
+                      "list_rows_to_get_certificate_conditions_": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "3aea198f-7e61-4f10-9bd7-9c1777845882"
+                    },
+                    "type": "Foreach"
+                  },
+                  "Set_variable_notice_content": {
+                    "runAfter": {
+                      "Apply_to_each_t_and_c_details_": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "e13d8508-5ed6-4c9d-8e3d-a4550b8243d9"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "Notice Content",
+                      "value": "Due to the serious nature of the allegations received by the Registry it has been determined that there are reasonable grounds to believe that there is an immediate risk to the health, safety, and well-being of children should you continue to practice without restriction. As a result, I have decided to attach the following Terms and Conditions on your @{triggerOutputs()?['body/ecer_certificationtype']} effective immediately, until an investigation into your suitability to practice has concluded:\n\n\n@{variables('T and C list')}\n\n\nPlacement of the Terms and Conditions on your certificate means:\n\nYou must adhere to the specifics of the above while you are practicing as a @{triggerOutputs()?['body/ecer_certificationtype']}.\n\nYou must return your original @{triggerOutputs()?['body/ecer_certificationtype']} Certificate to the Registry to the mailing address at the bottom of the first page, as the enclosed certificate with the Terms and Conditions has been issued in its place. The certificate expiry date remains as @{triggerOutputs()?['body/ecer_expirydate']}.\n\nThe Registry will notify your employer of the action taken on your certificate. This is in accordance with section 33(5)(b) of the CCLR.\n\nThe terms and conditions, as written in this letter, will be publicly displayed through the Registry’s certification validation system."
+                    }
+                  }
+                },
+                "runAfter": {},
+                "expression": {
+                  "equals": [
+                    "@triggerOutputs()?['body/ecer_immediate_action_type']",
+                    621870000
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "4ee334b6-9493-4f5d-bc18-d12ee11a640e"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_immediate_action_type']",
+              621870001
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c5954926-ad52-4da1-820c-d8aee67e720f"
+          },
+          "type": "If"
+        },
+        "Initialize_Terms_and_Conditions_list": {
+          "runAfter": {
+            "Initialize_notice_text_content": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "85b88af4-6d19-4685-a7ea-64dc881b3983"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "T and C list",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Condition_to_prevent_infinite_loop": {
+          "actions": {
+            "Update_investigations_table_Notice_of_Immedate_action_template_content_field": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "ddceac3c-68ae-4f72-8270-c5bab4fc5680"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_investigations",
+                  "recordId": "@triggerOutputs()?['body/ecer_investigationid']",
+                  "item/ecer_notice_of_immediate_action_content": "@variables('Notice Content')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "End_Process_": {
+              "runAfter": {
+                "Update_investigations_table_Notice_of_Immedate_action_template_content_field": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "b90810d8-a692-4369-825d-010fabed326f"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "Condition_If_immediate_action_type_is_suspension": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Terminate": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "4885248a-a2ba-4ee9-a8ef-1f2682bdb4e0"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@variables('Notice Content')",
+                "@triggerOutputs()?['body/ecer_notice_of_immediate_action_content']"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "bf52767c-6e39-4f0d-af50-2a8c7f3a751d"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

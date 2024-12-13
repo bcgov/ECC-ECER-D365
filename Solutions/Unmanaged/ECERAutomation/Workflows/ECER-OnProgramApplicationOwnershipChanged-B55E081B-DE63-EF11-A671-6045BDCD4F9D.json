@@ -1,0 +1,221 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "Owner_of_PA_is_Changed": {
+          "metadata": {
+            "operationMetadataId": "216db774-9259-4334-a42d-2134fb683b4f"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_postsecondaryinstituteprogramapplicaiton",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ownerid",
+              "subscriptionRequest/runas": 3,
+              "subscriptionRequest/name": "b55e081b-de63-ef11-a671-6045bdcd4f9d"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Owner_type_starts_with_systemuser": {
+          "actions": {
+            "Program_Analyst_Scope": {
+              "actions": {
+                "Get_List_of_Program_Analyst_Team_by_record_owner": {
+                  "metadata": {
+                    "operationMetadataId": "6cc49c18-b35a-4bc2-a8fd-53104a107e0d"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "teams",
+                      "fetchXml": "<fetch distinct='true'>\n  <entity name='team'>\n    <attribute name='name' />\n    <attribute name='administratorid' />\n    <attribute name='teamid' />\n    <attribute name='teamtype' />\n    <order attribute='name' descending='false' />\n    <filter type='and'>\n      <condition attribute=\"name\" operator=\"eq\" value=\"Program Analyst Team\"/>\n    </filter>\n    <link-entity name='teammembership' from='teamid' to='teamid' visible='false' intersect='true'>\n      <link-entity name='systemuser' from='systemuserid' to='systemuserid' alias='aa'>\n        <filter type='and'>\n          <condition attribute='systemuserid' operator='eq' value='@{triggerBody()?['_ownerid_value']}' />\n        </filter>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "connectionName": "shared_commondataserviceforapps"
+                    }
+                  }
+                },
+                "Check_if_owner_exist_in_Program_Analyst_team": {
+                  "actions": {
+                    "Update_Program_Analyst_in_Program_App": {
+                      "metadata": {
+                        "operationMetadataId": "c46d2a5f-2654-4135-9366-3db2436530ae"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "entityName": "ecer_postsecondaryinstituteprogramapplicaitons",
+                          "recordId": "@triggerBody()?['ecer_postsecondaryinstituteprogramapplicaitonid']",
+                          "item/ecer_ProgramAnalyst@odata.bind": "systemusers(@{triggerBody()?['_ownerid_value']})"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "connectionName": "shared_commondataserviceforapps"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Get_List_of_Program_Analyst_Team_by_record_owner": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {}
+                  },
+                  "expression": {
+                    "and": [
+                      {
+                        "greater": [
+                          "@length(outputs('Get_List_of_Program_Analyst_Team_by_record_owner')?['body/value'])",
+                          0
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "dabc1c59-ea26-41fa-94c3-65976dde51eb"
+                  },
+                  "type": "If"
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "40f041f8-e1dd-4161-ae05-73a25db5abce"
+              },
+              "type": "Scope"
+            },
+            "ECE_Program_Coordinator_Team_Scope": {
+              "actions": {
+                "Get_List_of_ECE_Program_Coordinator_Team_by_record_owner": {
+                  "metadata": {
+                    "operationMetadataId": "a331cdfa-9acf-4811-9d06-222699c2630f"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "teams",
+                      "fetchXml": "<fetch distinct='true'>\n  <entity name='team'>\n    <attribute name='name' />\n    <attribute name='administratorid' />\n    <attribute name='teamid' />\n    <attribute name='teamtype' />\n    <order attribute='name' descending='false' />\n    <filter type='and'>\n      <condition attribute=\"name\" operator=\"eq\" value=\"ECE Program Coordinator Team\"/>\n    </filter>\n    <link-entity name='teammembership' from='teamid' to='teamid' visible='false' intersect='true'>\n      <link-entity name='systemuser' from='systemuserid' to='systemuserid' alias='aa'>\n        <filter type='and'>\n          <condition attribute='systemuserid' operator='eq' value='@{triggerBody()?['_ownerid_value']}' />\n        </filter>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "connectionName": "shared_commondataserviceforapps"
+                    }
+                  }
+                },
+                "Check_if_owner_exist_in_ECE_Program_Coordinator_Team": {
+                  "actions": {
+                    "Update_ECE_Program_Coordinator_Team_in_Program_App": {
+                      "metadata": {
+                        "operationMetadataId": "28df05dc-a26f-4998-9ed5-69ad08a7c366"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "parameters": {
+                          "entityName": "ecer_postsecondaryinstituteprogramapplicaitons",
+                          "recordId": "@triggerBody()?['ecer_postsecondaryinstituteprogramapplicaitonid']",
+                          "item/ecer_ProgramCoordinator@odata.bind": "systemusers(@{triggerBody()?['_ownerid_value']})"
+                        },
+                        "host": {
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "connectionName": "shared_commondataserviceforapps"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Get_List_of_ECE_Program_Coordinator_Team_by_record_owner": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {}
+                  },
+                  "expression": {
+                    "and": [
+                      {
+                        "greater": [
+                          "@length(outputs('Get_List_of_ECE_Program_Coordinator_Team_by_record_owner')?['body/value'])",
+                          0
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2adcd83b-8fa6-45ee-adb6-7f42febf819c"
+                  },
+                  "type": "If"
+                }
+              },
+              "runAfter": {
+                "Program_Analyst_Scope": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "8bc6673b-8ab2-4e14-9029-b138eceee90e"
+              },
+              "type": "Scope"
+            }
+          },
+          "runAfter": {},
+          "else": {
+            "actions": {}
+          },
+          "expression": {
+            "and": [
+              {
+                "startsWith": [
+                  "@triggerBody()?['_ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname']",
+                  "systemuser"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c335e8fb-a689-4f1e-852b-6a7327c39f8e"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

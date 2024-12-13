@@ -1,7 +1,913 @@
-<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.24112.182" OrganizationSchemaType="Full" CRMServerServiceabilityVersion="9.2.24112.00206">
   <Entities></Entities>
   <Roles></Roles>
   <Workflows>
+    <Workflow WorkflowId="{63f00bc0-c943-ef11-a316-000d3a09d744}" Name="ECER - Generate Notice of Immediate Action Template Content">
+      <JsonFileName>/Workflows/ECER-GenerateNoticeofImmediateActionTemplateConten-63F00BC0-C943-EF11-A316-000D3A09D744.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.23</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Generate Notice of Immediate Action Template Content" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{5f97c4cc-2546-ef11-a316-000d3a09d744}" Name="ECER - Update Work Experience and Approve - CE">
+      <JsonFileName>/Workflows/ECER-UpdateWorkExperienceandApprove-CE-5F97C4CC-2546-EF11-A316-000D3A09D744.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.25</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Update Work Experience and Approve - CE" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{6f53d585-ad7a-ef11-ac20-000d3a09e365}" Name="ECER - Set Education Recognition on Application">
+      <JsonFileName>/Workflows/ECER-SetEducationRecognitiononApplication-6F53D585-AD7A-EF11-AC20-000D3A09E365.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.41</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Education Recognition on Application" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{be5678b7-4b7c-ef11-ac20-000d3a09e365}" Name="ECER - Construct Work Reference Full Name">
+      <JsonFileName>/Workflows/ECER-ConstructWorkReferenceFullName-BE5678B7-4B7C-EF11-AC20-000D3A09E365.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.43</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Construct Work Reference Full Name" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{c85a49ba-890c-ef11-9f89-000d3a09f34b}" Name="ECER - Investigation Assign Referrer">
+      <JsonFileName>/Workflows/ECER-InvestigationAssignReferrer-C85A49BA-890C-EF11-9F89-000D3A09F34B.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.6</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Investigation Assign Referrer" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{5a8f86b5-0697-ef11-8a69-000d3a0a4c90}" Name="ECER - Set Professional Development Flag on Application">
+      <JsonFileName>/Workflows/ECER-SetProfessionalDevelopmentFlagonApplication-5A8F86B5-0697-EF11-8A69-000D3A0A4C90.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.55</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Professional Development Flag on Application" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" Name="ECER - WF - Checklist for Ready for Assessment">
+      <XamlFileName>/Workflows/ECER-WF-ChecklistforReadyforAssessment-0A89E92C-AF97-EF11-8A69-000D3A0A4C90.xaml</XamlFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>0</Category>
+      <Mode>1</Mode>
+      <Scope>4</Scope>
+      <OnDemand>1</OnDemand>
+      <TriggerOnUpdateAttributeList>ecer_characterreferencereceived,ecer_comprehensiveevaluationreportreceived,ecer_courseoutlinereceived,ecer_parentalreferencereceived,ecer_professionaldevelopmentreceived,ecer_programconfirmationformreceived,ecer_transcriptreceived,ecer_workexperiencereceived</TriggerOnUpdateAttributeList>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <CreateStage>40</CreateStage>
+      <UpdateStage>40</UpdateStage>
+      <RunAs>0</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.56</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>ecer_Application</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - WF - Checklist for Ready for Assessment" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{590cf71b-0c8b-ef11-8a6a-6045bdcd6cb0}" Name="ECER - CF - Send Application Incompletion Reminder">
+      <JsonFileName>/Workflows/ECER-CF-SendApplicationIncompletionReminder-590CF71B-0C8B-EF11-8A6A-6045BDCD6CB0.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.49</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - CF - Send Application Incompletion Reminder" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{7be5a59f-1e8b-ef11-8a6a-000d3a0a4c90}" Name="ECER - Incomplete Application Notification Reminders">
+      <JsonFileName>/Workflows/ECER-IncompleteApplicationNotificationReminders-7BE5A59F-1E8B-EF11-8A6A-000D3A0A4C90.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.49</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Incomplete Application Notification Reminders" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{79095edc-458b-ef11-8a6a-000d3a0a4c90}" Name="ECER - Assign Investigation to Intake Officer when Intake Review Completed">
+      <JsonFileName>/Workflows/ECER-AssignInvestigationtoIntakeOfficerwhenIntakeR-79095EDC-458B-EF11-8A6A-000D3A0A4C90.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.49</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Assign Investigation to Intake Officer when Intake Review Completed" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{b9aeea67-e78b-ef11-8a6a-000d3a0a4c90}" Name="ECER - Assign Investigation to Investigator and Previous Status when SI Review Completed">
+      <JsonFileName>/Workflows/ECER-AssignInvestigationtoInvestigatorandPreviousS-B9AEEA67-E78B-EF11-8A6A-000D3A0A4C90.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.50</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Assign Investigation to Investigator and Previous Status when SI Review Completed" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{5dc8c62f-af90-ef11-8a6a-000d3a0a4c90}" Name="ECER - Send Parental Consent Communication Message when Application is submitted">
+      <JsonFileName>/Workflows/ECER-SendParentalConsentCommunicationMessagewhenAp-5DC8C62F-AF90-EF11-8A6A-000D3A0A4C90.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.52</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Send Parental Consent Communication Message when Application is submitted" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{f70f8a88-0370-ef11-a670-000d3a0a4c90}" Name="ECER - Populate Investigation Competency Name">
+      <JsonFileName>/Workflows/ECER-PopulateInvestigationCompetencyName-F70F8A88-0370-EF11-A670-000D3A0A4C90.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Populate Investigation Competency Name" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{c1f919ed-8c70-ef11-a670-000d3a0a4c90}" Name="ECER - Set Name field on Complainant">
+      <JsonFileName>/Workflows/ECER-SetNamefieldonComplainant-C1F919ED-8C70-EF11-A670-000D3A0A4C90.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Name field on Complainant" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{3edc4952-9070-ef11-a670-000d3a0a4c90}" Name="ECER - Set Program Profile Name">
+      <JsonFileName>/Workflows/ECER-SetProgramProfileName-3EDC4952-9070-EF11-A670-000D3A0A4C90.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Program Profile Name" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{3f27c6f5-5971-ef11-a670-000d3a0a4c90}" Name="ECER - Investigation change to Out of Mandate stage">
+      <JsonFileName>/Workflows/ECER-InvestigationchangetoOutofMandatestage-3F27C6F5-5971-EF11-A670-000D3A0A4C90.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Investigation change to Out of Mandate stage" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{4a54770e-4a7c-ef11-ac20-000d3a0a4c90}" Name="ECER - Construct Character Reference Full Name">
+      <JsonFileName>/Workflows/ECER-ConstructCharacterReferenceFullName-4A54770E-4A7C-EF11-AC20-000D3A0A4C90.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.43</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Construct Character Reference Full Name" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{59fa4f55-e684-ef11-ac21-000d3a0a4c90}" Name="ECER - Populate Certificate Comparison Name Field">
+      <JsonFileName>/Workflows/ECER-PopulateCertificateComparisonNameField-59FA4F55-E684-EF11-AC21-000D3A0A4C90.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.47</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Populate Certificate Comparison Name Field" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{81ed99d9-e884-ef11-ac21-000d3a0a4c90}" Name="ECER - Set Investigation Reconsideration Period End Date">
+      <JsonFileName>/Workflows/ECER-SetInvestigationReconsiderationPeriodEndDate-81ED99D9-E884-EF11-AC21-000D3A0A4C90.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.47</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Investigation Reconsideration Period End Date" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{a9a624bc-5e87-ef11-ac21-000d3a0a4c90}" Name="ECER - WF - Populate Contact Status Reason">
+      <XamlFileName>/Workflows/ECER-WF-PopulateContactStatusReason-A9A624BC-5E87-EF11-AC21-000D3A0A4C90.xaml</XamlFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>0</Category>
+      <Mode>1</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnUpdateAttributeList>ecer_isverified,ecer_hasprovidedid</TriggerOnUpdateAttributeList>
+      <TriggerOnCreate>1</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <CreateStage>40</CreateStage>
+      <UpdateStage>40</UpdateStage>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.48</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>Contact</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - WF - Populate Contact Status Reason" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{dc5fccaa-992d-ef11-8e4f-000d3af45c14}" Name="ECER - On Certification Type Changed on Certified Level">
+      <JsonFileName>/Workflows/ECER-OnCertificationTypeChangedonCertifiedLevel-DC5FCCAA-992D-EF11-8E4F-000D3AF45C14.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.16</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - On Certification Type Changed on Certified Level" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{2419e1d2-742e-ef11-8e4f-000d3af45c14}" Name="ECER - Set Has Current Condition Flag on Conditions Changes">
+      <JsonFileName>/Workflows/ECER-SetHasCurrentConditionFlagonConditionsChanges-2419E1D2-742E-EF11-8E4F-000D3AF45C14.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.17</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Has Current Condition Flag on Conditions Changes" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{2297869f-e92f-ef11-8e4f-000d3af45c14}" Name="ECER - CF - Previous Name Check On Education Transcript - CE">
+      <JsonFileName>/Workflows/ECER-CF-PreviousNameCheckOnEducationTranscript-CE-2297869F-E92F-EF11-8E4F-000D3AF45C14.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.18</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - CF - Previous Name Check On Education Transcript - CE" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{d22c4dfc-be38-ef11-a316-000d3af45c14}" Name="ECER - Update Status Reason and Detail on Assessor Assignment - CE">
+      <JsonFileName>/Workflows/ECER-UpdateStatusReasonandDetailonAssessorAssignme-D22C4DFC-BE38-EF11-A316-000D3AF45C14.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.20</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Update Status Reason and Detail on Assessor Assignment - CE" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{d9d0ac72-8744-ef11-a316-000d3af45c14}" Name="ECER - Application Approval Letter on Certificate Created CE">
+      <JsonFileName>/Workflows/ECER-ApplicationApprovalLetteronCertificateCreated-D9D0AC72-8744-EF11-A316-000D3AF45C14.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.24</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Application Approval Letter on Certificate Created CE" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{b8718976-6d48-ef11-accd-000d3af45c14}" Name="ECER - Program Application Assignment on BPF Stage Change">
+      <JsonFileName>/Workflows/ECER-ProgramApplicationAssignmentonBPFStageChange-B8718976-6D48-EF11-ACCD-000D3AF45C14.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.25</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Program Application Assignment on BPF Stage Change" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{dc223962-4649-ef11-accd-000d3af45c14}" Name="ECER - Rollup of Related Complaints/Referrals/Investigations to Primary Record">
+      <JsonFileName>/Workflows/ECER-RollupofRelatedComplaintsReferralsInvestigati-DC223962-4649-EF11-ACCD-000D3AF45C14.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.25</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Rollup of Related Complaints/Referrals/Investigations to Primary Record" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{19647ebb-aa4a-ef11-accd-000d3af45c14}" Name="ECER - Program Application assign to Program Analyst team when Submitted">
+      <JsonFileName>/Workflows/ECER-ProgramApplicationassigntoProgramAnalystteamw-19647EBB-AA4A-EF11-ACCD-000D3AF45C14.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.26</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Program Application assign to Program Analyst team when Submitted" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{cee5d228-d04e-ef11-accd-000d3af45c14}" Name="ECER - Set Cancellation Date on Certficate">
+      <JsonFileName>/Workflows/ECER-SetCancellationDateonCertficate-CEE5D228-D04E-EF11-ACCD-000D3AF45C14.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.27</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Cancellation Date on Certficate" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{fb9f1f30-bd22-ef11-840a-000d3af46033}" Name="ECER - New Portal Invitation on Additional WER">
+      <JsonFileName>/Workflows/ECER-NewPortalInvitationonAdditionalWER-FB9F1F30-BD22-EF11-840A-000D3AF46033.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.12</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - New Portal Invitation on Additional WER" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{8a3db65a-1313-ef11-9f89-000d3af46033}" Name="ECER - Program Application Set Program Type for Program Profile when approved">
+      <JsonFileName>/Workflows/ECER-ProgramApplicationSetProgramTypeforProgramPro-8A3DB65A-1313-EF11-9F89-000D3AF46033.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.9</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Program Application Set Program Type for Program Profile when approved" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{f2ba4b29-9018-ef11-840b-000d3af4a207}" Name="ECER - PSP Interview create questions">
+      <JsonFileName>/Workflows/ECER-PSPInterviewcreatequestions-F2BA4B29-9018-EF11-840B-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.10</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - PSP Interview create questions" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{4957c416-5732-ef11-8e4f-000d3af4a207}" Name="ECER - Route Application to Complete Stage - CE">
+      <JsonFileName>/Workflows/ECER-RouteApplicationtoCompleteStage-CE-4957C416-5732-EF11-8E4F-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.18</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Route Application to Complete Stage - CE" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{891aa7ef-5c32-ef11-8e4f-000d3af4a207}" Name="ECER - Investigation Log Assignee on Owner Change">
+      <JsonFileName>/Workflows/ECER-InvestigationLogAssigneeonOwnerChange-891AA7EF-5C32-EF11-8E4F-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.18</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Investigation Log Assignee on Owner Change" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{528b73fb-912d-ef11-8e50-000d3af4a207}" Name="ECER - Investigation Assignment on BPF Stage Change">
+      <JsonFileName>/Workflows/ECER-InvestigationAssignmentonBPFStageChange-528B73FB-912D-EF11-8E50-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.16</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Investigation Assignment on BPF Stage Change" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{f7a709d2-1e30-ef11-8e50-000d3af4a207}" Name="ECER - Populate Parent Communication IF Is Root">
+      <JsonFileName>/Workflows/ECER-PopulateParentCommunicationIFIsRoot-F7A709D2-1E30-EF11-8E50-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.18</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Populate Parent Communication IF Is Root" />
+      </LocalizedNames>
+    </Workflow>
     <Workflow WorkflowId="{35647159-20cc-ee11-9078-000d3af4a207}" Name="ECER - Routing Application on BPF Stage Change">
       <JsonFileName>/Workflows/ECER-RoutingApplicationonBPFStageChange-35647159-20CC-EE11-9078-000D3AF4A207.json</JsonFileName>
       <Type>1</Type>
@@ -27,8 +933,8 @@
         <LocalizedName languagecode="1033" description="ECER - Routing Application on BPF Stage Change" />
       </LocalizedNames>
     </Workflow>
-    <Workflow WorkflowId="{02f03ab3-74f7-ee11-a1ff-000d3af4a207}" Name="ECER - Populate Transcript Program or Course Name">
-      <JsonFileName>/Workflows/ECER-PopulateTranscriptProgramorCourseName-02F03AB3-74F7-EE11-A1FF-000D3AF4A207.json</JsonFileName>
+    <Workflow WorkflowId="{88f3308e-dffc-ee11-9f8a-000d3af4a207}" Name="ECER - Populate Declaration Statements on Application Created">
+      <JsonFileName>/Workflows/ECER-PopulateDeclarationStatementsonApplicationCre-88F3308E-DFFC-EE11-9F8A-000D3AF4A207.json</JsonFileName>
       <Type>1</Type>
       <Subprocess>0</Subprocess>
       <Category>5</Category>
@@ -43,13 +949,188 @@
       <StatusCode>2</StatusCode>
       <RunAs>1</RunAs>
       <IsTransacted>1</IsTransacted>
-      <IntroducedVersion>1.0.0.0</IntroducedVersion>
+      <IntroducedVersion>1.0.0.2</IntroducedVersion>
       <IsCustomizable>1</IsCustomizable>
       <BusinessProcessType>0</BusinessProcessType>
       <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
       <PrimaryEntity>none</PrimaryEntity>
       <LocalizedNames>
-        <LocalizedName languagecode="1033" description="ECER - Populate Transcript Program or Course Name" />
+        <LocalizedName languagecode="1033" description="ECER - Populate Declaration Statements on Application Created" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{4fd66507-a6fe-ee11-9f8a-000d3af4a207}" Name="ECER - Send Reference Invitation Email">
+      <JsonFileName>/Workflows/ECER-SendReferenceInvitationEmail-4FD66507-A6FE-EE11-9F8A-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.3</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Send Reference Invitation Email" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{a889a5c7-be00-ef11-9f8a-000d3af4a207}" Name="ECER - Set Document Tag for Email">
+      <JsonFileName>/Workflows/ECER-SetDocumentTagforEmail-A889A5C7-BE00-EF11-9F8A-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.4</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Document Tag for Email" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{2aa23def-fd03-ef11-9f8a-000d3af4a207}" Name="ECER - Program Profile duplicate the most current record for each PSI">
+      <JsonFileName>/Workflows/ECER-ProgramProfileduplicatethemostcurrentrecordfo-2AA23DEF-FD03-EF11-9F8A-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.5</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Program Profile duplicate the most current record for each PSI" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{288fcca9-3f07-ef11-9f8a-000d3af4a207}" Name="ECER - New Portal Invitation on WER Invite Again">
+      <JsonFileName>/Workflows/ECER-NewPortalInvitationonWERInviteAgain-288FCCA9-3F07-EF11-9F8A-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.5</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - New Portal Invitation on WER Invite Again" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{7fc4308b-c10b-ef11-9f8a-000d3af4a207}" Name="ECER - Set Active Certificate to Expired on day after Expiry">
+      <JsonFileName>/Workflows/ECER-SetActiveCertificatetoExpiredondayafterExpiry-7FC4308B-C10B-EF11-9F8A-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.6</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Active Certificate to Expired on day after Expiry" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{56a1f085-440e-ef11-9f8a-000d3af4a207}" Name="ECER - PSP Site Visit reminder 1 week from today">
+      <JsonFileName>/Workflows/ECER-PSPSiteVisitreminder1weekfromtoday-56A1F085-440E-EF11-9F8A-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.7</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - PSP Site Visit reminder 1 week from today" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{94f1ce82-1e12-ef11-9f8a-000d3af4a207}" Name="ECER - Assign Document URL record to Linked Record Team">
+      <JsonFileName>/Workflows/ECER-AssignDocumentURLrecordtoLinkedRecordTeam-94F1CE82-1E12-EF11-9F8A-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.8</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Assign Document URL record to Linked Record Team" />
       </LocalizedNames>
     </Workflow>
     <Workflow WorkflowId="{6033a3eb-3de6-ee11-a204-000d3af4a207}" Name="ECER - On Work Experience Reference status change to Submitted">
@@ -75,6 +1156,156 @@
       <PrimaryEntity>none</PrimaryEntity>
       <LocalizedNames>
         <LocalizedName languagecode="1033" description="ECER - On Work Experience Reference status change to Submitted" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{3c7ca37a-6739-ef11-a317-000d3af4a207}" Name="ECER - CF - Generate Assessment Records">
+      <JsonFileName>/Workflows/ECER-CF-GenerateAssessmentRecords-3C7CA37A-6739-EF11-A317-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.21</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - CF - Generate Assessment Records" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{21b52e41-703d-ef11-a317-000d3af4a207}" Name="ECER - Update Parental Consent on Application - CE">
+      <JsonFileName>/Workflows/ECER-UpdateParentalConsentonApplication-CE-21B52E41-703D-EF11-A317-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.22</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Update Parental Consent on Application - CE" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{ee0c0a85-163f-ef11-a317-000d3af4a207}" Name="ECER - Close Applications Past Reconsideration or Appeal Date - CE">
+      <JsonFileName>/Workflows/ECER-CloseApplicationsPastReconsiderationorAppealD-EE0C0A85-163F-EF11-A317-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.22</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Close Applications Past Reconsideration or Appeal Date - CE" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{a3c5d1e9-b243-ef11-a317-000d3af4a207}" Name="ECER - Generate Notice of Investigation Template Content">
+      <JsonFileName>/Workflows/ECER-GenerateNoticeofInvestigationTemplateContent-A3C5D1E9-B243-EF11-A317-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.23</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Generate Notice of Investigation Template Content" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{cd512aea-4c45-ef11-a317-000d3af4a207}" Name="ECER - Notify Investigations when ECE has Suspended Certificate or T&amp;Cs on Application Submission">
+      <JsonFileName>/Workflows/ECER-NotifyInvestigationswhenECEhasSuspendedCertif-CD512AEA-4C45-EF11-A317-000D3AF4A207.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.24</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Notify Investigations when ECE has Suspended Certificate or T&amp;Cs on Application Submission" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{afff218f-0955-ef11-bfe3-000d3af4ec16}" Name="ECER - Application Assessment on Good Character Accepted">
+      <JsonFileName>/Workflows/ECER-ApplicationAssessmentonGoodCharacterAccepted-AFFF218F-0955-EF11-BFE3-000D3AF4EC16.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.29</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Application Assessment on Good Character Accepted" />
       </LocalizedNames>
     </Workflow>
     <Workflow WorkflowId="{57844f54-98cf-ee11-904d-000d3af4f18a}" Name="ECER - Task Association to Application">
@@ -252,31 +1483,6 @@
         <LocalizedName languagecode="1033" description="ECER - Generate Communication on Transcript Received" />
       </LocalizedNames>
     </Workflow>
-    <Workflow WorkflowId="{b3c5f56c-9cb5-ee11-a569-000d3af4f18a}" Name="ECER - Generate Communication on Ready for Assessment">
-      <JsonFileName>/Workflows/ECER-GenerateCommunicationonReadyforAssessment-B3C5F56C-9CB5-EE11-A569-000D3AF4F18A.json</JsonFileName>
-      <Type>1</Type>
-      <Subprocess>0</Subprocess>
-      <Category>5</Category>
-      <Mode>0</Mode>
-      <Scope>4</Scope>
-      <OnDemand>0</OnDemand>
-      <TriggerOnCreate>0</TriggerOnCreate>
-      <TriggerOnDelete>0</TriggerOnDelete>
-      <AsyncAutodelete>0</AsyncAutodelete>
-      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
-      <StateCode>1</StateCode>
-      <StatusCode>2</StatusCode>
-      <RunAs>1</RunAs>
-      <IsTransacted>1</IsTransacted>
-      <IntroducedVersion>1.0.0.1</IntroducedVersion>
-      <IsCustomizable>1</IsCustomizable>
-      <BusinessProcessType>0</BusinessProcessType>
-      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
-      <PrimaryEntity>none</PrimaryEntity>
-      <LocalizedNames>
-        <LocalizedName languagecode="1033" description="ECER - Generate Communication on Ready for Assessment" />
-      </LocalizedNames>
-    </Workflow>
     <Workflow WorkflowId="{4087a819-32be-ee11-9079-000d3af4fa73}" Name="ECER - Inactive status 1 day after creation (Comment)">
       <JsonFileName>/Workflows/ECER-Inactivestatus1dayaftercreationComment-4087A819-32BE-EE11-9079-000D3AF4FA73.json</JsonFileName>
       <Type>1</Type>
@@ -302,33 +1508,8 @@
         <LocalizedName languagecode="1033" description="ECER - Inactive status 1 day after creation (Comment)" />
       </LocalizedNames>
     </Workflow>
-    <Workflow WorkflowId="{11588905-9fca-ee11-9079-000d3af4fa73}" Name="ECER - Send Work Experience Reference Email on Application Submitted">
-      <JsonFileName>/Workflows/ECER-SendWorkExperienceReferenceEmailonApplication-11588905-9FCA-EE11-9079-000D3AF4FA73.json</JsonFileName>
-      <Type>1</Type>
-      <Subprocess>0</Subprocess>
-      <Category>5</Category>
-      <Mode>0</Mode>
-      <Scope>4</Scope>
-      <OnDemand>0</OnDemand>
-      <TriggerOnCreate>0</TriggerOnCreate>
-      <TriggerOnDelete>0</TriggerOnDelete>
-      <AsyncAutodelete>0</AsyncAutodelete>
-      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
-      <StateCode>1</StateCode>
-      <StatusCode>2</StatusCode>
-      <RunAs>1</RunAs>
-      <IsTransacted>1</IsTransacted>
-      <IntroducedVersion>1.0.0.3</IntroducedVersion>
-      <IsCustomizable>1</IsCustomizable>
-      <BusinessProcessType>0</BusinessProcessType>
-      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
-      <PrimaryEntity>none</PrimaryEntity>
-      <LocalizedNames>
-        <LocalizedName languagecode="1033" description="ECER - Send Work Experience Reference Email on Application Submitted" />
-      </LocalizedNames>
-    </Workflow>
-    <Workflow WorkflowId="{8383795c-05aa-ee11-a569-000d3af4fa73}" Name="ECER - Log Previous address for home address changes (Contacts)">
-      <JsonFileName>/Workflows/ECER-LogPreviousaddressforhomeaddresschangesContac-8383795C-05AA-EE11-A569-000D3AF4FA73.json</JsonFileName>
+    <Workflow WorkflowId="{8383795c-05aa-ee11-a569-000d3af4fa73}" Name="ECER - Log Home Address Changes on Contact Modified">
+      <JsonFileName>/Workflows/ECER-LogHomeAddressChangesonContactModified-8383795C-05AA-EE11-A569-000D3AF4FA73.json</JsonFileName>
       <Type>1</Type>
       <Subprocess>0</Subprocess>
       <Category>5</Category>
@@ -349,7 +1530,7 @@
       <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
       <PrimaryEntity>none</PrimaryEntity>
       <LocalizedNames>
-        <LocalizedName languagecode="1033" description="ECER - Log Previous address for home address changes (Contacts)" />
+        <LocalizedName languagecode="1033" description="ECER - Log Home Address Changes on Contact Modified" />
       </LocalizedNames>
     </Workflow>
     <Workflow WorkflowId="{9b732d6e-a39a-ee11-be37-000d3af4fa73}" Name="ECER - Log Mailing Address on Contact Modified">
@@ -452,8 +1633,8 @@
         <LocalizedName languagecode="1033" description="ECER - Populate Decision Comment Name" />
       </LocalizedNames>
     </Workflow>
-    <Workflow WorkflowId="{c5910727-66c0-ee11-9079-000d3af4fd74}" Name="ECER - Calculate Approved Work Experience Hours">
-      <JsonFileName>/Workflows/ECER-CalculateApprovedWorkExperienceHours-C5910727-66C0-EE11-9079-000D3AF4FD74.json</JsonFileName>
+    <Workflow WorkflowId="{c5910727-66c0-ee11-9079-000d3af4fd74}" Name="ECER - Calculate Work Experience Hours Subtotals - CE">
+      <JsonFileName>/Workflows/ECER-CalculateWorkExperienceHoursSubtotals-CE-C5910727-66C0-EE11-9079-000D3AF4FD74.json</JsonFileName>
       <Type>1</Type>
       <Subprocess>0</Subprocess>
       <Category>5</Category>
@@ -474,7 +1655,7 @@
       <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
       <PrimaryEntity>none</PrimaryEntity>
       <LocalizedNames>
-        <LocalizedName languagecode="1033" description="ECER - Calculate Approved Work Experience Hours" />
+        <LocalizedName languagecode="1033" description="ECER - Calculate Work Experience Hours Subtotals - CE" />
       </LocalizedNames>
     </Workflow>
     <Workflow WorkflowId="{0dc29a4f-24c1-ee11-9079-000d3af4fd74}" Name="ECER - Populate Transcript Name">
@@ -552,8 +1733,8 @@
         <LocalizedName languagecode="1033" description="ECER - Email Association to Application" />
       </LocalizedNames>
     </Workflow>
-    <Workflow WorkflowId="{f462204c-54b5-ee11-a569-000d3af4fd74}" Name="ECER - Application Assignment on Status Change">
-      <JsonFileName>/Workflows/ECER-ApplicationAssignmentonStatusChange-F462204C-54B5-EE11-A569-000D3AF4FD74.json</JsonFileName>
+    <Workflow WorkflowId="{f462204c-54b5-ee11-a569-000d3af4fd74}" Name="ECER - Application Assignment on Status Change - CE">
+      <JsonFileName>/Workflows/ECER-ApplicationAssignmentonStatusChange-CE-F462204C-54B5-EE11-A569-000D3AF4FD74.json</JsonFileName>
       <Type>1</Type>
       <Subprocess>0</Subprocess>
       <Category>5</Category>
@@ -574,7 +1755,7 @@
       <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
       <PrimaryEntity>none</PrimaryEntity>
       <LocalizedNames>
-        <LocalizedName languagecode="1033" description="ECER - Application Assignment on Status Change" />
+        <LocalizedName languagecode="1033" description="ECER - Application Assignment on Status Change - CE" />
       </LocalizedNames>
     </Workflow>
     <Workflow WorkflowId="{d5582eab-afbf-ee11-9079-000d3af4febe}" Name="ECER - Populate Application Certificate Type">
@@ -602,8 +1783,8 @@
         <LocalizedName languagecode="1033" description="ECER - Populate Application Certificate Type" />
       </LocalizedNames>
     </Workflow>
-    <Workflow WorkflowId="{3657d7d4-c6c9-ee11-9079-000d3af4febe}" Name="ECER - Update Status and Assignment on Escalated">
-      <JsonFileName>/Workflows/ECER-UpdateStatusandAssignmentonEscalated-3657D7D4-C6C9-EE11-9079-000D3AF4FEBE.json</JsonFileName>
+    <Workflow WorkflowId="{3657d7d4-c6c9-ee11-9079-000d3af4febe}" Name="ECER - Update Status and Assignment on Escalated - CE">
+      <JsonFileName>/Workflows/ECER-UpdateStatusandAssignmentonEscalated-CE-3657D7D4-C6C9-EE11-9079-000D3AF4FEBE.json</JsonFileName>
       <Type>1</Type>
       <Subprocess>0</Subprocess>
       <Category>5</Category>
@@ -624,11 +1805,11 @@
       <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
       <PrimaryEntity>none</PrimaryEntity>
       <LocalizedNames>
-        <LocalizedName languagecode="1033" description="ECER - Update Status and Assignment on Escalated" />
+        <LocalizedName languagecode="1033" description="ECER - Update Status and Assignment on Escalated - CE" />
       </LocalizedNames>
     </Workflow>
-    <Workflow WorkflowId="{dadb3640-cfc9-ee11-9079-000d3af4febe}" Name="ECER - Send Character Reference Email on Application Submitted">
-      <JsonFileName>/Workflows/ECER-SendCharacterReferenceEmailonApplicationSubmi-DADB3640-CFC9-EE11-9079-000D3AF4FEBE.json</JsonFileName>
+    <Workflow WorkflowId="{3f2dbfe7-ab29-ef11-840a-0022486dc4b6}" Name="ECER - On Work Experience Reference Status set to Rejected">
+      <JsonFileName>/Workflows/ECER-OnWorkExperienceReferenceStatussettoRejected-3F2DBFE7-AB29-EF11-840A-0022486DC4B6.json</JsonFileName>
       <Type>1</Type>
       <Subprocess>0</Subprocess>
       <Category>5</Category>
@@ -643,13 +1824,113 @@
       <StatusCode>2</StatusCode>
       <RunAs>1</RunAs>
       <IsTransacted>1</IsTransacted>
-      <IntroducedVersion>1.0.0.3</IntroducedVersion>
+      <IntroducedVersion>1.0.0.15</IntroducedVersion>
       <IsCustomizable>1</IsCustomizable>
       <BusinessProcessType>0</BusinessProcessType>
       <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
       <PrimaryEntity>none</PrimaryEntity>
       <LocalizedNames>
-        <LocalizedName languagecode="1033" description="ECER - Send Character Reference Email on Application Submitted" />
+        <LocalizedName languagecode="1033" description="ECER - On Work Experience Reference Status set to Rejected" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{555cb042-a734-ef11-8e4e-0022486dc4b6}" Name="ECER - Populate Subject from Parent Communication">
+      <JsonFileName>/Workflows/ECER-PopulateSubjectfromParentCommunication-555CB042-A734-EF11-8E4E-0022486DC4B6.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.19</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Populate Subject from Parent Communication" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{c4241fc5-6e35-ef11-8e4e-0022486dc4b6}" Name="ECER - Set Do Not Reply to All Message in Collection">
+      <JsonFileName>/Workflows/ECER-SetDoNotReplytoAllMessageinCollection-C4241FC5-6E35-EF11-8E4E-0022486DC4B6.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.20</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Do Not Reply to All Message in Collection" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{78de3693-8738-ef11-a316-0022486dc4b6}" Name="ECER - Set Root Message Do Not Reply">
+      <JsonFileName>/Workflows/ECER-SetRootMessageDoNotReply-78DE3693-8738-EF11-A316-0022486DC4B6.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.20</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Root Message Do Not Reply" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{75d8d21a-a739-ef11-a316-0022486dc4b6}" Name="ECER - Generate Assessment">
+      <JsonFileName>/Workflows/ECER-GenerateAssessment-75D8D21A-A739-EF11-A316-0022486DC4B6.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.21</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Generate Assessment" />
       </LocalizedNames>
     </Workflow>
     <Workflow WorkflowId="{425afcd6-badc-ee11-904c-0022486e0199}" Name="ECER - Populate Certificate Name on Create">
@@ -677,31 +1958,6 @@
         <LocalizedName languagecode="1033" description="ECER - Populate Certificate Name on Create" />
       </LocalizedNames>
     </Workflow>
-    <Workflow WorkflowId="{8d3c2230-cbe0-ee11-904c-0022486e0199}" Name="ECER - Daily Delete DRAFT application after 30 days">
-      <JsonFileName>/Workflows/ECER-DailyDeleteDRAFTapplicationafter30days-8D3C2230-CBE0-EE11-904C-0022486E0199.json</JsonFileName>
-      <Type>1</Type>
-      <Subprocess>0</Subprocess>
-      <Category>5</Category>
-      <Mode>0</Mode>
-      <Scope>4</Scope>
-      <OnDemand>0</OnDemand>
-      <TriggerOnCreate>0</TriggerOnCreate>
-      <TriggerOnDelete>0</TriggerOnDelete>
-      <AsyncAutodelete>0</AsyncAutodelete>
-      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
-      <StateCode>1</StateCode>
-      <StatusCode>2</StatusCode>
-      <RunAs>1</RunAs>
-      <IsTransacted>1</IsTransacted>
-      <IntroducedVersion>1.0.0.11</IntroducedVersion>
-      <IsCustomizable>1</IsCustomizable>
-      <BusinessProcessType>0</BusinessProcessType>
-      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
-      <PrimaryEntity>none</PrimaryEntity>
-      <LocalizedNames>
-        <LocalizedName languagecode="1033" description="ECER - Daily Delete DRAFT application after 30 days" />
-      </LocalizedNames>
-    </Workflow>
     <Workflow WorkflowId="{dfc6730d-52e1-ee11-904c-0022486e0199}" Name="ECER - Log Application Assignee on Ownerid change">
       <JsonFileName>/Workflows/ECER-LogApplicationAssigneeonOwneridchange-DFC6730D-52E1-EE11-904C-0022486E0199.json</JsonFileName>
       <Type>1</Type>
@@ -725,6 +1981,56 @@
       <PrimaryEntity>none</PrimaryEntity>
       <LocalizedNames>
         <LocalizedName languagecode="1033" description="ECER - Log Application Assignee on Ownerid change" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{7869b0f0-6afb-ee11-9f89-0022486e0199}" Name="ECER - Investigation Copy Intake Involved Persons and Allegations to Active">
+      <JsonFileName>/Workflows/ECER-InvestigationCopyIntakeInvolvedPersonsandAlle-7869B0F0-6AFB-EE11-9F89-0022486E0199.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.2</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Investigation Copy Intake Involved Persons and Allegations to Active" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{e25cac38-501d-ef11-840b-0022486e1cec}" Name="ECER - Notify Portal User of New Portal Message">
+      <JsonFileName>/Workflows/ECER-NotifyPortalUserofNewPortalMessage-E25CAC38-501D-EF11-840B-0022486E1CEC.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.11</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Notify Portal User of New Portal Message" />
       </LocalizedNames>
     </Workflow>
     <Workflow WorkflowId="{38df3196-29db-ee11-904c-0022486e1cec}" Name="ECER - Populate Province TEXT field for Character Reference">
@@ -752,8 +2058,8 @@
         <LocalizedName languagecode="1033" description="ECER - Populate Province TEXT field for Character Reference" />
       </LocalizedNames>
     </Workflow>
-    <Workflow WorkflowId="{d0395999-66e1-ee11-904c-0022486e1cec}" Name="ECER - Create Certficate Record">
-      <JsonFileName>/Workflows/ECER-CreateCertficateRecord-D0395999-66E1-EE11-904C-0022486E1CEC.json</JsonFileName>
+    <Workflow WorkflowId="{d0395999-66e1-ee11-904c-0022486e1cec}" Name="ECER - Create Certficate Record - CE">
+      <JsonFileName>/Workflows/ECER-CreateCertficateRecord-CE-D0395999-66E1-EE11-904C-0022486E1CEC.json</JsonFileName>
       <Type>1</Type>
       <Subprocess>0</Subprocess>
       <Category>5</Category>
@@ -774,11 +2080,11 @@
       <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
       <PrimaryEntity>none</PrimaryEntity>
       <LocalizedNames>
-        <LocalizedName languagecode="1033" description="ECER - Create Certficate Record" />
+        <LocalizedName languagecode="1033" description="ECER - Create Certficate Record - CE" />
       </LocalizedNames>
     </Workflow>
-    <Workflow WorkflowId="{861809cb-85ec-ee11-a1fd-0022486e1cec}" Name="ECER - PSI Calculate total basic ECE hours on Program Profile">
-      <JsonFileName>/Workflows/ECER-PSICalculatetotalbasicECEhoursonProgramProfil-861809CB-85EC-EE11-A1FD-0022486E1CEC.json</JsonFileName>
+    <Workflow WorkflowId="{cdec36cb-490e-ef11-9f8a-0022486e1cec}" Name="ECER - On Education Transcript Status Reason Changed ">
+      <JsonFileName>/Workflows/ECER-OnEducationTranscriptStatusReasonChanged-CDEC36CB-490E-EF11-9F8A-0022486E1CEC.json</JsonFileName>
       <Type>1</Type>
       <Subprocess>0</Subprocess>
       <Category>5</Category>
@@ -793,13 +2099,38 @@
       <StatusCode>2</StatusCode>
       <RunAs>1</RunAs>
       <IsTransacted>1</IsTransacted>
-      <IntroducedVersion>1.0.0.15</IntroducedVersion>
+      <IntroducedVersion>1.0.0.7</IntroducedVersion>
       <IsCustomizable>1</IsCustomizable>
       <BusinessProcessType>0</BusinessProcessType>
       <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
       <PrimaryEntity>none</PrimaryEntity>
       <LocalizedNames>
-        <LocalizedName languagecode="1033" description="ECER - PSI Calculate total basic ECE hours on Program Profile" />
+        <LocalizedName languagecode="1033" description="ECER - On Education Transcript Status Reason Changed " />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{ea76fc80-1cf8-ee11-a1fe-0022486e1cec}" Name="ECER - Automated Profile Verification BCSC Application">
+      <JsonFileName>/Workflows/ECER-AutomatedProfileVerificationBCSCApplication-EA76FC80-1CF8-EE11-A1FE-0022486E1CEC.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.1</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Automated Profile Verification BCSC Application" />
       </LocalizedNames>
     </Workflow>
     <Workflow WorkflowId="{6d54a5ff-2fdb-ee11-904c-002248d56374}" Name="ECER - Populate Province TEXT field for Work Experience Reference">
@@ -852,6 +2183,59 @@
         <LocalizedName languagecode="1033" description="ECER - On Character Reference status change to Submitted" />
       </LocalizedNames>
     </Workflow>
+    <Workflow WorkflowId="{a81f19c1-72fb-ee11-9f89-002248d56374}" Name="ECER - Investigation capture last status reason">
+      <XamlFileName>/Workflows/ECER-Investigationcapturelaststatusreason-A81F19C1-72FB-EE11-9F89-002248D56374.xaml</XamlFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>0</Category>
+      <Mode>1</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnUpdateAttributeList>statuscode</TriggerOnUpdateAttributeList>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <CreateStage>40</CreateStage>
+      <UpdateStage>20</UpdateStage>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.21</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>ecer_Investigation</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Investigation capture last status reason" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{e72e0543-5303-ef11-9f89-002248d56374}" Name="ECER - Program Profile annual submission reminder">
+      <JsonFileName>/Workflows/ECER-ProgramProfileannualsubmissionreminder-E72E0543-5303-EF11-9F89-002248D56374.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.5</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Program Profile annual submission reminder" />
+      </LocalizedNames>
+    </Workflow>
     <Workflow WorkflowId="{892b7daf-e5e4-ee11-a203-002248d56374}" Name="ECER - Investigation assign Name &amp; Applicant information">
       <JsonFileName>/Workflows/ECER-InvestigationassignNameApplicantinformation-892B7DAF-E5E4-EE11-A203-002248D56374.json</JsonFileName>
       <Type>1</Type>
@@ -877,6 +2261,1404 @@
         <LocalizedName languagecode="1033" description="ECER - Investigation assign Name &amp; Applicant information" />
       </LocalizedNames>
     </Workflow>
+    <Workflow WorkflowId="{6ee515e5-2625-ef11-840a-6045bdcce71f}" Name="ECER - Set Previous Name to Ready for Verification on Associate to Previous Name">
+      <JsonFileName>/Workflows/ECER-SetPreviousNametoReadyforVerificationonAssoci-6EE515E5-2625-EF11-840A-6045BDCCE71F.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.13</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Previous Name to Ready for Verification on Associate to Previous Name" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{c2df4d8c-508b-ef11-8a69-6045bdccf571}" Name="ECER - Populate Involved Persons Name">
+      <JsonFileName>/Workflows/ECER-PopulateInvolvedPersonsName-C2DF4D8C-508B-EF11-8A69-6045BDCCF571.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.49</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Populate Involved Persons Name" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{5336e75b-fd8b-ef11-8a69-6045bdccf571}" Name="ECER - Change Investigation Status to Monitoring when BPF stage is Monitoring">
+      <JsonFileName>/Workflows/ECER-ChangeInvestigationStatustoMonitoringwhenBPFs-5336E75B-FD8B-EF11-8A69-6045BDCCF571.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.50</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Change Investigation Status to Monitoring when BPF stage is Monitoring" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{14a2a506-af90-ef11-8a69-6045bdccf571}" Name="ECER - Set Origin Fields on Related Tables if Draft">
+      <JsonFileName>/Workflows/ECER-SetOriginFieldsonRelatedTablesifDraft-14A2A506-AF90-EF11-8A69-6045BDCCF571.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.52</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Origin Fields on Related Tables if Draft" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{27680940-969c-ef11-8a69-6045bdccf571}" Name="ECER - WF - Set Base Certificate Type">
+      <XamlFileName>/Workflows/ECER-WF-SetBaseCertificateType-27680940-969C-EF11-8A69-6045BDCCF571.xaml</XamlFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>0</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>1</OnDemand>
+      <TriggerOnUpdateAttributeList>ecer_certificatetypeid,ecer_certificateid</TriggerOnUpdateAttributeList>
+      <TriggerOnCreate>1</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>1</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.59</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>ecer_CertifiedLevel</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - WF - Set Base Certificate Type" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{7d52d3a8-a885-ef11-ac20-6045bdccf571}" Name="ECER - Set Investigation Appeal Period End Date">
+      <JsonFileName>/Workflows/ECER-SetInvestigationAppealPeriodEndDate-7D52D3A8-A885-EF11-AC20-6045BDCCF571.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.47</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Investigation Appeal Period End Date" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{18a0fecc-0a07-ef11-9f89-6045bdcd18f7}" Name="ECER - New Portal Invitation on CR Invite Again">
+      <JsonFileName>/Workflows/ECER-NewPortalInvitationonCRInviteAgain-18A0FECC-0A07-EF11-9F89-6045BDCD18F7.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.5</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - New Portal Invitation on CR Invite Again" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{c7315f4e-4007-ef11-9f89-6045bdcd18f7}" Name="ECER - Investigation Interview populate Investigation on uploaded file">
+      <JsonFileName>/Workflows/ECER-InvestigationInterviewpopulateInvestigationon-C7315F4E-4007-EF11-9F89-6045BDCD18F7.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.5</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Investigation Interview populate Investigation on uploaded file" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{8ab160f0-db0b-ef11-9f89-6045bdcd18f7}" Name="ECER - Set Certificate to Suspended">
+      <JsonFileName>/Workflows/ECER-SetCertificatetoSuspended-8AB160F0-DB0B-EF11-9F89-6045BDCD18F7.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.6</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Certificate to Suspended" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{b55e081b-de63-ef11-a671-6045bdcd4f9d}" Name="ECER - On Program Application Ownership Changed">
+      <JsonFileName>/Workflows/ECER-OnProgramApplicationOwnershipChanged-B55E081B-DE63-EF11-A671-6045BDCD4F9D.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.34</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - On Program Application Ownership Changed" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{c1ece2b6-335b-ef11-bfe3-6045bdcd4f9d}" Name="ECER - Bulk Approve Professional Development">
+      <JsonFileName>/Workflows/ECER-BulkApproveProfessionalDevelopment-C1ECE2B6-335B-EF11-BFE3-6045BDCD4F9D.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.32</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Bulk Approve Professional Development" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{6a30ddd5-bd60-ef11-bfe4-6045bdcd4f9d}" Name="ECER - Update Under Investigate via Investigation's Status Reason">
+      <JsonFileName>/Workflows/ECER-UpdateUnderInvestigateviaInvestigationsStatus-6A30DDD5-BD60-EF11-BFE4-6045BDCD4F9D.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.33</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Update Under Investigate via Investigation's Status Reason" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{da19c6d7-378b-ef11-8a6a-6045bdcd6cb0}" Name="ECER - Program Profile Courses Total Hours">
+      <JsonFileName>/Workflows/ECER-ProgramProfileCoursesTotalHours-DA19C6D7-378B-EF11-8A6A-6045BDCD6CB0.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.49</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Program Profile Courses Total Hours" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{cd4b50fe-2e92-ef11-8a6a-6045bdcd6cb0}" Name="ECER - Set Historical Decision Name Field">
+      <JsonFileName>/Workflows/ECER-SetHistoricalDecisionNameField-CD4B50FE-2E92-EF11-8A6A-6045BDCD6CB0.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.53</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Historical Decision Name Field" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{5fb80cd0-f39d-ef11-8a6a-6045bdcd6cb0}" Name="ECER - WF - Populate Document URL for Summary">
+      <XamlFileName>/Workflows/ECER-WF-PopulateDocumentURLforSummary-5FB80CD0-F39D-EF11-8A6A-6045BDCD6CB0.xaml</XamlFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>0</Category>
+      <Mode>1</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnUpdateAttributeList>ecer_certificatesummaryid</TriggerOnUpdateAttributeList>
+      <TriggerOnCreate>1</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <CreateStage>40</CreateStage>
+      <UpdateStage>40</UpdateStage>
+      <RunAs>0</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.60</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>bcgov_DocumentUrl</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - WF - Populate Document URL for Summary" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{98452c32-8970-ef11-a671-6045bdcd6cb0}" Name="ECER - Set Investigation Name">
+      <JsonFileName>/Workflows/ECER-SetInvestigationName-98452C32-8970-EF11-A671-6045BDCD6CB0.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Investigation Name" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{3de61ee1-3571-ef11-a671-6045bdcd6cb0}" Name="ECER - Set Site Visit Name">
+      <JsonFileName>/Workflows/ECER-SetSiteVisitName-3DE61EE1-3571-EF11-A671-6045BDCD6CB0.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Site Visit Name" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{eb4203e5-4571-ef11-a671-6045bdcd6cb0}" Name="ECER - Set Intake Involved Person Name">
+      <JsonFileName>/Workflows/ECER-SetIntakeInvolvedPersonName-EB4203E5-4571-EF11-A671-6045BDCD6CB0.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Intake Involved Person Name" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{e7d1a7c0-5771-ef11-a671-6045bdcd6cb0}" Name="ECER - Populate Registrant on Certificate for Certified Level">
+      <JsonFileName>/Workflows/ECER-PopulateRegistrantonCertificateforCertifiedLe-E7D1A7C0-5771-EF11-A671-6045BDCD6CB0.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Populate Registrant on Certificate for Certified Level" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{0dec8bf1-1c88-ef11-ac21-6045bdcd6cb0}" Name="ECER - Set Parallel Process on Application">
+      <JsonFileName>/Workflows/ECER-SetParallelProcessonApplication-0DEC8BF1-1C88-EF11-AC21-6045BDCD6CB0.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.48</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Parallel Process on Application" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{6283e440-8c5a-ef11-bfe3-6045bdcd6cb0}" Name="ECER - Professional Development Status Reason On Application Change">
+      <JsonFileName>/Workflows/ECER-ProfessionalDevelopmentStatusReasonOnApplicat-6283E440-8C5A-EF11-BFE3-6045BDCD6CB0.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.32</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Professional Development Status Reason On Application Change" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{fc02f650-cb29-ef11-840a-6045bdf9786d}" Name="ECER - On Character Reference Status set to Rejected">
+      <JsonFileName>/Workflows/ECER-OnCharacterReferenceStatussettoRejected-FC02F650-CB29-EF11-840A-6045BDF9786D.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.15</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - On Character Reference Status set to Rejected" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{662f2408-263b-ef11-a316-6045bdf9786d}" Name="ECER - Populate Customer For Document URL From Related">
+      <JsonFileName>/Workflows/ECER-PopulateCustomerForDocumentURLFromRelated-662F2408-263B-EF11-A316-6045BDF9786D.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.22</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Populate Customer For Document URL From Related" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{90daa501-ee3e-ef11-a316-6045bdf9786d}" Name="ECER - Set Reconsideration Period End Date - CE">
+      <JsonFileName>/Workflows/ECER-SetReconsiderationPeriodEndDate-CE-90DAA501-EE3E-EF11-A316-6045BDF9786D.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.22</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Reconsideration Period End Date - CE" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{78a64dc2-d063-ef11-a671-6045bdf9a93e}" Name="ECER - On Investigation Ownership Changed">
+      <JsonFileName>/Workflows/ECER-OnInvestigationOwnershipChanged-78A64DC2-D063-EF11-A671-6045BDF9A93E.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.34</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - On Investigation Ownership Changed" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{bb0ed7d3-8a5a-ef11-bfe2-6045bdf9a93e}" Name="ECER - On Professional Reference Status set to Rejected">
+      <JsonFileName>/Workflows/ECER-OnProfessionalReferenceStatussettoRejected-BB0ED7D3-8A5A-EF11-BFE2-6045BDF9A93E.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.32</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - On Professional Reference Status set to Rejected" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{bd3ce44b-9a5a-ef11-bfe2-6045bdf9a93e}" Name="ECER - Calculate Professional Development Hours Subtotals - CE">
+      <JsonFileName>/Workflows/ECER-CalculateProfessionalDevelopmentHoursSubtotal-BD3CE44B-9A5A-EF11-BFE2-6045BDF9A93E.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.32</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Calculate Professional Development Hours Subtotals - CE" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{5b8053e3-1b5b-ef11-bfe2-6045bdf9a93e}" Name="ECER - On Professional Development Approve Flag Changed">
+      <JsonFileName>/Workflows/ECER-OnProfessionalDevelopmentApproveFlagChanged-5B8053E3-1B5B-EF11-BFE2-6045BDF9A93E.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.32</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - On Professional Development Approve Flag Changed" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{31d3b542-8ba1-ef11-a72d-6045bdf9b81b}" Name="ECER - Investigation Assignment on  Manager Review in BPF stage">
+      <JsonFileName>/Workflows/ECER-InvestigationAssignmentonManagerReviewinBPFst-31D3B542-8BA1-EF11-A72D-6045BDF9B81B.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.64</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Investigation Assignment on  Manager Review in BPF stage" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{e468676f-b317-ef11-840a-6045bdf9ed54}" Name="ECER - PSP Site Visit create Site Visit checklist when new record is created">
+      <JsonFileName>/Workflows/ECER-PSPSiteVisitcreateSiteVisitchecklistwhennewre-E468676F-B317-EF11-840A-6045BDF9ED54.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.10</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - PSP Site Visit create Site Visit checklist when new record is created" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{e726d8a3-bc22-ef11-840a-6045bdf9ed54}" Name="ECER - New Portal Invitation additional Character Reference">
+      <JsonFileName>/Workflows/ECER-NewPortalInvitationadditionalCharacterReferen-E726D8A3-BC22-EF11-840A-6045BDF9ED54.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.12</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - New Portal Invitation additional Character Reference" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{4fe3ed0e-f2ad-ef11-a72d-7c1e5206334e}" Name="ECER - WF - Assign WER on Application Submitted">
+      <XamlFileName>/Workflows/ECER-WF-AssignWERonApplicationSubmitted-4FE3ED0E-F2AD-EF11-A72D-7C1E5206334E.xaml</XamlFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>0</Category>
+      <Mode>1</Mode>
+      <Scope>4</Scope>
+      <OnDemand>1</OnDemand>
+      <TriggerOnUpdateAttributeList>statuscode</TriggerOnUpdateAttributeList>
+      <TriggerOnCreate>1</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <CreateStage>40</CreateStage>
+      <UpdateStage>40</UpdateStage>
+      <RunAs>0</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.0</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>ecer_WorkExperienceRef</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - WF - Assign WER on Application Submitted" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{89058df7-faad-ef11-a72d-7c1e52063ad8}" Name="ECER - WF - Assign CR on Application Submitted">
+      <XamlFileName>/Workflows/ECER-WF-AssignCRonApplicationSubmitted-89058DF7-FAAD-EF11-A72D-7C1E52063AD8.xaml</XamlFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>0</Category>
+      <Mode>1</Mode>
+      <Scope>4</Scope>
+      <OnDemand>1</OnDemand>
+      <TriggerOnUpdateAttributeList>statuscode</TriggerOnUpdateAttributeList>
+      <TriggerOnCreate>1</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <CreateStage>40</CreateStage>
+      <UpdateStage>40</UpdateStage>
+      <RunAs>0</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.71</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>ecer_CharacterReference</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - WF - Assign CR on Application Submitted" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{8de6e655-fead-ef11-a72d-7c1e52063ad8}" Name="ECER - WF - Assign ET on Application Submitted">
+      <XamlFileName>/Workflows/ECER-WF-AssignETonApplicationSubmitted-8DE6E655-FEAD-EF11-A72D-7C1E52063AD8.xaml</XamlFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>0</Category>
+      <Mode>1</Mode>
+      <Scope>4</Scope>
+      <OnDemand>1</OnDemand>
+      <TriggerOnUpdateAttributeList>statuscode</TriggerOnUpdateAttributeList>
+      <TriggerOnCreate>1</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <CreateStage>40</CreateStage>
+      <UpdateStage>40</UpdateStage>
+      <RunAs>0</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.71</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>ecer_Transcript</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - WF - Assign ET on Application Submitted" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{ab1528c8-08ae-ef11-a72d-7c1e52063ad8}" Name="ECER - WF - Assign GR on Application Submitted">
+      <XamlFileName>/Workflows/ECER-WF-AssignGRonApplicationSubmitted-AB1528C8-08AE-EF11-A72D-7C1E52063AD8.xaml</XamlFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>0</Category>
+      <Mode>1</Mode>
+      <Scope>4</Scope>
+      <OnDemand>1</OnDemand>
+      <TriggerOnUpdateAttributeList>statuscode</TriggerOnUpdateAttributeList>
+      <TriggerOnCreate>1</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <CreateStage>40</CreateStage>
+      <UpdateStage>40</UpdateStage>
+      <RunAs>0</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.71</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>ecer_GuardianReference</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - WF - Assign GR on Application Submitted" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{6274707a-6a65-ef11-a670-7c1e520663eb}" Name="ECER - Generate Communication on Previous Name Status Changed">
+      <JsonFileName>/Workflows/ECER-GenerateCommunicationonPreviousNameStatusChan-6274707A-6A65-EF11-A670-7C1E520663EB.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.35</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Generate Communication on Previous Name Status Changed" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{e5d8445e-bf6b-ef11-a670-7c1e524070ba}" Name="ECER - Move Application Process to Assessment Review on Reconsideration">
+      <JsonFileName>/Workflows/ECER-MoveApplicationProcesstoAssessmentReviewonRec-E5D8445E-BF6B-EF11-A670-7C1E524070BA.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.36</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Move Application Process to Assessment Review on Reconsideration" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{cc649ab3-4d71-ef11-a670-7c1e524070ba}" Name="ECER - Populate Acknowledged Date">
+      <JsonFileName>/Workflows/ECER-PopulateAcknowledgedDate-CC649AB3-4D71-EF11-A670-7C1E524070BA.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Populate Acknowledged Date" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{62b0eca5-5271-ef11-a670-7c1e524070ba}" Name="ECER - Populate Display Name By Certificate Type">
+      <JsonFileName>/Workflows/ECER-PopulateDisplayNameByCertificateType-62B0ECA5-5271-EF11-A670-7C1E524070BA.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Populate Display Name By Certificate Type" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{e86f2be4-5474-ef11-ac20-7c1e524070ba}" Name="ECER - Clean Up Abandoned Applications">
+      <JsonFileName>/Workflows/ECER-CleanUpAbandonedApplications-E86F2BE4-5474-EF11-AC20-7C1E524070BA.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.39</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Clean Up Abandoned Applications" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{3d87ca8f-24ad-ef11-a72d-7c1e524087d5}" Name="ECER - Generate Certificate from Contact">
+      <JsonFileName>/Workflows/ECER-GenerateCertificatefromContact-3D87CA8F-24AD-EF11-A72D-7C1E524087D5.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.69</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Generate Certificate from Contact" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{29a58318-01ae-ef11-a72d-7c1e524087d5}" Name="ECER - WF - Assign PD on Application Submitted">
+      <XamlFileName>/Workflows/ECER-WF-AssignPDonApplicationSubmitted-29A58318-01AE-EF11-A72D-7C1E524087D5.xaml</XamlFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>0</Category>
+      <Mode>1</Mode>
+      <Scope>4</Scope>
+      <OnDemand>1</OnDemand>
+      <TriggerOnUpdateAttributeList>statuscode</TriggerOnUpdateAttributeList>
+      <TriggerOnCreate>1</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <CreateStage>40</CreateStage>
+      <UpdateStage>40</UpdateStage>
+      <RunAs>0</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.71</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>ecer_ProfessionalDevelopment</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - WF - Assign PD on Application Submitted" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{848ac84b-bd8c-ef11-8a69-7c1e524093cc}" Name="ECER - WF - Set Application Submitted Date">
+      <XamlFileName>/Workflows/ECER-WF-SetApplicationSubmittedDate-848AC84B-BD8C-EF11-8A69-7C1E524093CC.xaml</XamlFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>0</Category>
+      <Mode>1</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnUpdateAttributeList>statuscode</TriggerOnUpdateAttributeList>
+      <TriggerOnCreate>1</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <CreateStage>40</CreateStage>
+      <UpdateStage>40</UpdateStage>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.50</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>ecer_Application</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - WF - Set Application Submitted Date" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{dc6cd7ea-868d-ef11-8a69-7c1e524093cc}" Name="ECER - CF - Has Field Value Changed">
+      <JsonFileName>/Workflows/ECER-CF-HasFieldValueChanged-DC6CD7EA-868D-EF11-8A69-7C1E524093CC.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.50</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - CF - Has Field Value Changed" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{5e9f00f3-ae8d-ef11-8a69-7c1e524093cc}" Name="ECER - Update Communication Ownership On Association">
+      <JsonFileName>/Workflows/ECER-UpdateCommunicationOwnershipOnAssociation-5E9F00F3-AE8D-EF11-8A69-7C1E524093CC.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.50</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Update Communication Ownership On Association" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{98d41754-fb6a-ef11-a670-7c1e5240b0bf}" Name="ECER - Generate Communication on Unverified Previous Name Scheduled">
+      <JsonFileName>/Workflows/ECER-GenerateCommunicationonUnverifiedPreviousName-98D41754-FB6A-EF11-A670-7C1E5240B0BF.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.36</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Generate Communication on Unverified Previous Name Scheduled" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{70b5b357-8c70-ef11-a670-7c1e5240b0bf}" Name="ECER - Set Competencies name">
+      <JsonFileName>/Workflows/ECER-SetCompetenciesname-70B5B357-8C70-EF11-A670-7C1E5240B0BF.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Competencies name" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{05b1ecfe-8d70-ef11-a670-7c1e5240b0bf}" Name="ECER - Set PSP Observation Name">
+      <JsonFileName>/Workflows/ECER-SetPSPObservationName-05B1ECFE-8D70-EF11-A670-7C1E5240B0BF.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set PSP Observation Name" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{cf6acdb8-8f70-ef11-a670-7c1e5240b0bf}" Name="ECER - Set Program Application Name">
+      <JsonFileName>/Workflows/ECER-SetProgramApplicationName-CF6ACDB8-8F70-EF11-A670-7C1E5240B0BF.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Program Application Name" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{f43c5106-3b71-ef11-a670-7c1e5240b0bf}" Name="ECER - Set Signature Name and Title">
+      <JsonFileName>/Workflows/ECER-SetSignatureNameandTitle-F43C5106-3B71-EF11-A670-7C1E5240B0BF.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Signature Name and Title" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{a90f794a-5b71-ef11-a670-7c1e5240b0bf}" Name="ECER - Investigation change to Active stage">
+      <JsonFileName>/Workflows/ECER-InvestigationchangetoActivestage-A90F794A-5B71-EF11-A670-7C1E5240B0BF.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.38</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Investigation change to Active stage" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{72b477c2-097a-ef11-ac20-7c1e5240b0bf}" Name="ECER - Notify Account Setup complete">
+      <JsonFileName>/Workflows/ECER-NotifyAccountSetupcomplete-72B477C2-097A-EF11-AC20-7C1E5240B0BF.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.41</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Notify Account Setup complete" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{43101bd8-7e7b-ef11-ac20-7c1e5240b0bf}" Name="ECER - Set Certificate Suspended Date">
+      <JsonFileName>/Workflows/ECER-SetCertificateSuspendedDate-43101BD8-7E7B-EF11-AC20-7C1E5240B0BF.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.42</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Set Certificate Suspended Date" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{a2a09f18-827b-ef11-ac20-7c1e5240b0bf}" Name="ECER - Reset Investigation BPF from status reason reconsidered">
+      <JsonFileName>/Workflows/ECER-ResetInvestigationBPFfromstatusreasonreconsid-A2A09F18-827B-EF11-AC20-7C1E5240B0BF.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.42</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - Reset Investigation BPF from status reason reconsidered" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{703ed0f0-a3da-4d92-aa56-d1ab335812fd}" Name="ECER - WF - Populate Professional Development Name">
+      <XamlFileName>/Workflows/ECER-WF-PopulateProfessionalDevelopmentName-703ED0F0-A3DA-4D92-AA56-D1AB335812FD.xaml</XamlFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>0</Category>
+      <Mode>1</Mode>
+      <Scope>1</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnUpdateAttributeList></TriggerOnUpdateAttributeList>
+      <TriggerOnCreate>1</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <CreateStage>40</CreateStage>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.29</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>ecer_ProfessionalDevelopment</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - WF - Populate Professional Development Name" />
+      </LocalizedNames>
+    </Workflow>
   </Workflows>
   <FieldSecurityProfiles></FieldSecurityProfiles>
   <Templates />
@@ -886,51 +3668,139 @@
   <optionsets />
   <CustomControls />
   <SolutionPluginAssemblies>
-    <PluginAssembly FullName="BCGOV.Plugin.DocumentUrl, Version=1.0.8864.25807, Culture=neutral, PublicKeyToken=e7f1eef6fa8a36b8" PluginAssemblyId="3b757e2a-7c11-4d42-8f25-4dd164479a48" CustomizationLevel="1">
+    <PluginAssembly FullName="CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginAssemblyId="097c7072-971f-4aa5-9f5d-4dc5fb127c29" CustomizationLevel="1">
       <IsolationMode>2</IsolationMode>
       <SourceType>0</SourceType>
       <IntroducedVersion>1.0</IntroducedVersion>
-      <FileName>/PluginAssemblies/BCGOVPluginDocumentUrl-3B757E2A-7C11-4D42-8F25-4DD164479A48/BCGOVPluginDocumentUrl.dll</FileName>
+      <FileName>/PluginAssemblies/CRMCustomWorkflow-097C7072-971F-4AA5-9F5D-4DC5FB127C29/CRMCustomWorkflow.dll</FileName>
       <PluginTypes>
-        <PluginType AssemblyQualifiedName="BCGOV.Plugin.DocumentUrl.CloneDocumentInSharePoint, BCGOV.Plugin.DocumentUrl, Version=1.0.8864.25807, Culture=neutral, PublicKeyToken=e7f1eef6fa8a36b8" PluginTypeId="7b4d0a26-3320-4bf8-9a10-bda5d2d246db" Name="BCGOV.Plugin.DocumentUrl.CloneDocumentInSharePoint">
-          <FriendlyName>468ca481-f0fa-4af0-85d9-af51966cc51b</FriendlyName>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.AddDateActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="79689a77-4dd5-4f84-807f-a38354f1d4f6" Name="CRM.CustomWorkflow.AddDateActivity">
+          <FriendlyName>b605cce5-be6f-4bc0-96a2-2f4c0b9ac13d</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
         </PluginType>
-        <PluginType AssemblyQualifiedName="BCGOV.Plugin.DocumentUrl.CreateDocumentHierarchy, BCGOV.Plugin.DocumentUrl, Version=1.0.8864.25807, Culture=neutral, PublicKeyToken=e7f1eef6fa8a36b8" PluginTypeId="4030c141-063c-44c2-9ec9-d8f3fc53616f" Name="BCGOV.Plugin.DocumentUrl.CreateDocumentHierarchy">
-          <FriendlyName>62022f4e-726c-4561-a35e-87eb258d45df</FriendlyName>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.CheckIfChildRecordExistsWithRecordCountActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="c085c57d-934d-4844-8890-f1b16919d8ea" Name="CRM.CustomWorkflow.CheckIfChildRecordExistsWithRecordCountActivity">
+          <FriendlyName>3e255a16-f787-4a61-b580-d2e0355c9caf</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
         </PluginType>
-        <PluginType AssemblyQualifiedName="BCGOV.Plugin.DocumentUrl.DownloadDocumentFromSharePoint, BCGOV.Plugin.DocumentUrl, Version=1.0.8864.25807, Culture=neutral, PublicKeyToken=e7f1eef6fa8a36b8" PluginTypeId="06a1c231-14b1-490d-8380-2d25e97d2a4f" Name="BCGOV.Plugin.DocumentUrl.DownloadDocumentFromSharePoint">
-          <FriendlyName>425d4b24-a825-4cc7-8fba-1d1a7ed170bc</FriendlyName>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.ConcatenateStringActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="267d8fbe-c9c3-435a-a76f-7acada0a5462" Name="CRM.CustomWorkflow.ConcatenateStringActivity">
+          <FriendlyName>5be883f1-b35d-4660-893f-87137de8c10b</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
         </PluginType>
-        <PluginType AssemblyQualifiedName="BCGOV.Plugin.DocumentUrl.DraftEmail, BCGOV.Plugin.DocumentUrl, Version=1.0.8864.25807, Culture=neutral, PublicKeyToken=e7f1eef6fa8a36b8" PluginTypeId="55f7d0c7-0825-44b1-afe5-db868833f299" Name="BCGOV.Plugin.DocumentUrl.DraftEmail">
-          <FriendlyName>c2a58aa2-0958-4504-add1-f1a205eefe30</FriendlyName>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.DeleteThisRecord, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="fc4ec299-58bd-4194-a19f-43c2af8e39bb" Name="CRM.CustomWorkflow.DeleteThisRecord">
+          <FriendlyName>a47607f1-077e-44da-95d3-9ba6a4fedba6</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
         </PluginType>
-        <PluginType AssemblyQualifiedName="BCGOV.Plugin.DocumentUrl.GetDocumentUrlFromSharePoint, BCGOV.Plugin.DocumentUrl, Version=1.0.8864.25807, Culture=neutral, PublicKeyToken=e7f1eef6fa8a36b8" PluginTypeId="21d94f63-4cb5-46c7-a75b-5bfeff6d6e12" Name="BCGOV.Plugin.DocumentUrl.GetDocumentUrlFromSharePoint">
-          <FriendlyName>44a65fd7-dd62-4fbe-8045-17e42143793b</FriendlyName>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.DoesOptionSetCollectionHasOptionActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="c461ad69-3ab5-4c41-b2db-6e770efee26c" Name="CRM.CustomWorkflow.DoesOptionSetCollectionHasOptionActivity">
+          <FriendlyName>aa16d910-d78e-4741-830c-426ac9732e6f</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
         </PluginType>
-        <PluginType AssemblyQualifiedName="BCGOV.Plugin.DocumentUrl.MoveDocumentInSharePoint, BCGOV.Plugin.DocumentUrl, Version=1.0.8864.25807, Culture=neutral, PublicKeyToken=e7f1eef6fa8a36b8" PluginTypeId="b94dd648-d205-45b5-83fe-f3d3d2ccedb6" Name="BCGOV.Plugin.DocumentUrl.MoveDocumentInSharePoint">
-          <FriendlyName>49439f61-1174-40c8-842b-0cd0ad9154d1</FriendlyName>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.ForEachHelper, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="0e35e366-9448-40bd-868c-6799b96d9aa7" Name="CRM.CustomWorkflow.ForEachHelper">
+          <FriendlyName>f14a88d5-a573-49a7-b1ca-01e407a3a209</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
         </PluginType>
-        <PluginType AssemblyQualifiedName="BCGOV.Plugin.DocumentUrl.UpdateTagsToSharePoint, BCGOV.Plugin.DocumentUrl, Version=1.0.8864.25807, Culture=neutral, PublicKeyToken=e7f1eef6fa8a36b8" PluginTypeId="2b6f24cd-6126-4e12-bb60-756d732c73ca" Name="BCGOV.Plugin.DocumentUrl.UpdateTagsToSharePoint">
-          <FriendlyName>a58d36ee-d275-479c-90aa-3d4bfecc023a</FriendlyName>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.GetDateOnlyActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="d3e54b2c-9097-496f-800f-38bad8a3543c" Name="CRM.CustomWorkflow.GetDateOnlyActivity">
+          <FriendlyName>54fdd3c8-76c5-4161-94a0-8a5a1f14e81b</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
         </PluginType>
-        <PluginType AssemblyQualifiedName="BCGOV.Plugin.DocumentUrl.UploadDocumentToSharePoint, BCGOV.Plugin.DocumentUrl, Version=1.0.8864.25807, Culture=neutral, PublicKeyToken=e7f1eef6fa8a36b8" PluginTypeId="f9fd89bb-e01e-4804-b48c-5ef7d4974735" Name="BCGOV.Plugin.DocumentUrl.UploadDocumentToSharePoint">
-          <FriendlyName>3d8911c0-b2df-4bdc-bb02-1114024f731a</FriendlyName>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.GetDatePartAndNameActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="e1b4dc80-c75b-4bcd-ab7e-12782166c5db" Name="CRM.CustomWorkflow.GetDatePartAndNameActivity">
+          <FriendlyName>7a6d4165-c7ce-483d-9586-5a2ccb01e4bc</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.GetQueueByNameActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="895396ee-1e01-4a20-8919-40897023ab25" Name="CRM.CustomWorkflow.GetQueueByNameActivity">
+          <FriendlyName>c8ad4565-93c1-4302-9a3a-7feff3f70a15</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.GetTeamByNameActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="7dc64e2d-09c1-4c5f-9c66-0489a5989c72" Name="CRM.CustomWorkflow.GetTeamByNameActivity">
+          <FriendlyName>9b10dcc0-a20b-4007-84a7-9d667106ffc0</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.HasBooleanAttributeChangedActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="22db2c04-6ea1-4104-a91d-db15c58cdf90" Name="CRM.CustomWorkflow.HasBooleanAttributeChangedActivity">
+          <FriendlyName>d15f72e0-8315-4db2-a0cd-83f092cc845c</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.HasDateTimeAttributeChangedActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="9debd282-f99b-40bc-a910-ff53f7a02ca5" Name="CRM.CustomWorkflow.HasDateTimeAttributeChangedActivity">
+          <FriendlyName>c3ef84d9-395a-49f7-a8e0-76a180adc33d</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.HasDecimalAttributeChangedActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="9a0daba3-cf5d-4162-8129-b5d5f5f9321e" Name="CRM.CustomWorkflow.HasDecimalAttributeChangedActivity">
+          <FriendlyName>78e75845-a098-4a9e-9ad3-4e6c71d2b316</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.HasLookupAttributeChangedActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="32bc10f1-e5a7-4e46-8057-b9ebc4866da9" Name="CRM.CustomWorkflow.HasLookupAttributeChangedActivity">
+          <FriendlyName>fee46793-4150-49de-9555-062c6c75b832</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.HasMoneyAttributeChangedActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="6c4c200c-6d18-4054-875e-ae481f996cb9" Name="CRM.CustomWorkflow.HasMoneyAttributeChangedActivity">
+          <FriendlyName>5237e593-a09d-4b44-b948-ca1c2dcafea9</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.HasOptionSetAttributeChangedActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="c88839a1-6e48-4aca-9599-55516d180a1a" Name="CRM.CustomWorkflow.HasOptionSetAttributeChangedActivity">
+          <FriendlyName>89c2fbb3-1211-4103-9c39-e10d7b3c3f72</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.HasOptionSetAttributeChangedFromSpecifiedValueActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="917eecfa-e0c2-46a3-94b3-f4f98d0b2565" Name="CRM.CustomWorkflow.HasOptionSetAttributeChangedFromSpecifiedValueActivity">
+          <FriendlyName>f1d390d1-6ebe-49e7-9fec-1fbb99f884ef</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.HasOptionSetCollectionAttributeChangedActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="c910c2c2-63ca-44fc-a8f2-bf11567bca62" Name="CRM.CustomWorkflow.HasOptionSetCollectionAttributeChangedActivity">
+          <FriendlyName>a8571df5-4bfb-440c-95b8-4ae760da812f</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.HasStringAttributeChangedActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="7ddd5a19-f919-4b00-b531-a8f39f95337f" Name="CRM.CustomWorkflow.HasStringAttributeChangedActivity">
+          <FriendlyName>ff81c2e1-c1eb-43e5-aeef-0bf558625f70</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.HasWholeNumberAttributeChangedActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="16f0197a-18c3-4642-943d-7421116c1a9d" Name="CRM.CustomWorkflow.HasWholeNumberAttributeChangedActivity">
+          <FriendlyName>78e6e103-eff6-4369-957c-f664415f8cd1</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.MathHelper, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="04029720-4a5f-4c32-a0f7-032dc3f10c1e" Name="CRM.CustomWorkflow.MathHelper">
+          <FriendlyName>181aab94-2da1-423a-a7a4-9d9f6a277697</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.RemoveItemFromQueueActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="fb3e764a-f741-4599-a452-59c25b013976" Name="CRM.CustomWorkflow.RemoveItemFromQueueActivity">
+          <FriendlyName>b26d5cda-5920-4b6a-bbf5-98f4836a4298</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.RevisedManipulateDateActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="97cb3f4e-b803-46f2-b948-574c6710070d" Name="CRM.CustomWorkflow.RevisedManipulateDateActivity">
+          <FriendlyName>07ad4a79-84e3-495f-8fa0-db398ded2d80</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.RevisedSetOptionSetCollectionFieldActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="3b79091b-be32-4e8e-a03d-0852a9a91f1c" Name="CRM.CustomWorkflow.RevisedSetOptionSetCollectionFieldActivity">
+          <FriendlyName>a16b84fc-3cab-42c9-9967-b634763e99b4</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.RollupChildEntityNumberField, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="c599d2fb-d288-4b15-8d4c-0c1fbe680a0b" Name="CRM.CustomWorkflow.RollupChildEntityNumberField">
+          <FriendlyName>b64a0921-3249-40db-9cdb-cdfa276545e4</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.SendEmailActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="76db3a23-3ab6-46b9-8ec7-84697d51bd31" Name="CRM.CustomWorkflow.SendEmailActivity">
+          <FriendlyName>3626b2f3-417e-4dc0-a3ae-7471e312d20d</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.ValidateStringByRegularExpression, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="5c74ca7d-52c8-4313-ba2a-d16b81e8bc96" Name="CRM.CustomWorkflow.ValidateStringByRegularExpression">
+          <FriendlyName>9e13095f-7404-41ee-9e76-2aabcee3a55a</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="CRM.CustomWorkflow.VerifyUserSecurityRoleActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" PluginTypeId="99956908-9b07-456f-bd11-ed689eb7de96" Name="CRM.CustomWorkflow.VerifyUserSecurityRoleActivity">
+          <FriendlyName>2f974f0e-dd0a-4dc9-8b39-708a62f5aafd</FriendlyName>
+          <WorkflowActivityGroupName>CRM.CustomWorkflow (1.0.0.0)</WorkflowActivityGroupName>
         </PluginType>
       </PluginTypes>
     </PluginAssembly>
   </SolutionPluginAssemblies>
   <EntityDataProviders />
   <connectionreferences>
-    <connectionreference connectionreferencelogicalname="ecer_sharedcommondataserviceforapps_48394">
-      <connectionreferencedisplayname>Microsoft Dataverse ECERAutomation-48394</connectionreferencedisplayname>
+    <connectionreference connectionreferencelogicalname="ecer_sharedcommondataserviceforapps_8f58e">
+      <connectionreferencedisplayname>Microsoft Dataverse ECER-8f58e</connectionreferencedisplayname>
       <connectorid>/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps</connectorid>
       <iscustomizable>1</iscustomizable>
       <statecode>0</statecode>
       <statuscode>1</statuscode>
     </connectionreference>
-    <connectionreference connectionreferencelogicalname="ecer_sharedcommondataserviceforapps_8f58e">
-      <connectionreferencedisplayname>Microsoft Dataverse ECER-8f58e</connectionreferencedisplayname>
-      <connectorid>/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps</connectorid>
+    <connectionreference connectionreferencelogicalname="ecer_sharedwebcontents_40deb">
+      <connectionreferencedisplayname>HTTP with Microsoft Entra ID (preauthorized) 40deb</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_webcontents</connectorid>
       <iscustomizable>1</iscustomizable>
       <statecode>0</statecode>
       <statuscode>1</statuscode>

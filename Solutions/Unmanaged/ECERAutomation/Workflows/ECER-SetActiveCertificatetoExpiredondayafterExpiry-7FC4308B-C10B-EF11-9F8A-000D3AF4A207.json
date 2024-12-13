@@ -1,0 +1,117 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Recurrence_at_12_15_am_Every_Day": {
+          "recurrence": {
+            "frequency": "Day",
+            "interval": 1,
+            "startTime": "2024-05-06T06:15:00Z"
+          },
+          "metadata": {
+            "operationMetadataId": "1356a233-1831-464e-b759-1c6888dc4927"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "List_rows_-_Active_and_earlier_than_today_date": {
+          "runAfter": {
+            "Get_Today_Date_in_yyyy-MM-dd": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8f6ff1fe-040e-4a1f-b742-dd6a77ff1ac3"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certificates",
+              "$filter": "statuscode eq 1 and ecer_expirydate ne null and ecer_expirydate lt @{body('Get_Today_Date_in_yyyy-MM-dd')}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Today_Date_in_yyyy-MM-dd": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "39d8fb19-d922-415c-9fc0-d6ac82473d84"
+          },
+          "type": "Expression",
+          "kind": "ConvertTimeZone",
+          "inputs": {
+            "baseTime": "@{utcNow()}",
+            "formatString": "yyyy-MM-dd",
+            "sourceTimeZone": "UTC",
+            "destinationTimeZone": "Pacific Standard Time"
+          }
+        },
+        "Loop_through_result_set": {
+          "foreach": "@outputs('List_rows_-_Active_and_earlier_than_today_date')?['body/value']",
+          "actions": {
+            "Set_Status_to_Expired": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "126fe316-c44b-4948-96f1-981a2f2abd91"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_certificates",
+                  "recordId": "@items('Loop_through_result_set')?['ecer_certificateid']",
+                  "item/statuscode": 621870001
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_rows_-_Active_and_earlier_than_today_date": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ff70aea1-8cf3-48ca-b674-fe5b19c30bdf"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -19,6 +19,269 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.showHideParentalGuidianceFieldsOnApplicantAge(executionContext);
         ECER.Jscripts.Application.levelOfRequirmentOnDenailReasonTypeChange(executionContext);
         ECER.Jscripts.Application.levelOfRequirementOnStatusReasonDetailsChange(executionContext);
+        ECER.Jscripts.Application.showHideProfessionalDevelopmentFieldsOnRenewals(executionContext);
+        ECER.Jscripts.Application.showHideEducationFieldsOnRenewals(executionContext);
+        ECER.Jscripts.Application.enableDisableFieldsBySecurityRole(executionContext);
+        ECER.Jscripts.Application.showHideLateRenewalExplanation(executionContext);
+        ECER.Jscripts.Application.showHideFromCertificate(executionContext);
+        ECER.Jscripts.Application.showHideEquivalencyFields(executionContext);
+        ECER.Jscripts.Application.parallelProcessToggle(executionContext);
+        ECER.Jscripts.Application.workExperienceExemption(executionContext);
+        ECER.Jscripts.Application.showHideEscalationFields(executionContext);
+    },
+    parallelProcessToggle: function (executionContext) {
+
+        // Display the Parallel Process form section if the Parallel Process toggle = Yes
+        // Display a warning on the application if the Parallel Process toggle = Yes.
+        var formContext = executionContext.getFormContext();
+        var parallelProcess = formContext.getAttribute("ecer_parallelprocess").getValue();
+        if (parallelProcess === true) {
+            crm_Utility.showHide(executionContext, true, "tab_applicantinformation:section_applicantinformation_parallel_process");
+            formContext.ui.setFormNotification("Application currently under Parallel Process.", "WARNING", "sectionWarning");
+
+        } else {
+            crm_Utility.showHide(executionContext, false, "tab_applicantinformation:section_applicantinformation_parallel_process");
+            formContext.ui.clearFormNotification("sectionWarning");
+        }
+
+    },
+
+    workExperienceExemption: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var isECEAssistant = formContext.getAttribute("ecer_iseceassistant").getValue();
+        var isECE1YR = formContext.getAttribute("ecer_isece1yr").getValue();
+        var typeAttributeName = "ecer_type";
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
+        var isLate = ECER.Jscripts.Application.isRenewalLate(executionContext);
+
+        var wkExempted = ((isECE1YR && !isRenewal) || (isECEAssistant && !isRenewal) || (!isLate && isECE1YR && isRenewal));
+
+        // Renewal 1YR if Expired is not exempted.
+
+            // ECER-3338
+            // Work Experience for New Application 1 YEAR is NOT Required
+            // Work Experience for New Application Assistnat is also NOT Required
+            // Otherwise, the WK is required at BPF
+            // BPF field can only be set from none to required.
+            // Hiding will take away the Required too
+            // There is no exemption at Field, JUST BPF Stage
+            var bpfWorkExperienceReceivedAttributeName = "header_process_ecer_workexperiencereceived";
+        crm_Utility.showHide(executionContext, !wkExempted, bpfWorkExperienceReceivedAttributeName);
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_workexperiencereceived");
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_workexperiencereceiveddate");
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_addmoreworkexperiencereference");
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_workexperiencereferenceapproved");
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_hasprovided500hoursworkexperience");
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_hasprovided400hoursworkexperience");
+        crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved");
+        crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_2");
+        crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_3");
+        crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_4");
+        crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_5");
+        crm_Utility.showHide(executionContext, !wkExempted, "tab_workexperience");
+
+    },
+
+    isRenewalLate: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var applicantAttributeName = "ecer_applicantid";
+        var applicantAttribute = formContext.getAttribute(applicantAttributeName);
+        var applicant = applicantAttribute.getValue();
+        if (applicant === null) {
+            return null;
+        }
+        var applicantid = applicant[0].id.replace("{", "").replace("}", "");
+        var dateSubmittedAttributeName = "ecer_datesubmitted";
+        var dateToCompare = null;
+        var dateSubmittedValue = formContext.getAttribute(dateSubmittedAttributeName).getValue();
+        if (dateSubmittedValue === null) {
+            var today = new Date();
+            dateToCompare = today;
+        }
+        else {
+            dateToCompare = dateSubmittedValue;
+        }
+
+        var latestCertificate = ECER.Jscripts.Application.getApplicantLatestCertificate(executionContext, applicantid, dateToCompare);
+        if (latestCertificate === null) {
+            return; // No Certifcate means it should not be a renewal or expired more than 5 Yrs.
+        }
+        var certificateExpiryDate = new Date(Date.parse(latestCertificate["ecer_expirydate"]));
+        // Late is when Expiry Date has already passed.
+        var isLate = dateToCompare.getTime() > certificateExpiryDate.getTime();
+        return isLate;
+    },
+
+    showHideEquivalencyFields: function (executionContext) {
+        // ECER-2882
+        // When an applications education origin and recognition makes the application an equivalency application. 
+        // The correct fields need to be visible.
+        // Fields that do not relate to the Equivalency Application and processing path should be hidden to reduce clutter 
+        // and increase visibility for the users.
+        var formContext = executionContext.getFormContext();
+        var educationRecognitionAttributeName = "ecer_educationrecognition";
+        var educationRecognitionValue = formContext.getAttribute(educationRecognitionAttributeName).getValue();
+        var isNotRecognized = educationRecognitionValue === 621870001; // Not Recognized
+        var typeAttributeName = "ecer_type";
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        var isNew = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870000;
+
+        var show = isNew && isNotRecognized;
+        
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_programconfirmationformreceived");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_courseoutlinereceived");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_comprehensiveevaluationreportreceived");
+        crm_Utility.showHide(executionContext, show, "ecer_programconfirmationformreceived");
+        crm_Utility.showHide(executionContext, show, "ecer_courseoutlinereceived");
+        crm_Utility.showHide(executionContext, show, "ecer_comprehensiveevaluationreportreceived");
+        crm_Utility.showHide(executionContext, show, "ecer_programconfirmationformapproved");
+        crm_Utility.showHide(executionContext, show, "ecer_comprehensiveevaluationreportapproved");
+        crm_Utility.showHide(executionContext, show, "ecer_courseoutlineapproved");
+
+        // Assessment BPF for Equivalency field is on a different path and does not needed to show hide
+    },
+
+    showHideFromCertificate: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var applicantAttributeName = "ecer_applicantid";
+        var typeAttributeName = "ecer_type";
+        var fromCertificateAttributeName = "ecer_fromcertificateid";
+        var type = formContext.getAttribute(typeAttributeName).getValue();
+        var applicant = formContext.getAttribute(applicantAttributeName).getValue();
+        var fromCertificate = formContext.getAttribute(fromCertificateAttributeName).getValue();
+        var showFromCertificate = (type === 621870001 && applicant !== null);
+        crm_Utility.showHide(executionContext, showFromCertificate, fromCertificateAttributeName);
+
+        if (fromCertificate === null && showFromCertificate) {
+            var today = new Date();
+            var latestCertificate = ECER.Jscripts.Application.getApplicantLatestCertificate(executionContext, applicant[0].id, today);
+            if (latestCertificate !== null) {
+                var latestCertificateLookup = crm_Utility.generateLookupObject("ecer_certificate", latestCertificate.ecer_certificateid, latestCertificate.ecer_name);
+                crm_Utility.setLookupValue(executionContext, fromCertificateAttributeName, latestCertificateLookup);
+            }
+        }
+
+    },
+
+    getApplicantLatestCertificate: function (executionContext, applicantid, dateToCompare) {
+        var formContext = executionContext.getFormContext();
+        
+        
+        var fiveYearsAgo = new Date(dateToCompare.getFullYear() - 5, dateToCompare.getMonth(), dateToCompare.getDate());
+        
+        var certificateQueryOption = "?$filter=_ecer_registrantid_value eq '" +
+            applicantid +
+            "' and ecer_expirydate ne null" +
+            " and ecer_expirydate gt " +
+            fiveYearsAgo.toISOString().substring(0, 10) +
+            "&$orderby=ecer_expirydate desc&$top=1";
+        var latestCertificates = crm_Utility.retrieveMultipleCustom("ecer_certificate", certificateQueryOption);
+        if (latestCertificates == null) {
+            return null;
+        }
+
+        if (latestCertificates.length === 0) {
+            return null;
+        }
+
+        var latestCertificate = latestCertificates[0];
+        return latestCertificate;
+    },
+
+    showHideLateRenewalExplanation: function (executionContext) {
+        // ECER-2996
+        // Show if Expiry Date has passed but within 5 years
+        // 1 YR and 5 YR Respectively
+
+        var formContext = executionContext.getFormContext();
+        var typeAttributeName = "ecer_type";
+        var isECE1YrAttributeName = "ecer_isece1yr";
+        var isECE5YrAttributeName = "ecer_isece5yr";
+        var oneYearExplanationAttributeName = "ecer_1yrexplanationchoice";
+        var fiveYearExplanationAttributeName = "ecer_5yrexplanationchoice";
+        var otherRenewalExplanationAttributeName = "ecer_renewalexplanationother";
+        var lateRenewalExplanationTabName = "tab_laterenewalexplanation";
+
+        // Hide the extra Other Option set remains due to deployment unable to upgrade and remove
+        crm_Utility.filterOutOptionSet(executionContext, oneYearExplanationAttributeName, "621870005");
+
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
+        // Rules.
+        // If Not Renewals, then do nothing.
+        if (!isRenewal) {
+            return;
+        }
+        var oneYearChoiceAsOther = false;
+        var fiveYearChoiceAsOther = false;
+        // If it already contains data, then show it.
+        var oneYearExplanationValue = formContext.getAttribute(oneYearExplanationAttributeName).getValue();
+        var oneYearHasValue = (oneYearExplanationValue !== null);
+        crm_Utility.showHide(executionContext, oneYearHasValue, oneYearExplanationAttributeName);
+        if (oneYearHasValue) {
+            oneYearChoiceAsOther = oneYearExplanationValue === 621870004;
+        }
+
+        var fiveYearExplanationValue = formContext.getAttribute(fiveYearExplanationAttributeName).getValue();
+        var fiveYearHasValue = (fiveYearExplanationValue !== null);
+        crm_Utility.showHide(executionContext, fiveYearHasValue, fiveYearExplanationAttributeName);
+        if (fiveYearHasValue) {
+            fiveYearChoiceAsOther = fiveYearExplanationValue === 621870004;
+        }
+
+        // If Choice is Other, then Show the Other Renewal Explanation Textbox
+        crm_Utility.showHide(executionContext, (oneYearChoiceAsOther || fiveYearChoiceAsOther), otherRenewalExplanationAttributeName);
+
+        // If either 1YR or 5YR Explanation has value, then show the tab.
+        crm_Utility.showHide(executionContext, (oneYearHasValue || fiveYearHasValue), lateRenewalExplanationTabName);
+
+        if (oneYearHasValue || fiveYearHasValue) {
+            return; // As it has already been shown.
+        }
+
+        // If it does not already contains data, it becomes complicated.
+        var applicantAttributeName = "ecer_applicantid";
+        var applicantAttribute = formContext.getAttribute(applicantAttributeName);
+        var applicant = applicantAttribute.getValue();
+        if (applicant === null) {
+            return null;
+        }
+        var applicantid = applicant[0].id.replace("{", "").replace("}", "");
+
+        var dateSubmittedAttributeName = "ecer_datesubmitted";
+        var dateToCompare = null;
+        var dateSubmittedValue = formContext.getAttribute(dateSubmittedAttributeName).getValue();
+        if (dateSubmittedValue === null) {
+            var today = new Date();
+            dateToCompare = today;
+        }
+        else {
+            dateToCompare = dateSubmittedValue;
+        }
+
+        var latestCertificate = ECER.Jscripts.Application.getApplicantLatestCertificate(executionContext, applicantid, dateToCompare);
+        if (latestCertificate === null) {
+            return; // No Certifcate means it should not be a renewal or expired more than 5 Yrs.
+        }
+        var latestCertificateExpiryDate = new Date(Date.parse(latestCertificate["ecer_expirydate"]));
+        var certificateExpiryDatePlus5YR = new Date(Date.parse(latestCertificate["ecer_expirydate"]));
+        var isECE1Yr = formContext.getAttribute(isECE1YrAttributeName).getValue();
+        var isECE5Yr = formContext.getAttribute(isECE5YrAttributeName).getValue();
+        certificateExpiryDatePlus5YR.setFullYear(latestCertificateExpiryDate.getFullYear() + 5);
+        // Late is when Expiry Date has already passed.
+        var isLateWithin5Yr = dateToCompare.getTime() <= certificateExpiryDatePlus5YR.getTime();
+        var isLate5Yr = latestCertificateExpiryDate.getTime() <= dateToCompare.getTime();
+        var isStillActive = dateToCompare.getTime() < latestCertificateExpiryDate.getTime();
+        // ECE 1YR to show
+        // Is Late but within 5 Years
+        // Or Active
+        var show1YR = isECE1Yr && (isLateWithin5Yr || isStillActive);
+        var show5YR = isECE5Yr && (isLateWithin5Yr && isLate5Yr);
+
+        crm_Utility.showHide(executionContext, show1YR, oneYearExplanationAttributeName);
+        crm_Utility.showHide(executionContext, show5YR, fiveYearExplanationAttributeName);
+        crm_Utility.showHide(executionContext, (show1YR || show5YR), lateRenewalExplanationTabName);
     },
 
     showHideApplicantQuickView: function (executionContext) {
@@ -66,7 +329,7 @@ ECER.Jscripts.Application =
         var formContext = executionContext.getFormContext();
         var readyForAssessmentAttribute = formContext.getAttribute("ecer_readyforassessment");
         var statuscode = 621870001; // Submitted
-        var subStatusDetails = null; 
+        var subStatusDetails = null;
         if (readyForAssessmentAttribute != null && readyForAssessmentAttribute.getValue() != null) {
             if (readyForAssessmentAttribute.getValue()) {
                 statuscode = 621870002; // Ready
@@ -80,26 +343,247 @@ ECER.Jscripts.Application =
         statusReasonDetailsAttribute.setValue(subStatusDetails);
     },
 
+    enableDisableFieldsBySecurityRole: function (executionContext) {
+        // ECER 2271
+
+        var formContext = executionContext.getFormContext();
+        var formType = formContext.ui.getFormType();
+        if (formType !== 1 && formType !== 2) {
+            // if neither Create Mode or Update mode
+            // This should stop field from unlocking if record is deactivated
+            return;
+        }
+        // https://eccbc.atlassian.net/wiki/spaces/ECER/pages/473793507/ECER+-+Application+Form+Validation
+        var statusreason = formContext.getAttribute("statuscode").getValue(); // Status Reason is under Assessment tab
+        var assessorRole = crm_Utility.checkCurrentUserRole("Certification - Assessor Role");
+        var programAnalystRole = crm_Utility.checkCurrentUserRole("Equivalency - ECE Program Analyst Role");
+        var certificateAnalystRole = crm_Utility.checkCurrentUserRole("Equivalency - Certification Analyst");
+        var operationSupervisorEquivalencyRole = crm_Utility.checkCurrentUserRole("Equivalency - Operations Supervisor Equivalency Role");
+        var programCoordinatorRole = crm_Utility.checkCurrentUserRole("Equivalency - Program Coordinator Role");
+        var managerOfCertificationRole = crm_Utility.checkCurrentUserRole("Certifications - Manager of Certifications Role");
+        var assessorTeamLeadRole = crm_Utility.checkCurrentUserRole("Certification - Team Lead Role");
+        var programSupportRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Role");
+        var programSupportLeadRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Lead Role");
+        var operationSupervisorRole = crm_Utility.checkCurrentUserRole("Certification - Operations Supervisor Assessment Role");
+        var investigatorRole = crm_Utility.checkCurrentUserRole("Investigation - Investigator");
+        var sysAdminRole = crm_Utility.checkCurrentUserRole("System Administrator");
+        var alwaysOpen = !(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole || programSupportRole ||
+            programSupportLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || investigatorRole);
+        var beforeAssessmentPS = (statusreason === 1 || statusreason === 621870001) && (programSupportRole || programSupportLeadRole);
+        var formContext = executionContext.getFormContext();
+        
+        // Application Information Tab - General
+        formContext.getControl("ecer_type").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_educationorigin").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_educationrecognition").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+
+        // Application Information Tab - Certificate Type(s)
+        formContext.getControl("ecer_iseceassistant").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_isece1yr").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_isece5yr").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_isite").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_issne").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+
+        // Application Information Tab - Applicant
+        formContext.getControl("ecer_applicantid").setDisabled(!(programSupportRole || programSupportLeadRole || 
+            operationSupervisorRole || managerOfCertificationRole || investigatorRole || sysAdminRole));
+
+        // Application Information Tab - Contact Names - Manual Application
+        // All Enable - By Form Configurations
+
+        // Application Information Tab - Applicant Address - Manual Application
+        // All Enable - By Form Configurations
+
+        // Completeness Review Tab - Confirm Information Received (Internal Use)
+        formContext.getControl("ecer_characterreferencereceived").setDisabled(!sysAdminRole);
+        formContext.getControl("ecer_characterreferencereceiveddate").setDisabled(!sysAdminRole);
+        formContext.getControl("ecer_workexperiencereceived").setDisabled(!sysAdminRole);
+        formContext.getControl("ecer_workexperiencereceiveddate").setDisabled(!sysAdminRole);
+        formContext.getControl("ecer_transcriptreceived").setDisabled(!(sysAdminRole || programSupportRole || programSupportLeadRole));
+        formContext.getControl("ecer_transcriptreceiveddate").setDisabled(!sysAdminRole);
+        formContext.getControl("ecer_parentalreferencereceived").setDisabled(!(sysAdminRole || programSupportRole || programSupportLeadRole));
+        formContext.getControl("ecer_parentalreferencereceiveddate").setDisabled(!sysAdminRole);
+        formContext.getControl("ecer_hasprofessionaldevelopment").setDisabled(!sysAdminRole);
+        formContext.getControl("ecer_professionaldevelopmentreceived").setDisabled(!sysAdminRole);
+
+        // Completeness Review Tab - Ready for Assessment
+        formContext.getControl("ecer_readyforassessment").setDisabled(alwaysOpen); // Always open
+        formContext.getControl("ecer_readyforassessmentdate").setDisabled(!sysAdminRole);
+
+        // Completeness Review Tab - Request More References (These allow Portal User to upload more references)
+        formContext.getControl("ecer_addmorecharacterreference").setDisabled(!sysAdminRole); // Always open
+        formContext.getControl("ecer_addmoreworkexperiencereference").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+            operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_addmoreprofessionaldevelopment").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+            operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+
+        // Assessment Tab - Application Assessment
+        formContext.getControl("ecer_workexperiencereferenceapproved").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_characterreferenceapproved").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_parentalreferenceapproved").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_educationtranscriptapproved").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_professionaldevelopmentapproved").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+
+        // Assessment Tab - Work Experience Assessment TBD
+        formContext.getControl("ecer_hasprovided500hoursworkexperience").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_hasprovided400hoursworkexperience").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_explanationletter").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole ||
+            assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+
+        // Assessment Tab - Application Decision
+        formContext.getControl("statuscode").setDisabled(alwaysOpen); // always open
+        formContext.getControl("ecer_statusreasondetail").setDisabled(alwaysOpen);
+        formContext.getControl("ecer_generatecertificaterecord").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+            operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_certificateid").setDisabled(true);
+        formContext.getControl("ecer_denialreasontype").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+            operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_denialreasonexplanation").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+            operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_printrequest").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+            operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+        formContext.getControl("ecer_appealperiodenddate").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+            operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+
+        // Assessment Tab - Escalation
+        formContext.getControl("ecer_escalatetoteamlead").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+            operationSupervisorRole || managerOfCertificationRole));
+        formContext.getControl("ecer_dateescalated").setDisabled(!sysAdminRole); 
+        formContext.getControl("ecer_escalatereason").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+            operationSupervisorRole || managerOfCertificationRole));
+
+        // Declaration Tab - Declaration and Consent
+        // Locked by Form Configurations
+
+        // Work Experience Reference Tab
+        // Total Anticipated, Observed, Approved hours locked by Form Configuration
+
+        // BPF - Submission Stage
+        try {
+            crm_Utility.enableDisable(executionContext, !(sysAdminRole || programSupportRole || programSupportLeadRole || investigatorRole), "header_process_ecer_isprimaryidentificationprovided");
+            crm_Utility.enableDisable(executionContext, !(sysAdminRole || programSupportRole || programSupportLeadRole || investigatorRole), "header_process_ecer_issecondaryidentificationprovided");
+            crm_Utility.enableDisable(executionContext, !(sysAdminRole || programSupportRole || programSupportLeadRole || investigatorRole), "header_process_ecer_applicantid");
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_characterreferencereceived");
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_professionaldevelopmentreceived");
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_workexperiencereceived");
+            crm_Utility.enableDisable(executionContext, !(sysAdminRole || programSupportRole || programSupportLeadRole || investigatorRole), "header_process_ecer_transcriptreceived");
+            crm_Utility.enableDisable(executionContext, !(sysAdminRole || programSupportRole || programSupportLeadRole), "header_process_ecer_parentalreferencereceived");
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_hasprofessionaldevelopment");
+            crm_Utility.enableDisable(executionContext, !(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole || programSupportRole ||
+                programSupportLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole), "header_process_ecer_readyforassessment")
+
+
+            // BPF - Assessment Stage
+            formContext.getControl("header_process_statuscode").setDisabled(alwaysOpen);
+            formContext.getControl("header_process_ecer_type").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole ||
+                assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_educationorigin").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_educationrecognition").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_workexperiencereferenceapproved").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_characterreferenceapproved").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_parentalreferenceapproved").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_educationtranscriptapproved").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_professionaldevelopmentapproved").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_escalatetoteamlead").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_escalatereason").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+
+            // BPF - Assessment Review Stage
+            formContext.getControl("header_process_ecer_workexperiencereferenceapproved_3").setDisabled(!(sysAdminRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_characterreferenceapproved_3").setDisabled(!(sysAdminRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_parentalreferenceapproved_1").setDisabled(!(sysAdminRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_educationtranscriptapproved_3").setDisabled(!(sysAdminRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_professionaldevelopmentapproved_1").setDisabled(!(sysAdminRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_routetoassessmentteam_1").setDisabled(!(sysAdminRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+
+            // BPF - Assessment Stage after pass back to Assessor
+            formContext.getControl("header_process_statuscode_2").setDisabled(alwaysOpen);
+            formContext.getControl("header_process_ecer_type_2").setDisabled(!(sysAdminRole || beforeAssessmentPS || assessorRole || programAnalystRole || certificateAnalystRole ||
+                assessorTeamLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_educationorigin_2").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_educationrecognition_2").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_workexperiencereferenceapproved_4").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_characterreferenceapproved_4").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_parentalreferenceapproved_2").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_educationtranscriptapproved_4").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+            formContext.getControl("header_process_ecer_professionaldevelopmentapproved_2").setDisabled(!(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole ||
+                operationSupervisorRole || managerOfCertificationRole || investigatorRole));
+
+            // BPF - Complete Stage
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_certificateid_5");
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_certificateid_4");
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_certificateid_3");
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_certificateid_2");
+            crm_Utility.enableDisable(executionContext, !sysAdminRole, "header_process_ecer_certificateid");
+        }
+        catch (err) {
+            crm_Utility.showMessage("BPF Re-factor in progress.  There may have some form script error during the change");
+        }
+    },
+
     hasAssessorSecurityRole: function () {
-        "use strict";
         var hasAssessorRole = crm_Utility.checkCurrentUserRole("Certification - Assessor Role");
         return hasAssessorRole;
     },
 
     hasProgramClerkSecurityRole: function () {
         // Directive to prevent use of undeclared variables
-        "use strict";
         var hasProgramSupportRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Role");
         var hasProgramSupportLeadRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Lead Role");
         return hasProgramSupportLeadRole || hasProgramSupportRole;
     },
 
     preventAutoSave: function (executionContext) {
-        var eventArgs = executionContext.getEventArgs();
-        if (eventArgs.getSaveMode() == 70) {
-            eventArgs.preventDefault();
+        try {
+            var eventArgs = executionContext.getEventArgs();
+            if (eventArgs.getSaveMode() == 70) {
+                eventArgs.preventDefault();
+            }
+        }
+        catch (e) {
+
         }
     },
+
+    assignToAssessmentTeamLeadTeamOnEscalated: function (executionContext) {
+        alert("Test Trigger: assignToAssessmentTeamLeadTeamOnEscalated");
+    },
+
     // ECER-1370
     levelOfRequirmentOnDenailReasonTypeChange: function (executionContext) {
         var formContext = executionContext.getFormContext();
@@ -151,15 +635,153 @@ ECER.Jscripts.Application =
         crm_Utility.setRequiredLevel(executionContext, denialReasonTypeRequired, denialReasonTypeAttributeName);
     },
 
+    showHideProfessionalDevelopmentFieldsOnRenewals: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var typeAttributeName = "ecer_type";
+        var isECEAssistantAttributeName = "ecer_iseceassistant";
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        var isECEAssistantAttribute = formContext.getAttribute(isECEAssistantAttributeName);
+        var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
+        var isECEAssistant = isECEAssistantAttribute != null && isECEAssistantAttribute.getValue() != null && isECEAssistantAttribute.getValue() == true;
+        var show = isRenewal && !isECEAssistant;
+        var professionalDevelopmentTabName = "tab_professionaldevelopment";
+        var professionalDevelopmentBPFAttributeName = "header_process_ecer_hasprofessionaldevelopment";
+        var professionalDevelopmentApprovedBPFAttributeName = "header_process_ecer_professionaldevelopmentapproved";
+        var professionalDevelopmentApprovedBPFAssessmentReviewAttributeName = "header_process_ecer_professionaldevelopmentapproved_1";
+        var professionalDevelopmentApprovedAttributeName = "ecer_professionaldevelopmentapproved";
+        crm_Utility.showHide(executionContext, show, "ecer_professionaldevelopmentreceived");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_professionaldevelopmentreceived");
+        crm_Utility.showHide(executionContext, show, professionalDevelopmentApprovedAttributeName);
+        crm_Utility.showHide(executionContext, show, professionalDevelopmentBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, professionalDevelopmentApprovedBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, professionalDevelopmentApprovedBPFAssessmentReviewAttributeName);
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_professionaldevelopmentapproved_2");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_professionaldevelopmentapproved_3");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_professionaldevelopmentapproved_4");
+        crm_Utility.showHide(executionContext, show, "ecer_addmoreprofessionaldevelopment");
+        crm_Utility.showHide(executionContext, show, professionalDevelopmentTabName);
+    },
+
+    showHideEducationFieldsOnRenewals: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var typeAttributeName = "ecer_type";
+        var isECEAssistantAttributeName = "ecer_iseceassistant";
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        var isECEAssistantAttribute = formContext.getAttribute(isECEAssistantAttributeName);
+        var isRenewal = typeAttribute != null && typeAttribute.getValue() !== null && typeAttribute.getValue() === 621870001;
+        var isLaborMobility = typeAttribute != null && typeAttribute.getValue() !== null && typeAttribute.getValue() === 621870003;
+        var isECEAssistant = isECEAssistantAttribute != null && isECEAssistantAttribute.getValue() != null && isECEAssistantAttribute.getValue() == true;
+        var show = (!isRenewal || isECEAssistant) && !isLaborMobility;
+        var educationTranscriptTabName = "tab_educationinformation";
+        var educationTranscriptReceivedBPFAttributeName = "header_process_ecer_transcriptreceived";
+        var educationTranscriptApprovedBPFAttributeName = "header_process_ecer_educationtranscriptapproved";
+        var educationTranscriptReceivedAttributeName = "ecer_transcriptreceived";
+        var educationTranscriptReceivedDateAttributeName = "ecer_transcriptreceiveddate";
+        var educationTranscriptApprovedAttributeName = "ecer_educationtranscriptapproved";
+        var educationTranscriptApprovedBPF2ndAssessment = "header_process_ecer_educationtranscriptapproved_4";
+        crm_Utility.showHide(executionContext, show, educationTranscriptReceivedBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, educationTranscriptApprovedBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, educationTranscriptApprovedBPF2ndAssessment);
+        // Though I can't find it.  If there is 4, then there might be 1,2,3...
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_educationtranscriptapproved_1");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_educationtranscriptapproved_2");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_educationtranscriptapproved_3");
+        crm_Utility.showHide(executionContext, show, educationTranscriptReceivedAttributeName);
+        crm_Utility.showHide(executionContext, show, educationTranscriptReceivedDateAttributeName);
+        crm_Utility.showHide(executionContext, show, educationTranscriptApprovedAttributeName);
+        crm_Utility.showHide(executionContext, show, educationTranscriptTabName);
+        crm_Utility.showHide(executionContext, show, "ecer_educationorigin");
+        crm_Utility.showHide(executionContext, show, "ecer_educationrecognition");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_educationorigin");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_educationrecognition");
+
+    },
+
+    showHideEscalationFields: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var programSupportRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Role");
+        var programSupportLeadRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Lead Role");
+        var hasProgramClerkSecurityRole = programSupportLeadRole || programSupportRole;
+
+        var typeAttributeName = "ecer_type";
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        var isLaborMobility = typeAttribute != null && typeAttribute.getValue() !== null && typeAttribute.getValue() === 621870003;
+        var isNew = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870000;
+        var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
+        var educationRecognitionAttributeName = "ecer_educationrecognition";
+        var educationRecognitionValue = formContext.getAttribute(educationRecognitionAttributeName).getValue();
+        var isNotRecognized = educationRecognitionValue === 621870001; // Not Recognized
+        var escalateToTeamLeadBPFSubmission = "header_process_ecer_escalatetoteamlead";
+        var escalateToTeamLeadBPFAssessment = "header_process_ecer_escalatetoteamlead_2";
+        crm_Utility.showHide(executionContext, !hasProgramClerkSecurityRole, escalateToTeamLeadBPFSubmission); // Submission BPF Stage // Common to all type
+        crm_Utility.showHide(executionContext, !isLaborMobility, "header_process_ecer_educationorigin_2"); // Assessment BPF Stage
+        crm_Utility.showHide(executionContext, !isLaborMobility, "header_process_ecer_educationrecognition_2");
+        if (!hasProgramClerkSecurityRole) {
+            return;
+        }
+        // Labor Mobility
+        if (isLaborMobility) {
+            var laborMobilityShow = false;
+            var laborMobilityDisable = true;
+            
+            crm_Utility.showHide(executionContext, laborMobilityShow, "assessment:section_escalation");
+            crm_Utility.enableDisable(executionContext, laborMobilityDisable, "header_process_ecer_workexperiencereferenceapproved_2"); // Assessment Work Exp Approved
+            crm_Utility.enableDisable(executionContext, laborMobilityDisable, "header_process_ecer_characterreferenceapproved_2"); // Assessment Char Ref Approved
+            crm_Utility.enableDisable(executionContext, laborMobilityDisable, escalateToTeamLeadBPFAssessment); // Assessment BPF Stage
+            return;
+        }
+
+        if (isNew && isNotRecognized) // Equavalency
+        {
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_escalatetoteamlead_1"); // Program Analyst BPF Stage
+            
+            return;
+        }
+
+        if (isNew && !isNotRecognized) { // Other New Applications
+            crm_Utility.enableDisable(executionContext, true, escalateToTeamLeadBPFAssessment); // Assessment BPF Stage
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_escalatetoteamlead_1"); // Assessment BPF Stage
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_workexperiencereferenceapproved_2"); // Assessment Work Exp Approved
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_characterreferenceapproved_2"); // Assessment Char Ref Approved
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_educationtranscriptapproved_2"); // Assessment Transcript Approved
+            return;
+        }
+
+        if (isRenewal) { // Renewals
+            
+            crm_Utility.enableDisable(executionContext, true, escalateToTeamLeadBPFAssessment); // Assessment BPF Stage
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_workexperiencereferenceapproved_2"); // Assessment Work Exp Approved
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_characterreferenceapproved_2"); // Assessment Char Ref Approved
+            crm_Utility.enableDisable(executionContext, true, "header_process_ecer_educationtranscriptapproved_2"); // Assessment Transcript Approved
+            return;
+        }
+
+    },
+
     showHideParentalGuidianceFieldsOnApplicantAge: function (executionContext) {
         var show = false;
         var formContext = executionContext.getFormContext();
         var applicantAgeAttribute = formContext.getAttribute("ecer_applicantage");
+        var parentalReferenceReceivedBPFAttributeName = "header_process_ecer_parentalreferencereceived";
+        var parentalReferenceApprovedBPFAttributeName = "header_process_ecer_parentalreferenceapproved";
+        var parentalReferenceApprovedBPFAssessmentReviewStageAttributeName = "header_process_ecer_parentalreferenceapproved_1";
+        var parentalReferenceApprovedBPF2ndAssessmentStageAttributeName = "header_process_ecer_parentalreferenceapproved_2";
+        var parentalReferenceApprovedAttributeName = "ecer_parentalreferenceapproved";
         var parentalReferenceReceivedAttributeName = "ecer_parentalreferencereceived";
         var parentalReferenceReceivedDateAttributeName = "ecer_parentalreferencereceiveddate";
         if (applicantAgeAttribute != null && applicantAgeAttribute.getValue() != null && applicantAgeAttribute.getValue() < 19) {
             show = true;
         }
+        // ECER-1501
+        // Setting the BPF control to NOT Visible will also remove the Required Level of Requirement
+        // Per https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/controls/setvisible
+        crm_Utility.showHide(executionContext, show, parentalReferenceReceivedBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, parentalReferenceApprovedBPFAttributeName);
+        crm_Utility.showHide(executionContext, show, parentalReferenceApprovedBPFAssessmentReviewStageAttributeName);
+        crm_Utility.showHide(executionContext, show, parentalReferenceApprovedBPF2ndAssessmentStageAttributeName);
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_parentalreferenceapproved_3");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_parentalreferenceapproved_4");
+        crm_Utility.showHide(executionContext, show, parentalReferenceApprovedAttributeName);
         crm_Utility.showHide(executionContext, show, parentalReferenceReceivedAttributeName);
         crm_Utility.showHide(executionContext, show, parentalReferenceReceivedDateAttributeName);
     },
@@ -237,14 +859,13 @@ ECER.Jscripts.Application =
             existingValue = "";
         }
         else {
-            existingValue += ", ";
+            existingValue += " ";
         }
 
         return existingValue += valueToBeAppended.trim();
     },
 
     onRequestMoreCharacterReferenceButton: function () {
-        "use strict";
         var executionContext = this.crm_ExecutionContext;
         var formContext = executionContext.getFormContext();
         try {
@@ -264,7 +885,6 @@ ECER.Jscripts.Application =
     },
 
     onRequestMoreWorkExperienceReferenceButton: function () {
-        "use strict";
         var executionContext = this.crm_ExecutionContext;
         var formContext = executionContext.getFormContext();
         try {
@@ -285,7 +905,6 @@ ECER.Jscripts.Application =
 
     onProfileCreationButton: function () {
         // Directive to prevent use of undeclared variables
-        "use strict";
         var executionContext = this.crm_ExecutionContext;
         var formContext = executionContext.getFormContext();
         try {
@@ -313,7 +932,7 @@ ECER.Jscripts.Application =
             var primaryPhone = formContext.getAttribute("ecer_primaryphonenumber").getValue();
             var mobilePhone = formContext.getAttribute("ecer_alternatephonenumber").getValue();
             var dob = formContext.getAttribute("ecer_dateofbirth").getValue();
-            
+
             var entity = {};
             entity.firstname = firstName;
             entity.lastname = lastName;
@@ -369,11 +988,10 @@ ECER.Jscripts.Application =
 
     onProfileSearchButton: function () {
         // Directive to prevent use of undeclared variables
-        "use strict";
         var executionContext = this.crm_ExecutionContext;
         var formContext = executionContext.getFormContext();
         try {
-            
+
             var applicantAttribute = formContext.getAttribute("ecer_applicantid");
             if (applicantAttribute != null && applicantAttribute.getValue() != null) {
                 // Prompt message
@@ -396,7 +1014,7 @@ ECER.Jscripts.Application =
                 return;
             }
             var currentCertificateNumber = currentCertificateNumberAttribute.getValue().trim();
-            
+
             var option = "?$filter=ecer_clientid eq '" + currentCertificateNumber + "'";
             Xrm.WebApi.retrieveMultipleRecords("contact", option).then(
                 function success(results) {
@@ -514,4 +1132,3 @@ ECER.Jscripts.Application =
         }
     }
 }
- 

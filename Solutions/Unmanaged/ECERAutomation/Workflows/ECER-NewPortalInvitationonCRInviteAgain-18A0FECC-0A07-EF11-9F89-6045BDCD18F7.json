@@ -1,0 +1,263 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_Invite_Again_value_changed": {
+          "metadata": {
+            "operationMetadataId": "a87b345c-0ad7-4cf8-bd4a-faff25f2ca10"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_characterreference",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_inviteagain",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Invite_Again_is_YES": {
+          "actions": {},
+          "runAfter": {
+            "Get_Full_Character_Reference_Record": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Terminate_-_Ignore_if_value_is_NO": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "0612a014-300f-432c-bc1f-d314a35aef7d"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_inviteagain']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9451f5a2-7b03-4f78-9710-79fe3227b028"
+          },
+          "type": "If"
+        },
+        "Reset_the_Invite_Again_flag": {
+          "runAfter": {
+            "Add_a_new_Portal_Invitation_Record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "691be5f0-0e1f-48ef-a0fc-f74dab3c373b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_characterreferences",
+              "recordId": "@triggerOutputs()?['body/ecer_characterreferenceid']",
+              "item/ecer_inviteagain": false
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_all_previous_Portal_Invitation_for_this_Character_Reference": {
+          "runAfter": {
+            "IF_Status_Reason_is_NOT_Draft_and_NOT_Application_Submitted": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "464c8782-d0a2-45d6-9005-832753f12979"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_portalinvitations",
+              "$filter": "_ecer_characterreferenceid_value eq '@{triggerOutputs()?['body/ecer_characterreferenceid']}' and statecode eq 0"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_through_all_returned_active_Portal_Invitation_for_this_Character_Reference": {
+          "foreach": "@outputs('Get_all_previous_Portal_Invitation_for_this_Character_Reference')?['body/value']",
+          "actions": {
+            "Set_it_to_Cancelled": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "d8442cfb-ab29-44ed-9d78-32d72ced9b5d"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_portalinvitations",
+                  "recordId": "@items('Loop_through_all_returned_active_Portal_Invitation_for_this_Character_Reference')?['ecer_portalinvitationid']",
+                  "item/statecode": 1,
+                  "item/statuscode": 621870003
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_all_previous_Portal_Invitation_for_this_Character_Reference": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c2ff669b-f005-4bc7-be7d-1f4dfa3ce563"
+          },
+          "type": "Foreach"
+        },
+        "Add_a_new_Portal_Invitation_Record": {
+          "runAfter": {
+            "Loop_through_all_returned_active_Portal_Invitation_for_this_Character_Reference": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e914b5d7-cae0-4d51-b1ff-8b22f9e36cf9"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_portalinvitations",
+              "item/ecer_ApplicantId@odata.bind": "contacts(@{outputs('Get_Full_Character_Reference_Record')?['body/_ecer_applicantid_value']})",
+              "item/ecer_ApplicationId@odata.bind": "ecer_applications(@{outputs('Get_Full_Character_Reference_Record')?['body/_ecer_applicationid_value']})",
+              "item/ecer_CharacterReferenceId@odata.bind": "ecer_characterreferences(@{outputs('Get_Full_Character_Reference_Record')?['body/ecer_characterreferenceid']})",
+              "item/ecer_emailaddress": "@triggerOutputs()?['body/ecer_emailaddress']",
+              "item/ecer_firstname": "@triggerOutputs()?['body/ecer_firstname']",
+              "item/ecer_lastname": "@triggerOutputs()?['body/ecer_lastname']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Full_Character_Reference_Record": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "341fb8e7-833b-43b5-b912-342b1da17796"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_characterreferences",
+              "recordId": "@triggerOutputs()?['body/ecer_characterreferenceid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "IF_Status_Reason_is_NOT_Draft_and_NOT_Application_Submitted": {
+          "actions": {},
+          "runAfter": {
+            "IF_Invite_Again_is_YES": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "No_Invite_will_be_sent_as_Character_Reference_has_already_been_responded": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "deab81af-d3f7-45c3-84e5-c23c4c0306c6"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "and": [
+              {
+                "or": [
+                  {
+                    "equals": [
+                      "@outputs('Get_Full_Character_Reference_Record')?['body/statuscode']",
+                      1
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@outputs('Get_Full_Character_Reference_Record')?['body/statuscode']",
+                      621870006
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9cd892d0-ba0f-40a1-b87a-68f4b9c0b237"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

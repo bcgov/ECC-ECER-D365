@@ -1,0 +1,348 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "d7c90dfa-f191-4e64-89d9-62b69536989d"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_investigation",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_sireportreviewcomplete,ecer_readyforassignment,ecer_sireviewcomplete,ecer_conclusionreportreviewcomplete"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "If_Conclusion_Stage_Review": {
+          "actions": {
+            "Get_Team_by_Name_-_Investigations_Management__Team": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "d76cdfa4-f6fb-4ee5-91a0-9e68ee3e5a88"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "teams",
+                  "$filter": "name eq 'Investigations Management Team'",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each": {
+              "foreach": "@outputs('Get_Team_by_Name_-_Investigations_Management__Team')?['body/value']",
+              "actions": {
+                "Upsert_a_row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "afe74eae-a32a-4e9d-afb6-970e8a2f7e45"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_investigations",
+                      "recordId": "@triggerOutputs()?['body/ecer_investigationid']",
+                      "item/ownerid@odata.bind": "/teams(@{items('Apply_to_each')?['teamid']})",
+                      "item/statuscode": 621870018
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_Team_by_Name_-_Investigations_Management__Team": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "d8672847-4481-4347-be75-f5d64728c03f"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {},
+          "else": {
+            "actions": {
+              "If_Summary_Stage_Review_2": {
+                "actions": {
+                  "Get_Team_by_Name_-_Investigations_Management_Team_6": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "d76cdfa4-f6fb-4ee5-91a0-9e68ee3e5a88"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "ListRecords",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "teams",
+                        "$filter": "name eq 'Investigations Management Team'",
+                        "$top": 1
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Apply_to_each_6": {
+                    "foreach": "@outputs('Get_Team_by_Name_-_Investigations_Management_Team_6')?['body/value']",
+                    "actions": {
+                      "Update_a_row_6": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "9799cdc4-4978-4ccd-8f1d-09c4e07fe228"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_commondataserviceforapps",
+                            "operationId": "UpdateRecord",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                          },
+                          "parameters": {
+                            "entityName": "ecer_investigations",
+                            "recordId": "@triggerOutputs()?['body/ecer_investigationid']",
+                            "item/ownerid@odata.bind": "/teams(@{items('Apply_to_each_6')?['teamid']})",
+                            "item/statuscode": 621870017
+                          },
+                          "authentication": "@parameters('$authentication')"
+                        }
+                      }
+                    },
+                    "runAfter": {
+                      "Get_Team_by_Name_-_Investigations_Management_Team_6": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "d8672847-4481-4347-be75-f5d64728c03f"
+                    },
+                    "type": "Foreach"
+                  }
+                },
+                "runAfter": {},
+                "else": {
+                  "actions": {
+                    "If_Active_Stage_Review_2": {
+                      "actions": {
+                        "Get_Team_by_Name_-_Investigations_Management_Team_4": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "d76cdfa4-f6fb-4ee5-91a0-9e68ee3e5a88"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_commondataserviceforapps",
+                              "operationId": "ListRecords",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                            },
+                            "parameters": {
+                              "entityName": "teams",
+                              "$filter": "name eq 'Investigations Management Team'",
+                              "$top": 1
+                            },
+                            "authentication": "@parameters('$authentication')"
+                          }
+                        },
+                        "Apply_to_each_3": {
+                          "foreach": "@outputs('Get_Team_by_Name_-_Investigations_Management_Team_4')?['body/value']",
+                          "actions": {
+                            "Update_a_row_4": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "9799cdc4-4978-4ccd-8f1d-09c4e07fe228"
+                              },
+                              "type": "OpenApiConnection",
+                              "inputs": {
+                                "host": {
+                                  "connectionName": "shared_commondataserviceforapps",
+                                  "operationId": "UpdateRecord",
+                                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                },
+                                "parameters": {
+                                  "entityName": "ecer_investigations",
+                                  "recordId": "@triggerOutputs()?['body/ecer_investigationid']",
+                                  "item/ownerid@odata.bind": "/teams(@{items('Apply_to_each_3')?['teamid']})",
+                                  "item/statuscode": 621870016
+                                },
+                                "authentication": "@parameters('$authentication')"
+                              }
+                            }
+                          },
+                          "runAfter": {
+                            "Get_Team_by_Name_-_Investigations_Management_Team_4": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "d8672847-4481-4347-be75-f5d64728c03f"
+                          },
+                          "type": "Foreach"
+                        }
+                      },
+                      "runAfter": {},
+                      "else": {
+                        "actions": {
+                          "If_Intake_Stage_Review_2": {
+                            "actions": {
+                              "Get_Team_by_Name_-_Investigations_Management_Team_5": {
+                                "runAfter": {},
+                                "metadata": {
+                                  "operationMetadataId": "d76cdfa4-f6fb-4ee5-91a0-9e68ee3e5a88"
+                                },
+                                "type": "OpenApiConnection",
+                                "inputs": {
+                                  "host": {
+                                    "connectionName": "shared_commondataserviceforapps",
+                                    "operationId": "ListRecords",
+                                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                  },
+                                  "parameters": {
+                                    "entityName": "teams",
+                                    "$filter": "name eq 'Investigations Management Team'",
+                                    "$top": 1
+                                  },
+                                  "authentication": "@parameters('$authentication')"
+                                }
+                              },
+                              "Apply_to_each_4": {
+                                "foreach": "@outputs('Get_Team_by_Name_-_Investigations_Management_Team_5')?['body/value']",
+                                "actions": {
+                                  "Update_a_row_5": {
+                                    "runAfter": {},
+                                    "metadata": {
+                                      "operationMetadataId": "9799cdc4-4978-4ccd-8f1d-09c4e07fe228"
+                                    },
+                                    "type": "OpenApiConnection",
+                                    "inputs": {
+                                      "host": {
+                                        "connectionName": "shared_commondataserviceforapps",
+                                        "operationId": "UpdateRecord",
+                                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                      },
+                                      "parameters": {
+                                        "entityName": "ecer_investigations",
+                                        "recordId": "@triggerOutputs()?['body/ecer_investigationid']",
+                                        "item/ownerid@odata.bind": "/teams(@{items('Apply_to_each_4')?['teamid']})",
+                                        "item/statuscode": 621870011
+                                      },
+                                      "authentication": "@parameters('$authentication')"
+                                    }
+                                  }
+                                },
+                                "runAfter": {
+                                  "Get_Team_by_Name_-_Investigations_Management_Team_5": [
+                                    "Succeeded"
+                                  ]
+                                },
+                                "metadata": {
+                                  "operationMetadataId": "d8672847-4481-4347-be75-f5d64728c03f"
+                                },
+                                "type": "Foreach"
+                              }
+                            },
+                            "runAfter": {},
+                            "expression": {
+                              "equals": [
+                                "@triggerOutputs()?['body/ecer_readyforassignment']",
+                                621870000
+                              ]
+                            },
+                            "metadata": {
+                              "operationMetadataId": "8e713580-3eee-47f1-a8b7-669503c6473e"
+                            },
+                            "type": "If"
+                          }
+                        }
+                      },
+                      "expression": {
+                        "equals": [
+                          "@triggerOutputs()?['body/ecer_sireportreviewcomplete']",
+                          "@true"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "8e713580-3eee-47f1-a8b7-669503c6473e"
+                      },
+                      "type": "If"
+                    }
+                  }
+                },
+                "expression": {
+                  "equals": [
+                    "@triggerOutputs()?['body/ecer_sireviewcomplete']",
+                    "@true"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "8e713580-3eee-47f1-a8b7-669503c6473e"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_conclusionreportreviewcomplete']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b19a3b53-cd12-494e-a788-b3f024b8e066"
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

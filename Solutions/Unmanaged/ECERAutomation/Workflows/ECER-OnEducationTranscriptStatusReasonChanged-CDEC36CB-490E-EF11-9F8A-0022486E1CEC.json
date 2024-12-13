@@ -1,0 +1,231 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "2f390516-3e42-4549-a079-dda0b8ca4f8f"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_transcript",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Application_FK_from_Education_Transcript": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "be3351c6-60bc-41e5-9e5f-2509634afaf8"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_transcripts",
+              "recordId": "@triggerOutputs()?['body/ecer_transcriptid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Parent_Application_Transcript_Received_Flag": {
+          "runAfter": {
+            "Condition": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c488f4ae-cb70-450d-a5a5-948443600bf4"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@outputs('Get_Application_FK_from_Education_Transcript')?['body/_ecer_applicationid_value']",
+              "$select": "ecer_transcriptreceived"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "IF_Transcript_Status_Reason_is_Submitted_and_Application_flag_is_False": {
+          "actions": {
+            "Set_Transcript_Received_flag": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "929a405e-db85-4563-8d37-dc62d6d4e2e6"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applications",
+                  "recordId": "@outputs('Get_Application_FK_from_Education_Transcript')?['body/_ecer_applicationid_value']",
+                  "item/ecer_transcriptreceived": true,
+                  "item/ecer_transcriptreceiveddate": "@utcNow()"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Parent_Application_Transcript_Received_Flag": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  621870001
+                ]
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Parent_Application_Transcript_Received_Flag')?['body/ecer_transcriptreceived']",
+                    "@true"
+                  ]
+                }
+              },
+              {
+                "equals": [
+                  "@variables('Has Other Transcripts')",
+                  "@false"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f4d9a030-fb99-4f3b-aaf1-37b52d10f511"
+          },
+          "type": "If"
+        },
+        "List_ALL_OTHER_Transcript_of_this_Application_at_DRAFT_or_APPLICATION_SUBMITTED": {
+          "runAfter": {
+            "Get_Application_FK_from_Education_Transcript": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f0562bf7-5c94-4540-b576-e9b3039654fe"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_transcripts",
+              "$filter": "_ecer_applicationid_value eq '@{outputs('Get_Application_FK_from_Education_Transcript')?['body/_ecer_applicationid_value']}' and ecer_transcriptid ne '@{triggerOutputs()?['body/ecer_transcriptid']}' and (statuscode eq 1 or statuscode eq 621870006)",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "List_ALL_OTHER_Transcript_of_this_Application_at_DRAFT_or_APPLICATION_SUBMITTED": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1e67438b-a0ac-4c0d-acbb-7b4ccdaca24e"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Has Other Transcripts",
+                "type": "boolean",
+                "value": "@false"
+              }
+            ]
+          }
+        },
+        "Condition": {
+          "actions": {
+            "Set_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2bf08560-3c17-4368-830c-daab80946edf"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Has Other Transcripts",
+                "value": "@true"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "greater": [
+              "@length(outputs('List_ALL_OTHER_Transcript_of_this_Application_at_DRAFT_or_APPLICATION_SUBMITTED')?['body/value'])",
+              0
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f40a7534-a156-4990-92c4-b4ef7ff6fc4d"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

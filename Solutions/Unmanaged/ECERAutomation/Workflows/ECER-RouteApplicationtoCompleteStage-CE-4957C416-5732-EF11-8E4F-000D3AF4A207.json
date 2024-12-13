@@ -1,0 +1,531 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_BPF_is_Modified": {
+          "metadata": {
+            "operationMetadataId": "512ad79c-8709-4a44-83c0-6eaf7b2ed742"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_certifications",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "activestageid"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Stage_Name": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "0594a2de-a0a6-4d7a-b5fc-88f40a4d8c3a"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "processstages",
+              "recordId": "@triggerOutputs()?['body/_activestageid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition_is_Certified_and_No_Print": {
+          "actions": {
+            "Get_Program_Clerk_Team_2": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "c82f3a4a-cd38-4378-8374-73284f6aa6a9"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "teams",
+                  "$filter": "name eq 'Program Support Team'",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Certified_No_Print": {
+              "foreach": "@outputs('Get_Program_Clerk_Team_2')?['body/value']",
+              "actions": {
+                "Route_Application_to_PC_Certified_No_Print": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "5cd0e4bc-1fe1-4fb8-9bbf-ac63abfb5dab"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_applications",
+                      "recordId": "@outputs('Get_Application_')?['body/ecer_applicationid']",
+                      "item/ownerid@odata.bind": "/teams(@{items('Certified_No_Print')?['teamid']})",
+                      "item/statecode": 1,
+                      "item/statuscode": 2
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Finish_BPF": {
+                  "runAfter": {
+                    "Route_Application_to_PC_Certified_No_Print": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2e8a4544-5fa8-4b19-9d26-af0ffb6dc5cf"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_certificationses",
+                      "recordId": "@triggerOutputs()?['body/businessprocessflowinstanceid']",
+                      "item/statuscode": 2
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_Program_Clerk_Team_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "f2d36ecf-8d24-4373-b3ce-62f3b14085f6"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Get_Application_": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Condition_is_Denied_Print": {
+                "actions": {
+                  "Get_Program_Clerk_Team": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "c82f3a4a-cd38-4378-8374-73284f6aa6a9"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "ListRecords",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "teams",
+                        "$filter": "name eq 'Program Support Team'",
+                        "$top": 1
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Denied_Print_": {
+                    "foreach": "@outputs('Get_Program_Clerk_Team')?['body/value']",
+                    "actions": {
+                      "Route_Application_to_PC_Denied_Print": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "5cd0e4bc-1fe1-4fb8-9bbf-ac63abfb5dab"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_commondataserviceforapps",
+                            "operationId": "UpdateRecord",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                          },
+                          "parameters": {
+                            "entityName": "ecer_applications",
+                            "recordId": "@outputs('Get_Application_')?['body/ecer_applicationid']",
+                            "item/ownerid@odata.bind": "/teams(@{items('Denied_Print_')?['teamid']})"
+                          },
+                          "authentication": "@parameters('$authentication')"
+                        }
+                      }
+                    },
+                    "runAfter": {
+                      "Get_Program_Clerk_Team": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "6c469840-2b24-45f8-ba50-026ef851ef80"
+                    },
+                    "type": "Foreach"
+                  }
+                },
+                "runAfter": {},
+                "else": {
+                  "actions": {
+                    "Condition_is_Denied_No_Print": {
+                      "actions": {
+                        "Get_Program_Clerk_Team_3": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "c82f3a4a-cd38-4378-8374-73284f6aa6a9"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_commondataserviceforapps",
+                              "operationId": "ListRecords",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                            },
+                            "parameters": {
+                              "entityName": "teams",
+                              "$filter": "name eq 'Program Support Team'",
+                              "$top": 1
+                            },
+                            "authentication": "@parameters('$authentication')"
+                          }
+                        },
+                        "Denied_No_Print": {
+                          "foreach": "@outputs('Get_Program_Clerk_Team_3')?['body/value']",
+                          "actions": {
+                            "Route_Application_to_PC_Denied_No_Print": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "5cd0e4bc-1fe1-4fb8-9bbf-ac63abfb5dab"
+                              },
+                              "type": "OpenApiConnection",
+                              "inputs": {
+                                "host": {
+                                  "connectionName": "shared_commondataserviceforapps",
+                                  "operationId": "UpdateRecord",
+                                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                },
+                                "parameters": {
+                                  "entityName": "ecer_applications",
+                                  "recordId": "@outputs('Get_Application_')?['body/ecer_applicationid']",
+                                  "item/ownerid@odata.bind": "/teams(@{items('Denied_No_Print')?['teamid']})"
+                                },
+                                "authentication": "@parameters('$authentication')"
+                              }
+                            },
+                            "Finish_BPF_2": {
+                              "runAfter": {
+                                "Route_Application_to_PC_Denied_No_Print": [
+                                  "Succeeded"
+                                ]
+                              },
+                              "metadata": {
+                                "operationMetadataId": "2e8a4544-5fa8-4b19-9d26-af0ffb6dc5cf"
+                              },
+                              "type": "OpenApiConnection",
+                              "inputs": {
+                                "host": {
+                                  "connectionName": "shared_commondataserviceforapps",
+                                  "operationId": "UpdateRecord",
+                                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                },
+                                "parameters": {
+                                  "entityName": "ecer_certificationses",
+                                  "recordId": "@triggerOutputs()?['body/businessprocessflowinstanceid']",
+                                  "item/statuscode": 2
+                                },
+                                "authentication": "@parameters('$authentication')"
+                              }
+                            }
+                          },
+                          "runAfter": {
+                            "Get_Program_Clerk_Team_3": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "6c469840-2b24-45f8-ba50-026ef851ef80"
+                          },
+                          "type": "Foreach"
+                        }
+                      },
+                      "runAfter": {},
+                      "else": {
+                        "actions": {
+                          "Condition_is_Certified_and_Print_": {
+                            "actions": {
+                              "Get_Program_Clerk_Team_4": {
+                                "runAfter": {},
+                                "metadata": {
+                                  "operationMetadataId": "c82f3a4a-cd38-4378-8374-73284f6aa6a9"
+                                },
+                                "type": "OpenApiConnection",
+                                "inputs": {
+                                  "host": {
+                                    "connectionName": "shared_commondataserviceforapps",
+                                    "operationId": "ListRecords",
+                                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                  },
+                                  "parameters": {
+                                    "entityName": "teams",
+                                    "$filter": "name eq 'Program Support Team'",
+                                    "$top": 1
+                                  },
+                                  "authentication": "@parameters('$authentication')"
+                                }
+                              },
+                              "Certified_Print": {
+                                "foreach": "@outputs('Get_Program_Clerk_Team_4')?['body/value']",
+                                "actions": {
+                                  "Route_Application_to_PC_Certified_Print": {
+                                    "runAfter": {},
+                                    "metadata": {
+                                      "operationMetadataId": "5cd0e4bc-1fe1-4fb8-9bbf-ac63abfb5dab"
+                                    },
+                                    "type": "OpenApiConnection",
+                                    "inputs": {
+                                      "host": {
+                                        "connectionName": "shared_commondataserviceforapps",
+                                        "operationId": "UpdateRecord",
+                                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                      },
+                                      "parameters": {
+                                        "entityName": "ecer_applications",
+                                        "recordId": "@outputs('Get_Application_')?['body/ecer_applicationid']",
+                                        "item/ownerid@odata.bind": "/teams(@{items('Certified_Print')?['teamid']})"
+                                      },
+                                      "authentication": "@parameters('$authentication')"
+                                    }
+                                  }
+                                },
+                                "runAfter": {
+                                  "Get_Program_Clerk_Team_4": [
+                                    "Succeeded"
+                                  ]
+                                },
+                                "metadata": {
+                                  "operationMetadataId": "1d277e6e-ded3-434a-94ad-31392dbca6bf"
+                                },
+                                "type": "Foreach"
+                              }
+                            },
+                            "runAfter": {},
+                            "expression": {
+                              "and": [
+                                {
+                                  "equals": [
+                                    "@outputs('Get_Stage_Name')?['body/stagename']",
+                                    "Complete"
+                                  ]
+                                },
+                                {
+                                  "equals": [
+                                    "@outputs('Get_Application_')?['body/statuscode']",
+                                    290700003
+                                  ]
+                                },
+                                {
+                                  "equals": [
+                                    "@outputs('Get_Application_')?['body/ecer_statusreasondetail']",
+                                    621870010
+                                  ]
+                                },
+                                {
+                                  "equals": [
+                                    "@outputs('Get_Application_')?['body/ecer_printrequest']",
+                                    "@true"
+                                  ]
+                                }
+                              ]
+                            },
+                            "metadata": {
+                              "operationMetadataId": "4d77eda1-0d3a-4de1-9748-f2200f969f37"
+                            },
+                            "type": "If"
+                          }
+                        }
+                      },
+                      "expression": {
+                        "and": [
+                          {
+                            "equals": [
+                              "@outputs('Get_Stage_Name')?['body/stagename']",
+                              "Complete"
+                            ]
+                          },
+                          {
+                            "equals": [
+                              "@outputs('Get_Application_')?['body/statuscode']",
+                              290700003
+                            ]
+                          },
+                          {
+                            "equals": [
+                              "@outputs('Get_Application_')?['body/ecer_statusreasondetail']",
+                              621870011
+                            ]
+                          },
+                          {
+                            "not": {
+                              "equals": [
+                                "@outputs('Get_Application_')?['body/ecer_printrequest']",
+                                "@true"
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "aff798a5-7a12-478d-b87c-71e544050f94"
+                      },
+                      "type": "If"
+                    }
+                  }
+                },
+                "expression": {
+                  "and": [
+                    {
+                      "equals": [
+                        "@outputs('Get_Stage_Name')?['body/stagename']",
+                        "Complete"
+                      ]
+                    },
+                    {
+                      "equals": [
+                        "@outputs('Get_Application_')?['body/statuscode']",
+                        290700003
+                      ]
+                    },
+                    {
+                      "equals": [
+                        "@outputs('Get_Application_')?['body/ecer_statusreasondetail']",
+                        621870011
+                      ]
+                    },
+                    {
+                      "equals": [
+                        "@outputs('Get_Application_')?['body/ecer_printrequest']",
+                        "@true"
+                      ]
+                    }
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "aff798a5-7a12-478d-b87c-71e544050f94"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@outputs('Get_Stage_Name')?['body/stagename']",
+                  "Complete"
+                ]
+              },
+              {
+                "equals": [
+                  "@outputs('Get_Application_')?['body/statuscode']",
+                  290700003
+                ]
+              },
+              {
+                "equals": [
+                  "@outputs('Get_Application_')?['body/ecer_statusreasondetail']",
+                  621870010
+                ]
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Application_')?['body/ecer_printrequest']",
+                    "@true"
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "aff798a5-7a12-478d-b87c-71e544050f94"
+          },
+          "type": "If"
+        },
+        "Get_Application_": {
+          "runAfter": {
+            "Get_Stage_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5fa2ef8c-5223-499d-9b61-a09fe1514c8e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@triggerOutputs()?['body/_bpf_ecer_applicationid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

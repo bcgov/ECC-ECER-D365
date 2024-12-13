@@ -1,0 +1,364 @@
+<ImportExportXml version="9.2.24112.182" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.24112.182" OrganizationSchemaType="Full" CRMServerServiceabilityVersion="9.2.24112.00182">
+  <SolutionManifest>
+    <UniqueName>ECERReports</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="ECER Reports" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.0.21</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>ecer</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="ECER" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="publisher for all customization for ECER Dynamics instance" languagecode="1033" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>ecer</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>62187</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="29" id="{0ad2c54f-b1ad-ef11-a72d-7c1e524087d5}" behavior="0" />
+      <RootComponent type="29" id="{0f5f2c8c-303e-ef11-a316-000d3af45c14}" behavior="0" />
+      <RootComponent type="29" id="{17e54870-7e65-ef11-a671-6045bdcd6cb0}" behavior="0" />
+      <RootComponent type="29" id="{212aa147-9e56-ef11-bfe3-6045bdcd6cb0}" behavior="0" />
+      <RootComponent type="29" id="{423eec3e-f71d-ef11-840a-000d3af46033}" behavior="0" />
+      <RootComponent type="31" id="{2e37de02-7674-ef11-ac21-6045bdcd6cb0}" behavior="0" />
+      <RootComponent type="31" id="{389624c2-e858-ef11-bfe2-0022486db3a8}" behavior="0" />
+      <RootComponent type="31" id="{875bc37e-bb2d-ef11-8e4f-000d3af45c14}" behavior="0" />
+      <RootComponent type="31" id="{681f02c3-c92d-ef11-8e4f-000d3af45c14}" behavior="0" />
+      <RootComponent type="31" id="{87834a5f-e91d-ef11-840b-0022486e1cec}" behavior="0" />
+      <RootComponent type="31" id="{af1b6147-7674-ef11-ac21-6045bdcd6cb0}" behavior="0" />
+      <RootComponent type="31" id="{89e04357-5244-ef11-a316-000d3af45c14}" behavior="0" />
+      <RootComponent type="31" id="{b0e8a499-6c56-ef11-bfe2-6045bdf9a93e}" behavior="0" />
+      <RootComponent type="31" id="{b94b6f54-6765-ef11-a670-7c1e520663eb}" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_authentication" displayName="Authentication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Certificate Cover Letter" id="{17e54870-7e65-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Request Certificate PDF Generation" id="{0ad2c54f-b1ad-ef11-a72d-7c1e524087d5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Certificate Cover Letter" id="{17e54870-7e65-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Certificate" id="{423eec3e-f71d-ef11-840a-000d3af46033}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter For NonPortal" id="{2e37de02-7674-ef11-ac21-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Certificate" id="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter" id="{b94b6f54-6765-ef11-a670-7c1e520663eb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificateconditions" displayName="Certificate Conditions" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Certificate Cover Letter" id="{17e54870-7e65-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificateconditions" displayName="Certificate Conditions" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Certificate" id="{423eec3e-f71d-ef11-840a-000d3af46033}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificateconditions" displayName="Certificate Conditions" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Conditions" id="{681f02c3-c92d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certifiedlevel" displayName="Certified Level" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Levels" id="{875bc37e-bb2d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Communication Message as Report" id="{212aa147-9e56-ef11-bfe3-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="31" displayName="Communication with Letterhead" id="{389624c2-e858-ef11-bfe2-0022486db3a8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="31" displayName="Communication Message" id="{b0e8a499-6c56-ef11-bfe2-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_clientid" displayName="Client ID" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" parentId="{b94b6f54-6765-ef11-a670-7c1e520663eb}" />
+        <Dependent type="31" displayName="Certificate Cover Letter" id="{89e04357-5244-ef11-a316-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_clientid" displayName="Client ID" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" parentId="{2e37de02-7674-ef11-ac21-6045bdcd6cb0}" />
+        <Dependent type="31" displayName="Certificate Cover Letter For NonPortal" id="{af1b6147-7674-ef11-ac21-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_hascurrentcertificateconditions" displayName="Has Current Certificate Conditions" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter For NonPortal" id="{2e37de02-7674-ef11-ac21-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_hascurrentcertificateconditions" displayName="Has Current Certificate Conditions" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="31" displayName="Certificate" id="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_hascurrentcertificateconditions" displayName="Has Current Certificate Conditions" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter" id="{b94b6f54-6765-ef11-a670-7c1e520663eb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificateid" displayName="Certificate" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Request Certificate PDF Generation" id="{0ad2c54f-b1ad-ef11-a72d-7c1e524087d5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificateid" displayName="Certificate" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter For NonPortal" id="{2e37de02-7674-ef11-ac21-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificateid" displayName="Certificate" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Certificate" id="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificateid" displayName="Certificate" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter" id="{b94b6f54-6765-ef11-a670-7c1e520663eb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificatelevel" displayName="Certificate Level" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter For NonPortal" id="{2e37de02-7674-ef11-ac21-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificatelevel" displayName="Certificate Level" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Certificate" id="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificatelevel" displayName="Certificate Level" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter" id="{b94b6f54-6765-ef11-a670-7c1e520663eb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificatenumber" displayName="Registration Number" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter For NonPortal" id="{2e37de02-7674-ef11-ac21-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificatenumber" displayName="Registration Number" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Certificate" id="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificatenumber" displayName="Registration Number" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter" id="{b94b6f54-6765-ef11-a670-7c1e520663eb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_effectivedate" displayName="Effective Date" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter For NonPortal" id="{2e37de02-7674-ef11-ac21-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_effectivedate" displayName="Effective Date" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Certificate" id="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_effectivedate" displayName="Effective Date" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter" id="{b94b6f54-6765-ef11-a670-7c1e520663eb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_expirydate" displayName="Expiry Date" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter For NonPortal" id="{2e37de02-7674-ef11-ac21-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_expirydate" displayName="Expiry Date" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Certificate" id="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_expirydate" displayName="Expiry Date" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter" id="{b94b6f54-6765-ef11-a670-7c1e520663eb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_generatecertificate" displayName="Generate Certificate" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Request Certificate PDF Generation" id="{0ad2c54f-b1ad-ef11-a72d-7c1e524087d5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_generatecertificate" displayName="Generate Certificate" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Certificate" id="{423eec3e-f71d-ef11-840a-000d3af46033}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_generatecoverletter" displayName="Generate Cover Letter" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Certificate Cover Letter" id="{17e54870-7e65-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_hascertificatepdf" displayName="Has Certificate PDF" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Request Certificate PDF Generation" id="{0ad2c54f-b1ad-ef11-a72d-7c1e524087d5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Request Certificate PDF Generation" id="{0ad2c54f-b1ad-ef11-a72d-7c1e524087d5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter For NonPortal" id="{2e37de02-7674-ef11-ac21-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Certificate" id="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter" id="{b94b6f54-6765-ef11-a670-7c1e520663eb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_registrantid" displayName="Registrant" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter For NonPortal" id="{2e37de02-7674-ef11-ac21-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_registrantid" displayName="Registrant" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Certificate" id="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_registrantid" displayName="Registrant" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="31" displayName="Cover Letter" id="{b94b6f54-6765-ef11-a670-7c1e520663eb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificateconditionsid" displayName="Certificate Conditions" parentSchemaName="ecer_certificateconditions" parentDisplayName="Certificate Conditions" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Conditions" id="{681f02c3-c92d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_details" displayName="Details" parentSchemaName="ecer_certificateconditions" parentDisplayName="Certificate Conditions" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Conditions" id="{681f02c3-c92d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_enddate" displayName="End Date" parentSchemaName="ecer_certificateconditions" parentDisplayName="Certificate Conditions" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Conditions" id="{681f02c3-c92d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_certificateconditions" parentDisplayName="Certificate Conditions" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Conditions" id="{681f02c3-c92d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_registrantid" displayName="Registrant" parentSchemaName="ecer_certificateconditions" parentDisplayName="Certificate Conditions" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Conditions" id="{681f02c3-c92d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_startdate" displayName="Start Date" parentSchemaName="ecer_certificateconditions" parentDisplayName="Certificate Conditions" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Conditions" id="{681f02c3-c92d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="ecer_certificateconditions" parentDisplayName="Certificate Conditions" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Conditions" id="{681f02c3-c92d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificateid" displayName="Certificate" parentSchemaName="ecer_certifiedlevel" parentDisplayName="Certified Level" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Levels" id="{875bc37e-bb2d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certifiedlevelid" displayName="Certified Level" parentSchemaName="ecer_certifiedlevel" parentDisplayName="Certified Level" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Levels" id="{875bc37e-bb2d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_displayname" displayName="Display Name" parentSchemaName="ecer_certifiedlevel" parentDisplayName="Certified Level" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Levels" id="{875bc37e-bb2d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_certifiedlevel" parentDisplayName="Certified Level" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Levels" id="{875bc37e-bb2d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="ecer_certifiedlevel" parentDisplayName="Certified Level" solution="Active" parentId="{87834a5f-e91d-ef11-840b-0022486e1cec}" />
+        <Dependent type="31" displayName="Certificate Levels" id="{875bc37e-bb2d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_communicationid" displayName="Communication" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="31" displayName="Communication with Letterhead" id="{389624c2-e858-ef11-bfe2-0022486db3a8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_communicationid" displayName="Communication" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="31" displayName="Communication Message" id="{b0e8a499-6c56-ef11-bfe2-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_generatemessagereport" displayName="Generate Message Report" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Communication Message as Report" id="{212aa147-9e56-ef11-bfe3-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_message" displayName="Message" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="31" displayName="Communication with Letterhead" id="{389624c2-e858-ef11-bfe2-0022486db3a8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_message" displayName="Message" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="31" displayName="Communication Message" id="{b0e8a499-6c56-ef11-bfe2-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Subject" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="31" displayName="Communication with Letterhead" id="{389624c2-e858-ef11-bfe2-0022486db3a8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Subject" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="31" displayName="Communication Message" id="{b0e8a499-6c56-ef11-bfe2-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="90" schemaName="CRM.CustomWorkflow.HasOptionSetAttributeChangedActivity, CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" displayName="CRM.CustomWorkflow.HasOptionSetAttributeChangedActivity" solution="Active" id="{c88839a1-6e48-4aca-9599-55516d180a1a}" />
+        <Dependent type="29" displayName="ECER - WF - Request Certificate PDF Generation" id="{0ad2c54f-b1ad-ef11-a72d-7c1e524087d5}" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

@@ -12,13 +12,7 @@ ECER.Jscripts.Contact = {
 	onLoad: function (executionContext) {
         ECER.Jscripts.Contact.showTabsIfBCECE(executionContext);
         ECER.Jscripts.Contact.evaluateAge(executionContext);
-        // ECER.Jscripts.Contact.onGridRowSelect(executionContext);
-        
 	},
-
-    // onSelect: function (executionContext) {
-    //     ECER.Jscripts.Contact.onGridRowSelect(executionContext);
-    // },
 
     showTabsIfBCECE: function (executionContext) {
         try {
@@ -47,27 +41,32 @@ ECER.Jscripts.Contact = {
     evaluateAge: function (executionContext) {
         try {
             var formContext = executionContext.getFormContext();
-            var isOver19 = false;
+            var isUnder19 = false;
             var birthDateAttribute = formContext.getAttribute("birthdate");
             if (birthDateAttribute != null && birthDateAttribute.getValue() != null) {
                 var birthDate = birthDateAttribute.getValue();
                 var today = new Date();
                 var diff = (today.getTime() - birthDate.getTime()) / 1000;
                 diff /= (60 * 60 * 24);
-                var differenceInYears = Math.abs(Math.round(diff / 365.25));
-                if (differenceInYears >= 19) {
-                    isOver19 = true;
+                var differenceInYears = Math.abs((diff / 365.25));
+                if (differenceInYears < 19) {
+                    isUnder19 = true;
                 }
             }
             var isUnder19Attribute = formContext.getAttribute("ecer_isunder19");
+            // Is Under 19 is a Choice with YES/NO option
+            // YES = 621870000
+            // NO = 621870001
             if (isUnder19Attribute != null) {
                 var isUnder19Value = isUnder19Attribute.getValue();
                 // Set value if the value is different
-                if (isUnder19Value != 621870000 && !isOver19) {
+                if (isUnder19Value != 621870000 && isUnder19) {
+                    // IF Is Under 19 is NOT YES and Evaluated Age is Under 19
                     isUnder19Attribute.setValue(621870000);
                     formContext.data.save();
                 }
-                else if (isUnder19Value != 621870001 && isOver19) {
+                else if (isUnder19Value != 621870001 && !isUnder19) {
+                    // IF Is Under 19 is NOT NO and Evaluated Age is NOT Under 19
                     isUnder19Attribute.setValue(621870001);
                     formContext.data.save();
                 }
@@ -92,40 +91,6 @@ ECER.Jscripts.Contact = {
                     var alertOptions = { height: 120, width: 260 };
                     Xrm.Navigation.openAlertDialog(alertStrings, alertOptions);
             
-        },
-    
-        onGridRowSelect: function (executionContext) {
-            if (!executionContext) {
-                console.error("Execution context is not defined.");
-                return;
-            }
-        
-            var formContext = executionContext.getFormContext();
-    
-            var stateCodeAttribute = formContext.getAttribute("statecode");
-            if (stateCodeAttribute && stateCodeAttribute.getValue() === 1) {
-                return; 
-            }
-    
-            var currentUserId = formContext.context.getUserId();
-    
-            var createdBy = formContext.getAttribute("createdby").getValue();
-            var createdById = createdBy ? createdBy[0].id : "";
-    
-            var createdOn = formContext.getAttribute("createdon").getValue();
-            var createdOnDate = createdOn ? createdOn.toDateString() : "";
-    
-            var today = new Date().toDateString();
-    
-            if (currentUserId !== createdById || createdOnDate !== today) {
-                // Disable all fields
-                formContext.getData().getEntity().attributes.forEach(function(attr) {
-                    attr.controls.forEach(function(control) {
-                        control.setDisabled(true);
-                    });
-                });
-            }
-            // Add else block if needed for cases when the user and date do match.
         }
 	
 }

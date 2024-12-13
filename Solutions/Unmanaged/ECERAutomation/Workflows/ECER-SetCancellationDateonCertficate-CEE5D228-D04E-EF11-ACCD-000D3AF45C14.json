@@ -1,0 +1,223 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Certificate_Equals_Cancelled_": {
+          "metadata": {
+            "operationMetadataId": "f3f91604-5019-4496-b264-5a4782654c0e"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_certificate",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode",
+              "subscriptionRequest/filterexpression": "statuscode eq 621870003"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Certificate": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5531bb48-b588-4f95-99c3-dde2eab6fff6"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certificates",
+              "recordId": "@triggerOutputs()?['body/ecer_certificateid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition": {
+          "actions": {
+            "Update_Cancellation_Date": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "8ae185b4-9614-4796-8d03-233decd102e5"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_certificates",
+                  "recordId": "@outputs('Get_Certificate')?['body/ecer_certificateid']",
+                  "item/ecer_cancelleddate": "@variables('Cancelled Date')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Application": {
+              "runAfter": {
+                "Update_Cancellation_Date": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "3ffa2939-ad56-4488-aad5-de6a4b1157a6"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applications",
+                  "$filter": "_ecer_certificateid_value eq '@{outputs('Update_Cancellation_Date')?['body/ecer_certificateid']}'",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each": {
+              "foreach": "@outputs('Get_Application')?['body/value']",
+              "actions": {
+                "Create_Communication_Record": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "0238e6aa-4add-4105-9df3-33a2a7359161"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_communications",
+                      "item/ecer_initiatedfrom": 621870000,
+                      "item/ecer_message": "Your certificate has been cancelled as per your request. \n\nIf you have any questions, <a href='https://www2.gov.bc.ca/gov/content/education-training/early-learning/teach/training-and-professional-development/become-an-early-childhood-educator'>Contact Us</a>.",
+                      "item/ecer_name": "Certificate cancelled",
+                      "item/ecer_type": 621870002,
+                      "item/ecer_Registrantid_contact@odata.bind": "/contacts(@{outputs('Get_Registrant')?['body/contactid']})",
+                      "item/ecer_Applicationid@odata.bind": "/ecer_applications(@{items('Apply_to_each')?['ecer_applicationid']})",
+                      "item/ecer_donotreply": true,
+                      "item/ecer_isroot": true,
+                      "item/ecer_notifyrecipient": true,
+                      "item/statuscode": 621870001
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_Application": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "916447da-722b-4440-858e-74500133c4c0"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Get_Registrant": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_Certificate')?['body/ecer_cancelleddate']",
+              "@null"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "17843740-70ba-4e84-b02b-623e92df860d"
+          },
+          "type": "If"
+        },
+        "Get_Registrant": {
+          "runAfter": {
+            "Get_Certificate": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f2a58e6a-68b8-4247-9eae-2ff82c877526"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@outputs('Get_Certificate')?['body/_ecer_registrantid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "42750a0f-af65-4e8b-b303-a61e0eaebef5"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Cancelled Date",
+                "type": "string",
+                "value": "@{formatDateTime(utcNow(), 'yyyy-MM-dd')}"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -197,9 +197,13 @@ var CrmJS;
                     //To check Attributes/WebResources exists or not.
                     var theControl = formContext.getControl(splitAttribute[fieldName]);
                     var theTab = formContext.ui.tabs.get(splitAttribute[fieldName]);
+                    var theQuickViewForm = formContext.ui.quickForms.get(splitAttribute[fieldName]);
                     if (crm_Utility.isValid(theControl)) {
                         //To hide Attributes/Webresources
                         theControl.setVisible(isVisible);
+                    }
+                    else if (crm_Utility.isValid(theQuickViewForm)) {
+                        theQuickViewForm.setVisible(isVisible);
                     }
                     ////To check Tab exists or not
                     else if (crm_Utility.isValid(theTab)) {
@@ -287,7 +291,7 @@ var CrmJS;
                 //Validate Xrm.Utility and proceed
                 if (crm_Utility.isValid(Xrm.Navigation)) {
                     var alertStrings = { confirmButtonLabel: "OK", text: message, title: "" };
-                    var alertOptions = { height: 120, width: 260 };
+                    var alertOptions = { height: 360, width: 360 };
                     Xrm.Navigation.openAlertDialog(alertStrings, alertOptions);
                 }
                 else {
@@ -587,6 +591,8 @@ var CrmJS;
             /// <summary>
             /// This function is to remove any options from Option Set from CRM Form
             /// if values are not in the list for visible Option Values
+            /// This function no longer works as Add Options needs text as vwell as label.
+            /// see 
             /// </summary>
             /// <param type="string" name="attributeSchemaName" />
             /// <param type="string" name="visibleOptionValues" />
@@ -598,15 +604,15 @@ var CrmJS;
                 if (crm_Utility.isValid(targetControl)) {
                     var optionValuesArray = visibleOptionValues.split(",");
                     var options = targetControl.getOptions();
-                    for (var i = 0; i < options.length; i++) {
-                        var currentOption = options[i].value;
-                        if (currentOption !== currentOption) {
-                            // currentOption is NaN
-                            continue;
-                        }
+                    for (var j = 0; j < optionValuesArray.length; j++) {
                         var hasMatch = false;
-                        for (var j = 0; j < optionValuesArray.length; j++) {
-                            var optionToCompare = parseInt(optionValuesArray[j]);
+                        var optionToCompare = parseInt(optionValuesArray[j]);
+                        for (var i = 0; i < options.length; i++) {
+                            var currentOption = options[i].value;
+                            if (currentOption !== currentOption) {
+                                // currentOption is NaN
+                                continue;
+                            }
                             if (currentOption == optionToCompare) {
                                 hasMatch = true;
                                 break;
@@ -614,7 +620,7 @@ var CrmJS;
                         }
 
                         if (!hasMatch) {
-                            targetControl.removeOption(currentOption);
+                            targetControl.addOption(optionToCompare, 2);
                         }
                     }
                 }
@@ -792,7 +798,7 @@ var CrmJS;
             //The XRM OData end-point
             // OrganizationData.Svc is obsoleted
             // var ODATA_ENDPOINT = "/XRMServices/2011/OrganizationData.svc/";
-            var WEBAPI_ENDPOINT = "/api/data/v9.0/";
+            var WEBAPI_ENDPOINT = "/api/data/v9.2/";
 
             // will become something like this
             // https://DynamicsURL/api/data/v9.0/accounts
@@ -1092,6 +1098,17 @@ var CrmJS;
                 timelineControl.refresh();
             }
         };
+        // Call on Subgrid On Select
+        // This is for grids which need the group by function but not really the Editable Funtions
+        Utility.prototype.DisableSubgridControls = function (executionContext) {
+            var formContext = executionContext.getFormContext();
+            formContext.getData().getEntity().attributes.forEach(function (attr) {
+                attr.controls.forEach(function (c) {
+                    c.setDisabled(true);
+                });
+            });
+        };
+
         Utility.prototype.RunReportFromForm = function (formContext, reportId, entityTypeCode) {
             // The goal: Get Below URL
             // https://embc-dfa.dev.jag.gov.bc.ca

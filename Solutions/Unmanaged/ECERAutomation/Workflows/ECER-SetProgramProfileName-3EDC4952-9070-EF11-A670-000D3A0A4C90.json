@@ -1,0 +1,95 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "51dc9a31-0e00-4305-b28c-a61bc8bd30a9"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "ecer_program",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/name": "3edc4952-9070-ef11-a670-000d3a0a4c90"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_PSI": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "4d0c5aeb-c4db-43c5-a7d7-9c83900b2157"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "ecer_postsecondaryinstitutes",
+              "recordId": "@triggerOutputs()?['body/_ecer_postsecondaryinstitution_value']"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        },
+        "Update_Program_Profile_Name": {
+          "runAfter": {
+            "Get_PSI": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "75728b4c-d3da-47be-a053-0349e2295074"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "entityName": "ecer_programs",
+              "recordId": "@triggerOutputs()?['body/ecer_programid']",
+              "item/ecer_name": "@{outputs('Get_PSI')?['body/ecer_name']} @{triggerBody()?['ecer_startdate']} - @{triggerBody()?['ecer_enddate']}"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "connectionName": "shared_commondataserviceforapps"
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

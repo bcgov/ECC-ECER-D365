@@ -1,0 +1,237 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "recurrence": {
+            "frequency": "Month",
+            "interval": 12,
+            "startTime": "2024-04-01T17:00:00Z"
+          },
+          "metadata": {
+            "operationMetadataId": "8654d32c-3822-44d3-a8fd-df7b30860dc2"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "List_ProgramProfile": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "3120b3ea-b676-4b40-8589-e4460401df44"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_programs",
+              "$filter": "(statuscode eq 621870002 and Microsoft.Dynamics.CRM.ThisYear(PropertyName='ecer_enddate'))"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "runtimeConfiguration": {
+            "paginationPolicy": {
+              "minimumItemCount": 100000
+            }
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_ProgramProfile')?['body/value']",
+          "actions": {
+            "Get_PSI": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "79f9aa1d-693c-4f5e-9de5-56d60ccda97d"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_postsecondaryinstitutes",
+                  "recordId": "@items('Apply_to_each')?['_ecer_postsecondaryinstitution_value']",
+                  "$expand": "ecer_PrimaryProgramRepresentative($select=contactid,emailaddress1,lastname)"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Perform_a_bound_action": {
+              "runAfter": {
+                "Add_a_new_Email_Message": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "8d6b50cf-aa17-41a0-b9a8-b2d609b02a64"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "PerformBoundAction",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "emails",
+                  "actionName": "Microsoft.Dynamics.CRM.SendEmail",
+                  "recordId": "@outputs('Add_a_new_Email_Message')?['body/activityid']",
+                  "item/IssueSend": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Add_a_new_Email_Message": {
+              "runAfter": {
+                "Get_PSI": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "86c69301-43ec-4764-9cff-7f38b4c94dd4"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "emails",
+                  "item/activitypointer_activity_parties": [
+                    {
+                      "participationtypemask": 1,
+                      "partyid@odata.bind": "queues(@{variables('QueueId')})"
+                    },
+                    {
+                      "participationtypemask": 2,
+                      "partyid@odata.bind": "contacts(@{outputs('Get_PSI')?['body/ecer_primaryprogramrepresentative/contactid']})"
+                    }
+                  ],
+                  "item/description": "<p>Dear @{outputs('Get_PSI')?['body/ecer_primaryprogramrepresentative/lastname']}, <br><br>This is a notification that you have a new message. Please view the new message in the portal. <br><br>Thanks.</p>",
+                  "item/regardingobjectid_ecer_postsecondaryinstitute_email@odata.bind": "ecer_postsecondaryinstitutes(@{outputs('Get_PSI')?['body/ecer_postsecondaryinstituteid']})",
+                  "item/subject": "You have a new notification"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "For_each": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ca806e6d-efa3-4d07-86e3-c195985301d9"
+          },
+          "type": "Foreach",
+          "runtimeConfiguration": {
+            "concurrency": {
+              "repetitions": 50
+            }
+          }
+        },
+        "List_NoReplyQueue": {
+          "runAfter": {
+            "List_ProgramProfile": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "eb08e115-c0e6-49d1-bc77-139bab76965b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "queues",
+              "$filter": "emailaddress eq 'myecerv@gov.bc.ca'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_QueueId": {
+          "runAfter": {
+            "List_NoReplyQueue": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2c58dd76-d53b-4371-97c8-7d736181b454"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "QueueId",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "For_each": {
+          "foreach": "@outputs('List_NoReplyQueue')?['body/value']",
+          "actions": {
+            "Set_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "ee68931a-822c-4e26-94c5-dc7386b01542"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "QueueId",
+                "value": "@items('For_each')?['queueid']"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_QueueId": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5e16d3c7-9aee-4250-bbaf-4800ea341d59"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

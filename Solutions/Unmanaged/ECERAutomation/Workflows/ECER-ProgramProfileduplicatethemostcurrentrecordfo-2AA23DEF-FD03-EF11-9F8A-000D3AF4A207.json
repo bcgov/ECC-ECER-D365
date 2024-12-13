@@ -1,0 +1,208 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "recurrence": {
+            "frequency": "Month",
+            "interval": 12,
+            "startTime": "2024-03-15T17:00:00Z"
+          },
+          "metadata": {
+            "operationMetadataId": "7a9dc2b7-6e65-4794-8f5a-3efae3abc792"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "List_Program_Profiles": {
+          "runAfter": {
+            "EndDate": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f9f8d5cc-0ac7-4fa1-b73f-9d228d6ead63"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_programs",
+              "$filter": "(statuscode eq 621870002 and Microsoft.Dynamics.CRM.ThisYear(PropertyName='ecer_enddate'))"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "runtimeConfiguration": {
+            "paginationPolicy": {
+              "minimumItemCount": 100000
+            }
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_Program_Profiles')?['body/value']",
+          "actions": {
+            "Add_new_Program_Profile": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "77fef376-eccd-458e-93d9-5813111b7b28"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_programs",
+                  "item/ecer_PostSecondaryInstitution@odata.bind": "@if(contains(items('Apply_to_each'),'_ecer_postsecondaryinstitution_value'),concat('/ecer_postsecondaryinstitutes(',items('Apply_to_each')?['_ecer_postsecondaryinstitution_value'],')'),null)",
+                  "item/ecer_additionalcourses": "@if(contains(items('Apply_to_each'),'ecer_additionalcourses'),items('Apply_to_each')?['ecer_additionalcourses'],null)",
+                  "item/ecer_enddate": "@formatDateTime(outputs('EndDate'),'MM-dd-yyyy')",
+                  "item/ecer_name": "@items('Apply_to_each')?['ecer_name']",
+                  "item/ecer_programtypes": "@if(contains(items('Apply_to_each'),'ecer_programtypes'),items('Apply_to_each')?['ecer_programtypes'],null)",
+                  "item/ecer_startdate": "@formatDateTime(outputs('StartDate'),'MM-dd-yyyy')",
+                  "item/statuscode": 1,
+                  "item/ecer_totalbasicecehours": "@if(contains(items('Apply_to_each'),'ecer_totalbasicecehours'),items('Apply_to_each')?['ecer_totalbasicecehours'],null)"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "List_Related_Course": {
+              "runAfter": {
+                "Add_new_Program_Profile": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "69d2f807-2d43-4acd-8f65-86b8004bddac"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_courses",
+                  "$filter": "_ecer_programid_value eq @{items('Apply_to_each')?['ecer_programid']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each_2": {
+              "foreach": "@outputs('List_Related_Course')?['body/value']",
+              "actions": {
+                "Add_new_Course": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "80bd67cf-93f1-4a76-9e03-4b1905ad447f"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_courses",
+                      "item/ecer_Campus@odata.bind": "@if(contains(items('Apply_to_each_2'),'_ecer_campus_value'),concat('/ecer_postsecondaryinstitutecampuses(',items('Apply_to_each_2')?['_ecer_campus_value'],')'),null)",
+                      "item/ecer_coursehours": "@items('Apply_to_each_2')?['ecer_coursehours']",
+                      "item/ecer_code": "@items('Apply_to_each_2')?['ecer_code']",
+                      "item/ecer_coursename": "@items('Apply_to_each_2')?['ecer_coursename']",
+                      "item/ecer_description": "@items('Apply_to_each_2')?['ecer_description']",
+                      "item/ecer_postsecondaryinstitutionid@odata.bind": "/ecer_postsecondaryinstitutes(@{items('Apply_to_each_2')?['_ecer_postsecondaryinstitutionid_value']})",
+                      "item/ecer_Programid@odata.bind": "/ecer_programs(@{outputs('Add_new_Program_Profile')?['body/ecer_programid']})",
+                      "item/ecer_programtype": "@items('Apply_to_each_2')?['ecer_programtype']",
+                      "item/ecer_ProvincialRequirement@odata.bind": "@if(contains(items('Apply_to_each_2'),'_ecer_provincialrequirement_value'),concat('/ecer_provincialrequirements(',items('Apply_to_each_2')?['_ecer_provincialrequirement_value'],')'),null)"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "List_Related_Course": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "fc344efd-4ff9-4b1d-80de-41c2f0dd0285"
+              },
+              "type": "Foreach",
+              "runtimeConfiguration": {
+                "concurrency": {
+                  "repetitions": 50
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "List_Program_Profiles": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "729d2482-a04c-4807-87f6-867e132fefe3"
+          },
+          "type": "Foreach",
+          "runtimeConfiguration": {
+            "concurrency": {
+              "repetitions": 50
+            }
+          }
+        },
+        "StartDate": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "0f752813-8593-457e-bf1d-855bf695e31f"
+          },
+          "type": "Compose",
+          "inputs": "@concat('09-01-',formatDateTime(utcNow(),'yyyy'))"
+        },
+        "EndDate": {
+          "runAfter": {
+            "StartDate": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e514017b-a6d5-4921-9c16-53086951a5fb"
+          },
+          "type": "Compose",
+          "inputs": "@concat('09-01-',add(int(formatDateTime(utcNow(),'yyyy')),1))"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

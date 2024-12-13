@@ -1,0 +1,139 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted_first_name_last_name_": {
+          "metadata": {
+            "operationMetadataId": "c3ac58e2-780f-49d2-b030-71eed2de2d0d"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_characterreference",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_firstname, ecer_lastname"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_variable_full_name": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "c9f6f30e-c660-43a3-b3cd-6d6e496fb8eb"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "full name",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Condition_is_first_name_null": {
+          "actions": {
+            "Set_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "1208d394-0185-4cb7-94e6-696ffc0b7461"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "full name",
+                "value": "@triggerOutputs()?['body/ecer_lastname']"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable_full_name": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Set_variable_2": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "73b13b6a-6727-46bf-a431-6df80bf90f7c"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "full name",
+                  "value": "@{triggerOutputs()?['body/ecer_firstname']} @{triggerOutputs()?['body/ecer_lastname']}"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_firstname']",
+              "@null"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0123c84c-a949-4ee7-97bb-d4ade4ade8a8"
+          },
+          "type": "If"
+        },
+        "Update_a_row": {
+          "runAfter": {
+            "Condition_is_first_name_null": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9eaf9176-5a25-45de-9fca-d0bc947a4994"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_characterreferences",
+              "recordId": "@triggerOutputs()?['body/ecer_characterreferenceid']",
+              "item/ecer_referencefullname": "@variables('full name')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

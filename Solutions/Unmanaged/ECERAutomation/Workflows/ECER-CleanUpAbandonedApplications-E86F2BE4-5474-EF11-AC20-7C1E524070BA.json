@@ -1,0 +1,106 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "recurrence": {
+            "frequency": "Day",
+            "interval": 1,
+            "timeZone": "Pacific Standard Time",
+            "startTime": "2024-09-26T00:15:00Z",
+            "schedule": {
+              "hours": [
+                "0"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "30e7213f-7308-4b61-9b81-129e8a06688a"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "List_rows": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "1c7727c3-f490-4100-a1f6-95577bf70cc8"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "fetchXml": "<fetch top=\"5\">\n  <entity name=\"ecer_application\" >\n    <attribute name=\"ecer_applicantid\" />\n    <attribute name=\"modifiedon\" />\n    <filter>\n      <condition attribute=\"modifiedon\" operator=\"olderthan-x-months\" value=\"12\" />\n<condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n      <condition attribute=\"statuscode\" operator=\"ne\" value=\"290700003\" >\n        <value>621870005</value>\n        <value>621870006</value>\n        <value>621870008</value>\n      </condition>\n    </filter>\n  </entity>\n</fetch>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_rows')?['body/value']",
+          "actions": {
+            "Update_a_row": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "54a29d7f-2515-45c1-8a21-ab3d9368eb49"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applications",
+                  "recordId": "@items('Apply_to_each')?['ecer_applicationid']",
+                  "item/statecode": 1,
+                  "item/statuscode": 621870007
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "49bcbac3-9f10-4add-b0c0-681a83918534"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

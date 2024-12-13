@@ -1,0 +1,259 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "0e6f010d-474a-4e52-8e38-6d571e7f5acd"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_communication",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_acknowledged,ecer_dateacknowledged,ecer_investigation",
+              "subscriptionRequest/filterexpression": "ecer_dateacknowledged ne null"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_the_document_URLs_with_tags": {
+          "runAfter": {
+            "add_30days": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f53dea7c-ec41-4793-acf4-f2b0637e2a9a"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bcgov_documenturls",
+              "fetchXml": "<fetch>\n  <entity name=\"bcgov_documenturl\" >\n    <attribute name=\"bcgov_tag1id\" />\n    <attribute name=\"bcgov_tag2id\" />\n    <attribute name=\"bcgov_tag3id\" />\n   <attribute name=\"ecer_communicationid\" />\n  <attribute name=\"ecer_investigationid\" />\n    <filter>\n      <condition attribute=\"ecer_communicationid\" operator=\"eq\" value=\"@{triggerOutputs()?['body/ecer_communicationid']}\" />\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n      <filter type=\"or\" >\n        <condition attribute=\"bcgov_tag1id\" operator=\"in\" >\n          <value>5b9dfbbb-7177-ef11-ac20-7c1e5240b0bf</value>\n          <value>3a74cecb-7177-ef11-ac20-7c1e5240b0bf</value>\n          <value>c32247c5-7177-ef11-ac20-7c1e5240b0bf</value>\n        </condition>\n        <condition attribute=\"bcgov_tag2id\" operator=\"in\" >\n          <value>5b9dfbbb-7177-ef11-ac20-7c1e5240b0bf</value>\n          <value>3a74cecb-7177-ef11-ac20-7c1e5240b0bf</value>\n          <value>c32247c5-7177-ef11-ac20-7c1e5240b0bf</value>\n        </condition>\n        <condition attribute=\"bcgov_tag3id\" operator=\"in\" >\n          <value>5b9dfbbb-7177-ef11-ac20-7c1e5240b0bf</value>\n          <value>3a74cecb-7177-ef11-ac20-7c1e5240b0bf</value>\n          <value>c32247c5-7177-ef11-ac20-7c1e5240b0bf</value>\n        </condition>\n      </filter>\n    </filter>\n  </entity>\n</fetch>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('Get_the_document_URLs_with_tags')?['body/value']",
+          "actions": {
+            "Update_a_row": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a7b1847f-a815-48a1-874a-ba4335150913"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_investigations",
+                  "recordId": "@items('Apply_to_each')?['_ecer_investigationid_value']",
+                  "item/ecer_reconsiderationperiodenddate": "@outputs('add_30days')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_the_document_URLs_with_tags": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "336ae588-fd92-4235-983d-62953886eb0b"
+          },
+          "type": "Foreach"
+        },
+        "Setup_Date": {
+          "runAfter": {
+            "Check_Reconsideration_Period_End_Date_has_value": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6caede7b-bc9e-4e96-bf18-6ab678c0471e"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Date String",
+                "type": "string",
+                "value": "@triggerOutputs()?['body/ecer_dateacknowledged']"
+              }
+            ]
+          }
+        },
+        "add_30days": {
+          "runAfter": {
+            "Setup_Date": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "16bed6ba-661d-41ec-9988-26a22d14cd04"
+          },
+          "type": "Compose",
+          "inputs": "@addDays(variables('Date String'),30)"
+        },
+        "Check_Investigation_field_contains_value": {
+          "actions": {
+            "Terminate": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2a668364-32e0-4fc9-8132-e3a837c4762c"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "Check_If_Date_Acknowledge__has_value": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_ecer_investigation_value']",
+              "@null"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5b093fd4-6a13-46ac-8810-93a23a717f71"
+          },
+          "type": "If"
+        },
+        "Check_Reconsideration_Period_End_Date_has_value": {
+          "actions": {},
+          "runAfter": {
+            "Get_Investigation_Record": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Terminate_2": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "2a668364-32e0-4fc9-8132-e3a837c4762c"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_Investigation_Record')?['body/ecer_reconsiderationperiodenddate']",
+              "@null"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ae6a1f79-9fe2-4e1d-a942-529e082eee03"
+          },
+          "type": "If"
+        },
+        "Get_Investigation_Record": {
+          "runAfter": {
+            "Check_Investigation_field_contains_value": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d5caeb82-e331-4169-8de0-89cc2295dd3f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_investigations",
+              "recordId": "@triggerOutputs()?['body/_ecer_investigation_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Check_If_Date_Acknowledge__has_value": {
+          "actions": {},
+          "runAfter": {},
+          "else": {
+            "actions": {
+              "Terminate_3": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "094c7e02-26fc-49fe-94a9-881694ebc3be"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/ecer_dateacknowledged']",
+                "@null"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "51424ffa-2791-45fe-994e-0f531b33fde3"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

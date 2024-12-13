@@ -1,0 +1,267 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "a2b3d9bd-9c1f-430b-8390-aefe9688b39b"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_investigation",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_managerreviewcompleteactivestage,ecer_managerreviewcompleteconclusionstage,ecer_managerreviewcompletesummarystage"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Condition": {
+          "actions": {
+            "Switch": {
+              "runAfter": {},
+              "cases": {
+                "Investigation_-_Low": {
+                  "case": "Investigation - Low",
+                  "actions": {
+                    "Set_variable": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "676c8bc0-7227-4487-b7b8-ddc2bdcd456e"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "StatusReasonVal",
+                        "value": 621870002
+                      }
+                    }
+                  }
+                },
+                "Investigation_-_Moderate": {
+                  "case": "Investigation - Moderate",
+                  "actions": {
+                    "Set_variable_2": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "56d863f8-1155-40aa-8aef-d2c96b2311a7"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "StatusReasonVal",
+                        "value": 621870013
+                      }
+                    }
+                  }
+                },
+                "Investigation_-_High": {
+                  "case": "Investigation - High",
+                  "actions": {
+                    "Set_variable_3": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "386984f3-66d0-4033-92d4-c4fe13dee201"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "StatusReasonVal",
+                        "value": 621870003
+                      }
+                    }
+                  }
+                }
+              },
+              "default": {
+                "actions": {}
+              },
+              "expression": "@triggerOutputs()?['body/ecer_previousstatus']",
+              "metadata": {
+                "operationMetadataId": "3a4e52d9-2928-4820-bfb2-78a6bf359bd9"
+              },
+              "type": "Switch"
+            },
+            "Condition_2": {
+              "actions": {
+                "Assign_investigation_to_Investigator": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "9e000665-d653-48bf-914a-5eee52942dd3"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_investigations",
+                      "recordId": "@triggerOutputs()?['body/ecer_investigationid']",
+                      "item/ownerid@odata.bind": "\\@{triggerOutputs()?['body/_ecer_assigntoinvestigator_value@Microsoft.Dynamics.CRM.lookuplogicalname']}s(@{triggerOutputs()?['body/_ecer_assigntoinvestigator_value']})",
+                      "item/statuscode": "@variables('StatusReasonVal')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Switch": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Get_Team_By_Name_-_Program_Support_Lead_Team": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "60628ec5-023f-45c2-8b8a-a77512d202fe"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "ListRecords",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "teams",
+                        "$filter": "name eq 'SI Team'",
+                        "$top": 1
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Apply_to_each": {
+                    "foreach": "@outputs('Get_Team_By_Name_-_Program_Support_Lead_Team')?['body/value']",
+                    "actions": {
+                      "Assign_investigation_to_SI_team": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "9e000665-d653-48bf-914a-5eee52942dd3"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_commondataserviceforapps",
+                            "operationId": "UpdateRecord",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                          },
+                          "parameters": {
+                            "entityName": "ecer_investigations",
+                            "recordId": "@triggerOutputs()?['body/ecer_investigationid']",
+                            "item/ownerid@odata.bind": "\\teams(@{items('Apply_to_each')?['teamid']})",
+                            "item/statuscode": "@variables('StatusReasonVal')"
+                          },
+                          "authentication": "@parameters('$authentication')"
+                        }
+                      }
+                    },
+                    "runAfter": {
+                      "Get_Team_By_Name_-_Program_Support_Lead_Team": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "97c1ecbb-d1a9-4a07-a76a-6a564fed46ef"
+                    },
+                    "type": "Foreach"
+                  }
+                }
+              },
+              "expression": {
+                "not": {
+                  "equals": [
+                    "@triggerOutputs()?['body/_ecer_assigntoinvestigator_value']",
+                    "@null"
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "adc1379b-2c04-432e-bc7d-fbc5291a1d7c"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Initialize_StatusReasonVal": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "or": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/ecer_managerreviewcompleteactivestage']",
+                  621870000
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/ecer_managerreviewcompletesummarystage']",
+                  621870000
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/ecer_managerreviewcompleteconclusionstage']",
+                  621870000
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c1d0cee5-371b-4806-bab3-1ddcc7cf6c72"
+          },
+          "type": "If"
+        },
+        "Initialize_StatusReasonVal": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "05e7a700-6ea5-4028-8013-f40bb42d925f"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "StatusReasonVal",
+                "type": "integer"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

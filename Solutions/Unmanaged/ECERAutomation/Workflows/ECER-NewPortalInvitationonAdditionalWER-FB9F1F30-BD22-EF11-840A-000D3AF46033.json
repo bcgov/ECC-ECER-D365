@@ -1,0 +1,180 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_New_WER_created": {
+          "metadata": {
+            "operationMetadataId": "bea5d871-4114-4543-b250-7d5d4cd2414e"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "ecer_workexperienceref",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Full_Work_Experience_Reference_Record": {
+          "runAfter": {
+            "Delay": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d3abb84f-21ba-4004-881e-565a2332ce87"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_workexperiencerefs",
+              "recordId": "@triggerOutputs()?['body/ecer_workexperiencerefid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "IF_Is_Additional_is_YES": {
+          "actions": {},
+          "runAfter": {
+            "Get_Full_Work_Experience_Reference_Record": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Terminate_-_Ignore_if_value_is_NO": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "368c90f3-bddf-426b-86e0-3f37fe2bc6ff"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_Full_Work_Experience_Reference_Record')?['body/ecer_isadditional']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ed90a10d-e3fd-4f62-bd65-384d30c10a8c"
+          },
+          "type": "If"
+        },
+        "IF_Status_Reason_is_NOT_Draft_and_NOT_Application_Submitted": {
+          "actions": {},
+          "runAfter": {
+            "IF_Is_Additional_is_YES": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "No_Invite_will_be_sent_as_Work_Experience_has_already_been_responded": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "5b66162c-4b76-4c03-ab8d-9d49b36a2fbf"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_Full_Work_Experience_Reference_Record')?['body/statuscode']",
+              621870006
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9770245e-1002-480d-8533-1a6083087ac1"
+          },
+          "type": "If"
+        },
+        "Add_a_new_Portal_Invitation_Record": {
+          "runAfter": {
+            "IF_Status_Reason_is_NOT_Draft_and_NOT_Application_Submitted": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7f7d8d19-f104-4abf-894f-af34747eb633"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_portalinvitations",
+              "item/ecer_ApplicantId@odata.bind": "contacts(@{outputs('Get_Full_Work_Experience_Reference_Record')?['body/_ecer_applicantid_value']})",
+              "item/ecer_ApplicationId@odata.bind": "ecer_applications(@{outputs('Get_Full_Work_Experience_Reference_Record')?['body/_ecer_applicationid_value']})",
+              "item/ecer_WorkExperienceReferenceId@odata.bind": "ecer_workexperiencerefs(@{outputs('Get_Full_Work_Experience_Reference_Record')?['body/ecer_workexperiencerefid']})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Delay": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "c35f3430-393e-4bbf-b698-98c9c799ff04"
+          },
+          "type": "Wait",
+          "inputs": {
+            "interval": {
+              "count": 20,
+              "unit": "Second"
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

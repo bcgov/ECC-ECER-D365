@@ -1,0 +1,206 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Work_Experience_Assessment_Approved": {
+          "metadata": {
+            "operationMetadataId": "89ca69f3-1f75-49c5-9fcb-556cf5283809"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_workexperienceassessment",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_approved"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Approved_equals_Yes": {
+          "actions": {
+            "Update_Work_Experience_Reference_-_Approved": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "493f1f83-99aa-4778-9cf8-32f083f0d4e6"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_workexperiencerefs",
+                  "recordId": "@outputs('Get_Work_Experience_Reference')?['body/ecer_workexperiencerefid']",
+                  "item/statecode": 1,
+                  "item/statuscode": 2,
+                  "item/ecer_totalnumberofhoursapproved": "@outputs('Get_Work_Experience_Reference')?['body/ecer_totalnumberofhoursanticipated']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Update_Work_Experience_Assessment_-_Approved": {
+              "runAfter": {
+                "Update_Work_Experience_Reference_-_Approved": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e3662e14-883f-4973-a24d-5b2a4a098265"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_workexperienceassessments",
+                  "recordId": "@triggerOutputs()?['body/ecer_workexperienceassessmentid']",
+                  "item/statecode": 1,
+                  "item/statuscode": 2
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Work_Experience_Reference": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Approved_Equals_No": {
+                "actions": {
+                  "Update_Work_Experience_Reference_-_Rejected": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "07c6dc38-d271-4749-92e7-f6c056cac0cd"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "ecer_workexperiencerefs",
+                        "recordId": "@outputs('Get_Work_Experience_Reference')?['body/ecer_workexperiencerefid']",
+                        "item/statecode": 1,
+                        "item/statuscode": 621870005,
+                        "item/ecer_totalnumberofhoursapproved": "@triggerOutputs()?['body/ecer_totalnumberofhoursapproved']"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Update_Work_Experience_Assessment__-_Denied": {
+                    "runAfter": {
+                      "Update_Work_Experience_Reference_-_Rejected": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "2c2f2050-f17f-43ae-91fd-775b7f2870f6"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "ecer_workexperienceassessments",
+                        "recordId": "@triggerOutputs()?['body/ecer_workexperienceassessmentid']",
+                        "item/statecode": 1,
+                        "item/statuscode": 621870001
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "expression": {
+                  "equals": [
+                    "@triggerOutputs()?['body/ecer_approved']",
+                    621870001
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "16bfa4f8-0bd8-4b80-8d26-47ed0696e824"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_approved']",
+              621870000
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2f04c493-21e0-44f0-b01b-b6ce788229fd"
+          },
+          "type": "If"
+        },
+        "Get_Work_Experience_Reference": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "44db78ba-d5f1-460f-89b2-a5f26be3a434"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_workexperiencerefs",
+              "recordId": "@triggerOutputs()?['body/_ecer_workexprefid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

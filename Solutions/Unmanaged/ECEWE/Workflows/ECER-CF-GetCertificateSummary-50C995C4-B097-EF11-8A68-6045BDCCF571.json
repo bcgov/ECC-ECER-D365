@@ -1,0 +1,468 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "efda413a-adf7-408c-9941-695caa7aeb52"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "Initialize_variable_-_Record_Count": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "5f25b6cd-523a-4d33-a566-518e461f69b7"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Record Count",
+                "type": "integer",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Page_Number": {
+          "runAfter": {
+            "Initialize_variable_-_Record_Count": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ee2935be-cd96-442b-9e2e-ef068428f34c"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Page Number",
+                "type": "integer",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "Do_until": {
+          "actions": {
+            "Scope": {
+              "actions": {
+                "List_rows_-_Query_Certificate_Data": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "f7ed4fe5-a0e7-40d8-8f76-6567e7b7d70d"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_certificates",
+                      "fetchXml": "<fetch count='5000' page='@{variables('Page Number')}'>\n\t<entity name='ecer_certificate'>\n\t\t<attribute name='ecer_certificatenumber'/>\n\t\t<attribute name='ecer_effectivedate'/>\n\t\t<attribute name='ecer_expirydate'/>\n\t\t<attribute name='ecer_certificatelevel'/>\n\t\t<order attribute='ecer_certificatenumber' descending='false'/>\n\t\t<filter type='and'>\n\t\t\t<condition attribute='statuscode' operator='ne' value='621870002'/>\n\t\t</filter>\n\t\t<link-entity name='contact' alias='aa' link-type='inner' from='contactid' to='ecer_registrantid'>\n\t\t\t<attribute name='firstname'/>\n\t\t\t<attribute name='lastname'/>\n\t\t\t<filter type='and'>\n\t\t\t\t<condition attribute='fullname' operator='not-null'/>\n\t\t\t</filter>\n\t\t</link-entity>\n\t</entity>\n</fetch>"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Check_if_List_Rows_is_still_greater_than_0": {
+                  "actions": {
+                    "Increment_variable_-_Increment_Page": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "d6d147af-c421-41f3-aa65-c460966d69a8"
+                      },
+                      "type": "IncrementVariable",
+                      "inputs": {
+                        "name": "Page Number",
+                        "value": 1
+                      }
+                    },
+                    "Scope_-_Increment_Record_Count": {
+                      "actions": {
+                        "Increment_variable_-_Record_Count": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "df301591-9491-4a96-b9f6-6d7fbc4a2f24"
+                          },
+                          "type": "IncrementVariable",
+                          "inputs": {
+                            "name": "Record Count",
+                            "value": "@length(outputs('List_rows_-_Query_Certificate_Data')?['body/value'])"
+                          }
+                        }
+                      },
+                      "runAfter": {
+                        "Increment_variable_-_Increment_Page": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "2f862ec1-9ba0-45a8-ac9f-bac2585380ae"
+                      },
+                      "type": "Scope"
+                    }
+                  },
+                  "runAfter": {
+                    "List_rows_-_Query_Certificate_Data": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Set_variable_-_Page_Number_to_exit": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "1a337db5-0a06-4cea-85d6-f7e90a18b237"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "Page Number",
+                          "value": 0
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "greater": [
+                      "@length(outputs('List_rows_-_Query_Certificate_Data')?['body/value'])",
+                      0
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "d383ed44-dd52-4f25-92f8-0d9886546d78"
+                  },
+                  "type": "If"
+                }
+              },
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "73d35408-6fc7-4a8f-87fe-a8cdf48a591c"
+              },
+              "type": "Scope"
+            },
+            "Map_Results_into_an_array": {
+              "runAfter": {
+                "Scope": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "29b750e0-8117-4d14-bd86-9cc09f9dd151"
+              },
+              "type": "Select",
+              "inputs": {
+                "from": "@outputs('List_rows_-_Query_Certificate_Data')?['body/value']",
+                "select": {
+                  "registrationnumber": "@item()?['ecer_certificatenumber']",
+                  "certificatelevel": "@item()?['ecer_certificatelevel']",
+                  "effectivedate": "@item()?['ecer_effectivedate']",
+                  "expirydate": "@item()?['ecer_expirydate']",
+                  "firstname": "@item()?['aa.firstname']",
+                  "lastname": "@item()?['aa.lastname']"
+                }
+              }
+            },
+            "Array_In_Loop": {
+              "runAfter": {
+                "Map_Results_into_an_array": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "72f6ade1-d73f-489d-aab4-dda16b5abf3e"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Array In Loop",
+                "value": "@body('Map_Results_into_an_array')"
+              }
+            },
+            "IF_Page_Number_is_1": {
+              "actions": {
+                "Set_variable_-_Array_in_All": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "a04ef949-8164-4aba-9b68-c410b0b6249e"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Array in All",
+                    "value": "@body('Map_Results_into_an_array')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Array_In_Loop": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Condition": {
+                    "actions": {
+                      "Compose_-_Union_overall_array_with_new_page_results": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "f92df2cf-2035-4c23-aa93-98acecb182b2"
+                        },
+                        "type": "Compose",
+                        "inputs": "@union(variables('Array in All'),variables('Array In Loop'))"
+                      },
+                      "Set_variable_-_Array_in_All_with_new_paged_results": {
+                        "runAfter": {
+                          "Compose_-_Union_overall_array_with_new_page_results": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "57a392dc-60ae-4f37-94e3-dbe53a20fcda"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "Array in All",
+                          "value": "@outputs('Compose_-_Union_overall_array_with_new_page_results')"
+                        }
+                      }
+                    },
+                    "runAfter": {},
+                    "expression": {
+                      "greater": [
+                        "@length(outputs('List_rows_-_Query_Certificate_Data')?['body/value'])",
+                        0
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "b1241969-04c7-4670-aeea-78f03153276e"
+                    },
+                    "type": "If"
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@variables('Page Number')",
+                  1
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "96bb4a48-b4b5-420b-96a2-f23fff0e376b"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Initialize_variable_-_Base64": [
+              "Succeeded"
+            ]
+          },
+          "expression": "@equals(variables('Page Number'), 0)",
+          "limit": {
+            "count": 60,
+            "timeout": "PT1H"
+          },
+          "metadata": {
+            "operationMetadataId": "b1b9cd99-4120-40ad-ae72-9f28073ec0ef"
+          },
+          "type": "Until"
+        },
+        "Respond_to_a_Power_App_or_flow": {
+          "runAfter": {
+            "Run_a_Child_Flow": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6c8acdf1-4c8d-4134-9f80-1030b80a974a"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "done": "@{true}"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "done": {
+                  "title": "Done",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "Initialize_variable_-_Array_In_All": {
+          "runAfter": {
+            "Initialize_variable_-_Page_Number": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e5f886c0-7d06-4a4a-bd7c-616f80905520"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Array in All",
+                "type": "array"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Array_In_Loop": {
+          "runAfter": {
+            "Initialize_variable_-_Array_In_All": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cafb3c99-07ac-4311-bb5b-517ccdfed222"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Array In Loop",
+                "type": "array"
+              }
+            ]
+          }
+        },
+        "Compose": {
+          "runAfter": {
+            "Do_until": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c347aa91-a1b2-4562-9085-b63c84768291"
+          },
+          "type": "Compose",
+          "inputs": "@base64(variables('Array in All'))"
+        },
+        "Initialize_variable_-_Base64": {
+          "runAfter": {
+            "Initialize_variable_-_Array_In_Loop": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7b5af54f-2bfe-4de3-8306-223799cfc675"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Base64",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Set_variable": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "13cca8fe-783f-474b-bd76-343f48027d47"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "Base64",
+            "value": "@{outputs('Compose')}"
+          }
+        },
+        "Add_a_new_row": {
+          "runAfter": {
+            "Set_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "54c2dc11-cecd-4f55-a9e5-58b2cb2c49ce"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certificatesummaries"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Run_a_Child_Flow": {
+          "runAfter": {
+            "Add_a_new_row": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "fda81401-5645-4083-861e-744b4287cf4f"
+          },
+          "type": "Workflow",
+          "inputs": {
+            "host": {
+              "workflowReferenceName": "0f5f2c8c-303e-ef11-a316-000d3af45c14"
+            },
+            "body": {
+              "text": "ecer_certificatesummary",
+              "text_1": "@outputs('Add_a_new_row')?['body/ecer_certificatesummaryid']",
+              "text_2": "@{outputs('Add_a_new_row')?['body/ecer_name']}.json",
+              "text_3": "NA",
+              "text_6": "@variables('Base64')",
+              "text_4": "NA",
+              "text_5": "NA"
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

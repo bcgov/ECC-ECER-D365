@@ -1,0 +1,302 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "b97ae482-382c-4506-a6f9-a7a7122b388e"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_professionaldevelopment",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Status_Reason_is_NOT_Rejected": {
+          "actions": {
+            "Terminate_-_Only_Interested_in_Rejected": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "c580b130-6936-4bac-8701-abed0429557f"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {},
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/statuscode']",
+                621870005
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "b73086ff-cc32-4f39-ba42-57140f03d310"
+          },
+          "type": "If"
+        },
+        "IF_Application_Add_More_PD_is_NOT_already_YES": {
+          "actions": {
+            "Set_Add_More_Professional_Development_Flag_at_Application": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "bd226fe1-7604-4474-ab3a-622e98d0c8b6"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applications",
+                  "recordId": "@outputs('Get_Professional_Development_Full_Record_for_values_comparison')?['body/_ecer_applicationid_value']",
+                  "item/ecer_addmoreprofessionaldevelopment": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Add_a_communication_record_to_request_more_professional_development": {
+              "runAfter": {
+                "IF_Application_NOT_From_Portal": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "22fd83f4-80aa-4db3-bd14-6e3336232fad"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_communications",
+                  "item/ecer_initiatedfrom": 621870000,
+                  "item/ecer_message": "<p>In your renewal application, one or more of the courses or workshops you added for professional development cannot be accepted.<br />You need to:<br /><ol><li>Go to the application summary page</li><li>Open the professional development page</li><li>Review how many additional hours of professional development you need</li><li>Add additional courses or workshops</li></ol><br />Once you have submitted 40 hours of professional development, we'll continue the assessment of your application.</p>",
+                  "item/ecer_name": "Action Required: Additional hours of professional development",
+                  "item/ecer_type": 621870001,
+                  "item/ecer_Registrantid_contact@odata.bind": "contacts(@{outputs('Get_Application_Full_Record_for_values_comparison')?['body/_ecer_applicantid_value']})",
+                  "item/ecer_Applicationid@odata.bind": "ecer_applications(@{outputs('Get_Application_Full_Record_for_values_comparison')?['body/ecer_applicationid']})",
+                  "item/ecer_donotreply": true,
+                  "item/ecer_isroot": true,
+                  "item/ecer_notifyrecipient": true,
+                  "item/ownerid@odata.bind": "teams(@{variables('Assessment Team ID')})",
+                  "item/ecer_requestadditionalprofessionaldevelopment": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Team_By_Name": {
+              "runAfter": {
+                "Set_Add_More_Professional_Development_Flag_at_Application": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "80c46ef0-13d2-4e7d-966a-5fb379c24aeb"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "teams",
+                  "$filter": "name eq 'Assessment Team - General'",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Loop_through_Team_result_set_to_set_Assessment_Team": {
+              "foreach": "@outputs('Get_Team_By_Name')?['body/value']",
+              "actions": {
+                "Set_variable": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "a9d639a8-423c-4a0c-ae2d-77d531e4d688"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Assessment Team ID",
+                    "value": "@items('Loop_through_Team_result_set_to_set_Assessment_Team')?['teamid']"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_Team_By_Name": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e7b3c0b6-4ab9-40c3-93f0-67705a4fc26a"
+              },
+              "type": "Foreach"
+            },
+            "IF_Application_NOT_From_Portal": {
+              "actions": {
+                "Terminate": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "b88f4748-61da-49f8-a227-ecc42d6d6df5"
+                  },
+                  "type": "Terminate",
+                  "inputs": {
+                    "runStatus": "Succeeded"
+                  }
+                }
+              },
+              "runAfter": {
+                "Loop_through_Team_result_set_to_set_Assessment_Team": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Application_Full_Record_for_values_comparison')?['body/ecer_origin']",
+                    621870001
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "7844ddd7-ac2d-4314-b005-cab862a2a99f"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Get_Application_Full_Record_for_values_comparison": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@outputs('Get_Application_Full_Record_for_values_comparison')?['body/ecer_addmoreprofessionaldevelopment']",
+                "@true"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "893428cd-4495-4e63-a74f-a272d1a43b87"
+          },
+          "type": "If"
+        },
+        "Get_Professional_Development_Full_Record_for_values_comparison": {
+          "runAfter": {
+            "Initialize_variable_-_Assessment_Team_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b40cc944-1424-4ae7-a122-1ac3510b6509"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_professionaldevelopments",
+              "recordId": "@triggerOutputs()?['body/ecer_professionaldevelopmentid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Application_Full_Record_for_values_comparison": {
+          "runAfter": {
+            "Get_Professional_Development_Full_Record_for_values_comparison": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c8683827-99b1-4278-925e-1a9b4c3cb825"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@triggerOutputs()?['body/_ecer_applicationid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable_-_Assessment_Team_ID": {
+          "runAfter": {
+            "IF_Status_Reason_is_NOT_Rejected": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "538e4b6a-6989-43a4-9dbd-788fb5a7c221"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Assessment Team ID",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

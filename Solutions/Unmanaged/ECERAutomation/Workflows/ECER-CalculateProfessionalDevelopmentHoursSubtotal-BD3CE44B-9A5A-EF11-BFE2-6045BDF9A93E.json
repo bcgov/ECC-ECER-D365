@@ -1,0 +1,629 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_Professional_Development_is_Approved": {
+          "metadata": {
+            "operationMetadataId": "57d7b83a-f321-454f-9cb8-988ba9404db1"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_professionaldevelopment",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "List_Professional_Development_of_same_Application_NOT_Rejected": {
+          "runAfter": {
+            "Failsafe_for_missing_Application_Lookup_Reference": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6e47b04e-c036-4634-88ca-dff267e00393"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_professionaldevelopments",
+              "$filter": "_ecer_applicationid_value eq '@{triggerOutputs()?['body/_ecer_applicationid_value']}' and statuscode ne 621870005 and statuscode ne null and statuscode ne 1"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_through_result_Professional_under_same_application": {
+          "foreach": "@outputs('List_Professional_Development_of_same_Application_NOT_Rejected')?['body/value']",
+          "actions": {
+            "Switch": {
+              "runAfter": {
+                "IF_Total_Number_of_Approved_Hours_is_GT_0": [
+                  "Succeeded"
+                ]
+              },
+              "cases": {
+                "Case_-_Approved": {
+                  "case": 2,
+                  "actions": {
+                    "IF_Approved_Hours_is_GREATER_THAN_0": {
+                      "actions": {
+                        "Calculate_Approved_Hours_Subtotal": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "090f3b4e-e5f5-4c4e-b2d0-d63210dcdeba"
+                          },
+                          "type": "Compose",
+                          "inputs": "@add(variables('Approved Hours'),variables('Approved Subtotal'))"
+                        },
+                        "Set_variable_-_Approval_Subtotal": {
+                          "runAfter": {
+                            "Calculate_Approved_Hours_Subtotal": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "0bbd4a22-15d5-4880-a1f2-ddcae4506f3d"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "Approved Subtotal",
+                            "value": "@outputs('Calculate_Approved_Hours_Subtotal')"
+                          }
+                        }
+                      },
+                      "runAfter": {},
+                      "expression": {
+                        "greater": [
+                          "@variables('Approved Hours')",
+                          0
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "d6d29d6e-4a60-4ede-a15f-3da424987d69"
+                      },
+                      "type": "If"
+                    }
+                  }
+                }
+              },
+              "default": {
+                "actions": {
+                  "IF_Anticipated_Hours_is_greater_than_0": {
+                    "actions": {
+                      "Calculate_Anticipated_Hours_Subtotal": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "4718d79d-67a6-461a-b362-c2e8fabcaf11"
+                        },
+                        "type": "Compose",
+                        "inputs": "@add(variables('Anticipated Hours'),variables('Anticipated Subtotal'))"
+                      },
+                      "Set_variable_-_Anticipated_Hours_Subtotal": {
+                        "runAfter": {
+                          "Calculate_Anticipated_Hours_Subtotal": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "c0d0c115-4c53-4d1b-bfd5-2b77e630866e"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "Anticipated Subtotal",
+                          "value": "@outputs('Calculate_Anticipated_Hours_Subtotal')"
+                        }
+                      }
+                    },
+                    "runAfter": {},
+                    "expression": {
+                      "greater": [
+                        "@variables('Anticipated Hours')",
+                        0
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "1029b019-9d3e-47c1-8a04-db025612dd77"
+                    },
+                    "type": "If"
+                  }
+                }
+              },
+              "expression": "@items('Loop_through_result_Professional_under_same_application')?['statuscode']",
+              "metadata": {
+                "operationMetadataId": "6e1180df-3e74-47c4-9e43-7c1ea9d1b318"
+              },
+              "type": "Switch"
+            },
+            "IF_Total_Number_of_Anticipated_Hours_is_GT_0": {
+              "actions": {
+                "Set_variable_-_Hours_Anticipated_of_record": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "2cb399c7-3124-4614-8395-efebb3e7734d"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Anticipated Hours",
+                    "value": "@items('Loop_through_result_Professional_under_same_application')?['ecer_totalanticipatedhours']"
+                  }
+                }
+              },
+              "runAfter": {},
+              "else": {
+                "actions": {
+                  "Reset_Hours_Anticipated": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "9ac6125d-ab1d-4428-9c50-5e3406a254cc"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "Anticipated Hours",
+                      "value": 0
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "and": [
+                  {
+                    "not": {
+                      "equals": [
+                        "@items('Loop_through_result_Professional_under_same_application')?['ecer_totalanticipatedhours']",
+                        "@null"
+                      ]
+                    }
+                  },
+                  {
+                    "greater": [
+                      "@items('Loop_through_result_Professional_under_same_application')?['ecer_totalanticipatedhours']",
+                      0
+                    ]
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "81075cd8-b471-4d0d-ab05-3626b144054e"
+              },
+              "type": "If"
+            },
+            "IF_Total_Number_of_Approved_Hours_is_GT_0": {
+              "actions": {
+                "Set_variable_-_Hours_Approved_of_record": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "42adb73c-4f6a-4ffb-ba29-9612fa93e4fd"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Approved Hours",
+                    "value": "@items('Loop_through_result_Professional_under_same_application')?['ecer_totalapprovedhours']"
+                  }
+                }
+              },
+              "runAfter": {
+                "IF_Total_Number_of_Anticipated_Hours_is_GT_0": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Set_variable_-_Reset_Approved_Hours": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "3b7cb7fb-0120-4e1a-b44a-f917de31ce06"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "Approved Hours",
+                      "value": 0
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "and": [
+                  {
+                    "not": {
+                      "equals": [
+                        "@items('Loop_through_result_Professional_under_same_application')?['ecer_totalapprovedhours']",
+                        "@null"
+                      ]
+                    }
+                  },
+                  {
+                    "greater": [
+                      "@items('Loop_through_result_Professional_under_same_application')?['ecer_totalapprovedhours']",
+                      0
+                    ]
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "9522195c-cf35-4aec-b7c6-115b0f88e392"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "List_Professional_Development_of_same_Application_NOT_Rejected": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f9cf5e34-33c1-49a5-93c3-b75a9bd394a5"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_variable_-_Approved_Subtotal": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "0adba29e-bbb4-4eb0-a40d-79412d47cb0e"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Approved Subtotal",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Set_total_approved_work_hours": {
+          "runAfter": {
+            "Set_variable_-_Total_Hours": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "853cb54d-adb4-4bfe-a3fa-90dc0144c65e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@triggerOutputs()?['body/_ecer_applicationid_value']",
+              "item/ecer_totalapprovedprofessionaldevelopmenthours": "@variables('Approved Subtotal')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Failsafe_for_missing_Application_Lookup_Reference": {
+          "actions": {
+            "Terminate_-_Missing_Application_Lookup_data": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "229af5ef-217a-4c41-a688-e213c5d5578e"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable_-_Hours_Required": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_ecer_applicationid_value']",
+              "@null"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "48c94f1e-f44c-45a3-ac99-422522f2f9d7"
+          },
+          "type": "If"
+        },
+        "Initialize_variable_-_Approved_Hours": {
+          "runAfter": {
+            "Initialize_variable_-_Approved_Subtotal": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "fb37f254-8a00-4cd9-af24-a74b5d408460"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Approved Hours",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Anticipated_Subtotal": {
+          "runAfter": {
+            "Initialize_variable_-_Approved_Hours": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a3cfdfa9-51ed-48d1-86f9-606dff50c50e"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Anticipated Subtotal",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Anticipated_Hours": {
+          "runAfter": {
+            "Initialize_variable_-_Anticipated_Subtotal": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3f8b54f6-b96d-41cc-bc76-2fce3a6f55a8"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Anticipated Hours",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Get_Parent_Application_record": {
+          "runAfter": {
+            "Set_total_approved_work_hours": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8768483e-c6e5-4000-bef8-3a74aba00a29"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@triggerOutputs()?['body/_ecer_applicationid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable_-_Hours_Required": {
+          "runAfter": {
+            "Initialize_variable_-_Total_Hours": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8b7a343a-53af-4601-9563-752a17f67b9a"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Hours Required",
+                "type": "float",
+                "value": 40
+              }
+            ]
+          }
+        },
+        "IF_Not_Approve_at_App_and_no_more_Anticipated_hrs_and_Approved_hrs_enough": {
+          "actions": {
+            "Set_Professional_Development_Approved_at_Application": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "18f046c3-f0c7-40bf-b1b6-1e2ae28098e3"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applications",
+                  "recordId": "@triggerOutputs()?['body/_ecer_applicationid_value']",
+                  "item/ecer_professionaldevelopmentapproved": 621870000
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Parent_Application_record": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@variables('Anticipated Subtotal')",
+                  0
+                ]
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Parent_Application_record')?['body/ecer_professionaldevelopmentapproved']",
+                    621870000
+                  ]
+                }
+              },
+              {
+                "greaterOrEquals": [
+                  "@variables('Approved Subtotal')",
+                  "@variables('Hours Required')"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0b2f5f47-4340-4b29-8804-47364a6ac939"
+          },
+          "type": "If"
+        },
+        "Initialize_variable_-_Total_Hours": {
+          "runAfter": {
+            "Initialize_variable_-_Anticipated_Hours": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "619a2815-e33b-4609-8703-ef13be6deb2d"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Total Hours",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Compose_-_Total_Hours_Anticipated_plus_Approved": {
+          "runAfter": {
+            "Loop_through_result_Professional_under_same_application": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9f11389e-00e2-4335-84d5-fdad6e034902"
+          },
+          "type": "Compose",
+          "inputs": "@add(variables('Anticipated Subtotal'),variables('Approved Subtotal'))"
+        },
+        "Set_variable_-_Total_Hours": {
+          "runAfter": {
+            "Compose_-_Total_Hours_Anticipated_plus_Approved": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2d222cc0-bd2a-413d-b4e3-eadd4f4760fd"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "Total Hours",
+            "value": "@outputs('Compose_-_Total_Hours_Anticipated_plus_Approved')"
+          }
+        },
+        "IF_Not_Received_at_App_and_Total_Hours_≥_40": {
+          "actions": {
+            "Set_Professional_Development_Received_at_Application": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "20ba39d0-37a6-4047-8bc2-da11d6d3f6fe"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applications",
+                  "recordId": "@triggerOutputs()?['body/_ecer_applicationid_value']",
+                  "item/ecer_professionaldevelopmentreceived": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "IF_Not_Approve_at_App_and_no_more_Anticipated_hrs_and_Approved_hrs_enough": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Parent_Application_record')?['body/ecer_professionaldevelopmentreceived']",
+                    "@true"
+                  ]
+                }
+              },
+              {
+                "greaterOrEquals": [
+                  "@variables('Total Hours')",
+                  "@variables('Hours Required')"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4b269601-d465-4be7-943a-6e6e14e2875b"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

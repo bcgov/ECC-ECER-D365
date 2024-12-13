@@ -1,0 +1,49 @@
+{
+  "properties": {
+    "connectionReferences": {},
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "recurrence": {
+            "frequency": "Day",
+            "interval": 1,
+            "startTime": "2024-11-06T00:25:00Z",
+            "schedule": {
+              "hours": [
+                "9"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "35e47537-3fe5-4046-8680-1bf51eaf7d8a"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "Run_a_Child_Flow": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "c0ff2948-6e94-47c1-b8b8-6a537228cb5c"
+          },
+          "type": "Workflow",
+          "inputs": {
+            "host": {
+              "workflowReferenceName": "50c995c4-b097-ef11-8a68-6045bdccf571"
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

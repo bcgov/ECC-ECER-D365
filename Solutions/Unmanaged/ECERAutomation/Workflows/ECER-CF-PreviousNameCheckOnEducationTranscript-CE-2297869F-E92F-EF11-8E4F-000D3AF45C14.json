@@ -1,0 +1,726 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "0df08e77-92f3-4864-bd06-cc866815b3f6"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "Application PK",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_1": {
+                  "title": "Applicant PK",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_2": {
+                  "title": "Owner Team PK",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text",
+                "text_1",
+                "text_2"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_all_Education_Transcript_Reference_in_DRAFT_mode_for_this_application": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "64737db7-c3e6-4fe6-99cd-536f6f5b3c63"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_transcripts",
+              "$filter": "_ecer_applicationid_value eq '@{triggerBody()['text']}' and statuscode eq 1"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Loop_Through_All_Education_Transcripts_in_DRAFT_Status_Reason": {
+          "foreach": "@outputs('Get_all_Education_Transcript_Reference_in_DRAFT_mode_for_this_application')?['body/value']",
+          "actions": {
+            "IF_Is_Name_Verified_is_TRUE": {
+              "actions": {
+                "Reset_-_Has_Match_to_FALSE": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "52bfdbbd-421a-40ed-af54-d3b80185c1de"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Has Match",
+                    "value": "@false"
+                  }
+                },
+                "Reset_-_Has_Name_Verified_to_FALSE": {
+                  "runAfter": {
+                    "Reset_-_Has_Match_to_FALSE": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "00aa38e9-9c07-4bf4-a2fe-31d475a3c173"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Has Name Verified",
+                    "value": "@false"
+                  }
+                },
+                "Set_variable_-_First_Name_from_Transcript": {
+                  "runAfter": {
+                    "Reset_-_Has_Name_Verified_to_FALSE": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "516c8fe2-74ac-48e6-83f6-8935da2ee3a6"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "First Name",
+                    "value": "@items('Loop_Through_All_Education_Transcripts_in_DRAFT_Status_Reason')?['ecer_studentfirstname']"
+                  }
+                },
+                "Set_variable_-_Middle_Name_from_Transcript": {
+                  "runAfter": {
+                    "Set_variable_-_First_Name_from_Transcript": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "afbadf31-d108-4e8e-8e07-ca64b7c95dc5"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Middle Name",
+                    "value": "@items('Loop_Through_All_Education_Transcripts_in_DRAFT_Status_Reason')?['ecer_studentmiddlename']"
+                  }
+                },
+                "Set_variable_-_Last_Name_from_Transcript": {
+                  "runAfter": {
+                    "Set_variable_-_Middle_Name_from_Transcript": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "3a2e18a1-21b9-42a6-bb4c-e523bf81253c"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Last Name",
+                    "value": "@items('Loop_Through_All_Education_Transcripts_in_DRAFT_Status_Reason')?['ecer_studentlastname']"
+                  }
+                },
+                "IF_First_Name_contains_data": {
+                  "actions": {
+                    "Compose_-_First_Name_clause_NOT_NULL": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "262cd2c9-fca4-42b0-89d6-c41032103c8b"
+                      },
+                      "type": "Compose",
+                      "inputs": "ecer_firstname eq '@{variables('First Name')}'"
+                    },
+                    "Re_Purpose_First_Name_variable_as_NOT_NULL_query_clause": {
+                      "runAfter": {
+                        "Compose_-_First_Name_clause_NOT_NULL": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "ea0aaae8-513d-4ba3-8ff3-f9e62775f3cf"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "First Name",
+                        "value": "@{outputs('Compose_-_First_Name_clause_NOT_NULL')}"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Set_variable_-_Last_Name_from_Transcript": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Re_Purpose_First_Name_variable_as_NULL_query_clause": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "a158854e-5846-4ce3-af8c-6beaf66acdae"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "First Name",
+                          "value": "(ecer_firstname eq null or ecer_firstname eq '')"
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "and": [
+                      {
+                        "not": {
+                          "equals": [
+                            "@variables('First Name')",
+                            "@null"
+                          ]
+                        }
+                      },
+                      {
+                        "greater": [
+                          "@length(variables('First Name'))",
+                          0
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "064b67e6-e849-4b98-b30e-4abc59b8eb07"
+                  },
+                  "type": "If"
+                },
+                "IF_Middle_Name_contains_data": {
+                  "actions": {
+                    "Compose_Middle_Name_clause_NOT_NULL": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "83d33cd7-8a12-4b26-87d2-188af8d57bca"
+                      },
+                      "type": "Compose",
+                      "inputs": "ecer_middlename eq '@{variables('Middle Name')}'"
+                    },
+                    "Set_Middle_Name_Clause_NOT_NULL": {
+                      "runAfter": {
+                        "Compose_Middle_Name_clause_NOT_NULL": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "f0820653-46b7-4e22-b6e7-66321cc0dad0"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Middle Name",
+                        "value": "@{outputs('Compose_Middle_Name_clause_NOT_NULL')}"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "IF_First_Name_contains_data": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Set_Middle_Name_Clause_NULL": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "b1b5a70f-c25e-407f-9934-3e7bddc55eee"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "Middle Name",
+                          "value": "(ecer_middlename eq null or ecer_middlename eq '')"
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "and": [
+                      {
+                        "not": {
+                          "equals": [
+                            "@variables('Middle Name')",
+                            "@null"
+                          ]
+                        }
+                      },
+                      {
+                        "greater": [
+                          "@length(variables('Middle Name'))",
+                          0
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "e542ba4e-f1bf-4a7d-a0d0-76089a3ac0ab"
+                  },
+                  "type": "If"
+                },
+                "IF_Last_Name_contains_data": {
+                  "actions": {
+                    "Compose_Last_Name_clause_NOT_NULL": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "e01119e9-900c-49b8-8437-45854537f171"
+                      },
+                      "type": "Compose",
+                      "inputs": "ecer_lastname eq '@{variables('Last Name')}'"
+                    },
+                    "Set_Last_Name_clause_NOT_NULL": {
+                      "runAfter": {
+                        "Compose_Last_Name_clause_NOT_NULL": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "b6d38f59-cac4-48cc-af62-cf1b02c305de"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Last Name",
+                        "value": "@{outputs('Compose_Last_Name_clause_NOT_NULL')}"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "IF_Middle_Name_contains_data": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Set_Last_Name_clause_NULL": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "40921eea-005c-4a04-90a3-cfa054a49269"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "Last Name",
+                          "value": "(ecer_lastname eq null or ecer_lastname eq '')"
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "and": [
+                      {
+                        "not": {
+                          "equals": [
+                            "@variables('Last Name')",
+                            "@null"
+                          ]
+                        }
+                      },
+                      {
+                        "greater": [
+                          "@length(variables('Last Name'))",
+                          0
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "9986c1a5-85f8-4176-af23-930816848b1b"
+                  },
+                  "type": "If"
+                },
+                "List_rows_-_Previous_Names_for_this_Contact_with_name_clause": {
+                  "runAfter": {
+                    "IF_Last_Name_contains_data": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "f60c441f-4157-4e7a-ae02-17365cbf5a6a"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_previousnames",
+                      "$filter": "_ecer_contactid_value eq '@{triggerBody()['text_1']}' and @{variables('Last Name')} and @{variables('Middle Name')} and @{variables('First Name')}"
+                    },
+                    "authentication": {
+                      "type": "Raw",
+                      "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                    }
+                  }
+                },
+                "Loop_Through_all_Applicant_Previous_Names": {
+                  "foreach": "@outputs('List_rows_-_Previous_Names_for_this_Contact_with_name_clause')?['body/value']",
+                  "actions": {
+                    "IF_Status_Reason_is_Verified_and_Has_Name_Verified_is_still_FALSE": {
+                      "actions": {
+                        "Set_variable_-_Has_Name_Verified_to_TRUE": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "5b668ec9-8ddf-48b9-a8ba-d927b911b9ad"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "Has Name Verified",
+                            "value": "@true"
+                          }
+                        }
+                      },
+                      "runAfter": {},
+                      "expression": {
+                        "and": [
+                          {
+                            "equals": [
+                              "@variables('Has Name Verified')",
+                              "@true"
+                            ]
+                          },
+                          {
+                            "equals": [
+                              "",
+                              621870002
+                            ]
+                          }
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "ab2a82a9-172e-428c-a79d-45ff8ce7f419"
+                      },
+                      "type": "If"
+                    },
+                    "Set_variable_-_Has_Match_to_TRUE": {
+                      "runAfter": {
+                        "IF_Status_Reason_is_Verified_and_Has_Name_Verified_is_still_FALSE": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "91fa478d-8dbe-4049-89a1-9e3711b8b15d"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Has Match",
+                        "value": "@true"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "List_rows_-_Previous_Names_for_this_Contact_with_name_clause": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "a7d32f14-47eb-4a4b-b98a-7b0af162854b"
+                  },
+                  "type": "Foreach"
+                },
+                "IF_Has_Match_is_FALSE": {
+                  "actions": {
+                    "Add_New_Previous_Name_Entry_based_on_Transcript_Info": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "0d82f5bc-13d0-417d-bbed-c24517c333a5"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "CreateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "ecer_previousnames",
+                          "item/ecer_Contactid@odata.bind": "contacts(@{triggerBody()['text_1']})",
+                          "item/ecer_source": 621870001,
+                          "item/ecer_enddate": "@items('Loop_Through_All_Education_Transcripts_in_DRAFT_Status_Reason')?['ecer_enddate']",
+                          "item/ecer_firstname": "@items('Loop_Through_All_Education_Transcripts_in_DRAFT_Status_Reason')?['ecer_studentfirstname']",
+                          "item/ecer_lastname": "@items('Loop_Through_All_Education_Transcripts_in_DRAFT_Status_Reason')?['ecer_studentlastname']",
+                          "item/ecer_middlename": "@items('Loop_Through_All_Education_Transcripts_in_DRAFT_Status_Reason')?['ecer_studentmiddlename']",
+                          "item/ecer_nametype": 621870001,
+                          "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})",
+                          "item/ecer_startdate": "@items('Loop_Through_All_Education_Transcripts_in_DRAFT_Status_Reason')?['ecer_startdate']",
+                          "item/statuscode": 1
+                        },
+                        "authentication": {
+                          "type": "Raw",
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Loop_Through_all_Applicant_Previous_Names": [
+                      "Succeeded"
+                    ]
+                  },
+                  "expression": {
+                    "equals": [
+                      "@variables('Has Match')",
+                      "@false"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "e1f2762e-c57e-4eee-98de-a18f98610168"
+                  },
+                  "type": "If"
+                }
+              },
+              "runAfter": {},
+              "expression": {
+                "equals": [
+                  "@items('Loop_Through_All_Education_Transcripts_in_DRAFT_Status_Reason')?['ecer_isnameunverified']",
+                  "@true"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "ec179646-e00b-4f8d-81f8-4c04107c2279"
+              },
+              "type": "If"
+            },
+            "Update_a_row_-_Set_Status_Reason_to_Application_Submitted": {
+              "runAfter": {
+                "IF_Is_Name_Verified_is_TRUE": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "0ed3ed11-f3c3-49c8-b297-2e215b65437e"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_transcripts",
+                  "recordId": "@items('Loop_Through_All_Education_Transcripts_in_DRAFT_Status_Reason')?['ecer_transcriptid']",
+                  "item/statuscode": 621870006
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable_-_Last_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "664c9e3a-96cc-4a4f-9c2b-9ae76616f85a"
+          },
+          "type": "Foreach"
+        },
+        "IF_No_Rows_Return": {
+          "actions": {
+            "Terminate": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "63352f43-9294-4abe-8e8e-8a6c56057e11"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_all_Education_Transcript_Reference_in_DRAFT_mode_for_this_application": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@length(outputs('Get_all_Education_Transcript_Reference_in_DRAFT_mode_for_this_application')?['body/value'])",
+              0
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "68be5a25-67e2-427c-8dfc-982ed6b96fa3"
+          },
+          "type": "If"
+        },
+        "Initialize_variable_-_Has_Match": {
+          "runAfter": {
+            "IF_No_Rows_Return": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "31d34ec9-760a-480c-9668-a23215dba3c5"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Has Match",
+                "type": "boolean",
+                "value": "@false"
+              }
+            ]
+          }
+        },
+        "Respond_to_a_Power_App_or_flow": {
+          "runAfter": {
+            "Loop_Through_All_Education_Transcripts_in_DRAFT_Status_Reason": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7ac8efba-5a65-41f1-b8a9-60d0851febd1"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "success": "@{true}"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "title": "Success",
+                  "x-ms-dynamically-added": true,
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "Initialize_variable_-_Has_Name_Verified": {
+          "runAfter": {
+            "Initialize_variable_-_Has_Match": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d54f1f2e-d3c7-4557-a723-d019e0373ed4"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Has Name Verified",
+                "type": "boolean",
+                "value": "@false"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_First_Name": {
+          "runAfter": {
+            "Initialize_variable_-_Has_Name_Verified": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6fe14423-410c-4524-8242-7343971c6eef"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "First Name",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Middle_Name": {
+          "runAfter": {
+            "Initialize_variable_-_First_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f35c67f8-fac2-44e4-a71c-b139706209e3"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Middle Name",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Last_Name": {
+          "runAfter": {
+            "Initialize_variable_-_Middle_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3a3514a7-fd0c-4368-bfdc-2712c0e761e4"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Last Name",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

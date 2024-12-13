@@ -1,0 +1,140 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "e9753b6a-9b3f-428c-bb1e-5261a67bf612"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "contact",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_generatecertificate"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_False_-_Ignore": {
+          "actions": {
+            "Terminate": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "015ade68-a6e1-48fc-9053-328839d907fc"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {},
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_generatecertificate']",
+              "@false"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "87c6a345-f782-4ed4-bec6-7176c0a040c1"
+          },
+          "type": "If"
+        },
+        "List_rows_-_All_Active_Certificate_of_this_applicant": {
+          "runAfter": {
+            "IF_False_-_Ignore": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "275c9be0-0638-43fb-ab6d-fdfdeacea1dd"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certificates",
+              "$select": "statecode, ecer_certificateid",
+              "$filter": "_ecer_registrantid_value eq '@{triggerOutputs()?['body/contactid']}' and statecode eq 0 and ecer_generatecertificate eq false",
+              "$orderby": "ecer_expirydate desc"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_through_and_generate_certificate_PDF": {
+          "foreach": "@outputs('List_rows_-_All_Active_Certificate_of_this_applicant')?['body/value']",
+          "actions": {
+            "Set_Generate_Certificate_flag_to_YES": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "d6c1262c-cbda-4c16-9ab3-5ff947ff3d5c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateOnlyRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_certificates",
+                  "recordId": "@items('Loop_through_and_generate_certificate_PDF')?['ecer_certificateid']",
+                  "item/ecer_generatecertificate": true,
+                  "item/ecer_generatecoverletter": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_rows_-_All_Active_Certificate_of_this_applicant": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3dcacd18-3697-4055-b2bb-a5852ca66d53"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

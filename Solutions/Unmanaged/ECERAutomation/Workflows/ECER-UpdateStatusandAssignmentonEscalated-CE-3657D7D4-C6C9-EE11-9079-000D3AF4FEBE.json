@@ -1,0 +1,384 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "On_Modified_of_the_Has_Escalated_to_Team_Lead": {
+          "metadata": {
+            "operationMetadataId": "1d4826dc-5622-404d-addf-a1b5ee1ea342"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_application",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_escalatetoteamlead"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Selected_YES": {
+          "actions": {
+            "IF_Assessor_CONTAINS_data": {
+              "actions": {
+                "Create_a_Decision_Comments_for_Assessor_to_fill_in": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "54dd9471-a091-4511-8876-ec355cb02cf7"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_comments",
+                      "item/ecer_Contact@odata.bind": "contacts(@{outputs('Get_Application_by_ID')?['body/_ecer_applicantid_value']})",
+                      "item/ecer_decision": 621870004,
+                      "item/ecer_notes": "@outputs('Set_Date_Escalated,_Status_Reason,_and_Ownership_changed_to_Assessment_Team_Lead')?['body/ecer_escalatereason']",
+                      "item/ecer_Application@odata.bind": "ecer_applications(@{outputs('Get_Application_by_ID')?['body/ecer_applicationid']})",
+                      "item/ownerid@odata.bind": "systemusers(@{outputs('Get_Application_by_ID')?['body/_ecer_assessor_value']})"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "IF_Team_is_Found": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Application_by_ID')?['body/_ecer_assessor_value']",
+                    "@null"
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "a9efcc06-c5b3-4198-bee5-726afd87e443"
+              },
+              "type": "If"
+            },
+            "Get_Assessment_Team_Lead_Team": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "6a8e9a58-aa81-49a8-8d19-1e5376ad9af6"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "teams",
+                  "$filter": "name eq 'Assessment Team Lead Team' or name eq 'Equivalency Lead Team'"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "IF_Team_is_Found": {
+              "actions": {
+                "Set_Date_Escalated,_Status_Reason,_and_Ownership_changed_to_Assessment_Team_Lead": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "9645ee5d-67f3-4526-89fd-87a4181d0aba"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_applications",
+                      "recordId": "@outputs('Get_Application_by_ID')?['body/ecer_applicationid']",
+                      "item/ecer_dateescalated": "@utcNow()",
+                      "item/ownerid@odata.bind": "teams(@{variables('Assessment Team Lead Team')})",
+                      "item/statuscode": 290700002
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "IF_Application_Education_Recognition_is_NOT_Recognized": {
+                  "actions": {
+                    "Update_a_row": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "c73446de-5b08-48af-9cef-227f1d2a60fb"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "ecer_applications",
+                          "recordId": "@triggerOutputs()?['body/ecer_applicationid']",
+                          "item/ownerid@odata.bind": "teams(@{variables('Equivalency Lead Team')})"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Set_Date_Escalated,_Status_Reason,_and_Ownership_changed_to_Assessment_Team_Lead": [
+                      "Succeeded"
+                    ]
+                  },
+                  "expression": {
+                    "not": {
+                      "equals": [
+                        "@outputs('Set_Date_Escalated,_Status_Reason,_and_Ownership_changed_to_Assessment_Team_Lead')?['body/ecer_educationrecognition']",
+                        621870000
+                      ]
+                    }
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2a5e2fc7-d676-434a-a991-85dd0dafbbb3"
+                  },
+                  "type": "If"
+                }
+              },
+              "runAfter": {
+                "Loop_Through_Result_set_to_set_Team_variable": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Set_Date_Escalated,_Status_Reason": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "297ae89f-765d-41c7-b296-80a39e96a0b7"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "ecer_applications",
+                        "recordId": "@outputs('Get_Application_by_ID')?['body/ecer_applicationid']",
+                        "item/ecer_dateescalated": "@utcNow()",
+                        "item/statuscode": 290700002
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "and": [
+                  {
+                    "not": {
+                      "equals": [
+                        "@variables('Assessment Team Lead Team')",
+                        "@null"
+                      ]
+                    }
+                  },
+                  {
+                    "not": {
+                      "equals": [
+                        "@variables('Equivalency Lead Team')",
+                        "@null"
+                      ]
+                    }
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "12c0905d-f03d-4e6e-a14a-8c417d277c2e"
+              },
+              "type": "If"
+            },
+            "Loop_Through_Result_set_to_set_Team_variable": {
+              "foreach": "@outputs('Get_Assessment_Team_Lead_Team')?['body/value']",
+              "actions": {
+                "Switch_on_Team_Name": {
+                  "runAfter": {},
+                  "cases": {
+                    "Case": {
+                      "case": "Equivalency Lead Team",
+                      "actions": {
+                        "Set_Equivalency_Lead_Team_variable": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "53374964-5de5-4a9d-a84e-ed39365d4e71"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "Equivalency Lead Team",
+                            "value": "@items('Loop_Through_Result_set_to_set_Team_variable')?['teamid']"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "default": {
+                    "actions": {
+                      "Set_Assessment_Team_Lead_Team_variable": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "0163688a-1965-4ec1-a923-a0388ca736a6"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "Assessment Team Lead Team",
+                          "value": "@items('Loop_Through_Result_set_to_set_Team_variable')?['teamid']"
+                        }
+                      }
+                    }
+                  },
+                  "expression": "@items('Loop_Through_Result_set_to_set_Team_variable')?['name']",
+                  "metadata": {
+                    "operationMetadataId": "6a874b68-263c-4662-942b-0c286a9f6e05"
+                  },
+                  "type": "Switch"
+                }
+              },
+              "runAfter": {
+                "Get_Assessment_Team_Lead_Team": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "5f0489f9-582c-45fa-b884-506d9a180bb6"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Get_Application_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/ecer_escalatetoteamlead']",
+                  621870000
+                ]
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Application_by_ID')?['body/_ecer_applicantid_value']",
+                    "@null"
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9b504fea-812b-4d31-b510-8d7b08d47a7f"
+          },
+          "type": "If"
+        },
+        "Get_Application_by_ID": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "74c9454b-abd3-475b-ab21-868ec5ba0a62"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@triggerOutputs()?['body/ecer_applicationid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable_-_Assessment_Team_Lead_Team": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "c0586cfe-bc6a-4e6a-b77a-c5a137ce32cd"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Assessment Team Lead Team",
+                "type": "string",
+                "value": "@{null}"
+              }
+            ]
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "Initialize_variable_-_Assessment_Team_Lead_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8cf6b286-0a08-48af-9219-16e766b64a3c"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Equivalency Lead Team",
+                "type": "string",
+                "value": "@{null}"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

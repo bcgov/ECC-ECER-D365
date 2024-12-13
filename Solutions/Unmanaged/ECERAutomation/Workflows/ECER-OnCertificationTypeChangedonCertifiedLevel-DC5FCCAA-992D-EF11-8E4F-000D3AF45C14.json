@@ -1,0 +1,478 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "On_Create_or_On_ecer_certificatetypeid_Changed": {
+          "metadata": {
+            "operationMetadataId": "80aec3f6-0145-4d3c-84ca-33e5c03801f6"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_certifiedlevel",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_certificatetypeid",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_ecer_certificatetypeid_contains_data": {
+          "actions": {
+            "Terminate_-_Should_NOT_happen_as_Required_Field": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "bb0bf0b7-a261-4bb4-b1b1-776e843e1c66"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {},
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_ecer_certificatetypeid_value']",
+              "@null"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "54fc82e8-8590-4d01-9eee-c27e6acfee92"
+          },
+          "type": "If"
+        },
+        "Initialize_variable_-_Assistant": {
+          "runAfter": {
+            "Delay_-_Provide_sufficient_time_to_populate_Registrant": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2bfacd7c-2147-4d8a-866c-490de0f6eeaf"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Assistant",
+                "type": "string",
+                "value": "d593c93d-7be1-ee11-904c-0022486e0199"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_ECE_1_YR": {
+          "runAfter": {
+            "Initialize_variable_-_Assistant": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6a6dd112-2b98-450a-8faa-d5b67c00b9bc"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ECE 1 YR",
+                "type": "string",
+                "value": "d093c93d-7be1-ee11-904c-0022486e0199"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_ECE_5_YR": {
+          "runAfter": {
+            "Initialize_variable_-_ECE_1_YR": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "de0db0bd-02e1-4dd8-b6d5-c0efb231e023"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ECE 5 YR",
+                "type": "string",
+                "value": "6c5424eb-9673-ee11-8179-000d3af4fa73"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_SNE": {
+          "runAfter": {
+            "Initialize_variable_-_ECE_5_YR": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ca39382f-f845-4a9d-9461-602e02c4e222"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "SNE",
+                "type": "string",
+                "value": "15e95044-7be1-ee11-904c-0022486e0199"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_ITE": {
+          "runAfter": {
+            "Initialize_variable_-_SNE": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "92ed0e7c-7b83-4bf8-8e16-801af2d023c2"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ITE",
+                "type": "string",
+                "value": "3f02bf51-7be1-ee11-904c-0022486e0199"
+              }
+            ]
+          }
+        },
+        "Get_full_record_for_values_comparison": {
+          "runAfter": {
+            "Initialize_variable_-_Certificate_Level_Query_Clause": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ff8ed4e2-7864-4009-b882-2d6b8e3dec37"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certifiedlevels",
+              "recordId": "@triggerOutputs()?['body/ecer_certifiedlevelid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable_-_Certificate_Level_Query_Clause": {
+          "runAfter": {
+            "Initialize_variable_-_ITE": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d478c7c3-3edf-42ed-b17f-6819dc8ca368"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Certificate Level Query Clause",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Switch_on_Certificate_Type_value": {
+          "runAfter": {
+            "Get_full_record_for_values_comparison": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Case_-_Assistant": {
+              "case": "d593c93d-7be1-ee11-904c-0022486e0199",
+              "actions": {
+                "Set_variable_-_Query_Clause_for_Assistant": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "0b1c3040-0f78-46d4-ae5f-3d466dfb66df"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Certificate Level Query Clause",
+                    "value": "contains(ecer_certificatelevel,'Assistant')"
+                  }
+                }
+              }
+            },
+            "Case_-_ECE_1_YR": {
+              "case": "d093c93d-7be1-ee11-904c-0022486e0199",
+              "actions": {
+                "Set_variable_-_Query_Clause_for_ECE_1_YR": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "05a615e9-d571-433b-a231-e605462f02e0"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Certificate Level Query Clause",
+                    "value": "contains(ecer_certificatelevel,'ECE 1 YR')"
+                  }
+                }
+              }
+            },
+            "Case_-_ECE_5_YR": {
+              "case": "6c5424eb-9673-ee11-8179-000d3af4fa73",
+              "actions": {
+                "Set_variable_-_Query_Clause_for_ECE_5_YR": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "1833c46d-cb42-4cc1-b496-b1085f3e1fc4"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Certificate Level Query Clause",
+                    "value": "contains(ecer_certificatelevel,'ECE 5 YR')"
+                  }
+                }
+              }
+            },
+            "Case_-_SNE": {
+              "case": "15e95044-7be1-ee11-904c-0022486e0199",
+              "actions": {
+                "Set_variable_-_Query_Clause_for_SNE": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "c0b44e65-6757-43be-91b5-082adc1c51c2"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Certificate Level Query Clause",
+                    "value": "contains(ecer_certificatelevel,'SNE')"
+                  }
+                }
+              }
+            },
+            "Case_-_ITE": {
+              "case": "3f02bf51-7be1-ee11-904c-0022486e0199",
+              "actions": {
+                "Set_variable_-_Query_Clause_for_ITE": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "8382d86e-9549-4565-b5f9-4d24199e0799"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Certificate Level Query Clause",
+                    "value": "contains(ecer_certificatelevel,'ITE')"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@outputs('Get_full_record_for_values_comparison')?['body/_ecer_certificatetypeid_value']",
+          "metadata": {
+            "operationMetadataId": "117922e4-c53f-49d9-ab47-171e8aa3bf8a"
+          },
+          "type": "Switch"
+        },
+        "List_rows_-_Certificate_for_this_Registrant_with_the_Certificate_Level": {
+          "runAfter": {
+            "Switch_on_Certificate_Type_value": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b502a566-38dc-4c41-899d-96ac1a21ed4b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certificates",
+              "$filter": "_ecer_registrantid_value eq '@{outputs('Get_full_record_for_values_comparison')?['body/_ecer_registrantid_value']}' and @{variables('Certificate Level Query Clause')}",
+              "$orderby": "ecer_effectivedate",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Delay_-_Provide_sufficient_time_to_populate_Registrant": {
+          "runAfter": {
+            "IF_ecer_certificatetypeid_contains_data": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2b98c4a0-9347-440b-9937-2040472440f3"
+          },
+          "type": "Wait",
+          "inputs": {
+            "interval": {
+              "count": 5,
+              "unit": "Second"
+            }
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_rows_-_Certificate_for_this_Registrant_with_the_Certificate_Level')?['body/value']",
+          "actions": {
+            "IF_Certificate_Date_contains_data": {
+              "actions": {
+                "Update_Certified_Level_using_Date": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "930a7a66-9fc5-477c-a7fe-5df0983feaed"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_certifiedlevels",
+                      "recordId": "@outputs('Get_full_record_for_values_comparison')?['body/ecer_certifiedlevelid']",
+                      "item/ecer_originalcertificationdate": "@items('Apply_to_each')?['ecer_date']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {},
+              "else": {
+                "actions": {
+                  "IF_Effective_Date_contains_data": {
+                    "actions": {
+                      "Update_Certified_Level_using_Effective_Date": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "31f0047e-f57f-40f9-b00b-d38a451df77c"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_commondataserviceforapps",
+                            "operationId": "UpdateRecord",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                          },
+                          "parameters": {
+                            "entityName": "ecer_certifiedlevels",
+                            "recordId": "@outputs('Get_full_record_for_values_comparison')?['body/ecer_certifiedlevelid']",
+                            "item/ecer_originalcertificationdate": "@items('Apply_to_each')?['ecer_effectivedate']"
+                          },
+                          "authentication": "@parameters('$authentication')"
+                        }
+                      }
+                    },
+                    "runAfter": {},
+                    "else": {
+                      "actions": {
+                        "Update_Certified_Level_using_Created_On": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "3f3a4f8f-aa37-4784-9b31-5bb77be9ad6e"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_commondataserviceforapps",
+                              "operationId": "UpdateRecord",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                            },
+                            "parameters": {
+                              "entityName": "ecer_certifiedlevels",
+                              "recordId": "@outputs('Get_full_record_for_values_comparison')?['body/ecer_certifiedlevelid']",
+                              "item/ecer_originalcertificationdate": "@items('Apply_to_each')?['createdon']"
+                            },
+                            "authentication": "@parameters('$authentication')"
+                          }
+                        }
+                      }
+                    },
+                    "expression": {
+                      "not": {
+                        "equals": [
+                          "@items('Apply_to_each')?['ecer_effectivedate']",
+                          "@null"
+                        ]
+                      }
+                    },
+                    "metadata": {
+                      "operationMetadataId": "b6375ef7-0b74-4464-842c-f3c83528936e"
+                    },
+                    "type": "If"
+                  }
+                }
+              },
+              "expression": {
+                "not": {
+                  "equals": [
+                    "@items('Apply_to_each')?['ecer_date']",
+                    "@null"
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "44a54e6d-b780-44bf-9574-0f4dffdee761"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "List_rows_-_Certificate_for_this_Registrant_with_the_Certificate_Level": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0e52ada4-b30c-46a5-8314-3b93c4152db7"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

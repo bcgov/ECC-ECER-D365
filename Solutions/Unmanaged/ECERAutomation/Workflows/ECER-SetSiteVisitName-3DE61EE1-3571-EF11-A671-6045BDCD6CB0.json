@@ -1,0 +1,98 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "b7a546d6-b776-4efb-a086-3836e919dfff"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_postsecondaryinstitutesitevisit",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_postsecondaryinstitution,ecer_sitevisitdate,ecer_type"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_PSI": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "14b59072-b347-4950-ae36-0d989270e7df"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_postsecondaryinstitutes",
+              "recordId": "@triggerOutputs()?['body/_ecer_postsecondaryinstitution_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_Site_Visit_Name": {
+          "runAfter": {
+            "Get_PSI": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4ed91f05-b938-4844-a4be-815a36ae1d0b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_postsecondaryinstitutesitevisits",
+              "recordId": "@triggerOutputs()?['body/ecer_postsecondaryinstitutesitevisitid']",
+              "item/ecer_name": "@{outputs('Get_PSI')?['body/ecer_name']} - @{triggerOutputs()?['body/_ecer_type_label']} Site Visit - @{formatDateTime(triggerOutputs()?['body/ecer_sitevisitdate'],'MM/dd/yyyy')}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

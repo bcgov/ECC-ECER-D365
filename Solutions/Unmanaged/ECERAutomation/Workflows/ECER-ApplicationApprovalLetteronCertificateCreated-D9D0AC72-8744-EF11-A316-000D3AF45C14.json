@@ -1,0 +1,540 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_Certificate_is_created": {
+          "metadata": {
+            "operationMetadataId": "73614345-2e90-4030-be56-8f6b5f8e8019"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "ecer_certificate",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Delay_20_seconds_to_wait_for_dust_to_settle": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "d62f0e2f-ee2a-42f8-8353-0f43f8efbbe1"
+          },
+          "type": "Wait",
+          "inputs": {
+            "interval": {
+              "count": 20,
+              "unit": "Second"
+            }
+          }
+        },
+        "Get_Full_Record_which_now_should_have_Certificate_Type": {
+          "runAfter": {
+            "Delay_20_seconds_to_wait_for_dust_to_settle": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "aec35af8-6f2f-4821-88e5-ab874e6c9691"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certificates",
+              "recordId": "@triggerOutputs()?['body/ecer_certificateid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable_-_Expiry_Date_Long_Date_String": {
+          "runAfter": {
+            "Initialize_variable_-_Assessment_Team_PK": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1f057d4c-742b-4c59-9288-2aac99ca1638"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Expiry Date Long Date String",
+                "type": "string",
+                "value": "NA"
+              }
+            ]
+          }
+        },
+        "IF_Expiry_Date_exists": {
+          "actions": {
+            "Get_Expiry_Date_in_Long_Date_String": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a07ee6fa-bec8-4b52-8b8a-59c35734582b"
+              },
+              "type": "Compose",
+              "inputs": "@formatDateTime(parseDateTime(outputs('Get_Full_Record_which_now_should_have_Certificate_Type')?['body/ecer_expirydate']),'MMMM d, yyyy')"
+            },
+            "Set_Certificate_Expiry_Long_Date_String": {
+              "runAfter": {
+                "Get_Expiry_Date_in_Long_Date_String": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "a51d355c-a349-4db6-97b6-c8994b5d816c"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Expiry Date Long Date String",
+                "value": "@{outputs('Get_Expiry_Date_in_Long_Date_String')}"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable_-_Public_Lookup_Route": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@outputs('Get_Full_Record_which_now_should_have_Certificate_Type')?['body/ecer_expirydate']",
+                "@null"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "c4eb978e-f42b-4674-abde-4726403538b9"
+          },
+          "type": "If"
+        },
+        "Add_a_new_row_-_Communication": {
+          "runAfter": {
+            "Set_Portal_Base_URL": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "115d8275-a490-418b-b88d-56ec089f3ad9"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_communications",
+              "item/ecer_initiatedfrom": 621870000,
+              "item/ecer_message": "<p>Hello @{outputs('Get_Registrant_Full_Record')?['body/fullname']},<br /></p>\n<p>The Early Childhood Educator Registry (Registry) has determined you have met the certification requirements to practice in the Province of British Columbia (BC). Your Certificate is a legal government document that should be stored in a safe place<br /></p>\n<p>Your application for certification is approved for:<br/><br />\nList of Certificate Types<br  />\n@{triggerOutputs()?['body/ecer_certificatelevel']}<br /><br />\nYour registration number is <br />\n@{outputs('Get_Registrant_Full_Record')?['body/ecer_clientid']}<br /><br />\nYour certificate will expire on:<br />\n@{variables('Expiry Date Long Date String')}<br /></p>\n<p>To view and print your certificate anytime, go to the <a href='@{variables('Portal Base URL')}' target='_blank'>home page</a> of your My ECE Registry dashboard.<br /></p>\n<p>You and your employer can validate the status of your certificate using the <a href='@{variables('Portal Base URL')}@{variables('Certification Validation Portal Route')}' target='_blank'>certificate validation portal</a>.<br /></p>\n<p><strong>Maintain your certification</strong><br />\nIt’s your responsibility to maintain your certification. The requirements to renew your Certificate will depend on the type of Certification you hold and whether it is valid or expired. Renewal requirements may include work experience hours, professional development and/or additional post-secondary education.<br /></p>\n<p>You can explore what’s required on the <a href='@{variables('Portal Base URL')}' target='_blank'>home page</a> of your My ECE Registry dashboard and, when you’re ready to renew, you can complete your renewal application.<br /></p>\n<p>It is important that you become familiar with these requirements well before your Certificate is set to expire. If your Certificate expires, you will no longer be qualified to work as an educator or assistant, in licensed child care in BC, until your Certificate is renewed with the Registry.<br /></p>\n<p><strong>Keep your account up to date</strong><br />\nYou are encouraged to keep your My ECE Registry account up to date. If your contact information changes, you can update this online on your My ECE Registry dashboard.<br /></p>\n<p><strong>Learn more</strong><br />\nVisit our website at www.gov.bc.ca/earlychildhoodeducators for more information about:<br>\n<ul><li>Legal requirements and standards (occupational competencies) that govern your practice</li><li>Renewal requirements for the type of Certificate you hold</li><li>Different types of early childhood educator certificates available in BC</li><li>How the Registry responds to and investigates complaints regarding the practice of certified educators and Assistants</li><li>Professional development topics and resources</li></ul><br /></p>\n<p>If you have any questions regarding the assessment of your recent application for certification, please contact the Registry at 1-888-338-6622 or ECERegistry@gov.bc.ca.<br /></p>\n<p>&nbsp;</p>\n<p>Sincerely,</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>&nbsp;</p>\n<p>Early Childhood Educator Registry<br />\nPO Box 9961 Stn Prov Govt<br />\nVictoria, BC V8W 9R4<br />\n1.888.338.6622<br />\nECERegistry@gov.bc.ca</p>",
+              "item/ecer_name": "Your application for certification is approved ",
+              "item/ecer_type": 621870002,
+              "item/ecer_Registrantid_contact@odata.bind": "contacts(@{outputs('Get_Full_Record_which_now_should_have_Certificate_Type')?['body/_ecer_registrantid_value']})",
+              "item/ecer_Applicationid@odata.bind": "ecer_applications(@{variables('Application PK')})",
+              "item/ecer_areallread": false,
+              "item/ecer_donotreply": true,
+              "item/ecer_isroot": true,
+              "item/ecer_notifyrecipient": true,
+              "item/ownerid@odata.bind": "teams(@{variables('Assessment Team')})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable_-_Application_PK": {
+          "runAfter": {
+            "Get_Full_Record_which_now_should_have_Certificate_Type": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f7d5b94a-f63e-42f1-b4a4-6c3ad43d2322"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Application PK",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Assessment_Team_PK": {
+          "runAfter": {
+            "Initialize_variable_-_Application_PK": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ffd7aa63-c88d-42fd-a24c-5d3519764128"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Assessment Team",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "List_rows-_Get_Assessment_Team_-_General_PK": {
+          "runAfter": {
+            "Get_Registrant_Full_Record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "951a7dc4-b94f-4627-9fbc-cb17cedd3831"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "teams",
+              "$filter": "name eq 'Assessment Team - General'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Using_Assessment_Team_Search_Results": {
+          "foreach": "@outputs('List_rows-_Get_Assessment_Team_-_General_PK')?['body/value']",
+          "actions": {
+            "Set_variable_-_Assessment_Team_-_General_PK": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "fb452ff5-a1b2-47d1-8ba3-5daad719a71d"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Assessment Team",
+                "value": "@items('Using_Assessment_Team_Search_Results')?['teamid']"
+              }
+            }
+          },
+          "runAfter": {
+            "List_rows-_Get_Assessment_Team_-_General_PK": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a07322cb-6024-4d1b-a7d3-4fcd30baf179"
+          },
+          "type": "Foreach"
+        },
+        "Get_Registrant_Full_Record": {
+          "runAfter": {
+            "IF_Application_NOT_From_Portal": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4fcc72d3-0bec-4a4a-a6c7-1eebb63d4205"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@outputs('Get_Full_Record_which_now_should_have_Certificate_Type')?['body/_ecer_registrantid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable_-_Portal_Base_URL": {
+          "runAfter": {
+            "Initialize_variable_-_Expiry_Date_Long_Date_String": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8f2fedcc-a3f1-4790-b7b6-122d831b4ba2"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Portal Base URL",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_ECER_Base_URL": {
+          "runAfter": {
+            "Initialize_variable_-_Portal_Base_URL": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "41364024-9bdf-4d02-b0ad-b595a7e901c6"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ECER Base URL",
+                "type": "string",
+                "value": "https://www.gov.bc.ca/earlychildhoodeducators"
+              }
+            ]
+          }
+        },
+        "Get_Latest_Modified_Application_related_to_this_Certificate": {
+          "runAfter": {
+            "IF_Expiry_Date_exists": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "26124378-c258-4d04-9915-0f4cfb02aaf8"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "$filter": "_ecer_certificateid_value eq '@{outputs('Get_Full_Record_which_now_should_have_Certificate_Type')?['body/ecer_certificateid']}'",
+              "$orderby": "modifiedon desc",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "IF_No_Application_Record_Found": {
+          "actions": {
+            "Terminate_-_Unable_to_Create_Communication_Record": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "768920e2-9b33-4877-9db8-52dc82640ead"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Latest_Modified_Application_related_to_this_Certificate": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@length(outputs('Get_Latest_Modified_Application_related_to_this_Certificate')?['body/value'])",
+              0
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ebfddc61-c120-4f04-a433-403ab3d772e5"
+          },
+          "type": "If"
+        },
+        "Using_the_Application_collection_searched": {
+          "foreach": "@outputs('Get_Latest_Modified_Application_related_to_this_Certificate')?['body/value']",
+          "actions": {
+            "Set_variable_-_Application_PK": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a1540988-9828-469b-aa13-7dcd150e4807"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Application PK",
+                "value": "@items('Using_the_Application_collection_searched')?['ecer_applicationid']"
+              }
+            }
+          },
+          "runAfter": {
+            "IF_No_Application_Record_Found": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f2ef1772-6fcd-40f6-b882-1e7ac3f276eb"
+          },
+          "type": "Foreach"
+        },
+        "Get_Portal_Base_URL": {
+          "runAfter": {
+            "Using_Assessment_Team_Search_Results": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4dd9a463-34fa-4385-abb9-9724087c17e7"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "bcgov_configs",
+              "$filter": "bcgov_group eq 'Portal' and bcgov_key eq 'Base URL' and statecode eq 0",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Set_Portal_Base_URL": {
+          "foreach": "@outputs('Get_Portal_Base_URL')?['body/value']",
+          "actions": {
+            "Set_variable_-_Portal_Base_URL": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "87f297c7-bb74-4e5e-afce-e8e1e3da32cd"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Portal Base URL",
+                "value": "@items('Set_Portal_Base_URL')?['bcgov_value']"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Portal_Base_URL": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5df6a74a-19b0-4ca2-85a8-ad004a6c409b"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_variable_-_Public_Lookup_Route": {
+          "runAfter": {
+            "Initialize_variable_-_ECER_Base_URL": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "190df175-86df-4873-8f1d-4322c7a4a349"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Certification Validation Portal Route",
+                "type": "string",
+                "value": "lookup/certification/"
+              }
+            ]
+          }
+        },
+        "Get_Application_record": {
+          "runAfter": {
+            "Using_the_Application_collection_searched": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "44eba9e5-4b98-4af5-a4f1-98d6b35bb64e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@variables('Application PK')",
+              "$select": "ecer_origin"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "IF_Application_NOT_From_Portal": {
+          "actions": {
+            "Terminate": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "e97754e7-221d-43d6-bc6e-9f02cedb27f9"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Application_record": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@outputs('Get_Application_record')?['body/ecer_origin']",
+                621870001
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "fa648842-af3b-4ea2-8875-0a5b3ac99576"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

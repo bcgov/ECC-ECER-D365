@@ -165,7 +165,7 @@
             },
             "Get_All_Underlying_Character_Reference_1": {
               "runAfter": {
-                "Loop_Through_Program_Support_Team_by_record_owner": [
+                "IF_Education_Recognition_is_NOT_Recognized": [
                   "Succeeded"
                 ]
               },
@@ -333,6 +333,80 @@
                 "operationMetadataId": "797911a9-cfb6-44f9-b32d-25231092f8ec"
               },
               "type": "Foreach"
+            },
+            "Get_List_of_Program_Analyst_Team_of_record_owner": {
+              "runAfter": {
+                "Loop_Through_Program_Support_Team_by_record_owner": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "b018d4f4-5093-4634-bd83-7b7beaa2f7b3"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "teams",
+                  "fetchXml": "<fetch distinct='true'>\n  <entity name='team'>\n    <attribute name='name' />\n    <attribute name='administratorid' />\n    <attribute name='teamid' />\n    <attribute name='teamtype' />\n    <order attribute='name' descending='false' />\n    <filter type='and'>\n      <condition attribute='name' operator='like' value='Program Analyst Team%' />\n<condition attribute='administratorid' operator='ne' value='@{triggerOutputs()?['body/_ownerid_value']}' />\n    </filter>\n    <link-entity name='teammembership' from='teamid' to='teamid' visible='false' intersect='true'>\n      <link-entity name='systemuser' from='systemuserid' to='systemuserid' alias='aa'>\n        <filter type='and'>\n          <condition attribute='systemuserid' operator='eq' value='@{triggerOutputs()?['body/_ownerid_value']}' />\n        </filter>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "IF_Education_Recognition_is_NOT_Recognized": {
+              "actions": {
+                "Apply_to_each": {
+                  "foreach": "@outputs('Get_List_of_Program_Analyst_Team_of_record_owner')?['body/value']",
+                  "actions": {
+                    "Update_a_row": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "6660eb3a-a119-478b-8f58-cde6ce136090"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "ecer_applications",
+                          "recordId": "@triggerOutputs()?['body/ecer_applicationid']",
+                          "item/ecer_AssessorLead@odata.bind": "teams(@{items('Apply_to_each')?['teamid']})",
+                          "item/ecer_Assessor@odata.bind": "systemusers(@{triggerOutputs()?['body/_ownerid_value']})"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "519db159-923c-47d7-8fee-c6a9f804fe10"
+                  },
+                  "type": "Foreach"
+                }
+              },
+              "runAfter": {
+                "Get_List_of_Program_Analyst_Team_of_record_owner": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "equals": [
+                  "@triggerOutputs()?['body/ecer_educationrecognition']",
+                  621870001
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "66f17a4b-ad4e-40c1-a77c-843dea135a94"
+              },
+              "type": "If"
             }
           },
           "runAfter": {},

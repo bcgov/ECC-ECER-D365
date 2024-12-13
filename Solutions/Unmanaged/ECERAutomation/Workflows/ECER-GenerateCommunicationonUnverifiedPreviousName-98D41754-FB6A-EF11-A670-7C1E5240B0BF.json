@@ -1,0 +1,323 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Recurrence_-_run_every_day_at_midnight": {
+          "recurrence": {
+            "frequency": "Day",
+            "interval": 1,
+            "timeZone": "Pacific Standard Time",
+            "schedule": {
+              "hours": [
+                "0"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "57eaaf79-bb18-4919-986d-53addaade979"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "List_Previous_Names_Unverified_Source_Transcript_Profile_Out_of_Province": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "f3dcb427-3a78-4207-ad8c-66cb39263cc2"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_previousnames",
+              "$filter": "statuscode eq 621870002 and (ecer_source eq 621870001 or ecer_source eq 621870002 or ecer_source eq 621870003)\n"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_Each_Retrieved_Previous_Name_record": {
+          "foreach": "@outputs('List_Previous_Names_Unverified_Source_Transcript_Profile_Out_of_Province')?['body/value']",
+          "actions": {
+            "Set_variable_-_contact_ID": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "dbe4a688-10dc-4468-a28a-598485dad18e"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "contactID",
+                "value": "@items('Apply_to_Each_Retrieved_Previous_Name_record')?['_ecer_contactid_value']"
+              }
+            },
+            "Condition_-_make_sure_contact_ID_is_not_null": {
+              "actions": {
+                "Set_Message_Contents_for_Unverified_Previous_Names": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "f18196b8-aaa7-4c48-abec-0cd9360287ea"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Message Content",
+                    "value": "<p>We’re unable to verify your previous name @{items('Apply_to_Each_Retrieved_Previous_Name_record')?['ecer_firstname']} @{items('Apply_to_Each_Retrieved_Previous_Name_record')?['ecer_lastname']} because you have not provided ID yet.<br />\nTo add ID: <br /><ol><li>Click on your name at the top of the page</li><li>Choose “My Profile”</li><li>You’ll see the option to “Add ID for proof of previous name”</li></ol></p>"
+                  }
+                },
+                "Set_Subject_for_Unverified_Previous_Name": {
+                  "runAfter": {
+                    "Set_Message_Contents_for_Unverified_Previous_Names": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "d8ddf327-bc0f-4869-a760-29ce218760b4"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Subject",
+                    "value": "Action required: additional information to verify your previous name"
+                  }
+                },
+                "Create_a_Communication_record_requesting_ID_Documents": {
+                  "runAfter": {
+                    "Set_Subject_for_Unverified_Previous_Name": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "0f78b329-ac8b-4bfc-b396-293ec7af13e4"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_communications",
+                      "item/ecer_initiatedfrom": 621870000,
+                      "item/ecer_message": "@variables('Message Content')",
+                      "item/ecer_name": "@variables('Subject')",
+                      "item/ecer_type": 621870001,
+                      "item/ecer_Registrantid_contact@odata.bind": "contacts(@{variables('contactID')})",
+                      "item/ecer_areallread": false,
+                      "item/ecer_donotreply": true,
+                      "item/ecer_isroot": true,
+                      "item/ecer_notifyrecipient": true,
+                      "item/ownerid@odata.bind": "teams(@{variables('Registry Team PK')})"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Set_Previous_Name_Status_to_Pending_Documents": {
+                  "runAfter": {
+                    "Create_a_Communication_record_requesting_ID_Documents": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "a3c74f6a-780c-4df0-9794-7eabb3087acc"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_previousnames",
+                      "recordId": "@items('Apply_to_Each_Retrieved_Previous_Name_record')?['ecer_previousnameid']",
+                      "item/statuscode": 621870003
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Set_variable_-_contact_ID": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "not": {
+                  "equals": [
+                    "@variables('contactID')",
+                    "@null"
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "62da7110-2a33-49dc-9978-e18fe65ca444"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Apply_to_each_-_Set_Registry_Team_PK": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e9c78305-e484-453e-aade-39c15609a83c"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_variable_-_Message_Content": {
+          "runAfter": {
+            "List_Previous_Names_Unverified_Source_Transcript_Profile_Out_of_Province": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "542b0968-96bc-4f60-bb05-143b9099ab27"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Message Content",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Subject": {
+          "runAfter": {
+            "Initialize_variable_-_Message_Content": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0e2c8584-8981-49b6-9b1a-2e80e0a98f59"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Subject",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_contactID": {
+          "runAfter": {
+            "Initialize_variable_-_Registry_Team_PK": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "46d950af-3c2c-4756-a2e1-6ce473e28437"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "contactID",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Registry_Team_PK": {
+          "runAfter": {
+            "Initialize_variable_-_Subject": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "12e5aea2-d4e3-48e1-b9de-2de0095dc60c"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Registry Team PK",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "List_Teams_by_Name_of_Registry": {
+          "runAfter": {
+            "Initialize_variable_-_contactID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0c28da34-3ccb-4c9d-9036-78db9e5c1eff"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "teams",
+              "$filter": "name eq 'Registry'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each_-_Set_Registry_Team_PK": {
+          "foreach": "@outputs('List_Teams_by_Name_of_Registry')?['body/value']",
+          "actions": {
+            "Set_variable_-_Set_Registry_Team_PK": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "08a41dde-9d37-4e81-b77d-a8024aa021ff"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Registry Team PK",
+                "value": "@items('Apply_to_each_-_Set_Registry_Team_PK')?['teamid']"
+              }
+            }
+          },
+          "runAfter": {
+            "List_Teams_by_Name_of_Registry": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c285abdd-4d59-4ac0-8b8f-da939e1d0083"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

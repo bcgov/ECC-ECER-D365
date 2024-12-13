@@ -1,0 +1,98 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Create_or_Update_Historical_Decision_": {
+          "metadata": {
+            "operationMetadataId": "1b14389c-a289-41bc-9399-9377868911b2"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_historicaldecision",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_yearofcompletion,ecer_programname,ecer_countryofstudyid,ecer_institution,ecer_decisiondate"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Country": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "8b896fdb-138b-4f4e-9f90-854e235ec450"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_countries",
+              "recordId": "@triggerOutputs()?['body/_ecer_countryofstudyid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_Name_Field": {
+          "runAfter": {
+            "Get_Country": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "08a2a913-59a4-486e-9a7c-9ce237cbd578"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_historicaldecisions",
+              "recordId": "@triggerOutputs()?['body/ecer_historicaldecisionid']",
+              "item/ecer_name": "@{triggerOutputs()?['body/ecer_institution']} - @{triggerOutputs()?['body/ecer_programname']} - @{outputs('Get_Country')?['body/ecer_name']} -@{triggerOutputs()?['body/ecer_yearofcompletion']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

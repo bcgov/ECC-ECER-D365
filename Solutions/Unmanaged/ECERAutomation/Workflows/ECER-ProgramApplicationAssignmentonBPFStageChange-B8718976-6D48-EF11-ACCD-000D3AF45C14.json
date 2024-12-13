@@ -1,0 +1,333 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "a865f1f0-f68a-4567-a1b2-fdf707a9fd66"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_programapplicationbpf",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Stage_Name": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "5e604b29-9edd-4eae-aa7d-58eed53b9fb6"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "processstages",
+              "recordId": "@triggerOutputs()?['body/_activestageid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Check_if_Stage_Name_=_Analysis_Review": {
+          "actions": {
+            "Get_Team_by_Name_-_Program_Coordinator": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "87eb3b7e-8f6a-4a6a-a4ab-623d50b26280"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "teams",
+                  "$filter": "name eq 'ECE Program Coordinator Team'",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each": {
+              "foreach": "@outputs('Get_Team_by_Name_-_Program_Coordinator')?['body/value']",
+              "actions": {
+                "Update_a_row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "6c29dfda-2d6a-4195-99d1-f297fa37ef1d"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_postsecondaryinstituteprogramapplicaitons",
+                      "recordId": "@triggerOutputs()?['body/_bpf_ecer_postsecondaryinstituteprogramapplicaitonid_value']",
+                      "item/ownerid@odata.bind": "/teams(@{items('Apply_to_each')?['teamid']})",
+                      "item/statuscode": 621870001
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_Team_by_Name_-_Program_Coordinator": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "0c646f25-9918-4a1f-b952-0adb9656b057"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Check_if_Stage_Name_=_Analysis": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_Stage_Name')?['body/stagename']",
+              "Analysis Review"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8206f753-1f96-4706-8637-638080510893"
+          },
+          "type": "If"
+        },
+        "Check_if_Stage_Name_=_Decision": {
+          "actions": {
+            "Check_existence_of_Program_Analyst": {
+              "actions": {
+                "Assign_Program_App_to_Program_Analyst_User": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "62320760-3ecc-4992-9ca3-cc091ce17a3e"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_postsecondaryinstituteprogramapplicaitons",
+                      "recordId": "@body('Get_Program_Application_by_BPF')?['ecer_postsecondaryinstituteprogramapplicaitonid']",
+                      "item/ownerid@odata.bind": "systemusers(@{body('Get_Program_Application_by_BPF')?['_ecer_programanalyst_value']})",
+                      "item/statuscode": 621870004
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_Program_Application_by_BPF": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Get_Teams_by_Name_=_Program_Analyst": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "0c9f803e-6216-4e44-9be5-4f186f7f171f"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "ListRecords",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "teams",
+                        "$filter": "name eq 'Program Analyst Team'",
+                        "$top": 1
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "For_each": {
+                    "foreach": "@outputs('Get_Teams_by_Name_=_Program_Analyst')?['body/value']",
+                    "actions": {
+                      "Assign_Program_App_to_Program_Analyst_Team": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "8ca46b3c-c68d-48c3-aba1-8c53117f8f97"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_commondataserviceforapps",
+                            "operationId": "UpdateRecord",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                          },
+                          "parameters": {
+                            "entityName": "ecer_postsecondaryinstituteprogramapplicaitons",
+                            "recordId": "@body('Get_Program_Application_by_BPF')?['ecer_postsecondaryinstituteprogramapplicaitonid']",
+                            "item/ownerid@odata.bind": "/teams(@{items('For_each')?['teamid']})",
+                            "item/statuscode": 621870004
+                          },
+                          "authentication": "@parameters('$authentication')"
+                        }
+                      }
+                    },
+                    "runAfter": {
+                      "Get_Teams_by_Name_=_Program_Analyst": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "7fcdd2cd-bfa7-4fa3-baba-8cf7e2d7a9db"
+                    },
+                    "type": "Foreach"
+                  }
+                }
+              },
+              "expression": {
+                "and": [
+                  {
+                    "not": {
+                      "equals": [
+                        "@body('Get_Program_Application_by_BPF')?['_ecer_programanalyst_value']",
+                        "@null"
+                      ]
+                    }
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "d152d57f-f95e-48c0-8796-998fc5d644b8"
+              },
+              "type": "If"
+            },
+            "Get_Program_Application_by_BPF": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "784a2100-09e1-4485-b869-c058bfcccb4b"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_postsecondaryinstituteprogramapplicaitons",
+                  "recordId": "@triggerBody()?['_bpf_ecer_postsecondaryinstituteprogramapplicaitonid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Check_if_Stage_Name_=_Analysis_Review": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@body('Get_Stage_Name')?['stagename']",
+                  "Decision"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2ece4c28-e6f8-4afc-9eab-9f9020937128"
+          },
+          "type": "If"
+        },
+        "Check_if_Stage_Name_=_Analysis": {
+          "actions": {
+            "Update_Status_=_Analysis_and_Review": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "6c29dfda-2d6a-4195-99d1-f297fa37ef1d"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_postsecondaryinstituteprogramapplicaitons",
+                  "recordId": "@triggerOutputs()?['body/_bpf_ecer_postsecondaryinstituteprogramapplicaitonid_value']",
+                  "item/statuscode": 621870001
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Stage_Name": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_Stage_Name')?['body/stagename']",
+              "Analysis"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8206f753-1f96-4706-8637-638080510893"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

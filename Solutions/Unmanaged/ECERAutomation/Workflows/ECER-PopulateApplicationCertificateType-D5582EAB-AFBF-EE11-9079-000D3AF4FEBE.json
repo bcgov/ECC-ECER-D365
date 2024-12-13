@@ -74,7 +74,7 @@
                   "type": "SetVariable",
                   "inputs": {
                     "name": "Certificate Type",
-                    "value": "ECE 5 YR, SNE, ITE"
+                    "value": "ECE 5 YR SNE ITE"
                   }
                 }
               },
@@ -108,7 +108,7 @@
                               "type": "SetVariable",
                               "inputs": {
                                 "name": "Certificate Type",
-                                "value": "ECE 5 YR, SNE"
+                                "value": "ECE 5 YR SNE"
                               }
                             }
                           },
@@ -123,7 +123,7 @@
                                 "type": "SetVariable",
                                 "inputs": {
                                   "name": "Certificate Type",
-                                  "value": "ECE 5 YR, ITE"
+                                  "value": "ECE 5 YR ITE"
                                 }
                               }
                             }
@@ -146,7 +146,7 @@
                         {
                           "not": {
                             "equals": [
-                              "SNE",
+                              "@triggerOutputs()?['body/ecer_issne']",
                               "@true"
                             ]
                           }
@@ -154,7 +154,7 @@
                         {
                           "not": {
                             "equals": [
-                              "ite",
+                              "@triggerOutputs()?['body/ecer_isite']",
                               "@true"
                             ]
                           }
@@ -254,7 +254,7 @@
                           "type": "SetVariable",
                           "inputs": {
                             "name": "Certificate Type",
-                            "value": "SNE, ITE"
+                            "value": "SNE ITE"
                           }
                         }
                       },

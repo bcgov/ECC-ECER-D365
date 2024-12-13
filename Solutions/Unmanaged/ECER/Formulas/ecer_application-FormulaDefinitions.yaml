@@ -1,0 +1,4 @@
+ecer_certificatelevel: =ecer_Applicantid.ecer_certificationlevel
+ecer_street1: =ecer_Applicantid.address1_line1
+ecer_street2: =ecer_Applicantid.address1_line2
+ecer_street3: =ecer_Applicantid.address1_line3

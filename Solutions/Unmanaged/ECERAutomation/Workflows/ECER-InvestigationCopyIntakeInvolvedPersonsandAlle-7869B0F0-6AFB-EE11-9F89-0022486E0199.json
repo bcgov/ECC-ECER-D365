@@ -1,0 +1,174 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "8f80a2a3-f188-4414-80c0-9de8d24a23ca"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_investigation",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_previousstatus",
+              "subscriptionRequest/filterexpression": "(statuscode eq 621870002 or statuscode eq 621870003 or statuscode eq 621870013) and ecer_previousstatus eq 'Intake in Review'",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "List_Intake_Involved_Persons": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "be1767d6-d110-45de-85d9-2861d1831f2c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_involvedpersons",
+              "$filter": "_ecer_investigation_value eq '@{triggerOutputs()?['body/ecer_investigationid']}'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_Intake_Allegations": {
+          "runAfter": {
+            "List_Intake_Involved_Persons": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "692ff691-15e9-4c9e-ae51-f474838946a4"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_allegations",
+              "$filter": "_ecer_investigation_value eq '@{triggerOutputs()?['body/ecer_investigationid']}'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_Intake_Involved_Persons')?['body/value']",
+          "actions": {
+            "Create_Planning_Involved_Persons": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "73adc9b2-3673-4b5f-b92b-4791b0f19507"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_investigationplanninginvolvedpersons",
+                  "item/ecer_certificationnumberplanning": "@items('Apply_to_each')?['ecer_certificationnumber']",
+                  "item/ecer_dateofbirth": "@items('Apply_to_each')?['ecer_dateofbirth']",
+                  "item/emailaddress": "@item()?['emailaddress']",
+                  "item/ecer_firstname": "@item()?['ecer_firstname']",
+                  "item/ecer_lastname": "@item()?['ecer_lastname']",
+                  "item/ecer_phonenumber": "@item()?['ecer_phonenumber']",
+                  "item/ecer_Investigation@odata.bind": "/ecer_investigations(@{items('Apply_to_each')?['_ecer_investigation_value']})",
+                  "item/ecer_name": "@items('Apply_to_each')?['ecer_name']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_Intake_Allegations": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f2d7bef3-8d0f-49d5-a481-babf7ef35c74"
+          },
+          "type": "Foreach"
+        },
+        "Apply_to_each_2": {
+          "foreach": "@outputs('List_Intake_Allegations')?['body/value']",
+          "actions": {
+            "Create_Planning_Allegations": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "dd076cca-35a9-4f6b-84c0-3c716842c8d9"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_investigationplanningallegations",
+                  "item/ecer_name": "@items('Apply_to_each_2')?['ecer_name']",
+                  "item/ecer_details": "@item()?['ecer_detail']",
+                  "item/ecer_Investigation@odata.bind": "/ecer_investigations(@{items('Apply_to_each_2')?['_ecer_investigation_value']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "eea8375a-8790-4cc8-bd22-b7c7e37eab1d"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

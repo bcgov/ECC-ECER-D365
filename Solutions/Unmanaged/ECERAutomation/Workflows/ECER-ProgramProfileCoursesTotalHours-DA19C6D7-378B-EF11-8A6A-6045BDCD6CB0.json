@@ -1,0 +1,282 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_Course_is_added_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "5a65e649-bc3a-4b22-9360-2c8abf8f3b87"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 7,
+              "subscriptionRequest/entityname": "ecer_course",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Program_Record": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "7c93ded6-c6ca-4e1e-85bc-bee11e409721"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_programs",
+              "recordId": "@triggerOutputs()?['body/_ecer_programid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_all_Courses_from_the_Program_Record": {
+          "runAfter": {
+            "Initialize_SNE_total_hour_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "40aa16dc-3f30-4231-b782-d92cf92227a2"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_courses",
+              "$filter": "_ecer_programid_value eq @{triggerOutputs()?['body/_ecer_programid_value']}  and statecode eq 0\n"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_all_Courses_from_the_Program_Record')?['body/value']",
+          "actions": {
+            "IF_program_type_is_basic": {
+              "actions": {
+                "Increment_Basic_variable": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "21aed272-e929-459c-ae5b-ed42c9f9577e"
+                  },
+                  "type": "IncrementVariable",
+                  "inputs": {
+                    "name": "BasicTotalHour",
+                    "value": "@items('Apply_to_each')?['ecer_coursehours']"
+                  }
+                }
+              },
+              "runAfter": {},
+              "expression": {
+                "equals": [
+                  "@items('Apply_to_each')?['ecer_programtype']",
+                  621870000
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e6d1ba68-c819-41c2-b0a3-d8837d178987"
+              },
+              "type": "If"
+            },
+            "IF_program_type_is_ITE": {
+              "actions": {
+                "Increment_variable": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "e16fa0bb-3bfc-4cf5-9878-64bdc6ece58a"
+                  },
+                  "type": "IncrementVariable",
+                  "inputs": {
+                    "name": "ITETotalHour",
+                    "value": "@items('Apply_to_each')?['ecer_coursehours']"
+                  }
+                }
+              },
+              "runAfter": {
+                "IF_program_type_is_basic": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "equals": [
+                  "@items('Apply_to_each')?['ecer_programtype']",
+                  621870001
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "108d3ad1-7e7d-4615-959b-31770769d278"
+              },
+              "type": "If"
+            },
+            "IF_program_type_is_SNE": {
+              "actions": {
+                "Increment_variable_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "69d650d8-887b-4b22-8198-e1afec6943d8"
+                  },
+                  "type": "IncrementVariable",
+                  "inputs": {
+                    "name": "SNETotalHour",
+                    "value": "@items('Apply_to_each')?['ecer_coursehours']"
+                  }
+                }
+              },
+              "runAfter": {
+                "IF_program_type_is_ITE": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "equals": [
+                  "@items('Apply_to_each')?['ecer_programtype']",
+                  621870002
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "22f837eb-7520-4c00-a07d-6ffe9e5cbe15"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "List_all_Courses_from_the_Program_Record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e681032e-5342-4045-b026-6172394f93ff"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_basic_total_hour_variable": {
+          "runAfter": {
+            "Get_Program_Record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cde861ec-ab27-4900-88ed-4c82c85350d7"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "BasicTotalHour",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Initialize_ITE_total_hour_variable": {
+          "runAfter": {
+            "Initialize_basic_total_hour_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "29750047-fcfd-49d4-9a53-7bbe9c6dd0e0"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ITETotalHour",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Initialize_SNE_total_hour_variable": {
+          "runAfter": {
+            "Initialize_ITE_total_hour_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0ff8b968-deab-4274-ba98-6a82ecb06d95"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "SNETotalHour",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          }
+        },
+        "Update_Total_Hours_to_Program_Record": {
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b252dfd0-7388-4f88-815b-5ca24177dc21"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_programs",
+              "recordId": "@triggerOutputs()?['body/_ecer_programid_value']",
+              "item/ecer_basicearlychildhoodeducatorcoursestotalhours": "@variables('BasicTotalHour')",
+              "item/ecer_itecoursestotalhours": "@variables('ITETotalHour')",
+              "item/ecer_snecoursestotalhours": "@variables('SNETotalHour')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

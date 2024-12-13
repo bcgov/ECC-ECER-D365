@@ -1,0 +1,245 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "1a49080d-59ac-4fb3-9785-de9da90b9785"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_investigation",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Check_condition_for_Under_Investigation_Yes": {
+          "actions": {
+            "Update_Under_Investigate_to_Yes": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "261f429c-d13c-47e6-9b79-926c5ac25a69"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@outputs('Get_a_row_of_Applicant-Registrant')?['body/contactid']",
+                  "item/ecer_underinvestigation": 621870000
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_a_row_of_Applicant-Registrant": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "List_Active_Investigations": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "91887590-a677-488d-a177-577ff1924e3f"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "ListRecords",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "ecer_investigations",
+                    "$filter": "(_ecer_applicant_value eq @{triggerOutputs()?['body/_ecer_applicant_value']} and ecer_investigationid ne @{triggerOutputs()?['body/ecer_investigationid']}) and (statuscode eq 621870002 or statuscode eq 621870013 or statuscode eq 621870003 or statuscode eq 621870001 or statuscode eq 621870004 or statuscode eq 621870005 or statuscode eq 621870006 or statuscode eq 621870008)"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Check_condition_for_Under_Investigation_No": {
+                "actions": {
+                  "Update_Under_Investigate_to_No": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "f070b89d-0c56-4cd3-b33f-deba4d1a3351"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "contacts",
+                        "recordId": "@body('Get_a_row_of_Applicant-Registrant')?['contactid']",
+                        "item/ecer_underinvestigation": 621870001
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                },
+                "runAfter": {
+                  "List_Active_Investigations": [
+                    "Succeeded"
+                  ]
+                },
+                "expression": {
+                  "and": [
+                    {
+                      "and": [
+                        {
+                          "equals": [
+                            "@empty(outputs('List_Active_Investigations')?['body/value'])",
+                            true
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "or": [
+                        {
+                          "equals": [
+                            "@triggerOutputs()?['body/statuscode']",
+                            621870009
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@triggerOutputs()?['body/statuscode']",
+                            621870007
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "77a9ed66-93f2-4eb1-902a-a60bc9f2483c"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "or": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  621870002
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  621870013
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  621870003
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  621870001
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  621870004
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  621870005
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  621870006
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  621870008
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5e9d67bf-530b-4738-8153-c1a44b9db37b"
+          },
+          "type": "If"
+        },
+        "Get_a_row_of_Applicant-Registrant": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "ee1bd8f0-e41b-4149-85a4-cbe2688c30ad"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@triggerOutputs()?['body/_ecer_applicant_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

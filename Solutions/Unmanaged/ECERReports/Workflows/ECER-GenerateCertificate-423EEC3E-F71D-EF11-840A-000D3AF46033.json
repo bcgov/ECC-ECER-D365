@@ -1,0 +1,733 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_webcontents": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedwebcontents_40deb"
+        },
+        "api": {
+          "name": "shared_webcontents"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "4dae99eb-12b3-4a73-87b5-d233d0a59f0a"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_certificate",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_generatecertificate",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Generate_Certificaate_is_TRUE": {
+          "actions": {},
+          "runAfter": {},
+          "else": {
+            "actions": {
+              "Terminate_-_Only_interest_if_set_to_TRUE": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "ac5e74e5-51e9-4a1e-ac78-816693860621"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_generatecertificate']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4e203182-55b3-4fd9-bfd5-319b2f8b37ec"
+          },
+          "type": "If"
+        },
+        "Initialize_variable_-_Report_Name": {
+          "runAfter": {
+            "IF_Generate_Certificaate_is_TRUE": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b79f7187-906e-44df-95d4-c97932d64430"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Report Name",
+                "type": "string",
+                "value": "Certificate"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Report_Filter_Fetch": {
+          "runAfter": {
+            "Initialize_variable_-_Certificate_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a1c2f188-40ec-44b5-97bd-fef5f92299c1"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Report Filter Fetch",
+                "type": "string",
+                "value": "<ReportFilter>\n<ReportEntity paramname=\"CRM_Filteredecer_Certificate\" displayname=\"Certificates\" donotconvert=\"1\">\n<fetch>\n<entity name=\"ecer_certificate\">\n<all-attributes/>\n<filter type=\"and\">\n<condition attribute=\"ecer_certificateid\" operator=\"eq\" value=\"@{triggerOutputs()?['body/ecer_certificateid']}\"/>\n</filter>\n</entity>\n</fetch>\n</ReportEntity>\n</ReportFilter>"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Report_PDF_data": {
+          "runAfter": {
+            "Initialize_variable_-_Report_Filter_Fetch": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c0890113-421e-4c08-aed5-3ce84675b692"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Report PDF data",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Get_Report_By_Name": {
+          "runAfter": {
+            "IF_Has_Current_Condition_Flag_is_NOT_YES_but_there_is_active_conditions": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4597f51d-62cc-4fb1-96ee-4e80af95149f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "reports",
+              "$filter": "name eq '@{variables('Report Name')}'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable_-_CRM_URL": {
+          "runAfter": {
+            "Initialize_variable_-_Report_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "70284c5c-2c52-45e9-9749-c8591fdb149c"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "CRM URL",
+                "type": "string",
+                "value": "https://myeceregistrydev.crm3.dynamics.com"
+              }
+            ]
+          }
+        },
+        "Do_things_with_Report": {
+          "foreach": "@outputs('Get_Report_By_Name')?['body/value']",
+          "actions": {
+            "Do_until_-_HTTP_POST_Report_Viewer": {
+              "actions": {
+                "Delay_-_2_Seconds_Between_POST": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "d4e270ef-f9aa-44d6-aa78-7e433ff8b1d2"
+                  },
+                  "type": "Wait",
+                  "inputs": {
+                    "interval": {
+                      "count": 2,
+                      "unit": "Second"
+                    }
+                  }
+                },
+                "HTTP_-_POST_Report_Viewer": {
+                  "runAfter": {
+                    "Delay_-_2_Seconds_Between_POST": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "fc3f62cb-6b9a-4ca8-b2b3-5e977a0ce177"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_webcontents",
+                      "operationId": "InvokeHttp",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_webcontents"
+                    },
+                    "parameters": {
+                      "request/method": "POST",
+                      "request/url": "/CRMReports/rsviewer/reportviewer.aspx",
+                      "request/headers": {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Accept": "*/*"
+                      },
+                      "request/body": "id=87834a5f-e91d-ef11-840b-0022486e1cec&iscustomreport=true&reporttypecode=1&reportName=Certificate&isScheduledReport=false&CRM_Filter=%3CReportFilter%3E%3CReportEntity+paramname%3D%22CRM_Filteredecer_Certificate%22+displayname%3D%22Certificates%22+donotconvert%3D%221%22%3E%3Cfetch+version%3D%221.0%22+output-format%3D%22xml-platform%22+mapping%3D%22logical%22+distinct%3D%22false%22%3E%3Centity+name%3D%22ecer_certificate%22%3E%3Call-attributes%2F%3E%3Cfilter+type%3D%22and%22%3E%3Ccondition+attribute%3D%22ecer_certificateid%22+operator%3D%22eq%22+value%3D%22@{variables('Certificate ID')}%22%2F%3E%3C%2Ffilter%3E%3C%2Fentity%3E%3C%2Ffetch%3E%3C%2FReportEntity%3E%3C%2FReportFilter%3E"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "PDF_Download_Start_-_Index": {
+                  "runAfter": {
+                    "HTTP_-_POST_Report_Viewer": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "af149974-dce4-4ac1-ac3e-1fcf4de3c792"
+                  },
+                  "type": "Compose",
+                  "inputs": "@add(indexOf(outputs('HTTP_-_POST_Report_Viewer')?['body'],'\"PdfDownloadUrl\":\"'),18)"
+                },
+                "PDF_Download_String_Length": {
+                  "runAfter": {
+                    "PDF_Download_Start_-_Index": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "84b9b253-9fc7-4dba-a5b3-c7d75bcf3c1c"
+                  },
+                  "type": "Compose",
+                  "inputs": "@sub(indexOf(outputs('HTTP_-_POST_Report_Viewer')?['body'],'\",\"PdfPreviewUrl\"'),outputs('PDF_Download_Start_-_Index'))"
+                },
+                "PDF_Download_Url": {
+                  "runAfter": {
+                    "PDF_Download_String_Length": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "3f32caf7-d0bb-4ebf-a626-b79f6f328540"
+                  },
+                  "type": "Compose",
+                  "inputs": "@Replace(substring(outputs('HTTP_-_POST_Report_Viewer')?['body'],outputs('PDF_Download_Start_-_Index'),outputs('PDF_Download_String_Length')),'\\u0026','&')"
+                },
+                "Set_variable_-_PDF_Download_Url": {
+                  "runAfter": {
+                    "PDF_Download_Url": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "f6fdccf5-5be3-4c53-af6a-728e7856bc64"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "PDF Download URL",
+                    "value": "@{outputs('PDF_Download_Url')}"
+                  }
+                },
+                "Set_variable_-_Loop_Control_to_False": {
+                  "runAfter": {
+                    "HTTP_-_POST_Report_Viewer": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "29ee4aeb-feb3-4149-a7c4-7ef3553ba943"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Loop Control",
+                    "value": "@false"
+                  }
+                }
+              },
+              "runAfter": {},
+              "expression": "@equals(variables('Loop Control'), false)",
+              "limit": {
+                "count": 10,
+                "timeout": "PT1H"
+              },
+              "metadata": {
+                "operationMetadataId": "99ac8b79-5b86-462d-a077-156b855c218d"
+              },
+              "type": "Until"
+            },
+            "Set_variable_-_Loop_Control_to_True": {
+              "runAfter": {
+                "Do_until_-_HTTP_POST_Report_Viewer": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "8dfaef75-8089-454a-8379-699587cc501b"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Loop Control",
+                "value": "@true"
+              }
+            },
+            "Do_until_-_Download_PDF": {
+              "actions": {
+                "Delay_-_2_Seconds_between_GET": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "246992ce-2e27-4a81-a370-be81d1f16a1e"
+                  },
+                  "type": "Wait",
+                  "inputs": {
+                    "interval": {
+                      "count": 2,
+                      "unit": "Second"
+                    }
+                  }
+                },
+                "Download_PDF": {
+                  "runAfter": {
+                    "Delay_-_2_Seconds_between_GET": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "149f2b90-d1b6-435b-85bc-db3a0b1ccbdc"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_webcontents",
+                      "operationId": "InvokeHttp",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_webcontents"
+                    },
+                    "parameters": {
+                      "request/method": "GET",
+                      "request/url": "@variables('PDF Download URL')",
+                      "request/headers": {
+                        "Accept": "*/*",
+                        "Content-Type": "application/x-www-form-urlencoded"
+                      }
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "PDF": {
+                  "runAfter": {
+                    "Download_PDF": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "aca954c1-db93-465b-86d8-b6914fb4f9a1"
+                  },
+                  "type": "Compose",
+                  "inputs": "@body('Download_PDF')"
+                },
+                "Set_variable_-_Report_PDF_data": {
+                  "runAfter": {
+                    "PDF": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "a8c2394f-36a7-43a8-bc90-f9acdf139a29"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Report PDF data",
+                    "value": "@{dataUri(outputs('PDF'))}"
+                  }
+                },
+                "Set_variable_-_Exit_Loop": {
+                  "runAfter": {
+                    "Download_PDF": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "62f595e7-ca54-4650-97b5-4642d8400690"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Loop Control",
+                    "value": "@false"
+                  }
+                }
+              },
+              "runAfter": {
+                "Set_variable_-_Loop_Control_to_True": [
+                  "Succeeded"
+                ]
+              },
+              "expression": "@equals(variables('Loop Control'), false)",
+              "limit": {
+                "count": 10,
+                "timeout": "PT1H"
+              },
+              "metadata": {
+                "operationMetadataId": "ce05a5f7-1893-49d7-835c-d6ff15f0d552"
+              },
+              "type": "Until"
+            },
+            "Run_a_Child_Flow_-_Upload_the_file": {
+              "runAfter": {
+                "Do_until_-_Download_PDF": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "cdda1ba2-41bb-47a7-af86-6a2f080e2eff"
+              },
+              "type": "Workflow",
+              "inputs": {
+                "host": {
+                  "workflowReferenceName": "0f5f2c8c-303e-ef11-a316-000d3af45c14"
+                },
+                "body": {
+                  "text": "ecer_certificate",
+                  "text_1": "@variables('Certificate ID')",
+                  "text_2": "Certificate-@{triggerOutputs()?['body/ecer_certificatenumber']}.pdf",
+                  "text_3": "Certificate",
+                  "text_6": "@variables('Report PDF data')",
+                  "text_4": "Not Applicable",
+                  "text_5": "Not Applicable"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Report_By_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "16dabc05-ba83-42e0-8cb6-a877d04789b0"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_variable_-_PDF_Download_URL": {
+          "runAfter": {
+            "Initialize_variable_-_Report_PDF_data": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a24b8e82-b657-44d0-84f4-0d06faf73a41"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "PDF Download URL",
+                "type": "string",
+                "value": "/Reserved.ReportViewerWebControl.axd?OpType=SessionKeepAlive&ControlID=8bb1b629bc0140dc86cc2c74aaabae94&RSProxy=https//yqb608srs.can.reporting.cds.dynamics.com/reportserver"
+              }
+            ]
+          }
+        },
+        "Reset_the_Generate_Certificate_flag": {
+          "runAfter": {
+            "Do_things_with_Report": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "95a9f594-c110-4ac3-a38d-a8525cb5f550"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certificates",
+              "recordId": "@triggerOutputs()?['body/ecer_certificateid']",
+              "item/ecer_generatecertificate": false,
+              "item/ecer_hascertificatepdf": 621870001
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable_-_Loop_Control": {
+          "runAfter": {
+            "Initialize_variable_-_PDF_Download_URL": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "26291305-3afa-467f-bf7a-596ed06e9d63"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Loop Control",
+                "type": "boolean",
+                "value": "@true"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Certificate_ID": {
+          "runAfter": {
+            "Compose_Lower_Case_Certificate_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2bd21e10-34e8-4ed4-9cf6-4ec28a80e400"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Certificate ID",
+                "type": "string",
+                "value": "@{outputs('Compose_Lower_Case_Certificate_ID')}"
+              }
+            ]
+          }
+        },
+        "Compose_Lower_Case_Certificate_ID": {
+          "runAfter": {
+            "Initialize_variable_-_CRM_URL": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c3bf8e71-6309-489c-8729-3422ea9d7650"
+          },
+          "type": "Compose",
+          "inputs": "@toLower(triggerOutputs()?['body/ecer_certificateid'])"
+        },
+        "Initialize_variable_-_Payload": {
+          "runAfter": {
+            "Initialize_variable_-_Loop_Control": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7df6426d-6476-4157-9d35-9f0ba83e532f"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Payload",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "List_rows_-_Query_all_active_conditions_for_Registrant": {
+          "runAfter": {
+            "Initialize_variable_-_Payload": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b5ff90e2-6593-4057-800d-fd21534b968b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certificateconditionses",
+              "$filter": "_ecer_registrantid_value eq '@{triggerOutputs()?['body/_ecer_registrantid_value']}' and statecode eq 0"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Registrant_Has_Current_Condition_Flag": {
+          "runAfter": {
+            "List_rows_-_Query_all_active_conditions_for_Registrant": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8cb52d4b-3b3b-44bc-a977-858975355421"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@triggerOutputs()?['body/_ecer_registrantid_value']",
+              "$select": "ecer_hascurrentcertificateconditions"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "IF_Has_Current_Condition_Flag_is_YES_but_there_is_no_active_conditions": {
+          "actions": {
+            "Set_Has_Current_Certificate_Condition_to_NO": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "9d4e7eb6-e109-46fa-8074-7b88e63df490"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@triggerOutputs()?['body/_ecer_registrantid_value']",
+                  "item/ecer_hascurrentcertificateconditions": 621870001
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Registrant_Has_Current_Condition_Flag": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@outputs('Get_Registrant_Has_Current_Condition_Flag')?['body/ecer_hascurrentcertificateconditions']",
+                  621870000
+                ]
+              },
+              {
+                "equals": [
+                  "@length(outputs('List_rows_-_Query_all_active_conditions_for_Registrant')?['body/value'])",
+                  0
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "339e97d0-2266-43ab-a3ce-f8da38d5b520"
+          },
+          "type": "If"
+        },
+        "IF_Has_Current_Condition_Flag_is_NOT_YES_but_there_is_active_conditions": {
+          "actions": {
+            "Set_Has_Current_Certificate_Condition_to_YES": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "4c2f2880-3fd1-46f1-b962-5bc220a08760"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@triggerOutputs()?['body/_ecer_registrantid_value']",
+                  "item/ecer_hascurrentcertificateconditions": 621870000
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "IF_Has_Current_Condition_Flag_is_YES_but_there_is_no_active_conditions": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Registrant_Has_Current_Condition_Flag')?['body/ecer_hascurrentcertificateconditions']",
+                    621870000
+                  ]
+                }
+              },
+              {
+                "greater": [
+                  "@length(outputs('List_rows_-_Query_all_active_conditions_for_Registrant')?['body/value'])",
+                  0
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7d945b68-8af5-43e6-85a2-a2491b4108be"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

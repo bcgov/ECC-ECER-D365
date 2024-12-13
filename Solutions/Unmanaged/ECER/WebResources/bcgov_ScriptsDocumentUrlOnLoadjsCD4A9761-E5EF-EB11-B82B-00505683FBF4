@@ -11,6 +11,17 @@
         ShowLookup(formContext, "bcgov_taskid");
         ShowLookup(formContext, "bcgov_caseid");
         ShowLookup(formContext, "ecer_applicationid");
+        ShowLookup(formContext, "ecer_investigationid");
+        ShowLookup(formContext, "ecer_investigationinterviewid");
+        ShowLookup(formContext, "ecer_pspsitevisitid");
+        ShowLookup(formContext, "ecer_communicationid");
+        ShowLookup(formContext, "ecer_certificateid");
+        ShowLookup(formContext, "ecer_previousnameid");
+        ShowLookup(formContext, "ecer_programapplicationid");
+        ShowLookup(formContext, "ecer_professionaldevelopmentid");
+        ShowLookup(formContext, "ecer_programprofileid");
+        ShowLookup(formContext, "ecer_psiid");
+        ShowLookup(formContext, "ecer_certificatesummaryid");
     }
 };
 

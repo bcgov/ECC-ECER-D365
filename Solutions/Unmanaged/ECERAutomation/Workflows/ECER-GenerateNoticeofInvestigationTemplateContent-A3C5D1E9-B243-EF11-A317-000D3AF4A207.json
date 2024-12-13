@@ -1,0 +1,634 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "3a653c10-47b8-4da2-8437-cce996e010d6"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_investigation",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_Notice_of_Investigation_Template_Content": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "6088bb7a-218f-4bc3-beb4-6834d77ff629"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Notice of Investigation Template Content",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_Allegation": {
+          "runAfter": {
+            "Initialize_Notice_of_Investigation_Template_Content": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bb0e0027-874d-41b4-b6be-d83fccac2db2"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Allegation",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_ContactContent": {
+          "runAfter": {
+            "Initialize_Allegation": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "43c76eef-f40f-4d1c-bd57-6da1f8360d9a"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ContactContent",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Current_Certificate_Contains_Data": {
+          "actions": {
+            "Current_Certification": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "b7704309-bd25-4439-85d8-a20d3b110777"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_certificates",
+                  "recordId": "@triggerOutputs()?['body/_ecer_currentcertificate_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Set_variable": {
+              "runAfter": {
+                "Set_variable_7": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "4b13639f-274e-4365-a503-fc80c2ad88a2"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Notice of Investigation Template Content",
+                "value": "In follow up to our telephone conversation on [DATE], this letter is to inform you that the Early Childhood Educator Registry (Registry) will be conducting an investigation into your suitability to practice as an @{triggerOutputs()?['body/ecer_certificationtype']} under the authority of sections 32 and 33 of the Child Care Licensing Regulation (CCLR).\n\n"
+              }
+            },
+            "Set_variable_7": {
+              "runAfter": {
+                "Current_Certification": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "2e044da9-a066-4657-bbf4-ca1d37ef8cfb"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "TypeOfCertificate",
+                "value": "@outputs('Current_Certification')?['body/ecer_certificatelevel']"
+              }
+            }
+          },
+          "runAfter": {
+            "If_Assign_to_Investigator_contains_Data": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Set_variable_2": {
+                "runAfter": {
+                  "Set_variable_8": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "937bfe06-55fc-4a99-8059-d07808094184"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "Notice of Investigation Template Content",
+                  "value": "In follow up to our telephone conversation on [DATE], this letter is to inform you that the Early Childhood Educator Registry (Registry) will be conducting an investigation into your eligibility for an @{outputs('Open_Application')?['body/ecer_certificatetype']} under section @{if(contains(triggerOutputs()?['body'],'ecer_cclroneninetwoa'),if(equals(triggerOutputs()?['body/ecer_cclroneninetwoa'],621870000),'CCLR - 19(2)(a)',''),'')} @{if(contains(triggerOutputs()?['body'],'ecer_cclroneninetwob'),if(equals(triggerOutputs()?['body/ecer_cclroneninetwob'],621870000),'CCLR - 19(2)(b)',''),'')} @{if(contains(triggerOutputs()?['body'],'ecer_cclroneninetwoc'),if(equals(triggerOutputs()?['body/ecer_cclroneninetwoc'],621870000),'CCLR - 19(2)(c)',''),'')} of the Child Care Licensing (CCLR).\n\n"
+                }
+              },
+              "Open_Application": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "fee4d0b1-c688-491b-a5bc-a442ff9f8988"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "ecer_applications",
+                    "recordId": "@triggerOutputs()?['body/_ecer_openapplication_value']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Set_variable_8": {
+                "runAfter": {
+                  "Open_Application": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "7d9627c9-b2f2-4410-bfa3-a1b174b1833d"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "TypeOfCertificate",
+                  "value": "@outputs('Open_Application')?['body/ecer_certificatetype']"
+                }
+              }
+            }
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/_ecer_currentcertificate_value']",
+                "@null"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "27cefed2-3216-49ca-9a6b-40b55257fa87"
+          },
+          "type": "If"
+        },
+        "List_Intake_Allegations": {
+          "runAfter": {
+            "Current_Certificate_Contains_Data": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2884dd24-6b5f-45ff-be67-ddd9cef6ef9b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_allegations",
+              "$filter": "_ecer_investigation_value eq @{triggerOutputs()?['body/ecer_investigationid']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_TypeofCertificate": {
+          "runAfter": {
+            "Initialize_ContactContent": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b55cf278-300c-4e43-a60f-43f31ba244e1"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "TypeOfCertificate",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Complaint": {
+          "actions": {
+            "Append_to_string_variable_2": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "8588bdc6-c5f1-4821-8ecb-172d83ea8e6f"
+              },
+              "type": "AppendToStringVariable",
+              "inputs": {
+                "name": "Notice of Investigation Template Content",
+                "value": "On @{formatDateTime(triggerOutputs()?['body/ecer_intakereceiveddate'],'yyyy-MM-dd')}, the Registry received information from a Complainant regarding your conduct as an @{variables('TypeOfCertificate')} at @{triggerOutputs()?['body/ecer_facility']} in [CITY]. It was alleged that you:\n\n@{variables('Allegation')}\n"
+              }
+            }
+          },
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "HA_Referral": {
+                "actions": {
+                  "Append_to_string_variable_3": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "4167b5a0-fc28-4aab-9d20-f97383a0d3fb"
+                    },
+                    "type": "AppendToStringVariable",
+                    "inputs": {
+                      "name": "Notice of Investigation Template Content",
+                      "value": "On @{formatDateTime(triggerOutputs()?['body/ecer_intakereceiveddate'],'yyyy-MM-dd')}, the Registry received a [TYPE OF REPORT] from @{triggerOutputs()?['body/_ecer_source_label']} dated [DATE] that contained findings specific to your actions as an @{triggerOutputs()?['body/ecer_certificationtype']} at @{triggerOutputs()?['body/ecer_facility']} in [CITY]. A review of the Health Authority report identified the following concerns related to your practice\n\n@{variables('Allegation')}\n"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "expression": {
+                  "and": [
+                    {
+                      "equals": [
+                        "@triggerOutputs()?['body/ecer_intaketype']",
+                        621870001
+                      ]
+                    },
+                    {
+                      "contains": [
+                        "@triggerOutputs()?['body/_ecer_source_label']",
+                        "Health Authority"
+                      ]
+                    }
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "9e76e157-73fc-4028-9e17-dd6fe9dfa6ef"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_intaketype']",
+              621870000
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9b46e378-7965-4f08-8a77-e0d54c1fe5fa"
+          },
+          "type": "If"
+        },
+        "New_Applicant": {
+          "actions": {
+            "Get_Application_2": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a73870fd-94e5-4dcb-8eb8-2143f0fdb3f4"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applications",
+                  "recordId": "@triggerOutputs()?['body/_ecer_openapplication_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Append_to_string_variable_4": {
+              "runAfter": {
+                "Get_Application_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "ce6260fa-6224-483c-8c5c-10f9d2552f52"
+              },
+              "type": "AppendToStringVariable",
+              "inputs": {
+                "name": "Notice of Investigation Template Content",
+                "value": "Your @{variables('TypeOfCertificate')} application was received on @{formatDateTime(outputs('Get_Application_2')?['body/createdon'],'yyyy-MM-dd')}. The assessment of this application may be delayed due to this investigation. \n\nThe Registry has the mandate to investigate practice complaints in order to determine whether an ECE or ECE Assistant meets the character and skill requirements outlined in the Child Care Licensing Regulation (CCLR) and demonstrates competence in the matters set out in the BC Child Care Sector Occupational Competencies. \n\nThis investigation is separate from any investigations being completed by a Health Authority’s Community Care Facilities Licensing program or any other agencies.  \n\n@{variables('ContactContent')}"
+              }
+            }
+          },
+          "runAfter": {
+            "Complaint": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Renewal_Applicant": {
+                "actions": {
+                  "Get_Application": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "34722490-e449-4467-bcbc-035738900b65"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "GetItem",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "ecer_applications",
+                        "recordId": "@triggerOutputs()?['body/_ecer_openapplication_value']"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Append_to_string_variable_5": {
+                    "runAfter": {
+                      "Get_Application": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "38e96ab1-f9bf-4607-a980-d87c747132d9"
+                    },
+                    "type": "AppendToStringVariable",
+                    "inputs": {
+                      "name": "Notice of Investigation Template Content",
+                      "value": "Your @{variables('TypeOfCertificate')} renewal was received on @{formatDateTime(outputs('Get_Application')?['body/createdon'],'yyyy-MM-dd')}. The assessment of this application may be delayed due to this investigation. \n\nThe Registry has the mandate to investigate practice complaints in order to determine whether an ECE or ECE Assistant meets the character and skill requirements outlined in the Child Care Licensing Regulation (CCLR) and demonstrates competence in the matters set out in the BC Child Care Sector Occupational Competencies. \n\nThis investigation is separate from any investigations being completed by a Health Authority’s Community Care Facilities Licensing program or any other agencies.  \n\nAt this time, no action has been taken on the status of your certification; your certificate is valid until @{outputs('Get_Certificate')?['body/ecer_expirydate']}. Should the Registry receive information that indicates there is an immediate risk to the health, safety and/or well-being of children in your care, immediate action may be taken on your certificate under section 33 of the CCLR. This may include attaching terms and conditions or the suspension of your certificate.\n\n@{variables('ContactContent')}"
+                    }
+                  }
+                },
+                "runAfter": {
+                  "Get_Certificate": [
+                    "Succeeded"
+                  ]
+                },
+                "else": {
+                  "actions": {
+                    "Append_to_string_variable_6": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "ab821b9f-0fbd-4187-afd3-454eefcb13ad"
+                      },
+                      "type": "AppendToStringVariable",
+                      "inputs": {
+                        "name": "Notice of Investigation Template Content",
+                        "value": "At this time, no action has been taken on the status of your certification; your certificate is valid until @{outputs('Get_Certificate')?['body/ecer_expirydate']}. Should the Registry receive information that indicates there is an immediate risk to the health, safety and/or well-being of children in your care, immediate action may be taken on your certificate under section 33 of the CCLR. This may include attaching terms and conditions or the suspension of your certificate.       \n         \n@{variables('ContactContent')}                                                             "
+                      }
+                    }
+                  }
+                },
+                "expression": {
+                  "not": {
+                    "equals": [
+                      "@triggerOutputs()?['body/_ecer_openapplication_value']",
+                      "@null"
+                    ]
+                  }
+                },
+                "metadata": {
+                  "operationMetadataId": "ba04e96a-b90d-43ef-9816-dbfe484a3515"
+                },
+                "type": "If"
+              },
+              "Get_Certificate": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "64364ec8-9405-469c-bd16-15fa4ae8b8db"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "ecer_certificates",
+                    "recordId": "@triggerOutputs()?['body/_ecer_currentcertificate_value']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_ecer_currentcertificate_value']",
+              "@null"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "13d0cc88-0224-4b16-aa45-8664feac6e75"
+          },
+          "type": "If"
+        },
+        "If_Assign_to_Investigator_contains_Data": {
+          "actions": {
+            "Get_Investigator": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "bf72227b-79b0-49d6-afc2-2e6d5890c550"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "recordId": "@triggerOutputs()?['body/_ecer_assigntoinvestigator_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Set_variable_6": {
+              "runAfter": {
+                "Get_Investigator": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "40a629ed-8992-49ed-8587-af86c7f05e67"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "ContactContent",
+                "value": "Your investigation file has been assigned to @{outputs('Get_Investigator')?['body/fullname']}, @{outputs('Get_Investigator')?['body/title']}, who will contact you regarding the next steps in the investigation process.\n\nYou will have an opportunity to participate in the investigation process and fully respond to the information received by our office. Additional information regarding investigative processes can be found on our website located at https://www2.gov.bc.ca/earlychildhoodeducators/investigationprocess.\n\nIf you have any questions, please contact @{outputs('Get_Investigator')?['body/fullname']} @{outputs('Get_Investigator')?['body/title']} at @{outputs('Get_Investigator')?['body/internalemailaddress']} or call 1-888-338-6622, option 3 for the Early Childhood Educator Registry, option 2 for the Investigations Team."
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_TypeofCertificate": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Set_variable_5": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "ca77825d-2a94-4696-a54d-05a69a2c254b"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "ContactContent",
+                  "value": "If you have any questions, please contact Investigation Intake at ECERegistry.Intake@gov.bc.ca or call 1-888-338-6622, option 3 for the Early Childhood Educator Registry, option 2 for the Investigations Team."
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@empty(triggerOutputs()?['body/_ecer_assigntoinvestigator_value'])",
+              "@false"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cd4f73c6-1505-43ee-bd11-9a4bfd0b5b4f"
+          },
+          "type": "If"
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_Intake_Allegations')?['body/value']",
+          "actions": {
+            "Append_to_string_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "316d6da3-2555-4447-8c49-98b6b4ec63d7"
+              },
+              "type": "AppendToStringVariable",
+              "inputs": {
+                "name": "Allegation",
+                "value": "@concat('• ',items('Apply_to_each')?['ecer_name'],decodeUriComponent('%0A'))"
+              }
+            }
+          },
+          "runAfter": {
+            "List_Intake_Allegations": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8374a9de-67a5-4e6f-8656-7f9d6f680d88"
+          },
+          "type": "Foreach"
+        },
+        "Cancel_if_no_change": {
+          "actions": {
+            "Terminate": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "61086060-8d02-40f1-ab61-b78c8cad5549"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Cancelled"
+              }
+            }
+          },
+          "runAfter": {
+            "New_Applicant": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Update_a_row": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "0117023d-4cd9-4db8-967d-0d826958c66e"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "UpdateRecord",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "ecer_investigations",
+                    "recordId": "@triggerOutputs()?['body/ecer_investigationid']",
+                    "item/ecer_noticeofinvestigationtemplatecontent": "@variables('Notice of Investigation Template Content')"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@variables('Notice of Investigation Template Content')",
+              "@triggerOutputs()?['body/ecer_noticeofinvestigationtemplatecontent']"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6fa334a9-183d-4749-af38-bc62d3ccfe61"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

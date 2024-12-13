@@ -37,10 +37,10 @@
               "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
             },
             "parameters": {
-              "subscriptionRequest/message": 4,
+              "subscriptionRequest/message": 3,
               "subscriptionRequest/entityname": "contact",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "firstname, lastname, middlename, ecer_preferredname",
+              "subscriptionRequest/filteringattributes": "firstname, lastname, middlename, ecer_preferredname, ecer_isverified",
               "subscriptionRequest/runas": 3
             },
             "authentication": "@parameters('$authentication')"
@@ -48,54 +48,10 @@
         }
       },
       "actions": {
-        "Get_full_contact_record": {
-          "runAfter": {},
-          "metadata": {
-            "operationMetadataId": "fdd54bf1-161a-4759-9557-02bdb4fa453e"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "GetItem",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "contacts",
-              "recordId": "@triggerOutputs()?['body/contactid']"
-            },
-            "authentication": "@parameters('$authentication')"
-          }
-        },
-        "List_of_Previous_Names_of_contact_with_no_end_date": {
-          "runAfter": {
-            "Add_a_new_row": [
-              "Succeeded"
-            ]
-          },
-          "metadata": {
-            "operationMetadataId": "47d8a14e-4168-402f-b2e1-77e365359e38"
-          },
-          "type": "OpenApiConnection",
-          "inputs": {
-            "host": {
-              "connectionName": "shared_commondataserviceforapps",
-              "operationId": "ListRecords",
-              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-            },
-            "parameters": {
-              "entityName": "ecer_previousnames",
-              "$filter": "_ecer_contactid_value eq '@{outputs('Get_full_contact_record')?['body/contactid']}' and ecer_enddate eq null and ecer_nametype eq 621870001 and ecer_previousnameid ne '@{outputs('Add_a_new_row')?['body/ecer_previousnameid']}'",
-              "$orderby": "ecer_startdate desc",
-              "$top": 1
-            },
-            "authentication": "@parameters('$authentication')"
-          }
-        },
-        "Apply_to_each": {
+        "For_the_last_one_without_End_Date": {
           "foreach": "@outputs('List_of_Previous_Names_of_contact_with_no_end_date')?['body/value']",
           "actions": {
-            "Update_a_row": {
+            "Set_End_Date_for_the_previous_Previous_Name": {
               "runAfter": {},
               "metadata": {
                 "operationMetadataId": "2fb82e2d-31b3-4506-af8f-4138f4ec1a08"
@@ -109,7 +65,7 @@
                 },
                 "parameters": {
                   "entityName": "ecer_previousnames",
-                  "recordId": "@items('Apply_to_each')?['ecer_previousnameid']",
+                  "recordId": "@items('For_the_last_one_without_End_Date')?['ecer_previousnameid']",
                   "item/ecer_enddate": "@utcNow()"
                 },
                 "authentication": "@parameters('$authentication')"
@@ -117,7 +73,7 @@
             }
           },
           "runAfter": {
-            "List_of_Previous_Names_of_contact_with_no_end_date": [
+            "Add_a_new_row": [
               "Succeeded"
             ]
           },
@@ -128,7 +84,7 @@
         },
         "Add_a_new_row": {
           "runAfter": {
-            "Get_full_contact_record": [
+            "IF_Matches_Last_Previous_Name_Record_-_No_actual_changes": [
               "Succeeded"
             ]
           },
@@ -144,15 +100,175 @@
             },
             "parameters": {
               "entityName": "ecer_previousnames",
-              "item/ecer_Contactid@odata.bind": "contacts(@{outputs('Get_full_contact_record')?['body/contactid']})",
-              "item/ecer_firstname": "@outputs('Get_full_contact_record')?['body/firstname']",
-              "item/ecer_lastname": "@outputs('Get_full_contact_record')?['body/lastname']",
-              "item/ecer_middlename": "@outputs('Get_full_contact_record')?['body/middlename']",
-              "item/ecer_preferredname": "@outputs('Get_full_contact_record')?['body/ecer_preferredname']",
-              "item/ecer_startdate": "@utcNow()"
+              "item/ecer_Contactid@odata.bind": "contacts(@{triggerOutputs()?['body/contactid']})",
+              "item/ecer_source": 621870000,
+              "item/ecer_firstname": "@triggerOutputs()?['body/firstname']",
+              "item/ecer_lastname": "@triggerOutputs()?['body/lastname']",
+              "item/ecer_middlename": "@triggerOutputs()?['body/middlename']",
+              "item/ecer_preferredname": "@triggerOutputs()?['body/ecer_preferredname']",
+              "item/ecer_startdate": "@utcNow()",
+              "item/statuscode": 621870002
             },
             "authentication": "@parameters('$authentication')"
           }
+        },
+        "List_of_Previous_Names_of_contact_with_no_end_date": {
+          "runAfter": {
+            "IF_Verified": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "47d8a14e-4168-402f-b2e1-77e365359e38"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_previousnames",
+              "$filter": "_ecer_contactid_value eq '@{triggerOutputs()?['body/contactid']}' and ecer_enddate eq null and ecer_nametype eq 621870001 and ecer_source eq 621870000",
+              "$orderby": "ecer_startdate desc",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_through_the_latest_Previous_Name_and_see_if_there_is_actual_change": {
+          "foreach": "@outputs('List_of_Previous_Names_of_contact_with_no_end_date')?['body/value']",
+          "actions": {
+            "IF_all_the_names_are_the_same": {
+              "actions": {
+                "Set_variable_-_Matches_Last_Previous_Name_Record_-_to_TRUE": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "6f18d151-40fc-4185-8c3f-12afbdf5a877"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Matches Last Previous Name Record",
+                    "value": "@true"
+                  }
+                }
+              },
+              "runAfter": {},
+              "expression": {
+                "and": [
+                  {
+                    "equals": [
+                      "@items('Loop_through_the_latest_Previous_Name_and_see_if_there_is_actual_change')?['ecer_firstname']",
+                      "@triggerOutputs()?['body/firstname']"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@items('Loop_through_the_latest_Previous_Name_and_see_if_there_is_actual_change')?['ecer_middlename']",
+                      "@triggerOutputs()?['body/middlename']"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@items('Loop_through_the_latest_Previous_Name_and_see_if_there_is_actual_change')?['ecer_lastname']",
+                      "@triggerOutputs()?['body/lastname']"
+                    ]
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "682c73ca-f16c-4edb-867a-41181e804c0b"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Initialize_variable_-_Matches_Last_Previous_Name_Record_-_Default_FALSE": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a697da21-4fb0-4e3f-bf22-2f50298a8d9d"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_variable_-_Matches_Last_Previous_Name_Record_-_Default_FALSE": {
+          "runAfter": {
+            "List_of_Previous_Names_of_contact_with_no_end_date": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "948ac179-ed67-4769-ae9a-d0b8f9d77c47"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Matches Last Previous Name Record",
+                "type": "boolean",
+                "value": "@false"
+              }
+            ]
+          }
+        },
+        "IF_Matches_Last_Previous_Name_Record_-_No_actual_changes": {
+          "actions": {
+            "Terminate": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "4b7a08d1-88cb-46f9-82f9-5903b7f7f041"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "Loop_through_the_latest_Previous_Name_and_see_if_there_is_actual_change": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@variables('Matches Last Previous Name Record')",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c863ca54-2d7e-4fbd-a96d-ddf0b3471b53"
+          },
+          "type": "If"
+        },
+        "IF_Verified": {
+          "actions": {},
+          "runAfter": {},
+          "else": {
+            "actions": {
+              "Only_Log_Previous_Name_IF_Verified": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "f6cd0be5-6c2b-4df5-a19b-15f583b6a78e"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_isverified']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "63db9554-8b70-48d9-a728-42423b2ceee5"
+          },
+          "type": "If"
         }
       }
     },

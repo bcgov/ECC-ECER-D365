@@ -1,0 +1,187 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "On_Professional_Development_Approve_Flag_changes": {
+          "metadata": {
+            "operationMetadataId": "f6fa90d5-1d72-48ff-9809-3ded6e5c3a7c"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_professionaldevelopment",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_approve",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Approve_contains_data": {
+          "actions": {
+            "Terminate_-_Take_Exit.__Only_Interest_if_contains_data": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a8c53cbd-e1e2-4f54-826c-8e523b058533"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {},
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_approve']",
+              "@null"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8cd45c16-39de-45be-b174-262e6cb5409a"
+          },
+          "type": "If"
+        },
+        "IF_Approve_equals_YES_and_Status_Reason_is_NOT_Approved": {
+          "actions": {
+            "Set_Status_Reason_to_Approved": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "1bead5b0-0afb-4d36-99e9-3885913b7b57"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_professionaldevelopments",
+                  "recordId": "@triggerOutputs()?['body/ecer_professionaldevelopmentid']",
+                  "item/ecer_datedecided": "@utcNow()",
+                  "item/statecode": 1,
+                  "item/statuscode": 2
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "IF_Approve_contains_data": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "IF_Approve_equals_NO_and_Status_is_NOT_Rejected": {
+                "actions": {
+                  "Set_Status_Reason_to_Rejected": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "847be6d5-218a-4547-abb2-bb4a98b864cc"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "ecer_professionaldevelopments",
+                        "recordId": "@triggerOutputs()?['body/ecer_professionaldevelopmentid']",
+                        "item/ecer_datedecided": "@utcNow()",
+                        "item/statecode": 1,
+                        "item/statuscode": 621870005
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "expression": {
+                  "and": [
+                    {
+                      "equals": [
+                        "@triggerOutputs()?['body/ecer_approve']",
+                        621870001
+                      ]
+                    },
+                    {
+                      "not": {
+                        "equals": [
+                          "@triggerOutputs()?['body/statuscode']",
+                          621870005
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "69435fc4-8586-40ca-b105-1d0e214e7fc9"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/ecer_approve']",
+                  621870000
+                ]
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@triggerOutputs()?['body/statuscode']",
+                    2
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "29dfcb62-4cd9-4dc8-84af-a981aeb74690"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,145 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "746566b5-eb6d-4fd3-8511-87f9e1d89ee7"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_application",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_datesigned",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Per_DP_All_Declaration_be_the_same": {
+          "actions": {
+            "List_Declaration_Statements_for_New_BC_Recognized_Application": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a613808b-021e-40be-baa4-6d95b6eaa7c7"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_defaultcontentses",
+                  "$filter": "ecer_name eq 'New BC Recognized Application' and ecer_group eq 'Declarations'",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Go_through_result_set_and_set_declaration_statements": {
+              "foreach": "@outputs('List_Declaration_Statements_for_New_BC_Recognized_Application')?['body/value']",
+              "actions": {
+                "Set_Declaration_Statements": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "c3071ab8-a446-44bc-85d3-9af64542cb32"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_applications",
+                      "recordId": "@triggerOutputs()?['body/ecer_applicationid']",
+                      "item/ecer_declarationstatements": "@items('Go_through_result_set_and_set_declaration_statements')?['ecer_multiplelineoftext']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "List_Declaration_Statements_for_New_BC_Recognized_Application": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "bf70e2dd-90c6-4173-a073-c777cf87b815"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Initialize_variable_-_Declaration_Statements": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_declarationstatements']",
+              "@null"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5cfd3a39-110c-4b81-8459-42699e7f5ff9"
+          },
+          "type": "If"
+        },
+        "Initialize_variable_-_Declaration_Statements": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "2fe5a033-6bbd-4ff1-a4e6-bb18d5ecf324"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Declaration Statements",
+                "type": "string",
+                "value": "@{null}"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

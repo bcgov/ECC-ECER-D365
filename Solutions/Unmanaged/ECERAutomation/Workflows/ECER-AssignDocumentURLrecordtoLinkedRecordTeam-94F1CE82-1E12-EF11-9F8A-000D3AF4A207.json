@@ -1,0 +1,382 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added_or_modified": {
+          "metadata": {
+            "operationMetadataId": "2e430297-f405-4c77-bdc2-61b384c1dc81"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bcgov_documenturl",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "bcgov_customer,ecer_applicationid,ecer_investigationid,ecer_pspsitevisitid,ecer_investigationinterviewid",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Investigation_contains_data": {
+          "actions": {
+            "Assign_the_record_to_Investigation_Team": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "f5a52824-32d5-43f9-9c74-dab0b29e5b0a"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "bcgov_documenturls",
+                  "recordId": "@triggerOutputs()?['body/bcgov_documenturlid']",
+                  "item/ownerid@odata.bind": "teams(@{variables('Investigation Team')})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Loop_Through_result_set": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "IF_PSI_Site_Visit_contains_data": {
+                "actions": {
+                  "Assign_the_record_to_Post_Secondary_Program_Team": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "8cdc654f-d47d-4f77-b8d4-d0a7e9c6dd05"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "bcgov_documenturls",
+                        "recordId": "@triggerOutputs()?['body/bcgov_documenturlid']",
+                        "item/ownerid@odata.bind": "teams(@{variables('Post Secondary Program')})"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "else": {
+                  "actions": {
+                    "IF_Customer_or_Application_contains_data": {
+                      "actions": {
+                        "Assign_record_to_Registry_Team": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "72fbbcfa-db24-41bd-9a74-96138367ec52"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_commondataserviceforapps",
+                              "operationId": "UpdateRecord",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                            },
+                            "parameters": {
+                              "entityName": "bcgov_documenturls",
+                              "recordId": "@triggerOutputs()?['body/bcgov_documenturlid']",
+                              "item/ownerid@odata.bind": "teams(@{variables('Registry Team')})"
+                            },
+                            "authentication": "@parameters('$authentication')"
+                          }
+                        }
+                      },
+                      "runAfter": {},
+                      "expression": {
+                        "or": [
+                          {
+                            "not": {
+                              "equals": [
+                                "@triggerOutputs()?['body/_bcgov_customer_value']",
+                                "@null"
+                              ]
+                            }
+                          },
+                          {
+                            "not": {
+                              "equals": [
+                                "@triggerOutputs()?['body/_ecer_applicationid_value']",
+                                "@null"
+                              ]
+                            }
+                          },
+                          {
+                            "not": {
+                              "equals": [
+                                "@triggerOutputs()?['body/_ecer_previousnameid_value']",
+                                "@null"
+                              ]
+                            }
+                          },
+                          {
+                            "not": {
+                              "equals": [
+                                "@triggerOutputs()?['body/_ecer_certificateid_value']",
+                                "@null"
+                              ]
+                            }
+                          }
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "7772b444-0bd1-493b-b54e-d8aea645962e"
+                      },
+                      "type": "If"
+                    }
+                  }
+                },
+                "expression": {
+                  "or": [
+                    {
+                      "not": {
+                        "equals": [
+                          "@triggerOutputs()?['body/_ecer_pspsitevisitid_value']",
+                          "@null"
+                        ]
+                      }
+                    },
+                    {
+                      "not": {
+                        "equals": [
+                          "@triggerOutputs()?['body/_ecer_programapplicationid_value']",
+                          "@null"
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "b7deeeb5-5ee7-4c44-897e-787f8c30b6bc"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "or": [
+              {
+                "not": {
+                  "equals": [
+                    "@triggerOutputs()?['body/_ecer_investigationid_value']",
+                    "@null"
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@triggerOutputs()?['body/_ecer_investigationinterviewid_value']",
+                    "@null"
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3a54c030-57df-4416-987a-ff261b496d40"
+          },
+          "type": "If"
+        },
+        "Initialize_variable_-_Investigation_Team": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "b99e8647-62b1-43d5-bd3d-98ca38b476f7"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Investigation Team",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Registry_Team": {
+          "runAfter": {
+            "Initialize_variable_-_Investigation_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7939f94d-c24a-43ac-bf6d-8662acf8037c"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Registry Team",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "List_rows_from_Teams_where_Name_is_either_Registry_of_Investigation": {
+          "runAfter": {
+            "Initialize_variable_-_Post_Secondary_Program_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "72b5cbd2-db29-42eb-8f7b-14979cab6892"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "teams",
+              "$filter": "name eq 'Registry' or name eq 'Investigation' or name eq 'Post Secondary Program'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_Through_result_set": {
+          "foreach": "@outputs('List_rows_from_Teams_where_Name_is_either_Registry_of_Investigation')?['body/value']",
+          "actions": {
+            "Switch": {
+              "runAfter": {},
+              "cases": {
+                "Case_-_Registry": {
+                  "case": "Registry",
+                  "actions": {
+                    "Set_variable_-_Registry_Team": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "10c052b8-4d51-4417-a5bf-fff6ab41f45a"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Registry Team",
+                        "value": "@items('Loop_Through_result_set')?['teamid']"
+                      }
+                    }
+                  }
+                },
+                "Case_-_Investigation": {
+                  "case": "Investigation",
+                  "actions": {
+                    "Set_variable_-_Investigation_Team": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "25f028d3-7350-4631-8dc2-638aaa3b8c90"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Investigation Team",
+                        "value": "@items('Loop_Through_result_set')?['teamid']"
+                      }
+                    }
+                  }
+                },
+                "Case_-_Post_Secondary_Program": {
+                  "case": "Post Secondary Program",
+                  "actions": {
+                    "Set_variable_-_Post_Secondary_Program": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "92875813-6606-4a05-a67e-9455d31c725a"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Post Secondary Program",
+                        "value": "@items('Loop_Through_result_set')?['teamid']"
+                      }
+                    }
+                  }
+                }
+              },
+              "default": {
+                "actions": {}
+              },
+              "expression": "@items('Loop_Through_result_set')?['name']",
+              "metadata": {
+                "operationMetadataId": "9babbf7d-4b37-48b2-b829-404d1fe85507"
+              },
+              "type": "Switch"
+            }
+          },
+          "runAfter": {
+            "List_rows_from_Teams_where_Name_is_either_Registry_of_Investigation": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "de7f9923-1adc-4c17-8d6d-1a9a6bed4a87"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_variable_-_Post_Secondary_Program_Team": {
+          "runAfter": {
+            "Initialize_variable_-_Registry_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b31de62d-563f-4a16-beca-627b438dd210"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Post Secondary Program",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

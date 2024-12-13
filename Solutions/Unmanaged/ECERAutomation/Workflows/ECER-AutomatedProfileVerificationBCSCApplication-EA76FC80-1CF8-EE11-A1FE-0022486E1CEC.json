@@ -1,0 +1,218 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_Status_Reason_has_changed": {
+          "metadata": {
+            "operationMetadataId": "6cd9b566-2d3b-4099-b5bb-45f5f5fe9deb"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_application",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_FULL_Application_record": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "c460a325-4340-42e9-8519-9e74cd86cc23"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@triggerOutputs()?['body/ecer_applicationid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "IF_there_is_no_Applicant_OR_there_status_reason_is_NOT_Submitted": {
+          "actions": {
+            "Early_Exit.__Conditions_are_not_met_for_further_processing": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "61f69e3b-407c-47dc-a56d-9ae367c53e09"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_FULL_Application_record": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "or": [
+                  {
+                    "equals": [
+                      "@outputs('Get_FULL_Application_record')?['body/_ecer_applicantid_value']",
+                      "@null"
+                    ]
+                  },
+                  {
+                    "not": {
+                      "equals": [
+                        "@outputs('Get_FULL_Application_record')?['body/statuscode']",
+                        621870001
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "685c761f-2bc6-41ca-827f-7625263e74b0"
+          },
+          "type": "If"
+        },
+        "Get_active_Authentication_record_of_Applicant_that_is_BCSC": {
+          "runAfter": {
+            "IF_Primary_and_Secondary_ID_has_already_been_set_Provided": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c41822f5-1d64-4360-bae8-8580abfd7ea2"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_authentications",
+              "$filter": "ecer_identityprovider eq 'bcsc' and _ecer_customerid_value eq '@{outputs('Get_FULL_Application_record')?['body/_ecer_applicantid_value']}' and statecode eq 0",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "IF_Primary_and_Secondary_ID_has_already_been_set_Provided": {
+          "actions": {
+            "Early_Exit_-_No_Need_to_set_these_flags_as_they_are_already_true": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "25d32e84-08bb-484c-b8f8-827aa7f0d819"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "IF_there_is_no_Applicant_OR_there_status_reason_is_NOT_Submitted": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@outputs('Get_FULL_Application_record')?['body/ecer_isprimaryidentificationprovided']",
+                  "@true"
+                ]
+              },
+              {
+                "equals": [
+                  "@outputs('Get_FULL_Application_record')?['body/ecer_issecondaryidentificationprovided']",
+                  "@true"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "22004332-6638-4d64-a08c-c87ba21d7521"
+          },
+          "type": "If"
+        },
+        "Loop_Through_Authentication_Record_Result_Set_if_ANY_-_Just_need_1": {
+          "foreach": "@outputs('Get_active_Authentication_record_of_Applicant_that_is_BCSC')?['body/value']",
+          "actions": {
+            "Set_Primary_and_Secondary_ID_provided": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "696f0862-6b6d-437e-8118-72ad1daccec9"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applications",
+                  "recordId": "@outputs('Get_FULL_Application_record')?['body/ecer_applicationid']",
+                  "item/ecer_isprimaryidentificationprovided": true,
+                  "item/ecer_issecondaryidentificationprovided": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_active_Authentication_record_of_Applicant_that_is_BCSC": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8698cc2f-2073-4d93-bb28-5cfb66b3e5c5"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

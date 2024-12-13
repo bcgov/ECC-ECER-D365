@@ -1,0 +1,122 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Certificate_Comparison_Created_or_Modified": {
+          "metadata": {
+            "operationMetadataId": "45da1231-8a99-4392-b307-c8024145166d"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_certificationcomparison",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_bccertificate,ecer_transferringcertificate",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Update_Certificate_Comparison_Name_": {
+          "runAfter": {
+            "Get_Province_Name": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9f88c689-699a-4261-b65e-dd40ae3bdc46"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certificationcomparisons",
+              "recordId": "@triggerOutputs()?['body/ecer_certificationcomparisonid']",
+              "item/ecer_name": "@{triggerOutputs()?['body/ecer_bccertificate']} - @{outputs('Get_Out_of_Province_Certification_Type')?['body/ecer_certificationtype']} - @{outputs('Get_Province_Name')?['body/ecer_name']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Out_of_Province_Certification_Type": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "4c58854d-a3b2-476e-af95-d85b95006ace"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_outofprovincecertificationtypes",
+              "recordId": "@triggerOutputs()?['body/_ecer_transferringcertificate_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Province_Name": {
+          "runAfter": {
+            "Get_Out_of_Province_Certification_Type": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "fb34d062-136d-48e6-be0e-ad938e7f05bd"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_provinces",
+              "recordId": "@outputs('Get_Out_of_Province_Certification_Type')?['body/_ecer_province_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

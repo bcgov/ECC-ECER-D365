@@ -1,0 +1,326 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Recurrence_-_Every_Day_at_12_45_AM": {
+          "recurrence": {
+            "frequency": "Day",
+            "interval": 1,
+            "startTime": "2024-10-15T06:45:00Z"
+          },
+          "metadata": {
+            "operationMetadataId": "0a4c3018-2c4d-428b-b859-9e1495ff07ce"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "Convert_time_zone_-_14_Days_Ago": {
+          "runAfter": {
+            "Initialize_variable_-_Program_Support_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cc3d7713-52ec-487b-9f25-a042514f21aa"
+          },
+          "type": "Expression",
+          "kind": "ConvertTimeZone",
+          "inputs": {
+            "baseTime": "@{addToTime(utcNow(),-14,'Day')}",
+            "formatString": "yyyy-MM-dd",
+            "sourceTimeZone": "UTC",
+            "destinationTimeZone": "UTC"
+          }
+        },
+        "Initialize_variable_-_Program_Support_Team": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "d008611b-f073-4796-bc4d-34a031aebbde"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Program Support Team",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Convert_time_zone_-_2_Months_Ago": {
+          "runAfter": {
+            "Convert_time_zone_-_14_Days_Ago": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "62ecceee-fd7a-47d6-9153-dac1cefcbd30"
+          },
+          "type": "Expression",
+          "kind": "ConvertTimeZone",
+          "inputs": {
+            "baseTime": "@{addToTime(utcNow(),-2,'Month')}",
+            "formatString": "yyyy-MM-dd",
+            "sourceTimeZone": "UTC",
+            "destinationTimeZone": "UTC"
+          }
+        },
+        "Convert_time_zone_-_9_Months_Ago": {
+          "runAfter": {
+            "Convert_time_zone_-_2_Months_Ago": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "66bfa643-b01d-43bf-a524-3ad390d9bbe0"
+          },
+          "type": "Expression",
+          "kind": "ConvertTimeZone",
+          "inputs": {
+            "baseTime": "@{addToTime(utcNow(),9,'Month')}",
+            "formatString": "yyyy-MM-dd",
+            "sourceTimeZone": "UTC",
+            "destinationTimeZone": "UTC"
+          }
+        },
+        "Get_Teams_By_Name_-_Program_Support_Team": {
+          "runAfter": {
+            "Convert_time_zone_-_9_Months_Ago": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "17107323-7030-4276-a473-8a53680ea8cc"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "teams",
+              "$filter": "name eq 'Program Support Team'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Set_Program_Support_Team_ID": {
+          "foreach": "@outputs('Get_Teams_By_Name_-_Program_Support_Team')?['body/value']",
+          "actions": {
+            "Set_variable_-_Program_Support_Team": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "16e1b4e9-5d20-4d45-b8cc-12be6f4b3e9f"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Program Support Team",
+                "value": "@items('Set_Program_Support_Team_ID')?['teamid']"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Teams_By_Name_-_Program_Support_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "20cf0f50-55c1-4603-8633-6d0ab2f10c42"
+          },
+          "type": "Foreach"
+        },
+        "List_rows_-_Applications_Submitted_14_days_ago_and_still_at_Submitted": {
+          "runAfter": {
+            "Set_Program_Support_Team_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f53007bd-c300-4ace-97b8-c75c6a6d39eb"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "$filter": "ecer_datesubmitted eq @{body('Convert_time_zone_-_14_Days_Ago')} and statuscode eq 621870001 and ecer_origin eq 621870001"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_rows_-_Applications_Submitted_2_Months_ago_and_still_at_Submitted": {
+          "runAfter": {
+            "Set_Program_Support_Team_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5f7b5777-9b70-4adf-9b76-87a2246b0485"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "$filter": "ecer_datesubmitted eq @{body('Convert_time_zone_-_2_Months_Ago')} and statuscode eq 621870001 and ecer_origin eq 621870001"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_rows_-_Applications_Submitted_9_Months_ago_and_still_at_Submitted": {
+          "runAfter": {
+            "Set_Program_Support_Team_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "299132b6-ca08-4015-8568-77f83864a78e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "$filter": "ecer_datesubmitted eq @{body('Convert_time_zone_-_9_Months_Ago')} and statuscode eq 621870001 and ecer_origin eq 621870001"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Send_Application_Incompletion_Reminder_for_those_Submitted_14_days_ago": {
+          "foreach": "@outputs('List_rows_-_Applications_Submitted_14_days_ago_and_still_at_Submitted')?['body/value']",
+          "actions": {
+            "Run_a_Child_Flow_-_Send_Application_Incompletion_Reminder_14_Days": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "dc646e1d-096b-4a74-a8a4-216fd8fb2918"
+              },
+              "type": "Workflow",
+              "inputs": {
+                "host": {
+                  "workflowReferenceName": "590cf71b-0c8b-ef11-8a6a-6045bdcd6cb0"
+                },
+                "body": {
+                  "text": "@items('Send_Application_Incompletion_Reminder_for_those_Submitted_14_days_ago')?['ecer_applicationid']",
+                  "text_1": "@items('Send_Application_Incompletion_Reminder_for_those_Submitted_14_days_ago')?['_ecer_applicantid_value']",
+                  "text_2": "@variables('Program Support Team')"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "List_rows_-_Applications_Submitted_14_days_ago_and_still_at_Submitted": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "24569d63-cb20-408f-ac1c-f14e0bdcd25f"
+          },
+          "type": "Foreach"
+        },
+        "Send_Application_Incompletion_Reminder_for_those_Submitted_2_Months_Ago": {
+          "foreach": "@outputs('List_rows_-_Applications_Submitted_2_Months_ago_and_still_at_Submitted')?['body/value']",
+          "actions": {
+            "Run_a_Child_Flow_-_Send_Application_Incompletion_Reminder_2_Months": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "7c4d24e9-fb3b-4310-918f-d453419e9de3"
+              },
+              "type": "Workflow",
+              "inputs": {
+                "host": {
+                  "workflowReferenceName": "590cf71b-0c8b-ef11-8a6a-6045bdcd6cb0"
+                },
+                "body": {
+                  "text": "@items('Send_Application_Incompletion_Reminder_for_those_Submitted_2_Months_Ago')?['ecer_applicationid']",
+                  "text_1": "@items('Send_Application_Incompletion_Reminder_for_those_Submitted_2_Months_Ago')?['_ecer_applicantid_value']",
+                  "text_2": "@variables('Program Support Team')"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "List_rows_-_Applications_Submitted_2_Months_ago_and_still_at_Submitted": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3e999e62-c7f5-4fd2-8e25-0e3d92fb3242"
+          },
+          "type": "Foreach"
+        },
+        "Send_Application_Incompletion_Reminder_for_those_Submitted_9_Months_Ago": {
+          "foreach": "@outputs('List_rows_-_Applications_Submitted_9_Months_ago_and_still_at_Submitted')?['body/value']",
+          "actions": {
+            "Run_a_Child_Flow_-_Send_Application_Incompletion_Reminder_9_Months": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "cc2fc747-1039-4dfc-98b1-fc7634bb3c80"
+              },
+              "type": "Workflow",
+              "inputs": {
+                "host": {
+                  "workflowReferenceName": "590cf71b-0c8b-ef11-8a6a-6045bdcd6cb0"
+                },
+                "body": {
+                  "text": "@items('Send_Application_Incompletion_Reminder_for_those_Submitted_9_Months_Ago')?['ecer_applicationid']",
+                  "text_1": "@items('Send_Application_Incompletion_Reminder_for_those_Submitted_9_Months_Ago')?['_ecer_applicantid_value']",
+                  "text_2": "@variables('Program Support Team')"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "List_rows_-_Applications_Submitted_9_Months_ago_and_still_at_Submitted": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "36c98a22-9a8d-4c42-9a57-72300fdec644"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

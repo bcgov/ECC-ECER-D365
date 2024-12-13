@@ -1,0 +1,127 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "12588766-e1b0-4ad3-958a-0cbef8a0268b"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "bcgov_documenturl",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_investigationid",
+              "subscriptionRequest/filterexpression": "_ecer_investigationid_value ne null"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {},
+          "cases": {
+            "Case": {
+              "case": ".eml",
+              "actions": {
+                "Find_Email_Tag": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "123aa998-b79f-4a2f-b9d2-b1ce390d80d5"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "bcgov_tags",
+                      "$filter": "bcgov_name eq 'Email'"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Apply_to_each": {
+                  "foreach": "@outputs('Find_Email_Tag')?['body/value']",
+                  "actions": {
+                    "Update_a_row": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "1dd737d7-6b5e-47f4-a592-b40bc373bd1a"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "bcgov_documenturls",
+                          "recordId": "@triggerOutputs()?['body/bcgov_documenturlid']",
+                          "item/bcgov_Tag1Id@odata.bind": "/bcgov_tags(@{items('Apply_to_each')?['bcgov_tagid']})"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Find_Email_Tag": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "72abf5f7-6153-44fa-87df-e1bc09cc81d6"
+                  },
+                  "type": "Foreach"
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@triggerOutputs()?['body/bcgov_fileextension']",
+          "metadata": {
+            "operationMetadataId": "3e511c64-90e8-44af-bb3d-4f15cb58cef2"
+          },
+          "type": "Switch"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,269 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_Certificate_Conditions_is_created_or_modified": {
+          "metadata": {
+            "operationMetadataId": "ebc8c7d4-8c64-46d0-b6a8-983944673155"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_certificateconditions",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_presetconditionid,ecer_enddate,ecer_startdate"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_full_record_of_Certificate_Condition": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "d54a092a-8a43-4314-81bf-575a8c62a3fb"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certificateconditionses",
+              "recordId": "@triggerOutputs()?['body/ecer_certificateconditionsid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "IF_There_is_NO_Preset_Lookup": {
+          "actions": {
+            "Looking_for_Condition_based_on_Preset_-_Suspension_only": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "aa4febb5-7f02-4e74-b49f-558263cc9a83"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "End_Date_in_yyyy-MM-dd_format": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "or": [
+              {
+                "equals": [
+                  "@outputs('Get_full_record_of_Certificate_Condition')?['body/_ecer_presetconditionid_value']",
+                  "@null"
+                ]
+              },
+              {
+                "not": {
+                  "equals": [
+                    "statecode",
+                    0
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5ae45dc7-03a0-429c-b026-8f50c939faf1"
+          },
+          "type": "If"
+        },
+        "Get_full_record_of_Preset_used": {
+          "runAfter": {
+            "IF_There_is_NO_Preset_Lookup": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "deda4472-ff2d-4ca7-9f71-b04aacfc119e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certificateconditionspresets",
+              "recordId": "@outputs('Get_full_record_of_Certificate_Condition')?['body/_ecer_presetconditionid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "IF_Name_contains_Suspen": {
+          "actions": {},
+          "runAfter": {
+            "Get_full_record_of_Preset_used": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Terminate_-_We_only_care_for_Suspension_Conditions": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "943466bc-4888-4c3f-a35e-62e0501a98a9"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "contains": [
+              "@outputs('Get_full_record_of_Preset_used')?['body/ecer_name']",
+              "Suspension"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "21ee792a-aa4c-4f5a-83fe-fc4d24513ad3"
+          },
+          "type": "If"
+        },
+        "Get_the_Registrant_Involved": {
+          "runAfter": {
+            "IF_Name_contains_Suspen": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9b6748f9-2ae9-4f62-b01f-abd798459f61"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@outputs('Get_full_record_of_Certificate_Condition')?['body/_ecer_registrantid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_all_Active_Certificates_which_Registrant_has": {
+          "runAfter": {
+            "Get_the_Registrant_Involved": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d040393e-a296-40a8-ac1e-e3f795769a09"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certificates",
+              "$filter": "_ecer_registrantid_value eq '@{outputs('Get_full_record_of_Certificate_Condition')?['body/_ecer_registrantid_value']}' and statuscode eq 1 and ecer_expirydate ge @{body('End_Date_in_yyyy-MM-dd_format')} and ecer_effectivedate le @{body('End_Date_in_yyyy-MM-dd_format')}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "End_Date_in_yyyy-MM-dd_format": {
+          "runAfter": {
+            "Get_full_record_of_Certificate_Condition": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "523e1551-6683-4301-b5bf-fb5e5e959b66"
+          },
+          "type": "Expression",
+          "kind": "ConvertTimeZone",
+          "inputs": {
+            "baseTime": "@outputs('Get_full_record_of_Certificate_Condition')?['body/ecer_enddate']",
+            "formatString": "yyyy-MM-dd",
+            "sourceTimeZone": "UTC",
+            "destinationTimeZone": "Pacific Standard Time"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_all_Active_Certificates_which_Registrant_has')?['body/value']",
+          "actions": {
+            "Set_Certificate_to_Suspend": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a591b6fa-88d9-4728-b603-e3992dd16958"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_certificates",
+                  "recordId": "@items('Apply_to_each')?['ecer_certificateid']",
+                  "item/ecer_hasconditions": true,
+                  "item/statuscode": 621870004
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_all_Active_Certificates_which_Registrant_has": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "31141bf4-8a19-4fb8-94a2-1adfc537e60a"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

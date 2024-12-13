@@ -1,0 +1,175 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "recurrence": {
+            "frequency": "Day",
+            "interval": 1,
+            "startTime": "2024-07-10T10:15:00Z"
+          },
+          "metadata": {
+            "operationMetadataId": "a50186b2-4228-4726-b606-a42c20a501fb"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "Get_Denied_Applications": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "d98a8b33-c97d-4756-8335-44e667fc6d08"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "$filter": "(statuscode eq 290700003 and ecer_statusreasondetail eq 621870011 and ecer_reconsiderationperiodenddate lt @{utcNow()}) or (statuscode eq 621870006 and ecer_statusreasondetail eq 621870011 and ecer_appealperiodenddate lt @{utcNow()})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('Get_Denied_Applications')?['body/value']",
+          "actions": {
+            "Application_equals_Decision_and_Denied": {
+              "actions": {
+                "Close_Reconsideration_Period_End_Applications": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "577f9314-08b7-4120-a031-70a0d73fe92b"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_applications",
+                      "recordId": "@items('Apply_to_each')?['ecer_applicationid']",
+                      "item/statecode": 1,
+                      "item/statuscode": 2
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {},
+              "else": {
+                "actions": {
+                  "Application_equals_Reconsideration_Decision_and_Denied_": {
+                    "actions": {
+                      "Close_Appeal_Period_End_Applications": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "577f9314-08b7-4120-a031-70a0d73fe92b"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_commondataserviceforapps",
+                            "operationId": "UpdateRecord",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                          },
+                          "parameters": {
+                            "entityName": "ecer_applications",
+                            "recordId": "@items('Apply_to_each')?['ecer_applicationid']",
+                            "item/statecode": 1,
+                            "item/statuscode": 2
+                          },
+                          "authentication": "@parameters('$authentication')"
+                        }
+                      }
+                    },
+                    "runAfter": {},
+                    "expression": {
+                      "and": [
+                        {
+                          "equals": [
+                            "@items('Apply_to_each')?['statuscode']",
+                            621870006
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@items('Apply_to_each')?['ecer_statusreasondetail']",
+                            621870011
+                          ]
+                        }
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "eedca202-a044-4e48-82c0-9ba7248708c2"
+                    },
+                    "type": "If"
+                  }
+                }
+              },
+              "expression": {
+                "and": [
+                  {
+                    "equals": [
+                      "@items('Apply_to_each')?['statuscode']",
+                      290700003
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@items('Apply_to_each')?['ecer_statusreasondetail']",
+                      621870011
+                    ]
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "eedca202-a044-4e48-82c0-9ba7248708c2"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Get_Denied_Applications": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b024b921-f8b6-4540-9752-e6d06d1b55d8"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,933 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "eb740f3c-a761-4fbd-b1f4-960fbea97b3b"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "Application PK",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_1": {
+                  "title": "Applicant PK",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_2": {
+                  "title": "Assessment Team PK",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text",
+                "text_1",
+                "text_2"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Add_a_new_row_-_Application_Assessment": {
+          "runAfter": {
+            "Initialize_variable_-_ITE": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6f67359a-a525-4638-a6ed-3779106472c2"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applicationassessments",
+              "item/ecer_ApplicantId@odata.bind": "contacts(@{triggerBody()['text_1']})",
+              "item/ecer_ApplicationId@odata.bind": "ecer_applications(@{triggerBody()['text']})",
+              "item/ecer_date": "@utcNow()",
+              "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Check_Cert_Level_From_Application_-_ECE_1_YR": {
+          "actions": {
+            "Add_a_new_row_-_App_Assmt_Results_for_ECE_1_YR": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "04783adf-bb9d-4a90-9fdf-306e9cd494eb"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applicationassessmentresults",
+                  "item/ecer_AppAssessId@odata.bind": "ecer_applicationassessments(@{outputs('Add_a_new_row_-_Application_Assessment')?['body/ecer_applicationassessmentid']})",
+                  "item/ecer_EducationLevelId@odata.bind": "ecer_certificatetypes(@{variables('ECE 1 YR Cert Level')})",
+                  "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "IF_NOT_Renewals": {
+              "actions": {
+                "List_rows_-_Provincial_Requirements_for_ECE_1_YR": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "de72a031-88a9-4025-ae20-4ebb485ee851"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_provincialrequirements",
+                      "$filter": "_ecer_certificatetypeid_value eq '@{variables('ECE 1 YR Cert Level')}'"
+                    },
+                    "authentication": {
+                      "type": "Raw",
+                      "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                    }
+                  }
+                },
+                "For_Each_Provincial_Requirements_for_ECE_1_YR": {
+                  "foreach": "@outputs('List_rows_-_Provincial_Requirements_for_ECE_1_YR')?['body/value']",
+                  "actions": {
+                    "Add_a_new_row_-_Education_Assessment_ECE_1_YR": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "dd945599-e0df-411f-a9cb-6fd3b4e3761c"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "CreateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "ecer_educationassessments",
+                          "item/ecer_ApplicantId@odata.bind": "contacts(@{triggerBody()['text_1']})",
+                          "item/ecer_AppAssessmentId@odata.bind": "ecer_applicationassessments(@{outputs('Add_a_new_row_-_Application_Assessment')?['body/ecer_applicationassessmentid']})",
+                          "item/ecer_RequirementAreaId@odata.bind": "ecer_provincialrequirements(@{items('For_Each_Provincial_Requirements_for_ECE_1_YR')?['ecer_provincialrequirementid']})",
+                          "item/ecer_CertificateType@odata.bind": "ecer_certificatetypes(@{items('For_Each_Provincial_Requirements_for_ECE_1_YR')?['_ecer_certificatetypeid_value']})",
+                          "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})"
+                        },
+                        "authentication": {
+                          "type": "Raw",
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "List_rows_-_Provincial_Requirements_for_ECE_1_YR": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "f3510745-c97e-4411-be0c-4dcf171638d7"
+                  },
+                  "type": "Foreach"
+                }
+              },
+              "runAfter": {
+                "Add_a_new_row_-_App_Assmt_Results_for_ECE_1_YR": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Full_Record_of_Application_for_Evalucation')?['body/ecer_type']",
+                    621870001
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "2950c330-11c8-4d5d-8d27-f9fd326140ef"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Check_Cert_Level_From_Application_-_Assistant": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_Full_Record_of_Application_for_Evalucation')?['body/ecer_isece1yr']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e1f48a55-7972-439b-af0e-4310cf95c3f1"
+          },
+          "type": "If"
+        },
+        "Get_Full_Record_of_Application_for_Evalucation": {
+          "runAfter": {
+            "Add_a_new_row_-_Application_Assessment": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ebd60e5c-f7c6-488f-baeb-adb30aa7d145"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@triggerBody()['text']"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Check_Cert_Level_From_Application_-_Assistant": {
+          "actions": {
+            "Add_a_new_row_-_App_Assmt_Results_for_Assistant": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "579baf4e-bdd4-4b89-8ffd-08e32ff3d747"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applicationassessmentresults",
+                  "item/ecer_AppAssessId@odata.bind": "ecer_applicationassessments(@{outputs('Add_a_new_row_-_Application_Assessment')?['body/ecer_applicationassessmentid']})",
+                  "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "List_rows_-_Provincial_Requirements_for_ECE_Assistant": {
+              "runAfter": {
+                "Add_a_new_row_-_App_Assmt_Results_for_Assistant": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "b3a4ba41-a0e8-4ea2-9f26-354b35b2ad2b"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_provincialrequirements",
+                  "$filter": "_ecer_certificatetypeid_value eq '@{variables('ECE Assistant Cert Level')}'"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "For_Each_Provincial_Requirements_for_ECE_Assistant": {
+              "foreach": "@outputs('List_rows_-_Provincial_Requirements_for_ECE_Assistant')?['body/value']",
+              "actions": {
+                "Add_a_new_row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "15e7c6ed-72ce-4f16-a29a-4fb8f20bd647"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_educationassessments",
+                      "item/ecer_ApplicantId@odata.bind": "contacts(@{triggerBody()['text_1']})",
+                      "item/ecer_AppAssessmentId@odata.bind": "ecer_applicationassessments(@{outputs('Add_a_new_row_-_Application_Assessment')?['body/ecer_applicationassessmentid']})",
+                      "item/ecer_RequirementAreaId@odata.bind": "ecer_provincialrequirements(@{items('For_Each_Provincial_Requirements_for_ECE_Assistant')?['ecer_provincialrequirementid']})",
+                      "item/ecer_CertificateType@odata.bind": "ecer_certificatetypes(@{items('For_Each_Provincial_Requirements_for_ECE_Assistant')?['_ecer_certificatetypeid_value']})",
+                      "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})"
+                    },
+                    "authentication": {
+                      "type": "Raw",
+                      "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                    }
+                  }
+                }
+              },
+              "runAfter": {
+                "List_rows_-_Provincial_Requirements_for_ECE_Assistant": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "3ada1a65-3388-4e5d-8c9f-dfcd4e71df79"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Get_Full_Record_of_Application_for_Evalucation": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "List_rows_-_All_WER_of_same_application_not_rejected": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "776b2b8c-1fe0-49d8-b4bd-038bd88f6c14"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "ListRecords",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "ecer_workexperiencerefs",
+                    "$filter": "_ecer_applicationid_value eq '@{outputs('Get_Full_Record_of_Application_for_Evalucation')?['body/ecer_applicationid']}' and statuscode ne 1 and statuscode ne 621870006 and statuscode ne 621870005"
+                  },
+                  "authentication": {
+                    "type": "Raw",
+                    "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                  }
+                }
+              },
+              "For_Each_non_Rejected_non_Draft_WER": {
+                "foreach": "@outputs('List_rows_-_All_WER_of_same_application_not_rejected')?['body/value']",
+                "actions": {
+                  "Add_a_new_Work_Experience_Assessment_for_each_WER": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "78b1227d-61e3-4738-99e3-986eac7b8659"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "CreateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "ecer_workexperienceassessments",
+                        "item/ecer_AssessmentId@odata.bind": "ecer_applicationassessments(@{outputs('Add_a_new_row_-_Application_Assessment')?['body/ecer_applicationassessmentid']})",
+                        "item/ecer_WorkExpRefId@odata.bind": "ecer_workexperiencerefs(@{items('For_Each_non_Rejected_non_Draft_WER')?['ecer_workexperiencerefid']})",
+                        "item/ecer_ApplicationId@odata.bind": "ecer_applications(@{triggerBody()['text']})",
+                        "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})",
+                        "item/ecer_ReferenceContactId@odata.bind": "contacts(@{triggerBody()['text_1']})",
+                        "item/statuscode": 1
+                      },
+                      "authentication": {
+                        "type": "Raw",
+                        "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                      }
+                    }
+                  }
+                },
+                "runAfter": {
+                  "List_rows_-_All_WER_of_same_application_not_rejected": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "9ed5abfb-cb12-457f-9760-9f6d83f69286"
+                },
+                "type": "Foreach"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_Full_Record_of_Application_for_Evalucation')?['body/ecer_iseceassistant']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a1a59f59-8aa3-4c73-aae8-06e15f72e024"
+          },
+          "type": "If"
+        },
+        "Initialize_variable_-_ECE_Assistant": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "e776d2d5-d41d-402a-8e82-77cc68211b4a"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ECE Assistant Cert Level",
+                "type": "string",
+                "value": "d593c93d-7be1-ee11-904c-0022486e0199"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_ECE_1_YR": {
+          "runAfter": {
+            "Initialize_variable_-_ECE_Assistant": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9a2f9ac5-2998-43ec-b561-40cabb8c0393"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ECE 1 YR Cert Level",
+                "type": "string",
+                "value": "d093c93d-7be1-ee11-904c-0022486e0199"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_ECE_5_YR": {
+          "runAfter": {
+            "Initialize_variable_-_ECE_1_YR": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "36b77c2e-8b2f-48a2-af73-c29aae8868b7"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ECE 5 YR Cert Level",
+                "type": "string",
+                "value": "6c5424eb-9673-ee11-8179-000d3af4fa73"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_SNE": {
+          "runAfter": {
+            "Initialize_variable_-_ECE_5_YR": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "adca9fa0-29b3-4b72-89e7-cf70a3c82155"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "SNE Cert Level",
+                "type": "string",
+                "value": "15e95044-7be1-ee11-904c-0022486e0199"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_ITE": {
+          "runAfter": {
+            "Initialize_variable_-_SNE": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "67840a0c-e963-451f-996f-fd9ac77730f8"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ITE Cert Level",
+                "type": "string",
+                "value": "3f02bf51-7be1-ee11-904c-0022486e0199"
+              }
+            ]
+          }
+        },
+        "Check_Cert_Level_From_Application_-_ECE_5_YR": {
+          "actions": {
+            "Add_a_new_row_-_App_Assmt_Results_for_ECE_5_YR": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "8c276907-c91c-4e78-98c2-c7d4079674b5"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applicationassessmentresults",
+                  "item/ecer_AppAssessId@odata.bind": "ecer_applicationassessments(@{outputs('Add_a_new_row_-_Application_Assessment')?['body/ecer_applicationassessmentid']})",
+                  "item/ecer_EducationLevelId@odata.bind": "ecer_certificatetypes(@{variables('ECE 5 YR Cert Level')})",
+                  "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "IF_NOT_Renewals_ECE_5_YR": {
+              "actions": {
+                "List_rows_-_Provincial_Requirements_for_ECE_5_YR": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "b386dc42-0dac-42a1-97f2-e921dadac8cb"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_provincialrequirements",
+                      "$filter": "_ecer_certificatetypeid_value eq '@{variables('ECE 5 YR Cert Level')}'"
+                    },
+                    "authentication": {
+                      "type": "Raw",
+                      "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                    }
+                  }
+                },
+                "For_Each_Provincial_Requirements_for_ECE_5_YR": {
+                  "foreach": "@outputs('List_rows_-_Provincial_Requirements_for_ECE_5_YR')?['body/value']",
+                  "actions": {
+                    "Add_a_new_row_-_Education_Assessment_for_ECE_5_YR": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "6c213b49-d116-4a46-adf7-f4db80a2281e"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "CreateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "ecer_educationassessments",
+                          "item/ecer_ApplicantId@odata.bind": "contacts(@{triggerBody()['text_1']})",
+                          "item/ecer_AppAssessmentId@odata.bind": "ecer_applicationassessments(@{outputs('Add_a_new_row_-_Application_Assessment')?['body/ecer_applicationassessmentid']})",
+                          "item/ecer_RequirementAreaId@odata.bind": "ecer_provincialrequirements(@{items('For_Each_Provincial_Requirements_for_ECE_5_YR')?['ecer_provincialrequirementid']})",
+                          "item/ecer_CertificateType@odata.bind": "ecer_certificatetypes(@{items('For_Each_Provincial_Requirements_for_ECE_5_YR')?['_ecer_certificatetypeid_value']})",
+                          "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})"
+                        },
+                        "authentication": {
+                          "type": "Raw",
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "List_rows_-_Provincial_Requirements_for_ECE_5_YR": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "c6ec4faf-7ec9-4ee6-b640-3178a56380b7"
+                  },
+                  "type": "Foreach"
+                }
+              },
+              "runAfter": {
+                "Add_a_new_row_-_App_Assmt_Results_for_ECE_5_YR": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Full_Record_of_Application_for_Evalucation')?['body/ecer_type']",
+                    621870001
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "a23f2953-cb2f-495f-ae49-5d2528a2a361"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Check_Cert_Level_From_Application_-_ECE_1_YR": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_Full_Record_of_Application_for_Evalucation')?['body/ecer_isece5yr']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1697ff5c-e52f-4018-a198-db2800e9162e"
+          },
+          "type": "If"
+        },
+        "Check_Cert_Level_From_Application_-_SNE": {
+          "actions": {
+            "Add_App_Assmt_Result_for_SNE": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "9d47e90f-29bf-4752-9b59-1ff9eb4ae224"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applicationassessmentresults",
+                  "item/ecer_AppAssessId@odata.bind": "ecer_applicationassessments(@{outputs('Add_a_new_row_-_Application_Assessment')?['body/ecer_applicationassessmentid']})",
+                  "item/ecer_EducationLevelId@odata.bind": "ecer_certificatetypes(@{variables('SNE Cert Level')})",
+                  "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "IF_NOT_Renewals_for_SNE": {
+              "actions": {
+                "List_rows_-_Provincial_Requirement_for_SNE": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "0c9b2939-3b0d-4d14-a908-6533e2e59f90"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_provincialrequirements",
+                      "$filter": "_ecer_certificatetypeid_value eq '@{variables('SNE Cert Level')}'"
+                    },
+                    "authentication": {
+                      "type": "Raw",
+                      "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                    }
+                  }
+                },
+                "For_Each_SNE_Provincial_Requirement": {
+                  "foreach": "@outputs('List_rows_-_Provincial_Requirement_for_SNE')?['body/value']",
+                  "actions": {
+                    "Add_new_Education_Assessments_for_SNE": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "5427c91d-09bb-4169-af54-e435c2410de7"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "CreateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "ecer_educationassessments",
+                          "item/ecer_ApplicantId@odata.bind": "contacts(@{triggerBody()['text_1']})",
+                          "item/ecer_AppAssessmentId@odata.bind": "ecer_applicationassessments(@{outputs('Add_a_new_row_-_Application_Assessment')?['body/ecer_applicationassessmentid']})",
+                          "item/ecer_RequirementAreaId@odata.bind": "ecer_provincialrequirements(@{items('For_Each_SNE_Provincial_Requirement')?['ecer_provincialrequirementid']})",
+                          "item/ecer_CertificateType@odata.bind": "ecer_certificatetypes(@{items('For_Each_SNE_Provincial_Requirement')?['_ecer_certificatetypeid_value']})",
+                          "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})"
+                        },
+                        "authentication": {
+                          "type": "Raw",
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "List_rows_-_Provincial_Requirement_for_SNE": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "07bb7cc9-abab-4802-8be0-17efc3310d08"
+                  },
+                  "type": "Foreach"
+                }
+              },
+              "runAfter": {
+                "Add_App_Assmt_Result_for_SNE": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Full_Record_of_Application_for_Evalucation')?['body/ecer_type']",
+                    621870001
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "11cc4d34-eeda-405a-94a0-4aa13fbd6035"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Check_Cert_Level_From_Application_-_ECE_5_YR": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_Full_Record_of_Application_for_Evalucation')?['body/ecer_issne']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4f3884a7-9163-415a-85a3-7339a7a42814"
+          },
+          "type": "If"
+        },
+        "Check_Cert_Level_From_Application_-_ITE": {
+          "actions": {
+            "Add_Application_Assessment_Results_for_ITE": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "d9e20131-eadf-46e3-9dcb-911fb0db96ef"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applicationassessmentresults",
+                  "item/ecer_AppAssessId@odata.bind": "ecer_applicationassessments(@{outputs('Add_a_new_row_-_Application_Assessment')?['body/ecer_applicationassessmentid']})",
+                  "item/ecer_EducationLevelId@odata.bind": "ecer_certificatetypes(@{variables('ITE Cert Level')})",
+                  "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "IF_Application_ITE_is_NOT_Renewals": {
+              "actions": {
+                "List_Provincial_Requirements_for_ITE": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "23df60a8-aacc-48ff-9ef7-bcaf40d4d734"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_provincialrequirements",
+                      "$filter": "_ecer_certificatetypeid_value eq '@{variables('ITE Cert Level')}'"
+                    },
+                    "authentication": {
+                      "type": "Raw",
+                      "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                    }
+                  }
+                },
+                "For_Each_ITE_Provincial_Requirement": {
+                  "foreach": "@outputs('List_Provincial_Requirements_for_ITE')?['body/value']",
+                  "actions": {
+                    "Add_a_new_Education_Assessment_for_Each_ITE_Prov_Req": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "552ba0e9-db82-475a-81b1-d2ea9b19afed"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "CreateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "ecer_educationassessments",
+                          "item/ecer_ApplicantId@odata.bind": "contacts(@{triggerBody()['text_1']})",
+                          "item/ecer_AppAssessmentId@odata.bind": "ecer_applicationassessments(@{outputs('Add_a_new_row_-_Application_Assessment')?['body/ecer_applicationassessmentid']})",
+                          "item/ecer_RequirementAreaId@odata.bind": "ecer_provincialrequirements(@{items('For_Each_ITE_Provincial_Requirement')?['ecer_provincialrequirementid']})",
+                          "item/ecer_CertificateType@odata.bind": "ecer_certificatetypes(@{items('For_Each_ITE_Provincial_Requirement')?['_ecer_certificatetypeid_value']})",
+                          "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})"
+                        },
+                        "authentication": {
+                          "type": "Raw",
+                          "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "List_Provincial_Requirements_for_ITE": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "61341efa-7398-408d-96fe-ce99ddd4d325"
+                  },
+                  "type": "Foreach"
+                }
+              },
+              "runAfter": {
+                "Add_Application_Assessment_Results_for_ITE": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Full_Record_of_Application_for_Evalucation')?['body/ecer_type']",
+                    621870001
+                  ]
+                }
+              },
+              "metadata": {
+                "operationMetadataId": "bbfc98ba-0534-43bb-a5a7-99fbb428e791"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Check_Cert_Level_From_Application_-_SNE": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_Full_Record_of_Application_for_Evalucation')?['body/ecer_isite']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "75192687-4914-45bd-9b00-3aa88b4a48d4"
+          },
+          "type": "If"
+        },
+        "Respond_to_a_Power_App_or_flow": {
+          "runAfter": {
+            "Check_Cert_Level_From_Application_-_ITE": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2a756d8a-c2d8-4d01-a681-df752fe1d41c"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "success": "@{true}"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "title": "Success",
+                  "x-ms-dynamically-added": true,
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

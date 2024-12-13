@@ -1,0 +1,207 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "d25f5749-c407-4940-8464-e1b1a3430037"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_investigation",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ownerid",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "If_owner_is_system_user": {
+          "actions": {
+            "Get_BPF": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "c8b3d043-3350-4c84-89e6-d409bfd2c711"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_investigationprocesses",
+                  "$filter": "_bpf_ecer_investigationid_value eq @{triggerOutputs()?['body/ecer_investigationid']}",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each": {
+              "foreach": "@outputs('Get_BPF')?['body/value']",
+              "actions": {
+                "Get_Activate_Stage": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "deb59ebf-1587-4fdf-b722-6542d10acac2"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "processstages",
+                      "recordId": "@items('Apply_to_each')?['_activestageid_value']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Set_CurrentStage": {
+                  "runAfter": {
+                    "Get_Activate_Stage": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "8c1d775a-17e0-4a39-a49a-a1c5b8dca0c4"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "CurrentStageName",
+                    "value": "@outputs('Get_Activate_Stage')?['body/stagename']"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_BPF": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "3caee837-7fd5-496d-8eaa-1b265f401c98"
+              },
+              "type": "Foreach"
+            },
+            "Add_a_new_Investigation_History": {
+              "runAfter": {
+                "Get_Owner": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "115967b8-34bb-4fe1-9020-0bb27e050b57"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_investigationhistories",
+                  "item/ecer_name": "Assigned to @{outputs('Get_Owner')?['body/fullname']} at BPF Stage @{variables('CurrentStageName')}",
+                  "item/ecer_AssigneeId@odata.bind": "/systemusers(@{triggerOutputs()?['body/_ownerid_value']})",
+                  "item/ecer_bpfstagename": "@variables('CurrentStageName')",
+                  "item/ecer_InvestigationId@odata.bind": "/ecer_investigations(@{triggerOutputs()?['body/ecer_investigationid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Owner": {
+              "runAfter": {
+                "Apply_to_each": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "8c9ef3e5-9fc7-45ca-966d-a2de00e233ef"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "recordId": "@triggerOutputs()?['body/_ownerid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_CurrentStage": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/_ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname']",
+              "systemuser"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c189e49a-5b68-4eb4-998f-9e506848bf0c"
+          },
+          "type": "If"
+        },
+        "Initialize_CurrentStage": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "0a15141f-4093-4afe-9f81-b5c407e84232"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "CurrentStageName",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

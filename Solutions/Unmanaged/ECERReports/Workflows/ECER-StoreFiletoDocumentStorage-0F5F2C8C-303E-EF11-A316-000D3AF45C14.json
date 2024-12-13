@@ -1,0 +1,419 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_webcontents": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedwebcontents_40deb"
+        },
+        "api": {
+          "name": "shared_webcontents"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "f3152091-d3eb-41a8-bdb8-259affc3f6fd"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "RegardingEntityLogicalName",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_1": {
+                  "title": "RegardingObjectId",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_2": {
+                  "title": "FileName",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_3": {
+                  "title": "Tag",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_6": {
+                  "title": "Base64String",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_4": {
+                  "title": "Tag2",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_5": {
+                  "title": "Tag3",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text",
+                "text_1",
+                "text_2",
+                "text_3",
+                "text_6",
+                "text_4",
+                "text_5"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Initialize_variable_-_Stripped_Base_64_String": {
+          "runAfter": {
+            "Initialize_variable_-_Loop_Control": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d128400c-8dc7-4ad1-b5bb-1f447a336780"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "stripped Base 64 String",
+                "type": "string",
+                "value": "@triggerBody()['text_6']"
+              }
+            ]
+          }
+        },
+        "Base_64_prefix_index": {
+          "runAfter": {
+            "Search_for_;base64,_from_Base64_String": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "01208db5-0b5e-4c8e-9259-b8555bc48bd0"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "base64 index",
+                "type": "integer",
+                "value": "@outputs('Search_for_;base64,_from_Base64_String')"
+              }
+            ]
+          }
+        },
+        "Search_for_;base64,_from_Base64_String": {
+          "runAfter": {
+            "Initialize_variable_-_File_Payload": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ec4fd608-6167-4c80-8b46-bfcceeb432e2"
+          },
+          "type": "Compose",
+          "inputs": "@indexOf(variables('stripped Base 64 String'),';base64,')"
+        },
+        "Condition": {
+          "actions": {
+            "Add_8_for_length_of_;base64,": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2a45f736-901f-43cb-901c-090d342a8891"
+              },
+              "type": "Compose",
+              "inputs": "@add(variables('base64 index'),8)"
+            },
+            "Set_variable_Base_64_index": {
+              "runAfter": {
+                "Add_8_for_length_of_;base64,": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "8790e3c8-8fcf-4ad1-9eb0-1089779e544e"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "base64 index",
+                "value": "@outputs('Add_8_for_length_of_;base64,')"
+              }
+            }
+          },
+          "runAfter": {
+            "Base_64_prefix_index": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Set_index_to_beginning_of_string": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "897cbe56-f37e-488b-82ae-65ae3a537618"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "base64 index",
+                  "value": 0
+                }
+              }
+            }
+          },
+          "expression": {
+            "greaterOrEquals": [
+              "@variables('base64 index')",
+              0
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "deaaed50-1f1d-4428-b3d6-7a439e05ca0d"
+          },
+          "type": "If"
+        },
+        "Strip_base_64_string_from_prefix": {
+          "runAfter": {
+            "Condition": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6177b188-0ff2-4c7c-b5cf-9eff607790bd"
+          },
+          "type": "Compose",
+          "inputs": "@substring(variables('stripped Base 64 String'),variables('base64 index'))"
+        },
+        "Set_variable_of_treated_Base_64_string": {
+          "runAfter": {
+            "Strip_base_64_string_from_prefix": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "24350a4b-2dcb-4af5-b283-8e7af334c313"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "stripped Base 64 String",
+            "value": "@{outputs('Strip_base_64_string_from_prefix')}"
+          }
+        },
+        "Compose_-_JSON_for_Document_URL": {
+          "runAfter": {
+            "Set_variable_of_treated_Base_64_string": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "78304519-4fe0-4c22-aa01-61a8a1219cba"
+          },
+          "type": "Compose",
+          "inputs": {
+            "FileName": "@{triggerBody()['text_2']}",
+            "RegardingObjectName": "@{triggerBody()['text']}",
+            "RegardingObjectId": "@{triggerBody()['text_1']}",
+            "Origin": 931490002,
+            "Tag1": "@{triggerBody()['text_3']}",
+            "Tag2": "@{triggerBody()['text_4']}",
+            "Tag3": "@{triggerBody()['text_5']}",
+            "Body": "@{variables('stripped Base 64 String')}"
+          }
+        },
+        "Initialize_variable_-_File_Payload": {
+          "runAfter": {
+            "Initialize_variable_-_Stripped_Base_64_String": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9a7c7dca-1800-44d0-a794-369ddeaa7c1f"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Payload",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Set_variable_-_Payload": {
+          "runAfter": {
+            "Compose_-_JSON_for_Document_URL": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "db1a4935-2d43-4e92-b041-65773b02bd99"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "Payload",
+            "value": "@{outputs('Compose_-_JSON_for_Document_URL')}"
+          }
+        },
+        "Do_until_-_Call_Custom_Action": {
+          "actions": {
+            "Delay_-_2_seconds": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "f8b0221b-e6b6-49e3-92f2-9d5b111eb9d7"
+              },
+              "type": "Wait",
+              "inputs": {
+                "interval": {
+                  "count": 2,
+                  "unit": "Second"
+                }
+              }
+            },
+            "Set_variable": {
+              "runAfter": {
+                "POST_to_Custom_Action_to_upload_file": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "1cd688cd-650b-4990-a23b-35d06be4c765"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Loop Control",
+                "value": "@false"
+              }
+            },
+            "POST_to_Custom_Action_to_upload_file": {
+              "runAfter": {
+                "Delay_-_2_seconds": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "d23aac62-396a-452b-b411-609718b35995"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_webcontents",
+                  "operationId": "InvokeHttp",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_webcontents"
+                },
+                "parameters": {
+                  "request/method": "POST",
+                  "request/url": "/api/data/v9.2/bcgov_UploadDocumentToSharePoint",
+                  "request/headers": {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json; charset=utf-8"
+                  },
+                  "request/body": "@variables('Payload')"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Set_variable_-_Payload": [
+              "Succeeded"
+            ]
+          },
+          "expression": "@equals(variables('Loop Control'), false)",
+          "limit": {
+            "count": 20,
+            "timeout": "PT1H"
+          },
+          "metadata": {
+            "operationMetadataId": "130a6cd2-0bb2-4437-868c-2df1467175f4"
+          },
+          "type": "Until"
+        },
+        "Initialize_variable_-_Loop_Control": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "a2ef8839-7edb-441b-8747-dccf741c3f99"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Loop Control",
+                "type": "boolean",
+                "value": "@true"
+              }
+            ]
+          }
+        },
+        "Respond_to_a_Power_App_or_flow": {
+          "runAfter": {
+            "Do_until_-_Call_Custom_Action": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "14f56727-730b-44ed-9787-4a3d58a091c5"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "success": "@{true}"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "title": "Success",
+                  "x-ms-dynamically-added": true,
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

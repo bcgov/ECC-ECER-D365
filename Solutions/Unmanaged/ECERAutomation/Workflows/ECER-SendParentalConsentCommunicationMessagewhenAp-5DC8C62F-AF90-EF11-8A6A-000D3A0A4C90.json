@@ -1,0 +1,181 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "cf99e8f2-11c9-4d81-9ca2-756537318257"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_application",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_applicantage"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "If_Application_Status_=_Submitted_AND_Age_under_19": {
+          "actions": {
+            "Create_new_communication_message": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "86b2fb02-6784-474f-9e07-fe2f1d136999"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_communications",
+                  "item/ecer_initiatedfrom": 621870000,
+                  "item/ecer_message": "<p>People under 19 years old need to get consent from a parent or guardian to be certified as an ECE.</p>\n<p>&nbsp;</p>\n<p>You need to:</p>\n<ol>\n    <li>Download the consent form: <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://www2.gov.bc.ca/gov/content/education-training/early-learning/teach/training-and-professional-development/become-an-early-childhood-educator\">Become an Early Childhood Educator - Province of British Columbia (gov.bc.ca)</a></li>\n    <li>Have a parent or guardian sign it</li>\n    <li>Reply to this message and attach a photo or scanned copy of the signed consent form</li>\n</ol>",
+                  "item/ecer_name": "Action required: Signed parental consent form",
+                  "item/ecer_type": 621870002,
+                  "item/ecer_Registrantid_contact@odata.bind": "\\contacts(@{triggerOutputs()?['body/_ecer_applicantid_value']})",
+                  "item/ecer_Applicationid@odata.bind": "\\ecer_applications(@{triggerOutputs()?['body/ecer_applicationid']})",
+                  "item/ecer_isroot": true,
+                  "item/ecer_notifyrecipient": true,
+                  "item/ownerid@odata.bind": "teams(@{variables('Assessment Team Value')})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Assessment_Team_Value": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/statuscode']",
+                  621870001
+                ]
+              },
+              {
+                "less": [
+                  "@triggerOutputs()?['body/ecer_applicantage']",
+                  19
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/ecer_origin']",
+                  621870001
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "fcd8fde8-91d5-4e48-b999-0111fcaebce7"
+          },
+          "type": "If"
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "badd5296-e98b-488a-8a05-3d1f3adfa771"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Assessment Team Value",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Get_Assessment_Team": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6ad1c5a3-cc79-478a-8419-8b50aa4a158c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "teams",
+              "$filter": "name eq 'Assessment Team - General'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Assessment_Team_Value": {
+          "foreach": "@outputs('Get_Assessment_Team')?['body/value']",
+          "actions": {
+            "Set_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "01418f92-1f91-4074-89b2-08254001ab94"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "Assessment Team Value",
+                "value": "@items('Assessment_Team_Value')?['teamid']"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Assessment_Team": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5913f5dd-30cc-443e-832a-5a39d095b7b3"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

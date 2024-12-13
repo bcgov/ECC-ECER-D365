@@ -1,0 +1,295 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "52dbda5d-95fa-4efb-a7ba-7bbe2d6b010c"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "contact",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "address2_line1,address2_line2,address2_line3,address2_city,address2_stateorprovince,address2_country,address2_postalcode",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Contact_FULL_record": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "125228e4-f72e-4be5-be85-813222204f00"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@triggerOutputs()?['body/contactid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Create_a_Previous_Address_record": {
+          "runAfter": {
+            "IF_No_Actual_Changes": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f6f24107-01e0-4f11-bfcb-ddbabbe9a69c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_previousaddresses",
+              "item/ecer_Customerid_contact@odata.bind": "contacts(@{outputs('Get_Contact_FULL_record')?['body/contactid']})",
+              "item/ecer_addresstype": 621870001,
+              "item/ecer_city": "@outputs('Get_Contact_FULL_record')?['body/address2_city']",
+              "item/ecer_country": "@outputs('Get_Contact_FULL_record')?['body/address2_country']",
+              "item/ecer_postalcode": "@outputs('Get_Contact_FULL_record')?['body/address2_postalcode']",
+              "item/ecer_province": "@outputs('Get_Contact_FULL_record')?['body/address2_stateorprovince']",
+              "item/ecer_startdate": "@utcNow()",
+              "item/ecer_street1": "@outputs('Get_Contact_FULL_record')?['body/address2_line1']",
+              "item/ecer_street2": "@outputs('Get_Contact_FULL_record')?['body/address2_line2']",
+              "item/ecer_street3": "@outputs('Get_Contact_FULL_record')?['body/address2_line3']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_through_result_set_-_should_be_no_more_than_1_record": {
+          "foreach": "@outputs('List_all_Previous_Home_Address_of_contact_that_has_no_End_Date')?['body/value']",
+          "actions": {
+            "Set_End_Date": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "e7690acb-ef30-4efc-9d48-9ecc4396ac6f"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_previousaddresses",
+                  "recordId": "@items('Loop_through_result_set_-_should_be_no_more_than_1_record')?['ecer_previousaddressid']",
+                  "item/ecer_enddate": "@utcNow()"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Create_a_Previous_Address_record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8a734f0d-b9bd-4b93-b0ee-c1d0803b5d78"
+          },
+          "type": "Foreach"
+        },
+        "List_all_Previous_Home_Address_of_contact_that_has_no_End_Date": {
+          "runAfter": {
+            "Initialize_variable_-_Matches_Previous_Home_Address_-_Default_FALSE": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d439b34a-ecd2-4532-a3e9-2b1a2c36b045"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_previousaddresses",
+              "$filter": "_ecer_customerid_value eq '@{outputs('Get_Contact_FULL_record')?['body/contactid']}' and ecer_enddate eq null and ecer_addresstype eq 621870001",
+              "$orderby": "ecer_startdate desc",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable_-_Matches_Previous_Home_Address_-_Default_FALSE": {
+          "runAfter": {
+            "Get_Contact_FULL_record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "88cb84ef-ac31-4bcf-ae2d-1a1d320b484a"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Matches Previous Home Address",
+                "type": "boolean",
+                "value": "@false"
+              }
+            ]
+          }
+        },
+        "IF_No_Actual_Changes": {
+          "actions": {
+            "Terminate_-_No_Actual_Changes": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "baf374ad-1a30-4b9f-ae6d-5be1f88b5b51"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@variables('Matches Previous Home Address')",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "48852eff-f13a-4b30-8648-74e9fc838513"
+          },
+          "type": "If"
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_all_Previous_Home_Address_of_contact_that_has_no_End_Date')?['body/value']",
+          "actions": {
+            "Check_if_Home_Address_Fields_actual_changes": {
+              "actions": {
+                "Set_variable_-_Matches_Previous_Home_Address_-_TRUE": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "69f7a7eb-58d0-412c-858e-af343e858f3a"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Matches Previous Home Address",
+                    "value": "@true"
+                  }
+                }
+              },
+              "runAfter": {},
+              "expression": {
+                "and": [
+                  {
+                    "equals": [
+                      "@items('Apply_to_each')?['ecer_street1']",
+                      "@outputs('Get_Contact_FULL_record')?['body/address2_line1']"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@items('Apply_to_each')?['ecer_street2']",
+                      "@outputs('Get_Contact_FULL_record')?['body/address2_line2']"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@items('Apply_to_each')?['ecer_street3']",
+                      "@outputs('Get_Contact_FULL_record')?['body/address2_line3']"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@items('Apply_to_each')?['ecer_city']",
+                      "@outputs('Get_Contact_FULL_record')?['body/address2_city']"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@items('Apply_to_each')?['ecer_province']",
+                      "@outputs('Get_Contact_FULL_record')?['body/address2_stateorprovince']"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@items('Apply_to_each')?['ecer_postalcode']",
+                      "@outputs('Get_Contact_FULL_record')?['body/address2_postalcode']"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@items('Apply_to_each')?['ecer_country']",
+                      "@outputs('Get_Contact_FULL_record')?['body/address2_country']"
+                    ]
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "1f648e62-944e-47c0-aeb6-7b04e0608977"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "List_all_Previous_Home_Address_of_contact_that_has_no_End_Date": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ec5d7132-9e95-452a-8329-1c663e921216"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

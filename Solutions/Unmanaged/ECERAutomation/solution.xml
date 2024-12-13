@@ -1,11 +1,11 @@
-<ImportExportXml version="9.2.24034.218" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.24112.182" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.24112.182" OrganizationSchemaType="Full" CRMServerServiceabilityVersion="9.2.24112.00206">
   <SolutionManifest>
     <UniqueName>ECERAutomation</UniqueName>
     <LocalizedNames>
       <LocalizedName description="ECER Automation" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.1</Version>
+    <Version>1.0.0.73</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>ecer</UniqueName>
@@ -80,43 +80,217 @@
     </Publisher>
     <RootComponents>
       <RootComponent type="29" id="{003318f6-21c1-ee11-9079-000d3af4f18a}" behavior="0" />
-      <RootComponent type="29" id="{02f03ab3-74f7-ee11-a1ff-000d3af4a207}" behavior="0" />
       <RootComponent type="29" id="{04357430-cbbf-ee11-9079-000d3af4f18a}" behavior="0" />
+      <RootComponent type="29" id="{05b1ecfe-8d70-ef11-a670-7c1e5240b0bf}" behavior="0" />
+      <RootComponent type="29" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" behavior="0" />
       <RootComponent type="29" id="{0b7dea89-62d6-ee11-904d-000d3af4f18a}" behavior="0" />
       <RootComponent type="29" id="{0dc29a4f-24c1-ee11-9079-000d3af4fd74}" behavior="0" />
+      <RootComponent type="29" id="{0dec8bf1-1c88-ef11-ac21-6045bdcd6cb0}" behavior="0" />
       <RootComponent type="29" id="{10f35d17-24e3-ee11-904c-002248d56374}" behavior="0" />
-      <RootComponent type="29" id="{11588905-9fca-ee11-9079-000d3af4fa73}" behavior="0" />
+      <RootComponent type="29" id="{14a2a506-af90-ef11-8a69-6045bdccf571}" behavior="0" />
+      <RootComponent type="29" id="{18a0fecc-0a07-ef11-9f89-6045bdcd18f7}" behavior="0" />
+      <RootComponent type="29" id="{19647ebb-aa4a-ef11-accd-000d3af45c14}" behavior="0" />
+      <RootComponent type="29" id="{21b52e41-703d-ef11-a317-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{2297869f-e92f-ef11-8e4f-000d3af45c14}" behavior="0" />
+      <RootComponent type="29" id="{2419e1d2-742e-ef11-8e4f-000d3af45c14}" behavior="0" />
+      <RootComponent type="29" id="{27680940-969c-ef11-8a69-6045bdccf571}" behavior="0" />
       <RootComponent type="29" id="{27efb836-cfbb-ee11-9079-000d3af4f18a}" behavior="0" />
+      <RootComponent type="29" id="{288fcca9-3f07-ef11-9f8a-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{29a58318-01ae-ef11-a72d-7c1e524087d5}" behavior="0" />
+      <RootComponent type="29" id="{2aa23def-fd03-ef11-9f8a-000d3af4a207}" behavior="0" />
       <RootComponent type="29" id="{30480606-e18f-ee11-8179-000d3af4fd74}" behavior="0" />
+      <RootComponent type="29" id="{31d3b542-8ba1-ef11-a72d-6045bdf9b81b}" behavior="0" />
       <RootComponent type="29" id="{35647159-20cc-ee11-9078-000d3af4a207}" behavior="0" />
       <RootComponent type="29" id="{3657d7d4-c6c9-ee11-9079-000d3af4febe}" behavior="0" />
       <RootComponent type="29" id="{38df3196-29db-ee11-904c-0022486e1cec}" behavior="0" />
+      <RootComponent type="29" id="{3c7ca37a-6739-ef11-a317-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{3d87ca8f-24ad-ef11-a72d-7c1e524087d5}" behavior="0" />
+      <RootComponent type="29" id="{3de61ee1-3571-ef11-a671-6045bdcd6cb0}" behavior="0" />
+      <RootComponent type="29" id="{3edc4952-9070-ef11-a670-000d3a0a4c90}" behavior="0" />
+      <RootComponent type="29" id="{3f27c6f5-5971-ef11-a670-000d3a0a4c90}" behavior="0" />
+      <RootComponent type="29" id="{3f2dbfe7-ab29-ef11-840a-0022486dc4b6}" behavior="0" />
       <RootComponent type="29" id="{4087a819-32be-ee11-9079-000d3af4fa73}" behavior="0" />
       <RootComponent type="29" id="{425afcd6-badc-ee11-904c-0022486e0199}" behavior="0" />
+      <RootComponent type="29" id="{43101bd8-7e7b-ef11-ac20-7c1e5240b0bf}" behavior="0" />
+      <RootComponent type="29" id="{4957c416-5732-ef11-8e4f-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{4a54770e-4a7c-ef11-ac20-000d3a0a4c90}" behavior="0" />
+      <RootComponent type="29" id="{4fd66507-a6fe-ee11-9f8a-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{4fe3ed0e-f2ad-ef11-a72d-7c1e5206334e}" behavior="0" />
+      <RootComponent type="29" id="{528b73fb-912d-ef11-8e50-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{5336e75b-fd8b-ef11-8a69-6045bdccf571}" behavior="0" />
+      <RootComponent type="29" id="{555cb042-a734-ef11-8e4e-0022486dc4b6}" behavior="0" />
+      <RootComponent type="29" id="{56a1f085-440e-ef11-9f8a-000d3af4a207}" behavior="0" />
       <RootComponent type="29" id="{57844f54-98cf-ee11-904d-000d3af4f18a}" behavior="0" />
+      <RootComponent type="29" id="{590cf71b-0c8b-ef11-8a6a-6045bdcd6cb0}" behavior="0" />
+      <RootComponent type="29" id="{59fa4f55-e684-ef11-ac21-000d3a0a4c90}" behavior="0" />
+      <RootComponent type="29" id="{5a8f86b5-0697-ef11-8a69-000d3a0a4c90}" behavior="0" />
+      <RootComponent type="29" id="{5b8053e3-1b5b-ef11-bfe2-6045bdf9a93e}" behavior="0" />
+      <RootComponent type="29" id="{5dc8c62f-af90-ef11-8a6a-000d3a0a4c90}" behavior="0" />
+      <RootComponent type="29" id="{5e9f00f3-ae8d-ef11-8a69-7c1e524093cc}" behavior="0" />
+      <RootComponent type="29" id="{5f97c4cc-2546-ef11-a316-000d3a09d744}" behavior="0" />
+      <RootComponent type="29" id="{5fb80cd0-f39d-ef11-8a6a-6045bdcd6cb0}" behavior="0" />
       <RootComponent type="29" id="{6033a3eb-3de6-ee11-a204-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{6274707a-6a65-ef11-a670-7c1e520663eb}" behavior="0" />
+      <RootComponent type="29" id="{6283e440-8c5a-ef11-bfe3-6045bdcd6cb0}" behavior="0" />
+      <RootComponent type="29" id="{62b0eca5-5271-ef11-a670-7c1e524070ba}" behavior="0" />
+      <RootComponent type="29" id="{63f00bc0-c943-ef11-a316-000d3a09d744}" behavior="0" />
+      <RootComponent type="29" id="{662f2408-263b-ef11-a316-6045bdf9786d}" behavior="0" />
+      <RootComponent type="29" id="{6a30ddd5-bd60-ef11-bfe4-6045bdcd4f9d}" behavior="0" />
       <RootComponent type="29" id="{6d54a5ff-2fdb-ee11-904c-002248d56374}" behavior="0" />
+      <RootComponent type="29" id="{6ee515e5-2625-ef11-840a-6045bdcce71f}" behavior="0" />
+      <RootComponent type="29" id="{6f53d585-ad7a-ef11-ac20-000d3a09e365}" behavior="0" />
+      <RootComponent type="29" id="{703ed0f0-a3da-4d92-aa56-d1ab335812fd}" behavior="0" />
+      <RootComponent type="29" id="{70b5b357-8c70-ef11-a670-7c1e5240b0bf}" behavior="0" />
+      <RootComponent type="29" id="{72b477c2-097a-ef11-ac20-7c1e5240b0bf}" behavior="0" />
+      <RootComponent type="29" id="{75d8d21a-a739-ef11-a316-0022486dc4b6}" behavior="0" />
+      <RootComponent type="29" id="{7869b0f0-6afb-ee11-9f89-0022486e0199}" behavior="0" />
+      <RootComponent type="29" id="{78a64dc2-d063-ef11-a671-6045bdf9a93e}" behavior="0" />
+      <RootComponent type="29" id="{78de3693-8738-ef11-a316-0022486dc4b6}" behavior="0" />
+      <RootComponent type="29" id="{79095edc-458b-ef11-8a6a-000d3a0a4c90}" behavior="0" />
       <RootComponent type="29" id="{79606879-b4bf-ee11-9079-000d3af4fd74}" behavior="0" />
+      <RootComponent type="29" id="{7be5a59f-1e8b-ef11-8a6a-000d3a0a4c90}" behavior="0" />
+      <RootComponent type="29" id="{7d52d3a8-a885-ef11-ac20-6045bdccf571}" behavior="0" />
       <RootComponent type="29" id="{7d69e98b-34ca-ee11-9079-000d3af4fd74}" behavior="0" />
+      <RootComponent type="29" id="{7fc4308b-c10b-ef11-9f8a-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{81ed99d9-e884-ef11-ac21-000d3a0a4c90}" behavior="0" />
       <RootComponent type="29" id="{8383795c-05aa-ee11-a569-000d3af4fa73}" behavior="0" />
-      <RootComponent type="29" id="{861809cb-85ec-ee11-a1fd-0022486e1cec}" behavior="0" />
+      <RootComponent type="29" id="{848ac84b-bd8c-ef11-8a69-7c1e524093cc}" behavior="0" />
+      <RootComponent type="29" id="{88f3308e-dffc-ee11-9f8a-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{89058df7-faad-ef11-a72d-7c1e52063ad8}" behavior="0" />
+      <RootComponent type="29" id="{891aa7ef-5c32-ef11-8e4f-000d3af4a207}" behavior="0" />
       <RootComponent type="29" id="{892b7daf-e5e4-ee11-a203-002248d56374}" behavior="0" />
-      <RootComponent type="29" id="{8d3c2230-cbe0-ee11-904c-0022486e0199}" behavior="0" />
+      <RootComponent type="29" id="{8a3db65a-1313-ef11-9f89-000d3af46033}" behavior="0" />
+      <RootComponent type="29" id="{8ab160f0-db0b-ef11-9f89-6045bdcd18f7}" behavior="0" />
+      <RootComponent type="29" id="{8de6e655-fead-ef11-a72d-7c1e52063ad8}" behavior="0" />
+      <RootComponent type="29" id="{90daa501-ee3e-ef11-a316-6045bdf9786d}" behavior="0" />
+      <RootComponent type="29" id="{94f1ce82-1e12-ef11-9f8a-000d3af4a207}" behavior="0" />
       <RootComponent type="29" id="{958529ea-5ecb-ee11-9079-000d3af4fd74}" behavior="0" />
+      <RootComponent type="29" id="{98452c32-8970-ef11-a671-6045bdcd6cb0}" behavior="0" />
+      <RootComponent type="29" id="{98d41754-fb6a-ef11-a670-7c1e5240b0bf}" behavior="0" />
       <RootComponent type="29" id="{9b732d6e-a39a-ee11-be37-000d3af4fa73}" behavior="0" />
+      <RootComponent type="29" id="{a2a09f18-827b-ef11-ac20-7c1e5240b0bf}" behavior="0" />
+      <RootComponent type="29" id="{a3c5d1e9-b243-ef11-a317-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{a81f19c1-72fb-ee11-9f89-002248d56374}" behavior="0" />
+      <RootComponent type="29" id="{a889a5c7-be00-ef11-9f8a-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{a90f794a-5b71-ef11-a670-7c1e5240b0bf}" behavior="0" />
+      <RootComponent type="29" id="{a9a624bc-5e87-ef11-ac21-000d3a0a4c90}" behavior="0" />
+      <RootComponent type="29" id="{ab1528c8-08ae-ef11-a72d-7c1e52063ad8}" behavior="0" />
       <RootComponent type="29" id="{ab532154-95b5-ee11-a569-000d3af4f18a}" behavior="0" />
-      <RootComponent type="29" id="{b3c5f56c-9cb5-ee11-a569-000d3af4f18a}" behavior="0" />
+      <RootComponent type="29" id="{afff218f-0955-ef11-bfe3-000d3af4ec16}" behavior="0" />
+      <RootComponent type="29" id="{b55e081b-de63-ef11-a671-6045bdcd4f9d}" behavior="0" />
+      <RootComponent type="29" id="{b8718976-6d48-ef11-accd-000d3af45c14}" behavior="0" />
+      <RootComponent type="29" id="{b9aeea67-e78b-ef11-8a6a-000d3a0a4c90}" behavior="0" />
+      <RootComponent type="29" id="{bb0ed7d3-8a5a-ef11-bfe2-6045bdf9a93e}" behavior="0" />
+      <RootComponent type="29" id="{bd3ce44b-9a5a-ef11-bfe2-6045bdf9a93e}" behavior="0" />
+      <RootComponent type="29" id="{be5678b7-4b7c-ef11-ac20-000d3a09e365}" behavior="0" />
+      <RootComponent type="29" id="{c1ece2b6-335b-ef11-bfe3-6045bdcd4f9d}" behavior="0" />
+      <RootComponent type="29" id="{c1f919ed-8c70-ef11-a670-000d3a0a4c90}" behavior="0" />
+      <RootComponent type="29" id="{c2df4d8c-508b-ef11-8a69-6045bdccf571}" behavior="0" />
+      <RootComponent type="29" id="{c4241fc5-6e35-ef11-8e4e-0022486dc4b6}" behavior="0" />
       <RootComponent type="29" id="{c5910727-66c0-ee11-9079-000d3af4fd74}" behavior="0" />
+      <RootComponent type="29" id="{c7315f4e-4007-ef11-9f89-6045bdcd18f7}" behavior="0" />
+      <RootComponent type="29" id="{c85a49ba-890c-ef11-9f89-000d3a09f34b}" behavior="0" />
+      <RootComponent type="29" id="{cc649ab3-4d71-ef11-a670-7c1e524070ba}" behavior="0" />
+      <RootComponent type="29" id="{cd4b50fe-2e92-ef11-8a6a-6045bdcd6cb0}" behavior="0" />
+      <RootComponent type="29" id="{cd512aea-4c45-ef11-a317-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{cdec36cb-490e-ef11-9f8a-0022486e1cec}" behavior="0" />
+      <RootComponent type="29" id="{cee5d228-d04e-ef11-accd-000d3af45c14}" behavior="0" />
+      <RootComponent type="29" id="{cf6acdb8-8f70-ef11-a670-7c1e5240b0bf}" behavior="0" />
       <RootComponent type="29" id="{d0395999-66e1-ee11-904c-0022486e1cec}" behavior="0" />
       <RootComponent type="29" id="{d04a9eae-66d6-ee11-904d-000d3af4f18a}" behavior="0" />
+      <RootComponent type="29" id="{d22c4dfc-be38-ef11-a316-000d3af45c14}" behavior="0" />
       <RootComponent type="29" id="{d5582eab-afbf-ee11-9079-000d3af4febe}" behavior="0" />
-      <RootComponent type="29" id="{dadb3640-cfc9-ee11-9079-000d3af4febe}" behavior="0" />
+      <RootComponent type="29" id="{d9d0ac72-8744-ef11-a316-000d3af45c14}" behavior="0" />
+      <RootComponent type="29" id="{da19c6d7-378b-ef11-8a6a-6045bdcd6cb0}" behavior="0" />
+      <RootComponent type="29" id="{dc223962-4649-ef11-accd-000d3af45c14}" behavior="0" />
+      <RootComponent type="29" id="{dc5fccaa-992d-ef11-8e4f-000d3af45c14}" behavior="0" />
+      <RootComponent type="29" id="{dc6cd7ea-868d-ef11-8a69-7c1e524093cc}" behavior="0" />
       <RootComponent type="29" id="{dfc6730d-52e1-ee11-904c-0022486e0199}" behavior="0" />
+      <RootComponent type="29" id="{e25cac38-501d-ef11-840b-0022486e1cec}" behavior="0" />
+      <RootComponent type="29" id="{e468676f-b317-ef11-840a-6045bdf9ed54}" behavior="0" />
+      <RootComponent type="29" id="{e5d8445e-bf6b-ef11-a670-7c1e524070ba}" behavior="0" />
       <RootComponent type="29" id="{e6a4cfb7-adcf-ee11-904d-000d3af4fd74}" behavior="0" />
+      <RootComponent type="29" id="{e726d8a3-bc22-ef11-840a-6045bdf9ed54}" behavior="0" />
+      <RootComponent type="29" id="{e72e0543-5303-ef11-9f89-002248d56374}" behavior="0" />
+      <RootComponent type="29" id="{e7d1a7c0-5771-ef11-a671-6045bdcd6cb0}" behavior="0" />
+      <RootComponent type="29" id="{e86f2be4-5474-ef11-ac20-7c1e524070ba}" behavior="0" />
+      <RootComponent type="29" id="{ea76fc80-1cf8-ee11-a1fe-0022486e1cec}" behavior="0" />
+      <RootComponent type="29" id="{eb4203e5-4571-ef11-a671-6045bdcd6cb0}" behavior="0" />
+      <RootComponent type="29" id="{ee0c0a85-163f-ef11-a317-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{f2ba4b29-9018-ef11-840b-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{f43c5106-3b71-ef11-a670-7c1e5240b0bf}" behavior="0" />
       <RootComponent type="29" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" behavior="0" />
-      <RootComponent type="91" id="{3b757e2a-7c11-4d42-8f25-4dd164479a48}" schemaName="BCGOV.Plugin.DocumentUrl, Version=1.0.8864.25807, Culture=neutral, PublicKeyToken=e7f1eef6fa8a36b8" behavior="0" />
+      <RootComponent type="29" id="{f70f8a88-0370-ef11-a670-000d3a0a4c90}" behavior="0" />
+      <RootComponent type="29" id="{f7a709d2-1e30-ef11-8e50-000d3af4a207}" behavior="0" />
+      <RootComponent type="29" id="{fb9f1f30-bd22-ef11-840a-000d3af46033}" behavior="0" />
+      <RootComponent type="29" id="{fc02f650-cb29-ef11-840a-6045bdf9786d}" behavior="0" />
+      <RootComponent type="91" id="{097c7072-971f-4aa5-9f5d-4dc5fb127c29}" schemaName="CRM.CustomWorkflow, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92a36b6d0823611e" behavior="0" />
     </RootComponents>
     <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_config" displayName="System Configuration" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - Notify Account Setup complete" id="{72b477c2-097a-ef11-ac20-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_config" displayName="System Configuration" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - Application Approval Letter on Certificate Created CE" id="{d9d0ac72-8744-ef11-a316-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_config" displayName="System Configuration" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - Notify Portal User of New Portal Message" id="{e25cac38-501d-ef11-840b-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - WF - Populate Document URL for Summary" id="{5fb80cd0-f39d-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - Populate Customer For Document URL From Related" id="{662f2408-263b-ef11-a316-6045bdf9786d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - Set Previous Name to Ready for Verification on Associate to Previous Name" id="{6ee515e5-2625-ef11-840a-6045bdcce71f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - Set Investigation Appeal Period End Date" id="{7d52d3a8-a885-ef11-ac20-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - Set Investigation Reconsideration Period End Date" id="{81ed99d9-e884-ef11-ac21-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - Set Reconsideration Period End Date - CE" id="{90daa501-ee3e-ef11-a316-6045bdf9786d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - Assign Document URL record to Linked Record Team" id="{94f1ce82-1e12-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - Set Document Tag for Email" id="{a889a5c7-be00-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - Investigation Interview populate Investigation on uploaded file" id="{c7315f4e-4007-ef11-9f89-6045bdcd18f7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_tag" displayName="Tag" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - Set Document Tag for Email" id="{a889a5c7-be00-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_allegation" displayName="Allegation (Intake)" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Copy Intake Involved Persons and Allegations to Active" id="{7869b0f0-6afb-ee11-9f89-0022486e0199}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_allegation" displayName="Allegation (Intake)" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Notice of Investigation Template Content" id="{a3c5d1e9-b243-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_allegation" displayName="Allegation (Intake)" solution="Active" />
+        <Dependent type="29" displayName="ECER - Rollup of Related Complaints/Referrals/Investigations to Primary Record" id="{dc223962-4649-ef11-accd-000d3af45c14}" />
+      </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
         <Dependent type="29" displayName="ECER - Populate Character Reference Name" id="{003318f6-21c1-ee11-9079-000d3af4f18a}" />
@@ -124,6 +298,10 @@
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
         <Dependent type="29" displayName="ECER - Populate Work Experience Name" id="{04357430-cbbf-ee11-9079-000d3af4f18a}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
@@ -135,7 +313,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Parallel Process on Application" id="{0dec8bf1-1c88-ef11-ac21-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
         <Dependent type="29" displayName="ECER - On Character Reference status change to Submitted" id="{10f35d17-24e3-ee11-904c-002248d56374}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Origin Fields on Related Tables if Draft" id="{14a2a506-af90-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Update Parental Consent on Application - CE" id="{21b52e41-703d-ef11-a317-000d3af4a207}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
@@ -147,11 +337,43 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
-        <Dependent type="29" displayName="ECER - Update Status and Assignment on Escalated" id="{3657d7d4-c6c9-ee11-9079-000d3af4febe}" />
+        <Dependent type="29" displayName="ECER - Update Status and Assignment on Escalated - CE" id="{3657d7d4-c6c9-ee11-9079-000d3af4febe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - CF - Generate Assessment Records" id="{3c7ca37a-6739-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Work Experience Reference Status set to Rejected" id="{3f2dbfe7-ab29-ef11-840a-0022486dc4b6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Route Application to Complete Stage - CE" id="{4957c416-5732-ef11-8e4f-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Professional Development Flag on Application" id="{5a8f86b5-0697-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Send Parental Consent Communication Message when Application is submitted" id="{5dc8c62f-af90-ef11-8a6a-000d3a0a4c90}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
         <Dependent type="29" displayName="ECER - On Work Experience Reference status change to Submitted" id="{6033a3eb-3de6-ee11-a204-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Professional Development Status Reason On Application Change" id="{6283e440-8c5a-ef11-bfe3-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Education Recognition on Application" id="{6f53d585-ad7a-ef11-ac20-000d3a09e365}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Assessment" id="{75d8d21a-a739-ef11-a316-0022486dc4b6}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
@@ -159,7 +381,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Incomplete Application Notification Reminders" id="{7be5a59f-1e8b-ef11-8a6a-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
         <Dependent type="29" displayName="ECER - On Application Ownership Changed" id="{7d69e98b-34ca-ee11-9079-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Application Submitted Date" id="{848ac84b-bd8c-ef11-8a69-7c1e524093cc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Declaration Statements on Application Created" id="{88f3308e-dffc-ee11-9f8a-000d3af4a207}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
@@ -167,7 +401,11 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
-        <Dependent type="29" displayName="ECER - Daily Delete DRAFT application after 30 days" id="{8d3c2230-cbe0-ee11-904c-0022486e0199}" />
+        <Dependent type="29" displayName="ECER - Set Reconsideration Period End Date - CE" id="{90daa501-ee3e-ef11-a316-6045bdf9786d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Notice of Investigation Template Content" id="{a3c5d1e9-b243-ef11-a317-000d3af4a207}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
@@ -175,15 +413,35 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
-        <Dependent type="29" displayName="ECER - Generate Communication on Ready for Assessment" id="{b3c5f56c-9cb5-ee11-a569-000d3af4f18a}" />
+        <Dependent type="29" displayName="ECER - Application Assessment on Good Character Accepted" id="{afff218f-0955-ef11-bfe3-000d3af4ec16}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
-        <Dependent type="29" displayName="ECER - Calculate Approved Work Experience Hours" id="{c5910727-66c0-ee11-9079-000d3af4fd74}" />
+        <Dependent type="29" displayName="ECER - On Professional Reference Status set to Rejected" id="{bb0ed7d3-8a5a-ef11-bfe2-6045bdf9a93e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
-        <Dependent type="29" displayName="ECER - Create Certficate Record" id="{d0395999-66e1-ee11-904c-0022486e1cec}" />
+        <Dependent type="29" displayName="ECER - Calculate Professional Development Hours Subtotals - CE" id="{bd3ce44b-9a5a-ef11-bfe2-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Calculate Work Experience Hours Subtotals - CE" id="{c5910727-66c0-ee11-9079-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Notify Investigations when ECE has Suspended Certificate or T&amp;Cs on Application Submission" id="{cd512aea-4c45-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Education Transcript Status Reason Changed " id="{cdec36cb-490e-ef11-9f8a-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Cancellation Date on Certficate" id="{cee5d228-d04e-ef11-accd-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Create Certficate Record - CE" id="{d0395999-66e1-ee11-904c-0022486e1cec}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
@@ -191,19 +449,91 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Update Status Reason and Detail on Assessor Assignment - CE" id="{d22c4dfc-be38-ef11-a316-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
         <Dependent type="29" displayName="ECER - Populate Application Certificate Type" id="{d5582eab-afbf-ee11-9079-000d3af4febe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Approval Letter on Certificate Created CE" id="{d9d0ac72-8744-ef11-a316-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
         <Dependent type="29" displayName="ECER - Log Application Assignee on Ownerid change" id="{dfc6730d-52e1-ee11-904c-0022486e0199}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
-        <Dependent type="29" displayName="ECER - Application Assignment on Status Change" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+        <Dependent type="29" displayName="ECER - Notify Portal User of New Portal Message" id="{e25cac38-501d-ef11-840b-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Move Application Process to Assessment Review on Reconsideration" id="{e5d8445e-bf6b-ef11-a670-7c1e524070ba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Clean Up Abandoned Applications" id="{e86f2be4-5474-ef11-ac20-7c1e524070ba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Automated Profile Verification BCSC Application" id="{ea76fc80-1cf8-ee11-a1fe-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Close Applications Past Reconsideration or Appeal Date - CE" id="{ee0c0a85-163f-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Assignment on Status Change - CE" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Character Reference Status set to Rejected" id="{fc02f650-cb29-ef11-840a-6045bdf9786d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_applicationassessment" displayName="Application Assessment" solution="Active" />
+        <Dependent type="29" displayName="ECER - CF - Generate Assessment Records" id="{3c7ca37a-6739-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_applicationassessment" displayName="Application Assessment" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Work Experience Reference status change to Submitted" id="{6033a3eb-3de6-ee11-a204-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_applicationassessment" displayName="Application Assessment" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Assessment" id="{75d8d21a-a739-ef11-a316-0022486dc4b6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_applicationassessment" displayName="Application Assessment" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Assessment on Good Character Accepted" id="{afff218f-0955-ef11-bfe3-000d3af4ec16}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_applicationassessment" displayName="Application Assessment" solution="Active" />
+        <Dependent type="29" displayName="ECER - Bulk Approve Professional Development" id="{c1ece2b6-335b-ef11-bfe3-6045bdcd4f9d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_applicationassessmentresult" displayName="Application Assessment Result" solution="Active" />
+        <Dependent type="29" displayName="ECER - CF - Generate Assessment Records" id="{3c7ca37a-6739-ef11-a317-000d3af4a207}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_applicationhistory" displayName="Application History" solution="Active" />
         <Dependent type="29" displayName="ECER - Log Application Assignee on Ownerid change" id="{dfc6730d-52e1-ee11-904c-0022486e0199}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_authentication" displayName="Authentication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Notify Account Setup complete" id="{72b477c2-097a-ef11-ac20-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_authentication" displayName="Authentication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Automated Profile Verification BCSC Application" id="{ea76fc80-1cf8-ee11-a1fe-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Certificate from Contact" id="{3d87ca8f-24ad-ef11-a72d-7c1e524087d5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
@@ -211,7 +541,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Certificate Suspended Date" id="{43101bd8-7e7b-ef11-ac20-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
         <Dependent type="29" displayName="ECER - On Work Experience Reference status change to Submitted" id="{6033a3eb-3de6-ee11-a204-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Customer For Document URL From Related" id="{662f2408-263b-ef11-a316-6045bdf9786d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Active Certificate to Expired on day after Expiry" id="{7fc4308b-c10b-ef11-9f8a-000d3af4a207}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
@@ -219,7 +561,75 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
-        <Dependent type="29" displayName="ECER - Create Certficate Record" id="{d0395999-66e1-ee11-904c-0022486e1cec}" />
+        <Dependent type="29" displayName="ECER - Set Certificate to Suspended" id="{8ab160f0-db0b-ef11-9f89-6045bdcd18f7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Notice of Investigation Template Content" id="{a3c5d1e9-b243-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Notify Investigations when ECE has Suspended Certificate or T&amp;Cs on Application Submission" id="{cd512aea-4c45-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Cancellation Date on Certficate" id="{cee5d228-d04e-ef11-accd-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Create Certficate Record - CE" id="{d0395999-66e1-ee11-904c-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Approval Letter on Certificate Created CE" id="{d9d0ac72-8744-ef11-a316-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Certification Type Changed on Certified Level" id="{dc5fccaa-992d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Registrant on Certificate for Certified Level" id="{e7d1a7c0-5771-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificateconditions" displayName="Certificate Conditions" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Has Current Condition Flag on Conditions Changes" id="{2419e1d2-742e-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificateconditions" displayName="Certificate Conditions" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Notice of Immediate Action Template Content" id="{63f00bc0-c943-ef11-a316-000d3a09d744}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificateconditions" displayName="Certificate Conditions" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Certificate to Suspended" id="{8ab160f0-db0b-ef11-9f89-6045bdcd18f7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificateconditions" displayName="Certificate Conditions" solution="Active" />
+        <Dependent type="29" displayName="ECER - Notify Investigations when ECE has Suspended Certificate or T&amp;Cs on Application Submission" id="{cd512aea-4c45-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificateconditions" displayName="Certificate Conditions" solution="Active" />
+        <Dependent type="29" displayName="ECER - Create Certficate Record - CE" id="{d0395999-66e1-ee11-904c-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificateconditionspreset" displayName="Certificate Conditions Preset" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Certificate to Suspended" id="{8ab160f0-db0b-ef11-9f89-6045bdcd18f7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificatesummary" displayName="Certificate Summary" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Populate Document URL for Summary" id="{5fb80cd0-f39d-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificatetype" displayName="Certificate Type" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificatetype" displayName="Certificate Type" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Display Name By Certificate Type" id="{62b0eca5-5271-ef11-a670-7c1e524070ba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificationcomparison" displayName="Certification Comparison" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Certificate Comparison Name Field" id="{59fa4f55-e684-ef11-ac21-000d3a0a4c90}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_certifications" displayName="Certifications" solution="Active" />
@@ -227,7 +637,43 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_certifications" displayName="Certifications" solution="Active" />
+        <Dependent type="29" displayName="ECER - Route Application to Complete Stage - CE" id="{4957c416-5732-ef11-8e4f-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certifications" displayName="Certifications" solution="Active" />
+        <Dependent type="29" displayName="ECER - Update Status Reason and Detail on Assessor Assignment - CE" id="{d22c4dfc-be38-ef11-a316-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certifications" displayName="Certifications" solution="Active" />
         <Dependent type="29" displayName="ECER - Log Application Assignee on Ownerid change" id="{dfc6730d-52e1-ee11-904c-0022486e0199}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certifications" displayName="Certifications" solution="Active" />
+        <Dependent type="29" displayName="ECER - Move Application Process to Assessment Review on Reconsideration" id="{e5d8445e-bf6b-ef11-a670-7c1e524070ba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certifications" displayName="Certifications" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Assignment on Status Change - CE" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certifiedlevel" displayName="Certified Level" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certifiedlevel" displayName="Certified Level" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Display Name By Certificate Type" id="{62b0eca5-5271-ef11-a670-7c1e524070ba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certifiedlevel" displayName="Certified Level" solution="Active" />
+        <Dependent type="29" displayName="ECER - Create Certficate Record - CE" id="{d0395999-66e1-ee11-904c-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certifiedlevel" displayName="Certified Level" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Certification Type Changed on Certified Level" id="{dc5fccaa-992d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certifiedlevel" displayName="Certified Level" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Registrant on Certificate for Certified Level" id="{e7d1a7c0-5771-ef11-a671-6045bdcd6cb0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
@@ -239,7 +685,23 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Origin Fields on Related Tables if Draft" id="{14a2a506-af90-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - New Portal Invitation on CR Invite Again" id="{18a0fecc-0a07-ef11-9f89-6045bdcd18f7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
         <Dependent type="29" displayName="ECER - Populate Province TEXT field for Character Reference" id="{38df3196-29db-ee11-904c-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - Construct Character Reference Full Name" id="{4a54770e-4a7c-ef11-ac20-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - Send Reference Invitation Email" id="{4fd66507-a6fe-ee11-9f8a-000d3af4a207}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
@@ -251,11 +713,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign CR on Application Submitted" id="{89058df7-faad-ef11-a72d-7c1e52063ad8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
         <Dependent type="29" displayName="ECER - Email Association to Application" id="{958529ea-5ecb-ee11-9079-000d3af4fd74}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
-        <Dependent type="29" displayName="ECER - Send Character Reference Email on Application Submitted" id="{dadb3640-cfc9-ee11-9079-000d3af4febe}" />
+        <Dependent type="29" displayName="ECER - Application Assessment on Good Character Accepted" id="{afff218f-0955-ef11-bfe3-000d3af4ec16}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - Move Application Process to Assessment Review on Reconsideration" id="{e5d8445e-bf6b-ef11-a670-7c1e524070ba}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
@@ -263,11 +733,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
-        <Dependent type="29" displayName="ECER - Application Assignment on Status Change" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+        <Dependent type="29" displayName="ECER - New Portal Invitation additional Character Reference" id="{e726d8a3-bc22-ef11-840a-6045bdf9ed54}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Assignment on Status Change - CE" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Character Reference Status set to Rejected" id="{fc02f650-cb29-ef11-840a-6045bdf9786d}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_comment" displayName="Decision Comment" solution="Active" />
-        <Dependent type="29" displayName="ECER - Update Status and Assignment on Escalated" id="{3657d7d4-c6c9-ee11-9079-000d3af4febe}" />
+        <Dependent type="29" displayName="ECER - Update Status and Assignment on Escalated - CE" id="{3657d7d4-c6c9-ee11-9079-000d3af4febe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_comment" displayName="Decision Comment" solution="Active" />
@@ -276,6 +754,10 @@
       <MissingDependency>
         <Required type="1" schemaName="ecer_comment" displayName="Decision Comment" solution="Active" />
         <Dependent type="29" displayName="ECER - Populate Decision Comment Name" id="{79606879-b4bf-ee11-9079-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_comment" displayName="Decision Comment" solution="Active" />
+        <Dependent type="29" displayName="ECER - Move Application Process to Assessment Review on Reconsideration" id="{e5d8445e-bf6b-ef11-a670-7c1e524070ba}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
@@ -287,7 +769,47 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Work Experience Reference Status set to Rejected" id="{3f2dbfe7-ab29-ef11-840a-0022486dc4b6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Subject from Parent Communication" id="{555cb042-a734-ef11-8e4e-0022486dc4b6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - CF - Send Application Incompletion Reminder" id="{590cf71b-0c8b-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Send Parental Consent Communication Message when Application is submitted" id="{5dc8c62f-af90-ef11-8a6a-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Update Communication Ownership On Association" id="{5e9f00f3-ae8d-ef11-8a69-7c1e524093cc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
         <Dependent type="29" displayName="ECER - On Work Experience Reference status change to Submitted" id="{6033a3eb-3de6-ee11-a204-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Communication on Previous Name Status Changed" id="{6274707a-6a65-ef11-a670-7c1e520663eb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Root Message Do Not Reply" id="{78de3693-8738-ef11-a316-0022486dc4b6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Investigation Appeal Period End Date" id="{7d52d3a8-a885-ef11-ac20-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Investigation Reconsideration Period End Date" id="{81ed99d9-e884-ef11-ac21-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Communication on Unverified Previous Name Scheduled" id="{98d41754-fb6a-ef11-a670-7c1e5240b0bf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
@@ -295,27 +817,327 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
-        <Dependent type="29" displayName="ECER - Generate Communication on Ready for Assessment" id="{b3c5f56c-9cb5-ee11-a569-000d3af4f18a}" />
+        <Dependent type="29" displayName="ECER - On Professional Reference Status set to Rejected" id="{bb0ed7d3-8a5a-ef11-bfe2-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Do Not Reply to All Message in Collection" id="{c4241fc5-6e35-ef11-8e4e-0022486dc4b6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Acknowledged Date" id="{cc649ab3-4d71-ef11-a670-7c1e524070ba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Cancellation Date on Certficate" id="{cee5d228-d04e-ef11-accd-000d3af45c14}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
         <Dependent type="29" displayName="ECER - Generate Communication on Request More Work Experience Reference" id="{d04a9eae-66d6-ee11-904d-000d3af4f18a}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Approval Letter on Certificate Created CE" id="{d9d0ac72-8744-ef11-a316-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Notify Portal User of New Portal Message" id="{e25cac38-501d-ef11-840b-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Parent Communication IF Is Root" id="{f7a709d2-1e30-ef11-8e50-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Character Reference Status set to Rejected" id="{fc02f650-cb29-ef11-840a-6045bdf9786d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_competencycompetencies" displayName="Competency" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Competencies name" id="{70b5b357-8c70-ef11-a670-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_complainant" displayName="Complainant" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Name field on Complainant" id="{c1f919ed-8c70-ef11-a670-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_country" displayName="Country" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Historical Decision Name Field" id="{cd4b50fe-2e92-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="ecer_course" displayName="Course" solution="Active" />
-        <Dependent type="29" displayName="ECER - PSI Calculate total basic ECE hours on Program Profile" id="{861809cb-85ec-ee11-a1fd-0022486e1cec}" />
+        <Dependent type="29" displayName="ECER - Program Profile duplicate the most current record for each PSI" id="{2aa23def-fd03-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_course" displayName="Course" solution="Active" />
+        <Dependent type="29" displayName="ECER - Program Application Set Program Type for Program Profile when approved" id="{8a3db65a-1313-ef11-9f89-000d3af46033}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_course" displayName="Course" solution="Active" />
+        <Dependent type="29" displayName="ECER - Program Profile Courses Total Hours" id="{da19c6d7-378b-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_defaultcontents" displayName="Default Contents" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Declaration Statements on Application Created" id="{88f3308e-dffc-ee11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_denialreason" displayName="Denial Reason" solution="Active" />
+        <Dependent type="29" displayName="ECER - Move Application Process to Assessment Review on Reconsideration" id="{e5d8445e-bf6b-ef11-a670-7c1e524070ba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_educationassessment" displayName="Education Assessment" solution="Active" />
+        <Dependent type="29" displayName="ECER - CF - Generate Assessment Records" id="{3c7ca37a-6739-ef11-a317-000d3af4a207}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_guardianreference" displayName="Guardian Reference" solution="Active" />
-        <Dependent type="29" displayName="ECER - Application Assignment on Status Change" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+        <Dependent type="29" displayName="ECER - WF - Assign GR on Application Submitted" id="{ab1528c8-08ae-ef11-a72d-7c1e52063ad8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_guardianreference" displayName="Guardian Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Assignment on Status Change - CE" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_historicaldecision" displayName="Historical Decision" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Historical Decision Name Field" id="{cd4b50fe-2e92-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Parallel Process on Application" id="{0dec8bf1-1c88-ef11-ac21-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Assignment on  Manager Review in BPF stage" id="{31d3b542-8ba1-ef11-a72d-6045bdf9b81b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation change to Out of Mandate stage" id="{3f27c6f5-5971-ef11-a670-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Assignment on BPF Stage Change" id="{528b73fb-912d-ef11-8e50-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Change Investigation Status to Monitoring when BPF stage is Monitoring" id="{5336e75b-fd8b-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Notice of Immediate Action Template Content" id="{63f00bc0-c943-ef11-a316-000d3a09d744}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Update Under Investigate via Investigation's Status Reason" id="{6a30ddd5-bd60-ef11-bfe4-6045bdcd4f9d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Copy Intake Involved Persons and Allegations to Active" id="{7869b0f0-6afb-ee11-9f89-0022486e0199}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Investigation Ownership Changed" id="{78a64dc2-d063-ef11-a671-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Assign Investigation to Intake Officer when Intake Review Completed" id="{79095edc-458b-ef11-8a6a-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Investigation Appeal Period End Date" id="{7d52d3a8-a885-ef11-ac20-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Investigation Reconsideration Period End Date" id="{81ed99d9-e884-ef11-ac21-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Log Assignee on Owner Change" id="{891aa7ef-5c32-ef11-8e4f-000d3af4a207}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
         <Dependent type="29" displayName="ECER - Investigation assign Name &amp; Applicant information" id="{892b7daf-e5e4-ee11-a203-002248d56374}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Investigation Name" id="{98452c32-8970-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Reset Investigation BPF from status reason reconsidered" id="{a2a09f18-827b-ef11-ac20-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Notice of Investigation Template Content" id="{a3c5d1e9-b243-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation capture last status reason" id="{a81f19c1-72fb-ee11-9f89-002248d56374}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation change to Active stage" id="{a90f794a-5b71-ef11-a670-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Assign Investigation to Investigator and Previous Status when SI Review Completed" id="{b9aeea67-e78b-ef11-8a6a-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Assign Referrer" id="{c85a49ba-890c-ef11-9f89-000d3a09f34b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Notify Investigations when ECE has Suspended Certificate or T&amp;Cs on Application Submission" id="{cd512aea-4c45-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Rollup of Related Complaints/Referrals/Investigations to Primary Record" id="{dc223962-4649-ef11-accd-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigationcompetency" displayName="Investigation Competency" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Investigation Competency Name" id="{f70f8a88-0370-ef11-a670-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigationhistory" displayName="Investigation History" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Log Assignee on Owner Change" id="{891aa7ef-5c32-ef11-8e4f-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigationplanningallegation" displayName="Allegation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Copy Intake Involved Persons and Allegations to Active" id="{7869b0f0-6afb-ee11-9f89-0022486e0199}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigationplanningallegation" displayName="Allegation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Rollup of Related Complaints/Referrals/Investigations to Primary Record" id="{dc223962-4649-ef11-accd-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigationplanninginterview" displayName="Interview" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Interview populate Investigation on uploaded file" id="{c7315f4e-4007-ef11-9f89-6045bdcd18f7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigationplanninginvolvedperson" displayName="Involved Person" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Copy Intake Involved Persons and Allegations to Active" id="{7869b0f0-6afb-ee11-9f89-0022486e0199}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigationplanninginvolvedperson" displayName="Involved Person" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Involved Persons Name" id="{c2df4d8c-508b-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigationplanninginvolvedperson" displayName="Involved Person" solution="Active" />
+        <Dependent type="29" displayName="ECER - Rollup of Related Complaints/Referrals/Investigations to Primary Record" id="{dc223962-4649-ef11-accd-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigationprocess" displayName="Investigation Business Process" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation change to Out of Mandate stage" id="{3f27c6f5-5971-ef11-a670-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigationprocess" displayName="Investigation Business Process" solution="Active" />
+        <Dependent type="29" displayName="ECER - Change Investigation Status to Monitoring when BPF stage is Monitoring" id="{5336e75b-fd8b-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigationprocess" displayName="Investigation Business Process" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Log Assignee on Owner Change" id="{891aa7ef-5c32-ef11-8e4f-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigationprocess" displayName="Investigation Business Process" solution="Active" />
+        <Dependent type="29" displayName="ECER - Reset Investigation BPF from status reason reconsidered" id="{a2a09f18-827b-ef11-ac20-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigationprocess" displayName="Investigation Business Process" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation change to Active stage" id="{a90f794a-5b71-ef11-a670-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_involvedperson" displayName="Involved Person (Intake)" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Copy Intake Involved Persons and Allegations to Active" id="{7869b0f0-6afb-ee11-9f89-0022486e0199}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_involvedperson" displayName="Involved Person (Intake)" solution="Active" />
+        <Dependent type="29" displayName="ECER - Rollup of Related Complaints/Referrals/Investigations to Primary Record" id="{dc223962-4649-ef11-accd-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_involvedperson" displayName="Involved Person (Intake)" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Intake Involved Person Name" id="{eb4203e5-4571-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_outofprovincecertificationtype" displayName="Out of Province Certification Type" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Certificate Comparison Name Field" id="{59fa4f55-e684-ef11-ac21-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_portalinvitation" displayName="Portal Invitation" solution="Active" />
+        <Dependent type="29" displayName="ECER - New Portal Invitation on CR Invite Again" id="{18a0fecc-0a07-ef11-9f89-6045bdcd18f7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_portalinvitation" displayName="Portal Invitation" solution="Active" />
+        <Dependent type="29" displayName="ECER - New Portal Invitation on WER Invite Again" id="{288fcca9-3f07-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_portalinvitation" displayName="Portal Invitation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Send Reference Invitation Email" id="{4fd66507-a6fe-ee11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_portalinvitation" displayName="Portal Invitation" solution="Active" />
+        <Dependent type="29" displayName="ECER - New Portal Invitation additional Character Reference" id="{e726d8a3-bc22-ef11-840a-6045bdf9ed54}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_portalinvitation" displayName="Portal Invitation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Assignment on Status Change - CE" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_portalinvitation" displayName="Portal Invitation" solution="Active" />
+        <Dependent type="29" displayName="ECER - New Portal Invitation on Additional WER" id="{fb9f1f30-bd22-ef11-840a-000d3af46033}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstitute" displayName="Post Secondary Institution" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Site Visit Name" id="{3de61ee1-3571-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstitute" displayName="Post Secondary Institution" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Program Profile Name" id="{3edc4952-9070-ef11-a670-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstitute" displayName="Post Secondary Institution" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Program Application Name" id="{cf6acdb8-8f70-ef11-a670-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstitute" displayName="Post Secondary Institution" solution="Active" />
+        <Dependent type="29" displayName="ECER - Program Profile annual submission reminder" id="{e72e0543-5303-ef11-9f89-002248d56374}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstituteinterview" displayName="PSP Interview" solution="Active" />
+        <Dependent type="29" displayName="ECER - PSP Interview create questions" id="{f2ba4b29-9018-ef11-840b-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstituteprogramapplicaiton" displayName="Program Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Program Application assign to Program Analyst team when Submitted" id="{19647ebb-aa4a-ef11-accd-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstituteprogramapplicaiton" displayName="Program Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Program Application Set Program Type for Program Profile when approved" id="{8a3db65a-1313-ef11-9f89-000d3af46033}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstituteprogramapplicaiton" displayName="Program Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Program Application Ownership Changed" id="{b55e081b-de63-ef11-a671-6045bdcd4f9d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstituteprogramapplicaiton" displayName="Program Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Program Application Assignment on BPF Stage Change" id="{b8718976-6d48-ef11-accd-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstituteprogramapplicaiton" displayName="Program Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Program Application Name" id="{cf6acdb8-8f70-ef11-a670-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstitutesitevisit" displayName="Site Visit" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Site Visit Name" id="{3de61ee1-3571-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstitutesitevisit" displayName="Site Visit" solution="Active" />
+        <Dependent type="29" displayName="ECER - PSP Site Visit reminder 1 week from today" id="{56a1f085-440e-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstitutesitevisit" displayName="Site Visit" solution="Active" />
+        <Dependent type="29" displayName="ECER - PSP Site Visit create Site Visit checklist when new record is created" id="{e468676f-b317-ef11-840a-6045bdf9ed54}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="ecer_previousaddress" displayName="Previous Address" solution="Active" />
-        <Dependent type="29" displayName="ECER - Log Previous address for home address changes (Contacts)" id="{8383795c-05aa-ee11-a569-000d3af4fa73}" />
+        <Dependent type="29" displayName="ECER - Log Home Address Changes on Contact Modified" id="{8383795c-05aa-ee11-a569-000d3af4fa73}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_previousaddress" displayName="Previous Address" solution="Active" />
@@ -323,15 +1145,91 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_previousname" displayName="Previous Name" solution="Active" />
+        <Dependent type="29" displayName="ECER - CF - Previous Name Check On Education Transcript - CE" id="{2297869f-e92f-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_previousname" displayName="Previous Name" solution="Active" />
         <Dependent type="29" displayName="ECER - Log Previous Name on Contact Modified" id="{30480606-e18f-ee11-8179-000d3af4fd74}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="ecer_previousname" displayName="Previous Name" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Communication on Previous Name Status Changed" id="{6274707a-6a65-ef11-a670-7c1e520663eb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_previousname" displayName="Previous Name" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Previous Name to Ready for Verification on Associate to Previous Name" id="{6ee515e5-2625-ef11-840a-6045bdcce71f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_previousname" displayName="Previous Name" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Communication on Unverified Previous Name Scheduled" id="{98d41754-fb6a-ef11-a670-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_previousname" displayName="Previous Name" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Assignment on Status Change - CE" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="ecer_professionaldevelopment" displayName="Professional Development" solution="Active" />
-        <Dependent type="29" displayName="ECER - Application Assignment on Status Change" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+        <Dependent type="29" displayName="ECER - WF - Assign PD on Application Submitted" id="{29a58318-01ae-ef11-a72d-7c1e524087d5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_professionaldevelopment" displayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Professional Development Flag on Application" id="{5a8f86b5-0697-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_professionaldevelopment" displayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Professional Development Approve Flag Changed" id="{5b8053e3-1b5b-ef11-bfe2-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_professionaldevelopment" displayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - Professional Development Status Reason On Application Change" id="{6283e440-8c5a-ef11-bfe3-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_professionaldevelopment" displayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Populate Professional Development Name" id="{703ed0f0-a3da-4d92-aa56-d1ab335812fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_professionaldevelopment" displayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Professional Reference Status set to Rejected" id="{bb0ed7d3-8a5a-ef11-bfe2-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_professionaldevelopment" displayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - Calculate Professional Development Hours Subtotals - CE" id="{bd3ce44b-9a5a-ef11-bfe2-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_professionaldevelopment" displayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - Bulk Approve Professional Development" id="{c1ece2b6-335b-ef11-bfe3-6045bdcd4f9d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_professionaldevelopment" displayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - Move Application Process to Assessment Review on Reconsideration" id="{e5d8445e-bf6b-ef11-a670-7c1e524070ba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_professionaldevelopment" displayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Assignment on Status Change - CE" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_program" displayName="Program" solution="Active" />
-        <Dependent type="29" displayName="ECER - PSI Calculate total basic ECE hours on Program Profile" id="{861809cb-85ec-ee11-a1fd-0022486e1cec}" />
+        <Dependent type="29" displayName="ECER - Program Profile duplicate the most current record for each PSI" id="{2aa23def-fd03-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_program" displayName="Program" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Program Profile Name" id="{3edc4952-9070-ef11-a670-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_program" displayName="Program" solution="Active" />
+        <Dependent type="29" displayName="ECER - Program Application Set Program Type for Program Profile when approved" id="{8a3db65a-1313-ef11-9f89-000d3af46033}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_program" displayName="Program" solution="Active" />
+        <Dependent type="29" displayName="ECER - Program Profile Courses Total Hours" id="{da19c6d7-378b-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_program" displayName="Program" solution="Active" />
+        <Dependent type="29" displayName="ECER - Program Profile annual submission reminder" id="{e72e0543-5303-ef11-9f89-002248d56374}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_programapplicationbpf" displayName="Program Application BPF" solution="Active" />
+        <Dependent type="29" displayName="ECER - Program Application Assignment on BPF Stage Change" id="{b8718976-6d48-ef11-accd-000d3af45c14}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_province" displayName="Province" solution="Active" />
@@ -339,15 +1237,51 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_province" displayName="Province" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Certificate Comparison Name Field" id="{59fa4f55-e684-ef11-ac21-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_province" displayName="Province" solution="Active" />
         <Dependent type="29" displayName="ECER - Populate Province TEXT field for Work Experience Reference" id="{6d54a5ff-2fdb-ee11-904c-002248d56374}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="ecer_transcript" displayName="Education Transcript" solution="Active" />
-        <Dependent type="29" displayName="ECER - Populate Transcript Program or Course Name" id="{02f03ab3-74f7-ee11-a1ff-000d3af4a207}" />
+        <Required type="1" schemaName="ecer_provincialrequirement" displayName="Provincial Requirement" solution="Active" />
+        <Dependent type="29" displayName="ECER - CF - Generate Assessment Records" id="{3c7ca37a-6739-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_pspinterviewquestion" displayName="PSP Interview Question" solution="Active" />
+        <Dependent type="29" displayName="ECER - PSP Interview create questions" id="{f2ba4b29-9018-ef11-840b-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_pspinterviewquestiontemplate" displayName="PSP Interview Question Template" solution="Active" />
+        <Dependent type="29" displayName="ECER - PSP Interview create questions" id="{f2ba4b29-9018-ef11-840b-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_pspobservation" displayName="PSP Observation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set PSP Observation Name" id="{05b1ecfe-8d70-ef11-a670-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_pspsitevisitchecklist" displayName="PSP Site Visit Checklist" solution="Active" />
+        <Dependent type="29" displayName="ECER - PSP Site Visit create Site Visit checklist when new record is created" id="{e468676f-b317-ef11-840a-6045bdf9ed54}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_pspsitevisitchecklisttemplate" displayName="PSP Site Visit Checklist Template" solution="Active" />
+        <Dependent type="29" displayName="ECER - PSP Site Visit create Site Visit checklist when new record is created" id="{e468676f-b317-ef11-840a-6045bdf9ed54}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_signature" displayName="Signature" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Signature Name and Title" id="{f43c5106-3b71-ef11-a670-7c1e5240b0bf}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_transcript" displayName="Education Transcript" solution="Active" />
         <Dependent type="29" displayName="ECER - Populate Transcript Name" id="{0dc29a4f-24c1-ee11-9079-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_transcript" displayName="Education Transcript" solution="Active" />
+        <Dependent type="29" displayName="ECER - CF - Previous Name Check On Education Transcript - CE" id="{2297869f-e92f-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_transcript" displayName="Education Transcript" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Education Recognition on Application" id="{6f53d585-ad7a-ef11-ac20-000d3a09e365}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_transcript" displayName="Education Transcript" solution="Active" />
@@ -359,7 +1293,35 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_transcript" displayName="Education Transcript" solution="Active" />
-        <Dependent type="29" displayName="ECER - Application Assignment on Status Change" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+        <Dependent type="29" displayName="ECER - WF - Assign ET on Application Submitted" id="{8de6e655-fead-ef11-a72d-7c1e52063ad8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_transcript" displayName="Education Transcript" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Communication on Transcript Received" id="{ab532154-95b5-ee11-a569-000d3af4f18a}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_transcript" displayName="Education Transcript" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Education Transcript Status Reason Changed " id="{cdec36cb-490e-ef11-9f8a-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_transcript" displayName="Education Transcript" solution="Active" />
+        <Dependent type="29" displayName="ECER - Move Application Process to Assessment Review on Reconsideration" id="{e5d8445e-bf6b-ef11-a670-7c1e524070ba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_transcript" displayName="Education Transcript" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Assignment on Status Change - CE" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceassessment" displayName="Work Experience Assessment" solution="Active" />
+        <Dependent type="29" displayName="ECER - CF - Generate Assessment Records" id="{3c7ca37a-6739-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceassessment" displayName="Work Experience Assessment" solution="Active" />
+        <Dependent type="29" displayName="ECER - Update Work Experience and Approve - CE" id="{5f97c4cc-2546-ef11-a316-000d3a09d744}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceassessment" displayName="Work Experience Assessment" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Work Experience Reference status change to Submitted" id="{6033a3eb-3de6-ee11-a204-000d3af4a207}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_workexperienceassessment" displayName="Work Experience Assessment" solution="Active" />
@@ -371,11 +1333,35 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
-        <Dependent type="29" displayName="ECER - Send Work Experience Reference Email on Application Submitted" id="{11588905-9fca-ee11-9079-000d3af4fa73}" />
+        <Dependent type="29" displayName="ECER - Set Origin Fields on Related Tables if Draft" id="{14a2a506-af90-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - New Portal Invitation on WER Invite Again" id="{288fcca9-3f07-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - CF - Generate Assessment Records" id="{3c7ca37a-6739-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Work Experience Reference Status set to Rejected" id="{3f2dbfe7-ab29-ef11-840a-0022486dc4b6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - Send Reference Invitation Email" id="{4fd66507-a6fe-ee11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign WER on Application Submitted" id="{4fe3ed0e-f2ad-ef11-a72d-7c1e5206334e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
         <Dependent type="29" displayName="ECER - Task Association to Application" id="{57844f54-98cf-ee11-904d-000d3af4f18a}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - Update Work Experience and Approve - CE" id="{5f97c4cc-2546-ef11-a316-000d3a09d744}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
@@ -395,7 +1381,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
-        <Dependent type="29" displayName="ECER - Calculate Approved Work Experience Hours" id="{c5910727-66c0-ee11-9079-000d3af4fd74}" />
+        <Dependent type="29" displayName="ECER - Construct Work Reference Full Name" id="{be5678b7-4b7c-ef11-ac20-000d3a09e365}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - Calculate Work Experience Hours Subtotals - CE" id="{c5910727-66c0-ee11-9079-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - Move Application Process to Assessment Review on Reconsideration" id="{e5d8445e-bf6b-ef11-a670-7c1e524070ba}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
@@ -403,23 +1397,147 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
-        <Dependent type="29" displayName="ECER - Application Assignment on Status Change" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+        <Dependent type="29" displayName="ECER - Application Assignment on Status Change - CE" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - New Portal Invitation on Additional WER" id="{fb9f1f30-bd22-ef11-840a-000d3af46033}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="ecer_certifiedlevel_CertificateId" displayName="ecer_certifiedlevel_CertificateId" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="ecer_bcgov_documenturl_CertificateSummaryId" displayName="ecer_bcgov_documenturl_CertificateSummaryId" parentSchemaName="ecer_certificatesummary" parentDisplayName="Certificate Summary" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Populate Document URL for Summary" id="{5fb80cd0-f39d-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="ecer_certifiedlevel_CertificateTypeId" displayName="ecer_certifiedlevel_CertificateTypeId" parentSchemaName="ecer_certificatetype" parentDisplayName="Certificate Type" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_customer" displayName="Customer" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - Assign Document URL record to Linked Record Team" id="{94f1ce82-1e12-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_documenturlid" displayName="Document Url" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - WF - Populate Document URL for Summary" id="{5fb80cd0-f39d-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="bcgov_filename" displayName="File Name" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="29" displayName="ECER - WF - Populate Document URL for Summary" id="{5fb80cd0-f39d-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_applicationid" displayName="Application" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="Active" />
+        <Dependent type="29" displayName="ECER - Assign Document URL record to Linked Record Team" id="{94f1ce82-1e12-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificateid" displayName="Certificate" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Customer For Document URL From Related" id="{662f2408-263b-ef11-a316-6045bdf9786d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificatesummaryid" displayName="Certificate Summary" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Populate Document URL for Summary" id="{5fb80cd0-f39d-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_documentexternallyviewed" displayName="Document Externally Viewed" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Reconsideration Period End Date - CE" id="{90daa501-ee3e-ef11-a316-6045bdf9786d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_investigationid" displayName="Investigation" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="Active" />
+        <Dependent type="29" displayName="ECER - Assign Document URL record to Linked Record Team" id="{94f1ce82-1e12-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_investigationid" displayName="Investigation" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Document Tag for Email" id="{a889a5c7-be00-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_investigationinterviewid" displayName="Investigation Interview" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="Active" />
+        <Dependent type="29" displayName="ECER - Assign Document URL record to Linked Record Team" id="{94f1ce82-1e12-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_previousnameid" displayName="Previous Name" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Previous Name to Ready for Verification on Associate to Previous Name" id="{6ee515e5-2625-ef11-840a-6045bdcce71f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_pspsitevisitid" displayName="PSP Site Visit" parentSchemaName="bcgov_documenturl" parentDisplayName="Document Url" solution="Active" />
+        <Dependent type="29" displayName="ECER - Assign Document URL record to Linked Record Team" id="{94f1ce82-1e12-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_generatecertificate" displayName="Generate Certificate" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Certificate from Contact" id="{3d87ca8f-24ad-ef11-a72d-7c1e524087d5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_hasprovidedid" displayName="Has Provided ID" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Populate Contact Status Reason" id="{a9a624bc-5e87-ef11-ac21-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_isverified" displayName="Verified" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="29" displayName="ECER - Notify Account Setup complete" id="{72b477c2-097a-ef11-ac20-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_isverified" displayName="Verified" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Populate Contact Status Reason" id="{a9a624bc-5e87-ef11-ac21-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_applicantage" displayName="Applicant Age" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_applicantage" displayName="Applicant Age" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Send Parental Consent Communication Message when Application is submitted" id="{5dc8c62f-af90-ef11-8a6a-000d3a0a4c90}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ecer_applicantid" displayName="Applicant" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
         <Dependent type="29" displayName="ECER - Populate Application Name" id="{27efb836-cfbb-ee11-9079-000d3af4f18a}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="ecer_applicationid" displayName="Application" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_applicationid" displayName="Application" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Application Submitted Date" id="{848ac84b-bd8c-ef11-8a69-7c1e524093cc}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="ecer_certificatetype" displayName="Certificate Type" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
         <Dependent type="29" displayName="ECER - Populate Application Name" id="{27efb836-cfbb-ee11-9079-000d3af4f18a}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="ecer_characterreferencereceived" displayName="Character Reference Received" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_comprehensiveevaluationreportreceived" displayName="Comprehensive Evaluation Report Received" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_courseoutlinereceived" displayName="Course Outline Received" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_datesigned" displayName="Date Signed" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Declaration Statements on Application Created" id="{88f3308e-dffc-ee11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_datesubmitted" displayName="Date Submitted" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Application Submitted Date" id="{848ac84b-bd8c-ef11-8a69-7c1e524093cc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_educationrecognition" displayName="Education Recognition" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="ecer_escalatetoteamlead" displayName="Escalate to Team Lead?" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
-        <Dependent type="29" displayName="ECER - Update Status and Assignment on Escalated" id="{3657d7d4-c6c9-ee11-9079-000d3af4febe}" />
+        <Dependent type="29" displayName="ECER - Update Status and Assignment on Escalated - CE" id="{3657d7d4-c6c9-ee11-9079-000d3af4febe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ecer_generatecertificaterecord" displayName="Generate Certificate Record " parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
-        <Dependent type="29" displayName="ECER - Create Certficate Record" id="{d0395999-66e1-ee11-904c-0022486e1cec}" />
+        <Dependent type="29" displayName="ECER - Create Certficate Record - CE" id="{d0395999-66e1-ee11-904c-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_isece1yr" displayName="ECE 1 YR?" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ecer_isece1yr" displayName="ECE 1 YR?" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
@@ -428,6 +1546,10 @@
       <MissingDependency>
         <Required type="2" schemaName="ecer_isece5yr" displayName="ECE 5 YR?" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
         <Dependent type="29" displayName="ECER - Populate Application Certificate Type" id="{d5582eab-afbf-ee11-9079-000d3af4febe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_iseceassistant" displayName="ECE Assistant?" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ecer_iseceassistant" displayName="ECE Assistant?" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
@@ -442,8 +1564,36 @@
         <Dependent type="29" displayName="ECER - Populate Application Certificate Type" id="{d5582eab-afbf-ee11-9079-000d3af4febe}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Application Submitted Date" id="{848ac84b-bd8c-ef11-8a69-7c1e524093cc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_origin" displayName="Origin" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Origin Fields on Related Tables if Draft" id="{14a2a506-af90-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_parentalreferencereceived" displayName="Parental Reference Received" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_professionaldevelopmentreceived" displayName="Professional Development Received" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_programconfirmationformreceived" displayName="Program Confirmation Form Received" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_readyforassessment" displayName="Ready for Assessment" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="ecer_readyforassessmentdate" displayName="Ready for Assessment Date" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
-        <Dependent type="29" displayName="ECER - Generate Communication on Ready for Assessment" id="{b3c5f56c-9cb5-ee11-a569-000d3af4f18a}" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ecer_requestcharacterreference" displayName="Request Character Reference" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
@@ -454,8 +1604,20 @@
         <Dependent type="29" displayName="ECER - Generate Communication on Request More Work Experience Reference" id="{d04a9eae-66d6-ee11-904d-000d3af4f18a}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="ecer_transcriptreceiveddate" displayName="Transcript Received Date" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
-        <Dependent type="29" displayName="ECER - Generate Communication on Transcript Received" id="{ab532154-95b5-ee11-a569-000d3af4f18a}" />
+        <Required type="2" schemaName="ecer_statusreasondetail" displayName="Status Reason Detail" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_transcriptreceived" displayName="Transcript Received" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_type" displayName="Type" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_workexperiencereceived" displayName="Work Experience Received" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Checklist for Ready for Assessment" id="{0a89e92c-af97-ef11-8a69-000d3a0a4c90}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
@@ -463,19 +1625,183 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Update Status Reason and Detail on Assessor Assignment - CE" id="{d22c4dfc-be38-ef11-a316-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
         <Dependent type="29" displayName="ECER - Log Application Assignee on Ownerid change" id="{dfc6730d-52e1-ee11-904c-0022486e0199}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
-        <Dependent type="29" displayName="ECER - Application Assignment on Status Change" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+        <Dependent type="29" displayName="ECER - Professional Development Status Reason On Application Change" id="{6283e440-8c5a-ef11-bfe3-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Application Submitted Date" id="{848ac84b-bd8c-ef11-8a69-7c1e524093cc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Move Application Process to Assessment Review on Reconsideration" id="{e5d8445e-bf6b-ef11-a670-7c1e524070ba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Automated Profile Verification BCSC Application" id="{ea76fc80-1cf8-ee11-a1fe-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Assignment on Status Change - CE" id="{f462204c-54b5-ee11-a569-000d3af4fd74}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_approveallprofessionaldevelopments" displayName="Approve All Professional Developments" parentSchemaName="ecer_applicationassessment" parentDisplayName="Application Assessment" solution="Active" />
+        <Dependent type="29" displayName="ECER - Bulk Approve Professional Development" id="{c1ece2b6-335b-ef11-bfe3-6045bdcd4f9d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_goodcharacteraccepted" displayName="Good Character Accepted" parentSchemaName="ecer_applicationassessment" parentDisplayName="Application Assessment" solution="Active" />
+        <Dependent type="29" displayName="ECER - Application Assessment on Good Character Accepted" id="{afff218f-0955-ef11-bfe3-000d3af4ec16}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_basecertificatetypeid" displayName="Base Certificate Type ID" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificateid" displayName="Certificate" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificatelevel" displayName="Certificate Level" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Certificate Name on Create" id="{425afcd6-badc-ee11-904c-0022486e0199}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Certificate Suspended Date" id="{43101bd8-7e7b-ef11-ac20-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_certificate" parentDisplayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Cancellation Date on Certficate" id="{cee5d228-d04e-ef11-accd-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_enddate" displayName="End Date" parentSchemaName="ecer_certificateconditions" parentDisplayName="Certificate Conditions" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Certificate to Suspended" id="{8ab160f0-db0b-ef11-9f89-6045bdcd18f7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_presetconditionid" displayName="Preset Condition" parentSchemaName="ecer_certificateconditions" parentDisplayName="Certificate Conditions" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Certificate to Suspended" id="{8ab160f0-db0b-ef11-9f89-6045bdcd18f7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_startdate" displayName="Start Date" parentSchemaName="ecer_certificateconditions" parentDisplayName="Certificate Conditions" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Certificate to Suspended" id="{8ab160f0-db0b-ef11-9f89-6045bdcd18f7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="ecer_certificateconditions" parentDisplayName="Certificate Conditions" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Has Current Condition Flag on Conditions Changes" id="{2419e1d2-742e-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificatesummaryid" displayName="Certificate Summary" parentSchemaName="ecer_certificatesummary" parentDisplayName="Certificate Summary" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Populate Document URL for Summary" id="{5fb80cd0-f39d-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_documenturl" displayName="Document URL" parentSchemaName="ecer_certificatesummary" parentDisplayName="Certificate Summary" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Populate Document URL for Summary" id="{5fb80cd0-f39d-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_certificatesummary" parentDisplayName="Certificate Summary" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Populate Document URL for Summary" id="{5fb80cd0-f39d-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_readytocallapi" displayName="Ready to Call API" parentSchemaName="ecer_certificatesummary" parentDisplayName="Certificate Summary" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Populate Document URL for Summary" id="{5fb80cd0-f39d-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="ecer_certificatesummary" parentDisplayName="Certificate Summary" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Populate Document URL for Summary" id="{5fb80cd0-f39d-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificatetypeid" displayName="Certificate Type" parentSchemaName="ecer_certificatetype" parentDisplayName="Certificate Type" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_legacyeducationlevelid" displayName="Legacy Education Level ID" parentSchemaName="ecer_certificatetype" parentDisplayName="Certificate Type" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_certificatetype" parentDisplayName="Certificate Type" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_bccertificate" displayName="BC Certificate" parentSchemaName="ecer_certificationcomparison" parentDisplayName="Certification Comparison" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Certificate Comparison Name Field" id="{59fa4f55-e684-ef11-ac21-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_transferringcertificate" displayName="Transferring Certificate" parentSchemaName="ecer_certificationcomparison" parentDisplayName="Certification Comparison" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Certificate Comparison Name Field" id="{59fa4f55-e684-ef11-ac21-000d3a0a4c90}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="activestageid" displayName="Active Stage" parentSchemaName="ecer_certifications" parentDisplayName="Certifications" solution="Active" />
         <Dependent type="29" displayName="ECER - Routing Application on BPF Stage Change" id="{35647159-20cc-ee11-9078-000d3af4a207}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="activestageid" displayName="Active Stage" parentSchemaName="ecer_certifications" parentDisplayName="Certifications" solution="Active" />
+        <Dependent type="29" displayName="ECER - Route Application to Complete Stage - CE" id="{4957c416-5732-ef11-8e4f-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificateid" displayName="Certificate" parentSchemaName="ecer_certifiedlevel" parentDisplayName="Certified Level" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificateid" displayName="Certificate" parentSchemaName="ecer_certifiedlevel" parentDisplayName="Certified Level" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Registrant on Certificate for Certified Level" id="{e7d1a7c0-5771-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificatetypeid" displayName="Certificate Type" parentSchemaName="ecer_certifiedlevel" parentDisplayName="Certified Level" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificatetypeid" displayName="Certificate Type" parentSchemaName="ecer_certifiedlevel" parentDisplayName="Certified Level" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Display Name By Certificate Type" id="{62b0eca5-5271-ef11-a670-7c1e524070ba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certificatetypeid" displayName="Certificate Type" parentSchemaName="ecer_certifiedlevel" parentDisplayName="Certified Level" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Certification Type Changed on Certified Level" id="{dc5fccaa-992d-ef11-8e4f-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_certifiedlevelid" displayName="Certified Level" parentSchemaName="ecer_certifiedlevel" parentDisplayName="Certified Level" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_certifiedlevel" parentDisplayName="Certified Level" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Set Base Certificate Type" id="{27680940-969c-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_characterreferenceid" displayName="Character Reference" parentSchemaName="ecer_characterreference" parentDisplayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign CR on Application Submitted" id="{89058df7-faad-ef11-a72d-7c1e52063ad8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_firstname" displayName="First Name" parentSchemaName="ecer_characterreference" parentDisplayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - Construct Character Reference Full Name" id="{4a54770e-4a7c-ef11-ac20-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_inviteagain" displayName="Invite Again" parentSchemaName="ecer_characterreference" parentDisplayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - New Portal Invitation on CR Invite Again" id="{18a0fecc-0a07-ef11-9f89-6045bdcd18f7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_characterreference" parentDisplayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign CR on Application Submitted" id="{89058df7-faad-ef11-a72d-7c1e52063ad8}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="ecer_referencecertifiedprovinceid" displayName="Reference Certified Province" parentSchemaName="ecer_characterreference" parentDisplayName="Character Reference" solution="Active" />
         <Dependent type="29" displayName="ECER - Populate Province TEXT field for Character Reference" id="{38df3196-29db-ee11-904c-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="ecer_characterreference" parentDisplayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign CR on Application Submitted" id="{89058df7-faad-ef11-a72d-7c1e52063ad8}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_characterreference" parentDisplayName="Character Reference" solution="Active" />
@@ -483,43 +1809,403 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_characterreference" parentDisplayName="Character Reference" solution="Active" />
-        <Dependent type="29" displayName="ECER - Send Character Reference Email on Application Submitted" id="{dadb3640-cfc9-ee11-9079-000d3af4febe}" />
+        <Dependent type="29" displayName="ECER - WF - Assign CR on Application Submitted" id="{89058df7-faad-ef11-a72d-7c1e52063ad8}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="ecer_coursehours" displayName="Course Hours" parentSchemaName="ecer_course" parentDisplayName="Course" solution="Active" />
-        <Dependent type="29" displayName="ECER - PSI Calculate total basic ECE hours on Program Profile" id="{861809cb-85ec-ee11-a1fd-0022486e1cec}" />
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_characterreference" parentDisplayName="Character Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Character Reference Status set to Rejected" id="{fc02f650-cb29-ef11-840a-6045bdf9786d}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="ecer_coursename" displayName="Course Name" parentSchemaName="ecer_transcript" parentDisplayName="Education Transcript" solution="Active" />
-        <Dependent type="29" displayName="ECER - Populate Transcript Program or Course Name" id="{02f03ab3-74f7-ee11-a1ff-000d3af4a207}" />
+        <Required type="2" schemaName="ecer_acknowledged" displayName="Acknowledged" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Investigation Appeal Period End Date" id="{7d52d3a8-a885-ef11-ac20-6045bdccf571}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="ecer_programname" displayName="Program Name" parentSchemaName="ecer_transcript" parentDisplayName="Education Transcript" solution="Active" />
-        <Dependent type="29" displayName="ECER - Populate Transcript Program or Course Name" id="{02f03ab3-74f7-ee11-a1ff-000d3af4a207}" />
+        <Required type="2" schemaName="ecer_acknowledged" displayName="Acknowledged" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Investigation Reconsideration Period End Date" id="{81ed99d9-e884-ef11-ac21-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_acknowledged" displayName="Acknowledged" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Acknowledged Date" id="{cc649ab3-4d71-ef11-a670-7c1e524070ba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_applicationid" displayName="Application" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Update Communication Ownership On Association" id="{5e9f00f3-ae8d-ef11-8a69-7c1e524093cc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_dateacknowledged" displayName="Date Acknowledged" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Investigation Reconsideration Period End Date" id="{81ed99d9-e884-ef11-ac21-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_donotreply" displayName="Do Not Reply" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Root Message Do Not Reply" id="{78de3693-8738-ef11-a316-0022486dc4b6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_donotreply" displayName="Do Not Reply" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Do Not Reply to All Message in Collection" id="{c4241fc5-6e35-ef11-8e4e-0022486dc4b6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_investigation" displayName="Investigation" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Investigation Reconsideration Period End Date" id="{81ed99d9-e884-ef11-ac21-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_notifyrecipient" displayName="Notify Recipient" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Notify Portal User of New Portal Message" id="{e25cac38-501d-ef11-840b-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_parentcommunicationid" displayName="Parent Communication" parentSchemaName="ecer_communication" parentDisplayName="Communication" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Subject from Parent Communication" id="{555cb042-a734-ef11-8e4e-0022486dc4b6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_competency" displayName="Competency" parentSchemaName="ecer_competencycompetencies" parentDisplayName="Competency" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Competencies name" id="{70b5b357-8c70-ef11-a670-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_competencynumber" displayName="Competency Number" parentSchemaName="ecer_competencycompetencies" parentDisplayName="Competency" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Competencies name" id="{70b5b357-8c70-ef11-a670-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_first_name" displayName="First Name" parentSchemaName="ecer_complainant" parentDisplayName="Complainant" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Name field on Complainant" id="{c1f919ed-8c70-ef11-a670-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_last_name" displayName="Last Name" parentSchemaName="ecer_complainant" parentDisplayName="Complainant" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Name field on Complainant" id="{c1f919ed-8c70-ef11-a670-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_guardianreferenceid" displayName="Guardian Reference" parentSchemaName="ecer_guardianreference" parentDisplayName="Guardian Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign GR on Application Submitted" id="{ab1528c8-08ae-ef11-a72d-7c1e52063ad8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_guardianreference" parentDisplayName="Guardian Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign GR on Application Submitted" id="{ab1528c8-08ae-ef11-a72d-7c1e52063ad8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="ecer_guardianreference" parentDisplayName="Guardian Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign GR on Application Submitted" id="{ab1528c8-08ae-ef11-a72d-7c1e52063ad8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_guardianreference" parentDisplayName="Guardian Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign GR on Application Submitted" id="{ab1528c8-08ae-ef11-a72d-7c1e52063ad8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_countryofstudyid" displayName="Country" parentSchemaName="ecer_historicaldecision" parentDisplayName="Historical Decision" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Historical Decision Name Field" id="{cd4b50fe-2e92-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_decisiondate" displayName="Decision Date" parentSchemaName="ecer_historicaldecision" parentDisplayName="Historical Decision" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Historical Decision Name Field" id="{cd4b50fe-2e92-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_institution" displayName="Institution" parentSchemaName="ecer_historicaldecision" parentDisplayName="Historical Decision" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Historical Decision Name Field" id="{cd4b50fe-2e92-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_programname" displayName="Program Name" parentSchemaName="ecer_historicaldecision" parentDisplayName="Historical Decision" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Historical Decision Name Field" id="{cd4b50fe-2e92-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_yearofcompletion" displayName="Year of Completion" parentSchemaName="ecer_historicaldecision" parentDisplayName="Historical Decision" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Historical Decision Name Field" id="{cd4b50fe-2e92-ef11-8a6a-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_applicant" displayName="Applicant/Registrant" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Investigation Name" id="{98452c32-8970-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_assigntositeamforconclusionreview" displayName="Assign to SI Team for Conclusion Review?" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Assignment on BPF Stage Change" id="{528b73fb-912d-ef11-8e50-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_assigntositeamforintakereview" displayName="Assign to SI Team for Intake Review?" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Assignment on BPF Stage Change" id="{528b73fb-912d-ef11-8e50-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_conclusionreportreviewcomplete" displayName="Conclusion Report Review Complete?" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Assignment on  Manager Review in BPF stage" id="{31d3b542-8ba1-ef11-a72d-6045bdf9b81b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_immediate_action_type" displayName="Immediate Action Type" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Notice of Immediate Action Template Content" id="{63f00bc0-c943-ef11-a316-000d3a09d744}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_intakereceiveddate" displayName="Intake Received Date" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Investigation Name" id="{98452c32-8970-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_intaketype" displayName="Intake Type" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Investigation Name" id="{98452c32-8970-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_investigationid" displayName="Investigation" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation capture last status reason" id="{a81f19c1-72fb-ee11-9f89-002248d56374}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_managerreviewcompleteactivestage" displayName="Manager Review Complete Active Stage?" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Assign Investigation to Investigator and Previous Status when SI Review Completed" id="{b9aeea67-e78b-ef11-8a6a-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_managerreviewcompleteconclusionstage" displayName="Manager Review Complete Conclusion Stage?" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Assign Investigation to Investigator and Previous Status when SI Review Completed" id="{b9aeea67-e78b-ef11-8a6a-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_managerreviewcompleteintakestage" displayName="Manager Review Complete Intake Stage ?" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Assign Investigation to Intake Officer when Intake Review Completed" id="{79095edc-458b-ef11-8a6a-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_managerreviewcompletesummarystage" displayName="Manager Review Complete Summary Stage?" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Assign Investigation to Investigator and Previous Status when SI Review Completed" id="{b9aeea67-e78b-ef11-8a6a-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation capture last status reason" id="{a81f19c1-72fb-ee11-9f89-002248d56374}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_parallelprocess" displayName="Parallel Process" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Parallel Process on Application" id="{0dec8bf1-1c88-ef11-ac21-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_previousstatus" displayName="Previous Status" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Copy Intake Involved Persons and Allegations to Active" id="{7869b0f0-6afb-ee11-9f89-0022486e0199}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_previousstatus" displayName="Previous Status" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation capture last status reason" id="{a81f19c1-72fb-ee11-9f89-002248d56374}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_readyforassignment" displayName="Intake Review Complete" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Assignment on  Manager Review in BPF stage" id="{31d3b542-8ba1-ef11-a72d-6045bdf9b81b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_sireportreviewcomplete" displayName="SI Report Review Complete?" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Assignment on  Manager Review in BPF stage" id="{31d3b542-8ba1-ef11-a72d-6045bdf9b81b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_sireviewcomplete" displayName="SI Review Complete?" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Assignment on  Manager Review in BPF stage" id="{31d3b542-8ba1-ef11-a72d-6045bdf9b81b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_siteamactivereview" displayName="Assign to SI Team for Active Stage Review?" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Assignment on BPF Stage Change" id="{528b73fb-912d-ef11-8e50-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_siteamsummaryreview" displayName="Assign to SI Team for Summary Review?" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Assignment on BPF Stage Change" id="{528b73fb-912d-ef11-8e50-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Investigation Ownership Changed" id="{78a64dc2-d063-ef11-a671-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation Log Assignee on Owner Change" id="{891aa7ef-5c32-ef11-8e4f-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Rollup of Related Complaints/Referrals/Investigations to Primary Record" id="{dc223962-4649-ef11-accd-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Update Under Investigate via Investigation's Status Reason" id="{6a30ddd5-bd60-ef11-bfe4-6045bdcd4f9d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Reset Investigation BPF from status reason reconsidered" id="{a2a09f18-827b-ef11-ac20-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation capture last status reason" id="{a81f19c1-72fb-ee11-9f89-002248d56374}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_investigation" parentDisplayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Rollup of Related Complaints/Referrals/Investigations to Primary Record" id="{dc223962-4649-ef11-accd-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_competency" displayName="Competency" parentSchemaName="ecer_investigationcompetency" parentDisplayName="Investigation Competency" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Investigation Competency Name" id="{f70f8a88-0370-ef11-a670-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_firstname" displayName="First Name" parentSchemaName="ecer_investigationplanninginvolvedperson" parentDisplayName="Involved Person" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Involved Persons Name" id="{c2df4d8c-508b-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_lastname" displayName="Last Name" parentSchemaName="ecer_investigationplanninginvolvedperson" parentDisplayName="Involved Person" solution="Active" />
+        <Dependent type="29" displayName="ECER - Populate Involved Persons Name" id="{c2df4d8c-508b-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="activestageid" displayName="Active Stage" parentSchemaName="ecer_investigationprocess" parentDisplayName="Investigation Business Process" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation change to Out of Mandate stage" id="{3f27c6f5-5971-ef11-a670-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="activestageid" displayName="Active Stage" parentSchemaName="ecer_investigationprocess" parentDisplayName="Investigation Business Process" solution="Active" />
+        <Dependent type="29" displayName="ECER - Change Investigation Status to Monitoring when BPF stage is Monitoring" id="{5336e75b-fd8b-ef11-8a69-6045bdccf571}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="activestageid" displayName="Active Stage" parentSchemaName="ecer_investigationprocess" parentDisplayName="Investigation Business Process" solution="Active" />
+        <Dependent type="29" displayName="ECER - Investigation change to Active stage" id="{a90f794a-5b71-ef11-a670-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_firstname" displayName="First Name" parentSchemaName="ecer_involvedperson" parentDisplayName="Involved Person (Intake)" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Intake Involved Person Name" id="{eb4203e5-4571-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_lastname" displayName="Last Name" parentSchemaName="ecer_involvedperson" parentDisplayName="Involved Person (Intake)" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Intake Involved Person Name" id="{eb4203e5-4571-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_invitationlink" displayName="Invitation Link" parentSchemaName="ecer_portalinvitation" parentDisplayName="Portal Invitation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Send Reference Invitation Email" id="{4fd66507-a6fe-ee11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_applicationtype" displayName="Application Type" parentSchemaName="ecer_postsecondaryinstituteprogramapplicaiton" parentDisplayName="Program Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Program Application Name" id="{cf6acdb8-8f70-ef11-a670-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="ecer_postsecondaryinstituteprogramapplicaiton" parentDisplayName="Program Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Program Application Ownership Changed" id="{b55e081b-de63-ef11-a671-6045bdcd4f9d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_postsecondaryinstituteprogramapplicaiton" parentDisplayName="Program Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Program Application assign to Program Analyst team when Submitted" id="{19647ebb-aa4a-ef11-accd-000d3af45c14}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_postsecondaryinstituteprogramapplicaiton" parentDisplayName="Program Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Program Application Set Program Type for Program Profile when approved" id="{8a3db65a-1313-ef11-9f89-000d3af46033}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_postsecondaryinstitution" displayName="Post-Secondary Institution" parentSchemaName="ecer_postsecondaryinstitutesitevisit" parentDisplayName="Site Visit" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Site Visit Name" id="{3de61ee1-3571-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_sitevisitdate" displayName="Site Visit Date" parentSchemaName="ecer_postsecondaryinstitutesitevisit" parentDisplayName="Site Visit" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Site Visit Name" id="{3de61ee1-3571-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_type" displayName="Site Visit Type" parentSchemaName="ecer_postsecondaryinstitutesitevisit" parentDisplayName="Site Visit" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Site Visit Name" id="{3de61ee1-3571-ef11-a671-6045bdcd6cb0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_approve" displayName="Approve?" parentSchemaName="ecer_professionaldevelopment" parentDisplayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Professional Development Approve Flag Changed" id="{5b8053e3-1b5b-ef11-bfe2-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_professionaldevelopment" parentDisplayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign PD on Application Submitted" id="{29a58318-01ae-ef11-a72d-7c1e524087d5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_professionaldevelopment" parentDisplayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Populate Professional Development Name" id="{703ed0f0-a3da-4d92-aa56-d1ab335812fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_professionaldevelopmentid" displayName="Professional Development" parentSchemaName="ecer_professionaldevelopment" parentDisplayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign PD on Application Submitted" id="{29a58318-01ae-ef11-a72d-7c1e524087d5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_professionaldevelopmentid" displayName="Professional Development" parentSchemaName="ecer_professionaldevelopment" parentDisplayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Populate Professional Development Name" id="{703ed0f0-a3da-4d92-aa56-d1ab335812fd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="ecer_professionaldevelopment" parentDisplayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign PD on Application Submitted" id="{29a58318-01ae-ef11-a72d-7c1e524087d5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_professionaldevelopment" parentDisplayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign PD on Application Submitted" id="{29a58318-01ae-ef11-a72d-7c1e524087d5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_professionaldevelopment" parentDisplayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Professional Development Flag on Application" id="{5a8f86b5-0697-ef11-8a69-000d3a0a4c90}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_professionaldevelopment" parentDisplayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Professional Reference Status set to Rejected" id="{bb0ed7d3-8a5a-ef11-bfe2-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_professionaldevelopment" parentDisplayName="Professional Development" solution="Active" />
+        <Dependent type="29" displayName="ECER - Calculate Professional Development Hours Subtotals - CE" id="{bd3ce44b-9a5a-ef11-bfe2-6045bdf9a93e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_observationtype" displayName="Observation Type" parentSchemaName="ecer_pspobservation" parentDisplayName="PSP Observation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set PSP Observation Name" id="{05b1ecfe-8d70-ef11-a670-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_nameid" displayName="User" parentSchemaName="ecer_signature" parentDisplayName="Signature" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Signature Name and Title" id="{f43c5106-3b71-ef11-a670-7c1e5240b0bf}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_educationrecognition" displayName="Education Recognition" parentSchemaName="ecer_transcript" parentDisplayName="Education Transcript" solution="Active" />
+        <Dependent type="29" displayName="ECER - Set Education Recognition on Application" id="{6f53d585-ad7a-ef11-ac20-000d3a09e365}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_transcript" parentDisplayName="Education Transcript" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign ET on Application Submitted" id="{8de6e655-fead-ef11-a72d-7c1e52063ad8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_transcriptid" displayName="Transcript" parentSchemaName="ecer_transcript" parentDisplayName="Education Transcript" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign ET on Application Submitted" id="{8de6e655-fead-ef11-a72d-7c1e52063ad8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="ecer_transcript" parentDisplayName="Education Transcript" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign ET on Application Submitted" id="{8de6e655-fead-ef11-a72d-7c1e52063ad8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_transcript" parentDisplayName="Education Transcript" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign ET on Application Submitted" id="{8de6e655-fead-ef11-a72d-7c1e52063ad8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_transcript" parentDisplayName="Education Transcript" solution="Active" />
+        <Dependent type="29" displayName="ECER - Generate Communication on Transcript Received" id="{ab532154-95b5-ee11-a569-000d3af4f18a}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_transcript" parentDisplayName="Education Transcript" solution="Active" />
+        <Dependent type="29" displayName="ECER - On Education Transcript Status Reason Changed " id="{cdec36cb-490e-ef11-9f8a-0022486e1cec}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_approved" displayName="Approved?" parentSchemaName="ecer_workexperienceassessment" parentDisplayName="Work Experience Assessment" solution="Active" />
+        <Dependent type="29" displayName="ECER - Update Work Experience and Approve - CE" id="{5f97c4cc-2546-ef11-a316-000d3a09d744}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ecer_applicationid" displayName="Application" parentSchemaName="ecer_workexperienceref" parentDisplayName="Work Experience Reference" solution="Active" />
         <Dependent type="29" displayName="ECER - Populate Work Experience Name" id="{04357430-cbbf-ee11-9079-000d3af4f18a}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="ecer_firstname" displayName="First Name" parentSchemaName="ecer_workexperienceref" parentDisplayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - Construct Work Reference Full Name" id="{be5678b7-4b7c-ef11-ac20-000d3a09e365}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_inviteagain" displayName="Invite Again" parentSchemaName="ecer_workexperienceref" parentDisplayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - New Portal Invitation on WER Invite Again" id="{288fcca9-3f07-ef11-9f8a-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_name" displayName="Name" parentSchemaName="ecer_workexperienceref" parentDisplayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign WER on Application Submitted" id="{4fe3ed0e-f2ad-ef11-a72d-7c1e5206334e}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="ecer_referenceececertifiedprovinceid" displayName="Reference ECE Certified Province" parentSchemaName="ecer_workexperienceref" parentDisplayName="Work Experience Reference" solution="Active" />
         <Dependent type="29" displayName="ECER - Populate Province TEXT field for Work Experience Reference" id="{6d54a5ff-2fdb-ee11-904c-002248d56374}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="ecer_workexperienceref" parentDisplayName="Work Experience Reference" solution="Active" />
-        <Dependent type="29" displayName="ECER - Calculate Approved Work Experience Hours" id="{c5910727-66c0-ee11-9079-000d3af4fd74}" />
+        <Required type="2" schemaName="ecer_workexperiencerefid" displayName="Work Experience Reference" parentSchemaName="ecer_workexperienceref" parentDisplayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign WER on Application Submitted" id="{4fe3ed0e-f2ad-ef11-a72d-7c1e5206334e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="ecer_workexperienceref" parentDisplayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign WER on Application Submitted" id="{4fe3ed0e-f2ad-ef11-a72d-7c1e5206334e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_workexperienceref" parentDisplayName="Work Experience Reference" solution="Active" />
-        <Dependent type="29" displayName="ECER - Send Work Experience Reference Email on Application Submitted" id="{11588905-9fca-ee11-9079-000d3af4fa73}" />
+        <Dependent type="29" displayName="ECER - On Work Experience Reference Status set to Rejected" id="{3f2dbfe7-ab29-ef11-840a-0022486dc4b6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_workexperienceref" parentDisplayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - WF - Assign WER on Application Submitted" id="{4fe3ed0e-f2ad-ef11-a72d-7c1e5206334e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_workexperienceref" parentDisplayName="Work Experience Reference" solution="Active" />
         <Dependent type="29" displayName="ECER - On Work Experience Reference status change to Submitted" id="{6033a3eb-3de6-ee11-a204-000d3af4a207}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="91" schemaName="BCGOV.Plugin.DocumentUrl, Version=1.0.8864.25807, Culture=neutral, PublicKeyToken=e7f1eef6fa8a36b8" displayName="BCGOV.Plugin.DocumentUrl" solution="S3DocumentManagement (1.0.0.11)" id="{3b757e2a-7c11-4d42-8f25-4dd164479a48}" />
-        <Dependent type="91" schemaName="BCGOV.Plugin.DocumentUrl, Version=1.0.8864.25807, Culture=neutral, PublicKeyToken=e7f1eef6fa8a36b8" displayName="BCGOV.Plugin.DocumentUrl" id="{3b757e2a-7c11-4d42-8f25-4dd164479a48}" />
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_workexperienceref" parentDisplayName="Work Experience Reference" solution="Active" />
+        <Dependent type="29" displayName="ECER - Calculate Work Experience Hours Subtotals - CE" id="{c5910727-66c0-ee11-9079-000d3af4fd74}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>

@@ -1,0 +1,132 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "3cb64d3c-890b-4872-8091-c55be168eb4f"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "Application ID",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_1": {
+                  "title": "Applicant ID",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_2": {
+                  "title": "Program Support Team ID",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text",
+                "text_1",
+                "text_2"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Create_a_new_Communications": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "cc4eb431-c55d-4374-b5df-b1d941dfdbd0"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_communications",
+              "item/ecer_initiatedfrom": 621870000,
+              "item/ecer_message": "<p>Your application is incomplete.</p>\n<p>&nbsp;</p>\n<p>Before we assess your application, you need to: <br />\n<ul><li>Have all references respond to the request for a reference</li><li>Provide all documents requested</li></ul></p>\n<p>&nbsp;</p>\n<p>To view a list of the outstanding items.  Go to the application summary page.</p>",
+              "item/ecer_name": "Reminder: Items needed to complete your application",
+              "item/ecer_type": 621870001,
+              "item/ecer_Registrantid_contact@odata.bind": "contacts(@{triggerBody()['text_1']})",
+              "item/ecer_Applicationid@odata.bind": "ecer_applications(@{triggerBody()['text']})",
+              "item/ecer_areallread": false,
+              "item/ecer_donotreply": true,
+              "item/ecer_isroot": true,
+              "item/ecer_notifyrecipient": true,
+              "item/ownerid@odata.bind": "teams(@{triggerBody()['text_2']})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Respond_to_a_Power_App_or_flow": {
+          "runAfter": {
+            "Create_a_new_Communications": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ad91f34d-82d6-491c-ab6a-ed86c13d8ca9"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "communication_id": "@outputs('Create_a_new_Communications')?['body/ecer_communicationid']"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "communication_id": {
+                  "title": "Communication ID",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -12,12 +12,8 @@
             // Retrieve input data
             var inputText = document.getElementById('inputText').value;
 
+            if (inputText == "") { inputText = "EmptyDescription"; }
             window.returnValue = inputText;
-            //var url = window.location.herf;
-            //var dataIndex = url.lastIndexOd("=") + 1;
-            //var datalength = url.length();
-            //var recordData = url.slice(dataIndex, datalength);
-            //var recordId = recordData.replace("%20", "");
 
             // Close the popup window
             window.close();

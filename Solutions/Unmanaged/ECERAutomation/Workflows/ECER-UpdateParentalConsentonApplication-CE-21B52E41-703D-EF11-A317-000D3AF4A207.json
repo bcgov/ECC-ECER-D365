@@ -1,0 +1,111 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Parental_Verification_Approved_": {
+          "metadata": {
+            "operationMetadataId": "6ff2b13a-72ad-4e09-ab30-cbb97112ca14"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "contact",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filterexpression": "ecer_parentalconsentverified eq 621870000"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Submitted_Applications": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "22a96377-75f3-4a0f-b2b6-5039ef0a91f2"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "$filter": "_ecer_applicantid_value eq '@{triggerOutputs()?['body/contactid']}' and (statuscode eq 1 or statuscode eq 621870001)",
+              "$orderby": "modifiedon desc"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_Update_to_Early_Stage_Applications": {
+          "foreach": "@outputs('Get_Submitted_Applications')?['body/value']",
+          "actions": {
+            "Update_Draft_or_Submitted_Applications": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "df132cf1-d912-40e6-95f0-5acc859beb09"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applications",
+                  "recordId": "@items('Apply_Update_to_Early_Stage_Applications')?['ecer_applicationid']",
+                  "item/ecer_parentalreferenceapproved": 621870000,
+                  "item/ecer_parentalreferencereceived": true,
+                  "item/ecer_parentalreferencereceiveddate": "@utcNow()"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Submitted_Applications": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8d0c50e0-ab15-49c0-99fe-6f684c990196"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

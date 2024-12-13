@@ -65,150 +65,16 @@
                 "parameters": {
                   "entityName": "ecer_communications",
                   "item/ecer_initiatedfrom": 621870000,
-                  "item/ecer_message": "Your submitted Work Experience Reference(s) have not met the required hours observed.  Please submit more Work Experience Reference(s) for review",
-                  "item/ecer_name": "Additional Work Experience Reference Required",
+                  "item/ecer_message": "@variables('Message Content')",
+                  "item/ecer_name": "@variables('Subject')",
                   "item/ecer_type": 621870002,
                   "item/ecer_Registrantid_contact@odata.bind": "contacts(@{outputs('Get_the_whole_record')?['body/_ecer_applicantid_value']})",
                   "item/ecer_Applicationid@odata.bind": "ecer_applications(@{outputs('Get_the_whole_record')?['body/ecer_applicationid']})",
                   "item/ecer_datenotified": "@utcNow()",
+                  "item/ecer_donotreply": true,
+                  "item/ecer_isroot": true,
                   "item/ecer_notifyrecipient": true,
-                  "item/statuscode": 621870001
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            },
-            "Get_List_By_Name_-_No_Reply": {
-              "runAfter": {
-                "Create_a_communication_record": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "4535da44-e091-4fd0-96cb-f6a0523942c9"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps",
-                  "operationId": "ListRecords",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                },
-                "parameters": {
-                  "entityName": "queues",
-                  "$filter": "name eq 'No-Reply'",
-                  "$top": 1
-                },
-                "authentication": "@parameters('$authentication')"
-              }
-            },
-            "Apply_to_each": {
-              "foreach": "@outputs('Get_List_By_Name_-_No_Reply')?['body/value']",
-              "actions": {
-                "Create_Generic_Notification_Email_to_Applicant": {
-                  "runAfter": {},
-                  "metadata": {
-                    "operationMetadataId": "85431eec-6f1a-4aac-90ad-ec272831915c"
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps",
-                      "operationId": "CreateRecord",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "emails",
-                      "item/activitypointer_activity_parties": [
-                        {
-                          "participationtypemask": 1,
-                          "partyid@odata.bind": "queues(@{items('Apply_to_each')?['queueid']})"
-                        },
-                        {
-                          "participationtypemask": 2,
-                          "partyid@odata.bind": "contacts(@{outputs('Get_the_whole_record')?['body/_ecer_applicantid_value']})"
-                        }
-                      ],
-                      "item/description": "There is a message waiting for your at the ECER Portal",
-                      "item/ownerid_email@odata.bind": "teams(@{variables('Assessment Team Value')})",
-                      "item/regardingobjectid_ecer_application_email@odata.bind": "ecer_applications(@{outputs('Get_the_whole_record')?['body/ecer_applicationid']})",
-                      "item/subject": "Additional Work Experience Reference Required"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  }
-                },
-                "IF_Applicant_has_email_address": {
-                  "actions": {
-                    "Send_Email": {
-                      "runAfter": {},
-                      "metadata": {
-                        "operationMetadataId": "514ab58b-3999-4568-8f31-0abd912fa5b5"
-                      },
-                      "type": "OpenApiConnection",
-                      "inputs": {
-                        "host": {
-                          "connectionName": "shared_commondataserviceforapps",
-                          "operationId": "PerformBoundAction",
-                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                        },
-                        "parameters": {
-                          "entityName": "emails",
-                          "actionName": "Microsoft.Dynamics.CRM.SendEmail",
-                          "recordId": "@outputs('Create_Generic_Notification_Email_to_Applicant')?['body/activityid']",
-                          "item/IssueSend": false
-                        },
-                        "authentication": "@parameters('$authentication')"
-                      }
-                    }
-                  },
-                  "runAfter": {
-                    "Create_Generic_Notification_Email_to_Applicant": [
-                      "Succeeded"
-                    ]
-                  },
-                  "expression": {
-                    "not": {
-                      "equals": [
-                        "@outputs('Get_Applicant_Email_Address')?['body/emailaddress1']",
-                        "@null"
-                      ]
-                    }
-                  },
-                  "metadata": {
-                    "operationMetadataId": "992d783f-65da-4fbe-a759-cfecd9c150cc"
-                  },
-                  "type": "If"
-                }
-              },
-              "runAfter": {
-                "Get_Applicant_Email_Address": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "6ab70ee7-4491-44dc-8ddd-7d2efb6cb7f4"
-              },
-              "type": "Foreach"
-            },
-            "Get_Applicant_Email_Address": {
-              "runAfter": {
-                "Get_List_By_Name_-_No_Reply": [
-                  "Succeeded"
-                ]
-              },
-              "metadata": {
-                "operationMetadataId": "c77c385a-6922-481c-a7ad-4819714c708b"
-              },
-              "type": "OpenApiConnection",
-              "inputs": {
-                "host": {
-                  "connectionName": "shared_commondataserviceforapps",
-                  "operationId": "GetItem",
-                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                },
-                "parameters": {
-                  "entityName": "contacts",
-                  "recordId": "@outputs('Get_the_whole_record')?['body/_ecer_applicantid_value']",
-                  "$select": "emailaddress1"
+                  "item/ownerid@odata.bind": "teams(@{variables('Assessment Team Value')})"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -266,7 +132,11 @@
           }
         },
         "Initialize_variable": {
-          "runAfter": {},
+          "runAfter": {
+            "IF_Origin_is_NOT_Portal": [
+              "Succeeded"
+            ]
+          },
           "metadata": {
             "operationMetadataId": "446b4ed0-4721-4063-867d-1db6d2cdda49"
           },
@@ -282,7 +152,7 @@
         },
         "Get_Assessment_Team": {
           "runAfter": {
-            "Initialize_variable": [
+            "Initialize_variable_-_Message_Content": [
               "Succeeded"
             ]
           },
@@ -328,6 +198,73 @@
             "operationMetadataId": "c90575ae-85db-4685-8def-25e3e847b771"
           },
           "type": "Foreach"
+        },
+        "Initialize_variable_-_subject": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c87054fd-06dc-4594-b351-c76ae4a1fcce"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Subject",
+                "type": "string",
+                "value": "Action required: New work experience reference"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Message_Content": {
+          "runAfter": {
+            "Initialize_variable_-_subject": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b6419bff-d44d-4e3b-9da7-6795f2862ecb"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Message Content",
+                "type": "string",
+                "value": "You must provide a new work experience reference. A person you identified is unable to provide a reference for you.\n\nTo add a new work experience reference, go to the application summary page."
+              }
+            ]
+          }
+        },
+        "IF_Origin_is_NOT_Portal": {
+          "actions": {
+            "Terminate": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "23d97c68-3e20-4edf-9b19-e7e2fa99664f"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {},
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/ecer_origin']",
+                621870001
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "6adc20e0-b55b-4c19-94a6-1467add204ba"
+          },
+          "type": "If"
         }
       }
     },

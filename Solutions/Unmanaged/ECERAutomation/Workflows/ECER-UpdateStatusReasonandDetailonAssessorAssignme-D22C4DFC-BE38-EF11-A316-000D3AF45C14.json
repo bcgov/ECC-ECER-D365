@@ -1,0 +1,207 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Application_is_Assigned_to_Assessor": {
+          "metadata": {
+            "operationMetadataId": "5096168d-639f-4edb-9a44-7e636fe920ac"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_application",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ownerid",
+              "subscriptionRequest/runas": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Certifications_BPF": {
+          "runAfter": {
+            "Initialize_variable_-_Status_Reason_Details_-_621870003": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "72689ea3-5727-4554-92c6-22276b7dfc33"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_certificationses",
+              "$filter": "_bpf_ecer_applicationid_value eq '@{triggerOutputs()?['body/ecer_applicationid']}'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('Get_Certifications_BPF')?['body/value']",
+          "actions": {
+            "Condition": {
+              "actions": {
+                "Update_Status_Reason_and_Detail": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "ecee3524-33a7-423c-8fd3-69ce87ee5909"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_applications",
+                      "recordId": "@triggerOutputs()?['body/ecer_applicationid']",
+                      "item/statuscode": 621870003,
+                      "item/ecer_statusreasondetail": 621870004
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {},
+              "expression": {
+                "and": [
+                  {
+                    "equals": [
+                      "@triggerOutputs()?['body/statuscode']",
+                      621870002
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@triggerOutputs()?['body/ecer_statusreasondetail']",
+                      621870003
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@items('Apply_to_each')?['_activestageid_value']",
+                      "10e42ef6-c7a2-4800-adb5-f0bcb808f39f"
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@triggerOutputs()?['body/_ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname']",
+                      "systemuser"
+                    ]
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "6355d499-85b4-4c64-9425-dd9b28872991"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Get_Certifications_BPF": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c0e76a47-fd25-4ef9-ac1c-f3380fcf67ee"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_variable_-_Owner_Table": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "8a8530cf-49cc-4622-9e35-c3517c07a709"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Owner Table",
+                "type": "string",
+                "value": "@triggerOutputs()?['body/_ownerid_type']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Status_Reason_-_621870002": {
+          "runAfter": {
+            "Initialize_variable_-_Owner_Table": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "805cf0fa-4c8f-4744-b387-fbd1e0221c82"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "status reason",
+                "type": "integer",
+                "value": "@triggerOutputs()?['body/statuscode']"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_-_Status_Reason_Details_-_621870003": {
+          "runAfter": {
+            "Initialize_variable_-_Status_Reason_-_621870002": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9f525af2-a904-49a2-85ea-592d7cae8d7b"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Status Reason Details",
+                "type": "integer",
+                "value": "@triggerOutputs()?['body/ecer_statusreasondetail']"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

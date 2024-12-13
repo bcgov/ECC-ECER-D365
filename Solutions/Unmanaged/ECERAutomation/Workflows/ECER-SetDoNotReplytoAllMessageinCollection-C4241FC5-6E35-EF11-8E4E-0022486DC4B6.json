@@ -1,0 +1,164 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "On_Do_Not_Reply_Changes": {
+          "metadata": {
+            "operationMetadataId": "504ba471-79cf-439f-b667-540edf6f923c"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_communication",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_donotreply",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "IF_Do_Not_Reply_is_TRUE": {
+          "actions": {
+            "Delay_10_seconds": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "73d32e32-8454-4ba5-8aae-477f262fdd3b"
+              },
+              "type": "Wait",
+              "inputs": {
+                "interval": {
+                  "count": 10,
+                  "unit": "Second"
+                }
+              }
+            },
+            "List_ALL_messages_in_this_collection_where_Do_NOT_Reply_is_NOT_True": {
+              "runAfter": {
+                "Get_Full_record_for_value_comparison": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "da67a2ed-02a8-40fe-9c54-b6f229735129"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_communications",
+                  "$filter": "_ecer_parentcommunicationid_value eq '@{outputs('Get_Full_record_for_value_comparison')?['body/_ecer_parentcommunicationid_value']}' and ecer_donotreply ne true and statecode eq 0"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Full_record_for_value_comparison": {
+              "runAfter": {
+                "Delay_10_seconds": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "bec2640c-a9de-4ede-9ebb-0873785ac71f"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_communications",
+                  "recordId": "@triggerOutputs()?['body/ecer_communicationid']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each": {
+              "foreach": "@outputs('List_ALL_messages_in_this_collection_where_Do_NOT_Reply_is_NOT_True')?['body/value']",
+              "actions": {
+                "Set_Do_NOT_Reply_to_TRUE": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "60a48ee8-507d-471b-a36a-c72421671834"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "ecer_communications",
+                      "recordId": "@items('Apply_to_each')?['ecer_communicationid']",
+                      "item/ecer_donotreply": true
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "List_ALL_messages_in_this_collection_where_Do_NOT_Reply_is_NOT_True": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "62cb4225-40cc-4f98-af17-65e2a0eb0453"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {},
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_donotreply']",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "fc66b547-f67e-45b7-ac36-0aa4b1683803"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

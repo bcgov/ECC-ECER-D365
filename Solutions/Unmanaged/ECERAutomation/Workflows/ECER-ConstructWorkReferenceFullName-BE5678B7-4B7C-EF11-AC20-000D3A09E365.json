@@ -1,0 +1,139 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted_first_name_or_last_name": {
+          "metadata": {
+            "operationMetadataId": "02c11991-8801-4e88-852b-1b83c9564832"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_workexperienceref",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_firstname, ecer_lastname"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Set_Reference_Name_using_value_from_variable": {
+          "runAfter": {
+            "Condition_is_first_name_null": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c125b31f-d6dc-4e95-9110-9776024289f8"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_workexperiencerefs",
+              "recordId": "@triggerOutputs()?['body/ecer_workexperiencerefid']",
+              "item/ecer_referencefullname": "@variables('full name')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition_is_first_name_null": {
+          "actions": {
+            "Use_Last_Name": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "88a0de78-3d64-4274-bd4c-aecdca14e780"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "full name",
+                "value": "@triggerOutputs()?['body/ecer_lastname']"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable_full_name": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Use_First_Name": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "2f564bd6-1963-470c-8fc3-5d1415deede2"
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "full name",
+                  "value": "@{triggerOutputs()?['body/ecer_firstname']} @{triggerOutputs()?['body/ecer_lastname']}"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/ecer_firstname']",
+              "@null"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "14480991-4c42-4d6b-934c-f3c4a1376e6b"
+          },
+          "type": "If"
+        },
+        "Initialize_variable_full_name": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "f2be54a2-2480-41d4-a4bf-d93175eb3209"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "full name",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,427 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_education_recognition": {
+          "metadata": {
+            "operationMetadataId": "b405c8b2-5380-40d2-b73c-651fb3511f15"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "ecer_transcript",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ecer_educationrecognition, ecer_educationorigin"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_variable_set_recognized_TRUE_by_default": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "09079bdf-d117-4bab-bd60-cddc2e5eb5dc"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "set recognized",
+                "type": "boolean",
+                "value": "@true"
+              }
+            ]
+          }
+        },
+        "List_Non_Rejected_Transcripts_with_matching_application_id": {
+          "runAfter": {
+            "Initialize_variable_-_Education_Origin_-_Inside_BC": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a558464a-7741-46ba-977f-fa9a5c7120e8"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_transcripts",
+              "$filter": "_ecer_applicationid_value eq '@{triggerOutputs()?['body/_ecer_applicationid_value']}' and statuscode ne 621870005"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each_Non_Rejected_Transcript_of_Same_Application": {
+          "foreach": "@outputs('List_Non_Rejected_Transcripts_with_matching_application_id')?['body/value']",
+          "actions": {
+            "Condition_When_Education_Recognition_equals_not_recognized": {
+              "actions": {
+                "Set_variable_set_recognized_-_FALSE": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "88589b99-77f0-4805-b947-9f48c17ed20d"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "set recognized",
+                    "value": "@false"
+                  }
+                }
+              },
+              "runAfter": {},
+              "expression": {
+                "and": [
+                  {
+                    "equals": [
+                      "@items('Apply_to_each_Non_Rejected_Transcript_of_Same_Application')?['ecer_educationrecognition']",
+                      621870001
+                    ]
+                  },
+                  {
+                    "equals": [
+                      "@variables('set recognized')",
+                      "@true"
+                    ]
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "68ff126f-b376-4f53-92a5-3688124990fe"
+              },
+              "type": "If"
+            },
+            "Condition_When_Education_Origin_is_Outside_Canada": {
+              "actions": {
+                "Set_variable_-_Education_Origin_-_Outside_Canada": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "98183232-a7b2-464e-b232-ffbf4b1ed4fd"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Education Origin",
+                    "value": 621870002
+                  }
+                }
+              },
+              "runAfter": {
+                "Condition_When_Education_Recognition_equals_not_recognized": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Condition_When_Education_Origin_is_Outside_BC": {
+                    "actions": {
+                      "Set_variable_-_Education_Origin_-_Outside_BC": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "0dd595da-420b-4942-b15a-6dc4fb575af1"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "Education Origin",
+                          "value": 621870001
+                        }
+                      }
+                    },
+                    "runAfter": {},
+                    "expression": {
+                      "and": [
+                        {
+                          "equals": [
+                            "@items('Apply_to_each_Non_Rejected_Transcript_of_Same_Application')?['ecer_educationorigin']",
+                            621870001
+                          ]
+                        },
+                        {
+                          "equals": [
+                            "@variables('Education Origin')",
+                            621870000
+                          ]
+                        }
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "3ee30da1-dfb7-4449-9351-a000608e8bb7"
+                    },
+                    "type": "If"
+                  }
+                }
+              },
+              "expression": {
+                "and": [
+                  {
+                    "equals": [
+                      "@items('Apply_to_each_Non_Rejected_Transcript_of_Same_Application')?['ecer_educationorigin']",
+                      621870002
+                    ]
+                  },
+                  {
+                    "not": {
+                      "equals": [
+                        "@variables('Education Origin')",
+                        621870002
+                      ]
+                    }
+                  }
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "5b12297d-7628-4861-9af6-6c3726b2efb6"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "List_Non_Rejected_Transcripts_with_matching_application_id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "271317c3-03cb-419c-86be-c75a60416160"
+          },
+          "type": "Foreach"
+        },
+        "IF_Set_Recognized_is_TRUE_but_Application_is_NOT_Recognized": {
+          "actions": {
+            "Set_Application_become_Recognized": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "ac505277-7405-4bbb-8e9e-201d19b140c9"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applications",
+                  "recordId": "@triggerOutputs()?['body/_ecer_applicationid_value']",
+                  "item/ecer_educationrecognition": 621870000
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Terminate": {
+              "runAfter": {
+                "Set_Application_become_Recognized": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "b6277a17-f48e-4a41-81d7-d510a02a565b"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "If_Application_Education_Origin_does_not_match": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@variables('set recognized')",
+                  "@true"
+                ]
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Application_Education_Recognized_for_Comparison')?['body/ecer_educationrecognition']",
+                    621870000
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "565c3e18-cd23-4ad5-9248-0eb89048d799"
+          },
+          "type": "If"
+        },
+        "Get_Application_Education_Recognized_for_Comparison": {
+          "runAfter": {
+            "Apply_to_each_Non_Rejected_Transcript_of_Same_Application": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ab48f7e5-4cda-4350-8fe2-aefc051a244f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@triggerOutputs()?['body/_ecer_applicationid_value']",
+              "$select": "ecer_educationrecognition, ecer_educationorigin"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "If_Set_Recognized_is_FALSE_but_Application_is_NOT_Not_Recognized": {
+          "actions": {
+            "Set_Application_Education_Recognition_to_NOT_Recognized": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "388fed6b-82e7-4a8a-be8d-f39e0a32f451"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applications",
+                  "recordId": "@triggerOutputs()?['body/_ecer_applicationid_value']",
+                  "item/ecer_educationrecognition": 621870001
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "IF_Set_Recognized_is_TRUE_but_Application_is_NOT_Recognized": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@variables('set recognized')",
+                  "@false"
+                ]
+              },
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Application_Education_Recognized_for_Comparison')?['body/ecer_educationrecognition']",
+                    621870001
+                  ]
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "634bd8b2-34ae-4e8b-9b67-b385052fe4d5"
+          },
+          "type": "If"
+        },
+        "Initialize_variable_-_Education_Origin_-_Inside_BC": {
+          "runAfter": {
+            "Initialize_variable_set_recognized_TRUE_by_default": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "51539e34-e754-47cf-b639-e95956e348b5"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Education Origin",
+                "type": "integer",
+                "value": 621870000
+              }
+            ]
+          }
+        },
+        "If_Application_Education_Origin_does_not_match": {
+          "actions": {
+            "Set_Application_Education_Origin_if_not_matching": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "3c2a307a-96ec-4a1e-8e95-8714a31c9c16"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_applications",
+                  "recordId": "@triggerOutputs()?['body/_ecer_applicationid_value']",
+                  "item/ecer_educationorigin": "@variables('Education Origin')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Application_Education_Recognized_for_Comparison": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@outputs('Get_Application_Education_Recognized_for_Comparison')?['body/ecer_educationorigin']",
+                "@variables('Education Origin')"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "540f1b90-c5df-4bea-81ad-66b43647d5b5"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
