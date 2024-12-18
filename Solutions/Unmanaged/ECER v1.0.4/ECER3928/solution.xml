@@ -1,0 +1,107 @@
+<ImportExportXml version="9.2.24114.196" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.24114.196" OrganizationSchemaType="Full" CRMServerServiceabilityVersion="9.2.24114.00196">
+  <SolutionManifest>
+    <UniqueName>ECER3928</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="ECER-3928" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.4.0</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>ecer</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="ECER" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="publisher for all customization for ECER Dynamics instance" languagecode="1033" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>ecer</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>62187</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="29" id="{cd512aea-4c45-ef11-a317-000d3af4a207}" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="ECER - Notify Investigations when ECE has Suspended Certificate or T&amp;Cs on Application Submission" id="{cd512aea-4c45-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="29" displayName="ECER - Notify Investigations when ECE has Suspended Certificate or T&amp;Cs on Application Submission" id="{cd512aea-4c45-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificateconditions" displayName="Certificate Conditions" solution="Active" />
+        <Dependent type="29" displayName="ECER - Notify Investigations when ECE has Suspended Certificate or T&amp;Cs on Application Submission" id="{cd512aea-4c45-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_investigation" displayName="Investigation" solution="Active" />
+        <Dependent type="29" displayName="ECER - Notify Investigations when ECE has Suspended Certificate or T&amp;Cs on Application Submission" id="{cd512aea-4c45-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="ecer_sharedcommondataserviceforapps_8f58e" solution="Active" id.connectionreferencelogicalname="ecer_sharedcommondataserviceforapps_8f58e" />
+        <Dependent type="29" displayName="ECER - Notify Investigations when ECE has Suspended Certificate or T&amp;Cs on Application Submission" id="{cd512aea-4c45-ef11-a317-000d3af4a207}" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

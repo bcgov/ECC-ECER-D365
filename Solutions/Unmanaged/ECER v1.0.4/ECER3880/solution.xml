@@ -1,0 +1,418 @@
+<ImportExportXml version="9.2.24114.196" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.24114.196" OrganizationSchemaType="Full" CRMServerServiceabilityVersion="9.2.24114.00196">
+  <SolutionManifest>
+    <UniqueName>ECER3880</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="ECER-3880" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.4.0</Version>
+    <Managed>0</Managed>
+    <Publisher>
+      <UniqueName>ecer</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="ECER" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="publisher for all customization for ECER Dynamics instance" languagecode="1033" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>ecer</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>62187</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="ecer_recordmanagement" behavior="1" />
+      <RootComponent type="20" id="{02932e51-a481-ef11-ac21-7c1e5240b0bf}" behavior="0" />
+      <RootComponent type="20" id="{0b555210-01f2-ee11-a1fe-000d3af4a207}" behavior="0" />
+      <RootComponent type="20" id="{4b0a6f5f-04f2-ee11-a1fe-000d3af4a207}" behavior="0" />
+      <RootComponent type="20" id="{547a0b6a-04f2-ee11-a1fe-000d3af4a207}" behavior="0" />
+      <RootComponent type="20" id="{5f333b72-04f2-ee11-a1fe-000d3af4a207}" behavior="0" />
+      <RootComponent type="20" id="{7b1b4a85-b717-ef11-840a-6045bdf9ed54}" behavior="0" />
+      <RootComponent type="20" id="{9e71c7ac-d0d4-ee11-904d-000d3af4fd74}" behavior="0" />
+      <RootComponent type="20" id="{f7034a16-6cb5-ee11-a569-000d3af4febe}" behavior="0" />
+      <RootComponent type="80" schemaName="ecer_Certifications" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_config" displayName="System Configuration" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_documenturl" displayName="Document Url" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="bcgov_tag" displayName="Tag" solution="S3DocumentManagement (1.0.0.11)" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_application" displayName="Application" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_applicationassessment" displayName="Application Assessment" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_applicationassessmentresult" displayName="Application Assessment Result" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_assessmenttraininglocation" displayName="Assessment Training Location" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_authentication" displayName="Authentication" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificate" displayName="Certificate" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificateconditions" displayName="Certificate Conditions" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificateconditionspreset" displayName="Certificate Conditions Preset" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificatetype" displayName="Certificate Type" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_certificationcomparison" displayName="Certification Comparison" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_characterreference" displayName="Character Reference" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_city" displayName="City" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_comment" displayName="Decision Comment" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communication" displayName="Communication" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_communicationcontent" displayName="Communication Content" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_country" displayName="Country" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_course" displayName="Course" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_defaultcontents" displayName="Default Contents" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_denialreason" displayName="Denial Reason" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_educationassessment" displayName="Education Assessment" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_guardianreference" displayName="Guardian Reference" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_historicaldecision" displayName="Historical Decision" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_outofprovincecertificationtype" displayName="Out of Province Certification Type" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_postsecondaryinstitute" displayName="Post Secondary Institution" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_previousname" displayName="Previous Name" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_professionaldevelopment" displayName="Professional Development" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_program" displayName="Program" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_province" displayName="Province" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_provincialrequirement" displayName="Provincial Requirement" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_recordmanagement" displayName="Record Management" solution="Active" />
+        <Dependent type="1" schemaName="ecer_recordmanagement" displayName="Record Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_renewalassessment" displayName="Renewal Assessment" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_transcript" displayName="Education Transcript" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceassessment" displayName="Work Experience Assessment" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="ecer_workexperienceref" displayName="Work Experience Reference" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="ecer_contact_ecer_recordmanagement_contact" displayName="ecer_contact_ecer_recordmanagement_contact" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Record Management" id="{175a458c-ac22-4d99-a9df-ef03bdee2c02}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Records Management" displayName="Quick Find Active Records Management" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" id="{40860af9-d9b2-4152-807c-a7c86a1b978c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Record Management" id="{175a458c-ac22-4d99-a9df-ef03bdee2c02}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_accessionnumber" displayName="Accession Number" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Records Management" displayName="Quick Find Active Records Management" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" id="{40860af9-d9b2-4152-807c-a7c86a1b978c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_accessionnumber" displayName="Accession Number" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Record Management" id="{175a458c-ac22-4d99-a9df-ef03bdee2c02}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_box" displayName="Box" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Record Management" id="{175a458c-ac22-4d99-a9df-ef03bdee2c02}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_contact" displayName="Contact" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Record Management" id="{175a458c-ac22-4d99-a9df-ef03bdee2c02}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ecer_recordmanagementid" displayName="Record Management" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Records Management" displayName="Quick Find Active Records Management" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" id="{40860af9-d9b2-4152-807c-a7c86a1b978c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Record Management" id="{175a458c-ac22-4d99-a9df-ef03bdee2c02}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Records Management" displayName="Quick Find Active Records Management" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" id="{40860af9-d9b2-4152-807c-a7c86a1b978c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="ecer_recordmanagement" parentDisplayName="Record Management" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Record Management" id="{175a458c-ac22-4d99-a9df-ef03bdee2c02}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Certifications - Manager of Certifications Role" solution="Active" id="{0f02b3db-d0d4-ee11-904d-000d3af4fd74}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Operations Support - System Management" solution="Active" id="{14ddc0fc-3492-ef11-8a69-7c1e524093cc}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Certification - Program Support Role" solution="Active" id="{3e3b52a8-44d0-ee11-904c-000d3af4a207}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Certifications - Operations Supervisor Program Support Role" solution="Active" id="{41a8a57c-a3d1-ee11-904c-000d3af4a207}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Certification - Program Support Lead Role" solution="Active" id="{531e0df6-9bd1-ee11-904c-000d3af4a207}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Certification - Team Lead Role" solution="Active" id="{6deccb7f-d0d4-ee11-904d-000d3af4fd74}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Equivalency - Program Coordinator Role" solution="Active" id="{7df83933-d2d4-ee11-904d-000d3af4fd74}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Certification - Assessor Role" solution="Active" id="{8d55d382-8dca-ee11-9079-000d3af4febe}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Equivalency - ECE Program Analyst Role" solution="Active" id="{997349ab-d1d4-ee11-904d-000d3af4fd74}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Equivalency - Operations Supervisor Equivalency Role" solution="Active" id="{cc742e10-d2d4-ee11-904d-000d3af4fd74}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Equivalency - Certification Analyst" solution="Active" id="{e6a4f930-d1d4-ee11-904d-000d3af4fd74}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Ineligible Contacts" displayName="Ineligible Contacts" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" id="{07e5ff9e-f8d0-ee11-904d-000d3af4f18a}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="All Contacts" displayName="All Contacts" parentSchemaName="contact" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{0d5d377b-5e7c-47b5-bab1-a5cb8b4ac105}">
+          <package appName="msdynce_AppCommon" version="9.0.24114.10001">msdynce_AppCommonAnchor (9.0.24114.10001)</package>
+        </Required>
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Unverified  Contacts" displayName="Active Unverified  Contacts" parentSchemaName="contact" parentDisplayName="Contact" solution="Active" id="{cb9b74ec-c093-ee11-be37-000d3af4fd74}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Assessment Team Lead Dashboard" solution="Active" id="{1f102f9c-92c0-ee11-9079-000d3af4fa73}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Registry Submission Dashboard" solution="Active" id="{35be10f3-ea72-ee11-8179-000d3af4fa73}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="ECER - Applicant QV Form" parentDisplayName="Contact" solution="Active" id="{538ffd29-61b5-ee11-a569-000d3af4f18a}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="My Assessor Dashboard" solution="Active" id="{5e72a728-93c0-ee11-9079-000d3af4fa73}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Contact Quick Create" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{661157fe-2fc9-4eaa-835f-5bfa2f7b64f7}">
+          <package appName="msdynce_AppCommon" version="9.0.24114.10001">msdynce_AppCommonAnchor (9.0.24114.10001)</package>
+        </Required>
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="My Certification Analyst Dashboard" solution="Active" id="{6919b105-4975-ef11-ac20-7c1e5240b0bf}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="ECER - Ineligible Contact QV Form" parentDisplayName="Contact" solution="Active" id="{97622dfb-0bd1-ee11-904d-000d3af4fd74}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="ECER - Contact Main Form" parentDisplayName="Contact" solution="Active" id="{9f84d203-0b7d-ee11-8179-000d3af4fa73}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="ECER - Quickview Form" parentDisplayName="Phone Call" solution="msdynce_Activities (9.0.1.2033)" id="{a80fb36c-353f-4310-a4cb-b8fa47d58b9b}">
+          <package appName="msdynce_Activities" version="9.0.24105.241031000">msdynce_EnableUCIByDefault (9.0.24105.241031000)</package>
+        </Required>
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="ECER - Phone Call Main Form" parentDisplayName="Phone Call" solution="msdynce_Activities (9.0.1.2033)" id="{a91390a5-99bb-4d10-9eee-3a5c87f841f1}">
+          <package appName="msdynce_Activities" version="9.0.24105.241031000">msdynce_EnableUCIByDefault (9.0.24105.241031000)</package>
+        </Required>
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="My Program Analyst Dashboard" solution="Active" id="{b7979b83-c46f-ef11-a670-7c1e524070ba}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Certificates Dashboard" solution="Active" id="{f2cd29f4-d30b-ef11-9f8a-0022486e1cec}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="My Program Clerk Dashboard" solution="Active" id="{f2f9c192-9735-ef11-8e4e-6045bdf9786d}" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="62" schemaName="ecer_Certifications" solution="Active" />
+        <Dependent type="80" schemaName="ecer_Certifications" displayName="Certifications" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.12)" id.uniquename="AppChannel">
+          <package appName="PowerAppsAppFramework Package" version="1.0.0.16">PowerAppsAppFramework_Anchor (1.0.0.16)</package>
+        </Required>
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=ecer_Certifications,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="ecer_Certifications" id.settingdefinitionid.uniquename="AppChannel" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

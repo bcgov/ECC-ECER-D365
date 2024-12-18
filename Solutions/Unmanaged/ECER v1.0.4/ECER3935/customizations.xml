@@ -1,0 +1,43 @@
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.24114.196" OrganizationSchemaType="Full" CRMServerServiceabilityVersion="9.2.24114.00196">
+  <Entities></Entities>
+  <Roles></Roles>
+  <Workflows>
+    <Workflow WorkflowId="{fb3d0a8d-cebc-ef11-a72e-7c1e5206334e}" Name="ECER - WF - Populate Certificate Tags">
+      <XamlFileName>/Workflows/ECER-WF-PopulateCertificateTags-FB3D0A8D-CEBC-EF11-A72E-7C1E5206334E.xaml</XamlFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>0</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>1</OnDemand>
+      <TriggerOnUpdateAttributeList>ecer_certificateid</TriggerOnUpdateAttributeList>
+      <TriggerOnCreate>1</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>1</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.3.1</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <PrimaryEntity>bcgov_DocumentUrl</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="ECER - WF - Populate Certificate Tags" />
+      </LocalizedNames>
+    </Workflow>
+  </Workflows>
+  <FieldSecurityProfiles></FieldSecurityProfiles>
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <CustomControls />
+  <EntityDataProviders />
+  <Languages>
+    <Language>1033</Language>
+  </Languages>
+</ImportExportXml>

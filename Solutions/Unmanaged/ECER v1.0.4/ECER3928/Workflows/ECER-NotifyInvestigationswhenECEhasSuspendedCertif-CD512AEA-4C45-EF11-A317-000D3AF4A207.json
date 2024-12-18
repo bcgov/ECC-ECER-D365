@@ -1,0 +1,602 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "ecer_sharedcommondataserviceforapps_8f58e"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "796008e5-4e25-47b1-9f18-d45fcd4687fd"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "ecer_application",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode ",
+              "subscriptionRequest/filterexpression": "statuscode eq 621870001"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_IsCreateInvestigation": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "ec4737db-1c1f-40fb-88e5-6710e879f1dc"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "IsCreateInvestigation",
+                "type": "boolean",
+                "value": "@false"
+              }
+            ]
+          }
+        },
+        "Initialize_Description": {
+          "runAfter": {
+            "Initialize_IsCreateInvestigation": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6e5ed2b0-5444-48ff-ad78-aeab9901db2a"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Description",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "If_IsCreateInvestigation_=_True": {
+          "actions": {
+            "Create_Investigation": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "95616661-26c8-46de-8bdf-03e263444723"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "ecer_investigations",
+                  "item/ecer_intakereceiveddate": "@utcNow()",
+                  "item/ecer_Applicant@odata.bind": "\\contacts(@{triggerOutputs()?['body/_ecer_applicantid_value']})",
+                  "item/ecer_complainantdescription": "@variables('Description')",
+                  "item/ecer_intaketype": 621870001,
+                  "item/ecer_source": 621870016
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "If_active_Investigation_Found": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@variables('IsCreateInvestigation')",
+              "@true"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1bcc818d-6eca-4b52-853d-9dd19db84db6"
+          },
+          "type": "If"
+        },
+        "Get_Applicant": {
+          "runAfter": {
+            "Get_Application": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "44f9a865-b14b-4d4d-a473-753b1915673f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@triggerOutputs()?['body/_ecer_applicantid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Active_Investigations": {
+          "runAfter": {
+            "Get_Applicant": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "eb0cee1f-90c0-46db-8f67-fd9978ed5063"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_investigations",
+              "$filter": "(_ecer_applicant_value eq @{triggerOutputs()?['body/_ecer_applicantid_value']} and statecode eq 0 and statuscode ne 621870009)",
+              "$orderby": "createdon desc",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "If_active_Investigation_Found": {
+          "actions": {
+            "Set_variable_3": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "752fe352-3f19-475f-88fa-b1b8c8e7e6e0"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "IsCreateInvestigation",
+                "value": "@true"
+              }
+            },
+            "Apply_to_each_2": {
+              "foreach": "@outputs('Get_Active_Investigations')?['body/value']",
+              "actions": {
+                "Set_variable_4": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "6b1f1bce-d547-4335-845d-8fefd2f1f0ba"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Description",
+                    "value": "@{outputs('Get_Applicant')?['body/fullname']} currently has an active investigation and has recently submitted a new application. \n\nLink to active investigation: https://@{uriHost(items('Apply_to_each_2')?['@odata.id'])}/main.aspx?appid=@{variables('InvestigationAppId')}&pagetype=entityrecord&etn=ecer_investigation&id=@{items('Apply_to_each_2')?['ecer_investigationid']}\n\nLink to application: https://@{uriHost(items('Apply_to_each_2')?['@odata.id'])}/main.aspx?appid=@{variables('InvestigationAppId')}&pagetype=entityrecord&etn=ecer_application&id=@{outputs('Get_Application')?['body/ecer_applicationid']}"
+                  }
+                }
+              },
+              "runAfter": {
+                "Apply_to_each_3": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "3e617515-d303-4fd1-a6b4-cf05cd5c74fa"
+              },
+              "type": "Foreach"
+            },
+            "Get_Investigation_App": {
+              "runAfter": {
+                "Set_variable_3": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "1643f368-cb39-4d31-a3c5-83ef0e714e7d"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "appmodules",
+                  "$filter": "name eq 'Investigations'"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each_3": {
+              "foreach": "@outputs('Get_Investigation_App')?['body/value']",
+              "actions": {
+                "Set_variable_5": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "044562a6-a69f-4fe7-b9f1-a013405ec0a4"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "InvestigationAppId",
+                    "value": "@items('Apply_to_each_3')?['appmoduleid']"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_Investigation_App": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "f3ce9486-976d-4de2-a3a2-3667c381cab7"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Get_Active_Investigations": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Get_most_recent_certificate": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "67148dba-76e7-4678-804e-acdc20d69d93"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "ListRecords",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "ecer_certificates",
+                    "$filter": "_ecer_registrantid_value eq @{triggerOutputs()?['body/_ecer_applicantid_value']}",
+                    "$orderby": "ecer_expirydate desc",
+                    "$top": 1
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "If_find_the_most_recent_certificate": {
+                "actions": {
+                  "Apply_to_each": {
+                    "foreach": "@outputs('Get_most_recent_certificate')?['body/value']",
+                    "actions": {
+                      "If_Status_Reason_=_Suspended_": {
+                        "actions": {
+                          "Get_active_certificate_conditions_2": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "f06afaba-ceba-4420-938d-23384c129b3b"
+                            },
+                            "type": "OpenApiConnection",
+                            "inputs": {
+                              "host": {
+                                "connectionName": "shared_commondataserviceforapps",
+                                "operationId": "ListRecords",
+                                "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                              },
+                              "parameters": {
+                                "entityName": "ecer_certificateconditionses",
+                                "$filter": "statecode eq 0 and _ecer_registrantid_value eq '@{triggerOutputs()?['body/_ecer_applicantid_value']}'"
+                              },
+                              "authentication": "@parameters('$authentication')"
+                            }
+                          },
+                          "If_active_certificate_conditions_found_and_certificate_suspended": {
+                            "actions": {
+                              "Set_IsCreateInvestigation_3": {
+                                "runAfter": {},
+                                "metadata": {
+                                  "operationMetadataId": "e3ea0419-d5d5-42ce-b797-4aa6db4dac4e"
+                                },
+                                "type": "SetVariable",
+                                "inputs": {
+                                  "name": "IsCreateInvestigation",
+                                  "value": "@true"
+                                }
+                              },
+                              "Set_Description_3": {
+                                "runAfter": {
+                                  "Set_IsCreateInvestigation_3": [
+                                    "Succeeded"
+                                  ]
+                                },
+                                "metadata": {
+                                  "operationMetadataId": "1e970472-227c-4a9f-86f1-f4945328df1e"
+                                },
+                                "type": "SetVariable",
+                                "inputs": {
+                                  "name": "Description",
+                                  "value": "@{outputs('Get_Applicant')?['body/fullname']} currently has a suspended @{items('Apply_to_each')?['ecer_certificatelevel']} certificate active Terms and Conditions, and has recently submitted a new application."
+                                }
+                              }
+                            },
+                            "runAfter": {
+                              "Get_active_certificate_conditions_2": [
+                                "Succeeded"
+                              ]
+                            },
+                            "else": {
+                              "actions": {
+                                "Set_IsCreateInvestigation": {
+                                  "runAfter": {},
+                                  "metadata": {
+                                    "operationMetadataId": "f4164204-3d46-487e-8cba-5b3191445311"
+                                  },
+                                  "type": "SetVariable",
+                                  "inputs": {
+                                    "name": "IsCreateInvestigation",
+                                    "value": "@true"
+                                  }
+                                },
+                                "Set_Description": {
+                                  "runAfter": {
+                                    "Set_IsCreateInvestigation": [
+                                      "Succeeded"
+                                    ]
+                                  },
+                                  "metadata": {
+                                    "operationMetadataId": "3f7871a4-2c32-4b3d-8be8-973de9c13555"
+                                  },
+                                  "type": "SetVariable",
+                                  "inputs": {
+                                    "name": "Description",
+                                    "value": "@{outputs('Get_Applicant')?['body/fullname']} currently has a suspended @{items('Apply_to_each')?['ecer_certificatelevel']} certificate and has recently submitted a new application."
+                                  }
+                                }
+                              }
+                            },
+                            "expression": {
+                              "equals": [
+                                "@empty(body('Get_active_certificate_conditions_2')?['value'])",
+                                "@false"
+                              ]
+                            },
+                            "metadata": {
+                              "operationMetadataId": "94bf00e5-6050-4955-b239-ae90718aa1a2"
+                            },
+                            "type": "If"
+                          }
+                        },
+                        "runAfter": {},
+                        "else": {
+                          "actions": {
+                            "if_Status_Reason_=_Cancelled": {
+                              "actions": {
+                                "Set_variable": {
+                                  "runAfter": {},
+                                  "metadata": {
+                                    "operationMetadataId": "4d59fc78-910f-4a82-92ff-3e0cbef620a2"
+                                  },
+                                  "type": "SetVariable",
+                                  "inputs": {
+                                    "name": "IsCreateInvestigation",
+                                    "value": "@true"
+                                  }
+                                },
+                                "Set_variable_2": {
+                                  "runAfter": {
+                                    "Set_variable": [
+                                      "Succeeded"
+                                    ]
+                                  },
+                                  "metadata": {
+                                    "operationMetadataId": "a774ee3d-e576-4609-b429-6797c6989d39"
+                                  },
+                                  "type": "SetVariable",
+                                  "inputs": {
+                                    "name": "Description",
+                                    "value": "@{outputs('Get_Applicant')?['body/fullname']} currently has a canceled @{items('Apply_to_each')?['ecer_certificatelevel']} certificate and has recently submitted a new application."
+                                  }
+                                }
+                              },
+                              "runAfter": {},
+                              "else": {
+                                "actions": {
+                                  "Get_active_certificate_conditions": {
+                                    "runAfter": {},
+                                    "metadata": {
+                                      "operationMetadataId": "f06afaba-ceba-4420-938d-23384c129b3b"
+                                    },
+                                    "type": "OpenApiConnection",
+                                    "inputs": {
+                                      "host": {
+                                        "connectionName": "shared_commondataserviceforapps",
+                                        "operationId": "ListRecords",
+                                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                      },
+                                      "parameters": {
+                                        "entityName": "ecer_certificateconditionses",
+                                        "$filter": "statecode eq 0 and _ecer_registrantid_value eq '@{triggerOutputs()?['body/_ecer_applicantid_value']}'"
+                                      },
+                                      "authentication": "@parameters('$authentication')"
+                                    }
+                                  },
+                                  "If_active_certificate_conditions_found": {
+                                    "actions": {
+                                      "Set_IsCreateInvestigation_2": {
+                                        "runAfter": {},
+                                        "metadata": {
+                                          "operationMetadataId": "e3ea0419-d5d5-42ce-b797-4aa6db4dac4e"
+                                        },
+                                        "type": "SetVariable",
+                                        "inputs": {
+                                          "name": "IsCreateInvestigation",
+                                          "value": "@true"
+                                        }
+                                      },
+                                      "Set_Description_2": {
+                                        "runAfter": {
+                                          "Set_IsCreateInvestigation_2": [
+                                            "Succeeded"
+                                          ]
+                                        },
+                                        "metadata": {
+                                          "operationMetadataId": "1e970472-227c-4a9f-86f1-f4945328df1e"
+                                        },
+                                        "type": "SetVariable",
+                                        "inputs": {
+                                          "name": "Description",
+                                          "value": "@{outputs('Get_Applicant')?['body/fullname']} has active Terms and Conditions and has recently submitted a new application."
+                                        }
+                                      }
+                                    },
+                                    "runAfter": {
+                                      "Get_active_certificate_conditions": [
+                                        "Succeeded"
+                                      ]
+                                    },
+                                    "expression": {
+                                      "equals": [
+                                        "@empty(body('Get_active_certificate_conditions')?['value'])",
+                                        "@false"
+                                      ]
+                                    },
+                                    "metadata": {
+                                      "operationMetadataId": "94bf00e5-6050-4955-b239-ae90718aa1a2"
+                                    },
+                                    "type": "If"
+                                  }
+                                }
+                              },
+                              "expression": {
+                                "equals": [
+                                  "@items('Apply_to_each')?['statuscode']",
+                                  621870003
+                                ]
+                              },
+                              "metadata": {
+                                "operationMetadataId": "6dd1bdd9-07f3-4f62-b99a-3e56c733a3c5"
+                              },
+                              "type": "If"
+                            }
+                          }
+                        },
+                        "expression": {
+                          "equals": [
+                            "@items('Apply_to_each')?['statuscode']",
+                            621870004
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "371cf38c-0ce5-4e0a-b491-305e9ec8d1de"
+                        },
+                        "type": "If"
+                      }
+                    },
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "2def8a97-87ba-40c0-9a21-806a233aedf1"
+                    },
+                    "type": "Foreach"
+                  }
+                },
+                "runAfter": {
+                  "Get_most_recent_certificate": [
+                    "Succeeded"
+                  ]
+                },
+                "expression": {
+                  "equals": [
+                    "@empty(body('Get_most_recent_certificate')?['value'])",
+                    "@false"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "398d269a-efab-47af-8032-54e6c02df265"
+                },
+                "type": "If"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@empty(body('Get_Active_Investigations')?['value'])",
+              "@false"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6eabcb69-9c7d-4741-a8ea-5e76c245d00f"
+          },
+          "type": "If"
+        },
+        "Get_Application": {
+          "runAfter": {
+            "Initialize_InvestigationAppId": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d587ce73-617a-4168-a763-ccf81958fc55"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "ecer_applications",
+              "recordId": "@triggerOutputs()?['body/ecer_applicationid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_InvestigationAppId": {
+          "runAfter": {
+            "Initialize_Description": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5be9173d-99f9-46b2-9a85-41281e8f715d"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "InvestigationAppId",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}
