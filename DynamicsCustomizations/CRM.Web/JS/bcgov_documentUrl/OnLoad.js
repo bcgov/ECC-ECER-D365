@@ -29,3 +29,19 @@ function ShowLookup(formContext, fieldName) {
     if (formContext.getControl(fieldName) != null && formContext.getAttribute(fieldName).getValue() != null && formContext.getAttribute(fieldName).getValue().length > 0)
         formContext.getControl(fieldName).setVisible(true);
 };
+
+function disableGridRowExceptTags(executionContext) {
+    // Call on Subgrid On Select.  The execution context is the Subgrid Context
+    // For Editable Grid Only
+    // At Application, Contact, and Certificate for now
+    var formContext = executionContext.getFormContext();
+    formContext.getData().getEntity().attributes.forEach(function (attr) {
+        var attrName = attr.getName();
+        if (attrName !== "bcgov_tag1id" && attrName !== "bcgov_tag2id" && attrName !== "bcgov_tag3id") {
+            attr.controls.forEach(function (c) {
+                if (attr)
+                    c.setDisabled(true);
+            });
+        }
+    });
+}
