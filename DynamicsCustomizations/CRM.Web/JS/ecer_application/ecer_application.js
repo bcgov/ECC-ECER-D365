@@ -790,16 +790,25 @@ ECER.Jscripts.Application =
         // ECE Assistant and ECE 1 YR can only be selected by itself
         var formContext = executionContext.getFormContext();
         try {
-            var isECEAssistant = formContext.getAttribute("ecer_iseceassistant").getValue();
-            var isECE1Yr = formContext.getAttribute("ecer_isece1yr").getValue();
-            var isECE5Yr = formContext.getAttribute("ecer_isece5yr").getValue();
-            var isSNE = formContext.getAttribute("ecer_issne").getValue();
-            var isITE = formContext.getAttribute("ecer_isite").getValue();
+            var isECEAssistantAttribute = formContext.getAttribute("ecer_iseceassistant");
+            var isECE1YrAttribute = formContext.getAttribute("ecer_isece1yr");
+            var isECE5YrAttribute = formContext.getAttribute("ecer_isece5yr");
+            var isSNEAttribute = formContext.getAttribute("ecer_issne");
+            var isITEAttribute = formContext.getAttribute("ecer_isite");
 
+            var isECEAssistant = isECEAssistantAttribute.getValue();
+            var isECE1Yr = isECE1YrAttribute.getValue();
+            var isECE5Yr = isECE5YrAttribute.getValue();
+            var isSNE = isSNEAttribute.getValue();
+            var isITE = isITEAttribute.getValue();
+
+            // ECER-3617.  Setting Value without triggering change seems to make the Toggle Button confuse.  Add 
             if (isECEAssistant == true && isECE1Yr == true) {
                 crm_Utility.showMessage("ECE Assistant or ECE 1 Year cannot be selected if other Certificate Type(s) are already selected");
                 formContext.getAttribute("ecer_iseceassistant").setValue(false);
                 formContext.getAttribute("ecer_isece1yr").setValue(false);
+                isECEAssistantAttribute.fireOnChange();
+                isECE1YrAttribute.fireOnChange();
                 return;
             }
 
@@ -807,6 +816,7 @@ ECER.Jscripts.Application =
                 (isECE5Yr == true || isSNE == true || isITE == true)) {
                 crm_Utility.showMessage("ECE Assistant cannot be selected if other Certificate Type(s) are already selected");
                 formContext.getAttribute("ecer_iseceassistant").setValue(false);
+                isECEAssistantAttribute.fireOnChange();
                 return;
             }
 
@@ -814,6 +824,7 @@ ECER.Jscripts.Application =
                 (isECE5Yr == true || isSNE == true || isITE == true)) {
                 crm_Utility.showMessage("ECE 1 Year cannot be selected if other Certificate Type(s) are already selected");
                 formContext.getAttribute("ecer_isece1yr").setValue(false);
+                isECE1YrAttribute.fireOnChange();
                 return;
             }
 
@@ -839,12 +850,14 @@ ECER.Jscripts.Application =
                 certificateTypeValue = ECER.Jscripts.Application.composeCertificateTypeValue(certificateTypeValue, "ECE Assistant");
             }
 
+            var certificateTypeAttribute = formContext.getAttribute("ecer_certificatetype")
             if (certificateTypeValue != null && certificateTypeValue != "") {
-                formContext.getAttribute("ecer_certificatetype").setValue(certificateTypeValue);
+                certificateTypeAttribute.setValue(certificateTypeValue);
             }
             else {
-                formContext.getAttribute("ecer_certificatetype").setValue(null);
+                certificateTypeAttribute.setValue(null);
             }
+            certificateTypeAttribute.fireOnChange();
         }
         catch (err) {
             crm_Utility.showMessage(err.message);
