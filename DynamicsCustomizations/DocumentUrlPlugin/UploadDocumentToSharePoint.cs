@@ -53,6 +53,9 @@ namespace BCGOV.Plugin.DocumentUrl
                     traceService.Trace($"Interface URL: {url}");
                     traceService.Trace("Convert Base64 String into Byte Array for further processing");
                     var bodyByteArray = Convert.FromBase64String(body);
+                    var now = DateTime.Now;
+                    var pacificZone = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
+                    var pacificTime = TimeZoneInfo.ConvertTimeFromUtc(now, pacificZone);
 
                     using (var fileStream = new System.IO.MemoryStream(bodyByteArray))
                     {
@@ -67,7 +70,7 @@ namespace BCGOV.Plugin.DocumentUrl
                         traceService.Trace($"Construct File Stream Length: {fileStream.Length}");
                         Entity sharePointFileUrlEntity = new Entity("bcgov_documenturl");
                         sharePointFileUrlEntity["bcgov_filename"] = fileName;
-                        sharePointFileUrlEntity["bcgov_receiveddate"] = DateTime.Now;
+                        sharePointFileUrlEntity["bcgov_receiveddate"] = pacificTime;
                         sharePointFileUrlEntity["bcgov_filesize"] = Helpers.GetFileSize(fileStream.Length);
                         sharePointFileUrlEntity["bcgov_fileextension"] = fileName.Substring(fileName.LastIndexOf("."));
                         sharePointFileUrlEntity["bcgov_url"] = string.Format("{0}/{1}", regardingObjectLogicalName, regardingObjectId.ToString());
