@@ -1,0 +1,14 @@
+{
+  "LogicalName": "ecer_communicationcontent",
+  "DisplayName": "Communication Content",
+  "IsCustomizable": true,
+  "DeselectedAttributes": [
+    "Import Sequence Number",
+    "Record Created On",
+    "Owner",
+    "",
+    "Time Zone Rule Version Number",
+    "UTC Conversion Time Zone Code"
+  ],
+  "Filter": null
+}

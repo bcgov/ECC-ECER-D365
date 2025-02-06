@@ -1,0 +1,12 @@
+{
+  "LogicalName": "ecer_outofprovincecertificationtype",
+  "DisplayName": "Out of Province Certification Type",
+  "IsCustomizable": true,
+  "DeselectedAttributes": [
+    "importsequencenumber",
+    "utcconversiontimezonecode",
+    "timezoneruleversionnumber",
+    "overriddencreatedon"
+  ],
+  "Filter": null
+}

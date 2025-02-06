@@ -1,0 +1,14 @@
+{
+  "LogicalName": "ecer_postsecondaryinstitute",
+  "DisplayName": "Post Secondary Institution",
+  "IsCustomizable": true,
+  "DeselectedAttributes": [
+    "Import Sequence Number",
+    "Record Created On",
+    "Owner",
+    "",
+    "Time Zone Rule Version Number",
+    "UTC Conversion Time Zone Code"
+  ],
+  "Filter": null
+}

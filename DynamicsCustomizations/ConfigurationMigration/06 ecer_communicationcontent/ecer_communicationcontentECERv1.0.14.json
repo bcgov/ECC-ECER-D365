@@ -1,0 +1,195 @@
+{
+  "LogicalName": "ecer_communicationcontent",
+  "PrimaryIdAttribute": "ecer_communicationcontentid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Transcript invalid"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "1b7c87b3-0667-ef11-a670-0022486dc29e"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\"><p style=\"margin: 0;\"><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\">The transcript from following Education Institute cannot be accepted:</span></p><p style=\"margin: 0px 0;\"><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\">[ecer_application.ecer_transcript.ecer_applicationid.ecer_educationinstitutionfullname]</span></p><p style=\"margin: 0px 0;\"><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\">~Assessor to fill this in - reason and what they need to do etc.~</span></p><p style=\"margin: 0px 0;\"><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\">&nbsp;</span></p><p style=\"margin: 0px 0;\"><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\">For more information,&nbsp;</span><a class=\"fui-Link ___1rxvrpe f2hkw1w f3rmtva f1ewtqcl fyind8e f1k6fduh f1w7gpdv fk6fouc fjoy568 figsok6 f1hu3pq6 f11qmguv f19f4twv f1tyq0we f1g0x7ka fhxju0i f1qch9an f1cnd47f fqv5qza f1vmzxwi f1o700av f13mvf36 f1cmlufx f9n3di6 f1ids18y f1tx3yz7 f1deo86v f1eh06m1 f1iescvh fhgqx19 f1olyrje f1p93eir f1nev41a f1h8hb77 f1lqvz6u f10aw75t fsle3fq f17ae5zn\" href=\"https://www2.gov.bc.ca/gov/content?id=9376DE7539D44C64B3E667DB53320E71\" aria-label=\"Link go to the ECE Registry website\" id=\"menurl5k\" rel=\"noreferrer noopener\" title=\"https://www2.gov.bc.ca/gov/content?id=9376de7539d44c64b3e667db53320e71\"><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\"><u>go to the ECE Registry website</u></span></a><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\">.</span></p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Parental Consent Request"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "35417d17-7865-ef11-a671-6045bd5f6fab"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\">Dear [contact.fullname],<br>&nbsp;</p><p style=\"margin: 0;\">People under 19 years old need to get consent from a parent or guardian to be certified as an ECE.<br>&nbsp;</p><p style=\"margin: 0;\">You need to:<br>&nbsp;</p><ol style=\"margin-inline-end: 0px; margin-inline-start: 0px; padding-inline-start: 40px;\"><li><p style=\"margin: 0;\">Download the consent form: <a href=\"https://www2.gov.bc.ca/assets/download/9F819F7ACE2F4D82B09F0299BC788F81\" target=\"_blank\">Become an Early Childhood Educator - Province of British Columbia (gov.bc.ca)</a></p></li><li><p style=\"margin: 0;\">Have one of your parents or guardians sign it</p></li><li><p style=\"margin: 0;\">Reply to this message and attach a photo or scanned copy of the signed signed consent form</p></li></ol><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">Sincerely,</p><p style=\"margin: 0;\">ECE Registry</p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Action needed: Official transcript from your education institution"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "0e9c3c9c-dad1-ef11-a72e-6045bdf9b81b"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\">The transcript we received was not provided directly from [Education institution name] and cannot be accepted.</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">You must have the education institution send the ECE Registry your official transcript directly.</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">For more information, <a href=\"https://www2.gov.bc.ca/gov/content?id=9376DE7539D44C64B3E667DB53320E71\" target=\"_blank\" rel=\"noopener noreferrer\">go to the ECE Registry website</a>.</p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Action needed: Transcript translated to English"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "6ebaa765-2b75-ef11-ac20-7c1e5240b0bf"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">The official transcript issued by [Educational institution name] cannot be accepted because it's not in English.</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">&nbsp;</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">All documents submitted with your application must be in English. You must have them professionally translated at your own expense. All translated documents must be authenticated by the translator.</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">&nbsp;</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">A translation subsidy may be available to assist you with the costs associated with professional translation.</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">&nbsp;</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">The translation subsidy:</p><ul style=\"margin-inline-end: 0px; margin-inline-start: 0px; padding-inline-start: 40px;\"><li><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">Covers one-time translation service costs up to $2,500 and is provided by <a href=\"https://mosaicbc.org/our-services/interpretation-and-translation-for-business/)\" target=\"_blank\" rel=\"noopener noreferrer\">MOSAIC Interpretation and Translation Services</a></p></li><li><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">To apply for the translation subsidy, complete a <a href=\"https://www2.gov.bc.ca/assets/download/7AF05771FE5744528476266396EDEAB0).\" target=\"_blank\" rel=\"noopener noreferrer\">Translation Subsidy Application form</a></p></li></ul><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">&nbsp;</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">For more information, <a href=\"https://www2.gov.bc.ca/gov/content?id=9376DE7539D44C64B3E667DB53320E71\" target=\"_blank\" rel=\"noopener noreferrer\">go to the ECE Registry website</a></p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 4
+}

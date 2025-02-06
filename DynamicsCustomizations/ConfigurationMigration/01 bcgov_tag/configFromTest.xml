@@ -1,0 +1,11 @@
+<entities >
+  <entity name="bcgov_tag" displayname="Tag" etc="11038" primaryidfield="bcgov_tagid" primarynamefield="bcgov_name" disableplugins="true">
+    <fields>
+      <field displayname="Name" name="bcgov_name" type="string" customfield="true" />
+      <field displayname="Status" name="statecode" type="state" />
+      <field displayname="Status Reason" name="statuscode" type="status" />
+      <field updateCompare="true" displayname="Tag" name="bcgov_tagid" type="guid" primaryKey="true" />
+    </fields>
+    <relationships />
+  </entity>
+</entities>

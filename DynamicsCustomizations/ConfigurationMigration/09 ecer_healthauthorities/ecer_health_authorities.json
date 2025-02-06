@@ -1,0 +1,63 @@
+{
+  "LogicalName": "ecer_health_authorities",
+  "PrimaryIdAttribute": "ecer_health_authoritiesid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_health_authoritiesid",
+          "Type": 1,
+          "Value": "91f29fb5-8a65-ef11-a670-000d3af45d64"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Vancouver Coastal Health"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_health_authoritiesid",
+          "Type": 1,
+          "Value": "85b8898b-4754-ef11-bfe2-6045bdf9a93e"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "VIHA"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 2
+}

@@ -1,0 +1,463 @@
+{
+  "LogicalName": "ecer_identificationtype",
+  "PrimaryIdAttribute": "ecer_identificationtypeid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Driver's licence or learner's licence issued by a Canadian province or territory"
+        },
+        {
+          "Key": "ecer_identificationtypeid",
+          "Type": 1,
+          "Value": "bc365795-30e3-ef11-be21-7c1e52063ad8"
+        },
+        {
+          "Key": "ecer_forprimary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "ecer_forsecondary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "B.C. identification card (BCID)"
+        },
+        {
+          "Key": "ecer_identificationtypeid",
+          "Type": 1,
+          "Value": "24e3837a-36e3-ef11-be21-7c1e52063ad8"
+        },
+        {
+          "Key": "ecer_forprimary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "ecer_forsecondary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "B.C. Services Card"
+        },
+        {
+          "Key": "ecer_identificationtypeid",
+          "Type": 1,
+          "Value": "7320148d-36e3-ef11-be21-7c1e52063ad8"
+        },
+        {
+          "Key": "ecer_forprimary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "ecer_forsecondary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Canadian birth certificate"
+        },
+        {
+          "Key": "ecer_identificationtypeid",
+          "Type": 1,
+          "Value": "7d20148d-36e3-ef11-be21-7c1e52063ad8"
+        },
+        {
+          "Key": "ecer_forprimary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "ecer_forsecondary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Canadian or foreign passport"
+        },
+        {
+          "Key": "ecer_identificationtypeid",
+          "Type": 1,
+          "Value": "ec6f4399-36e3-ef11-be21-7c1e52063ad8"
+        },
+        {
+          "Key": "ecer_forprimary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "ecer_forsecondary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Canadian citizenship card"
+        },
+        {
+          "Key": "ecer_identificationtypeid",
+          "Type": 1,
+          "Value": "1d9f479f-36e3-ef11-be21-7c1e52063ad8"
+        },
+        {
+          "Key": "ecer_forprimary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "ecer_forsecondary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Canadian permanent resident card"
+        },
+        {
+          "Key": "ecer_identificationtypeid",
+          "Type": 1,
+          "Value": "da44e8a6-36e3-ef11-be21-7c1e52063ad8"
+        },
+        {
+          "Key": "ecer_forprimary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "ecer_forsecondary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Canadian record of landing/Canadian immigration identification record"
+        },
+        {
+          "Key": "ecer_identificationtypeid",
+          "Type": 1,
+          "Value": "1645e8a6-36e3-ef11-be21-7c1e52063ad8"
+        },
+        {
+          "Key": "ecer_forprimary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "ecer_forsecondary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Indian status card"
+        },
+        {
+          "Key": "ecer_identificationtypeid",
+          "Type": 1,
+          "Value": "569831ad-36e3-ef11-be21-7c1e52063ad8"
+        },
+        {
+          "Key": "ecer_forprimary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "ecer_forsecondary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Health or services card from another Canadian province or territory"
+        },
+        {
+          "Key": "ecer_identificationtypeid",
+          "Type": 1,
+          "Value": "cab866ea-36e3-ef11-be21-7c1e52063ad8"
+        },
+        {
+          "Key": "ecer_forprimary",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_forsecondary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Foreign birth certificate (a baptismal certificate is not acceptable)"
+        },
+        {
+          "Key": "ecer_identificationtypeid",
+          "Type": 1,
+          "Value": "65b966ea-36e3-ef11-be21-7c1e52063ad8"
+        },
+        {
+          "Key": "ecer_forprimary",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_forsecondary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Photograph identity card issued by a foreign national or regional government"
+        },
+        {
+          "Key": "ecer_identificationtypeid",
+          "Type": 1,
+          "Value": "48e86af0-36e3-ef11-be21-7c1e52063ad8"
+        },
+        {
+          "Key": "ecer_forprimary",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_forsecondary",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 12
+}

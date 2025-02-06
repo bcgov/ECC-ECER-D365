@@ -1,0 +1,701 @@
+{
+  "LogicalName": "ecer_communicationcontent",
+  "PrimaryIdAttribute": "ecer_communicationcontentid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Action Required: Additional ID"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "15e8d688-c879-ef11-ac20-000d3a09e365"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\"><p style=\"margin: 0; background-color: #ffffff; color: #172b4d; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; text-wrap: wrap; width: fit-content; word-spacing: 0px;\" width=\"fit-content\" dir=\"ltr\">The ID provided cannot be accepted to verify your identity because:</p><p style=\"margin: 0; background-color: #ffffff; color: #172b4d; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; text-wrap: wrap; width: fit-content; word-spacing: 0px;\" width=\"fit-content\" dir=\"ltr\">Reason</p><ul class=\"ak-ul\" style=\"padding-inline-start: 40px; margin-inline-start: 0px; margin-inline-end: 0px; background-color: #ffffff; color: #172b4d; display: flow-root; font-family: -apple-system,BlinkMacSystemFont,&quot; undefined: SegoeUI&quot; undefined: ,Roboto,Oxygen,Ubuntu,&quot; undefined: FiraSans&quot; undefined: ,&quot; undefined: DroidSans&quot; undefined: ,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-right: 0px; margin-top: 10px; text-align: left; text-indent: 0px; text-transform: none; text-wrap: wrap; width: fit-content; word-spacing: 0px;\" width=\"fit-content\"><li><p style=\"font-size: 1em; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0; padding: 0px; text-align: start;\" dir=\"ltr\"><span style=\"color:var(--custom-palette-color,inherit);\"><i><span class=\"fabric-text-color-mark\">Staff entered</span></i></span></p></li></ul><p style=\"margin: 0; background-color: #ffffff; color: #172b4d; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; text-wrap: wrap; width: fit-content; word-spacing: 0px;\" width=\"fit-content\" dir=\"ltr\">To add new ID:</p><ol class=\"ak-ol\" style=\"padding-inline-start: 40px; margin-inline-start: 0px; margin-inline-end: 0px; background-color: #ffffff; color: #172b4d; display: flow-root; font-family: -apple-system,BlinkMacSystemFont,&quot; undefined: SegoeUI&quot; undefined: ,Roboto,Oxygen,Ubuntu,&quot; undefined: FiraSans&quot; undefined: ,&quot; undefined: DroidSans&quot; undefined: ,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-right: 0px; margin-top: 10px; text-align: left; text-indent: 0px; text-transform: none; text-wrap: wrap; width: fit-content; word-spacing: 0px;\" start=\"1\" width=\"fit-content\"><li><p style=\"font-size: 1em; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0; padding: 0px; text-align: start;\" dir=\"ltr\">Go to the home page</p></li><li style=\"margin-top:var(--ds-space-050,4px);\"><p style=\"font-size: 1em; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0; padding: 0px; text-align: start;\" dir=\"ltr\">Choose “Resend ID”</p></li><li style=\"margin-top:var(--ds-space-050,4px);\"><p style=\"font-size: 1em; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0; padding: 0px; text-align: start;\" dir=\"ltr\">Upload photos of your ID</p></li></ol></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Invalid Work Experience Reference"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "531da43a-8291-ef11-8a6a-000d3a0a4c90"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"background-color: rgb(255, 255, 255); color: rgb(23, 43, 77); font-family: -apple-system, BlinkMacSystemFont, &quot; undefined: SegoeUI&quot; undefined: ,Roboto,Oxygen,Ubuntu,&quot; undefined: FiraSans&quot; undefined: ,&quot; undefined: DroidSans&quot; undefined: ,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0.75rem 0px 0px 0; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" dir=\"ltr\" data-renderer-start-pos=\"21642\" width=\"fit-content\">Hello [contact.fullname],</p><p style=\"background-color: rgb(255, 255, 255); color: rgb(23, 43, 77); font-family: -apple-system, BlinkMacSystemFont, &quot; undefined: SegoeUI&quot; undefined: ,Roboto,Oxygen,Ubuntu,&quot; undefined: FiraSans&quot; undefined: ,&quot; undefined: DroidSans&quot; undefined: ,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0.75rem 0px 0px; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" dir=\"ltr\" data-renderer-start-pos=\"21642\" width=\"fit-content\">The work reference provided cannot be accepted. Can you please navigate to the home page of your portal and then select the “Manage Application” button. Once there can you please begin the resubmission process for a Work Experience Reference submission.</p><p style=\"background-color: rgb(255, 255, 255); color: rgb(23, 43, 77); font-family: -apple-system, BlinkMacSystemFont, &quot; undefined: SegoeUI&quot; undefined: ,Roboto,Oxygen,Ubuntu,&quot; undefined: FiraSans&quot; undefined: ,&quot; undefined: DroidSans&quot; undefined: ,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0.75rem 0px 0px; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" dir=\"ltr\" data-renderer-start-pos=\"21691\" width=\"fit-content\">For more information, contact the ECE Registry at: <a href=\"https://www2.gov.bc.ca/gov/content/education-training/early-learning/teach/training-and-professional-development/become-an-early-childhood-educator\" target=\"_blank\" rel=\"noopener noreferrer\">Contact Us</a>&nbsp;</p><p style=\"background-color: rgb(255, 255, 255); color: rgb(23, 43, 77); font-family: -apple-system, BlinkMacSystemFont, &quot; undefined: SegoeUI&quot; undefined: ,Roboto,Oxygen,Ubuntu,&quot; undefined: FiraSans&quot; undefined: ,&quot; undefined: DroidSans&quot; undefined: ,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0.75rem 0px 0px; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" dir=\"ltr\" data-renderer-start-pos=\"21691\" width=\"fit-content\">Sincerely,</p><p style=\"background-color: rgb(255, 255, 255); color: rgb(23, 43, 77); font-family: -apple-system, BlinkMacSystemFont, &quot; undefined: SegoeUI&quot; undefined: ,Roboto,Oxygen,Ubuntu,&quot; undefined: FiraSans&quot; undefined: ,&quot; undefined: DroidSans&quot; undefined: ,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0.75rem 0px 0px; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" dir=\"ltr\" data-renderer-start-pos=\"21691\" width=\"fit-content\">ECE Registry</p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Notice of Immediate Action"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "1a117fc3-4c66-ef11-a670-000d3a0a4c90"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0; text-align: start;\" dir=\"ltr\"><span style=\"background-color:rgb(255,255,255);color:rgb(23,43,77);font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif;font-size:14px;\"><span style=\"display:inline !important;float:none;font-style:normal;font-weight:400;letter-spacing:-0.07px;text-align:start;text-indent:0px;text-transform:none;white-space:pre-wrap;width:fit-content;word-spacing:0px;\" width=\"fit-content\">Please see the attached Notice of Immediate Action.</span></span></p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Notice of Investigation"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "7c702666-b53d-ef11-a316-000d3af45c14"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p class=\"MsoNormal\" style=\"margin: 0in;\">Please see the attached Notice of Investigation.<span style=\"font-family:&quot;Times New Roman&quot;,serif;font-size:12.0pt;\"><o:p></o:p></span></p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Transcript invalid"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "1b7c87b3-0667-ef11-a670-0022486dc29e"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\"><p style=\"margin: 0;\"><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\">The transcript from following Education Institute cannot be accepted:</span></p><p style=\"margin: 0px 0;\"><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\">[ecer_application.ecer_transcript.ecer_applicationid.ecer_educationinstitutionfullname]</span></p><p style=\"margin: 0px 0;\"><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\">~Assessor to fill this in - reason and what they need to do etc.~</span></p><p style=\"margin: 0px 0;\"><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\">&nbsp;</span></p><p style=\"margin: 0px 0;\"><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\">For more information,&nbsp;</span><a class=\"fui-Link ___1rxvrpe f2hkw1w f3rmtva f1ewtqcl fyind8e f1k6fduh f1w7gpdv fk6fouc fjoy568 figsok6 f1hu3pq6 f11qmguv f19f4twv f1tyq0we f1g0x7ka fhxju0i f1qch9an f1cnd47f fqv5qza f1vmzxwi f1o700av f13mvf36 f1cmlufx f9n3di6 f1ids18y f1tx3yz7 f1deo86v f1eh06m1 f1iescvh fhgqx19 f1olyrje f1p93eir f1nev41a f1h8hb77 f1lqvz6u f10aw75t fsle3fq f17ae5zn\" href=\"https://www2.gov.bc.ca/gov/content?id=9376DE7539D44C64B3E667DB53320E71\" aria-label=\"Link go to the ECE Registry website\" id=\"menurl5k\" rel=\"noreferrer noopener\" title=\"https://www2.gov.bc.ca/gov/content?id=9376de7539d44c64b3e667db53320e71\"><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\"><u>go to the ECE Registry website</u></span></a><span class=\"a ab ac ae af ag ah ai aj ak b c d e f g h i j k l m n o p q r s t u ui-provider v w x y z\" dir=\"ltr\">.</span></p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "IAN Missing Character Reference"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": 1
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "d524a184-643d-ef11-a316-0022486dc4b6"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\"><div style=\"--ck-color-selector-caption-background:hsl(0, 0%, 97%);--ck-color-selector-caption-text:hsl(0, 0%, 20%);--ck-image-style-spacing:1.5em;--ck-inline-image-style-spacing:calc(var(--ck-image-style-spacing) / 2);font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\">&nbsp;</div><div style=\"--ck-color-selector-caption-background:hsl(0, 0%, 97%);--ck-color-selector-caption-text:hsl(0, 0%, 20%);--ck-image-style-spacing:1.5em;--ck-inline-image-style-spacing:calc(var(--ck-image-style-spacing) / 2);font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">Dear [contact.fullname],</span></div><div style=\"--ck-color-selector-caption-background:hsl(0, 0%, 97%);--ck-color-selector-caption-text:hsl(0, 0%, 20%);--ck-image-style-spacing:1.5em;--ck-inline-image-style-spacing:calc(var(--ck-image-style-spacing) / 2);font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\">&nbsp;</div><div style=\"--ck-color-selector-caption-background:hsl(0, 0%, 97%);--ck-color-selector-caption-text:hsl(0, 0%, 20%);--ck-image-style-spacing:1.5em;--ck-inline-image-style-spacing:calc(var(--ck-image-style-spacing) / 2);font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">The Early Childhood Educator Registry (Registry) received your application for an&nbsp;<strong>[ecer_application.ecer_certificatetype]&nbsp;Certificate&nbsp;</strong>on [Today].</span></div><div style=\"--ck-color-selector-caption-background:hsl(0, 0%, 97%);--ck-color-selector-caption-text:hsl(0, 0%, 20%);--ck-image-style-spacing:1.5em;--ck-inline-image-style-spacing:calc(var(--ck-image-style-spacing) / 2);font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\">&nbsp;</div><div style=\"--ck-color-selector-caption-background:hsl(0, 0%, 97%);--ck-color-selector-caption-text:hsl(0, 0%, 20%);--ck-image-style-spacing:1.5em;--ck-inline-image-style-spacing:calc(var(--ck-image-style-spacing) / 2);font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\"><strong>As of the date of this message, you have not submitted all documentation required to assess your application.&nbsp; </strong>Once the required documents have been received, the Registry will assess your application and supporting documents to determine if you meet all the legal requirements to be certified. Please&nbsp;submit the following outstanding or incomplete document(s):</span></div><div style=\"--ck-color-selector-caption-background:hsl(0, 0%, 97%);--ck-color-selector-caption-text:hsl(0, 0%, 20%);--ck-image-style-spacing:1.5em;--ck-inline-image-style-spacing:calc(var(--ck-image-style-spacing) / 2);font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\">&nbsp;</div><div style=\"--ck-color-selector-caption-background:hsl(0, 0%, 97%);--ck-color-selector-caption-text:hsl(0, 0%, 20%);--ck-image-style-spacing:1.5em;--ck-inline-image-style-spacing:calc(var(--ck-image-style-spacing) / 2);font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">You indicated on the application form that you have provided a Character Reference form to your reference.&nbsp; As of the date of this message, the Registry has not received your Character Reference response form.</span></div><div style=\"--ck-color-selector-caption-background:hsl(0, 0%, 97%);--ck-color-selector-caption-text:hsl(0, 0%, 20%);--ck-image-style-spacing:1.5em;--ck-inline-image-style-spacing:calc(var(--ck-image-style-spacing) / 2);font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\">&nbsp;</div><div class=\"ck-content stickystyles-wrapper-insert\" style=\"font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;width:fit-content;\" dir=\"ltr\" data-wrapper=\"true\" width=\"fit-content\"><div style=\"font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">For additional information, please visit our website at </span><a href=\"https://www.gov.bc.ca/earlychildhoodeducators\" rel=\"noopener noreferrer\" target=\"_blank\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">www.gov.bc.ca/earlychildhoodeducators</span></a><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">&nbsp;</span></div><div style=\"font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\">&nbsp;</div><div style=\"font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">Assessment of application submissions may determine additional information or clarification is required&nbsp;and you will be contacted by the Registry. Incomplete applications will result in delays in processing. It is important to note applications for certification remain open for one year from the date the first&nbsp;application document was received by the Registry. Should your application remain incomplete by&nbsp;[DATE], your application will be closed.</span></div><div style=\"font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\">&nbsp;</div><div style=\"font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">Please contact the Registry by telephone at 1.888.338.6622 or by email at </span><a href=\"mailto:ECERegistry@gov.bc.ca\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">ECERegistry@gov.bc.ca</span></a><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\"> for more information about your application.</span></div><div style=\"font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\">&nbsp;</div><div style=\"font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\"><span style=\"color:#000000;font-family:Tahoma;font-size:11pt;\">Sincerely,</span></div><div style=\"font-family:'Segoe UI','Helvetica Neue',sans-serif;font-size:9pt;\">&nbsp;</div></div></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Parental Consent Request"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "35417d17-7865-ef11-a671-6045bd5f6fab"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\">Dear [contact.fullname],<br>&nbsp;</p><p style=\"margin: 0;\">People under 19 years old need to get consent from a parent or guardian to be certified as an ECE.<br>&nbsp;</p><p style=\"margin: 0;\">You need to:<br>&nbsp;</p><ol style=\"margin-inline-end: 0px; margin-inline-start: 0px; padding-inline-start: 40px;\"><li><p style=\"margin: 0;\">Download the consent form: <a href=\"https://www2.gov.bc.ca/assets/download/9F819F7ACE2F4D82B09F0299BC788F81\" target=\"_blank\">Become an Early Childhood Educator - Province of British Columbia (gov.bc.ca)</a></p></li><li><p style=\"margin: 0;\">Have one of your parents or guardians sign it</p></li><li><p style=\"margin: 0;\">Reply to this message and attach a photo or scanned copy of the signed signed consent form</p></li></ol><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">Sincerely,</p><p style=\"margin: 0;\">ECE Registry</p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Certificate Conditions"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": 2
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "b493f61c-f655-ef11-bfe3-6045bdcd6cb0"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0; text-align: start;\" dir=\"ltr\"><span style=\"font-family:Tahoma;\"><strong>Terms &amp; Conditions</strong></span></p><p style=\"margin: 0; text-align: start;\" dir=\"ltr\"><span style=\"font-family:Tahoma;\">[contact.ecer_certificateconditions.ecer_registrantid.ecer_details]</span></p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Portal User Address"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "6b560237-6656-ef11-bfe2-6045bdf9a93e"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\"><span style=\"font-family:Tahoma;font-size:11pt;\">[contact.address1_line1]</span></p><p style=\"margin: 0;\"><span style=\"font-family:Tahoma;font-size:11pt;\">[contact.address1_line2]</span></p><p style=\"margin: 0;\"><span style=\"font-family:Tahoma;font-size:11pt;\">[contact.address1_line3]</span></p><p style=\"margin: 0;\"><span style=\"font-family:Tahoma;font-size:11pt;\">[contact.address1_city], [contact.address1_stateorprovince] &nbsp;[contact.address1_postalcode]</span></p><p style=\"margin: 0;\"><span style=\"font-family:Tahoma;font-size:11pt;\">[contact.address1_country]</span></p><p style=\"margin: 0;\">&nbsp;</p></div>"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Investigation Intake Allegation"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "fa97c817-7456-ef11-bfe2-6045bdf9a93e"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Tahoma; font-size: 11pt;\"><p style=\"margin: 0;\"><strong>Allegations</strong></p><p style=\"margin: 0;\">[ecer_investigation.ecer_allegation.ecer_investigation.ecer_detail]</p><p style=\"margin: 0;\">&nbsp;</p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Investigation Involved Persons"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "fe671370-7856-ef11-bfe2-6045bdf9a93e"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Tahoma; font-size: 11pt;\"><p style=\"margin: 0;\"><strong>Involved Persons</strong></p><p style=\"margin: 0;\">[ecer_investigation.ecer_involvedperson.ecer_investigation.ecer_firstname,ecer_lastname,emailaddress,ecer_phonenumber]</p><p style=\"margin: 0;\">&nbsp;</p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Action needed: Official transcript from your education institution"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "0e9c3c9c-dad1-ef11-a72e-6045bdf9b81b"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\">The transcript we received was not provided directly from [Education institution name] and cannot be accepted.</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">You must have the education institution send the ECE Registry your official transcript directly.</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">For more information, <a href=\"https://www2.gov.bc.ca/gov/content?id=9376DE7539D44C64B3E667DB53320E71\" target=\"_blank\" rel=\"noopener noreferrer\">go to the ECE Registry website</a>.</p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Previous name request denied"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "5523ae9d-4e71-ef11-a670-7c1e5240b0bf"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><div style=\"--ck-color-selector-caption-background:hsl(0, 0%, 97%);--ck-color-selector-caption-text:hsl(0, 0%, 20%);--ck-image-style-spacing:1.5em;--ck-inline-image-style-spacing:calc(var(--ck-image-style-spacing) / 2);font-family:Segoe UI;font-size:11pt;\"><span style=\"color:#000000;\">We’re unable to verify your previous name(s) with the ID provided.</span><br><span style=\"color:#000000;\">[contact.ecer_previousname.ecer_contactid.ecer_firstname,ecer_middlename,ecer_lastname]&nbsp;</span></div><p style=\"background-color: rgb(255, 255, 255); color: rgb(23, 43, 77); font-family: -apple-system, BlinkMacSystemFont, &quot; undefined: SegoeUI&quot; undefined: ,Roboto,Oxygen,Ubuntu,&quot; undefined: FiraSans&quot; undefined: ,&quot; undefined: DroidSans&quot; undefined: ,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0.75rem 0px 0px; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" dir=\"ltr\" data-renderer-start-pos=\"5837\" width=\"fit-content\"><span style=\"color:#000000;\">Reason</span></p><ul class=\"ak-ul\" style=\"padding-inline-start: 40px; margin-inline-start: 0px; margin-inline-end: 0px; background-color: rgb(255, 255, 255); color: rgb(23, 43, 77); display: flow-root; font-family: -apple-system, BlinkMacSystemFont, &quot; undefined: SegoeUI&quot; undefined: ,Roboto,Oxygen,Ubuntu,&quot; undefined: FiraSans&quot; undefined: ,&quot; undefined: DroidSans&quot; undefined: ,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-right: 0px; margin-top: 10px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-indent-level=\"1\" width=\"fit-content\"><li><p style=\"font-size: 1em; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0px; padding: 0px; text-align: start;\" dir=\"ltr\" data-renderer-start-pos=\"5847\"><span style=\"color:#000000;\"><em data-renderer-mark=\"true\"><i><span class=\"fabric-text-color-mark\" data-text-custom-color=\"#bf2600\" data-renderer-mark=\"true\">Staff entered</span></i></em></span></p></li></ul><p style=\"background-color: rgb(255, 255, 255); color: rgb(23, 43, 77); font-family: -apple-system, BlinkMacSystemFont, &quot; undefined: SegoeUI&quot; undefined: ,Roboto,Oxygen,Ubuntu,&quot; undefined: FiraSans&quot; undefined: ,&quot; undefined: DroidSans&quot; undefined: ,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0.75rem 0px 0px; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" dir=\"ltr\" data-renderer-start-pos=\"5864\" width=\"fit-content\"><span style=\"color:#000000;\">To add new ID:</span></p><ol class=\"ak-ol\" style=\"padding-inline-start: 40px; margin-inline-start: 0px; margin-inline-end: 0px; background-color: rgb(255, 255, 255); color: rgb(23, 43, 77); display: flow-root; font-family: -apple-system, BlinkMacSystemFont, &quot; undefined: SegoeUI&quot; undefined: ,Roboto,Oxygen,Ubuntu,&quot; undefined: FiraSans&quot; undefined: ,&quot; undefined: DroidSans&quot; undefined: ,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-right: 0px; margin-top: 10px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" start=\"1\" data-indent-level=\"1\" width=\"fit-content\"><li><p style=\"font-size: 1em; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0px; padding: 0px; text-align: start;\" dir=\"ltr\" data-renderer-start-pos=\"5882\"><span style=\"color:#000000;\">Click on your name at the top of the page</span></p></li><li style=\"margin-top:var(--ds-space-050,4px);\"><p style=\"font-size: 1em; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0px; padding: 0px; text-align: start;\" dir=\"ltr\" data-renderer-start-pos=\"5927\"><span style=\"color:#000000;\">Choose “My Profile”</span></p></li><li style=\"margin-top:var(--ds-space-050,4px);\"><p style=\"font-size: 1em; font-weight: 400; letter-spacing: -0.005em; line-height: 1.714; margin: 0px; padding: 0px; text-align: start;\" dir=\"ltr\" data-renderer-start-pos=\"5950\"><span style=\"color:#000000;\">You’ll see the option to “Add ID for proof of previous name”</span></p></li></ol></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Previous name request approved"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "3010f777-5071-ef11-a670-7c1e5240b0bf"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><div style=\"font-family:Segoe UI;font-size:11pt;\"><span style=\"background-color:rgb(255,255,255);color:#000000;font-family:-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif;font-size:16px;\"><span style=\"display:inline !important;float:none;font-style:normal;font-weight:400;letter-spacing:-0.08px;text-align:left;text-indent:0px;text-transform:none;white-space:pre-wrap;width:fit-content;word-spacing:0px;\" width=\"fit-content\">We’ve reviewed the ID you provided and have added the previous name(s) to your account.</span></span></div><div style=\"font-family:Segoe UI;font-size:11pt;\"><span style=\"color:#000000;\"><span class=\"ui-provider a b c d e f g h i j k l m n o p q r s t u v w x y z ab ac ae af ag ah ai aj ak\" style=\"width:fit-content;\" data-teams=\"true\" width=\"fit-content\" dir=\"ltr\">[contact.ecer_previousname.ecer_contactid.ecer_firstname,ecer_middlename,ecer_lastname]&nbsp;</span></span></div><div style=\"font-family:Segoe UI;font-size:11pt;\">&nbsp;</div><div style=\"font-family:Segoe UI;font-size:11pt;\">&nbsp;</div></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Action needed: Transcript translated to English"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "6ebaa765-2b75-ef11-ac20-7c1e5240b0bf"
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">The official transcript issued by [Educational institution name] cannot be accepted because it's not in English.</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">&nbsp;</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">All documents submitted with your application must be in English. You must have them professionally translated at your own expense. All translated documents must be authenticated by the translator.</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">&nbsp;</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">A translation subsidy may be available to assist you with the costs associated with professional translation.</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">&nbsp;</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">The translation subsidy:</p><ul style=\"margin-inline-end: 0px; margin-inline-start: 0px; padding-inline-start: 40px;\"><li><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">Covers one-time translation service costs up to $2,500 and is provided by <a href=\"https://mosaicbc.org/our-services/interpretation-and-translation-for-business/)\" target=\"_blank\" rel=\"noopener noreferrer\">MOSAIC Interpretation and Translation Services</a></p></li><li><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">To apply for the translation subsidy, complete a <a href=\"https://www2.gov.bc.ca/assets/download/7AF05771FE5744528476266396EDEAB0).\" target=\"_blank\" rel=\"noopener noreferrer\">Translation Subsidy Application form</a></p></li></ul><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">&nbsp;</p><p style=\"margin: 0; width: fit-content;\" width=\"fit-content\">For more information, <a href=\"https://www2.gov.bc.ca/gov/content?id=9376DE7539D44C64B3E667DB53320E71\" target=\"_blank\" rel=\"noopener noreferrer\">go to the ECE Registry website</a></p></div>"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 15
+}

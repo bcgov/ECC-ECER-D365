@@ -1,0 +1,819 @@
+{
+  "LogicalName": "bcgov_tag",
+  "PrimaryIdAttribute": "bcgov_tagid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Notice of Investigation"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "5cad6de3-d08f-ef11-8a6a-000d3a0a4c90"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Evidence"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "b460ec06-d18f-ef11-8a6a-000d3a0a4c90"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Program Confirmation Form"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "78f1ae00-d775-ef11-ac20-000d3a0a4c90"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Transcript"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "f28be00c-d775-ef11-ac20-000d3a0a4c90"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Evaluation Form"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "70156c19-d775-ef11-ac20-000d3a0a4c90"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Statement of Purpose"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "5acc1a8d-d933-ef11-8e4e-000d3af45c14"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Community Needs Assessment"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "a472dd96-d933-ef11-8e4e-000d3af45c14"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Program Goals and Objectives"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "aa72dd96-d933-ef11-8e4e-000d3af45c14"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Program Review"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "3265059d-d933-ef11-8e4e-000d3af45c14"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Facility, Equipment, Resources and Access"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "642b86a5-d933-ef11-8e4e-000d3af45c14"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "4f7feeab-d933-ef11-8e4e-000d3af45c14"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Personnel/Staffing"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "627feeab-d933-ef11-8e4e-000d3af45c14"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Admission Criteria"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "1d601db6-d933-ef11-8e4e-000d3af45c14"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Instructional Methods"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "c5788abc-d933-ef11-8e4e-000d3af45c14"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Curriculum"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "d3788abc-d933-ef11-8e4e-000d3af45c14"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Student Evaluation"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "c81080c5-d933-ef11-8e4e-000d3af45c14"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Practicum"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "cf1080c5-d933-ef11-8e4e-000d3af45c14"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Certificate"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "ce6f917b-df28-ef11-840a-0022486dc4b6"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Communications"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "460ea6fb-8039-ef11-a316-0022486dc4b6"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Email"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "1a72a7af-65f7-ee11-a1fe-002248d56374"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "test"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "36f21061-c612-ef11-9f89-6045bd5e3888"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "tag test"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "96bcf972-c612-ef11-9f89-6045bd5e3888"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Test March"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "2702cfba-c612-ef11-9f89-6045bd5e3888"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Education Transcript"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "359c4a9d-950c-ef11-9f89-6045bdcd18f7"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Reconsideration Decision (Investigation)"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "758a2cb6-a985-ef11-ac21-6045bdcd6cb0"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Cover Letter"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "3b158937-7665-ef11-a670-7c1e520663eb"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Conclusion with Intent to Attach T&Cs"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "5b9dfbbb-7177-ef11-ac20-7c1e5240b0bf"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Conclusion with Intent to Suspend Certificate"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "c32247c5-7177-ef11-ac20-7c1e5240b0bf"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Conclusion with Intent to Cancel Certificate"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "3a74cecb-7177-ef11-ac20-7c1e5240b0bf"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 29
+}

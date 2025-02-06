@@ -1,0 +1,7465 @@
+{
+  "LogicalName": "ecer_country",
+  "PrimaryIdAttribute": "ecer_countryid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Afghanistan"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "3"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "91dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "AF"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Albania"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "4"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "93dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "AL"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Algeria"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "5"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "95dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "DZ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Andorra"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "6"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "97dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "AD"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Angola"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "7"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "99dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "AO"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Antigua and Barbuda"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "8"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "9bdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "AG"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Argentina"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "9"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "9ddd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "AR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Armenia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "10"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "9fdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "AM"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Australia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "11"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "a1dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "AU"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Austria"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "12"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "a3dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "AT"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Azerbaijan"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "13"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "a5dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "AZ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Bahamas (The)"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "14"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "a7dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BS"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Bahrain"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "15"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "a9dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BH"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Bangladesh"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "16"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "abdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BD"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Barbados"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "17"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "addd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BB"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Belarus"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "18"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "afdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BY"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Belgium"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "19"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "b1dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BE"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Belize"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "20"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "b3dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BZ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Benin"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "21"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "b5dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BJ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Bhutan"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "22"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "b7dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BT"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Bolivia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "23"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "b9dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BO"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Bosnia and Herzegovina"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "24"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "bbdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BA"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Botswana"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "25"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "bddd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BW"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Brazil"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "26"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "bfdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Brunei"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "27"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "c1dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BN"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Bulgaria"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "28"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "c3dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BG"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Burkina Faso"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "29"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "c5dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BF"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Burundi"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "30"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "c7dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "BI"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Côte d'Ivoire"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "31"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "c9dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CI"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Cabo Verde"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "32"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "cbdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CV"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Cambodia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "33"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "cddd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "KH"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Cameroon"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "34"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "cfdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CM"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Canada"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "1"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_id",
+          "Type": 16,
+          "Value": "1"
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "d1dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CA"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Central African Republic"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "35"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "d3dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CF"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Chad"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "36"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "d5dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "TD"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Chile"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "37"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "d7dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CL"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "China"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "38"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "d9dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CN"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Colombia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "39"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "dbdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CO"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Comoros"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "40"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "dddd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "KM"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Congo"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "41"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "dfdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CG"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Cook Islands"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "42"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "e1dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CK"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Costa Rica"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "43"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "e3dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Croatia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "44"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "e5dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "HR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Cuba"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "45"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "e7dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CU"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Cyprus"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "46"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "e9dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CY"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Czechia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "47"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "ebdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CZ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Democratic Republic of Congo"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "48"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "eddd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CD"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Denmark"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "49"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "efdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "DK"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Djibouti"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "50"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "f1dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "DJ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Dominica"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "51"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "f3dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "DM"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Dominican Republic"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "52"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "f5dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "DO"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Ecuador"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "53"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "f7dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "EC"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Egypt"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "54"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "f9dd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "EG"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "El Salvador"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "55"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "fbdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SV"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Equatorial Guinea"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "56"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "fddd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "GQ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Eritrea"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "57"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "ffdd2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "ER"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Estonia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "58"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "01de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "EE"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Eswatini"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "59"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "03de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SZ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Ethiopia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "60"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "05de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "ET"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Fiji"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "61"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "07de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "FJ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Finland"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "62"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "09de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "FI"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "France"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "63"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "0bde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "FR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Gabon"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "64"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "0dde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "GA"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Gambia (The)"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "65"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "0fde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "GM"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Georgia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "66"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "11de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "GE"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Germany"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "67"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "13de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "DE"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Ghana"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "68"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "15de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "GH"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Greece"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "69"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "17de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "GR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Grenada"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "70"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "19de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "GD"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guatemala"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "71"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "1bde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "GT"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guinea"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "72"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "1dde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "GN"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guinea-Bissau"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "73"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "1fde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "GW"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guyana"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "74"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "21de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "GY"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Haiti"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "75"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "23de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "HT"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Honduras"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "76"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "25de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "HN"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Hungary"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "77"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "27de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "HU"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Iceland"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "78"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "29de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "IS"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "India"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "79"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "2bde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "IN"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Indonesia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "80"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "2dde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "ID"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Iran"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "81"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "2fde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "IR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Iraq"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "82"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "31de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "IQ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Ireland"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "83"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "33de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "IE"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Israel"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "84"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "35de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "IL"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Italy"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "85"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "37de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "IT"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Jamaica"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "86"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "39de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "JM"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Japan"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "87"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "3bde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "JP"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Jordan"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "88"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "3dde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "JO"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Kazakhstan"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "89"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "3fde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "KZ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Kenya"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "90"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "41de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "KE"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Kiribati"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "91"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "43de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "KI"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Kosovo"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "92"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "45de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "XK"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Kuwait"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "93"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "47de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "KW"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Kyrgyzstan"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "94"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "49de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "KG"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Laos"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "95"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "4bde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "LA"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Latvia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "96"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "4dde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "LV"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Lebanon"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "97"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "4fde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "LB"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Lesotho"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "98"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "51de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "LS"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Liberia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "99"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "53de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "LR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Libya"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "100"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "55de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "LY"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Liechtenstein"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "101"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "57de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "LI"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Lithuania"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "102"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "59de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "LT"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Luxembourg"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "103"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "5bde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "LU"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Madagascar"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "104"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "5dde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MG"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Malawi"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "105"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "5fde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MW"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Malaysia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "106"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "61de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MY"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Maldives"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "107"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "63de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MV"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Mali"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "108"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "65de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "ML"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Malta"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "109"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "67de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MT"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Marshall Islands"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "110"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "69de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MH"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Mauritania"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "111"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "6bde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Mauritius"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "112"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "6dde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MU"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Mexico"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "113"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "6fde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MX"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Micronesia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "114"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "71de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "FM"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Moldova"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "115"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "73de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MD"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Monaco"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "116"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "75de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MC"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Mongolia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "117"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "77de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MN"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Montenegro"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "118"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "79de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "ME"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Morocco"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "119"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "7bde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MA"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Mozambique"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "120"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "7dde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MZ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Myanmar"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "121"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "7fde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MM"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Namibia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "122"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "81de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "NA"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Nauru"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "123"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "83de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "NR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Nepal"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "124"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "85de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "NP"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Netherlands"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "125"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "87de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "NL"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "New Zealand"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "126"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "89de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "NZ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Nicaragua"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "127"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "8bde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "NI"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Niger"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "128"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "8dde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "NE"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Nigeria"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "129"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "8fde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "NG"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "North Korea"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "130"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "91de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "KP"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "North Macedonia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "131"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "93de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "MK"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Norway"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "132"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "95de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "NO"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Oman"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "133"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "97de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "OM"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Pakistan"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "134"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "99de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "PK"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Palau"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "135"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "9bde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "PW"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Panama"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "136"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "9dde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "PA"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Papua New Guinea"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "137"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "9fde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "PG"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Paraguay"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "138"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "a1de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "PY"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Peru"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "139"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "a3de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "PE"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Philippines"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "140"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "a5de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "PH"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Poland"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "141"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "a7de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "PL"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Portugal"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "142"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "a9de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "PT"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Qatar"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "143"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "abde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "QA"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Republic of Korea"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "144"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "adde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "KR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Romania"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "145"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "afde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "RO"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Russia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "146"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "b1de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "RU"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Rwanda"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "147"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "b3de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "RW"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "São Tomé and Príncipe"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "148"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "b5de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "ST"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Saint Kitts and Nevis"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "149"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "b7de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "KN"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Saint Lucia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "150"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "b9de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "LC"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Saint Vincent and the Grenadines"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "151"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "bbde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "VC"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Samoa"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "152"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "bdde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "WS"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "San Marino"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "153"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "bfde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SM"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Saudi Arabia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "154"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "c1de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SA"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Senegal"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "155"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "c3de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SN"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Serbia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "156"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "c5de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "RS"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Seychelles"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "157"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "c7de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SC"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Sierra Leone"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "158"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "c9de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SL"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Singapore"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "159"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "cbde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SG"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Slovakia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "160"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "cdde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SK"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Slovenia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "161"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "cfde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SI"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Solomon Islands"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "162"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "d1de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SB"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Somalia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "163"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "d3de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SO"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "South Africa"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "164"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "d5de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "ZA"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "South Sudan"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "165"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "d7de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SS"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Spain"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "166"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "d9de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "ES"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Sri Lanka"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "167"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "dbde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "LK"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Sudan"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "168"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "ddde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SD"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Suriname"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "169"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "dfde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Sweden"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "170"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "e1de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SE"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Switzerland"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "171"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "e3de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "CH"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Syria"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "172"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "e5de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "SY"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Türkiye"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "173"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "e7de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "TR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Tajikistan"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "174"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "e9de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "TJ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Tanzania"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "175"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "ebde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "TZ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Thailand"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "176"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "edde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "TH"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Timor-Leste"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "177"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "efde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "TL"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Togo"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "178"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "f1de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "TG"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Tonga"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "179"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "f3de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "TO"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Trinidad and Tobago"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "180"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "f5de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "TT"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Tunisia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "181"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "f7de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "TN"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Turkmenistan"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "182"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "f9de2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "TM"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Tuvalu"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "183"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "fbde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "TV"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Uganda"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "184"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "fdde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "UG"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Ukraine"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "185"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "ffde2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "UA"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "United Arab Emirates"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "186"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "01df2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "AE"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "United Kingdom"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "187"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "03df2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "GB"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "United States"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "2"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_id",
+          "Type": 16,
+          "Value": "2"
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "05df2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "US"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Uruguay"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "188"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "07df2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "UY"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Uzbekistan"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "189"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "09df2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "UZ"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Vanuatu"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "190"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "0bdf2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "VU"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Vatican City State"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "191"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "0ddf2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "VA"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Venezuela"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "192"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "0fdf2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "VE"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Vietnam"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "193"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "11df2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "VN"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Yemen"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "194"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "13df2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "YE"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Zambia"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "195"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "15df2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "ZM"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Zimbabwe"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "196"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_countryid",
+          "Type": 1,
+          "Value": "17df2dc5-3d8b-ef11-8a6a-000d3af46d37"
+        },
+        {
+          "Key": "ecer_shortname",
+          "Type": 16,
+          "Value": "ZW"
+        }
+      ]
+    }
+  ],
+  "Count": 196
+}
