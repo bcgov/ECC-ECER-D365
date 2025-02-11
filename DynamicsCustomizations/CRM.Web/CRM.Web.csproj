@@ -68,6 +68,7 @@
     <Content Include="JS\ecer_certificate\ecer_certificate.js" />
     <Content Include="JS\ecer_characterreference\ecer_characterreference.js" />
     <Content Include="JS\ecer_comment\ecer_decisioncomment.js" />
+    <Content Include="JS\ecer_communicationcontent\ecer_communicationcontent.js" />
     <Content Include="JS\ecer_communication\ecer_communication.js" />
     <Content Include="JS\ecer_program\ecer_program.js" />
     <Content Include="JS\ecer_pspobservation\ecer_pspobservation.js" />
