@@ -10,6 +10,7 @@ if (typeof ECER.Jscripts === "undefined") {
 
 ECER.Jscripts.Contact = {
     crm_ExecutionContext: null,
+    selected_contacts: [],
     onLoad: function (executionContext) {
         this.crm_ExecutionContext = executionContext;
         ECER.Jscripts.Contact.showTabsIfBCECE(executionContext);
@@ -28,6 +29,8 @@ ECER.Jscripts.Contact = {
             if (formContext.getAttribute("ecer_isbcece") && formContext.getAttribute("ecer_isbcece").getValue() != null) {
                 show = formContext.getAttribute("ecer_isbcece").getValue();
             }
+            // Always Show - ECER-4002
+            show = true;
             applicationTab.setVisible(show);
             educationTab.setVisible(show);
             workExpTab.setVisible(show);
@@ -95,6 +98,56 @@ ECER.Jscripts.Contact = {
 
     },
 
+
+    filterSubgrid: function (executionContext) {
+
+
+        var formContext = executionContext.getFormContext();
+        //var params = new URLSearchParams(window.location.search);
+
+
+        var storedContacts = sessionStorage.getItem("selectedContacts");
+
+        if (!storedContacts) {
+            console.log("No selected contacts found in sessionStorage.");
+            return;
+        }
+
+        var selectedContacts = JSON.parse(storedContacts);
+        if (selectedContacts.length < 2) {
+            formContext.ui.tabs.get("ContactInfo_TAB").sections.get("MergeContacts_section").setVisible(false);
+            console.log("Stored contacts are incomplete.");
+            return;
+        }
+
+        var primaryContact = selectedContacts[0];
+        var duplicateContact = selectedContacts[1];
+
+
+
+        if (!primaryContact || !duplicateContact) {
+            console.error("Contact IDs missing. Cannot filter subgrid.");
+            return;
+        }
+        formContext.ui.tabs.get("ContactInfo_TAB").sections.get("MergeContacts_section").setVisible(true);
+        // Get the Subgrid Control
+        var subgrid = formContext.getControl("Subgrid_MeregeContacts");
+
+        if (subgrid) {
+
+            var fetchXmlfilter = `
+                <filter type="or">
+                    <condition attribute="contactid" operator="eq" value="${primaryContact}" />
+             <condition attribute="contactid" operator="eq" value="${duplicateContact}" />
+                </filter>`;
+
+            subgrid.setFilterXml(fetchXmlfilter);
+            subgrid.refresh();
+
+        }
+
+    },
+
     OnsearchName: function (message) {
         // Directive to prevent use of undeclared variables
         var executionContext = this.crm_ExecutionContext;
@@ -103,23 +156,18 @@ ECER.Jscripts.Contact = {
             var contactid = formContext.data.entity.getId().replace("{", "").replace("}", "");
             var lastName = formContext.getAttribute("lastname").getValue();
             var firstName = formContext.getAttribute("firstname").getValue();
-            var birthdateAttribute = formContext.getAttribute("birthdate").getValue();
+            var birthdate = formContext.getAttribute("birthdate").getValue();
+            var formattedBirthdate = birthdate.toISOString().split('T')[0];
 
+            var option = `?$filter=lastname eq '${lastName}' and firstname eq '${firstName}' and birthdate eq ${formattedBirthdate} and contactid ne '${contactid}' and statecode eq 0`;
 
-
-
-            var option = `?$filter=lastname eq '${lastName}' and firstname eq '${firstName}' and contactid ne '${contactid}'`;
-            if (birthdateAttribute) {
-                var birthdate = birthdateAttribute.toISOString();
-                option += ` and cast(birthdate, Edm.DateTimeOffset) eq ${birthdate}`;
-            }
 
             Xrm.WebApi.retrieveMultipleRecords("contact", option).then(
                 function success(results) {
                     if (results.entities.length == 0) {
                         // Prompt message
                         var msgTitle = "No matching Contact is found in system";
-                        var errMsg = "No matching Contact with Last Name #" + lastName + ",First Name #" + firstName + " and DOB #" + birthdate + " is found.Please verify and try again";
+                        var errMsg = "No matching Contact  is found.  Please verify and try again";
                         var alertStrings = { confirmButtonLabel: "OK", text: errMsg, title: msgTitle };
                         var alertOptions = { height: 240, width: 360 };
                         Xrm.Navigation.openAlertDialog(alertStrings, alertOptions);
@@ -142,55 +190,20 @@ ECER.Jscripts.Contact = {
 
                         var entityRecordId = results.entities[0].contactid;
                         var entityRecordName = results.entities[0].fullname;
+                        var storedContacts = sessionStorage.getItem("selectedContacts");
+
+                        if (storedContacts) {
+                            sessionStorage.removeItem("selectedContacts"); // Clear previous data
+                        }
+
+
+                        sessionStorage.setItem("selectedContacts", JSON.stringify([contactid, results.entities[0].contactid]));
 
                         var orgUrl = Xrm.Utility.getGlobalContext().getClientUrl();
                         var duplicateRecordUrl = `${orgUrl}/main.aspx?pagetype=entityrecord&etn=contact&id=${entityRecordId}`;
 
-
-                        var lastName = formContext.getAttribute("lastname").getValue();
-                        var firstName = formContext.getAttribute("firstname").getValue();
-                        var middleName = formContext.getAttribute("middlename").getValue();
-                        var preferredname = formContext.getAttribute("ecer_preferredname").getValue();
-                        var stree1 = formContext.getAttribute("address1_line1").getValue();
-                        var city = formContext.getAttribute("address1_city").getValue();
-                        var province = formContext.getAttribute("address1_stateorprovince").getValue();
-                        var postalCode = formContext.getAttribute("address1_postalcode").getValue();
-                        var country = formContext.getAttribute("address1_country").getValue();
-                        var email = formContext.getAttribute("emailaddress1").getValue();
-                        var primaryPhone = formContext.getAttribute("telephone1").getValue();
-                        var mobilePhone = formContext.getAttribute("mobilephone").getValue();
-
-                        /* var totalMatch = lastNameFromRecord == lastName &&
-                             firstNameFromRecord == firstName &&
-                             middleNameFromRecord == middleName &&
-                             preferredname == preferredNameFromRecord &&
-                             stree1 == street1FromRecord &&
-                             city == cityFromRecord &&
-                             province == provinceFromRecord &&
-                             postalCode == postalcodeFromRecord &&
-                             country == countryFromRecord &&
-                             email == emailFromRecord &&
-                             primaryPhone == primaryPhoneFromRecord &&
-                             mobilePhone == mobilePhoneFromRecord;
- 
-                         if (totalMatch) {
-                             var lookupArray = new Array();
-                             lookupArray[0] = new Object();
-                             // Treat the entity record to include curly braces if needed
-                             if (entityRecordId.indexOf("{") === -1) {
-                                 entityRecordId = "{" + entityRecordId + "}";
-                             }
-                             lookupArray[0].id = entityRecordId;
-                             lookupArray[0].name = entityRecordName;
-                             lookupArray[0].entityType = "contact";
-                             applicantAttribute.setValue(lookupArray);
-                             formContext.data.save();
-                             ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);
-                             return; // Exit upon setting lookup with the contact record.
-                         }*/
-
                         // Not Exact Match in details.  Do we still want to use this lookup?
-                        var msg = "Contact with ClientID#: " + ecer_clientid + " found a match with t" +
+                        var msg = "Contact with ClientID#: " + ecer_clientid + " found a match" +
                             "\nRecord found from system\n\n" +
                             "\nContact ID: " + entityRecordId +
                             "\nFirst Name: " + firstNameFromRecord +
@@ -204,29 +217,17 @@ ECER.Jscripts.Contact = {
                             "\nEmail: " + emailFromRecord +
                             "\nPrimary Phone: " + primaryPhoneFromRecord +
                             "\nMobile Phone: " + mobilePhoneFromRecord +
-                            "\n\nClick Confirm to use found result.";;
+                            "\n\nClick Open Records to use found result.";;
                         var msgTitle = "Duplicate Profile Information";
 
-                        var confirmStrings = { confirmButtonLabel: "Open Record", cancelButtonLabel: "Cancel", text: msg, title: msgTitle };
+                        var confirmStrings = { confirmButtonLabel: "Open Records", cancelButtonLabel: "Cancel", text: msg, title: msgTitle };
                         var confirmOptions = { height: 640, width: 480 };
                         Xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
                             function (success) {
                                 if (success.confirmed) {
 
                                     ECER.Jscripts.Contact.openMergeDialog(contactid, entityRecordId, duplicateRecordUrl);
-                                    /*
-                                    var lookupArray = new Array();
-                                    lookupArray[0] = new Object();
-                                    // Treat the entity record to include curly braces if needed
-                                    if (entityRecordId.indexOf("{") === -1) {
-                                        entityRecordId = "{" + entityRecordId + "}";
-                                    }
-                                    lookupArray[0].id = entityRecordId;
-                                    lookupArray[0].name = entityRecordName;
-                                    lookupArray[0].entityType = "contact";
-                                    applicantAttribute.setValue(lookupArray);
-                                    formContext.data.save();
-                                    ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);*/
+
                                 }
                             }
                         );
@@ -239,9 +240,6 @@ ECER.Jscripts.Contact = {
         }
 
     },
-
-
-
 
 
     onTempClientIDSearchButton: function () {
@@ -261,11 +259,9 @@ ECER.Jscripts.Contact = {
                 return;
             }
 
-
-
             var tempClientID = tempClientIDAttribute.getValue().trim();
 
-            var option = `?$filter=ecer_clientid eq '${tempClientID}' and contactid ne '${contactid}'`;
+            var option = `?$filter=ecer_clientid eq '${tempClientID}' and contactid ne '${contactid}' and statecode eq 0`;
 
             Xrm.WebApi.retrieveMultipleRecords("contact", option).then(
                 function success(results) {
@@ -295,54 +291,19 @@ ECER.Jscripts.Contact = {
                         var entityRecordId = results.entities[0].contactid;
                         var entityRecordName = results.entities[0].fullname;
 
+                        var storedContacts = sessionStorage.getItem("selectedContacts");
+
+                        if (storedContacts) {
+                            sessionStorage.removeItem("selectedContacts"); // Clear previous data
+                        }
+
+                        sessionStorage.setItem("selectedContacts", JSON.stringify([contactid, results.entities[0].contactid]));
+
                         var orgUrl = Xrm.Utility.getGlobalContext().getClientUrl();
                         var duplicateRecordUrl = `${orgUrl}/main.aspx?pagetype=entityrecord&etn=contact&id=${entityRecordId}`;
 
-
-                        var lastName = formContext.getAttribute("lastname").getValue();
-                        var firstName = formContext.getAttribute("firstname").getValue();
-                        var middleName = formContext.getAttribute("middlename").getValue();
-                        var preferredname = formContext.getAttribute("ecer_preferredname").getValue();
-                        var stree1 = formContext.getAttribute("address1_line1").getValue();
-                        var city = formContext.getAttribute("address1_city").getValue();
-                        var province = formContext.getAttribute("address1_stateorprovince").getValue();
-                        var postalCode = formContext.getAttribute("address1_postalcode").getValue();
-                        var country = formContext.getAttribute("address1_country").getValue();
-                        var email = formContext.getAttribute("emailaddress1").getValue();
-                        var primaryPhone = formContext.getAttribute("telephone1").getValue();
-                        var mobilePhone = formContext.getAttribute("mobilephone").getValue();
-
-                        /* var totalMatch = lastNameFromRecord == lastName &&
-                             firstNameFromRecord == firstName &&
-                             middleNameFromRecord == middleName &&
-                             preferredname == preferredNameFromRecord &&
-                             stree1 == street1FromRecord &&
-                             city == cityFromRecord &&
-                             province == provinceFromRecord &&
-                             postalCode == postalcodeFromRecord &&
-                             country == countryFromRecord &&
-                             email == emailFromRecord &&
-                             primaryPhone == primaryPhoneFromRecord &&
-                             mobilePhone == mobilePhoneFromRecord;
- 
-                         if (totalMatch) {
-                             var lookupArray = new Array();
-                             lookupArray[0] = new Object();
-                             // Treat the entity record to include curly braces if needed
-                             if (entityRecordId.indexOf("{") === -1) {
-                                 entityRecordId = "{" + entityRecordId + "}";
-                             }
-                             lookupArray[0].id = entityRecordId;
-                             lookupArray[0].name = entityRecordName;
-                             lookupArray[0].entityType = "contact";
-                             applicantAttribute.setValue(lookupArray);
-                             formContext.data.save();
-                             ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);
-                             return; // Exit upon setting lookup with the contact record.
-                         }*/
-
                         // Not Exact Match in details.  Do we still want to use this lookup?
-                        var msg = "Contact with ClientID#: " + ecer_clientid + " found a match with t" +
+                        var msg = "Contact with ClientID#: " + ecer_clientid + " found a match" +
                             "\nRecord found from system\n\n" +
                             "\nContact ID: " + entityRecordId +
                             "\nFirst Name: " + firstNameFromRecord +
@@ -356,29 +317,17 @@ ECER.Jscripts.Contact = {
                             "\nEmail: " + emailFromRecord +
                             "\nPrimary Phone: " + primaryPhoneFromRecord +
                             "\nMobile Phone: " + mobilePhoneFromRecord +
-                            "\n\nClick Confirm to use found result.";;
+                            "\n\nClick Open Records to use found result.";;
                         var msgTitle = "Duplicate Profile Information";
 
-                        var confirmStrings = { confirmButtonLabel: "Open Record", cancelButtonLabel: "Cancel", text: msg, title: msgTitle };
+                        var confirmStrings = { confirmButtonLabel: "Open Records", cancelButtonLabel: "Cancel", text: msg, title: msgTitle };
                         var confirmOptions = { height: 640, width: 480 };
                         Xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
                             function (success) {
                                 if (success.confirmed) {
 
                                     ECER.Jscripts.Contact.openMergeDialog(contactid, entityRecordId, duplicateRecordUrl);
-                                    /*
-                                    var lookupArray = new Array();
-                                    lookupArray[0] = new Object();
-                                    // Treat the entity record to include curly braces if needed
-                                    if (entityRecordId.indexOf("{") === -1) {
-                                        entityRecordId = "{" + entityRecordId + "}";
-                                    }
-                                    lookupArray[0].id = entityRecordId;
-                                    lookupArray[0].name = entityRecordName;
-                                    lookupArray[0].entityType = "contact";
-                                    applicantAttribute.setValue(lookupArray);
-                                    formContext.data.save();
-                                    ECER.Jscripts.Application.showHideApplicantQuickView(executionContext);*/
+
                                 }
                             }
                         );
@@ -394,10 +343,39 @@ ECER.Jscripts.Contact = {
 
     openMergeDialog: function (contact1, contact2, url) {
 
-        //let entityName = "contact";
-        //  let url = `/main.aspx?pagetype=entityrecord&etn=${entityName}&action=merge&mergeRecords=[{"Id":"${contact1}","Type":"contact"},{"Id":"${contact2}","Type":"contact"}]`;
+        if (!contact1 || !contact2) {
+            Xrm.Navigation.openAlertDialog({ text: "Select at least two records to merge." });
+            return;
+        }
 
-        Xrm.Navigation.openUrl(url);
+        var entityName = "contact";
+        var formId = "584c0b28-c7e4-ef11-be21-6045bdf9b81b";
+
+
+
+        var pageInput = {
+            pageType: "entityrecord",
+            entityName: entityName,
+            formId: formId,
+            entityId: contact1,
+
+        };
+
+        var navigationOptions = {
+            target: 2, // Open as a modal dialog
+            width: 800,
+            height: 600
+        };
+
+        Xrm.Navigation.navigateTo(pageInput, navigationOptions).then(
+            function () {
+                console.log("Merge Form opened successfully.");
+            },
+            function (error) {
+                console.log("Error opening Merge Form: " + error.message);
+            }
+        );
+
 
     },
     onGenerateCommunicationOnIDRejectButton: function () {
@@ -420,8 +398,4 @@ ECER.Jscripts.Contact = {
             console.error("Error in onGenerateCommunicationOnIDRejectButton: " + err.message);
         }
     },
-
-
-
-
 }
