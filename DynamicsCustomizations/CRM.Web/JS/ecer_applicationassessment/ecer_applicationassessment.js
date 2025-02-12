@@ -25,7 +25,17 @@ ECER.Jscripts.ApplicationAssessments = {
             function success(record) {
                 var isRenewal = record.ecer_type == 621870001;
                 var isECEAssistant = record.ecer_iseceassistant;
-                var showProfessionalDevelopment = isRenewal && !isECEAssistant;
+                // Per ECER-4128
+                // Professional Development is only required for ECE 1 YR renewal
+                // when the previous certificate has already expired and has expired less than 5 years.
+                var isECE1YR = record.ecer_ecer_isece1yr;
+                var renewalsLateInYears = record.ecer_renewalslateinyears;
+                if (renewalsLateInYears == null) {
+                    renewalsLateInYears = 0;
+                }
+                var is1YrRenewalsLateButLessThan5Yrs = isRenewal && isECE1YR && renewalLateInYears > 0 && renewalLateInYears < 5;
+                var isRenewalsButNotECE1Yr = isRenewal && !isECE1YR;
+                var showProfessionalDevelopment = (is1YrRenewalsLateButLessThan5Yrs || isRenewalsButNotECE1Yr) && !isECEAssistant;
                 crm_Utility.showHide(executionContext, showProfessionalDevelopment, "tab_pdassessment");
                 crm_Utility.showHide(executionContext, !showProfessionalDevelopment, "tab_educationassessment");
             }
