@@ -166,15 +166,24 @@ ECER.Jscripts.Application =
 
     getApplicantLatestCertificate: function (executionContext, applicantid, dateToCompare) {
         var formContext = executionContext.getFormContext();
-        
-        
+        var isECEAssistant = formContext.getAttribute("ecer_iseceassistant").getValue();
+        var isECE1YR = formContext.getAttribute("ecer_isece1yr").getValue();
+        var certifiedlevel = "ECE 5 YR";
+        if (isECE1YR) {
+            certifiedlevel = "ECE 1 YR";
+        }
+        else if (isECEAssistant) {
+            certifiedlevel = "ASS"; // Data Migration ones might be ASST.  New ones should be ECE Assistant
+        }
         var fiveYearsAgo = new Date(dateToCompare.getFullYear() - 5, dateToCompare.getMonth(), dateToCompare.getDate());
         
         var certificateQueryOption = "?$filter=_ecer_registrantid_value eq '" +
-            applicantid +
-            "' and ecer_expirydate ne null" +
-            " and ecer_expirydate gt " +
-            fiveYearsAgo.toISOString().substring(0, 10) +
+            applicantid + "'" +
+            " and statuscode eq 1" + // active 
+            " and ecer_expirydate ne null" +
+            " and contains(ecer_certificatelevel,'" + certifiedlevel + "')" +
+           /* " and ecer_expirydate gt " +
+            fiveYearsAgo.toISOString().substring(0, 10) + */
             "&$orderby=ecer_expirydate desc&$top=1";
         var latestCertificates = crm_Utility.retrieveMultipleCustom("ecer_certificate", certificateQueryOption);
         if (latestCertificates == null) {
@@ -404,13 +413,13 @@ ECER.Jscripts.Application =
 
         // Completeness Review Tab - Confirm Information Received (Internal Use)
         formContext.getControl("ecer_characterreferencereceived").setDisabled(!sysAdminRole);
-        formContext.getControl("ecer_characterreferencereceiveddate").setDisabled(!sysAdminRole);
+        formContext.getControl("ecer_characterreferencereceiveddate").setDisabled(alwaysOpen);
         formContext.getControl("ecer_workexperiencereceived").setDisabled(!sysAdminRole);
-        formContext.getControl("ecer_workexperiencereceiveddate").setDisabled(!sysAdminRole);
+        formContext.getControl("ecer_workexperiencereceiveddate").setDisabled(alwaysOpen);
         formContext.getControl("ecer_transcriptreceived").setDisabled(!(sysAdminRole || programSupportRole || programSupportLeadRole));
-        formContext.getControl("ecer_transcriptreceiveddate").setDisabled(!sysAdminRole);
+        formContext.getControl("ecer_transcriptreceiveddate").setDisabled(alwaysOpen);
         formContext.getControl("ecer_parentalreferencereceived").setDisabled(!(sysAdminRole || programSupportRole || programSupportLeadRole));
-        formContext.getControl("ecer_parentalreferencereceiveddate").setDisabled(!sysAdminRole);
+        formContext.getControl("ecer_parentalreferencereceiveddate").setDisabled(alwaysOpen);
         formContext.getControl("ecer_hasprofessionaldevelopment").setDisabled(!sysAdminRole);
         formContext.getControl("ecer_professionaldevelopmentreceived").setDisabled(!sysAdminRole);
 
@@ -636,14 +645,31 @@ ECER.Jscripts.Application =
     },
 
     showHideProfessionalDevelopmentFieldsOnRenewals: function (executionContext) {
+        
         var formContext = executionContext.getFormContext();
         var typeAttributeName = "ecer_type";
         var isECEAssistantAttributeName = "ecer_iseceassistant";
+        var isECE1YRAttributeName = "ecer_isece1yr";
+        var renewalsLateInYearsAttributeName = "ecer_renewalslateinyears";
         var typeAttribute = formContext.getAttribute(typeAttributeName);
         var isECEAssistantAttribute = formContext.getAttribute(isECEAssistantAttributeName);
+        var isECE1YRAttribute = formContext.getAttribute(isECE1YRAttributeName);
+        var renewalsLateInYearsAttribute = formContext.getAttribute(renewalsLateInYearsAttributeName);
         var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
         var isECEAssistant = isECEAssistantAttribute != null && isECEAssistantAttribute.getValue() != null && isECEAssistantAttribute.getValue() == true;
-        var show = isRenewal && !isECEAssistant;
+
+        // Per ECER-4128
+        // Professional Development is only required for ECE 1 YR renewal
+        // when the previous certificate has already expired and has expired less than 5 years.
+        var isECE1YR = isECE1YRAttribute != null && isECE1YRAttribute.getValue() != null && isECE1YRAttribute.getValue() == true;
+        var renewalLateInYears = 0;
+        if (renewalsLateInYearsAttribute != null && renewalsLateInYearsAttribute.getValue() != null) {
+            renewalLateInYears = renewalsLateInYearsAttribute.getValue();
+        }
+        var is1YrRenewalsLateButLessThan5Yrs = isRenewal && isECE1YR && renewalLateInYears > 0 && renewalLateInYears < 5;
+        var isRenewalsButNotECE1Yr = isRenewal && !isECE1YR;
+        var show = (is1YrRenewalsLateButLessThan5Yrs || isRenewalsButNotECE1Yr) && !isECEAssistant;
+
         var professionalDevelopmentTabName = "tab_professionaldevelopment";
         var professionalDevelopmentBPFAttributeName = "header_process_ecer_hasprofessionaldevelopment";
         var professionalDevelopmentApprovedBPFAttributeName = "header_process_ecer_professionaldevelopmentapproved";
