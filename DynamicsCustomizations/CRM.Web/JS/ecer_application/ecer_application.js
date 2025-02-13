@@ -54,6 +54,8 @@ ECER.Jscripts.Application =
         var typeAttribute = formContext.getAttribute(typeAttributeName);
         var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
         var isLate = ECER.Jscripts.Application.isRenewalLate(executionContext);
+        var renewalsLateInYearsAttributeName = "ecer_renewalslateinyears";
+        var renewalsLateInYearsAttribute = formContext.getAttribute(renewalsLateInYearsAttributeName);
         var renewalLateInYears = 0;
         if (renewalsLateInYearsAttribute != null && renewalsLateInYearsAttribute.getValue() != null) {
             renewalLateInYears = renewalsLateInYearsAttribute.getValue();
