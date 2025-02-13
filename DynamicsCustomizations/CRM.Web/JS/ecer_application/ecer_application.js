@@ -54,8 +54,12 @@ ECER.Jscripts.Application =
         var typeAttribute = formContext.getAttribute(typeAttributeName);
         var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
         var isLate = ECER.Jscripts.Application.isRenewalLate(executionContext);
-
-        var wkExempted = ((isECE1YR && !isRenewal) || (isECEAssistant && !isRenewal) || (!isLate && isECE1YR && isRenewal));
+        var renewalLateInYears = 0;
+        if (renewalsLateInYearsAttribute != null && renewalsLateInYearsAttribute.getValue() != null) {
+            renewalLateInYears = renewalsLateInYearsAttribute.getValue();
+        }
+        var is1YrRenewalsLateButLessThan5Yrs = isRenewal && isECE1YR && renewalLateInYears > 0 && renewalLateInYears <= 5;
+        var wkExempted = ((isECE1YR && !isRenewal) || (isECEAssistant && !isRenewal) || !is1YrRenewalsLateButLessThan5Yrs);
 
         // Renewal 1YR if Expired is not exempted.
 
@@ -379,6 +383,7 @@ ECER.Jscripts.Application =
         var alwaysOpen = !(sysAdminRole || assessorRole || programAnalystRole || certificateAnalystRole || assessorTeamLeadRole || programSupportRole ||
             programSupportLeadRole || operationSupervisorRole || operationSupervisorEquivalencyRole || programCoordinatorRole || investigatorRole);
         var beforeAssessmentPS = (statusreason === 1 || statusreason === 621870001) && (programSupportRole || programSupportLeadRole);
+        var notFromPortal = formContext.getAttribute("ecer_origin").getValue() !== 621870002;
         var formContext = executionContext.getFormContext();
         
         // Application Information Tab - General
@@ -413,13 +418,13 @@ ECER.Jscripts.Application =
 
         // Completeness Review Tab - Confirm Information Received (Internal Use)
         formContext.getControl("ecer_characterreferencereceived").setDisabled(!sysAdminRole);
-        formContext.getControl("ecer_characterreferencereceiveddate").setDisabled(alwaysOpen);
+        formContext.getControl("ecer_characterreferencereceiveddate").setDisabled(!sysAdminRole || notFromPortal);
         formContext.getControl("ecer_workexperiencereceived").setDisabled(!sysAdminRole);
-        formContext.getControl("ecer_workexperiencereceiveddate").setDisabled(alwaysOpen);
+        formContext.getControl("ecer_workexperiencereceiveddate").setDisabled(!sysAdminRole || notFromPortal);
         formContext.getControl("ecer_transcriptreceived").setDisabled(!(sysAdminRole || programSupportRole || programSupportLeadRole));
-        formContext.getControl("ecer_transcriptreceiveddate").setDisabled(alwaysOpen);
+        formContext.getControl("ecer_transcriptreceiveddate").setDisabled(!sysAdminRole || notFromPortal);
         formContext.getControl("ecer_parentalreferencereceived").setDisabled(!(sysAdminRole || programSupportRole || programSupportLeadRole));
-        formContext.getControl("ecer_parentalreferencereceiveddate").setDisabled(alwaysOpen);
+        formContext.getControl("ecer_parentalreferencereceiveddate").setDisabled(!sysAdminRole || notFromPortal);
         formContext.getControl("ecer_hasprofessionaldevelopment").setDisabled(!sysAdminRole);
         formContext.getControl("ecer_professionaldevelopmentreceived").setDisabled(!sysAdminRole);
 
@@ -666,7 +671,7 @@ ECER.Jscripts.Application =
         if (renewalsLateInYearsAttribute != null && renewalsLateInYearsAttribute.getValue() != null) {
             renewalLateInYears = renewalsLateInYearsAttribute.getValue();
         }
-        var is1YrRenewalsLateButLessThan5Yrs = isRenewal && isECE1YR && renewalLateInYears > 0 && renewalLateInYears < 5;
+        var is1YrRenewalsLateButLessThan5Yrs = isRenewal && isECE1YR && renewalLateInYears > 0 && renewalLateInYears <= 5;
         var isRenewalsButNotECE1Yr = isRenewal && !isECE1YR;
         var show = (is1YrRenewalsLateButLessThan5Yrs || isRenewalsButNotECE1Yr) && !isECEAssistant;
 
