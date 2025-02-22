@@ -203,9 +203,9 @@ ECER.Jscripts.Contact = {
                         var duplicateRecordUrl = `${orgUrl}/main.aspx?pagetype=entityrecord&etn=contact&id=${entityRecordId}`;
 
                         // Not Exact Match in details.  Do we still want to use this lookup?
-                        var msg = "Contact with ClientID#: " + ecer_clientid + " found a match" +
+                        var msg = "Contact with Name#: " + firstName + " " + lastName + " & Date of Birth: " + formattedBirthdate + " found a match" +
                             "\nRecord found from system\n\n" +
-                            "\nContact ID: " + entityRecordId +
+                            "\nRegistration #: " + ecer_clientid +
                             "\nFirst Name: " + firstNameFromRecord +
                             "\nMiddle Name: " + middleNameFromRecord +
                             "\nLast Name: " + lastNameFromRecord +
@@ -305,7 +305,6 @@ ECER.Jscripts.Contact = {
                         // Not Exact Match in details.  Do we still want to use this lookup?
                         var msg = "Contact with ClientID#: " + ecer_clientid + " found a match" +
                             "\nRecord found from system\n\n" +
-                            "\nContact ID: " + entityRecordId +
                             "\nFirst Name: " + firstNameFromRecord +
                             "\nMiddle Name: " + middleNameFromRecord +
                             "\nLast Name: " + lastNameFromRecord +
