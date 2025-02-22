@@ -21,7 +21,30 @@
             <Value>=Parameters!CRM_Filteredecer_Certificate.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>&lt;fetch distinct="false" useraworderby="false" no-lock="false" mapping="logical"&gt;&lt;entity name="ecer_certificate" enableprefiltering="1" prefilterparametername="CRM_Filteredecer_Certificate"&gt;&lt;attribute name="ecer_certificatelevel" alias="ecer_certificatelevel" /&gt;&lt;attribute name="ecer_certificatenumber" alias="ecer_certificatenumber" /&gt;&lt;attribute name="ecer_effectivedate" alias="ecer_effectivedate" /&gt;&lt;attribute name="ecer_expirydate" alias="ecer_expirydate" /&gt;&lt;attribute name="ecer_registrantid" alias="ecer_registrantid" /&gt;&lt;attribute name="ecer_certificateid" /&gt;&lt;attribute name="ecer_name" /&gt;&lt;link-entity name="contact" from="contactid" to="ecer_registrantid" visible="false" link-type="outer" alias="aa"&gt;&lt;attribute name="ecer_hascurrentcertificateconditions" alias="aa_ecer_hascurrentcertificateconditions"/&gt;&lt;/link-entity&gt;&lt;/entity&gt;&lt;/fetch&gt;</CommandText>
+        <CommandText>&lt;fetch distinct="false" useraworderby="false" no-lock="false" mapping="logical"&gt;
+    &lt;entity name="ecer_certificate" enableprefiltering="1"
+        prefilterparametername="CRM_Filteredecer_Certificate"&gt;
+        &lt;attribute name="ecer_certificatelevel" alias="ecer_certificatelevel" /&gt;
+        &lt;attribute name="ecer_certificatenumber" alias="ecer_certificatenumber" /&gt;
+        &lt;attribute name="ecer_effectivedate" alias="ecer_effectivedate" /&gt;
+        &lt;attribute name="ecer_expirydate" alias="ecer_expirydate" /&gt;
+        &lt;attribute name="ecer_registrantid" alias="ecer_registrantid" /&gt;
+        &lt;attribute name="ecer_certificateid" /&gt;
+        &lt;attribute name="ecer_name" /&gt;
+        &lt;link-entity name="contact" from="contactid" to="ecer_registrantid" visible="false"
+            link-type="outer" alias="aa"&gt;
+            &lt;attribute name="ecer_hascurrentcertificateconditions"
+                alias="aa_ecer_hascurrentcertificateconditions" /&gt;
+            &lt;attribute name="firstname"
+                alias="aa_firstname" /&gt;
+            &lt;attribute name="lastname"
+                alias="aa_lastname" /&gt;
+            &lt;attribute name="middlename"
+                alias="aa_middlename" /&gt;
+        &lt;/link-entity&gt;
+    &lt;/entity&gt;
+&lt;/fetch&gt;</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
         <Field Name="ecer_certificatelevel">
@@ -75,6 +98,18 @@
         <Field Name="aa_ecer_hascurrentcertificateconditionsValue">
           <DataField>aa_ecer_hascurrentcertificateconditionsValue</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="aa_firstname">
+          <DataField>aa_firstname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="aa_lastname">
+          <DataField>aa_lastname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="aa_middlename">
+          <DataField>aa_middlename</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -507,7 +542,7 @@ EDUCATOR CERTIFICATE</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ecer_registrantid.Value</Value>
+                                  <Value>=Fields!aa_firstname.Value &amp; IIF(IsNothing(Fields!aa_middlename.Value) OR Trim(Fields!aa_middlename.Value) = "", "", " " &amp; Fields!aa_middlename.Value) &amp; " " &amp; Fields!aa_lastname.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>14pt</FontSize>
@@ -614,7 +649,7 @@ EDUCATOR CERTIFICATE</Value>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Having the training, experience and other qualifications required by the Child Care Licensing, is hereby awarded this certificate as a/an:</Value>
+                                  <Value>Having the training, experience and other qualifications required by the Child Care Licensing Regulation, is hereby awarded this certificate as a/an:</Value>
                                   <Style>
                                     <FontStyle>Italic</FontStyle>
                                     <FontFamily>BC Sans</FontFamily>
@@ -3131,7 +3166,7 @@ EDUCATOR CERTIFICATE</Value>
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>Pacific Standard Time</Value>
+          <Value>Mountain Standard Time</Value>
         </Values>
       </DefaultValue>
       <AllowBlank>true</AllowBlank>
@@ -3162,7 +3197,7 @@ EDUCATOR CERTIFICATE</Value>
       <DataType>String</DataType>
       <DefaultValue>
         <Values>
-          <Value>$</Value>
+          <Value>CA$</Value>
         </Values>
       </DefaultValue>
       <AllowBlank>true</AllowBlank>
