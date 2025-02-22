@@ -61,7 +61,7 @@ ECER.Jscripts.Application =
             renewalLateInYears = renewalsLateInYearsAttribute.getValue();
         }
         var is1YrRenewalsLateButLessThan5Yrs = isRenewal && isECE1YR && renewalLateInYears > 0 && renewalLateInYears <= 5;
-        var wkExempted = ((isECE1YR && !isRenewal) || (isECEAssistant && !isRenewal) || !is1YrRenewalsLateButLessThan5Yrs);
+        var wkExempted = ((isECE1YR && !isRenewal) || (isECEAssistant && !isRenewal) || (isECE1YR && !is1YrRenewalsLateButLessThan5Yrs));
 
         // Renewal 1YR if Expired is not exempted.
 
