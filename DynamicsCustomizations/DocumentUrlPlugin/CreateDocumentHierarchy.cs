@@ -151,6 +151,36 @@ namespace BCGOV.Plugin.DocumentUrl
                         service.Update(sharePointFileUrlEntity);
                     }
                 }
+                else if (targetEntity.Contains("ecer_transcriptid") && targetEntity["ecer_transcriptid"] != null
+                    && (!targetEntity.Contains("ecer_applicationid") || targetEntity["ecer_applicationid"] == null))
+                {
+                    var entityReferencce = (EntityReference)targetEntity["ecer_transcriptid"];
+                    var entityRecord = service.Retrieve(entityReferencce.LogicalName.ToLowerInvariant(),
+                        entityReferencce.Id, new ColumnSet("ecer_applicationid", "ecer_applicantid"));
+                    var hasChange = false;
+                    if (registryTeamER != null)
+                    {
+                        sharePointFileUrlEntity["ownerid"] = registryTeamER;
+                        hasChange = true;
+                    }
+
+                    if (entityRecord.Contains("ecer_applicationid") && entityRecord["ecer_applicationid"] != null)
+                    {
+                        sharePointFileUrlEntity["ecer_applicationid"] = entityRecord["ecer_applicationid"];
+                        hasChange = true;
+                    }
+
+                    if (entityRecord.Contains("ecer_applicantid") && entityRecord["ecer_applicantid"] != null)
+                    {
+                        sharePointFileUrlEntity["bcgov_customer"] = entityRecord["ecer_applicantid"];
+                        hasChange = true;
+                    }
+
+                    if (hasChange)
+                    {
+                        service.Update(sharePointFileUrlEntity);
+                    }
+                }
                 // Use ELSE to avoid infinite loop
                 else if (targetEntity.Contains("ecer_applicationid") && targetEntity["ecer_applicationid"] != null)
                 {

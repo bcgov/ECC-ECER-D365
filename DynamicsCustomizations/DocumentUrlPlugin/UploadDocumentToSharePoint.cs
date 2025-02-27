@@ -53,9 +53,6 @@ namespace BCGOV.Plugin.DocumentUrl
                     traceService.Trace($"Interface URL: {url}");
                     traceService.Trace("Convert Base64 String into Byte Array for further processing");
                     var bodyByteArray = Convert.FromBase64String(body);
-                    var now = DateTime.Now;
-                    var pacificZone = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
-                    var pacificTime = TimeZoneInfo.ConvertTimeFromUtc(now, pacificZone);
 
                     using (var fileStream = new System.IO.MemoryStream(bodyByteArray))
                     {
@@ -70,7 +67,7 @@ namespace BCGOV.Plugin.DocumentUrl
                         traceService.Trace($"Construct File Stream Length: {fileStream.Length}");
                         Entity sharePointFileUrlEntity = new Entity("bcgov_documenturl");
                         sharePointFileUrlEntity["bcgov_filename"] = fileName;
-                        sharePointFileUrlEntity["bcgov_receiveddate"] = pacificTime;
+                        sharePointFileUrlEntity["bcgov_receiveddate"] = DateTime.Now;
                         sharePointFileUrlEntity["bcgov_filesize"] = Helpers.GetFileSize(fileStream.Length);
                         sharePointFileUrlEntity["bcgov_fileextension"] = fileName.Substring(fileName.LastIndexOf("."));
                         sharePointFileUrlEntity["bcgov_url"] = string.Format("{0}/{1}", regardingObjectLogicalName, regardingObjectId.ToString());
@@ -181,6 +178,10 @@ namespace BCGOV.Plugin.DocumentUrl
                         }
                         else if (regardingObjectLogicalName.Equals("ecer_certificatesummary", StringComparison.InvariantCultureIgnoreCase)) {
                             sharePointFileUrlEntity["ecer_certificatesummaryid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                        }
+                        else if (regardingObjectLogicalName.Equals("ecer_transcript", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            sharePointFileUrlEntity["ecer_transcriptid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
                         }
                         else
                             throw new InvalidPluginExecutionException(string.Format("Unknown RegardingObjectType '{0}' to associate document..", regardingObjectLogicalName));

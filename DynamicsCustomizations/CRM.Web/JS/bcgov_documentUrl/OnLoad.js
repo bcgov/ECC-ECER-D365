@@ -22,6 +22,7 @@
         ShowLookup(formContext, "ecer_programprofileid");
         ShowLookup(formContext, "ecer_psiid");
         ShowLookup(formContext, "ecer_certificatesummaryid");
+        ShowLookup(formContext, "ecer_transcriptid");
     }
 };
 
