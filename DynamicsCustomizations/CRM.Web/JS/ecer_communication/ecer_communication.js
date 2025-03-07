@@ -14,6 +14,7 @@ ECER.Jscripts.Communication = {
     ecer_investigation: null,
     ecer_portaluser: null,
     ecer_programapplicaiton: null,
+    ecer_ecer_transcript: null,
     onLoad: function (executionContext) {
         this.crm_ExecutionContext = executionContext;
         try {
@@ -38,9 +39,11 @@ ECER.Jscripts.Communication = {
         var applicationAttributeName = "ecer_applicationid";
         var investigationAttributeName = "ecer_investigation";
         var registrantAttributeName = "ecer_registrantid";
+        var transcriptAttributeName = "ecer_transcriptid";
         var portalUserLookup = formContext.getAttribute(registrantAttributeName);
         var applicationLookup = formContext.getAttribute(applicationAttributeName);
         var investigationLookup = formContext.getAttribute(investigationAttributeName);
+        var transcriptLookup = formContext.getAttribute(transcriptAttributeName);
 
         if (portalUserLookup !== null && portalUserLookup.getValue() !== null) {
             var portalUserId = portalUserLookup.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
@@ -67,6 +70,15 @@ ECER.Jscripts.Communication = {
                     this.ecer_investigation = record;
                 }
             );
+        }
+
+        if (transcriptLookup !== null && transcriptLookup.getValue() !== null) {
+            var transcriptId = transcriptLookup.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
+            Xrm.WebApi.retrieveRecord("ecer_transcript", transcriptId).then(
+                function success(record) {
+                    this.ecer_transcript = record;
+                }
+            )
         }
     },
 
@@ -220,6 +232,8 @@ ECER.Jscripts.Communication = {
                             case "ecer_investigation":
                                 fieldText = ECER.Jscripts.Communication.shortDateToLongDateString(this.ecer_investigation[fieldName]);
                                 break;
+                            case "ecer_transcript":
+                                fieldText = ECER.Jscripts.Communication.shortDateToLongDateString(this.ecer_transcript[fieldName]);
                         }
                         if (fieldText !== undefined) {
                             if (fieldText === null) {
@@ -251,6 +265,8 @@ ECER.Jscripts.Communication = {
                             case "ecer_investigation":
                                 parentId = this.ecer_investigation.ecer_investigationid;
                                 break;
+                            case "ecer_transcript":
+                                parentId = this.ecer_transcript.ecer_transcriptid;
                         }
                         var option = "?$filter=_" + childEntityFilterFieldName + "_value eq '" + parentId + "' and statecode eq 0&$select=" + childFieldName;
                         var results = crm_Utility.retrieveMultipleCustom(childEntityName, option); // Synchoronous call using AJAX.  The await throws error.
@@ -353,17 +369,19 @@ ECER.Jscripts.Communication = {
         var applicationAttributeName = "ecer_applicationid";
         var investigationAttributeName = "ecer_investigation";
         var registrantAttributeName = "ecer_registrantid";
+        var transcriptAttributeName = "ecer_transcriptid";
         var initiatedFromAttributeName = "ecer_initiatedfrom";
         var applicationValue = formContext.getAttribute(applicationAttributeName).getValue();
         var investigationValue = formContext.getAttribute(investigationAttributeName).getValue();
         var portalUserValue = formContext.getAttribute(registrantAttributeName).getValue();
+        var transcriptValue = formContext.getAttribute(transcriptAttributeName).getValue();
         var initiatedFromAttribute = formContext.getAttribute(initiatedFromAttributeName);
         var initiatedFromRegistryValue = 621870000;
         var initiatedFromInvestigationValue = 621870001;
         if (investigationValue != null) {
             initiatedFromAttribute.setValue(initiatedFromInvestigationValue);
         }
-        else if (applicationValue !== null || portalUserValue !== null) {
+        else if (applicationValue !== null || portalUserValue !== null || transcriptValue !== null) {
             initiatedFromAttribute.setValue(initiatedFromRegistryValue);
         }
         else {

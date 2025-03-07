@@ -74,6 +74,7 @@
     <Content Include="JS\ecer_program\ecer_program.js" />
     <Content Include="JS\ecer_pspobservation\ecer_pspobservation.js" />
     <Content Include="JS\ecer_pspsitevisit\ecer_pspsitevisit.js" />
+    <Content Include="JS\ecer_transcript\ecer_transcript.js" />
     <Content Include="JS\ecer_utility.js" />
     <Content Include="JS\ecer_workexperienceassessment\ecer_workexperienceassessment.js" />
     <Content Include="JS\ecer_workexperiencereference\ecer_workexperiencereference.js" />
