@@ -1,4 +1,4 @@
-﻿if (typeof ECER === "undefined") {
+if (typeof ECER === "undefined") {
     var ECER = {};
 }
 
@@ -15,7 +15,9 @@ ECER.Jscripts.Transcript =
         ECER.Jscripts.Transcript.courseOutlineSectionShowHide(executionContext);
         ECER.Jscripts.Transcript.showHideEquivalencyFields(executionContext);
     },
-
+    //ECER-4410
+    //When Education Origin = Not Recognized on education transcript record
+    //Show Section: Course Outlines and Section: Program Confirmation Form 
     courseOutlineSectionShowHide: function (executionContext) {
         var formContext = executionContext.getFormContext();
 
@@ -25,7 +27,7 @@ ECER.Jscripts.Transcript =
         }
         var educationRecognitionVal = educationRecognition.getValue();
         var generalTab = formContext.ui.tabs.get("tab_general");
-        var notRecognized = educationRecognitionVal === 621870001;
+        var notRecognized = educationRecognitionVal === 621870001; // Not Recognized 
         generalTab.sections.get("section_course_outlines").setVisible(notRecognized);
         generalTab.sections.get("section_program_confirmation").setVisible(notRecognized);
 
@@ -92,7 +94,6 @@ ECER.Jscripts.Transcript =
                 crm_Utility.showHide(executionContext, show, "ecer_courseoutlinereceived");
                 crm_Utility.showHide(executionContext, show, "ecer_courseoutlinereceiveddate");
                 crm_Utility.showHide(executionContext, show, "ecer_courseoutlinesreviewed");
-                crm_Utility.showHide(executionContext, show, "ecer_mytranscriptwillrequireenglishtranslation");
 
                 crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_comprehensiveevaluationreportreceived");
                 crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_comprehensiveevaluationreportreceiveddate");
