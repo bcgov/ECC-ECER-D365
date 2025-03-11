@@ -6,7 +6,6 @@ if (typeof ECER.Jscripts === "undefined") {
     ECER.Jscripts = {};
 }
 
-
 ECER.Jscripts.Investigation =
 {
     onLoad: function (executionContext) {
@@ -16,6 +15,50 @@ ECER.Jscripts.Investigation =
         ECER.Jscripts.Investigation.showHideParallelProcess(executionContext);
         ECER.Jscripts.Investigation.showHideReasonForPriorityAssignment(executionContext);
         ECER.Jscripts.Investigation.displayFindingsOrAllegations(executionContext);
+    },
+
+    // Set Certification Type / Certificate Expiry Date / Certificate Status
+    getCurrentCertificateInfo: function (executionContext) {
+        console.log("Executing getCurrentCertificateInfo");
+
+        let formContext = executionContext.getFormContext();
+
+        let currentCertificate = formContext.getAttribute("ecer_currentcertificate");
+
+        if (currentCertificate === null || currentCertificate.getValue() === null)
+            return;
+
+        let currentCertificateId = currentCertificate.getValue()[0].id.replace("{", "").replace("}", "");
+
+        // Make async call, get values and save
+        console.log("Retreiving ecer_certificate for " + currentCertificateId);
+
+        Xrm.WebApi.retrieveRecord("ecer_certificate", currentCertificateId, "?$select=ecer_expirydate,ecer_certificatelevel,ecer_certificatenumber,statuscode").then(
+            function (result) {
+                console.log("Data retrieved for " + currentCertificateId);
+
+                // From Certificate
+                if (result.hasOwnProperty("ecer_certificatelevel"))
+                    formContext.getAttribute("ecer_certificationtype")?.setValue(result["ecer_certificatelevel"]);
+
+                if (result.hasOwnProperty("statuscode"))
+                    formContext.getAttribute("ecer_certificatestatus")?.setValue(result["statuscode@OData.Community.Display.V1.FormattedValue"]);
+
+                if (result.hasOwnProperty("ecer_expirydate")) {
+                    let expiryDate = formContext.getAttribute("ecer_expirydate");
+                    let expiryDateVal = new Date(result["ecer_expirydate@OData.Community.Display.V1.FormattedValue"])
+                    expiryDate.setValue(expiryDateVal);
+                    expiryDate.setSubmitMode("always");
+                }
+
+                if (result.hasOwnProperty("ecer_certificatenumber")) {
+                    formContext.getAttribute("ecer_certificatenumber")?.setValue(result["ecer_certificatenumber"]);
+                }
+            },
+            function (error) {
+                console.log(error.message);
+            }
+        );
     },
 
     getApplicantInfo: function (executionContext) {
@@ -91,7 +134,63 @@ ECER.Jscripts.Investigation =
             function success(results) {
                 console.log(results);
                 if (results.entities.length > 0) {
-                    var result = results.entities[0];
+                    let certificationHierarchyData = ECER.Jscripts.Investigation.Data.CertificationHierarchy();
+
+                    let allActive = results.entities.filter(function (f) {
+                        return f.statuscode == 1;
+                    });
+
+                    let result = null;
+
+                    // More than 1 active
+                    if (allActive.length > 0) {
+                        // Pick highest active last to expire
+                        let highestActiveLevel3s = allActive.filter(function (f) {
+                            return f.ecer_certificatelevel.includes(certificationHierarchyData.Level3);
+                        });
+
+                        let highestActiveLevel2s = allActive.filter(function (f) {
+                            return f.ecer_certificatelevel === certificationHierarchyData.Level2;
+                        });
+
+                        let highestActiveLevel1s = allActive.filter(function (f) {
+                            return certificationHierarchyData.Level1.includes(f.ecer_certificatelevel);
+                        });
+
+                        if (highestActiveLevel3s.length > 0)
+                            result = highestActiveLevel3s[0];
+                        else if (highestActiveLevel2s.length > 0) {
+                            result = highestActiveLevel2s[0];
+                        }
+                        else if (highestActiveLevel1s.length > 0) {
+                            result = highestActiveLevel1s[0];
+                        }
+                    }
+                    // None active
+                    else {
+                        // Pick highest inactive last to expire
+                        let highestInactiveLevel3s = results.entities.filter(function (f) {
+                            return f.ecer_certificatelevel.includes(certificationHierarchyData.Level3);
+                        });
+
+                        let highestInactiveLevel2s = results.entities.filter(function (f) {
+                            return f.ecer_certificatelevel === certificationHierarchyData.Level2;
+                        });
+
+                        let highestInactiveLevel1s = results.entities.filter(function (f) {
+                            return certificationHierarchyData.Level1.includes(f.ecer_certificatelevel);
+                        });
+
+                        if (highestInactiveLevel3s.length > 0)
+                            result = highestInactiveLevel3s[0];
+                        else if (highestInactiveLevel2s.length > 0) {
+                            result = highestInactiveLevel2s[0];
+                        }
+                        else if (highestInactiveLevel1s.length > 0) {
+                            result = highestInactiveLevel1s[0];
+                        }
+                    }
+
                     // Set Values
                     certificateNumber.setValue(result["ecer_certificatenumber"]);
                     certificateStatus.setValue(result["statuscode@OData.Community.Display.V1.FormattedValue"]);
@@ -119,12 +218,12 @@ ECER.Jscripts.Investigation =
             var certificateId = values[0];
             // Get Transcript
 
-            if(certificateId!==null){
+            if (certificateId !== null) {
                 Xrm.WebApi.retrieveMultipleRecords("ecer_transcript", "?$select=ecer_educationinstitutionfullname&$filter=ecer_Applicationid/_ecer_certificateid_value eq " + certificateId).then(
                     function success(results) {
                         console.log(results);
                         if (results.entities.length > 0) {
-                            console.log("Eductional institutes for that cert id: ",results.entities)
+                            console.log("Eductional institutes for that cert id: ", results.entities)
                             var result = results.entities[0];
                             educationalInstitution.setValue(result["ecer_educationinstitutionfullname"]);
                         }
@@ -193,21 +292,21 @@ ECER.Jscripts.Investigation =
     displayFindingsOrAllegations: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var sourceAttribute = formContext.getAttribute("ecer_source");
-        
+
         // Check if the source attribute is null
         if (!sourceAttribute) {
             console.error("Source attribute 'ecer_source' is null or undefined.");
             return;
         }
-        
+
         var source = sourceAttribute.getValue();
-    
+
         // Retrieve the findings and allegations sections by their IDs
         var findingsSection = formContext.ui.tabs.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}")
             .sections.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}_section_12");
         var allegationsSection = formContext.ui.tabs.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}")
             .sections.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}_section_8");
-    
+
         // Check if the sections are null
         if (!findingsSection) {
             console.error("Findings section is null or undefined.");
@@ -217,7 +316,7 @@ ECER.Jscripts.Investigation =
             console.error("Allegations section is null or undefined.");
             return;
         }
-    
+
         var healthAuthorities = [
             621870018,  //"Island Health Authority",
             621870019,  //"Interior Health Authority",
@@ -225,7 +324,7 @@ ECER.Jscripts.Investigation =
             621870021,  //"Fraser Health Authority",
             621870022,  //"Northern Health Authority"
         ];
-    
+
         if (healthAuthorities.includes(source)) {
             findingsSection.setVisible(true);
             allegationsSection.setVisible(false);
@@ -539,4 +638,16 @@ ECER.Jscripts.Investigation =
             formContext.getControl("ecer_reasonforpriorityassignment").setVisible(false);
         }
     },
+}
+
+
+ECER.Jscripts.Investigation.Data = {
+
+    CertificationHierarchy: function () {
+        return {
+            Level1: 'Assistant,ECE Assistant',
+            Level2: 'ECE 1 YR',
+            Level3: 'ECE 5 YR'
+        }
+    }
 }
