@@ -148,7 +148,7 @@ ECER.Jscripts.Contact = {
 
     },
 
-    OnsearchName: function (message) {
+    OnsearchName: function () {
         // Directive to prevent use of undeclared variables
         var executionContext = this.crm_ExecutionContext;
         var formContext = executionContext.getFormContext();
@@ -156,9 +156,20 @@ ECER.Jscripts.Contact = {
             var contactid = formContext.data.entity.getId().replace("{", "").replace("}", "");
             var lastName = formContext.getAttribute("lastname").getValue();
             var firstName = formContext.getAttribute("firstname").getValue();
-            var birthdate = formContext.getAttribute("birthdate").getValue();
-            var formattedBirthdate = birthdate.toISOString().split('T')[0];
+            var birthDateAttribute = formContext.getAttribute("birthdate");
+            var birthdate = birthDateAttribute.getValue();
 
+
+            if (birthDateAttribute == null || birthDateAttribute.getValue() == null) {
+                var msgTitle = "Date of Birth is Missing";
+                var errMsg = "Date of Birth does not contains data.  Please verify and try again";
+                var alertStrings = { confirmButtonLabel: "OK", text: errMsg, title: msgTitle };
+                var alertOptions = { height: 240, width: 360 };
+                Xrm.Navigation.openAlertDialog(alertStrings, alertOptions);
+                return;
+
+            }
+            var formattedBirthdate = birthdate.toISOString().split('T')[0];
             var option = `?$filter=lastname eq '${lastName}' and firstname eq '${firstName}' and birthdate eq ${formattedBirthdate} and contactid ne '${contactid}' and statecode eq 0`;
 
 
@@ -249,9 +260,11 @@ ECER.Jscripts.Contact = {
         try {
             var contactid = formContext.data.entity.getId().replace("{", "").replace("}", "");
             var tempClientIDAttribute = formContext.getAttribute("ecer_tempclientid");
+
+
             if (tempClientIDAttribute == null || tempClientIDAttribute.getValue() == null || tempClientIDAttribute.getValue().trim() == '') {
                 // Prompt message
-                var msgTitle = "TempClientID does not contains data";
+                var msgTitle = "TempClientID is Missing";
                 var errMsg = "TempClientID does not contains data.  Please verify and try again";
                 var alertStrings = { confirmButtonLabel: "OK", text: errMsg, title: msgTitle };
                 var alertOptions = { height: 240, width: 360 };
