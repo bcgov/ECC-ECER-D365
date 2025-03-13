@@ -345,10 +345,11 @@ ECER.Jscripts.Communication = {
                         var details = record.ecer_text;
                         var text = details;
                         if (currentDetailsValue !== null && currentDetailsValue !== "") {
-                            text = details + currentDetailsValue;
+                            text = currentDetailsValue + details;
                         }
                         var currentSubject = formContext.getAttribute(nameAttributeName).getValue();
-                        if (currentSubject !== null && currentSubject.trim() != "") {
+                        // Only Populate if Empty
+                        if (currentSubject === null && currentSubject.trim() === "") {
                             formContext.getAttribute(nameAttributeName).setValue(name);
                         }
                         formContext.getAttribute(detailsAttributeName).setValue(null);
