@@ -101,6 +101,10 @@ ECER.Jscripts.Transcript =
                 crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_comprehensiveevaluationreportreceived");
                 crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_comprehensiveevaluationreportreceiveddate");
                 crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_cerreviewed");
+
+                crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_iwishtoapplyforafeewaiver");
+                crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_ihavesubmittedanapplicationtobcits");
+                crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_eceregistryalreadyhasmycomprehensivereport");
             },
             function (error) {
                 crm_Utility.showMessage(error.message);
