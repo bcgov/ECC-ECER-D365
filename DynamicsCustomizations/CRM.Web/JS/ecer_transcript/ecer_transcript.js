@@ -14,8 +14,12 @@ ECER.Jscripts.Transcript =
 
         ECER.Jscripts.Transcript.courseOutlineSectionShowHide(executionContext);
         ECER.Jscripts.Transcript.showHideEquivalencyFields(executionContext);
-    },
+        ECER.Jscripts.Transcript.shownOnPSIeqOther(executionContext);
 
+    },
+    //ECER-4410
+    //When Education Origin = Not Recognized on education transcript record
+    //Show Section: Course Outlines and Section: Program Confirmation Form 
     courseOutlineSectionShowHide: function (executionContext) {
         var formContext = executionContext.getFormContext();
 
@@ -102,5 +106,19 @@ ECER.Jscripts.Transcript =
                 crm_Utility.showMessage(error.message);
             }
         );
+    },
+    //ECER-4506
+    //When PSIValue= Other, Show ecer_mytranscriptwillrequireenglishtranslation field
+
+    onChangePSI: function (executionContext) {
+        ECER.Jscripts.Transcript.shownOnPSIeqOther(executionContext);
+    },
+    shownOnPSIeqOther: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var PSI = "ecer_postsecondaryinstitutionid";
+        var otherPSIValue = '38dda20e-e8ee-ef11-be20-7c1e52871876'; //PSI = Other
+        var PSIValue = formContext.getAttribute(PSI).getValue();
+        var show = PSIValue === otherPSIValue;
+        crm_Utility.showHide(executionContext, show, "ecer_mytranscriptwillrequireenglishtranslation");
     },
 }
