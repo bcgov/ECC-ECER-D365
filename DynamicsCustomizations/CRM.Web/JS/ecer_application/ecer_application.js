@@ -464,11 +464,11 @@ ECER.Jscripts.Application =
         crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_professionaldevelopmentreceived");
 
         // Equivalency - Confirm Information Received (Internal Use)
-        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_programconfirmationformreceived");
+        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal || beforeAssessmentPS || programAnalystRole || certificateAnalystRole || managerOfCertificationRole), "ecer_programconfirmationformreceived");
         crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_programconfirmationformreceiveddate");
-        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_courseoutlinereceived");
+        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal || beforeAssessmentPS || programAnalystRole || certificateAnalystRole || managerOfCertificationRole), "ecer_courseoutlinereceived");
         crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_courseoutlinereceiveddate");
-        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_comprehensiveevaluationreportreceived");
+        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal || beforeAssessmentPS || programAnalystRole || certificateAnalystRole || managerOfCertificationRole), "ecer_comprehensiveevaluationreportreceived");
         crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_comprehensiveevaluationreportreceiveddate");
 
         // Completeness Review Tab - Ready for Assessment
