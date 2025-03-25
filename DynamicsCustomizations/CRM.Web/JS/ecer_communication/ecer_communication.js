@@ -14,7 +14,7 @@ ECER.Jscripts.Communication = {
     ecer_investigation: null,
     ecer_portaluser: null,
     ecer_programapplicaiton: null,
-    ecer_ecer_transcript: null,
+    ecer_transcript: null,
     onLoad: function (executionContext) {
         this.crm_ExecutionContext = executionContext;
         try {
