@@ -15,6 +15,43 @@ ECER.Jscripts.Contact = {
         this.crm_ExecutionContext = executionContext;
         ECER.Jscripts.Contact.showTabsIfBCECE(executionContext);
         ECER.Jscripts.Contact.evaluateAge(executionContext);
+        ECER.Jscripts.Contact.LockHasCurrentCertificateConditionsUnlessInvestigation(executionContext);
+        ECER.Jscripts.Contact.registrantHasActiveCondition(executionContext, null);
+    },
+
+    LockHasCurrentCertificateConditionsUnlessInvestigation: function (executionContext) {
+        var hasInvestigationBaselineRole = crm_Utility.checkCurrentUserRole("Investigation - Baseline Role");
+        var hasSystemAdministrator = crm_Utility.checkCurrentUserRole("System Administrator");
+        crm_Utility.enableDisable(executionContext, !(hasSystemAdministrator || hasInvestigationBaselineRole), "ecer_hascurrentcertificateconditions");
+        crm_Utility.enableDisable(executionContext, !(hasSystemAdministrator || hasInvestigationBaselineRole), "ecer_underinvestigation");
+    },
+
+    registrantHasActiveCondition: function (executionContext, registrantId) {
+        var formContext = executionContext.getFormContext();
+        var formType = formContext.ui.getFormType();
+        if (formType !== 2 &&
+            formType !== 3 &&
+            formType !== 4) {
+            // Only care of Update, Read Only, Disabled
+            return;
+        }
+        if (registrantId == null) {
+            registrantId = formContext.data.entity.getId();
+        }
+        registrantId = registrantId.replace("{", "").replace("}", "");
+        var uniqueId = registrantId.replace("-", ""); + "HasActiveConditions";
+        formContext.ui.clearFormNotification(uniqueId);
+        var option = "?$filter=_ecer_registrantid_value eq " + registrantId + " and statecode eq 0";
+        Xrm.WebApi.retrieveMultipleRecords("ecer_certificateconditions", option).then(
+            function success(results) {
+                if (results.entities.length > 0) {
+                    // Has Active Certificate Solution
+                    var message = "Registrant has active terms and conditions currently";
+                    var level = "WARNING";
+                    formContext.ui.setFormNotification(message, level, uniqueId);
+                }
+            }
+        );
     },
 
     showTabsIfBCECE: function (executionContext) {

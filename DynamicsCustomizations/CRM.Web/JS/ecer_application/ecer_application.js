@@ -28,7 +28,21 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.parallelProcessToggle(executionContext);
         ECER.Jscripts.Application.workExperienceExemption(executionContext);
         ECER.Jscripts.Application.showHideEscalationFields(executionContext);
+        ECER.Jscripts.Application.registrantHasActiveCondition(executionContext);
     },
+
+    registrantHasActiveCondition: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var applicantAttributeName = "ecer_applicantid";
+        var applicantAttribute = formContext.getAttribute(applicantAttributeName);
+        var applicant = applicantAttribute.getValue();
+        if (applicant === null) {
+            return null;
+        }
+        var applicantid = applicant[0].id.replace("{", "").replace("}", "");
+        ECER.Jscripts.Contact.registrantHasActiveCondition(executionContext, applicantid);
+    },
+
     parallelProcessToggle: function (executionContext) {
 
         // Display the Parallel Process form section if the Parallel Process toggle = Yes
@@ -343,6 +357,8 @@ ECER.Jscripts.Application =
         }
         crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_contactnames");
         crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_applicantaddress");
+        crm_Utility.showHide(executionContext, !showQuickView, "header_process_ecer_isprimaryidentificationprovided");
+        crm_Utility.showHide(executionContext, !showQuickView, "header_process_ecer_issecondaryidentificationprovided");
 
     },
 

@@ -11,6 +11,19 @@ if (typeof ECER.Jscripts === "undefined") {
 ECER.Jscripts.Certificate = {
     onLoad: function (executionContext) {
         ECER.Jscripts.Certificate.hideCancelledStatusReasonBySecurityRole(executionContext);
+        ECER.Jscripts.Certificate.registrantHasActiveCondition(executionContext);
+    },
+
+    registrantHasActiveCondition: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var applicantAttributeName = "ecer_registrantid";
+        var applicantAttribute = formContext.getAttribute(applicantAttributeName);
+        var applicant = applicantAttribute.getValue();
+        if (applicant === null) {
+            return null;
+        }
+        var applicantid = applicant[0].id.replace("{", "").replace("}", "");
+        ECER.Jscripts.Contact.registrantHasActiveCondition(executionContext, applicantid);
     },
 
     hideCancelledStatusReasonBySecurityRole: function (executionContext) {
