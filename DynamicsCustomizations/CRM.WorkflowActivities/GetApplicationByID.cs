@@ -54,8 +54,13 @@ namespace CRM.CustomWorkflow
                 Guid applicationId;
                 if (!string.IsNullOrEmpty(applicationIdString) && Guid.TryParse(applicationIdString, out applicationId))
                 {
-                    var result = Service.Retrieve("ecer_application", applicationId, new ColumnSet(false));
-                    entityReference = result?.ToEntityReference();
+                    // This is stupid.  The Retrieve throws an exception if not found instead of NULL.
+                    // Use Retrieve Mutliple and query by primary key instead.
+                    var query = new QueryExpression("ecer_application") { ColumnSet = new ColumnSet(false) };
+                    query.Criteria.AddCondition("ecer_applicationid", ConditionOperator.Equal, applicationId);
+                    var results = Service.RetrieveMultiple(query);
+                    if (results.Entities.Count > 0)
+                        entityReference = results[0].ToEntityReference();
                 }
 
                 ApplicationOutput.Set(activityContext, entityReference);
