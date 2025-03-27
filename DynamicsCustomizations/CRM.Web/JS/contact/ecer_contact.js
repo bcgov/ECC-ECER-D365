@@ -28,14 +28,16 @@ ECER.Jscripts.Contact = {
 
     registrantHasActiveCondition: function (executionContext, registrantId) {
         var formContext = executionContext.getFormContext();
-        var formType = formContext.ui.getFormType();
-        if (formType !== 2 &&
-            formType !== 3 &&
-            formType !== 4) {
-            // Only care of Update, Read Only, Disabled
-            return;
-        }
+        
         if (registrantId == null) {
+            var formType = formContext.ui.getFormType();
+            if (formType !== 2 &&
+                formType !== 3 &&
+                formType !== 4) {
+                // Only care of Update, Read Only, Disabled if on Contact entity
+                return;
+            }
+
             registrantId = formContext.data.entity.getId();
         }
         registrantId = registrantId.replace("{", "").replace("}", "");
