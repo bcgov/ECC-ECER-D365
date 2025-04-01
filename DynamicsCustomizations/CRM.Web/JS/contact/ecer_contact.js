@@ -24,6 +24,7 @@ ECER.Jscripts.Contact = {
         var hasSystemAdministrator = crm_Utility.checkCurrentUserRole("System Administrator");
         crm_Utility.enableDisable(executionContext, !(hasSystemAdministrator || hasInvestigationBaselineRole), "ecer_hascurrentcertificateconditions");
         crm_Utility.enableDisable(executionContext, !(hasSystemAdministrator || hasInvestigationBaselineRole), "ecer_underinvestigation");
+        crm_Utility.enableDisable(executionContext, !(hasSystemAdministrator || hasInvestigationBaselineRole), "ecer_ineligiblereference");
     },
 
     registrantHasActiveCondition: function (executionContext, registrantId) {
