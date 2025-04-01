@@ -1,4 +1,4 @@
-﻿// Javascript source code
+﻿ï»¿// Javascript source code
 
 if (typeof ECER === "undefined") {
     var ECER = {}
@@ -14,10 +14,22 @@ ECER.Jscripts.Communication = {
     ecer_investigation: null,
     ecer_portaluser: null,
     ecer_programapplicaiton: null,
-    ecer_transcript: null,
+    ecer_ecer_transcript: null,
+    parameters: null,
+    isreply: false,
     onLoad: function (executionContext) {
         this.crm_ExecutionContext = executionContext;
         try {
+            var globalContext = Xrm.Utility.getGlobalContext();
+            this.parameters = globalContext.getQueryStringParameters();
+            var par = globalContext.getQueryStringParameters();
+
+            // Get the original Communication ID
+            this.isreply = this.parameters["IsR"];
+            if (this.isreply) {
+                ECER.Jscripts.Communication.loadReplyMessage(executionContext);
+                return;
+            }
             ECER.Jscripts.Communication.populateInitiatedFromAtForm(executionContext);
             ECER.Jscripts.Communication.lockIsRoot(executionContext);
             ECER.Jscripts.Communication.acknowledgedIfFromPortalUser(executionContext);
@@ -33,6 +45,70 @@ ECER.Jscripts.Communication = {
             // Throws script error of method not found when hitting "Save" multiple times.
         }
     },
+
+    loadReplyMessage(executionContext) {
+        var initiatedFromAttributeName = "ecer_initiatedfrom";
+        var parentCommunicationAttributeName = "ecer_parentcommunicationid";
+        var portalUserAttributeName = "ecer_registrantid";
+        var programApplicatAttributeName = "ecer_ecer_program_application_id";
+        var educationalTranscriptAttributeName = "ecer_transcriptid";
+
+        var formContext = executionContext.getFormContext();
+        formContext.getControl("ecer_donotreply").setDisabled(true);
+        formContext.getControl("ecer_isroot").setDisabled(true);
+
+        var intiatedFrom = ECER.Jscripts.Communication.getInitiatedFromParentCommunicatiion(executionContext, this.parameters["parentCommunication"][0].id);
+
+        formContext.getAttribute("ecer_applicationid").setValue(this.parameters["applicationValue"]);
+        formContext.getAttribute("ecer_investigation").setValue(this.parameters["investigationValue"]);
+        formContext.getAttribute("ecer_parentcommunicationid").setValue(this.parameters["parentCommunication"]);
+        formContext.getAttribute("ecer_registrantid").setValue(this.parameters["portalUserValue"]);
+        formContext.getAttribute("ecer_transcriptid").setValue(this.parameters["transcriptValue"]);
+        formContext.getAttribute("ecer_ecer_program_application_id").setValue(this.parameters["programApplicat"]);
+        formContext.getAttribute("ecer_initiatedfrom").setValue(intiatedFrom);
+
+
+
+    },
+    showSubgridDisplay(selectedMessage) {
+
+        show = false;
+        if (selectedMessage.length !== 0) {
+            var option = "?$filter= ecer_communicationid eq '" + selectedMessage + "'";
+            var results = crm_Utility.retrieveMultipleCustom("ecer_communication", option); // Synchoronous call using AJAX.  The await throws error.
+
+            if (results !== null || results.length !== 0) {
+
+
+                if ((results[0]["ecer_initiatedfrom"] === 621870002) && (!results[0]["ecer_donotreply"]) && (!results[0]["ecer_isroot"])) {
+                    show = true;
+                }
+
+            }
+
+        }
+        return show;
+    },
+    getInitiatedFromParentCommunicatiion(executionContext, parentCommunication) {
+        if (parentCommunication) {
+
+            var parentCommunicationId = parentCommunication.replace("{", "").replace("}", "");
+            var initiatedFromAttributeName = "ecer_initiatedfrom"
+
+            var option = "?$filter= ecer_communicationid eq '" + parentCommunicationId + "'";
+            var results = crm_Utility.retrieveMultipleCustom("ecer_communication", option); // Synchoronous call using AJAX.  The await throws error.
+
+            if (results !== null || results.length !== 0) {
+                return results[0][initiatedFromAttributeName];
+            }
+            else {
+                return null;
+            }
+
+        }
+
+    },
+
 
     loadRelatedObjects: function (executionContext) {
         var formContext = executionContext.getFormContext();
@@ -114,7 +190,223 @@ ECER.Jscripts.Communication = {
         theAttribute.setSubmitMode("always");
         formContext.data.save();
     },
+    onSubGridReplyButtonClick: function (selectedMessage) {
+        // ECER-4585
 
+        var option = "?$filter= ecer_communicationid eq '" + selectedMessage + "'";
+        var results = crm_Utility.retrieveMultipleCustom("ecer_communication", option); // Synchoronous call using AJAX.  The await throws error.
+
+        if (results !== null || results.length !== 0) {
+
+            var applicationAttributeName = "_ecer_applicationid_value";
+            var investigationAttributeName = "_ecer_investigation_value";
+            var registrantAttributeName = "_ecer_registrantid_value";
+            var transcriptAttributeName = "_ecer_transcriptid_value";
+            var initiatedFromAttributeName = "ecer_initiatedfrom";
+            var parentCommunicationAttributeName = "_ecer_parentcommunicationid_value";
+            var programApplicatAttributeName = "_ecer_ecer_program_application_id_value";
+            var educationalTranscriptAttributeName = "_ecer_transcriptid_value";
+
+
+            var applicationValue = results[0][applicationAttributeName];
+            var investigationValue = results[0][investigationAttributeName];
+            var portalUserValue = results[0][registrantAttributeName];
+            var transcriptValue = results[0][transcriptAttributeName];
+            var parentCommunication = results[0][parentCommunicationAttributeName];
+            var programApplicat = results[0][programApplicatAttributeName];
+            var educationalTranscript = results[0][educationalTranscriptAttributeName];
+            var parentCommunicationLookup = null;
+            var applicationLookup = null;
+            var transcriptLookup = null;
+            var investigationLookup = null;
+            var programApplicatLookup = null;
+
+            if (parentCommunication !== null) {
+                var parentCommuName = ECER.Jscripts.Communication.returnLookupField("ecer_communication", "ecer_communicationid", parentCommunication, "ecer_name");
+
+                parentCommunicationLookup = [{
+                    id: parentCommunication,
+                    name: parentCommuName,
+                    entityType: "ecer_communication"
+                }
+                ]
+            }
+            if (investigationValue !== null) {
+                var investigationName = ECER.Jscripts.Communication.returnLookupField("ecer_investigation", "ecer_investigationid", investigationValue, "ecer_name");
+
+                investigationLookup = [{
+                    id: investigationValue,
+                    name: investigationName,
+                    entityType: "ecer_investigation"
+                }
+                ]
+            }
+
+            if (applicationValue !== null) {
+                var applicationName = ECER.Jscripts.Communication.returnLookupField("ecer_application", "ecer_applicationid", applicationValue, "ecer_name");
+
+                applicationLookup = [{
+                    id: applicationValue,
+                    name: applicationName,
+                    entityType: "ecer_application"
+                }
+                ]
+            }
+            if (portalUserValue !== null) {
+                var portalUserName = ECER.Jscripts.Communication.returnLookupField("contact", "contactid", portalUserValue, "fullname");
+
+                portalUserLookup = [{
+                    id: portalUserValue,
+                    name: portalUserName,
+                    entityType: "contact"
+                }
+                ]
+            }
+            if (transcriptValue !== null) {
+                var applicationName = ECER.Jscripts.Communication.returnLookupField("ecer_transcript", "ecer_transcriptid", transcriptValue, "ecer_name");
+
+                transcriptLookup = [{
+                    id: transcriptValue,
+                    name: applicationName,
+                    entityType: "ecer_transcript"
+                }
+                ]
+            }
+            if (programApplicat !== null) {
+                var programApplicantName = ECER.Jscripts.Communication.returnLookupField("ecer_postsecondaryinstituteprogramapplicaiton", "ecer_postsecondaryinstituteprogramapplicaitonid", programApplicat, "ecer_name");
+
+                programApplicatLookup = [{
+                    id: programApplicat,
+                    name: programApplicantName,
+                    entityType: "ecer_postsecondaryinstituteprogramapplicaiton"
+                }
+                ]
+            }
+
+
+            var entityName = "ecer_communication";
+
+            var pageInput = {
+                pageType: "entityrecord",
+                entityName: entityName,
+                formType: 2,
+                data: {
+
+                    IsR: 'true',
+                    applicationValue: applicationLookup,
+                    investigationValue: investigationLookup,
+                    portalUserValue: portalUserLookup,
+                    transcriptValue: transcriptLookup,
+                    parentCommunication: parentCommunicationLookup,
+                    programApplicat: programApplicatLookup,
+                    educationalTranscript: transcriptLookup
+
+                }
+
+            };
+
+            var navigationOptions = {
+                target: 1, // Open as a modal dialog
+                //width: 800,
+                //height: 600
+            };
+
+            Xrm.Navigation.navigateTo(pageInput, navigationOptions).then(
+                function () {
+                    console.log("Reply Form opened successfully.");
+                },
+                function (error) {
+                    console.log("Error opening Reply Form: " + error.message);
+                }
+            );
+
+
+        }
+        else {
+            console.log("Error");
+        }
+
+
+
+    },
+
+    returnLookupField(entity, colname, entityid, name) {
+        var option = "?$filter= " + colname + " eq '" + entityid + "' &$select=" + name;
+        var results = crm_Utility.retrieveMultipleCustom(entity, option);
+
+
+        return results[0][name];
+    },
+
+    onReplyButtonClick: function (executionContext) {
+        // ECER-4585
+
+        var applicationAttributeName = "ecer_applicationid";
+        var formContext = null;
+        if (this.crm_ExecutionContext !== null) {
+            formContext = this.crm_ExecutionContext.getFormContext();
+        }
+        else {
+            formContext = executionContext;
+        }
+
+        var investigationAttributeName = "ecer_investigation";
+        var registrantAttributeName = "ecer_registrantid";
+        var transcriptAttributeName = "ecer_transcriptid";
+        var initiatedFromAttributeName = "ecer_initiatedfrom";
+        var parentCommunicationAttributeName = "ecer_parentcommunicationid";
+        var programApplicatAttributeName = "ecer_ecer_program_application_id";
+        var educationalTranscriptAttributeName = "ecer_transcriptid";
+
+        var applicationValue = formContext.getAttribute(applicationAttributeName).getValue();
+        var investigationValue = formContext.getAttribute(investigationAttributeName).getValue();
+        var portalUserValue = formContext.getAttribute(registrantAttributeName).getValue();
+        var transcriptValue = formContext.getAttribute(transcriptAttributeName).getValue();
+        var parentCommunication = formContext.getAttribute(parentCommunicationAttributeName).getValue();
+        var programApplicat = formContext.getAttribute(programApplicatAttributeName).getValue();
+        var educationalTranscript = formContext.getAttribute(educationalTranscriptAttributeName).getValue();
+
+
+        var entityName = "ecer_communication";
+
+        var pageInput = {
+            pageType: "entityrecord",
+            entityName: entityName,
+            formType: 2,
+            data: {
+
+                IsR: 'true',
+                communicationid: formContext.data.entity.getId(),
+                applicationValue: applicationValue,
+                investigationValue: investigationValue,
+                portalUserValue: portalUserValue,
+                transcriptValue: transcriptValue,
+                parentCommunication: parentCommunication,
+                programApplicat: programApplicat,
+                educationalTranscript: educationalTranscript
+
+            }
+
+        };
+
+        var navigationOptions = {
+            target: 1, // Open as a modal dialog
+            //width: 800,
+            //height: 600
+        };
+
+        Xrm.Navigation.navigateTo(pageInput, navigationOptions).then(
+            function () {
+                console.log("Reply Form opened successfully.");
+            },
+            function (error) {
+                console.log("Error opening Reply Form: " + error.message);
+            }
+        );
+
+
+
+    },
     acknowledgedIfFromPortalUser: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var initiatedFromAttributeName = "ecer_initiatedfrom";
@@ -321,7 +613,7 @@ ECER.Jscripts.Communication = {
         }
         while (currentDetailsValue.indexOf("[", index) >= 0 && hasIssue == false);
         currentDetailsAttribute.setValue(currentDetailsValue);
-        
+
     },
 
     populateOnPresetContentsSelected: function (executionContext) {
