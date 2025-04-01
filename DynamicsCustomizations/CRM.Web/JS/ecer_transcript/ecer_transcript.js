@@ -92,11 +92,16 @@ ECER.Jscripts.Transcript =
                 crm_Utility.showHide(executionContext, show && !isECEAssistant, "ecer_programconfirmationformreceived");
                 crm_Utility.showHide(executionContext, show && !isECEAssistant, "ecer_programconfirmationformreceiveddate");
                 crm_Utility.showHide(executionContext, show && !isECEAssistant, "ecer_programconfirmationreviewed");
+                crm_Utility.showHide(executionContext, show && !isECEAssistant, "ecer_ihavemyprogramconfirmationandwillupload");
+                crm_Utility.showHide(executionContext, show && !isECEAssistant, "ecer_iseceregistryhasprogramconfirmation");
+
+                crm_Utility.showHide(executionContext, show, "ecer_mytranscriptwillrequireenglishtranslation");
 
                 crm_Utility.showHide(executionContext, show, "ecer_courseoutlinereceived");
                 crm_Utility.showHide(executionContext, show, "ecer_courseoutlinereceiveddate");
                 crm_Utility.showHide(executionContext, show, "ecer_courseoutlinesreviewed");
-                crm_Utility.showHide(executionContext, show, "ecer_mytranscriptwillrequireenglishtranslation");
+                crm_Utility.showHide(executionContext, show, "ecer_ihavemycourseoutlinessyllabiandwillupload");
+                crm_Utility.showHide(executionContext, show, "ecer_iseceregistryalreadyhasmycourseoutline");
 
                 crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_comprehensiveevaluationreportreceived");
                 crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_comprehensiveevaluationreportreceiveddate");
