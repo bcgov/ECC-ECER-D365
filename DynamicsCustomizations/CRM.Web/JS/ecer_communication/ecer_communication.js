@@ -342,15 +342,20 @@ ECER.Jscripts.Communication = {
                 Xrm.WebApi.retrieveRecord("ecer_communicationcontent", lookupId).then(
                     function success(record) {
                         var name = record.ecer_name;
+                        var subject = record.ecer_subject;
                         var details = record.ecer_text;
                         var text = details;
                         if (currentDetailsValue !== null && currentDetailsValue !== "") {
                             text = currentDetailsValue + details;
                         }
+
+                        if (subject == null) {
+                            subject = name;
+                        }
                         var currentSubject = formContext.getAttribute(nameAttributeName).getValue();
                         // Only Populate if Empty
-                        if (currentSubject === null && currentSubject.trim() === "") {
-                            formContext.getAttribute(nameAttributeName).setValue(name);
+                        if (currentSubject === null || currentSubject.trim() === "") {
+                            formContext.getAttribute(nameAttributeName).setValue(subject);
                         }
                         formContext.getAttribute(detailsAttributeName).setValue(null);
                         formContext.getAttribute(detailsAttributeName).setValue(text);
