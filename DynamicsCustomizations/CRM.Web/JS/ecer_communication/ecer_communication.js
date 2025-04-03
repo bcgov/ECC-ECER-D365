@@ -1,4 +1,4 @@
-﻿ï»¿// Javascript source code
+﻿// Javascript source code
 
 if (typeof ECER === "undefined") {
     var ECER = {}
@@ -21,6 +21,7 @@ ECER.Jscripts.Communication = {
         this.crm_ExecutionContext = executionContext;
         try {
             var globalContext = Xrm.Utility.getGlobalContext();
+
             this.parameters = globalContext.getQueryStringParameters();
             var par = globalContext.getQueryStringParameters();
 
@@ -46,7 +47,7 @@ ECER.Jscripts.Communication = {
         }
     },
 
-    loadReplyMessage(executionContext) {
+    loadReplyMessage: function(executionContext) {
         var initiatedFromAttributeName = "ecer_initiatedfrom";
         var parentCommunicationAttributeName = "ecer_parentcommunicationid";
         var portalUserAttributeName = "ecer_registrantid";
@@ -70,7 +71,7 @@ ECER.Jscripts.Communication = {
 
 
     },
-    showSubgridDisplay(selectedMessage) {
+    showSubgridDisplay: function(selectedMessage) {
 
         show = false;
         if (selectedMessage.length !== 0) {
@@ -89,7 +90,7 @@ ECER.Jscripts.Communication = {
         }
         return show;
     },
-    getInitiatedFromParentCommunicatiion(executionContext, parentCommunication) {
+    getInitiatedFromParentCommunicatiion: function(executionContext, parentCommunication) {
         if (parentCommunication) {
 
             var parentCommunicationId = parentCommunication.replace("{", "").replace("}", "");
