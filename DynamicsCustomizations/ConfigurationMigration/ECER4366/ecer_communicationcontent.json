@@ -1,0 +1,193 @@
+{
+  "LogicalName": "ecer_communicationcontent",
+  "PrimaryIdAttribute": "ecer_communicationcontentid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"6295\" width=\"fit-content\">Thank you for contacting the ECE Registry to request a fee waiver for a Comprehensive Report through BCIT’s International Credential Evaluation Service (ICES).</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"6456\" width=\"fit-content\">&nbsp;</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"6458\" width=\"fit-content\">To determine your eligibility for a fee waiver, the Registry requires additional information regarding your training. In addition to submitting all supporting documents in your application summary, please reply to this message with responses to the following questions:</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"6729\" width=\"fit-content\">a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Did your training (education) focus on the care and education of children under the age of five?</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"6835\" width=\"fit-content\">b.&nbsp;&nbsp;&nbsp;&nbsp; Did you complete a practicum with children 5 years of age and younger?</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"6914\" width=\"fit-content\">c.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Was the educational institution (for example, college or university) that you attended recognized by the government of the province, state, or country in which it is located?</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"7098\" width=\"fit-content\">d.&nbsp;&nbsp;&nbsp;&nbsp; What were the admission requirements for the program(s) you attended? For example, a diploma showing graduation from secondary school, or a school leaving certificate? If available, please submit a copy.</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"7310\" width=\"fit-content\">e.&nbsp;&nbsp;&nbsp;&nbsp; Can your educational institution submit an official transcript directly to BCIT’s ICES?</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"7406\" width=\"fit-content\">&nbsp;</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"7409\" width=\"fit-content\">Once the above information is received and reviewed, the Registry will determine your eligibility for a fee waiver. We will notify you with a decision.&nbsp;</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"7563\" width=\"fit-content\">&nbsp;</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"7566\" width=\"fit-content\">If you have further questions, <a class=\"cc-1sdo59k\" style=\"color:var(--ds-link,#0c66e4);text-decoration:none;\" href=\"https://www2.gov.bc.ca/gov/content?id=9376DE7539D44C64B3E667DB53320E71\" data-renderer-mark=\"true\" title=\"https://www2.gov.bc.ca/gov/content?id=9376DE7539D44C64B3E667DB53320E71\" data-testid=\"link-with-safety\"><u data-renderer-mark=\"true\">contact us</u></a>.</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"7610\" width=\"fit-content\">&nbsp;</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"7613\" width=\"fit-content\">Thank you,</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"7625\" width=\"fit-content\">&nbsp;<span style=\"color:var(--custom-palette-color,inherit);\"><span class=\"fabric-text-color-mark\" data-text-custom-color=\"#ff5630\" data-renderer-mark=\"true\">[SIGNATURE BLOCK]</span></span></p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Fee waiver request"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Fee waiver request for 1-YR/5-YR applicants"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "0f8486ed-450f-f011-998a-7c1e52871876"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"8160\" width=\"fit-content\">Thank you for contacting the ECE Registry to request a fee waiver for a Comprehensive Report through BCIT’s International Credential Evaluation Service (ICES).</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"8321\" width=\"fit-content\">To determine your eligibility for a fee waiver, the Registry requires additional information regarding your training. In addition to submitting all supporting documents in your application summary, please complete the following: </p><ol class=\"ak-ol\" style=\"padding-inline-start: 40px; margin-inline-start: 0px; margin-inline-end: 0px; color: rgb(41, 42, 46); display: flow-root; font-family: &quot; undefined: AtlassianSans&quot; undefined: ,ui-sans-serif,-apple-system,BlinkMacSystemFont,&quot; undefined: SegoeUI&quot; undefined: ,Ubuntu,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-right: 0px; margin-top: 10px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" start=\"1\" data-indent-level=\"1\" width=\"fit-content\"><li><p style=\"margin: 0; font: var(--ak-renderer-editor-font-normal-text); margin-bottom: 0px; margin-left: 0px; margin-top: 0px; padding: 0px;\" data-renderer-start-pos=\"8554\"><strong data-renderer-mark=\"true\">Ask your educational institution to complete the attached Course Confirmation Form and provide it to you to upload to the portal. </strong></p></li><li style=\"margin-top:var(--ds-space-050,4px);\"><p style=\"margin: 0; font: var(--ak-renderer-editor-font-normal-text); margin-bottom: 0px; margin-left: 0px; margin-top: 0px; padding: 0px;\" data-renderer-start-pos=\"8688\"><strong data-renderer-mark=\"true\">Respond to the following questions</strong>:</p></li></ol><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"8727\" width=\"fit-content\">a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Did your training (education) focus on the care and education of children under the age of five?</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"8833\" width=\"fit-content\">b.&nbsp;&nbsp;&nbsp;&nbsp; Did you complete a practicum with children 5 years of age and younger?</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"8912\" width=\"fit-content\">c.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Was the educational institution (for example, college or university) that you attended recognized by the government of the province, state, or country in which it is located?</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"9096\" width=\"fit-content\">d.&nbsp;&nbsp;&nbsp;&nbsp; What were the admission requirements for the program(s) you attended? For example, a diploma showing graduation from secondary school, or a school leaving certificate? If available, please submit a copy.</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"9308\" width=\"fit-content\">e.&nbsp;&nbsp;&nbsp;&nbsp; Can your educational institution submit an official transcript directly to BCIT’s ICES?</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"9404\" width=\"fit-content\">&nbsp;</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"9407\" width=\"fit-content\">Once the above information is received and reviewed, the Registry will determine your eligibility for a fee waiver. We will notify you with a decision.&nbsp;</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"9561\" width=\"fit-content\">If you have further questions, <a class=\"cc-1sdo59k\" style=\"color:var(--ds-link,#0c66e4);text-decoration:none;\" href=\"https://www2.gov.bc.ca/gov/content?id=9376DE7539D44C64B3E667DB53320E71\" data-renderer-mark=\"true\" title=\"https://www2.gov.bc.ca/gov/content?id=9376DE7539D44C64B3E667DB53320E71\" data-testid=\"link-with-safety\"><u data-renderer-mark=\"true\">contact us</u></a>.</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"9605\" width=\"fit-content\">Thank you,</p><p style=\"margin: 0; color: rgb(41, 42, 46); font-size: 16px; font-style: normal; font-weight: 400; letter-spacing: normal; margin-bottom: 0px; margin-top: 0.75rem; padding: 0px; text-align: left; text-indent: 0px; text-transform: none; white-space: pre-wrap; width: fit-content; word-spacing: 0px;\" data-renderer-start-pos=\"9617\" width=\"fit-content\"><span style=\"color:var(--custom-palette-color,inherit);\"><span class=\"fabric-text-color-mark\" data-text-custom-color=\"#ff5630\" data-renderer-mark=\"true\">[SIGNATURE BLOCK]</span></span></p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Fee waiver request"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Fee waiver request for ECEA applicants"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "220e2d3c-480f-f011-998a-7c1e52871876"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\">Hello [contact.firstname] :<br><br><br><br>Thank you for contacting the ECE Registry for information regarding a fee waiver for a Comprehensive Report through BCIT’s International Credential Evaluation Service (ICES).<br><br><br><br>At this time, there is no funding available for a fee waiver. As we do not yet know when additional funding will become available, we encourage you to visit BCIT ICES and apply for a Comprehensive Report.&nbsp;<br><br>For the Registry to continue with the assessment of your application, please request the report to be sent directly to:&nbsp;<br><br>BC ECE Registry - Ministry of Education and Child Care<br>PO BOX 9961 STN PROV GOVT.<br>Victoria, BC V8W 9R4.<br><br>If you have further questions, contact us.<br><br>Thank you,<br>&nbsp;</p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "No fee waiver funding available"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "No fee waiver funding available"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "b8e4b7b0-490f-f011-998a-7c1e52871876"
+        }
+      ]
+    }
+  ],
+  "Count": 3
+}
