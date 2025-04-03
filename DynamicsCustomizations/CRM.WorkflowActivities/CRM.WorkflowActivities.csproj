@@ -111,6 +111,7 @@
     <Compile Include="DeleteThisRecord.cs" />
     <Compile Include="CheckIfChildRecordExistsWithRecordCountActivity.cs" />
     <Compile Include="DoesOptionSetCollectionHasOptionActivity.cs" />
+    <Compile Include="GetContactByRegistrationNumber.cs" />
     <Compile Include="GetContactByID.cs" />
     <Compile Include="GetDateOnlyActivity.cs" />
     <Compile Include="GetDatePartAndNameActivity.cs" />
