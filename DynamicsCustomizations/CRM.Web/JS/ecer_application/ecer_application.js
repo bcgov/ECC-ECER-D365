@@ -64,6 +64,10 @@ ECER.Jscripts.Application =
         var formContext = executionContext.getFormContext();
         var isECEAssistant = formContext.getAttribute("ecer_iseceassistant").getValue();
         var isECE1YR = formContext.getAttribute("ecer_isece1yr").getValue();
+        var isSNE = formContext.getAttribute("ecer_issne").getValue();
+        var isITE = formContext.getAttribute("ecer_isite").getValue();
+        var isECE5YR = formContext.getAttribute("ecer_isece5yr").getValue();
+        var isPostBasicOnly = (isSNE || isITE) && !isECE5YR;
         var typeAttributeName = "ecer_type";
         var typeAttribute = formContext.getAttribute(typeAttributeName);
         var isRenewal = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870001;
@@ -75,7 +79,7 @@ ECER.Jscripts.Application =
             renewalLateInYears = renewalsLateInYearsAttribute.getValue();
         }
         var is1YrRenewalsLateButLessThan5Yrs = isRenewal && isECE1YR && renewalLateInYears > 0 && renewalLateInYears <= 5;
-        var wkExempted = ((isECE1YR && !isRenewal) || (isECEAssistant && !isRenewal) || (isECE1YR && !is1YrRenewalsLateButLessThan5Yrs));
+        var wkExempted = ((isECE1YR && !isRenewal) || (isECEAssistant && !isRenewal) || (isECE1YR && !is1YrRenewalsLateButLessThan5Yrs)) || isPostBasicOnly;
 
         // Renewal 1YR if Expired is not exempted.
 
