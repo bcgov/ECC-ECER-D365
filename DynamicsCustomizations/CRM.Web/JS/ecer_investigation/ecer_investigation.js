@@ -581,7 +581,21 @@ ECER.Jscripts.Investigation =
             tab.setVisible(false);
         }
     },
+    // Show/Hide Immediate Action Tab ECER -4376
 
+    showHideImmediateActions: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var tab = formContext.ui.tabs.get("tab_immediateactions");
+        //Recommend for Immediate Action is Yes
+        if (formContext.getAttribute("ecer_immediateinvestigatorassignment").getValue() == 621870000) {
+            if (tab) {
+                tab.setVisible(true);
+            }
+        }
+        else {
+            tab.setVisible(false);
+        }
+    },
     referToInvestigationRoleCheck: function (PrimaryControl) {
         /*
         Enable the button for below roles
