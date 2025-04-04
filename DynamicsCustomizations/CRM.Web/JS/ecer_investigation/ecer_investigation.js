@@ -15,6 +15,7 @@ ECER.Jscripts.Investigation =
         ECER.Jscripts.Investigation.showHideParallelProcess(executionContext);
         ECER.Jscripts.Investigation.showHideReasonForPriorityAssignment(executionContext);
         ECER.Jscripts.Investigation.displayFindingsOrAllegations(executionContext);
+        ECER.Jscripts.Investigation.showHideImmediateActions(executionContext);
     },
 
     // Set Certification Type / Certificate Expiry Date / Certificate Status
