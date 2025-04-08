@@ -16,6 +16,36 @@ ECER.Jscripts.Investigation =
         ECER.Jscripts.Investigation.showHideReasonForPriorityAssignment(executionContext);
         ECER.Jscripts.Investigation.displayFindingsOrAllegations(executionContext);
         ECER.Jscripts.Investigation.showHideImmediateActions(executionContext);
+        ECER.Jscripts.Investigation.onChangeInvestigationOutcomeInfo(executionContext);
+        ECER.Jscripts.Investigation.onChangeTDADFacility(executionContext);
+
+    },
+    //10 / day
+    onChangeTDADFacility: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var tdadFacility = formContext.getAttribute("ecer_tdadfacility");
+
+        // Show section on Active tab when yes
+        formContext.ui.tabs.get("tab_2")?.sections?.get("tab_Active_section_9")?.setVisible(tdadFacility != null && tdadFacility.getValue() === 621870000);
+    },
+    onChangeInvestigationOutcomeInfo: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var required = "none";
+        var show = formContext.getAttribute("ecer_investigationoutcome") && formContext.getAttribute("ecer_investigationoutcome").getValue() != null;
+        if (show) {
+            required = "required";
+        }
+
+        crm_Utility.showHide(executionContext, show, "ecer_finalreportsent");
+        crm_Utility.showHide(executionContext, show, "ecer_reportprintedandfiled");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_finalreportsent_1");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_reportprintedandfiled_1");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_finalreportsent");
+        crm_Utility.showHide(executionContext, show, "header_process_ecer_reportprintedandfiled");
+        crm_Utility.setRequiredLevel(executionContext, required, "ecer_finalreportsent");
+        crm_Utility.setRequiredLevel(executionContext, required, "ecer_reportprintedandfiled");
+
+
     },
 
     // Set Certification Type / Certificate Expiry Date / Certificate Status
@@ -597,6 +627,7 @@ ECER.Jscripts.Investigation =
             tab.setVisible(false);
         }
     },
+
     referToInvestigationRoleCheck: function (PrimaryControl) {
         /*
         Enable the button for below roles
@@ -653,6 +684,7 @@ ECER.Jscripts.Investigation =
             formContext.getControl("ecer_reasonforpriorityassignment").setVisible(false);
         }
     },
+
 }
 
 
@@ -665,4 +697,4 @@ ECER.Jscripts.Investigation.Data = {
             Level3: 'ECE 5 YR'
         }
     }
-}
+}// JavaScript source code
