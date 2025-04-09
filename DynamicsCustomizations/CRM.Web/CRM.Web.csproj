@@ -74,6 +74,7 @@
     <Content Include="JS\ecer_communicationcontent\ecer_communicationcontent.js" />
     <Content Include="JS\ecer_communication\ecer_communication.js" />
     <Content Include="JS\ecer_historicaldecision\ecer_historicaldecision.js" />
+    <Content Include="JS\ecer_investigationplanninginvolvedperson\ecer_investigationplanninginvolvedperson.js" />
     <Content Include="JS\ecer_program\ecer_program.js" />
     <Content Include="JS\ecer_pspobservation\ecer_pspobservation.js" />
     <Content Include="JS\ecer_pspsitevisit\ecer_pspsitevisit.js" />
