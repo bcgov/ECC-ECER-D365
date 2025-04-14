@@ -18,7 +18,7 @@ ECER.Jscripts.InvolvedPerson = {
         let mapping = [
             { "involvedPersonAttribute": "ecer_firstname", "contactAttribute": "firstname" },
             { "involvedPersonAttribute": "ecer_lastname", "contactAttribute": "lastname" },
-            { "involvedPersonAttribute": "ecer_dateofbirthtext", "contactAttribute": "birthdate", format: "MMMM dd yyyy" },
+            { "involvedPersonAttribute": "ecer_dateofbirthtext", "contactAttribute": "birthdate", format: "MMMM dd, yyyy" },
             { "involvedPersonAttribute": "ecer_phonenumber", "contactAttribute": "telephone1" },
             { "involvedPersonAttribute": "emailaddress", "contactAttribute": "emailaddress1" },
         ];
