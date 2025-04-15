@@ -41,3 +41,6 @@ DynamicsCustomizations/.vs/CRM/v16/.suo
 /.vs/ECC-ECER-D365/v17
 /.vs
 /DynamicsCustomizations/.vs/CRM/CopilotIndices/17.13.439.2385
+/DynamicsCustomizations/CRM.Plugins/bin/Debug
+/DynamicsCustomizations/CRM.Plugins/obj/Debug
+/DynamicsCustomizations/packages
