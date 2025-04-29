@@ -11,7 +11,7 @@ namespace CRM.Plugins.ecer_professionaldevelopment
     {
         public ITracingService tracingService;
 
-        public PostProfessionalDevelopmentCreateUpdate(Type pluginClassName) : base(pluginClassName)
+        public PostProfessionalDevelopmentCreateUpdate(Type pluginClassName) : base(typeof(PostProfessionalDevelopmentCreateUpdate))
         {
 
         }
