@@ -63,7 +63,7 @@ namespace CRM.Plugins.ecer_professionaldevelopment
             }
             else if (context.MessageName.ToLower() == "delete")
             {
-                Entity entityImage = context.PostEntityImages.ContainsKey("PreImage") ? context.PostEntityImages["PreImage"] as Entity : null;
+                Entity entityImage = context.PreEntityImages.ContainsKey("PreImage") ? context.PreEntityImages["PreImage"] as Entity : null;
                 application = entityImage?.GetAttributeValue<EntityReference>("ecer_applicationid");
             }
 
