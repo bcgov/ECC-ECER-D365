@@ -107,8 +107,6 @@ namespace CRM.Plugins.ecer_professionaldevelopment
                                   <condition attribute='ecer_applicationid' operator='eq' value='{application.Id}' />
                                   <condition attribute='statuscode' operator='ne' value='2' />
                                   <condition attribute='statuscode' operator='ne' value='621870005' />
-                                  <condition attribute='statuscode' operator='ne' value='1' />
-                                  <condition attribute='statuscode' operator='ne' value='621870006' />
                                   <condition attribute='ecer_totalanticipatedhours' operator='ge' value='0' />
                                 </filter>
                               </entity>
