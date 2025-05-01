@@ -95,6 +95,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ecer_authentication\PostAuthenticationCreateUpadte.cs" />
     <Compile Include="ecer_course\PostCourseCreateUpdateSync.cs" />
     <Compile Include="ecer_professionaldevelopment\PostProfessionalDevelopmentCreateUpdate.cs" />
     <Compile Include="Enums\ProgramType.cs" />
@@ -106,5 +107,6 @@
     <None Include="packages.config" />
     <None Include="Plugins.snk" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
