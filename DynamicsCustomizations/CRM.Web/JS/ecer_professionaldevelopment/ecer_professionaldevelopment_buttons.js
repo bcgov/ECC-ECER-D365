@@ -43,6 +43,7 @@ ECER.Jscripts.ProfessionalDevelopment = {
                 return data;
             }
         ).then(function (data) {
+
             if (data === null)
                 return;
 
@@ -52,10 +53,10 @@ ECER.Jscripts.ProfessionalDevelopment = {
             if (applicationId === null)
                 return;
 
-            var currentApprovedHours = formContext.getAttribute("ecer_totalapprovedprofessionaldevelopmenthours").getValue() === null ? 0 : formContext.getAttribute("ecer_totalapprovedprofessionaldevelopmenthours").getValue();
+            var currentApprovedHours = formContext.getAttribute("ecer_totalapprovedprofessionaldevelopmenthours")?.getValue() === null ? 0 : formContext.getAttribute("ecer_totalapprovedprofessionaldevelopmenthours")?.getValue();
             var approvedHours = currentApprovedHours + totalApprovedHours;
 
-            formContext.getAttribute("ecer_totalapprovedprofessionaldevelopmenthours").setValue(approvedHours);
+            formContext.getAttribute("ecer_totalapprovedprofessionaldevelopmenthours")?.setValue(approvedHours);
 
             formContext.data.refresh(true);
         });
