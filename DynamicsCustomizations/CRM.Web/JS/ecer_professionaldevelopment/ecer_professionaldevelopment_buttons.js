@@ -18,10 +18,13 @@ ECER.Jscripts.ProfessionalDevelopment = {
         // Same conditions as in the flow
         let filter = "(Microsoft.Dynamics.CRM.In(PropertyName='ecer_professionaldevelopmentid',PropertyValues=[" + selectedIds.map(item => `'${item}'`).join(',') + "]) and statuscode ne 2 and statuscode ne 621870005 and statuscode ne 1 and statuscode ne 621870006 and ecer_totalanticipatedhours ge 0)";
 
-        Xrm.WebApi.retrieveMultipleRecords("ecer_professionaldevelopment", "?$select=ecer_totalanticipatedhours,ecer_professionaldevelopmentid,_ecer_applicationid_value&$filter=" + filter).then(
+        Xrm.WebApi.retrieveMultipleRecords("ecer_professionaldevelopment", "?$select=ecer_totalanticipatedhours,ecer_professionaldevelopmentid,_ecer_applicationid_value&$expand=ecer_Applicationid($select=ecer_totalapprovedprofessionaldevelopmenthours)&$filter=" + filter).then(
             function success(results) {
                 let totalApprovedHours = 0;
                 let applicationId = results.entities.length > 0 ? results.entities[0]._ecer_applicationid_value : null;
+
+                let data = {};
+                data.currentTotalApprovedHours = results.entities.length > 0 ? results.entities[0].ecer_Applicationid?.ecer_totalapprovedprofessionaldevelopmenthours : 0;
 
                 for (var i = 0; i < results.entities.length; i++) {
 
@@ -36,7 +39,6 @@ ECER.Jscripts.ProfessionalDevelopment = {
                     });
                 }
 
-                let data = {};
                 data.totalApprovedHours = totalApprovedHours;
                 data.applicationId = applicationId;
 
@@ -48,17 +50,19 @@ ECER.Jscripts.ProfessionalDevelopment = {
                 return;
 
             let totalApprovedHours = data.totalApprovedHours;
+            let currentTotalApprovedHours = data.currentTotalApprovedHours;
             let applicationId = data.applicationId;
 
             if (applicationId === null)
                 return;
 
-            var currentApprovedHours = formContext.getAttribute("ecer_totalapprovedprofessionaldevelopmenthours")?.getValue() === null ? 0 : formContext.getAttribute("ecer_totalapprovedprofessionaldevelopmenthours")?.getValue();
-            var approvedHours = currentApprovedHours + totalApprovedHours;
+            var updatedApplication = {};
+            updatedApplication.ecer_totalapprovedprofessionaldevelopmenthours = totalApprovedHours + currentTotalApprovedHours;
 
-            formContext.getAttribute("ecer_totalapprovedprofessionaldevelopmenthours")?.setValue(approvedHours);
+            Xrm.WebApi.updateRecord("ecer_application", applicationId, updatedApplication).then(function s(data) {
+                formContext.data.refresh(true);
 
-            formContext.data.refresh(true);
+            });
         });
     },
 }
