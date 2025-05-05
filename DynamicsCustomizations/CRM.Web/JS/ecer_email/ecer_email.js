@@ -20,6 +20,7 @@ ECER.Jscripts.Email =
 
         var formContext = executionContext.getFormContext();
         var from = null;
+        var user = null;
         
         var formType = formContext.ui.getFormType();
         if (formType !== 1) {// check if its create
@@ -32,6 +33,8 @@ ECER.Jscripts.Email =
         var pspProgramAnalystRole = crm_Utility.checkCurrentUserRole("PSP - Program Analyst");
         var pspProgramCodinatorRole = crm_Utility.checkCurrentUserRole("PSP - Program Coordinator");
         var pspProgramDirectorRole = crm_Utility.checkCurrentUserRole("PSP - Program Director");
+
+        var investigationBaseRole = crm_Utility.checkCurrentUserRole("Investigation - Baseline Role");
       
 
         if(pspProgramAnalystRole||  pspProgramCodinatorRole || pspProgramDirectorRole){
@@ -39,13 +42,16 @@ ECER.Jscripts.Email =
         }
         else if(programSupportRole || programSupportLeadRole){
             from = this.getQueueLookup("ECERegistry.Intake@gov.bc.ca");
-        }else{
-            from = this.getQueueLookup("ECERegistry@gov.bc.ca");
+        } else {
+            if (!investigationBaseRole) {
+                from = this.getQueueLookup("ECERegistry@gov.bc.ca");
+            }
         }
-        if(from){
+        if(from && from !== null){
             var fromlookup = crm_Utility.generateLookupObject("queue", from.queueid, from.name);
             crm_Utility.setLookupValue(executionContext,"from", fromlookup);
         }
+       
 
     },
     getQueueLookup(queueName){
@@ -56,5 +62,5 @@ ECER.Jscripts.Email =
         queue = crm_Utility.retrieveMultipleCustom("queue", queueQueryOption);
         return queue[0];
     }
-  
+ 
 }
