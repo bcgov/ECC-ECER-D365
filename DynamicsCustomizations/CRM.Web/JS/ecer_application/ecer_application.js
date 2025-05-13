@@ -29,6 +29,7 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.workExperienceExemption(executionContext);
         ECER.Jscripts.Application.showHideEscalationFields(executionContext);
         ECER.Jscripts.Application.registrantHasActiveCondition(executionContext);
+        ECER.Jscripts.Application.showHideLabourMobilitySubgrid(executionContext);
     },
 
     registrantHasActiveCondition: function (executionContext) {
@@ -1250,5 +1251,16 @@ ECER.Jscripts.Application =
         catch (err) {
             throw new Error(err.message);
         }
+    },
+    showHideLabourMobilitySubgrid: function(executionContext) {
+
+        var formContext = executionContext.getFormContext()
+
+        var typeAttribute = formContext.getAttribute("ecer_type")
+        var typeValue = typeAttribute ? typeAttribute.getValue() : null
+
+        var showLMSubgrid = (typeValue !== null && typeValue == '621870003')
+
+        crm_Utility.showHide(executionContext, showLMSubgrid, "subgrid_labourmobility")
     }
 }
