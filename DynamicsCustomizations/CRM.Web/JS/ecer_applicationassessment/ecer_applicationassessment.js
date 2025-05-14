@@ -12,6 +12,8 @@ ECER.Jscripts.ApplicationAssessments = {
     onLoad: function (executionContext) {
         ECER.Jscripts.ApplicationAssessments.populateCharacterReferenceLookupIfEmpty(executionContext);
         ECER.Jscripts.ApplicationAssessments.showHideProfessionalDevelopment(executionContext);
+        ECER.Jscripts.ApplicationAssessments.showHideLabourMobilityTab(executionContext);
+
     },
 
     showHideProfessionalDevelopment: function (executionContext) {
@@ -120,6 +122,31 @@ ECER.Jscripts.ApplicationAssessments = {
             setTimeout(ECER.Jscripts.ApplicationAssessments.characterReferenceGridPreFilter(executionContext), 2000);
         }
 
+    },
+
+    showHideLabourMobilityTab: function (executionContext) {
+
+        var formContext = executionContext.getFormContext();
+
+        var applicationAttribute = formContext.getAttribute("ecer_applicationid")
+        if (applicationAttribute == null || applicationAttribute.getValue() == null) {
+            crm_Utility.showHide(executionContext, false, "tab_labourmobility")
+            return
+        }
+
+        var applicationId = applicationAttribute.getValue()[0].id.replace("{", "").replace("}", "")
+
+        Xrm.WebApi.retrieveRecord("ecer_application", applicationId, "?$select=ecer_type").then(
+            function success(record) {
+                var showLMTab = (record.ecer_type !== null && record.ecer_type === 621870003)
+                crm_Utility.showHide(executionContext, showLMTab, "tab_labourmobility")
+            },
+        function (error) {
+            // Couldn’t retrieve the Application – hide the tab
+            console.error("showHideLabourMobilityTab: " + error.message);
+            crm_Utility.showHide(executionContext, false, "tab_labourmobility");
+        }
+        )
     }
 }
 
