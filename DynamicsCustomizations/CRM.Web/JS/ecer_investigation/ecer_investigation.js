@@ -357,11 +357,11 @@ ECER.Jscripts.Investigation =
         ];
 
         if (healthAuthorities.includes(source)) {
-            findingsSection.setVisible(true);
-            allegationsSection.setVisible(false);
-        } else {
             findingsSection.setVisible(false);
             allegationsSection.setVisible(true);
+        } else {
+            findingsSection.setVisible(true);
+            allegationsSection.setVisible(false);
         }
     },
 
