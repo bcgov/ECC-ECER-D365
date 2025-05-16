@@ -17,6 +17,7 @@ ECER.Jscripts.Contact = {
         ECER.Jscripts.Contact.evaluateAge(executionContext);
         ECER.Jscripts.Contact.LockHasCurrentCertificateConditionsUnlessInvestigation(executionContext);
         ECER.Jscripts.Contact.registrantHasActiveCondition(executionContext, null);
+        ECER.Jscripts.Contact.hasCertFile(executionContext, null);
     },
 
     LockHasCurrentCertificateConditionsUnlessInvestigation: function (executionContext) {
@@ -25,11 +26,42 @@ ECER.Jscripts.Contact = {
         crm_Utility.enableDisable(executionContext, !(hasSystemAdministrator || hasInvestigationBaselineRole), "ecer_hascurrentcertificateconditions");
         crm_Utility.enableDisable(executionContext, !(hasSystemAdministrator || hasInvestigationBaselineRole), "ecer_underinvestigation");
         crm_Utility.enableDisable(executionContext, !(hasSystemAdministrator || hasInvestigationBaselineRole), "ecer_ineligiblereference");
+        crm_Utility.enableDisable(executionContext, !(hasSystemAdministrator || hasInvestigationBaselineRole), "ecer_hascertfile");
+    },
+
+    hasCertFile: function (executionContext, registrantId) {
+        var formContext = executionContext.getFormContext();
+        try {
+            if (registrantId == null) {
+                var formType = formContext.ui.getFormType();
+                if (formType !== 2 &&
+                    formType !== 3 &&
+                    formType !== 4) {
+                    // Only care of Update, Read Only, Disabled if on Contact entity
+                    return;
+                }
+
+                registrantId = formContext.data.entity.getId();
+            }
+            registrantId = registrantId.replace("{", "").replace("}", "");
+            var uniqueId = registrantId.replace("-", ""); + "HasCertFile";
+            formContext.ui.clearFormNotification(uniqueId);
+            var hasCertFileValue = formContext.getAttribute("ecer_hascertfile")?.getValue();
+            if (hasCertFileValue !== null && hasCertFileValue === 621870000) { // Yes
+                // Has Cert File
+                var message = "Registrant has Cert File currently";
+                var level = "WARNING";
+                formContext.ui.setFormNotification(message, level, uniqueId);
+            }
+        }
+         catch (err) {
+            console.error("Error in onGenerateCommunicationOnIDRejectButton: " + err.message);
+        }
     },
 
     registrantHasActiveCondition: function (executionContext, registrantId) {
         var formContext = executionContext.getFormContext();
-        
+
         if (registrantId == null) {
             var formType = formContext.ui.getFormType();
             if (formType !== 2 &&
