@@ -1,3 +1,4 @@
+// JavaScript source code
 if (typeof ECER === "undefined") {
     var ECER = {};
 }
@@ -29,18 +30,25 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.workExperienceExemption(executionContext);
         ECER.Jscripts.Application.showHideEscalationFields(executionContext);
         ECER.Jscripts.Application.registrantHasActiveCondition(executionContext);
+        ECER.Jscripts.Application.ShowHideCertificationComparision(executionContext);
     },
 
     registrantHasActiveCondition: function (executionContext) {
-        var formContext = executionContext.getFormContext();
-        var applicantAttributeName = "ecer_applicantid";
-        var applicantAttribute = formContext.getAttribute(applicantAttributeName);
-        var applicant = applicantAttribute.getValue();
-        if (applicant === null) {
-            return null;
+        try {
+            var formContext = executionContext.getFormContext();
+            var applicantAttributeName = "ecer_applicantid";
+            var applicantAttribute = formContext.getAttribute(applicantAttributeName);
+            var applicant = applicantAttribute.getValue();
+            if (applicant === null) {
+                return null;
+            }
+            var applicantid = applicant[0].id.replace("{", "").replace("}", "");
+            ECER.Jscripts.Contact.registrantHasActiveCondition(executionContext, applicantid);
         }
-        var applicantid = applicant[0].id.replace("{", "").replace("}", "");
-        ECER.Jscripts.Contact.registrantHasActiveCondition(executionContext, applicantid);
+        catch (ex) {
+            // Do Nothing.  Depends on which version, EFX has the script but not PROD.
+
+        }
     },
 
     parallelProcessToggle: function (executionContext) {
@@ -187,7 +195,6 @@ ECER.Jscripts.Application =
 
         // Assessment
         crm_Utility.showHide(executionContext, show, "ecer_curriculumapproved");
-        crm_Utility.showHide(executionContext, !show, "ecer_educationtranscriptapproved"); // Education Transcript Approved are roll-up into Curriculum Approved field.
 
         // Assessment BPF for Equivalency field is on a different path and does not needed to show hide
         // BPF has already been adjusted to remove the 4 approved fields,
@@ -250,6 +257,19 @@ ECER.Jscripts.Application =
         var latestCertificate = latestCertificates[0];
         return latestCertificate;
     },
+    ShowHideCertificationComparision: function (executionContext) {
+        //ECER - 2917 - Display Certificate Comparison on Application
+        var formContext = executionContext.getFormContext();
+        var typeAttributeName = "ecer_type";
+        var certificateComparisonTabName = "tab_certificationcomparison";
+        var labourMobilityValue = 621870003; // Value for 'Labour Mobility'
+
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        var isLabourMobility = typeAttribute && typeAttribute.getValue() === labourMobilityValue;
+
+        crm_Utility.showHide(executionContext, isLabourMobility, certificateComparisonTabName);
+    },
+
 
     showHideLateRenewalExplanation: function (executionContext) {
         // ECER-2996
@@ -778,6 +798,13 @@ ECER.Jscripts.Application =
         var isRenewal = typeAttribute != null && typeAttribute.getValue() !== null && typeAttribute.getValue() === 621870001;
         var isLaborMobility = typeAttribute != null && typeAttribute.getValue() !== null && typeAttribute.getValue() === 621870003;
         var isECEAssistant = isECEAssistantAttribute != null && isECEAssistantAttribute.getValue() != null && isECEAssistantAttribute.getValue() == true;
+
+        var educationRecognitionAttributeName = "ecer_educationrecognition";
+        var educationRecognitionValue = formContext.getAttribute(educationRecognitionAttributeName).getValue();
+        var isNotRecognized = educationRecognitionValue === 621870001; // Not Recognized
+        var isNew = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870000;
+        var hideEducationTranscriptApprovedOnEquivalency = isNew && isNotRecognized;
+
         var show = (!isRenewal || isECEAssistant) && !isLaborMobility;
         var educationTranscriptTabName = "tab_educationinformation";
         var educationTranscriptReceivedBPFAttributeName = "header_process_ecer_transcriptreceived";
@@ -787,15 +814,15 @@ ECER.Jscripts.Application =
         var educationTranscriptApprovedAttributeName = "ecer_educationtranscriptapproved";
         var educationTranscriptApprovedBPF2ndAssessment = "header_process_ecer_educationtranscriptapproved_4";
         crm_Utility.showHide(executionContext, show, educationTranscriptReceivedBPFAttributeName);
-        crm_Utility.showHide(executionContext, show, educationTranscriptApprovedBPFAttributeName);
-        crm_Utility.showHide(executionContext, show, educationTranscriptApprovedBPF2ndAssessment);
+        crm_Utility.showHide(executionContext, show && !hideEducationTranscriptApprovedOnEquivalency, educationTranscriptApprovedBPFAttributeName);
+        crm_Utility.showHide(executionContext, show && !hideEducationTranscriptApprovedOnEquivalency, educationTranscriptApprovedBPF2ndAssessment);
         // Though I can't find it.  If there is 4, then there might be 1,2,3...
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_educationtranscriptapproved_1");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_educationtranscriptapproved_2");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_educationtranscriptapproved_3");
+        crm_Utility.showHide(executionContext, show && !hideEducationTranscriptApprovedOnEquivalency, "header_process_ecer_educationtranscriptapproved_1");
+        crm_Utility.showHide(executionContext, show && !hideEducationTranscriptApprovedOnEquivalency, "header_process_ecer_educationtranscriptapproved_2");
+        crm_Utility.showHide(executionContext, show && !hideEducationTranscriptApprovedOnEquivalency, "header_process_ecer_educationtranscriptapproved_3");
         crm_Utility.showHide(executionContext, show, educationTranscriptReceivedAttributeName);
         crm_Utility.showHide(executionContext, show, educationTranscriptReceivedDateAttributeName);
-        crm_Utility.showHide(executionContext, show, educationTranscriptApprovedAttributeName);
+        crm_Utility.showHide(executionContext, show && !hideEducationTranscriptApprovedOnEquivalency, educationTranscriptApprovedAttributeName);
         crm_Utility.showHide(executionContext, show, educationTranscriptTabName);
         crm_Utility.showHide(executionContext, show, "ecer_educationorigin");
         crm_Utility.showHide(executionContext, show, "ecer_educationrecognition");
