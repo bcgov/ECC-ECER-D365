@@ -12,6 +12,13 @@ ECER.Jscripts.Certificate = {
     onLoad: function (executionContext) {
         ECER.Jscripts.Certificate.hideCancelledStatusReasonBySecurityRole(executionContext);
         ECER.Jscripts.Certificate.registrantHasActiveCondition(executionContext);
+        ECER.Jscripts.Certificate.LockHasCurrentCertificateConditionsUnlessInvestigation(executionContext);
+    },
+
+    LockHasCurrentCertificateConditionsUnlessInvestigation: function (executionContext) {
+        var hasInvestigationBaselineRole = crm_Utility.checkCurrentUserRole("Investigation - Baseline Role");
+        var hasSystemAdministrator = crm_Utility.checkCurrentUserRole("System Administrator");
+        crm_Utility.enableDisable(executionContext, !(hasSystemAdministrator || hasInvestigationBaselineRole), "ecer_ineligiblereference");
     },
 
     registrantHasActiveCondition: function (executionContext) {
@@ -23,7 +30,7 @@ ECER.Jscripts.Certificate = {
             return null;
         }
         var applicantid = applicant[0].id.replace("{", "").replace("}", "");
-        ECER.Jscripts.Contact.registrantHasActiveCondition(executionContext, applicantid);
+        ECER.Jscripts.Contact?.registrantHasActiveCondition(executionContext, applicantid);
     },
 
     hideCancelledStatusReasonBySecurityRole: function (executionContext) {
@@ -60,7 +67,7 @@ ECER.Jscripts.Certificate = {
         }
     },
 
-    executeSSRSReport:function (query) {
+    executeSSRSReport: function (query) {
         var globalContext = Xrm.Utility.getGlobalContext();
         var serverUrl = globalContext.getClientUrl();
         if (serverUrl.match(/\/$/)) {
@@ -93,7 +100,7 @@ ECER.Jscripts.Certificate = {
         return ret;
     },
 
-    convertReportToPDF:function (arrResponseSession, fileName, regardingObjectName, regardingObjectId, tag) {
+    convertReportToPDF: function (arrResponseSession, fileName, regardingObjectName, regardingObjectId, tag) {
         var globalContext = Xrm.Utility.getGlobalContext();
         var serverUrl = globalContext.getClientUrl();
         if (serverUrl.match(/\/$/)) {
@@ -129,7 +136,7 @@ ECER.Jscripts.Certificate = {
         retrieveEntityReq.send();
     },
 
-    uploadToDocumentStorage:function (fileName, base64PDFString, regardingObjectName, regardingObjectId, tag) {
+    uploadToDocumentStorage: function (fileName, base64PDFString, regardingObjectName, regardingObjectId, tag) {
         var globalContext = Xrm.Utility.getGlobalContext();
         var serverUrl = globalContext.getClientUrl();
         if (serverUrl.match(/\/$/)) {
