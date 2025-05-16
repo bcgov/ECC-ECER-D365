@@ -33,5 +33,6 @@ ECER.Jscripts.Allegation = {
         else {
             formContext.getAttribute("ecer_detailstext")?.setValue(null);
         }
+        formContext.data.save();
     }
 }
