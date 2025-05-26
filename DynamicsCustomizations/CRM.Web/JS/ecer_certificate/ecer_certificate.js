@@ -13,6 +13,40 @@ ECER.Jscripts.Certificate = {
         ECER.Jscripts.Certificate.hideCancelledStatusReasonBySecurityRole(executionContext);
         ECER.Jscripts.Certificate.registrantHasActiveCondition(executionContext);
         ECER.Jscripts.Certificate.LockHasCurrentCertificateConditionsUnlessInvestigation(executionContext);
+        ECER.Jscripts.Certificate.filterCertificateConditionSubgrid(executionContext);
+    },
+
+    filterCertificateConditionSubgrid: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var formType = formContext.ui.getFormType();
+        var sectionName = "tab_general:section_certificateconditions";
+        if (formType === 1) {
+            return; // If in create mode, ignore
+        }
+        var certificateRecordId = formContext.data.entity.getId().replace('{', '').replace('}', '');
+        var registrantAttribute = formContext.getAttribute("ecer_registrantid");
+        if (registrantAttribute == null) {
+            crm_Utility.showHide(executionContext, true, sectionName);
+            return; // unable to filter without registrant
+        }
+        var registrantId = registrantAttribute.getValue()[0].id.replace('{', '').replace('}', '');
+        var subgrid = formContext.getControl("subgrid_certificateconditions");
+        if (subgrid) {
+            var fetchXml = subgrid.getFetchXml();
+            var fetchXmlfilter = `
+<filter type="and">
+<condition attribute="ecer_registrantid" operator="eq" value="${registrantId}" />
+                <filter type="or">
+                    <condition attribute="ecer_certificateid" operator="eq" value="${certificateRecordId}" />
+             <condition attribute="ecer_certificateid" operator="null" />
+                </filter></filter>`;
+
+            subgrid.setFilterXml(fetchXmlfilter);
+            
+            subgrid.refresh();
+            crm_Utility.showHide(executionContext, true, sectionName);
+            var fetchXmlCheck = subgrid.getFetchXml();
+        }
     },
 
     LockHasCurrentCertificateConditionsUnlessInvestigation: function (executionContext) {
