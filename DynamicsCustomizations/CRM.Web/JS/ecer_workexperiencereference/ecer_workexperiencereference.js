@@ -32,10 +32,16 @@ ECER.Jscripts.WorkExperienceReference = {
             return;
         }
         var applicationAttribute = formContext.getAttribute(applicationAttributeName);
-        var applicationId = applicationAttribute.getValue()[0].id.replace("{", "").replace("}", "");
-        if (applicationAttribute === null || applicationAttribute.getValue() === null) {
+
+
+        if (!applicationAttribute || !applicationAttribute.getValue()) {
             return;
         }
+
+
+        var applicationId = applicationAttribute.getValue()[0].id
+            .replace("{", "")
+            .replace("}", "");
         Xrm.WebApi.retrieveRecord("ecer_application", applicationId, "?$select=ecer_type")
             .then(function (result) {
                 if (result) {
@@ -53,10 +59,12 @@ ECER.Jscripts.WorkExperienceReference = {
                                 }
                                 else {
                                     var applicantAttribute = formContext.getAttribute(applicantAttributeName);
-                                    if (applicantAttribute === null || applicantAttribute.getValue() === null) {
+                                    if (!applicantAttribute || !applicantAttribute.getValue()) {
                                         return;
                                     }
-                                    var applicantId = applicantAttribute.getValue()[0].id.replace("{", "").replace("}", "");
+                                    var applicantId = applicantAttribute.getValue()[0].id
+                                        .replace("{", "")
+                                        .replace("}", "");
                                     var dateToCompare = new Date();
                                     var latestCertificate = ECER.Jscripts.Application.getApplicantLatestCertificate(executionContext, applicantId, dateToCompare);
                                     if (latestCertificate !== null) {
