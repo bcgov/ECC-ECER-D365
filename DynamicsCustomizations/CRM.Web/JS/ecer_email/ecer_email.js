@@ -27,29 +27,29 @@ ECER.Jscripts.Email =
             return;
         }
 
-        var programSupportRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Role");
-        var programSupportLeadRole = crm_Utility.checkCurrentUserRole("Certification - Program Support Lead Role");
+        var investigationIntakeRole = crm_Utility.checkCurrentUserRole("Investigation - Intake Officer");
+        var investigatorRole = crm_Utility.checkCurrentUserRole("Investigation - Investigator");
 
         var pspProgramAnalystRole = crm_Utility.checkCurrentUserRole("PSP - Program Analyst");
         var pspProgramCodinatorRole = crm_Utility.checkCurrentUserRole("PSP - Program Coordinator");
         var pspProgramDirectorRole = crm_Utility.checkCurrentUserRole("PSP - Program Director");
 
-        var investigationBaseRole = crm_Utility.checkCurrentUserRole("Investigation - Baseline Role");
-      
 
-        if(pspProgramAnalystRole||  pspProgramCodinatorRole || pspProgramDirectorRole){
+        var certificationBaselineRole = crm_Utility.checkCurrentUserRole("Certification - Baseline Role");
+
+        if (pspProgramAnalystRole || pspProgramCodinatorRole || pspProgramDirectorRole) {
             from = this.getQueueLookup("ECERegistry.Programs@gov.bc.ca");
         }
-        else if(programSupportRole || programSupportLeadRole){
+        else if (investigationIntakeRole && !investigatorRole) {
             from = this.getQueueLookup("ECERegistry.Intake@gov.bc.ca");
         } else {
-            if (!investigationBaseRole) {
+            if (!investigatorRole) {
                 from = this.getQueueLookup("ECERegistry@gov.bc.ca");
             }
         }
-        if(from && from !== null){
+        if (from && from !== null) {
             var fromlookup = crm_Utility.generateLookupObject("queue", from.queueid, from.name);
-            crm_Utility.setLookupValue(executionContext,"from", fromlookup);
+            crm_Utility.setLookupValue(executionContext, "from", fromlookup);
         }
        
 

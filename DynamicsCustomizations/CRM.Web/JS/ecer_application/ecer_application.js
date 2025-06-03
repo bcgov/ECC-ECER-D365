@@ -186,6 +186,10 @@ ECER.Jscripts.Application =
         crm_Utility.showHide(executionContext, show, "ecer_courseoutlinereceiveddate");
         crm_Utility.showHide(executionContext, show, "ecer_courseoutlinesreviewed");
 
+        crm_Utility.showHide(executionContext, show, "ecer_characterreferencereviewed");
+        crm_Utility.showHide(executionContext, show, "ecer_workexperiencereferencesreviewed");
+
+
         crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "header_process_ecer_comprehensiveevaluationreportreceived");
         crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_comprehensiveevaluationreportreceived");
         crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_comprehensiveevaluationreportreceiveddate");
