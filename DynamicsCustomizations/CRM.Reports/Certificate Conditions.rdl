@@ -16,7 +16,7 @@
     <DataSet Name="DSMain">
       <Query>
         <DataSourceName>CRM</DataSourceName>
-        <CommandText>&lt;fetch distinct="false" mapping="logical"&gt;&lt;entity name="ecer_certificateconditions"&gt;&lt;attribute name="ecer_details" alias="ecer_details" /&gt;&lt;attribute name="ecer_registrantid" alias="ecer_registrantid" /&gt;&lt;attribute name="statecode" alias="statecode" /&gt;&lt;attribute name="ecer_startdate" alias="ecer_startdate" /&gt;&lt;attribute name="ecer_enddate" alias="ecer_enddate" /&gt;&lt;attribute name="ecer_certificateconditionsid" /&gt;&lt;attribute name="ecer_name" /&gt;&lt;/entity&gt;&lt;/fetch&gt;</CommandText>
+        <CommandText>&lt;fetch distinct="false" mapping="logical"&gt;&lt;entity name="ecer_certificateconditions"&gt;&lt;attribute name="ecer_details" alias="ecer_details" /&gt;&lt;attribute name="ecer_registrantid" alias="ecer_registrantid" /&gt;&lt;attribute name="statecode" alias="statecode" /&gt;&lt;attribute name="ecer_startdate" alias="ecer_startdate" /&gt;&lt;attribute name="ecer_enddate" alias="ecer_enddate" /&gt;&lt;attribute name="ecer_certificateconditionsid" /&gt;&lt;attribute name="ecer_name" /&gt;&lt;attribute name ="ecer_certificateid" alias="ecer_certificateid" /&gt;&lt;/entity&gt;&lt;/fetch&gt;</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
@@ -68,6 +68,18 @@
           <DataField>ecer_name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="ecer_certificateid">
+          <DataField>ecer_certificateid</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ecer_certificateidValue">
+          <DataField>ecer_certificateidValue</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="ecer_certificateidEntityName">
+          <DataField>ecer_certificateidEntityName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Filters>
         <Filter>
@@ -82,6 +94,13 @@
           <Operator>Equal</Operator>
           <FilterValues>
             <FilterValue DataType="Integer">0</FilterValue>
+          </FilterValues>
+        </Filter>
+        <Filter>
+          <FilterExpression>=IsNothing(Fields!ecer_certificateidValue.Value) or (Fields!ecer_certificateid.Value = Parameters!CertificateID.Value)</FilterExpression>
+          <Operator>Equal</Operator>
+          <FilterValues>
+            <FilterValue DataType="Boolean">=True</FilterValue>
           </FilterValues>
         </Filter>
       </Filters>
@@ -522,6 +541,11 @@
       <Prompt>Registrant ID</Prompt>
       <Hidden>true</Hidden>
     </ReportParameter>
+    <ReportParameter Name="CertificateID">
+      <DataType>String</DataType>
+      <Prompt>CertificateID</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -662,6 +686,11 @@
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>3</RowIndex>
           <ParameterName>RegistrantID</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>CertificateID</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
