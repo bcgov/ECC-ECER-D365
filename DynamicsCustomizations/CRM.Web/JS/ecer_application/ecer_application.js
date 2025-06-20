@@ -385,8 +385,6 @@ ECER.Jscripts.Application =
         }
         crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_contactnames");
         crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_applicantaddress");
-        crm_Utility.showHide(executionContext, !showQuickView, "header_process_ecer_isprimaryidentificationprovided");
-        crm_Utility.showHide(executionContext, !showQuickView, "header_process_ecer_issecondaryidentificationprovided");
 
 
     },
