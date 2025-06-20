@@ -31,6 +31,8 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.showHideEscalationFields(executionContext);
         ECER.Jscripts.Application.registrantHasActiveCondition(executionContext);
         ECER.Jscripts.Application.ShowHideCertificationComparision(executionContext);
+        ECER.Jscripts.Application.ShowHideLMApplicantDetails(executionContext);
+
     },
 
     registrantHasActiveCondition: function (executionContext) {
@@ -186,16 +188,15 @@ ECER.Jscripts.Application =
         crm_Utility.showHide(executionContext, show, "ecer_courseoutlinereceiveddate");
         crm_Utility.showHide(executionContext, show, "ecer_courseoutlinesreviewed");
 
-        crm_Utility.showHide(executionContext, show, "ecer_characterreferencereviewed");
-        crm_Utility.showHide(executionContext, show, "ecer_workexperiencereferencesreviewed");
-
-
         crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "header_process_ecer_comprehensiveevaluationreportreceived");
         crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_comprehensiveevaluationreportreceived");
         crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_comprehensiveevaluationreportreceiveddate");
         crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_cerreviewed");
 
         crm_Utility.showHide(executionContext, show, "ecer_educationtranscriptreviewed");
+
+        crm_Utility.showHide(executionContext, show, "ecer_characterreferencereviewed");
+        crm_Utility.showHide(executionContext, show, "ecer_workexperiencereferencesreviewed");
 
         // Assessment
         crm_Utility.showHide(executionContext, show, "ecer_curriculumapproved");
@@ -272,6 +273,22 @@ ECER.Jscripts.Application =
         var isLabourMobility = typeAttribute && typeAttribute.getValue() === labourMobilityValue;
 
         crm_Utility.showHide(executionContext, isLabourMobility, certificateComparisonTabName);
+    },
+    ShowHideLMApplicantDetails: function (executionContext) {
+        //ECER - 4830
+        // Display the Applicant Details Section if Other = Yes
+
+        var formContext = executionContext.getFormContext();
+        var Other = formContext.getAttribute("ecer_lmcerthasothername").getValue();
+        if (Other === true) {
+            crm_Utility.showHide(executionContext, true, "tab_certificationcomparison:section_labormobility_applicantdetails");
+
+
+        } else {
+            crm_Utility.showHide(executionContext, false, "tab_certificationcomparison:section_labormobility_applicantdetails");
+
+        }
+
     },
 
 
@@ -385,9 +402,6 @@ ECER.Jscripts.Application =
         }
         crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_contactnames");
         crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_applicantaddress");
-        crm_Utility.showHide(executionContext, !showQuickView, "header_process_ecer_isprimaryidentificationprovided");
-        crm_Utility.showHide(executionContext, !showQuickView, "header_process_ecer_issecondaryidentificationprovided");
-
 
     },
 
@@ -1283,4 +1297,4 @@ ECER.Jscripts.Application =
             throw new Error(err.message);
         }
     }
-}
+}// JavaScript source code
