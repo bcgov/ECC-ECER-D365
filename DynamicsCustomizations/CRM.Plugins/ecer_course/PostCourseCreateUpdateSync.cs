@@ -60,13 +60,13 @@ namespace CRM.Plugins.ecer_course
             // pre-image in delete
             Entity entityImage = GetEntityInformation(context.MessageName, context.PreEntityImages, context.PostEntityImages);
 
-            programType = programType ?? entityImage.GetAttributeValue<OptionSetValue>("ecer_programtype");
-            courseHours = courseHours ?? entityImage.GetAttributeValue<decimal?>("ecer_coursehourdecimal");
-            postSecondaryInstitutionId = postSecondaryInstitutionId ?? entityImage.GetAttributeValue<EntityReference>("ecer_postsecondaryinstitutionid");
-            programId = programId ?? entityImage.GetAttributeValue<EntityReference>("ecer_programid");
+            programType = programType ?? entityImage?.GetAttributeValue<OptionSetValue>("ecer_programtype");
+            courseHours = courseHours ?? entityImage?.GetAttributeValue<decimal?>("ecer_coursehourdecimal");
+            postSecondaryInstitutionId = postSecondaryInstitutionId ?? entityImage?.GetAttributeValue<EntityReference>("ecer_postsecondaryinstitutionid");
+            programId = programId ?? entityImage?.GetAttributeValue<EntityReference>("ecer_programid");
 
             if (programType == null
-                || !courseHours.HasValue
+                || courseHours == null
                 || postSecondaryInstitutionId == null
                 || programId == null)
             {
