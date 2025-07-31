@@ -32,7 +32,42 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.registrantHasActiveCondition(executionContext);
         ECER.Jscripts.Application.ShowHideCertificationComparision(executionContext);
         ECER.Jscripts.Application.ShowHideLMApplicantDetails(executionContext);
+        ECER.Jscripts.Application.ShowHidePSPReferalDetails(executionContext);
 
+    },
+
+
+    ShowHidePSPReferalDetails: function (executionContext) {
+        try {
+            var formContext = executionContext.getFormContext();
+            var applicationId = formContext.data.entity.getId().replace(/[{}]/g, "");
+            var option = `?$filter=_ecer_application_value eq ${applicationId} and statecode eq 0`;
+            Xrm.WebApi.retrieveMultipleRecords("ecer_pspreferral", option)
+                .then(function (result) {
+                    var count = result.entities.length;
+                    if (count > 0) {
+                        var pspTab = formContext.ui.tabs.get("tab_pspreferral");
+                        pspTab.setVisible(true);
+                        pspTab.setFocus();
+                        crm_Utility.showHide(executionContext, true, "ecer_assigntopspteam");
+                    }
+                    else {
+                        formContext.ui.tabs.get("tab_pspreferral").setVisible(false);
+                        crm_Utility.showHide(executionContext, false, "ecer_assigntopspteam");
+                    }
+                })
+                .catch(function (error) {
+                    console.error("Error retrieving PSP referral count ", error.message);
+                });
+
+
+
+        }
+
+        catch (ex) {
+
+
+        }
     },
 
     registrantHasActiveCondition: function (executionContext) {
@@ -115,6 +150,7 @@ ECER.Jscripts.Application =
         crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_4");
         crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_5");
         crm_Utility.showHide(executionContext, !wkExempted, "tab_workexperience");
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_workexperiencereferencesreviewed"); //change as per ECER-4646
 
     },
 
@@ -196,7 +232,6 @@ ECER.Jscripts.Application =
         crm_Utility.showHide(executionContext, show, "ecer_educationtranscriptreviewed");
 
         crm_Utility.showHide(executionContext, show, "ecer_characterreferencereviewed");
-        crm_Utility.showHide(executionContext, show, "ecer_workexperiencereferencesreviewed");
 
         // Assessment
         crm_Utility.showHide(executionContext, show, "ecer_curriculumapproved");
