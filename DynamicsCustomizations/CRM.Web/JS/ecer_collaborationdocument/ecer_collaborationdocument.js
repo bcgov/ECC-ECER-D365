@@ -14,7 +14,7 @@ ECER.Jscripts.CollaborationDocument= {
         ECER.Jscripts.CollaborationDocument.setPrimaryOwner(executionContext);
       
     },
-  
+  //ECER-4952 setting primary owner
     setPrimaryOwner: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var  ownerattribute =formContext.getAttribute("ownerid");
