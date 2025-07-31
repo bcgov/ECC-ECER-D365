@@ -44,7 +44,7 @@ ECER.Jscripts.PSPSiteVisit =
                 pspRepValue[0].id = pspRepId;
                 pspRepValue[0].name = result["_ecer_psiprogramrepresentative_value@OData.Community.Display.V1.FormattedValue"];
                 pspRepValue[0].entityType = result["_ecer_psiprogramrepresentative_value@Microsoft.Dynamics.CRM.lookuplogicalname"];
-                ECER.Jscripts.PSPSiteVisit.setLookupField(formContext, "ecer_ecer_psiprogramrepresentative", pspRepValue);
+                ECER.Jscripts.PSPSiteVisit.setLookupField(formContext, "ecer_psiprogramrepresentative", pspRepValue);
             },
             function (error) {
                 console.log(error.message);
