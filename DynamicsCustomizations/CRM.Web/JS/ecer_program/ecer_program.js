@@ -27,8 +27,9 @@ ECER.Jscripts.Program =
         // ECER-2963
         var programDirectorRole = crm_Utility.checkCurrentUserRole("PSP - Program Director");
         var programAnalystRole = crm_Utility.checkCurrentUserRole("PSP - Program Analyst");
+        var programCooridnatorRole = crm_Utility.checkCurrentUserRole("PSP - Program Coordinator");
         var sysAdminRole = crm_Utility.checkCurrentUserRole("System Administrator");
-        var isDisable = !(programDirectorRole || programAnalystRole || sysAdminRole);
+        var isDisable = !(programDirectorRole || programAnalystRole || programCooridnatorRole || sysAdminRole);
         crm_Utility.enableDisable(executionContext, isDisable, "header_statuscode");
         crm_Utility.enableDisable(executionContext, isDisable, "statuscode");
     },
