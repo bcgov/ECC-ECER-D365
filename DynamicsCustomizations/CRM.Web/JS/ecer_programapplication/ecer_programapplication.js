@@ -13,6 +13,7 @@ ECER.Jscripts.ProgramApplication =
 
         ECER.Jscripts.ProgramApplication.setSignature(executionContext);
         ECER.Jscripts.ProgramApplication.restrictStatusReasonAccess(executionContext);
+        ECER.Jscripts.ProgramApplication.filterHeaderStatusReason(executionContext);
         ECER.Jscripts.ProgramApplication.setPSPRepresentative(executionContext);
     },
 
@@ -92,6 +93,12 @@ ECER.Jscripts.ProgramApplication =
         var isDisable = !(programDirectorRole || programAnalystRole || programCooridnatorRole || sysAdminRole);
         crm_Utility.enableDisable(executionContext, isDisable, "header_statuscode");
         crm_Utility.enableDisable(executionContext, isDisable, "statuscode");
+    },
+
+    filterHeaderStatusReason: function (executionContext) {
+        // ECER-5197
+        crm_Utility.filterOutOptionSet(executionContext, "header_statuscode", "621870007"); // Remove Denied in form field       
+        crm_Utility.filterOutOptionSet(executionContext, "statuscode", "621870007");
     },
 
     setLookupField: function (lookupField, id, name, entityType) {
