@@ -15,6 +15,9 @@ ECER.Jscripts.ProgramApplication =
         ECER.Jscripts.ProgramApplication.restrictStatusReasonAccess(executionContext);
         ECER.Jscripts.ProgramApplication.filterHeaderStatusReason(executionContext);
         ECER.Jscripts.ProgramApplication.setPSPRepresentative(executionContext);
+        ECER.Jscripts.ProgramApplication.setOrigin(executionContext);
+
+
     },
 
     setPSPRepresentative: function (executionContext) {
@@ -142,4 +145,20 @@ ECER.Jscripts.ProgramApplication =
             }
         );
     },
+//ECER-5184
+setOrigin: function (executionContext) {
+
+    var formContext = executionContext.getFormContext();
+    var originAttributeName = "ecer_origin";
+    var originAttribute = formContext.getAttribute(originAttributeName);
+    var formType = formContext.ui.getFormType();
+
+ if (formType === 1) 
+  {
+        originAttribute.setValue(621870000);
+        originAttribute.fireOnChange();
+      
+    }
 }
+
+}// JavaScript source code
