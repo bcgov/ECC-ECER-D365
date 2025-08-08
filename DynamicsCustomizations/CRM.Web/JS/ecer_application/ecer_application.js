@@ -35,8 +35,6 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.ShowHidePSPReferalDetails(executionContext);
 
     },
-
-
     ShowHidePSPReferalDetails: function (executionContext) {
         try {
             var formContext = executionContext.getFormContext();
@@ -232,6 +230,8 @@ ECER.Jscripts.Application =
         crm_Utility.showHide(executionContext, show, "ecer_educationtranscriptreviewed");
 
         crm_Utility.showHide(executionContext, show, "ecer_characterreferencereviewed");
+
+
 
         // Assessment
         crm_Utility.showHide(executionContext, show, "ecer_curriculumapproved");
@@ -546,16 +546,30 @@ ECER.Jscripts.Application =
         // All Enable - By Form Configurations
 
         // Completeness Review Tab - Confirm Information Received (Internal Use)
-        crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_characterreferencereceived");
-        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_characterreferencereceiveddate");
-        crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_workexperiencereceived");
-        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_workexperiencereceiveddate");
+
+        //2025-08-07 - ECER-5201 
+        // to open character reference received, work experience received, professional received for manual override for the following roles
+        // assessors, certificate analysts, certification specialists,operationas supervisors
+        // 
+        var rolesFor5201 = assessorRole || assessorTeamLeadRole || certificateAnalystRole || programAnalystRole ||
+            operationSupervisorEquivalencyRole || operationSupervisorRole || managerOfCertificationRole || beforeAssessmentPS;
+        //crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_characterreferencereceived");
+        crm_Utility.enableDisable(executionContext, !(sysAdminRole || rolesFor5201), "ecer_characterreferencereceived");
+        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal || rolesFor5201), "ecer_characterreferencereceiveddate");
+        //crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_workexperiencereceived");
+        crm_Utility.enableDisable(executionContext, !(sysAdminRole || rolesFor5201), "ecer_workexperiencereceived");
+        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal || rolesFor5201), "ecer_workexperiencereceiveddate");
+        //2025-08-07 - ECER-5201 
         crm_Utility.enableDisable(executionContext, !(sysAdminRole || programSupportRole || programSupportLeadRole), "ecer_transcriptreceived");
         crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_transcriptreceiveddate");
         crm_Utility.enableDisable(executionContext, !(sysAdminRole || programSupportRole || programSupportLeadRole), "ecer_parentalreferencereceived");
         crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_parentalreferencereceiveddate");
         crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_hasprofessionaldevelopment");
-        crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_professionaldevelopmentreceived");
+
+        //2025-08-07 - ECER-5201 		
+        //crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_professionaldevelopmentreceived");
+        crm_Utility.enableDisable(executionContext, !(sysAdminRole || rolesFor5201), "ecer_professionaldevelopmentreceived");
+        //2025-08-07 - ECER-5201 
 
         // Equivalency - Confirm Information Received (Internal Use)
         crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal || beforeAssessmentPS || programAnalystRole || certificateAnalystRole || managerOfCertificationRole), "ecer_programconfirmationformreceived");
