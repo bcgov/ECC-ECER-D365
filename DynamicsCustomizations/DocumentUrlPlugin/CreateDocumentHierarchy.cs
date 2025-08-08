@@ -68,13 +68,21 @@ namespace BCGOV.Plugin.DocumentUrl
 
                 }
 
-                if (targetEntity.Contains("ecer_communicationid") && targetEntity["ecer_communicationid"] != null 
-                    && (!targetEntity.Contains("bcgov_customer") || targetEntity["bcgov_customer"] == null))
+                if (targetEntity.Contains("ecer_communicationid") && targetEntity["ecer_communicationid"] != null )
+                   // && (!targetEntity.Contains("bcgov_customer") || targetEntity["bcgov_customer"] == null))
                 {
                     traceService.Trace("Communication contains data but no Customer ");
                     var entityReferencce = (EntityReference)targetEntity["ecer_communicationid"];
                     var entityRecord = service.Retrieve(entityReferencce.LogicalName.ToLowerInvariant(),
-                        entityReferencce.Id, new ColumnSet("ecer_applicationid", "ecer_registrantid", "ecer_ecer_program_application_id", "ecer_investigation"));
+                        entityReferencce.Id, new ColumnSet("ecer_applicationid", "ecer_registrantid", "ecer_ecer_program_application_id", "ecer_investigation", "ecer_isroot", "ecer_parentcommunicationid"));
+                    if (entityRecord.Contains("ecer_isroot") && entityRecord.GetAttributeValue<bool>("ecer_isroot") != true && 
+                        entityRecord.Contains("ecer_parentcommunicationid") && entityRecord.GetAttributeValue<EntityReference>("ecer_parentcommunicationid") != null)
+                    {
+                        var parentCommunicationER = entityRecord.GetAttributeValue<EntityReference>("ecer_parentcommunicationid");
+                        // If it is NOT Root, then Use Parent Communication Record to ensure all the related entities are accounted for.
+                        entityRecord = service.Retrieve(entityReferencce.LogicalName.ToLowerInvariant(),
+                        parentCommunicationER.Id, new ColumnSet("ecer_applicationid", "ecer_registrantid", "ecer_ecer_program_application_id", "ecer_investigation", "ecer_isroot", "ecer_parentcommunicationid"));
+                    }
                     var hasChange = false;
 
                     if (registryTeamER != null)
