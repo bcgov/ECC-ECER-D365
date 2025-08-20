@@ -21,7 +21,7 @@ ECER.Jscripts.Investigation = {
       executionContext
     );
     ECER.Jscripts.Investigation.onChangeTDADFacility(executionContext);
-    ECER.Jscripts.Investigation.sendEmailToAgent(executionContext);
+    // ECER.Jscripts.Investigation.sendEmailToAgent(executionContext);
   },
   //10 / day
   onChangeTDADFacility: function (executionContext) {
@@ -926,11 +926,11 @@ ECER.Jscripts.Investigation = {
     }
 
     var agentVal = null;
-    var attr = formContext.getAttribute("ecer_agents");
+    var attr = formContext.getAttribute("ecer_licensing_officers");
     if (attr) agentVal = attr.getValue();
 
     if (!agentVal || agentVal.length === 0) {
-      var ctrl = formContext.getControl("ecer_agents");
+      var ctrl = formContext.getControl("ecer_licensing_officers");
       if (ctrl && ctrl.getAttribute) agentVal = ctrl.getAttribute().getValue();
     }
 
@@ -963,44 +963,63 @@ ECER.Jscripts.Investigation = {
       return;
     }
 
-    var party = {
-      id: agentVal[0].id.replace(/[{}]/g, ""),
-      name: agentVal[0].name,
-      entityType: "ecer_licensing_officers", // Agent table
-    };
+    var agentId = agentVal[0].id.replace(/[{}]/g, "");
+    var agentName = agentVal[0].name;
 
     var invId = formContext.data.entity.getId().replace(/[{}]/g, "");
     var invName =
       (formContext.getAttribute("ecer_name") &&
         formContext.getAttribute("ecer_name").getValue()) ||
       "Investigation";
+    var invLogical = formContext.data.entity.getEntityName();
 
-    var expand = "?$expand=ecer_contact($select=contactid,fullname)";
-    Xrm.WebApi.retrieveRecord("ecer_licensing_officers", party.id, expand)
-      .then(function (rec) {
-        if (rec && rec["ecer_contact"]) {
-          party = {
-            id: rec["ecer_contact"].contactid,
-            name: rec["ecer_contact"].fullname,
-            entityType: "contact",
-          };
-        }
-      })
-      .catch(function () {
-        /* fall back to Agent */
-      })
-      .finally(function () {
-        var formParameters = {
-          to: JSON.stringify([party]),
-          regardingobjectid: invId,
-          regardingobjectidname: invName,
-          regardingobjectidtype: formContext.data.entity.getEntityName(),
-        };
+    var getInvMeta = Xrm.Utility.getEntityMetadata(invLogical);
+    var getAgentMeta = Xrm.Utility.getEntityMetadata("ecer_licensing_officers");
 
+    Promise.all([getInvMeta, getAgentMeta])
+      .then(function (md) {
+        var invSet = md[0].EntitySetName;
+        var agentSet = md[1].EntitySetName;
+
+        var emailCreate = { subject: "" };
+
+        emailCreate["regardingobjectid_" + invLogical + "@odata.bind"] =
+          "/" + invSet + "(" + invId + ")";
+
+        var toParty = {};
+        toParty["partyid_ecer_licensing_officers@odata.bind"] =
+          "/" + agentSet + "(" + agentId + ")";
+        toParty["participationtypemask"] = 2;
+
+        var fromParty = {};
+        var userId = Xrm.Utility.getGlobalContext().userSettings.userId.replace(
+          /[{}]/g,
+          ""
+        );
+        fromParty["partyid_systemuser@odata.bind"] =
+          "/systemusers(" + userId + ")";
+        fromParty["participationtypemask"] = 1;
+
+        emailCreate["email_activity_parties"] = [toParty, fromParty];
+
+        return Xrm.WebApi.createRecord("email", emailCreate);
+      })
+      .then(function (res) {
         Xrm.Navigation.openForm({
           entityName: "email",
+          entityId: res.id,
           useQuickCreateForm: false,
-          formParameters: formParameters,
+        });
+      })
+      .catch(function (err) {
+        var msg =
+          err && err.message
+            ? err.message
+            : err && err.error && err.error.message
+            ? err.error.message
+            : JSON.stringify(err);
+        Xrm.Navigation.openAlertDialog({
+          text: "Failed to create email: " + msg,
         });
       });
   },
