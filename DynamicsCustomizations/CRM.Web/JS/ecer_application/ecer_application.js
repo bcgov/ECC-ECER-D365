@@ -398,28 +398,44 @@ ECER.Jscripts.Application =
             dateToCompare = dateSubmittedValue;
         }
 
-        var latestCertificate = ECER.Jscripts.Application.getApplicantLatestCertificate(executionContext, applicantid, dateToCompare);
-        if (latestCertificate === null) {
-            return; // No Certifcate means it should not be a renewal or expired more than 5 Yrs.
+        var fromCertificateAttributeName = "ecer_fromcertificateid";
+        //ECER-5245: Updated the logic to show Renewal explanation tab based on From Certificate
+        var fromCertificateValue = formContext.getAttribute(fromCertificateAttributeName).getValue();
+        if (fromCertificateValue === null) {
+            return;
         }
-        var latestCertificateExpiryDate = new Date(Date.parse(latestCertificate["ecer_expirydate"]));
-        var certificateExpiryDatePlus5YR = new Date(Date.parse(latestCertificate["ecer_expirydate"]));
-        var isECE1Yr = formContext.getAttribute(isECE1YrAttributeName).getValue();
-        var isECE5Yr = formContext.getAttribute(isECE5YrAttributeName).getValue();
-        certificateExpiryDatePlus5YR.setFullYear(latestCertificateExpiryDate.getFullYear() + 5);
-        // Late is when Expiry Date has already passed.
-        var isLateWithin5Yr = dateToCompare.getTime() <= certificateExpiryDatePlus5YR.getTime();
-        var isLate5Yr = latestCertificateExpiryDate.getTime() <= dateToCompare.getTime();
-        var isStillActive = dateToCompare.getTime() < latestCertificateExpiryDate.getTime();
-        // ECE 1YR to show
-        // Is Late but within 5 Years
-        // Or Active
-        var show1YR = isECE1Yr && (isLateWithin5Yr || isStillActive);
-        var show5YR = isECE5Yr && (isLateWithin5Yr && isLate5Yr);
 
-        crm_Utility.showHide(executionContext, show1YR, oneYearExplanationAttributeName);
-        crm_Utility.showHide(executionContext, show5YR, fiveYearExplanationAttributeName);
-        crm_Utility.showHide(executionContext, (show1YR || show5YR), lateRenewalExplanationTabName);
+        var certificateId = fromCertificateValue[0].id.replace("{", "").replace("}", ""); // Clean GUID
+
+        Xrm.WebApi.retrieveRecord("ecer_certificate", certificateId, "?$select=ecer_expirydate").then(
+            function (latestCertificate) {
+
+                if (latestCertificate === null) {
+                    return; // No Certifcate means it should not be a renewal or expired more than 5 Yrs.
+                }
+                var latestCertificateExpiryDate = new Date(Date.parse(latestCertificate["ecer_expirydate"]));
+                var certificateExpiryDatePlus5YR = new Date(Date.parse(latestCertificate["ecer_expirydate"]));
+                var isECE1Yr = formContext.getAttribute(isECE1YrAttributeName).getValue();
+                var isECE5Yr = formContext.getAttribute(isECE5YrAttributeName).getValue();
+                certificateExpiryDatePlus5YR.setFullYear(latestCertificateExpiryDate.getFullYear() + 5);
+                // Late is when Expiry Date has already passed.
+                var isLateWithin5Yr = dateToCompare.getTime() <= certificateExpiryDatePlus5YR.getTime();
+                var isLate5Yr = latestCertificateExpiryDate.getTime() <= dateToCompare.getTime();
+                var isStillActive = dateToCompare.getTime() < latestCertificateExpiryDate.getTime();
+                // ECE 1YR to show
+                // Is Late but within 5 Years
+                // Or Active
+                var show1YR = isECE1Yr && (isLateWithin5Yr || isStillActive);
+                var show5YR = isECE5Yr && (isLateWithin5Yr && isLate5Yr);
+
+                crm_Utility.showHide(executionContext, show1YR, oneYearExplanationAttributeName);
+                crm_Utility.showHide(executionContext, show5YR, fiveYearExplanationAttributeName);
+                crm_Utility.showHide(executionContext, (show1YR || show5YR), lateRenewalExplanationTabName);
+            },
+            function (error) {
+                console.log(error.message);
+            }
+        );
     },
 
     showHideApplicantQuickView: function (executionContext) {

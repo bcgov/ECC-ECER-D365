@@ -1,3 +1,4 @@
+// JavaScript source code
 if (typeof ECER === "undefined") {
     var ECER = {};
 }
@@ -18,8 +19,26 @@ ECER.Jscripts.Investigation =
         ECER.Jscripts.Investigation.showHideImmediateActions(executionContext);
         ECER.Jscripts.Investigation.onChangeInvestigationOutcomeInfo(executionContext);
         ECER.Jscripts.Investigation.onChangeTDADFacility(executionContext);
+        ECER.Jscripts.Investigation.hideBPFResponseDate(executionContext);
 
     },
+   //ECER-5195
+    hideBPFResponseDate: function(executionContext) {
+        var formContext = executionContext.getFormContext();
+
+        // Get the Report In Progress BPF control and value
+        var reportInProgressControl = formContext.getAttribute("ecer_reportinprogress");
+        
+        if (!reportInProgressControl) return;
+
+        var reportInProgressValue = reportInProgressControl.getValue();
+        var show = reportInProgressValue === 621870001;
+        crm_Utility.showHide(executionContext, !show, "header_process_ecer_requestedresponsebydate");
+    
+
+
+    },
+
     //10 / day
     onChangeTDADFacility: function (executionContext) {
         var formContext = executionContext.getFormContext();
