@@ -1,0 +1,45 @@
+{
+  "LogicalName": "bcgov_config",
+  "PrimaryIdAttribute": "bcgov_configid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "bcgov_key",
+          "Type": 16,
+          "Value": "ICRA Feature"
+        },
+        {
+          "Key": "bcgov_value",
+          "Type": 16,
+          "Value": "ON"
+        },
+        {
+          "Key": "bcgov_configid",
+          "Type": 1,
+          "Value": "b30279bc-8b69-f011-bec3-6045bd5d9882"
+        },
+        {
+          "Key": "bcgov_group",
+          "Type": 16,
+          "Value": "Portal"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 1
+}
