@@ -10,7 +10,8 @@ if (typeof ECER.Jscripts === "undefined") {
 
 ECER.Jscripts.ApplicationAssessments = {
     onLoad: function (executionContext) {
-        ECER.Jscripts.ApplicationAssessments.populateCharacterReferenceLookupIfEmpty(executionContext);
+        this.crm_ExecutionContext = executionContext;
+        //ECER.Jscripts.ApplicationAssessments.populateCharacterReferenceLookupIfEmpty(executionContext);
         ECER.Jscripts.ApplicationAssessments.showHideProfessionalDevelopment(executionContext);
     },
 
@@ -79,48 +80,64 @@ ECER.Jscripts.ApplicationAssessments = {
         );
     },
 
-    characterReferenceGridPreFilter: function (executionContext) {
-        // Reference: https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/controls/addcustomfilter
-        // ECER-2246
-        // Leave the method here.  Doesn't really need a subgrid as a prefilter medium
-        // Just used a Pre-Filter Lookup
-        var formContext = executionContext.getFormContext();
-        var applicationAttribute = formContext.getAttribute("ecer_applicationid");
-        if (applicationAttribute === null || applicationAttribute.getValue() === null) {
+    characterReferenceGridOnRecordSelect: function (executionContext) {
+        // ECER-4021
+        // To set the 
+        // ECER.Jscripts.ApplicationAssessments.characterReferenceGridOnRecordSelect
+        //verify if current user is same and current date is same day otherwise make row read only. Ignore if row is already inactive.
+        if (!executionContext) {
+            console.error("Execution context is not defined.");
             return;
         }
 
-        var applicationId = applicationAttribute.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
+        var formContext = this.crm_ExecutionContext.getFormContext();
+        var thisExecutionContext = this.crm_ExecutionContext;
 
-        var fetchXML = "<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>" +
-            "<entity name = 'ecer_characterreference'>" +
-            "<attribute name='ecer_characterreferenceid' />" +
-            "<attribute name='ecer_firstname' />" +
-            "<attribute name='ecer_lastname' />" +
-            "<attribute name='ecer_emailaddress' />" +
-            "<attribute name='ecer_phonenumber' />" +
-            "<attribute name='ecer_knownapplicanttimechoice' />" +
-            "<attribute name='ecer_relationshiptoapplicant' />" +
-            "<attribute name='ecer_applicationid' />" +
-            "<order attribute='ecer_lastname' descending='false' />" +
-            "<filter type='and'>" +
-            "<condition attribute='ecer_applicationid' operator='eq' value='" + applicationId + "' />" +
-            "</filter>" +
-            "</entity >" +
-            "</fetch >";
-
-        var characterReferenceSubgridControl = formContext.getControl("subgrid_characterreference");
-        if (characterReferenceSubgridControl !== null) {
-
-            characterReferenceSubgridControl.setFilterXml(fetchXML);
-            characterReferenceSubgridControl.refresh();
-        }
-        else {
-            // Run 2 seconds later if subgrid is not loaded.
-            setTimeout(ECER.Jscripts.ApplicationAssessments.characterReferenceGridPreFilter(executionContext), 2000);
+        var characterReferenceAttribute = formContext.getAttribute("ecer_characterreferencereviewedid");
+        if (characterReferenceAttribute === null) {
+            return; // Only populating if there is Character Reference Lookup
         }
 
-    }
+        var gridContext = executionContext.getFormContext();
+        var selectedRow = gridContext.data.entity;
+        var id = selectedRow.getId();
+
+        if (id !== null) {
+            id = id.replace("{", "").replace("}", "");
+            Xrm.WebApi.retrieveRecord("ecer_characterreference", id).then(
+                function success(results) {
+                    var showSection = false;
+                    if (results != null) {
+                        var entityRecordId = results.ecer_characterreferenceid;
+                        var entityRecordName = results.ecer_name;
+                        var refFirstName = results.ecer_firstname;
+                        var refLastName = results.ecer_lastname;
+                        var name = refFirstName;
+                        if (refFirstName == null) {
+                            name = "";
+                        }
+                        else {
+                            name += " ";
+                        }
+                        name += refLastName;
+                        var lookupArray = new Array();
+                        lookupArray[0] = new Object();
+                        // Treat the entity record to include curly braces if needed
+                        if (entityRecordId.indexOf("{") === -1) {
+                            entityRecordId = "{" + entityRecordId + "}";
+                        }
+                        lookupArray[0].id = entityRecordId;
+                        lookupArray[0].name = name;
+                        lookupArray[0].entityType = "ecer_characterreference";
+                        characterReferenceAttribute.setValue(lookupArray);
+                        showSection = true;
+                    }
+                    crm_Utility.showHide(thisExecutionContext, showSection, "tab_characterreferenceassessment:section_reviewcharacterreference");
+                }
+            );
+        }
+        crm_Utility.DisableSubgridControls(executionContext);
+    },
 }
 
 
