@@ -16,6 +16,41 @@ ECER.Jscripts.WorkExperienceReference = {
         ECER.Jscripts.WorkExperienceReference.defaultTypeOnCreation(executionContext);
         ECER.Jscripts.WorkExperienceReference.showHide400500OnType(executionContext);
         ECER.Jscripts.WorkExperienceReference.filterOutRelationshipOfApplicant(executionContext);
+        ECER.Jscripts.WorkExperienceReference.showHideReferenceDOB(executionContext);
+        ECER.Jscripts.WorkExperienceReference.showHideLegacyChildcareAgeRange(executionContext);
+    },
+
+    showHideLegacyChildcareAgeRange: function (executionContext) {
+        // ECER-4885
+        // The field is a multiple select choice, hence form script
+        var formContext = executionContext.getFormContext();
+        var attributeName = "ecer_childcareagerange";
+        var show = false;
+        var attribute = formContext.getAttribute(attributeName);
+        if (attribute !== null) {
+            var attributeValueInArray = attribute.getValue();
+            show = (attributeValueInArray != null && attributeValueInArray.length > 0);
+            crm_Utility.showHide(executionContext, show, attributeName);
+        }
+    },
+    showHideReferenceDOB: function (executionContext) {
+
+        var formContext = executionContext.getFormContext();
+        var referenceProvinceAttributeName = "ecer_referenceececertifiedprovinceid";
+        var dobAttributeName = "ecer_referencebirthdate";
+        var referenceProvinceAttribute = formContext.getAttribute(referenceProvinceAttributeName);
+        var show = false;
+
+        if (referenceProvinceAttribute != null && referenceProvinceAttribute.getValue() != null) {
+            var referenceProvinceValue = referenceProvinceAttribute.getValue()[0].name;
+            if (referenceProvinceValue !== "British Columbia") {
+
+                show = true;
+            }
+        }
+
+        crm_Utility.showHide(executionContext, show, dobAttributeName);
+
     },
 
     defaultTypeOnCreation: function (executionContext) {
@@ -44,6 +79,7 @@ ECER.Jscripts.WorkExperienceReference = {
                         return;
                     }
                     else {
+
                         var option = "?$filter=_" + applicationAttributeName + "_value eq '" + applicationId + "' and ecer_type ne null";
                         Xrm.WebApi.retrieveMultipleRecords("ecer_workexperienceref", option).then(
                             function success(results) {
@@ -118,11 +154,11 @@ ECER.Jscripts.WorkExperienceReference = {
             // Filter Out Other
             crm_Utility.filterOutOptionSet(executionContext, relationshipToApplicantAttributeName, others);
             // Add Parent back in if does not already have it.
-            
+
             var optionToCompare = parseInt(parent);
             var hasMatch = false;
             for (var i = 0; i < currentOptions.length; i++) {
-                
+
                 var currentOption = currentOptions[i].value;
                 if (currentOption !== currentOption) {
                     // current Option is NaN

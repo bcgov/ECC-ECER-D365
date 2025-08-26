@@ -31,6 +31,41 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.showHideEscalationFields(executionContext);
         ECER.Jscripts.Application.registrantHasActiveCondition(executionContext);
         ECER.Jscripts.Application.ShowHideCertificationComparision(executionContext);
+        ECER.Jscripts.Application.ShowHideLMApplicantDetails(executionContext);
+        ECER.Jscripts.Application.ShowHidePSPReferalDetails(executionContext);
+
+    },
+    ShowHidePSPReferalDetails: function (executionContext) {
+        try {
+            var formContext = executionContext.getFormContext();
+            var applicationId = formContext.data.entity.getId().replace(/[{}]/g, "");
+            var option = `?$filter=_ecer_application_value eq ${applicationId} and statecode eq 0`;
+            Xrm.WebApi.retrieveMultipleRecords("ecer_pspreferral", option)
+                .then(function (result) {
+                    var count = result.entities.length;
+                    if (count > 0) {
+                        var pspTab = formContext.ui.tabs.get("tab_pspreferral");
+                        pspTab.setVisible(true);
+                        pspTab.setFocus();
+                        crm_Utility.showHide(executionContext, true, "ecer_assigntopspteam");
+                    }
+                    else {
+                        formContext.ui.tabs.get("tab_pspreferral").setVisible(false);
+                        crm_Utility.showHide(executionContext, false, "ecer_assigntopspteam");
+                    }
+                })
+                .catch(function (error) {
+                    console.error("Error retrieving PSP referral count ", error.message);
+                });
+
+
+
+        }
+
+        catch (ex) {
+
+
+        }
     },
 
     registrantHasActiveCondition: function (executionContext) {
@@ -113,6 +148,7 @@ ECER.Jscripts.Application =
         crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_4");
         crm_Utility.showHide(executionContext, !wkExempted, "header_process_ecer_workexperiencereferenceapproved_5");
         crm_Utility.showHide(executionContext, !wkExempted, "tab_workexperience");
+        crm_Utility.showHide(executionContext, !wkExempted, "ecer_workexperiencereferencesreviewed"); //change as per ECER-4646
 
     },
 
@@ -186,16 +222,16 @@ ECER.Jscripts.Application =
         crm_Utility.showHide(executionContext, show, "ecer_courseoutlinereceiveddate");
         crm_Utility.showHide(executionContext, show, "ecer_courseoutlinesreviewed");
 
-        crm_Utility.showHide(executionContext, show, "ecer_characterreferencereviewed");
-        crm_Utility.showHide(executionContext, show, "ecer_workexperiencereferencesreviewed");
-
-
         crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "header_process_ecer_comprehensiveevaluationreportreceived");
         crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_comprehensiveevaluationreportreceived");
         crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_comprehensiveevaluationreportreceiveddate");
         crm_Utility.showHide(executionContext, show && !hideComprehensiveEvaulationReport, "ecer_cerreviewed");
 
         crm_Utility.showHide(executionContext, show, "ecer_educationtranscriptreviewed");
+
+        crm_Utility.showHide(executionContext, show, "ecer_characterreferencereviewed");
+
+
 
         // Assessment
         crm_Utility.showHide(executionContext, show, "ecer_curriculumapproved");
@@ -273,6 +309,22 @@ ECER.Jscripts.Application =
 
         crm_Utility.showHide(executionContext, isLabourMobility, certificateComparisonTabName);
     },
+    ShowHideLMApplicantDetails: function (executionContext) {
+        //ECER - 4830
+        // Display the Applicant Details Section if Other = Yes
+
+        var formContext = executionContext.getFormContext();
+        var Other = formContext.getAttribute("ecer_lmcerthasothername").getValue();
+        if (Other === true) {
+            crm_Utility.showHide(executionContext, true, "tab_certificationcomparison:section_labormobility_applicantdetails");
+
+
+        } else {
+            crm_Utility.showHide(executionContext, false, "tab_certificationcomparison:section_labormobility_applicantdetails");
+
+        }
+
+    },
 
 
     showHideLateRenewalExplanation: function (executionContext) {
@@ -346,28 +398,44 @@ ECER.Jscripts.Application =
             dateToCompare = dateSubmittedValue;
         }
 
-        var latestCertificate = ECER.Jscripts.Application.getApplicantLatestCertificate(executionContext, applicantid, dateToCompare);
-        if (latestCertificate === null) {
-            return; // No Certifcate means it should not be a renewal or expired more than 5 Yrs.
+        var fromCertificateAttributeName = "ecer_fromcertificateid";
+        //ECER-5245: Updated the logic to show Renewal explanation tab based on From Certificate
+        var fromCertificateValue = formContext.getAttribute(fromCertificateAttributeName).getValue();
+        if (fromCertificateValue === null) {
+            return;
         }
-        var latestCertificateExpiryDate = new Date(Date.parse(latestCertificate["ecer_expirydate"]));
-        var certificateExpiryDatePlus5YR = new Date(Date.parse(latestCertificate["ecer_expirydate"]));
-        var isECE1Yr = formContext.getAttribute(isECE1YrAttributeName).getValue();
-        var isECE5Yr = formContext.getAttribute(isECE5YrAttributeName).getValue();
-        certificateExpiryDatePlus5YR.setFullYear(latestCertificateExpiryDate.getFullYear() + 5);
-        // Late is when Expiry Date has already passed.
-        var isLateWithin5Yr = dateToCompare.getTime() <= certificateExpiryDatePlus5YR.getTime();
-        var isLate5Yr = latestCertificateExpiryDate.getTime() <= dateToCompare.getTime();
-        var isStillActive = dateToCompare.getTime() < latestCertificateExpiryDate.getTime();
-        // ECE 1YR to show
-        // Is Late but within 5 Years
-        // Or Active
-        var show1YR = isECE1Yr && (isLateWithin5Yr || isStillActive);
-        var show5YR = isECE5Yr && (isLateWithin5Yr && isLate5Yr);
 
-        crm_Utility.showHide(executionContext, show1YR, oneYearExplanationAttributeName);
-        crm_Utility.showHide(executionContext, show5YR, fiveYearExplanationAttributeName);
-        crm_Utility.showHide(executionContext, (show1YR || show5YR), lateRenewalExplanationTabName);
+        var certificateId = fromCertificateValue[0].id.replace("{", "").replace("}", ""); // Clean GUID
+
+        Xrm.WebApi.retrieveRecord("ecer_certificate", certificateId, "?$select=ecer_expirydate").then(
+            function (latestCertificate) {
+
+                if (latestCertificate === null) {
+                    return; // No Certifcate means it should not be a renewal or expired more than 5 Yrs.
+                }
+                var latestCertificateExpiryDate = new Date(Date.parse(latestCertificate["ecer_expirydate"]));
+                var certificateExpiryDatePlus5YR = new Date(Date.parse(latestCertificate["ecer_expirydate"]));
+                var isECE1Yr = formContext.getAttribute(isECE1YrAttributeName).getValue();
+                var isECE5Yr = formContext.getAttribute(isECE5YrAttributeName).getValue();
+                certificateExpiryDatePlus5YR.setFullYear(latestCertificateExpiryDate.getFullYear() + 5);
+                // Late is when Expiry Date has already passed.
+                var isLateWithin5Yr = dateToCompare.getTime() <= certificateExpiryDatePlus5YR.getTime();
+                var isLate5Yr = latestCertificateExpiryDate.getTime() <= dateToCompare.getTime();
+                var isStillActive = dateToCompare.getTime() < latestCertificateExpiryDate.getTime();
+                // ECE 1YR to show
+                // Is Late but within 5 Years
+                // Or Active
+                var show1YR = isECE1Yr && (isLateWithin5Yr || isStillActive);
+                var show5YR = isECE5Yr && (isLateWithin5Yr && isLate5Yr);
+
+                crm_Utility.showHide(executionContext, show1YR, oneYearExplanationAttributeName);
+                crm_Utility.showHide(executionContext, show5YR, fiveYearExplanationAttributeName);
+                crm_Utility.showHide(executionContext, (show1YR || show5YR), lateRenewalExplanationTabName);
+            },
+            function (error) {
+                console.log(error.message);
+            }
+        );
     },
 
     showHideApplicantQuickView: function (executionContext) {
@@ -385,9 +453,6 @@ ECER.Jscripts.Application =
         }
         crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_contactnames");
         crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_applicantaddress");
-        crm_Utility.showHide(executionContext, !showQuickView, "header_process_ecer_isprimaryidentificationprovided");
-        crm_Utility.showHide(executionContext, !showQuickView, "header_process_ecer_issecondaryidentificationprovided");
-
 
     },
 
@@ -497,16 +562,30 @@ ECER.Jscripts.Application =
         // All Enable - By Form Configurations
 
         // Completeness Review Tab - Confirm Information Received (Internal Use)
-        crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_characterreferencereceived");
-        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_characterreferencereceiveddate");
-        crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_workexperiencereceived");
-        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_workexperiencereceiveddate");
+
+        //2025-08-07 - ECER-5201 
+        // to open character reference received, work experience received, professional received for manual override for the following roles
+        // assessors, certificate analysts, certification specialists,operationas supervisors
+        // 
+        var rolesFor5201 = assessorRole || assessorTeamLeadRole || certificateAnalystRole || programAnalystRole ||
+            operationSupervisorEquivalencyRole || operationSupervisorRole || managerOfCertificationRole || beforeAssessmentPS;
+        //crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_characterreferencereceived");
+        crm_Utility.enableDisable(executionContext, !(sysAdminRole || rolesFor5201), "ecer_characterreferencereceived");
+        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal || rolesFor5201), "ecer_characterreferencereceiveddate");
+        //crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_workexperiencereceived");
+        crm_Utility.enableDisable(executionContext, !(sysAdminRole || rolesFor5201), "ecer_workexperiencereceived");
+        crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal || rolesFor5201), "ecer_workexperiencereceiveddate");
+        //2025-08-07 - ECER-5201 
         crm_Utility.enableDisable(executionContext, !(sysAdminRole || programSupportRole || programSupportLeadRole), "ecer_transcriptreceived");
         crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_transcriptreceiveddate");
         crm_Utility.enableDisable(executionContext, !(sysAdminRole || programSupportRole || programSupportLeadRole), "ecer_parentalreferencereceived");
         crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal), "ecer_parentalreferencereceiveddate");
         crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_hasprofessionaldevelopment");
-        crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_professionaldevelopmentreceived");
+
+        //2025-08-07 - ECER-5201 		
+        //crm_Utility.enableDisable(executionContext, !sysAdminRole, "ecer_professionaldevelopmentreceived");
+        crm_Utility.enableDisable(executionContext, !(sysAdminRole || rolesFor5201), "ecer_professionaldevelopmentreceived");
+        //2025-08-07 - ECER-5201 
 
         // Equivalency - Confirm Information Received (Internal Use)
         crm_Utility.enableDisable(executionContext, !(sysAdminRole || notFromPortal || beforeAssessmentPS || programAnalystRole || certificateAnalystRole || managerOfCertificationRole), "ecer_programconfirmationformreceived");
@@ -1283,4 +1362,4 @@ ECER.Jscripts.Application =
             throw new Error(err.message);
         }
     }
-}
+}// JavaScript source code

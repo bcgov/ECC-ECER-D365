@@ -67,9 +67,11 @@
     <Content Include="JS\contact\ecer_contact.js" />
     <Content Include="JS\ecer_applicationassessment\ecer_applicationassessment.js" />
     <Content Include="JS\ecer_application\ecer_application.js" />
+    <Content Include="JS\ecer_campus\ecer_campus.js" />
     <Content Include="JS\ecer_certificatecondition\ecer_certificatecondition.js" />
     <Content Include="JS\ecer_certificate\ecer_certificate.js" />
     <Content Include="JS\ecer_characterreference\ecer_characterreference.js" />
+    <Content Include="JS\ecer_collaborationdocument\ecer_collaborationdocument.js" />
     <Content Include="JS\ecer_comment\ecer_decisioncomment.js" />
     <Content Include="JS\ecer_communicationcontent\ecer_communicationcontent.js" />
     <Content Include="JS\ecer_communication\ecer_communication.js" />
@@ -77,7 +79,9 @@
     <Content Include="JS\ecer_investigationplanningallegation\ecer_investigationplanningallegation.js" />
     <Content Include="JS\ecer_investigationplanninginvolvedperson\ecer_investigationplanninginvolvedperson.js" />
     <Content Include="JS\ecer_professionaldevelopment\ecer_professionaldevelopment_buttons.js" />
+    <Content Include="JS\ecer_programapplication\ecer_programapplication.js" />
     <Content Include="JS\ecer_program\ecer_program.js" />
+    <Content Include="JS\ecer_pspinterviewquestion\ecer_pspinterviewquestion.js" />
     <Content Include="JS\ecer_pspobservation\ecer_pspobservation.js" />
     <Content Include="JS\ecer_pspsitevisit\ecer_pspsitevisit.js" />
     <Content Include="JS\ecer_transcript\ecer_transcript.js" />
@@ -87,6 +91,7 @@
     <Content Include="JS\ecer_investigation\ecer_investigation.js" />
     <Content Include="JS\ecer_investigation\ecer_refertoinvestigation.html" />
     <Content Include="JS\ecer_parallelprocesscommunication\ecer_parallelprocesscommunication.js" />
+    <Content Include="JS\phonecall\ecer_phonecall.js" />
     <Content Include="TEST_THEME.xml" />
     <Content Include="UAT_THEME.xml" />
   </ItemGroup>

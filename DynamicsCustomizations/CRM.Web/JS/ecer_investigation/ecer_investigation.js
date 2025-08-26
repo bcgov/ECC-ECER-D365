@@ -1,3 +1,4 @@
+// JavaScript source code
 if (typeof ECER === "undefined") {
   var ECER = {};
 }
@@ -21,8 +22,28 @@ ECER.Jscripts.Investigation = {
       executionContext
     );
     ECER.Jscripts.Investigation.onChangeTDADFacility(executionContext);
-    // ECER.Jscripts.Investigation.sendEmailToAgent(executionContext);
+    ECER.Jscripts.Investigation.hideBPFResponseDate(executionContext);
   },
+  //ECER-5195
+  hideBPFResponseDate: function (executionContext) {
+    var formContext = executionContext.getFormContext();
+
+    // Get the Report In Progress BPF control and value
+    var reportInProgressControl = formContext.getAttribute(
+      "ecer_reportinprogress"
+    );
+
+    if (!reportInProgressControl) return;
+
+    var reportInProgressValue = reportInProgressControl.getValue();
+    var show = reportInProgressValue === 621870001;
+    crm_Utility.showHide(
+      executionContext,
+      !show,
+      "header_process_ecer_requestedresponsebydate"
+    );
+  },
+
   //10 / day
   onChangeTDADFacility: function (executionContext) {
     var formContext = executionContext.getFormContext();
@@ -454,6 +475,7 @@ ECER.Jscripts.Investigation = {
 
   //Called on load If Source equals the following options, display the Findings subgrid, otherwise display the Allegations subgrid:
   //NOTE that the visibility property is actually on the sections containing the subgrids.
+  // Logic updated as per ECER-5242
   displayFindingsOrAllegations: function (executionContext) {
     var formContext = executionContext.getFormContext();
     var sourceAttribute = formContext.getAttribute("ecer_source");
@@ -466,21 +488,14 @@ ECER.Jscripts.Investigation = {
 
     var source = sourceAttribute.getValue();
 
-    // Retrieve the findings and allegations sections by their IDs
+    // Retrieve the findings
     var findingsSection = formContext.ui.tabs
       .get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}")
       .sections.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}_section_12");
-    var allegationsSection = formContext.ui.tabs
-      .get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}")
-      .sections.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}_section_8");
 
     // Check if the sections are null
     if (!findingsSection) {
       console.error("Findings section is null or undefined.");
-      return;
-    }
-    if (!allegationsSection) {
-      console.error("Allegations section is null or undefined.");
       return;
     }
 
@@ -494,10 +509,8 @@ ECER.Jscripts.Investigation = {
 
     if (healthAuthorities.includes(source)) {
       findingsSection.setVisible(false);
-      allegationsSection.setVisible(true);
     } else {
       findingsSection.setVisible(true);
-      allegationsSection.setVisible(false);
     }
   },
 

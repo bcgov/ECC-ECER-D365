@@ -40,12 +40,55 @@ ECER.Jscripts.Communication = {
             if (!createMode) {
                 ECER.Jscripts.Communication.loadRelatedObjects(executionContext);
             }
+            if (createMode) {
+                ECER.Jscripts.Communication.loadPSPreferalDetails(executionContext);
+            }
         }
         catch (ex) {
             // Do Nothing.  Mysterious issue when trying to save with No Dirty Fields
             // Throws script error of method not found when hitting "Save" multiple times.
         }
     },
+
+    loadPSPreferalDetails: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var formType = formContext.ui.getFormType();
+        var createMode = (formType == 1);
+        var pspreferalAttributeName = "ecer_pspreferral";
+        var pspreferalAttribute = formContext.getAttribute(pspreferalAttributeName);
+        if (!pspreferalAttribute || !pspreferalAttribute.getValue())
+            return;
+        var pspReferralId = pspreferalAttribute.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
+
+        Xrm.WebApi.retrieveRecord("ecer_pspreferral", pspReferralId).then(
+            function success(record) {
+
+                var applicationAttributename = "ecer_applicationid";
+                var transcriptAttributename = "ecer_transcriptid";
+
+                var applicationId = record["_ecer_application_value"];
+                var transcriptId = record["_ecer_educationtranscript_value"];
+
+                if (applicationId) {
+                    var applicationLookup = crm_Utility.generateLookupObject("ecer_application", applicationId, record["_ecer_application_value@OData.Community.Display.V1.FormattedValue"]);
+                    crm_Utility.setLookupValue(executionContext, applicationAttributename, applicationLookup);
+
+                }
+                if (transcriptId) {
+                    var transcriptLookup = crm_Utility.generateLookupObject("ecer_transcript", transcriptId, record["_ecer_educationtranscript_value@OData.Community.Display.V1.FormattedValue"]);
+                    crm_Utility.setLookupValue(executionContext, transcriptAttributename, transcriptLookup);
+
+                }
+
+
+
+
+            }
+        );
+
+
+    },
+
 
     loadReplyMessage: function(executionContext) {
         var initiatedFromAttributeName = "ecer_initiatedfrom";
