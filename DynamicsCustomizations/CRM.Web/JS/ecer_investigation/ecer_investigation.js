@@ -264,6 +264,7 @@ ECER.Jscripts.Investigation = {
         dateOfBirth.setValue(birthdayVal);
         dateOfBirth.setSubmitMode("always");
 
+
         var isUnderNineteenVal;
         if (
           result["ecer_isunder19@OData.Community.Display.V1.FormattedValue"] ==
@@ -272,6 +273,203 @@ ECER.Jscripts.Investigation = {
           isUnderNineteenVal = 621870000;
         } else {
           isUnderNineteenVal = 621870001;
+
+        // Get Certificate
+        var certificateIdPromise = Xrm.WebApi.retrieveMultipleRecords("ecer_certificate", "?$select=ecer_certificateid,ecer_certificatelevel,ecer_certificatenumber,ecer_expirydate,ecer_name,statuscode&$filter=_ecer_registrantid_value eq " + contactId + "&$orderby=ecer_expirydate desc").then(
+            function success(results) {
+                console.log(results);
+                if (results.entities.length > 0) {
+                    let certificationHierarchyData = ECER.Jscripts.Investigation.Data.CertificationHierarchy();
+
+                    let allActive = results.entities.filter(function (f) {
+                        return f.statuscode == 1;
+                    });
+
+                    let result = null;
+
+                    // More than 1 active
+                    if (allActive.length > 0) {
+                        // Pick highest active last to expire
+                        let highestActiveLevel3s = allActive.filter(function (f) {
+                            return f.ecer_certificatelevel.includes(certificationHierarchyData.Level3);
+                        });
+
+                        let highestActiveLevel2s = allActive.filter(function (f) {
+                            return f.ecer_certificatelevel === certificationHierarchyData.Level2;
+                        });
+
+                        let highestActiveLevel1s = allActive.filter(function (f) {
+                            return certificationHierarchyData.Level1.includes(f.ecer_certificatelevel);
+                        });
+
+                        if (highestActiveLevel3s.length > 0)
+                            result = highestActiveLevel3s[0];
+                        else if (highestActiveLevel2s.length > 0) {
+                            result = highestActiveLevel2s[0];
+                        }
+                        else if (highestActiveLevel1s.length > 0) {
+                            result = highestActiveLevel1s[0];
+                        }
+                    }
+                    // None active
+                    else {
+                        // Pick highest inactive last to expire
+                        let highestInactiveLevel3s = results.entities.filter(function (f) {
+                            return f.ecer_certificatelevel.includes(certificationHierarchyData.Level3);
+                        });
+
+                        let highestInactiveLevel2s = results.entities.filter(function (f) {
+                            return f.ecer_certificatelevel === certificationHierarchyData.Level2;
+                        });
+
+                        let highestInactiveLevel1s = results.entities.filter(function (f) {
+                            return certificationHierarchyData.Level1.includes(f.ecer_certificatelevel);
+                        });
+
+                        if (highestInactiveLevel3s.length > 0)
+                            result = highestInactiveLevel3s[0];
+                        else if (highestInactiveLevel2s.length > 0) {
+                            result = highestInactiveLevel2s[0];
+                        }
+                        else if (highestInactiveLevel1s.length > 0) {
+                            result = highestInactiveLevel1s[0];
+                        }
+                    }
+
+                    // Set Values
+                    certificateNumber.setValue(result["ecer_certificatenumber"]);
+                    certificateStatus.setValue(result["statuscode@OData.Community.Display.V1.FormattedValue"]);
+
+                    var expiryDateVal = new Date(result["ecer_expirydate@OData.Community.Display.V1.FormattedValue"])
+                    expiryDate.setValue(expiryDateVal);
+                    expiryDate.setSubmitMode("always");
+
+                    certificationType.setValue(result["ecer_certificatelevel"]);
+                    ECER.Jscripts.Investigation.setValueToLookup(currentCertificate, result["ecer_certificateid"], result["ecer_name"], "ecer_certificate");
+                    return result.ecer_certificateid;
+                } else {
+                    console.log("No Certificate is found for Registrant:" + contactId);
+                    return null;
+                }
+            },
+            function (error) {
+                console.log(error.message);
+                return null;
+            }
+        );
+
+
+        Promise.all([certificateIdPromise]).then(function (values) {
+            var certificateId = values[0];
+            // Get Transcript
+
+            if (certificateId !== null) {
+                Xrm.WebApi.retrieveMultipleRecords("ecer_transcript", "?$select=ecer_educationinstitutionfullname&$filter=ecer_Applicationid/_ecer_certificateid_value eq " + certificateId).then(
+                    function success(results) {
+                        console.log(results);
+                        if (results.entities.length > 0) {
+                            console.log("Eductional institutes for that cert id: ", results.entities)
+                            var result = results.entities[0];
+                            educationalInstitution.setValue(result["ecer_educationinstitutionfullname"]);
+                        }
+                    },
+                    function (error) {
+                        console.log(error.message);
+                    }
+                );
+            }
+        });
+
+        // Get Open Applicaiton
+        Xrm.WebApi.retrieveMultipleRecords("ecer_application", "?$select=ecer_applicationid,ecer_name,statecode&$filter=(_ecer_applicantid_value eq " + contactId + " and statecode eq 0)&$orderby=createdon desc").then(
+            function success(results) {
+                console.log(results);
+                if (results.entities.length > 0) {
+                    var result = results.entities[0];
+                    // parallelProcess.setValue(621870000);
+                    ECER.Jscripts.Investigation.setValueToLookup(openApplication, result["ecer_applicationid"], result["ecer_name"], "ecer_application");
+                    return result.ecer_applicationid;
+                } else {
+                    console.log("No current open Application for Registrant:" + contactId);
+                    return null;
+                }
+            },
+            function (error) {
+                console.log(error.message);
+                return null;
+            }
+        );
+    },
+
+    // Registry cannot edit initial complaint information created from Portal
+    lockComplaintInfo: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+
+        var portalSubmission = formContext.getAttribute("ecer_portalsubmission");
+
+        if (portalSubmission != null && portalSubmission.getValue() == true) {
+            return;
+        }
+
+        // Unlock Complainant Contact Info section
+        formContext.ui.tabs.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}")
+            .sections.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}_section_3")
+            .controls.forEach((e) => e.setDisabled(false));
+
+        // Unlock Registrant Contact Info Provided by Complainant section
+        formContext.ui.tabs.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}")
+            .sections.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}_section_2")
+            .controls.forEach((e) => e.setDisabled(false));
+
+        // Unlock Complaint Info section
+        formContext.ui.tabs.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}")
+            .sections.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}_section_10")
+            .controls.forEach((e) => e.setDisabled(false));
+
+        // Unlock Location of Incident section
+        formContext.ui.tabs.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}")
+            .sections.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}_section_5")
+            .controls.forEach((e) => e.setDisabled(false));
+    },
+
+    //Called on load If Source equals the following options, display the Findings subgrid, otherwise display the Allegations subgrid:
+    //NOTE that the visibility property is actually on the sections containing the subgrids.
+    // Logic updated as per ECER-5242
+    displayFindingsOrAllegations: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var sourceAttribute = formContext.getAttribute("ecer_source");
+
+        // Check if the source attribute is null
+        if (!sourceAttribute) {
+            console.error("Source attribute 'ecer_source' is null or undefined.");
+            return;
+        }
+
+        var source = sourceAttribute.getValue();
+
+        // Retrieve the findings
+        var findingsSection = formContext.ui.tabs.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}")
+            .sections.get("{1328d0d8-b96a-4553-a84d-fb0fb98086db}_section_12");
+
+        // Check if the sections are null
+        if (!findingsSection) {
+            console.error("Findings section is null or undefined.");
+            return;
+        }
+
+        var healthAuthorities = [
+            621870018,  //"Island Health Authority",
+            621870019,  //"Interior Health Authority",
+            621870020,  //"Vancouver Coastal Health Authority",
+            621870021,  //"Fraser Health Authority",
+            621870022,  //"Northern Health Authority"
+        ];
+
+        if (healthAuthorities.includes(source)) {
+            findingsSection.setVisible(false);
+        } else {
+            findingsSection.setVisible(true);
+//>>>>>>> 3193c9f5b2528a71cfa45e103e10bd65ebcbbdc0
         }
         isUnderNineteen.setValue(isUnderNineteenVal);
       },
