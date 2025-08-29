@@ -1,29 +1,25 @@
-﻿// JavaScript source code
-
 if (typeof ECER === "undefined") {
   var ECER = {};
 }
-
 if (typeof ECER.Jscripts === "undefined") {
   ECER.Jscripts = {};
 }
 
-ECER.Jscripts.Allegation = {
-  onSave: function (executionContext) {
-    this.onChangeDetails(executionContext);
-  },
-  crm_ExecutionContext: null,
+ECER.Jscripts.Interview = {
   onLoad: function (executionContext) {
-    ECER.Jscripts.Allegation.showInvestigationBanner(executionContext, {
-      debug: true,
+    ECER.Jscripts.Interview.populateFromInvolvedPerson(executionContext);
+    ECER.Jscripts.Interview.showInvestigationBanner(executionContext, {
       investigationLookup: "ecer_investigation",
     });
   },
-  onChangeDetails: function (executionContext) {
+  onSave: function (executionContext) {
+    this.onChangeDescription(executionContext);
+  },
+  onChangeDescription: function (executionContext) {
     // check if details is dirty
     let formContext = executionContext.getFormContext();
 
-    let details = formContext.getAttribute("ecer_details");
+    let details = formContext.getAttribute("ecer_description");
 
     if (details === null || !details.getIsDirty() || !DOMParser) {
       return;
@@ -37,12 +33,68 @@ ECER.Jscripts.Allegation = {
       );
 
       formContext
-        .getAttribute("ecer_detailstext")
+        .getAttribute("ecer_descriptionplaintext")
         ?.setValue(parsedString?.body?.textContent);
     } else {
-      formContext.getAttribute("ecer_detailstext")?.setValue(null);
+      formContext.getAttribute("ecer_descriptionplaintext")?.setValue(null);
     }
-    formContext.data.save();
+  },
+  populateFromInvolvedPerson: function (executionContext) {
+    var lookupAttrName = "ecer_investigationplanninginvolve";
+    var destNameAttr = "ecer_name";
+    var destRoleAttr = "ecer_role";
+    var destEmailAttr = "ecer_email";
+    var destPhoneAttr = "ecer_phonenumber";
+
+    var sourceTable = "ecer_investigationplanninginvolvedperson";
+
+    var selectCols =
+      "?$select=ecer_firstname,ecer_lastname,ecer_role,emailaddress,ecer_phonenumber";
+
+    var formContext = executionContext.getFormContext();
+    var lookupAttr = formContext.getAttribute(lookupAttrName);
+    if (lookupAttr === null) {
+      console.log("Lookup field not on form");
+      return;
+    }
+
+    var lookupValue = lookupAttr.getValue();
+    if (lookupValue === null) {
+      console.log("Lookup empty – nothing to copy");
+      return;
+    }
+
+    var lookupId = lookupValue[0].id.replace(/[{}]/g, "").toLowerCase();
+
+    Xrm.WebApi.retrieveRecord(sourceTable, lookupId, selectCols).then(
+      function success(record) {
+        var current = formContext.getAttribute(lookupAttrName).getValue();
+        if (
+          !current ||
+          current[0].id.replace(/[{}]/g, "").toLowerCase() !== lookupId
+        ) {
+          return;
+        }
+
+        var first = record.ecer_firstname || "";
+        var last = record.ecer_lastname || "";
+        var full = (first + " " + last).trim();
+
+        if (full) formContext.getAttribute(destNameAttr).setValue(full);
+        if (record.ecer_role !== undefined)
+          formContext.getAttribute(destRoleAttr).setValue(record.ecer_role);
+        if (record.emailaddress !== undefined)
+          formContext.getAttribute(destEmailAttr).setValue(record.emailaddress);
+        if (record.ecer_phonenumber !== undefined)
+          formContext
+            .getAttribute(destPhoneAttr)
+            .setValue(record.ecer_phonenumber);
+      },
+      function (error) {
+        console.log("Interview populate error: " + error.message);
+        Xrm.Utility.alertDialog("Couldn’t pull details from Involved Person.");
+      }
+    );
   },
   showInvestigationBanner: function (executionContext, configJson) {
     "use strict";
@@ -59,8 +111,8 @@ ECER.Jscripts.Allegation = {
       var defaults = {
         invEntityLogicalName: "ecer_investigation",
         clientIdAttr: "ecer_clientid",
-        registrantLookupAttr: "ecer_applicant", // <-- your registrant lookup
-        investigationLookup: null, // set per child form if needed
+        registrantLookupAttr: "ecer_applicant",
+        investigationLookup: null,
         investigationLookupCandidates: [
           "ecer_investigationid",
           "ecer_investigation",
@@ -69,7 +121,6 @@ ECER.Jscripts.Allegation = {
         debug: false,
       };
 
-      // shallow merge
       function extend(t, s) {
         if (!s) return t;
         for (var k in s) {
@@ -128,7 +179,6 @@ ECER.Jscripts.Allegation = {
         return id ? id.replace(/[{}]/g, "") : null;
       }
 
-      // Web API fetch that DOES NOT include formatted annotations in $select
       function fetchInvestigation(invId, done, fail) {
         if (!invId) {
           fail && fail();
@@ -149,7 +199,6 @@ ECER.Jscripts.Allegation = {
                   cfg.registrantLookupAttr +
                   "_value@OData.Community.Display.V1.FormattedValue"
               ];
-            // fallback: try to use lookup value on-form if annotation missing
             if (!registrantName) {
               try {
                 var regOnForm = getVal(cfg.registrantLookupAttr);
@@ -172,7 +221,6 @@ ECER.Jscripts.Allegation = {
           var cand = cfg.investigationLookupCandidates[i];
           if (getAttr(cand)) return cand;
         }
-        // last resort heuristic
         var attrs = formContext.data.entity.attributes.get();
         for (var j = 0; j < attrs.length; j++) {
           try {
@@ -220,7 +268,6 @@ ECER.Jscripts.Allegation = {
         return;
       }
 
-      // CHILD forms
       var invLookupName = resolveInvestigationLookupName();
       log("INV banner lookup resolved:", invLookupName);
       if (!invLookupName) {

@@ -1,4 +1,4 @@
-﻿// JavaScript source code
+// Javascript source code
 
 if (typeof ECER === "undefined") {
   var ECER = {};
@@ -8,42 +8,14 @@ if (typeof ECER.Jscripts === "undefined") {
   ECER.Jscripts = {};
 }
 
-ECER.Jscripts.Allegation = {
-  onSave: function (executionContext) {
-    this.onChangeDetails(executionContext);
-  },
+ECER.Jscripts.CoreFactualIssue = {
   crm_ExecutionContext: null,
   onLoad: function (executionContext) {
-    ECER.Jscripts.Allegation.showInvestigationBanner(executionContext, {
-      debug: true,
+    ECER.Jscripts.CoreFactualIssue.showInvestigationBanner(executionContext, {
       investigationLookup: "ecer_investigation",
     });
   },
-  onChangeDetails: function (executionContext) {
-    // check if details is dirty
-    let formContext = executionContext.getFormContext();
 
-    let details = formContext.getAttribute("ecer_details");
-
-    if (details === null || !details.getIsDirty() || !DOMParser) {
-      return;
-    }
-
-    if (details.getValue() != null) {
-      //ecer_detailstext is has string data from HTML in ecer_details
-      var parsedString = new DOMParser().parseFromString(
-        details.getValue(),
-        "text/html"
-      );
-
-      formContext
-        .getAttribute("ecer_detailstext")
-        ?.setValue(parsedString?.body?.textContent);
-    } else {
-      formContext.getAttribute("ecer_detailstext")?.setValue(null);
-    }
-    formContext.data.save();
-  },
   showInvestigationBanner: function (executionContext, configJson) {
     "use strict";
     try {
@@ -59,8 +31,8 @@ ECER.Jscripts.Allegation = {
       var defaults = {
         invEntityLogicalName: "ecer_investigation",
         clientIdAttr: "ecer_clientid",
-        registrantLookupAttr: "ecer_applicant", // <-- your registrant lookup
-        investigationLookup: null, // set per child form if needed
+        registrantLookupAttr: "ecer_applicant",
+        investigationLookup: null,
         investigationLookupCandidates: [
           "ecer_investigationid",
           "ecer_investigation",
@@ -69,7 +41,6 @@ ECER.Jscripts.Allegation = {
         debug: false,
       };
 
-      // shallow merge
       function extend(t, s) {
         if (!s) return t;
         for (var k in s) {
@@ -128,7 +99,6 @@ ECER.Jscripts.Allegation = {
         return id ? id.replace(/[{}]/g, "") : null;
       }
 
-      // Web API fetch that DOES NOT include formatted annotations in $select
       function fetchInvestigation(invId, done, fail) {
         if (!invId) {
           fail && fail();
@@ -149,7 +119,6 @@ ECER.Jscripts.Allegation = {
                   cfg.registrantLookupAttr +
                   "_value@OData.Community.Display.V1.FormattedValue"
               ];
-            // fallback: try to use lookup value on-form if annotation missing
             if (!registrantName) {
               try {
                 var regOnForm = getVal(cfg.registrantLookupAttr);
@@ -172,7 +141,6 @@ ECER.Jscripts.Allegation = {
           var cand = cfg.investigationLookupCandidates[i];
           if (getAttr(cand)) return cand;
         }
-        // last resort heuristic
         var attrs = formContext.data.entity.attributes.get();
         for (var j = 0; j < attrs.length; j++) {
           try {
@@ -220,7 +188,6 @@ ECER.Jscripts.Allegation = {
         return;
       }
 
-      // CHILD forms
       var invLookupName = resolveInvestigationLookupName();
       log("INV banner lookup resolved:", invLookupName);
       if (!invLookupName) {
