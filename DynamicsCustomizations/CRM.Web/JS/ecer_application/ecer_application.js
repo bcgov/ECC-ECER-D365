@@ -451,8 +451,8 @@ ECER.Jscripts.Application =
         if (quickViewControl != null) {
             quickViewControl.setVisible(showQuickView);
         }
-        crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_contactnames");
-        crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_applicantaddress");
+        crm_Utility.showHide(executionContext, false, "tab_applicantinformation:section_contactnames");
+        crm_Utility.showHide(executionContext, false, "tab_applicantinformation:section_applicantaddress");
 
     },
 
