@@ -18,6 +18,10 @@ ECER.Jscripts.WorkExperienceReference = {
         ECER.Jscripts.WorkExperienceReference.filterOutRelationshipOfApplicant(executionContext);
         ECER.Jscripts.WorkExperienceReference.showHideReferenceDOB(executionContext);
         ECER.Jscripts.WorkExperienceReference.showHideLegacyChildcareAgeRange(executionContext);
+        ECER.Jscripts.WorkExperienceReference.showHideIcraSections(executionContext);
+        ECER.Jscripts.WorkExperienceReference.showHideChildcareAgeRangeNew(executionContext);
+
+
     },
 
     showHideLegacyChildcareAgeRange: function (executionContext) {
@@ -332,7 +336,92 @@ ECER.Jscripts.WorkExperienceReference = {
         catch (err) {
             throw new Error(err.message);
         }
-    }
+    },
+    showHideIcraSections: function (executionContext) {
+        // Show "Independent Practice Details" + "Child Care Program Details"
+        // Hide "General" + "Details (400/500)" when ICRA Eligibility Assessment contains data
+        var formContext = executionContext.getFormContext();
+        var icraAttrName = "ecer_icraeligibilityassessment";
+
+        var icraAttr = formContext.getAttribute(icraAttrName);
+
+        var apply = function () {
+            var hasICRA = (icraAttr != null && icraAttr.getValue() != null);
+
+            // Resolve the Work Information tab by name (with a safe fallback)
+            var workTab = formContext.ui.tabs.get("tab_workinformation") || formContext.ui.tabs.get("workinformation");
+            if (!workTab) { return; }
+
+            // Helper: get section by name, else by label
+            var getSection = function (name, label) {
+                var s = null;
+                try { s = workTab.sections.get(name); } catch (e) { s = null; }
+                if (!s && label) {
+                    var all = workTab.sections.get();
+                    for (var i = 0; i < all.length; i++) {
+                        if (all[i].getLabel && all[i].getLabel() === label) { s = all[i]; break; }
+                    }
+                }
+                return s;
+            };
+
+            // Sections to show when ICRA has data
+            var secIndependent = getSection("tab_workinformation_section_5", "Independent Practice Details");
+            var secChildProgram = getSection("tab_workinformation_section_6", "Child Care Program Details");
+
+
+            // Sections to hide when ICRA has data
+            var secGeneral_A = getSection("section_workdetails", "General");
+            var secDetails500 = getSection("section_details_500", "Details");
+            var secDetails400 = getSection("section_details_400", "Details");
+
+            // Apply visibility
+            if (secIndependent) { secIndependent.setVisible(hasICRA); }
+            if (secChildProgram) { secChildProgram.setVisible(hasICRA); }
+
+            var showNonICRA = !hasICRA;
+            if (secGeneral_A) { secGeneral_A.setVisible(showNonICRA); }
+            if (secDetails500) { secDetails500.setVisible(showNonICRA); }
+            if (secDetails400) { secDetails400.setVisible(showNonICRA); }
+
+            // When ICRA is cleared, restore 400/500 visibility logic
+            if (!hasICRA && ECER.Jscripts.WorkExperienceReference.showHide400500OnType) {
+                ECER.Jscripts.WorkExperienceReference.showHide400500OnType(executionContext);
+            }
+        };
+
+        // Run now and on change
+        apply();
+        if (icraAttr) { icraAttr.addOnChange(apply); }
+    },
+    showHideChildcareAgeRangeNew: function (executionContext) {
+
+    var formContext = executionContext.getFormContext();
+    var workingAttrName = "ecer_applicantworkchildren";
+    var ageRangeAttrName = "ecer_childcareagerangenew";
+
+    var workingAttr = formContext.getAttribute(workingAttrName);
+    var ageRangeAttr = formContext.getAttribute(ageRangeAttrName);
+
+    var apply = function () {
+        var show = false;
+        if (workingAttr != null && workingAttr.getValue() != null) {
+            var v = workingAttr.getValue(); 
+            show = (v === true || v === 1 || v === "1");
+        }
+
+        crm_Utility.showHide(executionContext, show, ageRangeAttrName);
+
+        if (!show && ageRangeAttr != null) {
+            ageRangeAttr.setValue(null);
+        }
+    };
+
+    apply();
+    if (workingAttr) workingAttr.addOnChange(apply);
+},
+
+
 }
 
 
