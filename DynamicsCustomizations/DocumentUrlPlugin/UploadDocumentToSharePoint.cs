@@ -183,6 +183,14 @@ namespace BCGOV.Plugin.DocumentUrl
                         {
                             sharePointFileUrlEntity["ecer_transcriptid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
                         }
+                        else if (regardingObjectLogicalName.Equals("ecer_internationalcertification", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            sharePointFileUrlEntity["ecer_internationalcertificationid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                        }
+                        else if (regardingObjectLogicalName.Equals("ecer_icraeligibilityassessment", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            sharePointFileUrlEntity["ecer_icraeligibilityassessmentid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                        }
                         else
                             throw new InvalidPluginExecutionException(string.Format("Unknown RegardingObjectType '{0}' to associate document..", regardingObjectLogicalName));
                         traceService.Trace("Constructed Document URL entity");
