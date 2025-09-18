@@ -72,7 +72,7 @@ namespace BCGOV.Plugin.DocumentUrl
                    // && (!targetEntity.Contains("bcgov_customer") || targetEntity["bcgov_customer"] == null))
                 {
                     traceService.Trace("Communication contains data but no Customer ");
-                    var entityReferencce = (EntityReference)targetEntity["ecer_communicationid"];
+                    var entityReferencce = (Entity)targetEntity["ecer_communicationid"];
                     var entityRecord = service.Retrieve(entityReferencce.LogicalName.ToLowerInvariant(),
                         entityReferencce.Id, new ColumnSet("ecer_applicationid", "ecer_registrantid", "ecer_ecer_program_application_id", "ecer_investigation", "ecer_isroot", "ecer_parentcommunicationid"));
                     if (entityRecord.Contains("ecer_isroot") && entityRecord.GetAttributeValue<bool>("ecer_isroot") != true && 
@@ -129,6 +129,63 @@ namespace BCGOV.Plugin.DocumentUrl
                         service.Update(sharePointFileUrlEntity);
                     }
                 }
+                // ECER-5283 Begins
+                else if (targetEntity.Contains("ecer_internationalcertificationid") && targetEntity["ecer_internationalcertificationid"] != null 
+                    && (!targetEntity.Contains("ecer_icraeligibilityassessmentid") || targetEntity["ecer_icraeligibilityassessmentid"] == null))
+                {
+                    var entityReference = (EntityReference)targetEntity["ecer_internationalcertificationid"];
+                    var entityRecord = service.Retrieve(entityReference.LogicalName.ToLowerInvariant(), 
+                        entityReference.Id, new ColumnSet("ecer_applicationid", "ecer_eligibilityassessment"));
+                    var hasChange = false;
+                    if (registryTeamER != null)
+                    {
+                        sharePointFileUrlEntity["ownerid"] = registryTeamER;
+                        hasChange = true;
+                    }
+
+                    if (entityRecord.Contains("ecer_applicationid") && entityRecord["ecer_applicationid"] != null)
+                    {
+                        sharePointFileUrlEntity["ecer_applicationid"] = entityRecord["ecer_applicationid"];
+                        hasChange = true;
+                    }
+
+                    if (entityRecord.Contains("ecer_eligibilityassessment") && entityRecord["ecer_eligibilityassessment"] != null)
+                    {
+                        sharePointFileUrlEntity["ecer_icraeligibilityassessmentid"] = entityRecord["ecer_eligibilityassessment"];
+                        var assessmentEntityER = ((EntityReference)entityRecord["ecer_eligibilityassessment"]);
+                        var assessmentEntity = service.Retrieve(assessmentEntityER.LogicalName.ToLowerInvariant(),
+                            assessmentEntityER.Id, new ColumnSet("ecer_applicantid"));
+                        if (assessmentEntity.Contains("ecer_applicantid") && assessmentEntity["ecer_applicantid"] != null)
+                        {
+                            sharePointFileUrlEntity["bcgov_customer"] = assessmentEntity["ecer_applicantid"];
+                        }
+                        hasChange = true;
+                    }
+                    if (hasChange)
+                    {
+                        service.Update(sharePointFileUrlEntity);
+                    }
+                }
+                else if (targetEntity.Contains("ecer_icraeligibilityassessmentid") && targetEntity["ecer_icraeligibilityassessmentid"] != null 
+                    && (!targetEntity.Contains("bcgov_customer") || targetEntity["bcgov_customer"] == null))
+                {
+                    var hasChange = false;
+                    // If Eligibility Assessment, then also link to the applicant
+                    var assessmentEntityER = (EntityReference)targetEntity["ecer_icraeligibilityassessmentid"];
+                    var assessmentEntity = service.Retrieve(assessmentEntityER.LogicalName.ToLowerInvariant(),
+                        assessmentEntityER.Id, new ColumnSet("ecer_applicantid"));
+                    if (assessmentEntity.Contains("ecer_applicantid") && assessmentEntity["ecer_applicantid"] != null)
+                    {
+                        sharePointFileUrlEntity["bcgov_customer"] = assessmentEntity["ecer_applicantid"];
+                        hasChange = true;
+                    }
+
+                    if (hasChange)
+                    {
+                        service.Update(sharePointFileUrlEntity);
+                    }
+                }
+                // ECER-5283 Ends
                 else if (targetEntity.Contains("ecer_professionaldevelopmentid") && targetEntity["ecer_professionaldevelopmentid"] != null
                     && (!targetEntity.Contains("ecer_applicationid") || targetEntity["ecer_applicationid"] == null))
                 {
