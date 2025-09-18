@@ -20,8 +20,6 @@ ECER.Jscripts.WorkExperienceReference = {
         ECER.Jscripts.WorkExperienceReference.showHideLegacyChildcareAgeRange(executionContext);
         ECER.Jscripts.WorkExperienceReference.showHideIcraSections(executionContext);
         ECER.Jscripts.WorkExperienceReference.showHideChildcareAgeRangeNew(executionContext);
-
-
     },
 
     showHideLegacyChildcareAgeRange: function (executionContext) {
@@ -395,33 +393,10 @@ ECER.Jscripts.WorkExperienceReference = {
         if (icraAttr) { icraAttr.addOnChange(apply); }
     },
     showHideChildcareAgeRangeNew: function (executionContext) {
-
-    var formContext = executionContext.getFormContext();
-    var workingAttrName = "ecer_applicantworkchildren";
-    var ageRangeAttrName = "ecer_childcareagerangenew";
-
-    var workingAttr = formContext.getAttribute(workingAttrName);
-    var ageRangeAttr = formContext.getAttribute(ageRangeAttrName);
-
-    var apply = function () {
-        var show = false;
-        if (workingAttr != null && workingAttr.getValue() != null) {
-            var v = workingAttr.getValue(); 
-            show = (v === true || v === 1 || v === "1");
-        }
-
-        crm_Utility.showHide(executionContext, show, ageRangeAttrName);
-
-        if (!show && ageRangeAttr != null) {
-            ageRangeAttr.setValue(null);
-        }
-    };
-
-    apply();
-    if (workingAttr) workingAttr.addOnChange(apply);
-},
-
-
+        var formContext = executionContext.getFormContext();
+        var show = formContext.getAttribute("ecer_applicantworkchildren")?.getValue() === 621870000; // Yes
+        crm_Utility.showHide(executionContext, show, "ecer_childcareagerangenew");
+    },
 }
 
 
