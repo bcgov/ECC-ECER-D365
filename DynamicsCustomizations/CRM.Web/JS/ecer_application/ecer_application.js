@@ -1361,5 +1361,51 @@ ECER.Jscripts.Application =
         catch (err) {
             throw new Error(err.message);
         }
+    },
+    // ECER-4816
+
+    showHideTabsForICRAType: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var typeAttributeName = "ecer_type";
+        var ICRAValue = 621870004; // Value for 'ICRA'
+        var typeAttribute = formContext.getAttribute(typeAttributeName);
+        var isICRA = typeAttribute && typeAttribute.getValue() === ICRAValue;
+
+        if (isICRA) {
+            //Tabs to be shown for ICRA type
+            const showTabsForICRA = [
+                "tab_applicantinformation",
+                "tab_icraeligibilityassessment",
+                "tab_internationalcertification",
+                "tab_completenessreview",
+                "assessment",
+                "tab_educationinformation",
+                "tab_declarations",
+                "tab_timelines",
+                "tab_workexperience",
+                "tab_characterreferences",
+                "tab_files"
+            ];
+
+            for (let i = 0; i < showTabsForICRA.length; i++) {
+                crm_Utility.showHide(executionContext, isICRA, showTabsForICRA[i]);
+            }
+
+            //Tabs to be hidden for ICRA type
+            const hideTabsForICRA = [
+                "tab_professionaldevelopment",
+                "tab_certificationcomparison"
+            ];
+
+            for (let i = 0; i < hideTabsForICRA.length; i++) {
+                crm_Utility.showHide(executionContext, !isICRA, hideTabsForICRA[i]);
+            }
+
+        } else {
+            // For non-ICRA types, nothing to do
+        }
     }
+
+    // ECER-4816
+
 }// JavaScript source code
