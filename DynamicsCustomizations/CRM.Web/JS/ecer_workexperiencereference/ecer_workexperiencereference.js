@@ -18,6 +18,8 @@ ECER.Jscripts.WorkExperienceReference = {
         ECER.Jscripts.WorkExperienceReference.filterOutRelationshipOfApplicant(executionContext);
         ECER.Jscripts.WorkExperienceReference.showHideReferenceDOB(executionContext);
         ECER.Jscripts.WorkExperienceReference.showHideLegacyChildcareAgeRange(executionContext);
+        ECER.Jscripts.WorkExperienceReference.showHideIcraSections(executionContext);
+        ECER.Jscripts.WorkExperienceReference.showHideChildcareAgeRangeNew(executionContext);
     },
 
     showHideLegacyChildcareAgeRange: function (executionContext) {
@@ -67,10 +69,11 @@ ECER.Jscripts.WorkExperienceReference = {
             return;
         }
         var applicationAttribute = formContext.getAttribute(applicationAttributeName);
-        var applicationId = applicationAttribute.getValue()[0].id.replace("{", "").replace("}", "");
+        
         if (applicationAttribute === null || applicationAttribute.getValue() === null) {
             return;
         }
+        var applicationId = applicationAttribute.getValue()[0].id.replace("{", "").replace("}", "");
         Xrm.WebApi.retrieveRecord("ecer_application", applicationId, "?$select=ecer_type")
             .then(function (result) {
                 if (result) {
@@ -332,7 +335,79 @@ ECER.Jscripts.WorkExperienceReference = {
         catch (err) {
             throw new Error(err.message);
         }
-    }
+    },
+    showHideIcraSections: function (executionContext) {
+        // Show "Independent Practice Details" + "Child Care Program Details"
+        // Hide "General" + "Details (400/500)" when ICRA Eligibility Assessment contains data
+        var formContext = executionContext.getFormContext();
+        var icraAttrName = "ecer_icraeligibilityassessment";
+
+        var icraAttr = formContext.getAttribute(icraAttrName);
+
+        var apply = function () {
+            var hasICRA = (icraAttr != null && icraAttr.getValue() != null);
+
+            // Resolve the Work Information tab by name (with a safe fallback)
+            var workTab = formContext.ui.tabs.get("tab_workinformation") || formContext.ui.tabs.get("workinformation");
+            if (!workTab) { return; }
+
+            // Helper: get section by name, else by label
+            var getSection = function (name, label) {
+                var s = null;
+                try { s = workTab.sections.get(name); } catch (e) { s = null; }
+                if (!s && label) {
+                    var all = workTab.sections.get();
+                    for (var i = 0; i < all.length; i++) {
+                        if (all[i].getLabel && all[i].getLabel() === label) { s = all[i]; break; }
+                    }
+                }
+                return s;
+            };
+
+            // Sections to show when ICRA has data
+            var secIndependent = getSection("tab_workinformation_section_5", "Independent Practice Details");
+            var secChildProgram = getSection("tab_workinformation_section_6", "Child Care Program Details");
+
+            // Set Type if Create Form
+            var formType = formContext.ui.getFormType();
+            if (formType === 1) {
+                // only interest if during create mode
+                formContext.getAttribute("ecer_type").setValue(621870002); // ICRA
+            }
+
+            // Sections to hide when ICRA has data
+            var secGeneral_A = getSection("section_workdetails", "General");
+            var secDetails500 = getSection("section_details_500", "Details");
+            var secDetails400 = getSection("section_details_400", "Details");
+
+            // Apply visibility
+            if (secIndependent) { secIndependent.setVisible(hasICRA); }
+            if (secChildProgram) { secChildProgram.setVisible(hasICRA); }
+
+            var showNonICRA = !hasICRA;
+            if (secGeneral_A) { secGeneral_A.setVisible(showNonICRA); }
+            if (secDetails500) { secDetails500.setVisible(showNonICRA); }
+            if (secDetails400) { secDetails400.setVisible(showNonICRA); }
+
+            // When ICRA is cleared, restore 400/500 visibility logic
+            if (!hasICRA && ECER.Jscripts.WorkExperienceReference.showHide400500OnType) {
+                ECER.Jscripts.WorkExperienceReference.showHide400500OnType(executionContext);
+            }
+        };
+
+        // Run now and on change
+        apply();
+        if (icraAttr) { icraAttr.addOnChange(apply); }
+    },
+    showHideChildcareAgeRangeNew: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var show = formContext.getAttribute("ecer_applicantworkchildren")?.getValue() === 621870000; // Yes
+        crm_Utility.showHide(executionContext, show, "ecer_childcareagerangenew");
+    },
+
+
+
+
 }
 
 
