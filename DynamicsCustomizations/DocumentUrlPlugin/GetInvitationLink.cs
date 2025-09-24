@@ -27,35 +27,42 @@ namespace BCGOV.Plugin.DocumentUrl
                     var portalInvitationId = portalInvitation.GetAttributeValue<Guid>("ecer_portalinvitationid");
                     var characterRef = portalInvitation.GetAttributeValue<EntityReference>("ecer_characterreferenceid");
                     var workExpRef = portalInvitation.GetAttributeValue<EntityReference>("ecer_workexperiencereferenceid");
+                    var programRepRef = portalInvitation.GetAttributeValue<EntityReference>("ecer_psiprogramrepresentativeid");
                     var validDays = portalInvitation.GetAttributeValue<int>("ecer_validdays");
                     
                     var inviteType = string.Empty;
                     Entity referenceEntity = null;
                     EntityReference referenceER = null;
-                    if (characterRef == null && workExpRef == null)
+                    if (characterRef == null && workExpRef == null && programRepRef == null)
                     {
                         return;
                     }
-                    else if (characterRef != null && workExpRef == null)
+                    else if (characterRef != null)
                     {
                         inviteType = "CharacterReference";
                         referenceER = characterRef;
                     }
-                    else if (characterRef == null && workExpRef != null)
+                    else if (workExpRef != null)
                     {
                         inviteType = "WorkExperienceReference";
                         referenceER = workExpRef;
+                    }
+                    else if (programRepRef != null)
+                    {
+                        inviteType = "PSIProgramRepresentative";
+                        referenceER = programRepRef;
                     }
                     else
                     {
                         return; // 
                     }
+                    traceService.Trace($"Line 59 - Invite Type: {inviteType} || Reference Logical Name: {referenceER.LogicalName} || Reference ID: {referenceER.Id}");
                     referenceEntity = service.Retrieve(referenceER.LogicalName, referenceER.Id, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
                     var firstName = referenceEntity.GetAttributeValue<string>("ecer_firstname");
                     var lastName = referenceEntity.GetAttributeValue<string>("ecer_lastname");
                     var emailaddress = referenceEntity.GetAttributeValue<string>("ecer_emailaddress");
                     var configs = Helpers.GetSystemConfigurations(service, "Storage", string.Empty);
-
+                    traceService.Trace($"First Name: {firstName} || Last Name: {lastName} || Email Address {emailaddress} || configs: {configs}");
                     string authUrl = Helpers.GetConfigKeyValue(configs, "AuthUrl", "Storage");
                     string authSecret = Helpers.GetSecureConfigKeyValue(configs, "AuthSecret", "Storage");
                     string authClientId = Helpers.GetSecureConfigKeyValue(configs, "AuthClientId", "Storage");
@@ -68,7 +75,7 @@ namespace BCGOV.Plugin.DocumentUrl
                     var bearerToken = Helpers.GetBearerToken(authUrl, authClientId, authSecret);
                     traceService.Trace($"Bearer Token: {bearerToken}");
                     url = url + "/api/invitelinks/";
-
+                    traceService.Trace($"URL: {url}");
                     using (var client = new HttpClient())
                     {
                         client.DefaultRequestHeaders.Add("Authorization", "Bearer " + bearerToken);
