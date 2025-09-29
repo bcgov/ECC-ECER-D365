@@ -199,8 +199,10 @@ namespace BCGOV.Plugin.DocumentUrl
 
                         fileStream.Position = 0;
                         var streamContent = new StreamContent(fileStream);
+                        var ext = fileName.Substring(fileName.LastIndexOf("."));
                         streamContent.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse(Helpers.GetMIMEType(fileName));
-                        multipartContent.Add(streamContent, "File", fileName);
+                        /* multipartContent.Add(streamContent, "File", fileName); // ECER-5083 Request Header must contain only ASCII characters.  This is returning a response of InternalServerError */
+                        multipartContent.Add(streamContent, "File", (regardingObjectId.ToString() + "." + ext));
 
                         var bearerToken = Helpers.GetBearerToken(authUrl, authClientId, authSecret);
 
