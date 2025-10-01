@@ -85,6 +85,7 @@
     <Content Include="JS\ecer_professionaldevelopment\ecer_professionaldevelopment_buttons.js" />
     <Content Include="JS\ecer_programapplication\ecer_programapplication.js" />
     <Content Include="JS\ecer_program\ecer_program.js" />
+    <Content Include="JS\ecer_provincialrequirement\ecer_provincialrequirement.js" />
     <Content Include="JS\ecer_psiprogramrep\ecer_psiprogramrep.js" />
     <Content Include="JS\ecer_pspinstitution\ecer_postsecondaryinstitution.js" />
     <Content Include="JS\ecer_pspinterviewquestion\ecer_pspinterviewquestion.js" />
