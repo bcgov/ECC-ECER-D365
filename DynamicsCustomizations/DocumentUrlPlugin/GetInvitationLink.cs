@@ -82,7 +82,8 @@ namespace BCGOV.Plugin.DocumentUrl
                         
                         
                         var id = portalInvitationId.ToString("D");
-                        var payloadJSON = "{\"portalInvitation\":\"" + id + $"\",\"inviteType\":\"{inviteType}\",\"validDays\":{validDays}" + "}";
+                        //var payloadJSON = "{\"portalInvitation\":\"" + id + $"\",\"inviteType\":\"{inviteType}\",\"validDays\":{validDays}" + "}";
+                        var payloadJSON = "{\"portalInvitation\":\"" + id + $"\",\"validDays\":{validDays}" + "}"; // Remove Invite Type to make it more generic
                         traceService.Trace($"payloadJSON: {payloadJSON}");
                         traceService.Trace("Call API to get invitation link");
                         var stringContent = new StringContent(payloadJSON, System.Text.Encoding.UTF8, "application/json");
