@@ -35,6 +35,20 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.ShowHideLMApplicantDetails(executionContext);
         ECER.Jscripts.Application.ShowHidePSPReferalDetails(executionContext);
         ECER.Jscripts.Application.showHideTabsForICRAType(executionContext);
+        ECER.Jscripts.Application.showHideReconsiderationTab(executionContext);
+    },
+    showHideReconsiderationTab: function (executionContext) {
+        let formContext = executionContext.getFormContext();
+        let reconsiderationRequest = formContext.getAttribute("ecer_reconsiderationrequest")?.getValue();
+        let tab = formContext.ui.tabs.get("Reconsideration");
+
+
+        if (reconsiderationRequest) {
+            tab?.setVisible(true);
+        }
+        else {
+            tab?.setVisible(false);
+        }
     },
     ShowHidePSPReferalDetails: function (executionContext) {
         try {
