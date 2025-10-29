@@ -15,6 +15,8 @@ ECER.Jscripts.Investigation =
         ECER.Jscripts.Investigation.lockComplaintInfo(executionContext);
         ECER.Jscripts.Investigation.showHideParallelProcess(executionContext);
         ECER.Jscripts.Investigation.showHideReasonForPriorityAssignment(executionContext);
+        ECER.Jscripts.Investigation.registrantHasActiveCondition(executionContext);
+        ECER.Jscripts.Investigation.registrantHasSuspendedCertificate(executionContext);
         ECER.Jscripts.Investigation.displayFindingsOrAllegations(executionContext);
         ECER.Jscripts.Investigation.showHideImmediateActions(executionContext);
         ECER.Jscripts.Investigation.onChangeInvestigationOutcomeInfo(executionContext);
@@ -38,6 +40,71 @@ ECER.Jscripts.Investigation =
 
 
     },
+    registrantHasSuspendedCertificate: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var applicant = formContext.getAttribute("ecer_applicant").getValue();
+        if (applicant == null) {
+            return;
+        }
+        var formType = formContext.ui.getFormType();
+        if (formType !== 2 &&
+            formType !== 3 &&
+            formType !== 4) {
+            // Only care of Update, Read Only, Disabled if on Contact entity
+            return;
+        }
+
+
+        var registrantId = applicant[0].id;
+        registrantId = registrantId.replace("{", "").replace("}", "");
+        var uniqueId = registrantId.replace("-", "") + "HasCertificateSuspended";
+        formContext.ui.clearFormNotification(uniqueId);
+        var query = "?$filter=_ecer_registrantid_value eq " + registrantId + " and statuscode eq 621870004 and statecode eq 0 ";
+        Xrm.WebApi.retrieveMultipleRecords("ecer_certificate", query).then(
+            function success(results) {
+                if (results.entities.length > 0) {
+                    // Has Active Certificate Solution
+                    var message = "Registrant has suspended certificate";
+                    var level = "WARNING";
+                    formContext.ui.setFormNotification(message, level, uniqueId);
+                }
+            }
+        );
+
+    },
+    //ECER-5214
+    registrantHasActiveCondition: function (executionContext, registrantId) {
+        var formContext = executionContext.getFormContext();
+        var applicant = formContext.getAttribute("ecer_applicant").getValue();
+        if (applicant == null) {
+            return;
+        }
+        var formType = formContext.ui.getFormType();
+        if (formType !== 2 &&
+            formType !== 3 &&
+            formType !== 4) {
+            // Only care of Update, Read Only, Disabled if on Contact entity
+            return;
+        }
+
+
+        var registrantId = applicant[0].id;
+        registrantId = registrantId.replace("{", "").replace("}", "");
+        var uniqueId = registrantId.replace("-", "") + "HasActiveConditions";
+        formContext.ui.clearFormNotification(uniqueId);
+        var option = "?$filter=_ecer_registrantid_value eq " + registrantId + " and statecode eq 0";
+        Xrm.WebApi.retrieveMultipleRecords("ecer_certificateconditions", option).then(
+            function success(results) {
+                if (results.entities.length > 0) {
+                    // Has Active Certificate Solution
+                    var message = "Registrant has active terms and conditions currently";
+                    var level = "WARNING";
+                    formContext.ui.setFormNotification(message, level, uniqueId);
+                }
+            }
+        );
+    },
+
 
     //10 / day
     onChangeTDADFacility: function (executionContext) {
