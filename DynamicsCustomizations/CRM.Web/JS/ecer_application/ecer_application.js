@@ -1,5 +1,4 @@
 // JavaScript source code
-// JavaScript source code
 if (typeof ECER === "undefined") {
     var ECER = {};
 }
@@ -35,20 +34,6 @@ ECER.Jscripts.Application =
         ECER.Jscripts.Application.ShowHideLMApplicantDetails(executionContext);
         ECER.Jscripts.Application.ShowHidePSPReferalDetails(executionContext);
         ECER.Jscripts.Application.showHideTabsForICRAType(executionContext);
-        ECER.Jscripts.Application.showHideReconsiderationTab(executionContext);
-    },
-    showHideReconsiderationTab: function (executionContext) {
-        let formContext = executionContext.getFormContext();
-        let reconsiderationRequest = formContext.getAttribute("ecer_reconsiderationrequest")?.getValue();
-        let tab = formContext.ui.tabs.get("Reconsideration");
-
-
-        if (reconsiderationRequest) {
-            tab?.setVisible(true);
-        }
-        else {
-            tab?.setVisible(false);
-        }
     },
     ShowHidePSPReferalDetails: function (executionContext) {
         try {
@@ -265,18 +250,10 @@ ECER.Jscripts.Application =
         var type = formContext.getAttribute(typeAttributeName).getValue();
         var applicant = formContext.getAttribute(applicantAttributeName).getValue();
         var fromCertificate = formContext.getAttribute(fromCertificateAttributeName).getValue();
-        var isECEAssistant = formContext.getAttribute("ecer_iseceassistant").getValue();
-        var isECE1YR = formContext.getAttribute("ecer_isece1yr").getValue();
-        var isECE5YR = formContext.getAttribute("ecer_isece5yr").getValue();
-        var isRenewal = (type === 621870001 && applicant !== null);
-        var isNewAndNoFlags = (type === 621870000 &&
-            isECEAssistant === false &&
-            isECE1YR === false &&
-            isECE5YR === false);
-        var showFromCertificate = (isRenewal || isNewAndNoFlags);
+        var showFromCertificate = (type === 621870001 && applicant !== null);
         crm_Utility.showHide(executionContext, showFromCertificate, fromCertificateAttributeName);
 
-        if (fromCertificate === null && applicant !== null && applicant.length > 0 && showFromCertificate) {
+        if (fromCertificate === null && showFromCertificate) {
             var today = new Date();
             var latestCertificate = ECER.Jscripts.Application.getApplicantLatestCertificate(executionContext, applicant[0].id, today);
             if (latestCertificate !== null) {
@@ -475,8 +452,8 @@ ECER.Jscripts.Application =
         if (quickViewControl != null) {
             quickViewControl.setVisible(showQuickView);
         }
-        crm_Utility.showHide(executionContext, false, "tab_applicantinformation:section_contactnames");
-        crm_Utility.showHide(executionContext, false, "tab_applicantinformation:section_applicantaddress");
+        crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_contactnames");
+        crm_Utility.showHide(executionContext, !showQuickView, "tab_applicantinformation:section_applicantaddress");
 
     },
 
@@ -1426,9 +1403,15 @@ ECER.Jscripts.Application =
                 crm_Utility.showHide(executionContext, !isICRA, hideTabsForICRA[i]);
             }
 
+            
         } else {
-            // Nothing to do
+            // For non-ICRA types, nothing to do
         }
+
+        // ECER-5531 Hide Work Experience Subtotal Hours if ICRA
+        crm_Utility.showHide(executionContext, !isICRA, "ecer_totalanticipatedworkexperiencehours");
+        crm_Utility.showHide(executionContext, !isICRA, "ecer_totalobservedworkexperiencehours");
+        crm_Utility.showHide(executionContext, !isICRA, "ecer_totalapprovedworkexperiencehours");
     }
 
     // ECER-4816

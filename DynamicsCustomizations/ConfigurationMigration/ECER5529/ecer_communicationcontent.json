@@ -1,0 +1,141 @@
+{
+  "LogicalName": "ecer_communicationcontent",
+  "PrimaryIdAttribute": "ecer_communicationcontentid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\"><p style=\"margin: 0;\"><span style=\"font-size:10pt;\">The Program Confirmation Form you have submitted cannot be accepted because:&nbsp;</span><br><br><span style=\"font-size:10pt;\">[Staff entered reason]&nbsp;</span><br><br><span style=\"font-size:11pt;\">To provide a new Program Confirmation Form:&nbsp;</span><br><br><span style=\"font-size:11pt;\">&nbsp; 1. Go to the home page and select \"Manage application\"</span><br><span style=\"font-size:11pt;\">&nbsp; 2. Click on the \"Program Confirmation Form\" link</span><br><span style=\"font-size:11pt;\">&nbsp; 3. Upload a new or additional Program Confirmation form</span></p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Action required: Program Confirmation form not accepted"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Program Confirmation Form – Invalid"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "43a51c16-8451-f011-877b-0022483caef2"
+        },
+        {
+          "Key": "ecer_source",
+          "Type": 16,
+          "Value": "The course outline(s) or syllabi you have submitted cannot be accepted because: \n\n[Staff entered reason] \n\nTo provide a new Program Confirmation Form: \n\n1. Go to the home page and select \"Manage application\"\n2. Click on the \"Course outlines or syllabi\" link\n3. Upload a new or additional course outlines or syllabi"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\"><p style=\"margin: 0;\"><span style=\"font-size:11pt;\">Additional course outline(s) or syllabi are required because:&nbsp;</span><br><br><span style=\"font-size:11pt;\">[Staff entered reason]&nbsp;</span><br><br><span style=\"font-size:11pt;\">To provide a new or additional course outline or syllabi:&nbsp;</span><br><br><span style=\"font-size:11pt;\">&nbsp; 1. Go to the home page and select “Manage application”</span><br><span style=\"font-size:11pt;\">&nbsp; 2. Click on the “Course outlines or syllabi” link</span><br><span style=\"font-size:11pt;\">&nbsp; 3. Upload a new or additional course outline or syllabi</span></p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Action required: Additional course outline(s) or syllabi required"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Course Outline or Syllabi – Additional required"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "6cecb56d-8451-f011-877b-002248b35783"
+        },
+        {
+          "Key": "ecer_source",
+          "Type": 16,
+          "Value": "Additional outline(s) or syllabi you have submitted cannot be accepted because: \n\n[Staff entered reason] \n\nTo provide a new or additional course outline or syllabi: \n\n  1. Go to the home page and select “Manage application”\n  2. Click on the “Course outlines or syllabi” link\n  3. Upload a new or additional course outline or syllabi"
+        }
+      ]
+    }
+  ],
+  "Count": 2
+}
