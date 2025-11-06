@@ -33,15 +33,6 @@
           }
         },
         {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870000
-            }
-          ]
-        },
-        {
           "Key": "ecer_name",
           "Type": 16,
           "Value": "Child Growth and Development; Health, Safety and Nutrition or Child Guidance"
@@ -50,11 +41,6 @@
           "Key": "ecer_provincialrequirementid",
           "Type": 1,
           "Value": "ac4d670d-6f14-ef11-9f89-000d3af46033"
-        },
-        {
-          "Key": "ecer_programdevelopmentinprogress",
-          "Type": 16,
-          "Value": false
         },
         {
           "Key": "statuscode",
@@ -96,28 +82,14 @@
           }
         },
         {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870003
-            }
-          ]
-        },
-        {
           "Key": "ecer_name",
           "Type": 16,
-          "Value": "Child Growth and Development (SNE)"
+          "Value": "Child Growth and Development"
         },
         {
           "Key": "ecer_provincialrequirementid",
           "Type": 1,
           "Value": "60905095-6f14-ef11-9f89-000d3af46033"
-        },
-        {
-          "Key": "ecer_programdevelopmentinprogress",
-          "Type": 16,
-          "Value": false
         },
         {
           "Key": "statuscode",
@@ -159,15 +131,6 @@
           }
         },
         {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870004
-            }
-          ]
-        },
-        {
           "Key": "ecer_name",
           "Type": 16,
           "Value": "Child Growth and Development for Infants and Toddlers"
@@ -176,11 +139,6 @@
           "Key": "ecer_provincialrequirementid",
           "Type": 1,
           "Value": "cb2cf103-7014-ef11-9f89-000d3af46033"
-        },
-        {
-          "Key": "ecer_programdevelopmentinprogress",
-          "Type": 16,
-          "Value": false
         },
         {
           "Key": "statuscode",
@@ -220,15 +178,6 @@
             "KeyAttributes": [],
             "RowVersion": null
           }
-        },
-        {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870004
-            }
-          ]
         },
         {
           "Key": "ecer_name",
@@ -285,18 +234,6 @@
           }
         },
         {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870001
-            },
-            {
-              "Value": 621870002
-            }
-          ]
-        },
-        {
           "Key": "ecer_name",
           "Type": 16,
           "Value": "Practicum"
@@ -351,18 +288,9 @@
           }
         },
         {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870004
-            }
-          ]
-        },
-        {
           "Key": "ecer_name",
           "Type": 16,
-          "Value": "Practicum - Infant and Toddler"
+          "Value": "Infant and Toddler Practicum"
         },
         {
           "Key": "ecer_provincialrequirementid",
@@ -412,15 +340,6 @@
             "KeyAttributes": [],
             "RowVersion": null
           }
-        },
-        {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870003
-            }
-          ]
         },
         {
           "Key": "ecer_name",
@@ -477,18 +396,9 @@
           }
         },
         {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870003
-            }
-          ]
-        },
-        {
           "Key": "ecer_name",
           "Type": 16,
-          "Value": "Working with Children who Require Additional Support"
+          "Value": "Working with Children who require additional support"
         },
         {
           "Key": "ecer_provincialrequirementid",
@@ -538,18 +448,6 @@
             "KeyAttributes": [],
             "RowVersion": null
           }
-        },
-        {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870001
-            },
-            {
-              "Value": 621870002
-            }
-          ]
         },
         {
           "Key": "ecer_name",
@@ -606,18 +504,6 @@
           }
         },
         {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870001
-            },
-            {
-              "Value": 621870002
-            }
-          ]
-        },
-        {
           "Key": "ecer_name",
           "Type": 16,
           "Value": "Program Development, Curriculum and Foundations"
@@ -626,6 +512,60 @@
           "Key": "ecer_provincialrequirementid",
           "Type": 1,
           "Value": "e452def8-293b-ef11-a316-0022486dc4b6"
+        },
+        {
+          "Key": "ecer_programdevelopmentinprogress",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_legacyrequiredareaid",
+          "Type": 16,
+          "Value": "4"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_minimumhours",
+          "Type": 16,
+          "Value": 30
+        },
+        {
+          "Key": "ecer_certificatetypeid",
+          "Type": 2,
+          "Value": {
+            "Id": "d093c93d-7be1-ee11-904c-0022486e0199",
+            "LogicalName": "ecer_certificatetype",
+            "Name": "ECE 1 YR",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Health, Safety and Nutrition"
+        },
+        {
+          "Key": "ecer_provincialrequirementid",
+          "Type": 1,
+          "Value": "91f4b607-2a3b-ef11-a316-0022486dc4b6"
         },
         {
           "Key": "ecer_programdevelopmentinprogress",
@@ -672,21 +612,9 @@
           }
         },
         {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870001
-            },
-            {
-              "Value": 621870002
-            }
-          ]
-        },
-        {
           "Key": "ecer_name",
           "Type": 16,
-          "Value": "Interpersonal Skills/Community Relations/Families"
+          "Value": "Interpersonal Skills/Community/Family"
         },
         {
           "Key": "ecer_provincialrequirementid",
@@ -738,23 +666,161 @@
           }
         },
         {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870003
-            }
-          ]
-        },
-        {
           "Key": "ecer_name",
           "Type": 16,
-          "Value": "Practicum - Special Needs"
+          "Value": "Practicum"
         },
         {
           "Key": "ecer_provincialrequirementid",
           "Type": 1,
           "Value": "8837511e-2a3b-ef11-a316-0022486dc4b6"
+        },
+        {
+          "Key": "ecer_programdevelopmentinprogress",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Child Growth and Development"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_minimumhours",
+          "Type": 16,
+          "Value": 90
+        },
+        {
+          "Key": "ecer_certificatetypeid",
+          "Type": 2,
+          "Value": {
+            "Id": "6c5424eb-9673-ee11-8179-000d3af4fa73",
+            "LogicalName": "ecer_certificatetype",
+            "Name": "ECE 5 YR",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirementid",
+          "Type": 1,
+          "Value": "1d9e2ddc-1a92-ef11-8a69-7c1e524093cc"
+        },
+        {
+          "Key": "ecer_programdevelopmentinprogress",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_minimumhours",
+          "Type": 16,
+          "Value": 312
+        },
+        {
+          "Key": "ecer_certificatetypeid",
+          "Type": 2,
+          "Value": {
+            "Id": "6c5424eb-9673-ee11-8179-000d3af4fa73",
+            "LogicalName": "ecer_certificatetype",
+            "Name": "ECE 5 YR",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirementid",
+          "Type": 1,
+          "Value": "50beec50-1b92-ef11-8a69-7c1e524093cc"
+        },
+        {
+          "Key": "ecer_programdevelopmentinprogress",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Interpersonal Skills/Community/Family"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_minimumhours",
+          "Type": 16,
+          "Value": 45
+        },
+        {
+          "Key": "ecer_certificatetypeid",
+          "Type": 2,
+          "Value": {
+            "Id": "6c5424eb-9673-ee11-8179-000d3af4fa73",
+            "LogicalName": "ecer_certificatetype",
+            "Name": "ECE 5 YR",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirementid",
+          "Type": 1,
+          "Value": "612f6774-1b92-ef11-8a69-7c1e524093cc"
         },
         {
           "Key": "ecer_programdevelopmentinprogress",
@@ -799,18 +865,6 @@
             "KeyAttributes": [],
             "RowVersion": null
           }
-        },
-        {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870001
-            },
-            {
-              "Value": 621870002
-            }
-          ]
         },
         {
           "Key": "ecer_provincialrequirementid",
@@ -862,15 +916,6 @@
           }
         },
         {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870004
-            }
-          ]
-        },
-        {
           "Key": "ecer_provincialrequirementid",
           "Type": 1,
           "Value": "aaee182c-1c92-ef11-8a69-7c1e524093cc"
@@ -894,7 +939,7 @@
         {
           "Key": "ecer_name",
           "Type": 16,
-          "Value": "Working with Families (SNE)"
+          "Value": "Working with Families"
         },
         {
           "Key": "statecode",
@@ -918,15 +963,6 @@
             "KeyAttributes": [],
             "RowVersion": null
           }
-        },
-        {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870003
-            }
-          ]
         },
         {
           "Key": "ecer_provincialrequirementid",
@@ -952,7 +988,7 @@
         {
           "Key": "ecer_name",
           "Type": 16,
-          "Value": "Administration (ITE)"
+          "Value": "Administration"
         },
         {
           "Key": "statecode",
@@ -978,15 +1014,6 @@
           }
         },
         {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870004
-            }
-          ]
-        },
-        {
           "Key": "ecer_provincialrequirementid",
           "Type": 1,
           "Value": "fb0cf172-1c92-ef11-8a69-7c1e524093cc"
@@ -1010,7 +1037,7 @@
         {
           "Key": "ecer_name",
           "Type": 16,
-          "Value": "Working with Families (ITE)"
+          "Value": "Working with Families"
         },
         {
           "Key": "statecode",
@@ -1034,15 +1061,6 @@
             "KeyAttributes": [],
             "RowVersion": null
           }
-        },
-        {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870004
-            }
-          ]
         },
         {
           "Key": "ecer_provincialrequirementid",
@@ -1068,7 +1086,7 @@
         {
           "Key": "ecer_name",
           "Type": 16,
-          "Value": "Administration (SNE)"
+          "Value": "Administration"
         },
         {
           "Key": "statecode",
@@ -1092,15 +1110,6 @@
             "KeyAttributes": [],
             "RowVersion": null
           }
-        },
-        {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870003
-            }
-          ]
         },
         {
           "Key": "ecer_provincialrequirementid",
@@ -1152,15 +1161,6 @@
           }
         },
         {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870003
-            }
-          ]
-        },
-        {
           "Key": "ecer_provincialrequirementid",
           "Type": 1,
           "Value": "89ae0748-1d92-ef11-8a69-7c1e524093cc"
@@ -1210,18 +1210,6 @@
           }
         },
         {
-          "Key": "ecer_certificatelevels",
-          "Type": 8,
-          "Value": [
-            {
-              "Value": 621870001
-            },
-            {
-              "Value": 621870002
-            }
-          ]
-        },
-        {
           "Key": "ecer_provincialrequirementid",
           "Type": 1,
           "Value": "822bbc20-3f92-ef11-8a69-7c1e524093cc"
@@ -1239,7 +1227,56 @@
           }
         }
       ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Child Guidance"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_minimumhours",
+          "Type": 16,
+          "Value": 0
+        },
+        {
+          "Key": "ecer_certificatetypeid",
+          "Type": 2,
+          "Value": {
+            "Id": "6c5424eb-9673-ee11-8179-000d3af4fa73",
+            "LogicalName": "ecer_certificatetype",
+            "Name": "ECE 5 YR",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirementid",
+          "Type": 1,
+          "Value": "8b2bbc20-3f92-ef11-8a69-7c1e524093cc"
+        },
+        {
+          "Key": "ecer_programdevelopmentinprogress",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
     }
   ],
-  "Count": 20
+  "Count": 25
 }
