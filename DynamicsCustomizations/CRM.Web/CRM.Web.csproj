@@ -75,6 +75,7 @@
     <Content Include="JS\ecer_comment\ecer_decisioncomment.js" />
     <Content Include="JS\ecer_communicationcontent\ecer_communicationcontent.js" />
     <Content Include="JS\ecer_communication\ecer_communication.js" />
+    <Content Include="JS\ecer_courseprovincialrequirement\ecer_courseprovincialrequirement.js" />
     <Content Include="JS\ecer_course\ecer_course.js" />
     <Content Include="JS\ecer_email\ecer_email.js" />
     <Content Include="JS\ecer_historicaldecision\ecer_historicaldecision.js" />
