@@ -67,6 +67,7 @@
     <Content Include="JS\contact\ecer_contact.js" />
     <Content Include="JS\ecer_applicationassessment\ecer_applicationassessment.js" />
     <Content Include="JS\ecer_application\ecer_application.js" />
+    <Content Include="JS\ecer_bulkpspcommunication\ecer_bulkpspcommunication.js" />
     <Content Include="JS\ecer_campus\ecer_campus.js" />
     <Content Include="JS\ecer_certificatecondition\ecer_certificatecondition.js" />
     <Content Include="JS\ecer_certificate\ecer_certificate.js" />
