@@ -27,7 +27,7 @@ ECER.Jscripts.WorkExperienceAssessment = {
 				function success(record) {
 					var type = record.ecer_type;
 					var is400 = (type === 621870000);
-					var is500 = (type === 621870001);
+					var is500 = (type === 621870001 || type === 621870002); // ICRA or 500 will use the 500 QV
 
 					crm_Utility.showHide(executionContext, is400, qv400);
 					crm_Utility.showHide(executionContext, is500, qv500);
