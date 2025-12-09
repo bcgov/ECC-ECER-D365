@@ -787,6 +787,7 @@ ECER.Jscripts.Communication = {
         var lookupAttributeName = "ecer_presetcontentsid";
         var nameAttributeName = "ecer_name";
         var detailsAttributeName = "ecer_message";
+        var typeAttributeName = "ecer_type";
         var currentDetailsValue = formContext.getAttribute(detailsAttributeName).getValue();
         if (currentDetailsValue === null) {
             currentDetailsValue = "";
@@ -801,6 +802,7 @@ ECER.Jscripts.Communication = {
                         var name = record.ecer_name;
                         var subject = record.ecer_subject;
                         var details = record.ecer_text;
+                        var type = record.ecer_communicationtype;
                         var text = details;
                         if (currentDetailsValue !== null && currentDetailsValue !== "") {
                             text = currentDetailsValue + details;
@@ -816,6 +818,7 @@ ECER.Jscripts.Communication = {
                         }
                         formContext.getAttribute(detailsAttributeName).setValue(null);
                         formContext.getAttribute(detailsAttributeName).setValue(text);
+                        formContext.getAttribute(typeAttributeName).setValue(type);
                     }
                 );
             }
