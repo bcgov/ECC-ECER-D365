@@ -25,10 +25,12 @@ ECER.Jscripts.Program =
         if (changesMade?.getValue() === 621870000) {
             formContext.getControl("ecer_newprogramprofilename")?.setVisible(true);
             formContext.getControl("ecer_newofferingtype")?.setVisible(true);
+            formContext.getControl("ecer_newdescriptiveprogramname")?.setVisible(true);
         }
         else {
             formContext.getControl("ecer_newprogramprofilename")?.setVisible(false);
             formContext.getControl("ecer_newofferingtype")?.setVisible(false);
+            formContext.getControl("ecer_newdescriptiveprogramname")?.setVisible(false);
         }
     },
     filterHeaderStatusReason: function (executionContext) {
