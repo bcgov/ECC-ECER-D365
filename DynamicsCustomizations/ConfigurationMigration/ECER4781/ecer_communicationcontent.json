@@ -1,0 +1,141 @@
+{
+  "LogicalName": "ecer_communicationcontent",
+  "PrimaryIdAttribute": "ecer_communicationcontentid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\">The ECE Registry has determined you are eligible to apply for certification using professional experience obtained outside of Canada. You can now continue to apply for ECE Five Year certification.</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">To complete your application:</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">&nbsp;1. Click “Open application” in the home page.</p><p style=\"margin: 0;\">&nbsp;2. Provide your education and character reference information.</p><p style=\"margin: 0;\">&nbsp;3. Submit your application.</p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "You are eligible for Canadian work experience exemption"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "ICRA - Eligible"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "654df3d8-18b4-f011-bbd3-7c1e5253186d"
+        },
+        {
+          "Key": "ecer_source",
+          "Type": 16,
+          "Value": "The ECE Registry has determined you are eligible to apply for certification using professional experience obtained outside of Canada. You can now continue to apply for ECE Five Year certification.\n\nTo complete your application:\n\n  1. Click “Open application” in the home page.\n\n  2. Provide your education and character reference information.\n\n  3. Submit your application."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\">The ECE Registry has determined you are not eligible to apply for certification using professional experience obtained outside of Canada because:</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\"><span style=\"color:#c82613;\">[Staff entered reason]</span></p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">You can apply for ECE One Year Certification by clicking “Apply now” from your My ECE Registry home page or begin a new eligibility submission if you have additional information to provide.</p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "You are not eligible for Canadian work experience exemption"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "ICRA – Not eligible"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "d6a6d97a-2db4-f011-bbd2-7ced8d352ac3"
+        },
+        {
+          "Key": "ecer_source",
+          "Type": 16,
+          "Value": "The ECE Registry has determined you are not eligible to apply for certification using professional experience obtained outside of Canada because:\n\n[Staff entered reason]\n\nYou can apply for ECE One Year Certification by clicking “Apply now” from your My ECE Registry home page or begin a new eligibility submission if you have additional information to provide."
+        }
+      ]
+    }
+  ],
+  "Count": 2
+}
