@@ -117,21 +117,49 @@ ECER.Jscripts.Investigation =
     onChangeInvestigationOutcomeInfo: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var required = "none";
-        var show = formContext.getAttribute("ecer_investigationoutcome") && formContext.getAttribute("ecer_investigationoutcome").getValue() != null;
+        var show =
+            formContext.getAttribute("ecer_investigationoutcome") &&
+            formContext.getAttribute("ecer_investigationoutcome").getValue() != null;
         if (show) {
             required = "required";
         }
 
         crm_Utility.showHide(executionContext, show, "ecer_finalreportsent");
         crm_Utility.showHide(executionContext, show, "ecer_reportprintedandfiled");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_finalreportsent_1");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_reportprintedandfiled_1");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_finalreportsent");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_reportprintedandfiled");
-        crm_Utility.setRequiredLevel(executionContext, required, "ecer_finalreportsent");
-        crm_Utility.setRequiredLevel(executionContext, required, "ecer_reportprintedandfiled");
-
-
+        crm_Utility.showHide(
+            executionContext,
+            show,
+            "header_process_ecer_finalreportsent_1"
+        );
+        crm_Utility.showHide(
+            executionContext,
+            show,
+            "header_process_ecer_reportprintedandfiled_1"
+        );
+        crm_Utility.showHide(
+            executionContext,
+            show,
+            "header_process_ecer_finalreportsent"
+        );
+        crm_Utility.showHide(
+            executionContext,
+            show,
+            "header_process_ecer_reportprintedandfiled"
+        );
+        crm_Utility.setRequiredLevel(
+            executionContext,
+            required,
+            "ecer_finalreportsent"
+        );
+        crm_Utility.setRequiredLevel(
+            executionContext,
+            required,
+            "ecer_reportprintedandfiled"
+        );
+        // ECER-5487
+        var reconsiderationRequested = formContext.getAttribute("ecer_reconrequest") &&
+            formContext.getAttribute("ecer_reconrequest").getValue() === 621870000; // YES
+        crm_Utility.showHide(executionContext, show && reconsiderationRequested, "tab_reconsideration");
     },
 
     // Set Certification Type / Certificate Expiry Date / Certificate Status

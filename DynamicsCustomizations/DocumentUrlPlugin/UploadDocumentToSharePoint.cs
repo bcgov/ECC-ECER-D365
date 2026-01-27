@@ -99,7 +99,7 @@ namespace BCGOV.Plugin.DocumentUrl
                         }
                         else
                             sharePointFileUrlEntity.Id = Guid.NewGuid();
-
+                        traceService.Trace($"Set Entity Reference of {regardingObjectLogicalName}:{regardingObjectId}");
                         if (regardingObjectLogicalName.Equals("account", StringComparison.InvariantCultureIgnoreCase) || regardingObjectLogicalName.Equals("contact", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["bcgov_customer"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
@@ -198,6 +198,11 @@ namespace BCGOV.Plugin.DocumentUrl
                         else if (regardingObjectLogicalName.Equals("ecer_reconsiderationrequest", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["ecer_reconsiderationrequestid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                        }
+                        else if (regardingObjectLogicalName.Equals("ecer_reconsiderationinvestigationoutcome", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            
+                            sharePointFileUrlEntity["ecer_reconsiderationinvestigationoutcomeid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
                         }
                         else
                             throw new InvalidPluginExecutionException(string.Format("Unknown RegardingObjectType '{0}' to associate document..", regardingObjectLogicalName));
