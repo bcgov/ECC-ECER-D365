@@ -80,6 +80,7 @@
     <Content Include="JS\ecer_course\ecer_course.js" />
     <Content Include="JS\ecer_email\ecer_email.js" />
     <Content Include="JS\ecer_historicaldecision\ecer_historicaldecision.js" />
+    <Content Include="JS\ecer_immediateaction\ecer_immediateaction.js" />
     <Content Include="JS\ecer_internationalcertification.js\ecer_internationalcertification.js" />
     <Content Include="JS\ecer_investigationplanningallegation\ecer_investigationplanningallegation.js" />
     <Content Include="JS\ecer_investigationplanninginterview\ecer_interview.js" />
@@ -95,6 +96,7 @@
     <Content Include="JS\ecer_pspobservation\ecer_pspobservation.js" />
     <Content Include="JS\ecer_pspreferral\ecer_pspreferal.js" />
     <Content Include="JS\ecer_pspsitevisit\ecer_pspsitevisit.js" />
+    <Content Include="JS\ecer_reconsiderationinvestigation\ecer_reconsiderationinvestigation.js" />
     <Content Include="JS\ecer_transcript\ecer_transcript.js" />
     <Content Include="JS\ecer_utility.js" />
     <Content Include="JS\ecer_workexperienceassessment\ecer_workexperienceassessment.js" />
