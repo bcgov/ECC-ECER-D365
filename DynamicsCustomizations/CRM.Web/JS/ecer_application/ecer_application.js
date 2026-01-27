@@ -1398,6 +1398,7 @@ ECER.Jscripts.Application =
 
         if (isICRA) {
             //Tabs to be shown for ICRA type
+            // Last 3 lines are fields.  Utility Show Hide is same when dealing with fields
             const showTabsForICRA = [
                 "tab_applicantinformation",
                 "tab_icraeligibilityassessment",
@@ -1419,12 +1420,16 @@ ECER.Jscripts.Application =
             //Tabs to be hidden for ICRA type
             const hideTabsForICRA = [
                 "tab_professionaldevelopment",
-                "tab_certificationcomparison"
+                "tab_certificationcomparison",
+                "ecer_totalanticipatedworkexperiencehours",
+                "ecer_totalobservedworkexperiencehours",
+                "ecer_totalapprovedworkexperiencehours"
             ];
 
             for (let i = 0; i < hideTabsForICRA.length; i++) {
                 crm_Utility.showHide(executionContext, !isICRA, hideTabsForICRA[i]);
             }
+
 
         } else {
             // Nothing to do
