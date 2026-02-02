@@ -22,6 +22,8 @@ ECER.Jscripts.Investigation =
         ECER.Jscripts.Investigation.onChangeInvestigationOutcomeInfo(executionContext);
         ECER.Jscripts.Investigation.onChangeTDADFacility(executionContext);
         ECER.Jscripts.Investigation.hideBPFResponseDate(executionContext);
+        ECER.Jscripts.Investigation.filterWorkExperienceByApplicant(executionContext);
+        
 
     },
     //ECER-5195
@@ -900,6 +902,42 @@ ECER.Jscripts.Investigation =
                     text: "Failed to create email: " + msg,
                 });
             });
+    },
+
+    filterWorkExperienceByApplicant: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+
+        var applicantAttrName = "ecer_applicant";          
+        var workExpLookupName = "ecer_workexperiencereferenceid";
+        
+        var workExpEntityLogicalName = "ecer_workexperienceref";
+        var workExpApplicantLookupAttr = "ecer_applicantid";
+
+        var applicantAttr = formContext.getAttribute(applicantAttrName);
+        var workExpCtrl = formContext.getControl(workExpLookupName);
+
+        if (!workExpCtrl || !applicantAttr) {
+            return;
+        }
+
+        workExpCtrl.addPreSearch(function () {
+            var applicantVal = applicantAttr.getValue();
+
+            if (applicantVal == null || applicantVal.length === 0) {
+                var noneFilter = "<filter><condition attribute='" + workExpApplicantLookupAttr + "' operator='null' /></filter>";
+                workExpCtrl.addCustomFilter(noneFilter, workExpEntityLogicalName);
+                return;
+            }
+
+            var applicantId = applicantVal[0].id.replace("{", "").replace("}", "");
+
+            var filterXml =
+                "<filter type='and'>" +
+                    "<condition attribute='" + workExpApplicantLookupAttr + "' operator='eq' value='" + applicantId + "' />" +
+                "</filter>";
+
+            workExpCtrl.addCustomFilter(filterXml, workExpEntityLogicalName);
+        });
     },
 };
 
