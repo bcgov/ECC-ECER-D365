@@ -17,7 +17,8 @@ ECER.Jscripts.ProgramApplication =
         ECER.Jscripts.ProgramApplication.setPSPRepresentative(executionContext);
         ECER.Jscripts.ProgramApplication.setOrigin(executionContext);
 
-
+        this.showHideOtherAdmissionOption(executionContext);
+        this.showHideFieldsBasedOnDeliveryMethod(executionContext);
     },
 
     setPSPRepresentative: function (executionContext) {
@@ -145,20 +146,54 @@ ECER.Jscripts.ProgramApplication =
             }
         );
     },
-//ECER-5184
-setOrigin: function (executionContext) {
+    //ECER-5184
+    setOrigin: function (executionContext) {
 
-    var formContext = executionContext.getFormContext();
-    var originAttributeName = "ecer_origin";
-    var originAttribute = formContext.getAttribute(originAttributeName);
-    var formType = formContext.ui.getFormType();
+        var formContext = executionContext.getFormContext();
+        var originAttributeName = "ecer_origin";
+        var originAttribute = formContext.getAttribute(originAttributeName);
+        var formType = formContext.ui.getFormType();
 
- if (formType === 1) 
-  {
-        originAttribute.setValue(621870000);
-        originAttribute.fireOnChange();
-      
+        if (formType === 1) {
+            originAttribute.setValue(621870000);
+            originAttribute.fireOnChange();
+
+        }
+    },
+
+    showHideOtherAdmissionOption: function (executionContext) {
+
+        var formContext = executionContext.getFormContext();
+
+        // Multi-select Option Set value for Admission Options
+        var admissionOptionsAttribute = formContext.getAttribute("ecer_admissionoptions");
+
+        var otherAdmissionOptionControl = formContext.getControl("ecer_otheradmissionoptions");
+        if (admissionOptionsAttribute == null || otherAdmissionOptionControl == null) {
+            return;
+        }
+
+        // Check if admission option contains Other : 621870003
+        var admissionOptions = admissionOptionsAttribute.getValue();
+
+        if (admissionOptions != null && admissionOptions.includes(621870003)) {
+            otherAdmissionOptionControl.setVisible(true);
+        }
+    },
+
+    showHideFieldsBasedOnDeliveryMethod: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var deliveryMethodAttribute = formContext.getAttribute("ecer_deliverytype");
+
+        //when delivery method is 621870001 / 621870002 then show else hide
+        if (deliveryMethodAttribute?.getValue() === 621870001 || deliveryMethodAttribute?.getValue() === 621870002) {
+            formContext.getControl("ecer_onlinemethodsofinstruction")?.setVisible(true);
+            formContext.getControl("ecer_deliverymethodforpracticuminstructor")?.setVisible(true);
+        }
+        else {
+            formContext.getControl("ecer_onlinemethodsofinstruction")?.setVisible(false);
+            formContext.getControl("ecer_deliverymethodforpracticuminstructor")?.setVisible(false);
+        }
+
     }
-}
-
 }// JavaScript source code
