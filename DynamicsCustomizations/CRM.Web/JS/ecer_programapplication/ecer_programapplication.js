@@ -179,6 +179,10 @@ ECER.Jscripts.ProgramApplication =
         if (admissionOptions != null && admissionOptions.includes(621870003)) {
             otherAdmissionOptionControl.setVisible(true);
         }
+        else {
+            otherAdmissionOptionControl.setVisible(false);
+            formContext.getAttribute("ecer_otheradmissionoptions").setValue(null);
+        }
     },
 
     showHideFieldsBasedOnDeliveryMethod: function (executionContext) {
