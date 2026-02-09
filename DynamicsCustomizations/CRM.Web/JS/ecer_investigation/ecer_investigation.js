@@ -117,20 +117,61 @@ ECER.Jscripts.Investigation =
     onChangeInvestigationOutcomeInfo: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var required = "none";
-        var show = formContext.getAttribute("ecer_investigationoutcome") && formContext.getAttribute("ecer_investigationoutcome").getValue() != null;
+        var hide = false;	        //ECER-5391
+        var show =
+            formContext.getAttribute("ecer_investigationoutcome") &&
+            formContext.getAttribute("ecer_investigationoutcome").getValue() != null;
         if (show) {
             required = "required";
         }
 
         crm_Utility.showHide(executionContext, show, "ecer_finalreportsent");
-        crm_Utility.showHide(executionContext, show, "ecer_reportprintedandfiled");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_finalreportsent_1");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_reportprintedandfiled_1");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_finalreportsent");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_reportprintedandfiled");
-        crm_Utility.setRequiredLevel(executionContext, required, "ecer_finalreportsent");
-        crm_Utility.setRequiredLevel(executionContext, required, "ecer_reportprintedandfiled");
 
+        //ECER-5391 (Hide the 'Report printed and filed' field on form as it is no longer needed on form and BPF)
+        crm_Utility.showHide(executionContext, hide, "ecer_reportprintedandfiled");
+        //ECER-5391
+
+        crm_Utility.showHide(
+            executionContext,
+            show,
+            "header_process_ecer_finalreportsent_1"
+        );
+
+        //ECER-5391 (Hide 'Report printed and filed' step (field) on BPF as it is no longer needed on form and BPF)	
+        crm_Utility.showHide(
+            executionContext,
+            hide,
+            "header_process_ecer_reportprintedandfiled_1"
+        );
+        //ECER-5391	
+
+        crm_Utility.showHide(
+            executionContext,
+            show,
+            "header_process_ecer_finalreportsent"
+        );
+
+        //ECER-5391 (Hide 'Report printed and filed' step (field) on BPF as it is no longer needed on form and BPF)	
+        crm_Utility.showHide(
+            executionContext,
+            hide,
+            "header_process_ecer_reportprintedandfiled"
+        );
+        //ECER-5391	
+
+        crm_Utility.setRequiredLevel(
+            executionContext,
+            required,
+            "ecer_finalreportsent"
+        );
+
+        //ECER-5391 (comment this line of code as the 'Report printed and filed' field is no longer needed on form and BPF)	
+        //crm_Utility.setRequiredLevel(
+        //  executionContext,
+        //  required,
+        //  "ecer_reportprintedandfiled"
+        //);
+        //ECER-5391	
 
     },
 
