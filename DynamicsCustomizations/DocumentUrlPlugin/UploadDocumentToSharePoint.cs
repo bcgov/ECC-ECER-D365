@@ -201,8 +201,15 @@ namespace BCGOV.Plugin.DocumentUrl
                         }
                         else if (regardingObjectLogicalName.Equals("ecer_reconsiderationinvestigationoutcome", StringComparison.InvariantCultureIgnoreCase))
                         {
-                            
                             sharePointFileUrlEntity["ecer_reconsiderationinvestigationoutcomeid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                        }
+                        else if (regardingObjectLogicalName.Equals("ecer_programapplicationcomponentgroup", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            sharePointFileUrlEntity["ecer_programapplicationcomponentgroupid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                        }
+                        else if (regardingObjectLogicalName.Equals("ecer_programapplicationcomponent", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            sharePointFileUrlEntity["ecer_programapplicationcomponentid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
                         }
                         else
                             throw new InvalidPluginExecutionException(string.Format("Unknown RegardingObjectType '{0}' to associate document..", regardingObjectLogicalName));
