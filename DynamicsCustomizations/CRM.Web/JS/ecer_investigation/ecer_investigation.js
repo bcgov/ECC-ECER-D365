@@ -23,9 +23,6 @@ ECER.Jscripts.Investigation = {
     );
     ECER.Jscripts.Investigation.onChangeTDADFacility(executionContext);
     ECER.Jscripts.Investigation.hideBPFResponseDate(executionContext);
-    ECER.Jscripts.Investigation.showInvestigationBanner(executionContext, {
-      investigationLookup: "ecer_investigation",
-    });
   },
   //ECER-5195
   hideBPFResponseDate: function (executionContext) {
