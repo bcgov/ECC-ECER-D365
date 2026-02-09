@@ -1,0 +1,35 @@
+{
+  "LogicalName": "bcgov_tag",
+  "PrimaryIdAttribute": "bcgov_tagid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "ADN"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "16de251b-8b98-f011-b41c-6045bd602bed"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 1
+}
