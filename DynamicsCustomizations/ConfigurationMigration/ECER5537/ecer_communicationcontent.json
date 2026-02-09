@@ -1,0 +1,69 @@
+{
+  "LogicalName": "ecer_communicationcontent",
+  "PrimaryIdAttribute": "ecer_communicationcontentid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870003
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: Segoe UI; font-size: 11pt;\"><p style=\"background-color: rgb(255, 255, 255); color: rgb(41, 42, 46); font: 400 14px / 1.714 &quot; undefined: AtlassianSans&quot; undefined: ,ui-sans-serif,-apple-system,BlinkMacSystemFont,&quot; undefined: SegoeUI&quot; undefined: ,Ubuntu,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; letter-spacing: normal; margin: 0.75rem 0px 0px; padding: 0px; text-indent: 0px; text-transform: none; white-space: pre-wrap; word-spacing: 0px;\" data-renderer-start-pos=\"463\">Hello, &nbsp;</p><p style=\"background-color: rgb(255, 255, 255); color: rgb(41, 42, 46); font: 400 14px / 1.714 &quot; undefined: AtlassianSans&quot; undefined: ,ui-sans-serif,-apple-system,BlinkMacSystemFont,&quot; undefined: SegoeUI&quot; undefined: ,Ubuntu,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; letter-spacing: normal; margin: 0.75rem 0px 0px; padding: 0px; text-indent: 0px; text-transform: none; white-space: pre-wrap; word-spacing: 0px;\" data-renderer-start-pos=\"473\">We need more information to review your program profile for [ecer_postsecondaryinstitute.ecer_name].&nbsp;</p><p style=\"background-color: rgb(255, 255, 255); color: rgb(41, 42, 46); font: 400 14px / 1.714 &quot; undefined: AtlassianSans&quot; undefined: ,ui-sans-serif,-apple-system,BlinkMacSystemFont,&quot; undefined: SegoeUI&quot; undefined: ,Ubuntu,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; letter-spacing: normal; margin: 0.75rem 0px 0px; padding: 0px; text-indent: 0px; text-transform: none; white-space: pre-wrap; word-spacing: 0px;\" data-renderer-start-pos=\"547\"><a class=\"_ymio1r31 _ypr0glyw _zcxs1o36 _mizu194a _1ah3dkaa _ra3xnqa1 _128mdkaa _1cvmnqa1 _4davt94y _4bfu18uv _1hms8stv _ajmmnqa1 _vchhusvi _kqswh2mm _syaz13af _ect41gqc _1a3b18uv _4fpr8stv _5goinqa1 _f8pj13af _9oik18uv _1bnxglyw _jf4cnqa1 _30l313af _1nrm18uv _c2waglyw _1iohnqa1 _9h8h12zz _10531ra0 _1ien1ra0 _n0fx1ra0 _1vhv17z1\" style=\"color:rgb(24, 104, 219);font-family:&quot;Atlassian Sans&quot;, ui-sans-serif, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Ubuntu, &quot;Helvetica Neue&quot;, sans-serif;position:relative;\" href=\"http://ecepostsecondaryprograms.gov.bc.ca/\" title=\"http://ecepostsecondaryprograms.gov.bc.ca/\" data-renderer-mark=\"true\"><u data-renderer-mark=\"true\">Log in to My ECE Registry Post Secondary Programs portal</u></a> to provide more information.&nbsp;</p><p style=\"background-color: rgb(255, 255, 255); color: rgb(41, 42, 46); font: 400 14px / 1.714 &quot; undefined: AtlassianSans&quot; undefined: ,ui-sans-serif,-apple-system,BlinkMacSystemFont,&quot; undefined: SegoeUI&quot; undefined: ,Ubuntu,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; letter-spacing: normal; margin: 0.75rem 0px 0px; padding: 0px; text-indent: 0px; text-transform: none; white-space: pre-wrap; word-spacing: 0px;\" data-renderer-start-pos=\"635\">This is an automated message. Please do not reply.&nbsp;</p><p style=\"background-color: rgb(255, 255, 255); color: rgb(41, 42, 46); font: 400 14px / 1.714 &quot; undefined: AtlassianSans&quot; undefined: ,ui-sans-serif,-apple-system,BlinkMacSystemFont,&quot; undefined: SegoeUI&quot; undefined: ,Ubuntu,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; letter-spacing: normal; margin: 0.75rem 0px 0px; padding: 0px; text-indent: 0px; text-transform: none; white-space: pre-wrap; word-spacing: 0px;\" data-renderer-start-pos=\"694\">Sincerely,</p><p style=\"background-color: rgb(255, 255, 255); color: rgb(41, 42, 46); font: 400 14px / 1.714 &quot; undefined: AtlassianSans&quot; undefined: ,ui-sans-serif,-apple-system,BlinkMacSystemFont,&quot; undefined: SegoeUI&quot; undefined: ,Ubuntu,&quot; undefined: HelveticaNeue&quot; undefined: ,sans-serif; letter-spacing: normal; margin: 0.75rem 0px 0px; padding: 0px; text-indent: 0px; text-transform: none; white-space: pre-wrap; word-spacing: 0px;\" data-renderer-start-pos=\"694\"><br>ECE Registry Post-Secondary Programs Team&nbsp;</p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Program profile: More information required"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "RFAI Program Profile in Review"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870003
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "c25a7a8f-89d4-f011-8544-7c1e52063ca6"
+        }
+      ]
+    }
+  ],
+  "Count": 1
+}

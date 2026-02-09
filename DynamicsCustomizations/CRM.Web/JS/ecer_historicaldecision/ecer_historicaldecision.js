@@ -34,7 +34,7 @@ ECER.Jscripts.HistoricalDecision = {
         var isECEAssistant = (typeFieldVal === 621870000);
 
         formContext.getControl("ecer_applicationid").setVisible(!isECEAssistant);
-        formContext.getControl("ecer_nameofcredential").setVisible(!isECEAssistant);
+        //ECER-5035 : text field removed from the form : formContext.getControl("ecer_nameofcredential").setVisible(!isECEAssistant);
         formContext.getControl("ecer_programname").setVisible(!isECEAssistant);
         formContext.getControl("ecer_decisiondate").setVisible(!isECEAssistant);
 

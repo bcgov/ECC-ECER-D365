@@ -3081,6 +3081,9 @@ EDUCATOR CERTIFICATE</Value>
                             <Parameter Name="RegistrantID">
                               <Value>=Fields!ecer_registrantidValue.Value</Value>
                             </Parameter>
+                            <Parameter Name="CertificateID">
+                              <Value>=Fields!ecer_name.Value</Value>
+                            </Parameter>
                           </Parameters>
                           <OmitBorderOnPageBreak>true</OmitBorderOnPageBreak>
                           <Visibility>
@@ -3092,6 +3095,7 @@ EDUCATOR CERTIFICATE</Value>
                             </Border>
                           </Style>
                         </Subreport>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>

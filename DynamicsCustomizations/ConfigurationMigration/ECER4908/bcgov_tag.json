@@ -1,0 +1,231 @@
+{
+  "LogicalName": "bcgov_tag",
+  "PrimaryIdAttribute": "bcgov_tagid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Notification letters"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "86896020-da46-f011-877a-0022483c2a2e"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Health Authority Documents"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "86928826-da46-f011-877a-0022483c2a2e"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Reconsideration"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "a7928826-da46-f011-877a-0022483c2a2e"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Appeal"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "208a912c-da46-f011-877a-0022483c2a2e"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "References"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "10e7a832-da46-f011-877a-0022483c2a2e"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Registrant response"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "7e29a638-da46-f011-877a-0022483c2a2e"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Other Documents"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "64ad9e3e-da46-f011-877a-0022483c2a2e"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Registry Reports/Letters"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "76831c45-da46-f011-877a-0022483c2a2e"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 8
+}

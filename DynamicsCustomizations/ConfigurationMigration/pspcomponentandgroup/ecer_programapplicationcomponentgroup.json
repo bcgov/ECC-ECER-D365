@@ -1,0 +1,1407 @@
+{
+  "LogicalName": "ecer_programapplicationcomponentgroup",
+  "PrimaryIdAttribute": "ecer_programapplicationcomponentgroupid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1043"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "a854e1dc-f18c-f011-b4cc-000d3af33d5d"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "909646fd-c9ba-446e-8051-84c29f6edda5",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "Burnaby Community and Continuing Education (SD 41)- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c3131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Curriculum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1047"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "46b4dee2-f18c-f011-b4cc-000d3af33d5d"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "909646fd-c9ba-446e-8051-84c29f6edda5",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "Burnaby Community and Continuing Education (SD 41)- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "1993a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Statement of Purpose",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1049"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "48e4e7e8-f18c-f011-b4cc-000d3af33d5d"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "909646fd-c9ba-446e-8051-84c29f6edda5",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "Burnaby Community and Continuing Education (SD 41)- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1051"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "5bdc1bef-f18c-f011-b4cc-000d3af33d5d"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "909646fd-c9ba-446e-8051-84c29f6edda5",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "Burnaby Community and Continuing Education (SD 41)- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "6fb3caef-017a-f011-b4cc-002248add987",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Admission Criteria",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1055"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "7ec840c2-6c8e-f011-b4cc-000d3af33d5d"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "70b5957d-7d46-4ac6-81cd-5aa06f2439db",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": null,
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c3131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Curriculum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1056"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "a0c840c2-6c8e-f011-b4cc-000d3af33d5d"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "70b5957d-7d46-4ac6-81cd-5aa06f2439db",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": null,
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "21ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Facilities, Equipment, Resources, and Access",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1062"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "399d65d4-6c8e-f011-b4cc-000d3af33d5d"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "70b5957d-7d46-4ac6-81cd-5aa06f2439db",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": null,
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "6db3caef-017a-f011-b4cc-002248add987",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Program Review",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1041"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "ac9295dc-f18c-f011-b4cc-0022483c61d0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "909646fd-c9ba-446e-8051-84c29f6edda5",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "Burnaby Community and Continuing Education (SD 41)- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c0131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Personnel/Staffing",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1042"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "bd9295dc-f18c-f011-b4cc-0022483c61d0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "909646fd-c9ba-446e-8051-84c29f6edda5",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "Burnaby Community and Continuing Education (SD 41)- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c1131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1048"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "e99997e2-f18c-f011-b4cc-0022483c61d0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "909646fd-c9ba-446e-8051-84c29f6edda5",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "Burnaby Community and Continuing Education (SD 41)- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1053"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "f916f1be-6c8e-f011-b4cc-0022483c61d0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "70b5957d-7d46-4ac6-81cd-5aa06f2439db",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": null,
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c0131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Personnel/Staffing",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1057"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "5d045cc5-6c8e-f011-b4cc-0022483c61d0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "70b5957d-7d46-4ac6-81cd-5aa06f2439db",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": null,
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "22ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Student Evaluation",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1060"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "e6bc56cb-6c8e-f011-b4cc-0022483c61d0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "70b5957d-7d46-4ac6-81cd-5aa06f2439db",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": null,
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1061"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "9c1d4fd1-6c8e-f011-b4cc-0022483c61d0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "70b5957d-7d46-4ac6-81cd-5aa06f2439db",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": null,
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1058"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "d412e9c5-6c8e-f011-b4cc-0022483d385f"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "70b5957d-7d46-4ac6-81cd-5aa06f2439db",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": null,
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "1693a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Community Needs Assessment",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1040"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "b990d3d9-f18c-f011-b4cc-6045bd602bed"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "909646fd-c9ba-446e-8051-84c29f6edda5",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "Burnaby Community and Continuing Education (SD 41)- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "bd131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Program Goals and Objectives",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1044"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "f52c11e0-f18c-f011-b4cc-6045bd602bed"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "909646fd-c9ba-446e-8051-84c29f6edda5",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "Burnaby Community and Continuing Education (SD 41)- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "21ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Facilities, Equipment, Resources, and Access",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1045"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "f72c11e0-f18c-f011-b4cc-6045bd602bed"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "909646fd-c9ba-446e-8051-84c29f6edda5",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "Burnaby Community and Continuing Education (SD 41)- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "22ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Student Evaluation",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1046"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "072d11e0-f18c-f011-b4cc-6045bd602bed"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "909646fd-c9ba-446e-8051-84c29f6edda5",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "Burnaby Community and Continuing Education (SD 41)- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "1693a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Community Needs Assessment",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1050"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "5532faec-f18c-f011-b4cc-6045bd602bed"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "909646fd-c9ba-446e-8051-84c29f6edda5",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "Burnaby Community and Continuing Education (SD 41)- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "6db3caef-017a-f011-b4cc-002248add987",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Program Review",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1052"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "f46fa3bf-6c8e-f011-b4cc-6045bd602bed"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "70b5957d-7d46-4ac6-81cd-5aa06f2439db",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": null,
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "bd131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Program Goals and Objectives",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1054"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "0c70a3bf-6c8e-f011-b4cc-6045bd602bed"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "70b5957d-7d46-4ac6-81cd-5aa06f2439db",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": null,
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c1131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1059"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "2df33ecd-6c8e-f011-b4cc-6045bd602bed"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "70b5957d-7d46-4ac6-81cd-5aa06f2439db",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": null,
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "1993a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Statement of Purpose",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1063"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "83a2b5d3-6c8e-f011-b4cc-6045bd602bed"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "70b5957d-7d46-4ac6-81cd-5aa06f2439db",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": null,
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "6fb3caef-017a-f011-b4cc-002248add987",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Admission Criteria",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1064"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "0cd7a47b-8eea-f011-8406-70a8a50a61e0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "3a6f0343-9b7b-460b-ac92-82403bb1ed47",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "CDI College- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c0131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Personnel/Staffing",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1065"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "649c3ac7-8fea-f011-8406-70a8a50a61e0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "3a6f0343-9b7b-460b-ac92-82403bb1ed47",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "CDI College- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c0131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Personnel/Staffing",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1066"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "b02bebe0-8fea-f011-8406-70a8a50a61e0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "3a6f0343-9b7b-460b-ac92-82403bb1ed47",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "CDI College- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c0131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Personnel/Staffing",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "1067"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_programapplicationcomponentgroupid",
+          "Type": 1,
+          "Value": "0354c263-94ea-f011-8406-70a8a50a61e0"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_programapplication",
+          "Type": 2,
+          "Value": {
+            "Id": "3a6f0343-9b7b-460b-ac92-82403bb1ed47",
+            "LogicalName": "ecer_postsecondaryinstituteprogramapplicaiton",
+            "Name": "CDI College- New ECE Program (Public, Private, Continuing Ed)",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "bd131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Program Goals and Objectives",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 28
+}

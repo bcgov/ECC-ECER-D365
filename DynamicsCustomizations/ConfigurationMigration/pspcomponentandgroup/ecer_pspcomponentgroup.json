@@ -1,0 +1,1048 @@
+{
+  "LogicalName": "ecer_pspcomponentgroup",
+  "PrimaryIdAttribute": "ecer_pspcomponentgroupid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Program Goals and Objectives"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "bd131ff2-017a-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Personnel/Staffing"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "c0131ff2-017a-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Methods"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "c1131ff2-017a-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Curriculum"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "c3131ff2-017a-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Access"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "c4131ff2-017a-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Student/Instructor/Admin Resources"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "c5131ff2-017a-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Facilities, Equipment, Resources, and Access"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "21ce60f2-017a-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Student Evaluation"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "22ce60f2-017a-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Security"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "28ce60f2-017a-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Methods"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "29ce60f2-017a-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Community Needs Assessment"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "1693a9f3-017a-f011-b4cc-0022483caef2"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Statement of Purpose"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "1993a9f3-017a-f011-b4cc-0022483caef2"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "2d93a9f3-017a-f011-b4cc-0022483caef2"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "2e93a9f3-017a-f011-b4cc-0022483caef2"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Guiding Policies and Procedures"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "2f93a9f3-017a-f011-b4cc-0022483caef2"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Practicum"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "3093a9f3-017a-f011-b4cc-0022483caef2"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Program Review"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "6db3caef-017a-f011-b4cc-002248add987"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Admission Criteria"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "6fb3caef-017a-f011-b4cc-002248add987"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Personnel/Staffing"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "71b3caef-017a-f011-b4cc-002248add987"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Instructional Resources"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "73b3caef-017a-f011-b4cc-002248add987"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Instructor Communication"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspcomponentgroupid",
+          "Type": 1,
+          "Value": "75b3caef-017a-f011-b4cc-002248add987"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 21
+}

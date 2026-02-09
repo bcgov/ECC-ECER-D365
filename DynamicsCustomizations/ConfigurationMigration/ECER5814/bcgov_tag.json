@@ -1,0 +1,119 @@
+{
+  "LogicalName": "bcgov_tag",
+  "PrimaryIdAttribute": "bcgov_tagid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Formatting Request"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "5407d59f-c3f7-f011-8407-70a8a50a61e0"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Encryption Request"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "e779d0b3-c3f7-f011-8407-70a8a50a61e0"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Formatted"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "efeff2c0-c3f7-f011-8407-70a8a50a61e0"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Registered Mail"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "4d0839ce-c3f7-f011-8407-70a8a50a61e0"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 4
+}

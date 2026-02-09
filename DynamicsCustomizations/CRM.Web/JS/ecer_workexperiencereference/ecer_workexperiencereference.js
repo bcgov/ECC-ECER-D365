@@ -14,8 +14,47 @@ ECER.Jscripts.WorkExperienceReference = {
         this.crm_ExecutionContext = executionContext;
         ECER.Jscripts.WorkExperienceReference.showHideOnProvinceSelected(executionContext);
         ECER.Jscripts.WorkExperienceReference.defaultTypeOnCreation(executionContext);
-        ECER.Jscripts.WorkExperienceReference.showHide400500OnType(executionContext);
+        //ECER.Jscripts.WorkExperienceReference.showHide400500OnType(executionContext);
         ECER.Jscripts.WorkExperienceReference.filterOutRelationshipOfApplicant(executionContext);
+        ECER.Jscripts.WorkExperienceReference.showHideReferenceDOB(executionContext);
+        ECER.Jscripts.WorkExperienceReference.showHideLegacyChildcareAgeRange(executionContext);
+        //ECER.Jscripts.WorkExperienceReference.showHideIcraSections(executionContext);
+        ECER.Jscripts.WorkExperienceReference.showHideChildcareAgeRangeNew(executionContext);
+        ECER.Jscripts.WorkExperienceReference.validateStartEndDate(executionContext);
+        ECER.Jscripts.WorkExperienceReference.showHide400500OnType(executionContext);
+    },
+
+    showHideLegacyChildcareAgeRange: function (executionContext) {
+        // ECER-4885
+        // The field is a multiple select choice, hence form script
+        var formContext = executionContext.getFormContext();
+        var attributeName = "ecer_childcareagerange";
+        var show = false;
+        var attribute = formContext.getAttribute(attributeName);
+        if (attribute !== null) {
+            var attributeValueInArray = attribute.getValue();
+            show = (attributeValueInArray != null && attributeValueInArray.length > 0);
+            crm_Utility.showHide(executionContext, show, attributeName);
+        }
+    },
+    showHideReferenceDOB: function (executionContext) {
+
+        var formContext = executionContext.getFormContext();
+        var referenceProvinceAttributeName = "ecer_referenceececertifiedprovinceid";
+        var dobAttributeName = "ecer_referencebirthdate";
+        var referenceProvinceAttribute = formContext.getAttribute(referenceProvinceAttributeName);
+        var show = false;
+
+        if (referenceProvinceAttribute != null && referenceProvinceAttribute.getValue() != null) {
+            var referenceProvinceValue = referenceProvinceAttribute.getValue()[0].name;
+            if (referenceProvinceValue !== "British Columbia") {
+
+                show = true;
+            }
+        }
+
+        crm_Utility.showHide(executionContext, show, dobAttributeName);
+
     },
 
     defaultTypeOnCreation: function (executionContext) {
@@ -33,15 +72,10 @@ ECER.Jscripts.WorkExperienceReference = {
         }
         var applicationAttribute = formContext.getAttribute(applicationAttributeName);
 
-
-        if (!applicationAttribute || !applicationAttribute.getValue()) {
+        if (applicationAttribute === null || applicationAttribute.getValue() === null) {
             return;
         }
-
-
-        var applicationId = applicationAttribute.getValue()[0].id
-            .replace("{", "")
-            .replace("}", "");
+        var applicationId = applicationAttribute.getValue()[0].id.replace("{", "").replace("}", "");
         Xrm.WebApi.retrieveRecord("ecer_application", applicationId, "?$select=ecer_type")
             .then(function (result) {
                 if (result) {
@@ -50,6 +84,7 @@ ECER.Jscripts.WorkExperienceReference = {
                         return;
                     }
                     else {
+
                         var option = "?$filter=_" + applicationAttributeName + "_value eq '" + applicationId + "' and ecer_type ne null";
                         Xrm.WebApi.retrieveMultipleRecords("ecer_workexperienceref", option).then(
                             function success(results) {
@@ -126,11 +161,11 @@ ECER.Jscripts.WorkExperienceReference = {
             // Filter Out Other
             crm_Utility.filterOutOptionSet(executionContext, relationshipToApplicantAttributeName, others);
             // Add Parent back in if does not already have it.
-            
+
             var optionToCompare = parseInt(parent);
             var hasMatch = false;
             for (var i = 0; i < currentOptions.length; i++) {
-                
+
                 var currentOption = currentOptions[i].value;
                 if (currentOption !== currentOption) {
                     // current Option is NaN
@@ -168,11 +203,19 @@ ECER.Jscripts.WorkExperienceReference = {
         // If 400 Hours
         var is400 = (typeAttributeValue === 621870000);
         var is500 = (typeAttributeValue === 621870001);
-
+        // ICRA and 500 hrs shares the same responses
+        var isICRA = (typeAttributeValue === 621870002)
         crm_Utility.showHide(executionContext, is400, details400SectionName);
         crm_Utility.showHide(executionContext, is400, response400SectionName);
         crm_Utility.showHide(executionContext, is500, details500SectionName);
-        crm_Utility.showHide(executionContext, is500, response500SectionName);
+        crm_Utility.showHide(executionContext, is500 || isICRA, response500SectionName);
+
+        var secWorkDetailsName = "tab_workinformation:section_workdetails";
+        var secIndependentName = "tab_workinformation:section_icraindependentpracticedetails";
+        var secICRAChildCareProgramDetailsName = "tab_workinformation:section_icrachildcaredetails";
+        crm_Utility.showHide(executionContext, !isICRA, secWorkDetailsName);
+        crm_Utility.showHide(executionContext, isICRA, secIndependentName);
+        crm_Utility.showHide(executionContext, isICRA, secICRAChildCareProgramDetailsName);
     },
 
     showHideOnProvinceSelected: function (executionContext) {
@@ -304,7 +347,110 @@ ECER.Jscripts.WorkExperienceReference = {
         catch (err) {
             throw new Error(err.message);
         }
+    },
+    showHideIcraSections: function (executionContext) {
+        // Merge into showHide400500OnType function
+    },
+    showHideChildcareAgeRangeNew: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var show = formContext.getAttribute("ecer_applicantworkchildren")?.getValue() === 621870000; // Yes
+        crm_Utility.showHide(executionContext, show, "ecer_childcareagerangenew");
+    },
+
+    validateStartEndDate: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+
+        var startAttr = formContext.getAttribute("ecer_startdate");
+        var endAttr = formContext.getAttribute("ecer_enddate");
+
+        if (!startAttr || !endAttr) {
+            return;
+        }
+
+        var startDate = startAttr.getValue();
+        var endDate = endAttr.getValue();
+
+        var startCtrl = formContext.getControl("ecer_startdate");
+        var endCtrl = formContext.getControl("ecer_enddate");
+        var notificationKey = "start_end_date_range";
+
+        // Clear previous warnings
+        if (startCtrl) {
+            startCtrl.clearNotification(notificationKey);
+        }
+        if (endCtrl) {
+            endCtrl.clearNotification(notificationKey);
+        }
+
+        // Normalize "today" to date-only
+        var now = new Date();
+        var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+        // Created On (for 5-year window) – only available after record is created
+        var createdOnAttr = formContext.getAttribute("createdon");
+        var createdOn = createdOnAttr ? createdOnAttr.getValue() : null;
+        var fiveYearsAgo = null;
+        if (createdOn) {
+            fiveYearsAgo = new Date(
+                createdOn.getFullYear() - 5,
+                createdOn.getMonth(),
+                createdOn.getDate()
+            );
+        }
+
+        // Helper to block save if needed
+        var args = executionContext.getEventArgs && executionContext.getEventArgs();
+        function preventSave() {
+            if (args && args.preventDefault) {
+                args.preventDefault();
+            }
+        }
+
+        if (startDate && startDate > today && startCtrl) {
+            startCtrl.setNotification(
+                "Start Date cannot be later than today.",
+                notificationKey
+            );
+            preventSave();
+        }
+
+        if (endDate && endDate > today && endCtrl) {
+            endCtrl.setNotification(
+                "End Date cannot be later than today.",
+                notificationKey
+            );
+            preventSave();
+        }
+
+        if (startDate && endDate && endDate < startDate && endCtrl) {
+            endCtrl.setNotification(
+                "End Date cannot be earlier than Start Date.",
+                notificationKey
+            );
+            preventSave();
+        }
+
+        if (fiveYearsAgo) {
+            if (startDate && startDate < fiveYearsAgo && startCtrl) {
+                startCtrl.setNotification(
+                    "Start Date must be within 5 years of the Created On date.",
+                    notificationKey
+                );
+                preventSave();
+            }
+
+            if (endDate && endDate < fiveYearsAgo && endCtrl) {
+                endCtrl.setNotification(
+                    "End Date must be within 5 years of the Created On date.",
+                    notificationKey
+                );
+                preventSave();
+            }
+        }
     }
+
+
+
 }
 
 

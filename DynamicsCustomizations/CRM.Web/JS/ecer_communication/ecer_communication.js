@@ -14,7 +14,13 @@ ECER.Jscripts.Communication = {
     ecer_investigation: null,
     ecer_portaluser: null,
     ecer_programapplicaiton: null,
-    ecer_ecer_transcript: null,
+    ecer_transcript: null,
+    ecer_educationinstitution: null,
+    ecer_program: null,
+    ecer_icraeligibilityassessment: null,
+    ecer_reconsiderationrequest: null,
+    ecer_pspreferral: null,
+    ecer_eceprogramrepresentative: null,
     parameters: null,
     isreply: false,
     onLoad: function (executionContext) {
@@ -39,6 +45,10 @@ ECER.Jscripts.Communication = {
             var createMode = (formType === 1);
             if (!createMode) {
                 ECER.Jscripts.Communication.loadRelatedObjects(executionContext);
+                ECER.Jscripts.Communication.setMergeInstructionValue(executionContext);
+            }
+            if (createMode) {
+                ECER.Jscripts.Communication.loadPSPreferalDetails(executionContext);
             }
         }
         catch (ex) {
@@ -46,6 +56,40 @@ ECER.Jscripts.Communication = {
             // Throws script error of method not found when hitting "Save" multiple times.
         }
     },
+
+    loadPSPreferalDetails: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var formType = formContext.ui.getFormType();
+        var createMode = (formType == 1);
+        var pspreferalAttributeName = "ecer_pspreferral";
+        var pspreferalAttribute = formContext.getAttribute(pspreferalAttributeName);
+        if (!pspreferalAttribute || !pspreferalAttribute.getValue())
+            return;
+        var pspReferralId = pspreferalAttribute.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
+
+        Xrm.WebApi.retrieveRecord("ecer_pspreferral", pspReferralId).then(
+            function success(record) {
+
+                var applicationAttributename = "ecer_applicationid";
+                var transcriptAttributename = "ecer_transcriptid";
+
+                var applicationId = record["_ecer_application_value"];
+                var transcriptId = record["_ecer_educationtranscript_value"];
+
+                if (applicationId) {
+                    var applicationLookup = crm_Utility.generateLookupObject("ecer_application", applicationId, record["_ecer_application_value@OData.Community.Display.V1.FormattedValue"]);
+                    crm_Utility.setLookupValue(executionContext, applicationAttributename, applicationLookup);
+
+                }
+                if (transcriptId) {
+                    var transcriptLookup = crm_Utility.generateLookupObject("ecer_transcript", transcriptId, record["_ecer_educationtranscript_value@OData.Community.Display.V1.FormattedValue"]);
+                    crm_Utility.setLookupValue(executionContext, transcriptAttributename, transcriptLookup);
+
+                }
+            }
+        );
+    },
+
 
     loadReplyMessage: function(executionContext) {
         var initiatedFromAttributeName = "ecer_initiatedfrom";
@@ -67,9 +111,7 @@ ECER.Jscripts.Communication = {
         formContext.getAttribute("ecer_transcriptid").setValue(this.parameters["transcriptValue"]);
         formContext.getAttribute("ecer_ecer_program_application_id").setValue(this.parameters["programApplicat"]);
         formContext.getAttribute("ecer_initiatedfrom").setValue(intiatedFrom);
-
-
-
+        // There is a classic workflow populating these relationship using Parent Communication already
     },
     showSubgridDisplay: function(selectedMessage) {
 
@@ -117,16 +159,95 @@ ECER.Jscripts.Communication = {
         var investigationAttributeName = "ecer_investigation";
         var registrantAttributeName = "ecer_registrantid";
         var transcriptAttributeName = "ecer_transcriptid";
+        var educationalInstitutionAttributeName = "ecer_educationinstitutionid";
+        var programProfileAttributeName = "ecer_programprofileid";
+        var icraAssessmentAttributeName = "ecer_icraeligibilityassessmentid";
+        var reconsiderationRequestAttributeName = "ecer_reconsiderationrequestid";
+        var programApplicationAttributeName = "ecer_ecer_program_application_id";
+        var pspRefferralAttributeName = "ecer_pspreferral";
+        var programRepAttributeName = "ecer_programrepresentativeid";
+
         var portalUserLookup = formContext.getAttribute(registrantAttributeName);
         var applicationLookup = formContext.getAttribute(applicationAttributeName);
         var investigationLookup = formContext.getAttribute(investigationAttributeName);
         var transcriptLookup = formContext.getAttribute(transcriptAttributeName);
+        var psiLookup = formContext.getAttribute(educationalInstitutionAttributeName);
+        var programLookup = formContext.getAttribute(programProfileAttributeName);
+        var icraAssessmentLookup = formContext.getAttribute(icraAssessmentAttributeName);
+        var reconsiderationLookup = formContext.getAttribute(reconsiderationRequestAttributeName);
+        var programApplicationLookup = formContext.getAttribute(programApplicationAttributeName);
+        var pspReferralLookup = formContext.getAttribute(pspRefferralAttributeName);
+        var programRefLookup = formContext.getAttribute(programRepAttributeName);
+
 
         if (portalUserLookup !== null && portalUserLookup.getValue() !== null) {
             var portalUserId = portalUserLookup.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
             Xrm.WebApi.retrieveRecord("contact", portalUserId).then(
                 function success(record) {
                     this.ecer_portaluser = record;
+                }
+            );
+        }
+
+        if (programRefLookup !== null && programRefLookup.getValue() !== null) {
+            var programRepId = programRefLookup.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
+            Xrm.WebApi.retrieveRecord("ecer_eceprogramrepresentative", programRepId).then(
+                function success(record) {
+                    this.ecer_eceprogramrepresentative = record;
+                }
+            );
+        }
+
+        if (programApplicationLookup !== null && programApplicationLookup.getValue() !== null) {
+            var programApplicationId = programApplicationLookup.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
+            Xrm.WebApi.retrieveRecord("ecer_postsecondaryinstituteprogramapplicaiton", programApplicationId).then(
+                function success(record) {
+                    this.ecer_programapplicaiton = record;
+                }
+            );
+        }
+
+        if (pspReferralLookup !== null && pspReferralLookup.getValue() !== null) {
+            var pspReferralId = pspReferralLookup.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
+            Xrm.WebApi.retrieveRecord("ecer_pspreferral", pspReferralId).then(
+                function success(record) {
+                    this.ecer_pspreferral = record;
+                }
+            );
+        }
+
+        if (reconsiderationLookup !== null && reconsiderationLookup.getValue() !== null) {
+            var reconsiderationId = reconsiderationLookup.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
+            Xrm.WebApi.retrieveRecord("ecer_reconsiderationrequest", reconsiderationId).then(
+                function success(record) {
+                    this.ecer_reconsiderationrequest = record;
+                }
+            );
+        }
+
+        if (icraAssessmentLookup !== null && icraAssessmentLookup.getValue() !== null) {
+            var icraAssessmentId = icraAssessmentLookup.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
+            Xrm.WebApi.retrieveRecord("ecer_icraeligibilityassessment", icraAssessmentId).then(
+                function success(record) {
+                    this.ecer_icraeligibilityassessment = record;
+                }
+            );
+        }
+
+        if (psiLookup !== null && psiLookup.getValue() !== null) {
+            var psiId = psiLookup.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
+            Xrm.WebApi.retrieveRecord("ecer_postsecondaryinstitute", psiId).then(
+                function success(record) {
+                    this.ecer_educationinstitution = record;
+                }
+            );
+        }
+
+        if (programLookup !== null && programLookup.getValue() !== null) {
+            var programProfileId = programLookup.getValue()[0].id.toLowerCase().replace("{", "").replace("}", "");
+            Xrm.WebApi.retrieveRecord("ecer_program", programProfileId).then(
+                function success(record) {
+                    this.ecer_program = record;
                 }
             );
         }
@@ -414,7 +535,9 @@ ECER.Jscripts.Communication = {
         var flagAttributeName = "ecer_acknowledged";
         var initiatedFromAttribute = formContext.getAttribute(initiatedFromAttributeName);
         var theFlagAttribute = formContext.getAttribute(flagAttributeName);
-        if (initiatedFromAttribute !== null && initiatedFromAttribute.getValue() === 621870002) {
+        if (initiatedFromAttribute !== null
+            && (initiatedFromAttribute.getValue() === 621870002 || // Portal User
+            initiatedFromAttribute.getValue() === 621870003)) { // Program Representative
             // If Initiated From Portal User
             if (theFlagAttribute !== null && theFlagAttribute.getValue() !== true) {
                 // If the Acknowledged Flag is FALSE
@@ -527,6 +650,28 @@ ECER.Jscripts.Communication = {
                                 break;
                             case "ecer_transcript":
                                 fieldText = ECER.Jscripts.Communication.shortDateToLongDateString(this.ecer_transcript[fieldName]);
+                                break;
+                            case "ecer_program":
+                                fieldText = ECER.Jscripts.Communication.shortDateToLongDateString(this.ecer_program[fieldName]);
+                                break;
+                            case "ecer_postsecondaryinstitute":
+                                fieldText = ECER.Jscripts.Communication.shortDateToLongDateString(this.ecer_educationinstitution[fieldName]);
+                                break;
+                            case "ecer_postsecondaryinstituteprogramapplicaiton":
+                                fieldText = ECER.Jscripts.Communication.shortDateToLongDateString(this.ecer_programapplicaiton[fieldName]);
+                                break;
+                            case "ecer_icraeligibilityassessment":
+                                fieldText = ECER.Jscripts.Communication.shortDateToLongDateString(this.ecer_icraeligibilityassessment[fieldName]);
+                                break;
+                            case "ecer_reconsiderationrequest":
+                                fieldText = ECER.Jscripts.Communication.shortDateToLongDateString(this.ecer_reconsiderationrequest[fieldName]);
+                                break;
+                            case "ecer_pspreferral":
+                                fieldText = ECER.Jscripts.Communication.shortDateToLongDateString(this.ecer_pspreferral[fieldName]);
+                                break;
+                            case "ecer_eceprogramrepresentative":
+                                fieldText = ECER.Jscripts.Communication.shortDateToLongDateString(this.ecer_eceprogramrepresentative[fieldName]);
+                                break;
                         }
                         if (fieldText !== undefined) {
                             if (fieldText === null) {
@@ -560,6 +705,25 @@ ECER.Jscripts.Communication = {
                                 break;
                             case "ecer_transcript":
                                 parentId = this.ecer_transcript.ecer_transcriptid;
+                                break;
+                            case "ecer_program":
+                                parentId = this.ecer_program.ecer_programid;
+                                break;
+                            case "ecer_postsecondaryinstitute":
+                                parentId = this.ecer_educationinstitution.ecer_postsecondaryinstituteid;
+                                break;
+                            case "ecer_postsecondaryinstituteprogramapplicaiton":
+                                parentId = this.ecer_programapplicaiton.ecer_postsecondaryinstituteprogramapplicaitonid;
+                                break;
+                            case "ecer_icraeligibilityassessment":
+                                parentId = this.ecer_icraeligibilityassessment.ecer_icraeligibilityassessmentid;
+                                break;
+                            case "ecer_reconsiderationrequest":
+                                parentId = this.ecer_reconsiderationrequest.ecer_reconsiderationrequestid;
+                                break;
+                            case "ecer_pspreferral":
+                                parentId = this.ecer_pspreferral.ecer_pspreferralid;
+                                break;
                         }
                         var option = "?$filter=_" + childEntityFilterFieldName + "_value eq '" + parentId + "' and statecode eq 0&$select=" + childFieldName;
                         var results = crm_Utility.retrieveMultipleCustom(childEntityName, option); // Synchoronous call using AJAX.  The await throws error.
@@ -623,6 +787,7 @@ ECER.Jscripts.Communication = {
         var lookupAttributeName = "ecer_presetcontentsid";
         var nameAttributeName = "ecer_name";
         var detailsAttributeName = "ecer_message";
+        var typeAttributeName = "ecer_type";
         var currentDetailsValue = formContext.getAttribute(detailsAttributeName).getValue();
         if (currentDetailsValue === null) {
             currentDetailsValue = "";
@@ -637,6 +802,7 @@ ECER.Jscripts.Communication = {
                         var name = record.ecer_name;
                         var subject = record.ecer_subject;
                         var details = record.ecer_text;
+                        var type = record.ecer_communicationtype;
                         var text = details;
                         if (currentDetailsValue !== null && currentDetailsValue !== "") {
                             text = currentDetailsValue + details;
@@ -652,10 +818,36 @@ ECER.Jscripts.Communication = {
                         }
                         formContext.getAttribute(detailsAttributeName).setValue(null);
                         formContext.getAttribute(detailsAttributeName).setValue(text);
+                        formContext.getAttribute(typeAttributeName).setValue(type);
                     }
                 );
             }
         }
+    },
+
+    setMergeInstructionValue: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var formType = formContext.ui.getFormType();
+        if (formType !== 2) {
+            return; // Only care if it were Update mode
+        }
+        var attributeName = "ecer_mergeinstruction";
+        var instructionAttribute = formContext.getAttribute(attributeName);
+        if (instructionAttribute === null || instructionAttribute.getValue() !== null) {
+            return; // Ignore if attribute does not already exist or contains default value already.
+        }
+        var option = "?$filter=ecer_group eq 'Communication' and ecer_name eq 'Merge Instruction'&$select=ecer_multiplelineoftext";
+        Xrm.WebApi.retrieveMultipleRecords("ecer_defaultcontents", option).then(
+            function success(results) {
+                if (results.entities.length !== 0) {
+                    var contentsRecord = results.entities[0];
+                    var fieldValue = contentsRecord.ecer_multiplelineoftext;
+                    instructionAttribute.setValue(fieldValue);
+                    instructionAttribute.fireOnChange();
+                    formContext.data.save();
+                }
+            }
+        );
     },
 
     populateInitiatedFromAtForm: function (executionContext) {
@@ -670,10 +862,13 @@ ECER.Jscripts.Communication = {
         var registrantAttributeName = "ecer_registrantid";
         var transcriptAttributeName = "ecer_transcriptid";
         var initiatedFromAttributeName = "ecer_initiatedfrom";
+        var educationalInstitutionAttributeName = "ecer_educationinstitutionid";
         var applicationValue = formContext.getAttribute(applicationAttributeName).getValue();
         var investigationValue = formContext.getAttribute(investigationAttributeName).getValue();
         var portalUserValue = formContext.getAttribute(registrantAttributeName).getValue();
         var transcriptValue = formContext.getAttribute(transcriptAttributeName).getValue();
+        // If we need to differentiate PSP and Registry in the future
+        var educationalInstitutionValue = formContext.getAttribute(educationalInstitutionAttributeName).getValue();
         var initiatedFromAttribute = formContext.getAttribute(initiatedFromAttributeName);
         var initiatedFromRegistryValue = 621870000;
         var initiatedFromInvestigationValue = 621870001;
