@@ -1,0 +1,399 @@
+{
+  "LogicalName": "bcgov_tag",
+  "PrimaryIdAttribute": "bcgov_tagid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Curriculum Outlines"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "a149f988-4ffb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Curriculum Overview"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "82807c8f-4ffb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Facility & Resources"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "60152796-4ffb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Handbooks"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "14b565a7-4ffb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Mission and Goals"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "6a9690b4-4ffb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Online Communications"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "b5d016c0-4ffb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Online Instructional Methods"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "249624cd-4ffb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Online Program Administration"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "73b51ed7-4ffb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Online Program Practicum"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "75b51ed7-4ffb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Online Program Review Process"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "d56f18de-4ffb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Online Resources"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "d76f18de-4ffb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Personnel Qualifications"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "b67448ef-4ffb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Practicum Details"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "ec97bdf7-4ffb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "bcgov_name",
+          "Type": 16,
+          "Value": "Program Review Process"
+        },
+        {
+          "Key": "bcgov_tagid",
+          "Type": 1,
+          "Value": "ade17f08-50fb-f011-8406-7ced8d050c09"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 14
+}
