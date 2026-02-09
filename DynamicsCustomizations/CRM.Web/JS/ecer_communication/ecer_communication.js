@@ -35,6 +35,7 @@ ECER.Jscripts.Communication = {
             this.isreply = this.parameters["IsR"];
             if (this.isreply) {
                 ECER.Jscripts.Communication.loadReplyMessage(executionContext);
+                ECER.Jscripts.Communication.populateInitiatedFromAtForm(executionContext);
                 return;
             }
             ECER.Jscripts.Communication.populateInitiatedFromAtForm(executionContext);
@@ -91,7 +92,7 @@ ECER.Jscripts.Communication = {
     },
 
 
-    loadReplyMessage: function(executionContext) {
+    loadReplyMessage: function (executionContext) {
         var initiatedFromAttributeName = "ecer_initiatedfrom";
         var parentCommunicationAttributeName = "ecer_parentcommunicationid";
         var portalUserAttributeName = "ecer_registrantid";
@@ -102,7 +103,10 @@ ECER.Jscripts.Communication = {
         formContext.getControl("ecer_donotreply").setDisabled(true);
         formContext.getControl("ecer_isroot").setDisabled(true);
 
-        var intiatedFrom = ECER.Jscripts.Communication.getInitiatedFromParentCommunicatiion(executionContext, this.parameters["parentCommunication"][0].id);
+        var subject = ECER.Jscripts.Communication.getSubjectFromParentCommunicatiion(executionContext, this.parameters["parentCommunication"][0].id);
+        if (subject != null && !(subject.toLowerCase().startsWith("re:", 0))) {
+            subject = "Re: " + subject;
+        }
 
         formContext.getAttribute("ecer_applicationid").setValue(this.parameters["applicationValue"]);
         formContext.getAttribute("ecer_investigation").setValue(this.parameters["investigationValue"]);
@@ -110,10 +114,11 @@ ECER.Jscripts.Communication = {
         formContext.getAttribute("ecer_registrantid").setValue(this.parameters["portalUserValue"]);
         formContext.getAttribute("ecer_transcriptid").setValue(this.parameters["transcriptValue"]);
         formContext.getAttribute("ecer_ecer_program_application_id").setValue(this.parameters["programApplicat"]);
-        formContext.getAttribute("ecer_initiatedfrom").setValue(intiatedFrom);
+        formContext.getAttribute("ecer_name").setValue(subject);
+        // formContext.getAttribute("ecer_initiatedfrom").setValue(intiatedFrom);
         // There is a classic workflow populating these relationship using Parent Communication already
     },
-    showSubgridDisplay: function(selectedMessage) {
+    showSubgridDisplay: function (selectedMessage) {
 
         show = false;
         if (selectedMessage.length !== 0) {
@@ -132,7 +137,7 @@ ECER.Jscripts.Communication = {
         }
         return show;
     },
-    getInitiatedFromParentCommunicatiion: function(executionContext, parentCommunication) {
+    getInitiatedFromParentCommunicatiion: function (executionContext, parentCommunication) {
         if (parentCommunication) {
 
             var parentCommunicationId = parentCommunication.replace("{", "").replace("}", "");
@@ -143,6 +148,24 @@ ECER.Jscripts.Communication = {
 
             if (results !== null || results.length !== 0) {
                 return results[0][initiatedFromAttributeName];
+            }
+            else {
+                return null;
+            }
+
+        }
+
+    },
+    getSubjectFromParentCommunicatiion: function (executionContext, parentCommunication) {
+        if (parentCommunication) {
+
+            var parentCommunicationId = parentCommunication.replace("{", "").replace("}", "");
+
+            var option = "?$filter= ecer_communicationid eq '" + parentCommunicationId + "'";
+            var results = crm_Utility.retrieveMultipleCustom("ecer_communication", option); // Synchoronous call using AJAX.  The await throws error.
+
+            if (results !== null || results.length !== 0) {
+                return results[0]["ecer_name"];
             }
             else {
                 return null;
@@ -484,6 +507,7 @@ ECER.Jscripts.Communication = {
         var investigationValue = formContext.getAttribute(investigationAttributeName).getValue();
         var portalUserValue = formContext.getAttribute(registrantAttributeName).getValue();
         var transcriptValue = formContext.getAttribute(transcriptAttributeName).getValue();
+        var subjectValue = formContext.getAttribute("ecer_name").getValue();
         var parentCommunication = formContext.getAttribute(parentCommunicationAttributeName).getValue();
         var programApplicat = formContext.getAttribute(programApplicatAttributeName).getValue();
         var educationalTranscript = formContext.getAttribute(educationalTranscriptAttributeName).getValue();
@@ -505,8 +529,8 @@ ECER.Jscripts.Communication = {
                 transcriptValue: transcriptValue,
                 parentCommunication: parentCommunication,
                 programApplicat: programApplicat,
-                educationalTranscript: educationalTranscript
-
+                educationalTranscript: educationalTranscript,
+                subject: subjectValue
             }
 
         };
@@ -537,7 +561,7 @@ ECER.Jscripts.Communication = {
         var theFlagAttribute = formContext.getAttribute(flagAttributeName);
         if (initiatedFromAttribute !== null
             && (initiatedFromAttribute.getValue() === 621870002 || // Portal User
-            initiatedFromAttribute.getValue() === 621870003)) { // Program Representative
+                initiatedFromAttribute.getValue() === 621870003)) { // Program Representative
             // If Initiated From Portal User
             if (theFlagAttribute !== null && theFlagAttribute.getValue() !== true) {
                 // If the Acknowledged Flag is FALSE
@@ -882,6 +906,38 @@ ECER.Jscripts.Communication = {
             initiatedFromAttribute.setValue(initiatedFromRegistryValue);
         }
 
+    },
+
+    isRootAndAnyLookupPopulated: function (primaryControl) {
+        if (!primaryControl) {
+            return false;
+        }
+
+        // Check ecer_isroot === true
+        var isRootAttr = primaryControl.getAttribute("ecer_isroot");
+        if (!isRootAttr || isRootAttr.getValue() !== true) {
+            return false;
+        }
+
+        // Lookup fields to check
+        var lookupFields = [
+            "ecer_ecer_program_application_id",
+            "ecer_programprofileid",
+            "ecer_pspreferral"
+        ];
+
+        // TRUE if ANY lookup contains data
+        for (var i = 0; i < lookupFields.length; i++) {
+            var attr = primaryControl.getAttribute(lookupFields[i]);
+            if (attr !== null) {
+                var value = attr.getValue();
+                if (value !== null && value.length > 0) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
 
