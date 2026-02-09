@@ -1,0 +1,7393 @@
+{
+  "LogicalName": "ecer_pspcomponent",
+  "PrimaryIdAttribute": "ecer_pspcomponentid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Community Needs Assessment - 4"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "4"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "478ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "1693a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Community Needs Assessment",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Evaluates the needs and priorities for the proposed additional early childhood education program(s)."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Statement of Purpose - 6"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "6"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "488ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "1993a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Statement of Purpose",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "The program fits within the institutions’ mission and philosophy and any specific early learning philosophies, pedagogies, or methods proposed to integrate."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Statement of Purpose - 8"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "8"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "498ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "1993a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Statement of Purpose",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Goals and objectives of the program identifying the level(s) of certification graduates will be prepared for."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Program Goals and Objectives - 9"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "9"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "4a8ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "bd131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Program Goals and Objectives",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Program content and emphasis reflects specified philosophy and objectives, is organized to promote integrated learning opportunities, and stresses the link between theory and practice."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Facilities, Equipment, Resources, and Access - 15"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "15"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "4f8ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "21ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Facilities, Equipment, Resources, and Access",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Is there an accessible contact person listed to answer program questions."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Facilities, Equipment, Resources, and Access - 17"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "17"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "508ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "21ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Facilities, Equipment, Resources, and Access",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Description of facility, equipment, and resources available to students and instructors."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 25"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Written policies"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "25"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "528ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Credit transfer"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 26"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Written policies"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "26"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "538ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Prior learning assessment"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 32"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Personal policies and procedures"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "32"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "558ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Ongoing instructor participation in professional development and activities"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 33"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "33"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "568ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Plan for the orientation of staff to institutional and early childhood education program policies and procedures."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 34"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "34"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "578ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Detailed conflict/dispute resolution policy, including handling conflicts of interest (for example, multiple students completing practicum at the same site), and appropriate modes of feedback/evaluation."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Admission Criteria - 41"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "41"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "588ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "6fb3caef-017a-f011-b4cc-002248add987",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Admission Criteria",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Student handbook detailing clear admission criteria and policies."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Instructional Resources - 44"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "44"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "5a8ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "73b3caef-017a-f011-b4cc-002248add987",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Instructional Resources",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Affiliations with online professional networks or associations (for example, International Council for Open and Distance Education, Hybrid Pedagogies, BC campus Open Learning materials)."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Student/Instructor/Admin Resources - 47"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "47"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "5d8ce0f0-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c5131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Student/Instructor/Admin Resources",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Access to a comprehensive library/resource center online, which contains a wide variety of post-secondary curriculum materials incorporating national and international resources such as electronic journals and books."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Methods - 49"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "49"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "43e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c1131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Standards for planning, preparing, and presenting learning activities that incorporate appropriate educational strategies."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Methods - 50"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "50"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "44e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c1131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Plan for co-constructed, collaborative process between instructor(s) and students."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Methods - 53"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "53"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "45e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c1131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Clear opportunities for ongoing student feedback, self-reflection, and sharing of ideas."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Methods - 55"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "55"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "46e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c1131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Plan for measuring minimum instructional hours as part of the recognized ECE/ITE/SNE programs."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Methods - 59"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "59"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "48e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "29ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Evidence of how independent instructional hours are calculated and defined."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Methods - 60"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "60"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "4ae2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "29ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Clear identification of which online learning platforms or learning management system(s) will be used (for example, Moodle, D2L, Canvas, Google Classroom), and identification of the party responsible for the online infrastructure maintenance."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Instructor Communication - 62"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "62"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "4be2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "75b3caef-017a-f011-b4cc-002248add987",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Instructor Communication",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Time scheduled for instructor(s) to be available to the student for virtual “office hours”."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Instructor Communication - 63"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "63"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "4ce2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "75b3caef-017a-f011-b4cc-002248add987",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Instructor Communication",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Clearly defined tool(s) to be used by instructor(s) for individual communication with students (for example, webchat, instant messaging, within learning platform, email, telephone, Skype, video call)."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Curriculum - 65"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "65"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "50e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c3131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Curriculum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Course outlines provided for all courses in the ECE program."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Student Evaluation - 72"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "72"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "58e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "22ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Student Evaluation",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Process for academic evaluation when granting equivalency or transfer credit, and requirements for graduation."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 74"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies and procedures addressing the responsibilities and roles"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "74"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "59e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Practicum mentors"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 79"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies, procedures, and/or guidelines"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "79"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "5ae2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Objectives of the practicum site visits"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 85"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "85"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "5fe2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Minimum qualifications for practicum supervisors."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 89"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "89"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "61e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Practicum placement agreements, including process for terminating a practicum placement if terms of the agreement are not met by all parties, and measures taken by the institution if there are breaches to the agreement."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 90"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "90"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "62e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Responsibilities as a staff member (if in a workplace practicum)."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Practicum - 92"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "92"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "63e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "3093a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Criteria for determining if a student is a suitable fit for a virtually supported practicum placement."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Practicum - 93"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "93"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "65e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "3093a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "How online program practicums are coordinated, supervised, and visited outside the institution’s regularly serviced geographical areas (for example, remote locations)."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Practicum - 96"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "96"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "66e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "3093a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Online placement agreement."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Practicum - 97"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies or guidelines for practicum observations"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "97"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "67e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "3093a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Scheduling"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Practicum - 98"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies or guidelines for practicum observations"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "98"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "68e2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "3093a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Maintaining privacy and confidentiality"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Practicum - 100"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies or guidelines for practicum observations"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "100"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "6ae2d8f6-717c-f011-b4cc-000d3ae89366"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "3093a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Method (for example, video)"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Community Needs Assessment - 2"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "2"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "b2611df0-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "1693a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Community Needs Assessment",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Documents community demographics, and that the proposed program will be viable within the proposed community."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Statement of Purpose - 7"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "7"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "c2611df0-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "1993a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Statement of Purpose",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Integration of theory and practice during practicums. "
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Program Goals and Objectives - 10"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "10"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "cb611df0-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "bd131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Program Goals and Objectives",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Short, and long-term program objectives related to statement of purpose."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Program Review - 11"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "11"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "cd611df0-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "6db3caef-017a-f011-b4cc-002248add987",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Program Review",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Policies and implementation schedule for program reviews and evaluations."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Program Review - 12"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "12"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "d0611df0-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "6db3caef-017a-f011-b4cc-002248add987",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Program Review",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Procedures for ensuring program revisions occur as a result of reviews."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Facilities, Equipment, Resources, and Access - 13"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "13"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "d4611df0-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "21ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Facilities, Equipment, Resources, and Access",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Program location must operate from an identifiable and accessible location(s)."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Facilities, Equipment, Resources, and Access - 14"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "14"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "d8611df0-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "21ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Facilities, Equipment, Resources, and Access",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Is the program information available publicly through a number of sources (for example, brochure, online, planned information sessions)"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Facilities, Equipment, Resources, and Access - 16"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "16"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "de611df0-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "21ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Facilities, Equipment, Resources, and Access",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Description of floor plan (or photos/video of space) showing the facility accommodates the group size and allows flexibility for various types of learning activities."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 21"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Written policies"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "21"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "e1611df0-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Maximum enrollment and capacity"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 22"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Written policies"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "22"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "e2611df0-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Admission"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 23"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Written policies"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "23"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "e3611df0-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Academic approval"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 24"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Written policies"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "24"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "e9611df0-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Graduation"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 28"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Personal policies and procedures"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "28"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "f6611df0-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Staff recruitment"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Personnel/Staffing - 36"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "36"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "64eb15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c0131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Personnel/Staffing",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Demonstration of appropriate qualifications and experience for all staff."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Personnel/Staffing - 37"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "37"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "67eb15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c0131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Personnel/Staffing",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Job descriptions outlining roles and responsibilities for all instructors including practicum supervisors, and those administrative personnel involved in the development or delivery of the early childhood education program."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Personnel/Staffing - 38"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "38"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "6ceb15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c0131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Personnel/Staffing",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Statement of standards of conduct and ethics for all personnel/staff."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Admission Criteria - 42"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "42"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "74eb15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "6fb3caef-017a-f011-b4cc-002248add987",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Admission Criteria",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Articulation agreements with other institutions."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Student/Instructor/Admin Resources - 46"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "46"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "89eb15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c5131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Student/Instructor/Admin Resources",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Online Delivery - Student/Instructor/Admin Resources"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Methods - 48"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "48"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "8deb15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c1131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Standards for planning, preparing, and presenting learning activities that incorporate appropriate educational strategies.4"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Methods - 54"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "54"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "c7eb15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c1131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Evidence of planned or existing collaboration with other post-secondary institutions."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Methods - 56"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "56"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "d0eb15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c1131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Appropriate guidelines provided on how plagiarism will be monitored and addressed."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Methods - 58"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "58"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "d6eb15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "29ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "The methods of instruction and teaching environments align to support learning and communication"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Curriculum - 64"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "64"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "e9eb15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c3131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Curriculum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Program Profiles provided for each level of certification being applied for."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Curriculum - 66"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "66"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "f1eb15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c3131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Curriculum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Description of what resources for post-secondary curriculum development have been used (for example, curriculum development team, subscriptions to scholarly materials)."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Student Evaluation - 69"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "69"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "01ec15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "22ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Student Evaluation",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Examples of student records, regular progress report or evaluations provided."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Student Evaluation - 70"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "70"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "02ec15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "22ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Student Evaluation",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Demonstration of how student evaluation is based on course or program objectives and assessed according to clearly defined criteria, including an identified minimum grade assigned to a student who demonstrates required competencies."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 76"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies and procedures addressing the responsibilities and roles"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "76"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "10ec15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Practicum instructors"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 78"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies, procedures, and/or guidelines"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "78"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "1bec15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "The minimum number of instructor visits"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 80"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies, procedures, and/or guidelines"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "80"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "31ec15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Parameters for the student about educator-to-child ratio as set out by the CCLR"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 81"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies, procedures, and/or guidelines"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "81"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "37ec15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Modes for instructor visits (for example, in-person observation or virtual meetings)"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 84"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies, procedures, and/or guidelines"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "84"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "41ec15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Regular communication expectations between practicum instructors and practicum mentors regarding student performance"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 91"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "91"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "64ec15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Practicum curriculum analysis complete using the Curriculum Analysis Tool. Practicum meets minimum requirements as outlined in the Linking Competencies document."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Practicum - 94"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "94"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "75ec15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "3093a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "How practicum will be evaluated for online program students."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Practicum - 95"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "95"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "7cec15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "3093a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "How a qualified practicum instructor in the community will be recruited."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Practicum - 99"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies or guidelines for practicum observations"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "99"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "8eec15f6-717c-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "3093a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Use of screens or recording devices in child care programs"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Student/Instructor/Admin Resources - 99999"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "99999"
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "1b64eb69-1e7d-f011-b4cc-0022483c2a2e"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c5131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Student/Instructor/Admin Resources",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "TEST - TO BE Delete"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Community Needs Assessment - 1"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "1"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "8ef23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "1693a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Community Needs Assessment",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "The Community Needs Assessment demonstrates a clearly defined community need."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Community Needs Assessment - 3"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "3"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "92f23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "1693a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Community Needs Assessment",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Assesses the post-secondary early childhood education programs and resources."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Community Needs Assessment - 5"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "5"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "98f23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "1693a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Community Needs Assessment",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Identifies the impact of the proposed program(s) on the community, with respect to a sufficient number of instructors, staff, practicum sites, mentors, and prospective students."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Facilities, Equipment, Resources, and Access - 18"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "18"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "9ef23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "21ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Facilities, Equipment, Resources, and Access",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Access to a comprehensive library/resource center with a collection of scholarly resources and post-secondary curriculum materials incorporating national and international perspectives, and an assortment of presentation equipment."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Access - 19"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "19"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "9ff23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c4131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Access",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Accessibility of technology support when technical difficulties or system failures are experienced."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Access - 20"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "20"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "a1f23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c4131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Access",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "An available method for the Registry to conduct a virtual site visit."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 27"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Written policies"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "27"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "a8f23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Academic disruption"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 29"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Personal policies and procedures"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "29"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "aaf23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Staff development"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 30"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Personal policies and procedures"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "30"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "acf23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Regular performance evaluation"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Guiding Policies and Procedures - 31"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Personal policies and procedures"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "31"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "adf23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2d93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Staff selection"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Guiding Policies and Procedures - 35"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "35"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "b4f23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2f93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Guiding Policies and Procedures",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Criteria for determining if a student is a suitable fit for an online modality."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Personnel/Staffing - 39"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "39"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "c3f23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c0131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Personnel/Staffing",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Evidence of organizational structure of the early childhood education program."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Personnel/Staffing - 40"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "40"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "c5f23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "71b3caef-017a-f011-b4cc-002248add987",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Personnel/Staffing",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Provide a plan for the development, review, and orientation of staff to online program policies and procedures."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Security - 43"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "43"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "c9f23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "28ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Security",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Provide a written statement verifying that the platform meets the organizational policies and procedures related to privacy and security."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Instructional Resources - 45"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "45"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "ccf23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "73b3caef-017a-f011-b4cc-002248add987",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Instructional Resources",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Resources for organizing, scheduling, and supporting instructor(s) in areas of course design, delivery, written individualized communication, and technology."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Methods - 51"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "51"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "dbf23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c1131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Clearly demonstrated how integration of learning is planned and coordinated among instructors."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Methods - 52"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "52"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "dcf23cf1-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c1131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Opportunities for discussion between students (for example, break-out rooms, large and/or small groups, chat rooms, posts, and replies)."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Methods - 57"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "57"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "db954ff7-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "29ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Plan for creating a living classroom including a plan for motivation enhancement (for example, early expectations, providing timely feedback), and additional supportive technologies available to enhance learning experiences (for example, MS Teams, Zoom)."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Methods - 61"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "61"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "dd954ff7-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "29ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Methods",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "A range of instruction types (for example, direct and indirect, experiential learning, independent study) showing how collaboration will be invited between learners."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Curriculum - 67"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "67"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "e4954ff7-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "c3131ff2-017a-f011-b4cc-000d3ae89366",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Curriculum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Curriculum analysis complete using the Curriculum Analysis Tool. Program satisfies the required knowledge, skills and abilities as described by the B.C. Child Care Sector Occupational Competencies."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Student Evaluation - 68"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "68"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "e6954ff7-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "22ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Student Evaluation",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Details of tools to be used to evaluate classroom learning."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Student Evaluation - 71"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "71"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "ee954ff7-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "22ce60f2-017a-f011-b4cc-0022483c2a2e",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Student Evaluation",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Process of providing timely feedback to students regarding assignments."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 73"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "73"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "f2954ff7-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Supporting practicum handbook for students and practicum mentors."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 75"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies and procedures addressing the responsibilities and roles"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "75"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "fa954ff7-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Students"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 77"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies and procedures addressing the responsibilities and roles"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "77"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "02964ff7-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "The child care facility"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 83"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies, procedures, and/or guidelines"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "83"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "12964ff7-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Responsibility of all to report concerns about the competence and conduct of certified ECEs and ECE Assistants to the Registry"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 86"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "86"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "19964ff7-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Descriptions of how appropriate practicum placements are selected and evaluated."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 87"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "87"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "1a964ff7-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Sample site evaluation tools."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Practicum - 88"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "88"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870004
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "1b964ff7-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "2e93a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Description of practicum instructor procedures to observe and evaluate student performance and confirm field placement appropriateness."
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Online Delivery - Practicum - 101"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_filter",
+          "Type": 16,
+          "Value": "Policies or guidelines for practicum observations"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": "101"
+        },
+        {
+          "Key": "ecer_category",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_deliverymethod",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870002
+            }
+          ]
+        },
+        {
+          "Key": "ecer_pspcomponentid",
+          "Type": 1,
+          "Value": "1f964ff7-717c-f011-b4cb-002248b35783"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_componentgroup",
+          "Type": 2,
+          "Value": {
+            "Id": "3093a9f3-017a-f011-b4cc-0022483caef2",
+            "LogicalName": "ecer_pspcomponentgroup",
+            "Name": "Online Delivery - Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_component",
+          "Type": 16,
+          "Value": "Opportunities for student, facility and mentor connection"
+        }
+      ]
+    }
+  ],
+  "Count": 101
+}

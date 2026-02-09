@@ -1,0 +1,45 @@
+{
+  "LogicalName": "ecer_defaultcontents",
+  "PrimaryIdAttribute": "ecer_defaultcontentsid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Merge Instruction"
+        },
+        {
+          "Key": "ecer_multiplelineoftext",
+          "Type": 16,
+          "Value": "Following Entities are available for merging\ncontact, ecer_application, ecer_reconsiderationrequest, ecer_icraeligibilityassessment, ecer_transcript\necer_investigation, ecer_pspreferral, ecer_postsecondaryinstitute, ecer_eceprogramrepresentative\necer_postsecondaryinstitute, ecer_program, ecer_postsecondaryinstituteprogramapplicaiton\n\nTo Get Attribute List, go to\nhttps://myeceregistrydev.crm3.dynamics.com/api/data/v9.2/EntityDefinitions(LogicalName='[entity name]')/Attributes?$select=SchemaName,LogicalName,AttributeType,DisplayName\n\nUse Pretty Print from Chrome or other JSON Viewer for better results"
+        },
+        {
+          "Key": "ecer_defaultcontentsid",
+          "Type": 1,
+          "Value": "771466f1-5fd4-f011-8544-6045bdcd5831"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_group",
+          "Type": 16,
+          "Value": "Communication"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 1
+}

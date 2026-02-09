@@ -1,0 +1,461 @@
+{
+  "LogicalName": "ecer_communicationcontent",
+  "PrimaryIdAttribute": "ecer_communicationcontentid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\"><p style=\"margin: 0;\"><span style=\"font-family:Segoe UI;font-size:11pt;\"><span>Thank you for providing the information and/or supporting documents requested. We may contact you for additional information following our review.</span>&nbsp;</span></p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Information and/or Documents Received"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Information and/or Documents Received"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "3014aaa0-8451-f011-877b-000d3ae89366"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\">\n  <p style=\"margin: 0;\">\n    <span style=\"font-family:Segoe UI;font-size:11pt;\">\n      <span>The International Credential Evaluation Service (I.C.E.S.) report received cannot be accepted because it has not been received directly from BCIT.</span>\n    </span>\n  </p>\n\n  <p style=\"margin: 0;\">&nbsp;</p>\n\n  <p style=\"margin: 0;\">\n    <span style=\"font-family:Segoe UI;font-size:11pt;\">\n      <span>Please contact BCIT and request they submit the I.C.E.S. Report directly to the Registry.</span>\n    </span>\n  </p>\n\n  <p style=\"margin: 0;\">&nbsp;</p>\n\n  <p style=\"margin: 0;\">\n    <span style=\"font-family:Segoe UI;font-size:11pt;\">\n      <span>For more information, go to the </span>\n    </span>\n    <a href=\"https://www2.gov.bc.ca/gov/content?id=9376DE7539D44C64B3E667DB53320E71\" target=\"_blank\" rel=\"noopener noreferrer\">ECE Registry website</a>.\n  </p>\n</div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Action Required: International Credential Evaluation Comprehensive Report not accepted "
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "I.C.E.S. Report - Invalid"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "94235a80-8451-f011-877b-0022483c2a2e"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\"><p style=\"margin: 0;\"><span style=\"font-family:Segoe UI;font-size:11pt;\">The Program Confirmation form you have submitted cannot be accepted because:</span><br><br><span style=\"font-family:Segoe UI;font-size:11pt;\">[Staff entered reason]&nbsp;</span><br><br><span style=\"font-family:Segoe UI;font-size:11pt;\">To provide a new or additional course outline or syllabi:&nbsp;</span><br><br><span style=\"font-family:Segoe UI;font-size:11pt;\">&nbsp; 1. Go to the home page and select \"Manage application\"</span><br><span style=\"font-family:Segoe UI;font-size:11pt;\">&nbsp; 2. Click on the \"Course outlines or syllabi\" link</span><br><span style=\"font-family:Segoe UI;font-size:11pt;\">&nbsp; 3. Upload a new or additional course outlines or syllabi</span></p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Action required: Program Confirmation form not accepted"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Program Confirmation Form – Invalid"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "43a51c16-8451-f011-877b-0022483caef2"
+        },
+        {
+          "Key": "ecer_source",
+          "Type": 16,
+          "Value": "The course outline(s) or syllabi you have submitted cannot be accepted because: \n\n[Staff entered reason] \n\nTo provide a new or additional course outline or syllabi: \n\n1. Go to the home page and select \"Manage application\"\n2. Click on the \"Course outlines or syllabi\" link\n3. Upload a new or additional course outlines or syllabi"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\"><p style=\"margin: 0;\"><span style=\"font-size:11pt;\">The course outline(s) or syllabi you have submitted cannot be accepted because:&nbsp;</span><br><br><span style=\"font-size:11pt;\">[Staff entered reason]&nbsp;</span><br><br><span style=\"font-size:11pt;\">To provide a new or additional course outline or syllabi:&nbsp;</span><br><br><span style=\"font-size:11pt;\">&nbsp; 1. Go to the home page and select \"Manage application\"</span><br><span style=\"font-size:11pt;\">&nbsp; 2. Click on the \"Course outlines or syllabi\" link</span><br><span style=\"font-size:11pt;\">&nbsp; 3. Upload a new or additional course outlines or syllabi</span></p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Action required: Course outline(s) or syllabi not accepted"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Course Outline or Syllabi – Invalid"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "61e9f95c-8451-f011-877b-0022483caef2"
+        },
+        {
+          "Key": "ecer_source",
+          "Type": 16,
+          "Value": "The course outline(s) or syllabi you have submitted cannot be accepted because: \n\n[Staff entered reason] \n\nTo provide a new or additional course outline or syllabi: \n\n  1. Go to the home page and select \"Manage application\"\n  2. Click on the \"Course outlines or syllabi\" link\n  3. Upload a new or additional course outlines or syllabi"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); --ck-color-selector-caption-background: hsl(0, 0%, 97%); --ck-color-selector-caption-text: hsl(0, 0%, 20%); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\">\n  <p style=\"margin: 0;\">\n    <span style=\"font-family:Segoe UI;font-size:11pt;\">\n      <span>The International Credential Evaluation Service (I.C.E.S.) report submitted cannot be accepted as it is a basic report. The Registry requires a comprehensive report for evaluation.</span>\n    </span>\n  </p>\n\n  <p style=\"margin: 0;\">&nbsp;</p>\n\n  <p style=\"margin: 0;\">\n    <span style=\"font-family:Segoe UI;font-size:11pt;\">\n      <span>Please apply to BCIT to upgrade the Basic evaluation report to a Comprehensive evaluation report. Go to BCIT I.C.E.S. website.</span>\n    </span>\n  </p>\n\n  <p style=\"margin: 0;\">&nbsp;</p>\n\n  <p style=\"margin: 0;\">\n    <span style=\"font-family:Segoe UI;font-size:11pt;\">\n      <span>For more information, go to the </span>\n    </span>\n    <a href=\"https://www2.gov.bc.ca/gov/content?id=9376DE7539D44C64B3E667DB53320E71\" target=\"_blank\" rel=\"noopener noreferrer\">\n      ECE Registry website</a>.\n  </p>\n</div>\n"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Action Required: International Credential Evaluation Basic Report not accepted "
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "I.C.E.S. Report – Basic report invalid"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "54ab328f-8451-f011-877b-0022483caef2"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\"><p style=\"margin: 0;\"><span style=\"font-size:11pt;\">Additional Program Confirmation form(s) are required because:&nbsp;</span><br><br><span style=\"font-size:11pt;\">[Staff entered reason]&nbsp;</span><br><br><span style=\"font-size:11pt;\">To provide a new Program Confirmation Form:&nbsp;</span><br><br><span style=\"font-size:11pt;\">&nbsp; 1. Go to the home page and select \"Manage application\"</span><br><span style=\"font-size:11pt;\">&nbsp; 2. Click on the \"Program Confirmation Form\" link</span><br><span style=\"font-size:11pt;\">&nbsp; 3. Upload a new or additional Program Confirmation form</span></p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Action required: Additional Program Confirmation form required"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Program Confirmation Form – Additional form required"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "bd9be849-8451-f011-877b-002248b35783"
+        },
+        {
+          "Key": "ecer_source",
+          "Type": 16,
+          "Value": "Additional Program Confirmation form(s) are required because: \n\n[Staff entered reason] \n\nTo provide a new Program Confirmation Form: \n\n  1. Go to the home page and select \"Manage application\"\n  2. Click on the \"Program Confirmation Form\" link\n  3. Upload a new or additional Program Confirmation form"
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870001
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": true
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: 'Segoe UI','Helvetica Neue',sans-serif; font-size: 9pt;\"><p style=\"margin: 0;\"><span style=\"font-size:11pt;\">Additional outline(s) or syllabi you have submitted cannot be accepted because:&nbsp;</span><br><br><span style=\"font-size:11pt;\">[Staff entered reason]&nbsp;</span><br><br><span style=\"font-size:11pt;\">To provide a new or additional course outline or syllabi:&nbsp;</span><br><br><span style=\"font-size:11pt;\">&nbsp; 1. Go to the home page and select “Manage application”</span><br><span style=\"font-size:11pt;\">&nbsp; 2. Click on the “Course outlines or syllabi” link</span><br><span style=\"font-size:11pt;\">&nbsp; 3. Upload a new or additional course outline or syllabus</span></p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Action required: Additional course outline(s) or syllabi required"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Course Outline or Syllabi – Additional required"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "6cecb56d-8451-f011-877b-002248b35783"
+        },
+        {
+          "Key": "ecer_source",
+          "Type": 16,
+          "Value": "Additional outline(s) or syllabi you have submitted cannot be accepted because: \n\n[Staff entered reason] \n\nTo provide a new or additional course outline or syllabi: \n\n  1. Go to the home page and select “Manage application”\n  2. Click on the “Course outlines or syllabi” link\n  3. Upload a new or additional course outline or syllabus"
+        }
+      ]
+    }
+  ],
+  "Count": 7
+}

@@ -114,7 +114,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>6.5in</Width>
+                  <Width>0.25in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>6.25in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -123,7 +126,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox1">
+                        <Textbox Name="Textbox4">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -144,7 +147,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox1</rd:DefaultName>
+                          <rd:DefaultName>Textbox4</rd:DefaultName>
                           <Style>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -152,13 +155,29 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <ColSpan>2</ColSpan>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell />
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
                   <Height>0.25in</Height>
                   <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Image Name="Image1">
+                          <Source>Embedded</Source>
+                          <Value>bulleticon321495512</Value>
+                          <Sizing>FitProportional</Sizing>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Image>
+                      </CellContents>
+                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Table0_Details0">
@@ -194,6 +213,9 @@
                           </Visibility>
                           <DataElementName>ecer_details</DataElementName>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -208,6 +230,7 @@
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
+                <TablixMember />
                 <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
@@ -701,6 +724,16 @@
       <Value>&lt;MSCRM xmlns="mscrm"&gt;&amp;lt;ReportFilter&amp;gt;&amp;lt;ReportEntity paramname="CRM_Filteredecer_CertificateConditions" donotconvert="1"&amp;gt;&amp;lt;fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false"&amp;gt;&amp;lt;entity name="ecer_certificateconditions"&amp;gt;&amp;lt;all-attributes /&amp;gt;&amp;lt;filter type="and"&amp;gt;&amp;lt;condition attribute="statecode" operator="eq" value="0" /&amp;gt;&amp;lt;/filter&amp;gt;&amp;lt;/entity&amp;gt;&amp;lt;/fetch&amp;gt;&amp;lt;/ReportEntity&amp;gt;&amp;lt;/ReportFilter&amp;gt;&lt;/MSCRM&gt;</Value>
     </CustomProperty>
   </CustomProperties>
+  <EmbeddedImages>
+    <EmbeddedImage Name="bulleticon321495512">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
   <CodeModules>
     <CodeModule>Microsoft.Crm.Reporting.RdlHelper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</CodeModule>
   </CodeModules>

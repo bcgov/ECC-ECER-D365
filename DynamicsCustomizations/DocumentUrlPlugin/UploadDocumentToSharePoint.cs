@@ -99,7 +99,7 @@ namespace BCGOV.Plugin.DocumentUrl
                         }
                         else
                             sharePointFileUrlEntity.Id = Guid.NewGuid();
-
+                        traceService.Trace($"Set Entity Reference of {regardingObjectLogicalName}:{regardingObjectId}");
                         if (regardingObjectLogicalName.Equals("account", StringComparison.InvariantCultureIgnoreCase) || regardingObjectLogicalName.Equals("contact", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["bcgov_customer"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
@@ -183,6 +183,27 @@ namespace BCGOV.Plugin.DocumentUrl
                         {
                             sharePointFileUrlEntity["ecer_transcriptid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
                         }
+                        else if (regardingObjectLogicalName.Equals("ecer_internationalcertification", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            sharePointFileUrlEntity["ecer_internationalcertificationid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                        }
+                        else if (regardingObjectLogicalName.Equals("ecer_icraeligibilityassessment", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            sharePointFileUrlEntity["ecer_icraeligibilityassessmentid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                        }
+                        else if (regardingObjectLogicalName.Equals("ecer_bulkpspcommunication", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            sharePointFileUrlEntity["ecer_bulkpspcommunicationid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                        }
+                        else if (regardingObjectLogicalName.Equals("ecer_reconsiderationrequest", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            sharePointFileUrlEntity["ecer_reconsiderationrequestid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                        }
+                        else if (regardingObjectLogicalName.Equals("ecer_reconsiderationinvestigationoutcome", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            
+                            sharePointFileUrlEntity["ecer_reconsiderationinvestigationoutcomeid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                        }
                         else
                             throw new InvalidPluginExecutionException(string.Format("Unknown RegardingObjectType '{0}' to associate document..", regardingObjectLogicalName));
                         traceService.Trace("Constructed Document URL entity");
@@ -191,8 +212,10 @@ namespace BCGOV.Plugin.DocumentUrl
 
                         fileStream.Position = 0;
                         var streamContent = new StreamContent(fileStream);
+                        var ext = fileName.Substring(fileName.LastIndexOf("."));
                         streamContent.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse(Helpers.GetMIMEType(fileName));
-                        multipartContent.Add(streamContent, "File", fileName);
+                        /* multipartContent.Add(streamContent, "File", fileName); // ECER-5083 Request Header must contain only ASCII characters.  This is returning a response of InternalServerError */
+                        multipartContent.Add(streamContent, "File", (regardingObjectId.ToString() + "." + ext));
 
                         var bearerToken = Helpers.GetBearerToken(authUrl, authClientId, authSecret);
 

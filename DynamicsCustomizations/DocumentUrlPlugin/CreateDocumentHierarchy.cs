@@ -72,7 +72,7 @@ namespace BCGOV.Plugin.DocumentUrl
                    // && (!targetEntity.Contains("bcgov_customer") || targetEntity["bcgov_customer"] == null))
                 {
                     traceService.Trace("Communication contains data but no Customer ");
-                    var entityReferencce = (EntityReference)targetEntity["ecer_communicationid"];
+                    var entityReferencce = (Entity)targetEntity["ecer_communicationid"];
                     var entityRecord = service.Retrieve(entityReferencce.LogicalName.ToLowerInvariant(),
                         entityReferencce.Id, new ColumnSet("ecer_applicationid", "ecer_registrantid", "ecer_ecer_program_application_id", "ecer_investigation", "ecer_isroot", "ecer_parentcommunicationid"));
                     if (entityRecord.Contains("ecer_isroot") && entityRecord.GetAttributeValue<bool>("ecer_isroot") != true && 
@@ -129,6 +129,63 @@ namespace BCGOV.Plugin.DocumentUrl
                         service.Update(sharePointFileUrlEntity);
                     }
                 }
+                // ECER-5283 Begins
+                else if (targetEntity.Contains("ecer_internationalcertificationid") && targetEntity["ecer_internationalcertificationid"] != null 
+                    && (!targetEntity.Contains("ecer_icraeligibilityassessmentid") || targetEntity["ecer_icraeligibilityassessmentid"] == null))
+                {
+                    var entityReference = (EntityReference)targetEntity["ecer_internationalcertificationid"];
+                    var entityRecord = service.Retrieve(entityReference.LogicalName.ToLowerInvariant(), 
+                        entityReference.Id, new ColumnSet("ecer_applicationid", "ecer_eligibilityassessment"));
+                    var hasChange = false;
+                    if (registryTeamER != null)
+                    {
+                        sharePointFileUrlEntity["ownerid"] = registryTeamER;
+                        hasChange = true;
+                    }
+
+                    if (entityRecord.Contains("ecer_applicationid") && entityRecord["ecer_applicationid"] != null)
+                    {
+                        sharePointFileUrlEntity["ecer_applicationid"] = entityRecord["ecer_applicationid"];
+                        hasChange = true;
+                    }
+
+                    if (entityRecord.Contains("ecer_eligibilityassessment") && entityRecord["ecer_eligibilityassessment"] != null)
+                    {
+                        sharePointFileUrlEntity["ecer_icraeligibilityassessmentid"] = entityRecord["ecer_eligibilityassessment"];
+                        var assessmentEntityER = ((EntityReference)entityRecord["ecer_eligibilityassessment"]);
+                        var assessmentEntity = service.Retrieve(assessmentEntityER.LogicalName.ToLowerInvariant(),
+                            assessmentEntityER.Id, new ColumnSet("ecer_applicantid"));
+                        if (assessmentEntity.Contains("ecer_applicantid") && assessmentEntity["ecer_applicantid"] != null)
+                        {
+                            sharePointFileUrlEntity["bcgov_customer"] = assessmentEntity["ecer_applicantid"];
+                        }
+                        hasChange = true;
+                    }
+                    if (hasChange)
+                    {
+                        service.Update(sharePointFileUrlEntity);
+                    }
+                }
+                else if (targetEntity.Contains("ecer_icraeligibilityassessmentid") && targetEntity["ecer_icraeligibilityassessmentid"] != null 
+                    && (!targetEntity.Contains("bcgov_customer") || targetEntity["bcgov_customer"] == null))
+                {
+                    var hasChange = false;
+                    // If Eligibility Assessment, then also link to the applicant
+                    var assessmentEntityER = (EntityReference)targetEntity["ecer_icraeligibilityassessmentid"];
+                    var assessmentEntity = service.Retrieve(assessmentEntityER.LogicalName.ToLowerInvariant(),
+                        assessmentEntityER.Id, new ColumnSet("ecer_applicantid"));
+                    if (assessmentEntity.Contains("ecer_applicantid") && assessmentEntity["ecer_applicantid"] != null)
+                    {
+                        sharePointFileUrlEntity["bcgov_customer"] = assessmentEntity["ecer_applicantid"];
+                        hasChange = true;
+                    }
+
+                    if (hasChange)
+                    {
+                        service.Update(sharePointFileUrlEntity);
+                    }
+                }
+                // ECER-5283 Ends
                 else if (targetEntity.Contains("ecer_professionaldevelopmentid") && targetEntity["ecer_professionaldevelopmentid"] != null
                     && (!targetEntity.Contains("ecer_applicationid") || targetEntity["ecer_applicationid"] == null))
                 {
@@ -205,10 +262,29 @@ namespace BCGOV.Plugin.DocumentUrl
                         service.Update(sharePointFileUrlEntity);
                     }
                 }
-                
-                
+                else if (targetEntity.Contains("ecer_reconsiderationrequestid") && targetEntity["ecer_reconsiderationrequestid"] != null)
+                {
+                    var entityReference = (EntityReference)targetEntity["ecer_reconsiderationrequestid"];
+                    var entityRecord = service.Retrieve(entityReference.LogicalName.ToLowerInvariant(), entityReference.Id, new ColumnSet(true));
+                    if (registryTeamER != null)
+                    {
+                        sharePointFileUrlEntity["ownerid"] = registryTeamER;
+                    }
 
-                if (targetEntity.Contains("ecer_certificateid") && targetEntity["ecer_certificateid"] != null)
+                    if (entityRecord.Contains("ecer_applicantid") && entityRecord["ecer_applicantid"] != null)
+                    {
+                        sharePointFileUrlEntity["bcgov_customer"] = entityRecord["ecer_applicantid"];
+                        
+                    }
+                    if (entityRecord.Contains("ecer_applicationid") && entityRecord["ecer_applicationid"] != null)
+                    {
+                        sharePointFileUrlEntity["ecer_applicationid"] = entityRecord["ecer_applicationid"];
+                        service.Update(sharePointFileUrlEntity);
+                    }
+                    service.Update(sharePointFileUrlEntity);
+                }
+
+                else if (targetEntity.Contains("ecer_certificateid") && targetEntity["ecer_certificateid"] != null)
                 {
                     var entityReference = (EntityReference)targetEntity["ecer_certificateid"];
                     var entityRecord = service.Retrieve(entityReference.LogicalName.ToLowerInvariant(), entityReference.Id, new ColumnSet("ecer_registrantid"));
@@ -221,10 +297,11 @@ namespace BCGOV.Plugin.DocumentUrl
                         sharePointFileUrlEntity["bcgov_customer"] = entityRecord["ecer_registrantid"];
                         service.Update(sharePointFileUrlEntity);
                     }
-                    
+
+                    service.Update(sharePointFileUrlEntity);
                 }
 
-                if (targetEntity.Contains("ecer_previousnameid") && targetEntity["ecer_previousnameid"] != null)
+                else if (targetEntity.Contains("ecer_previousnameid") && targetEntity["ecer_previousnameid"] != null)
                 {
                     // If Application, then also link to the applicant
                     var entityReference = (EntityReference)targetEntity["ecer_previousnameid"];
@@ -236,11 +313,12 @@ namespace BCGOV.Plugin.DocumentUrl
                     if (entityRecord.Contains("ecer_contactid") && entityRecord["ecer_contactid"] != null)
                     {
                         sharePointFileUrlEntity["bcgov_customer"] = entityRecord["ecer_contactid"];
-                        service.Update(sharePointFileUrlEntity);
+                        
                     }
+                    service.Update(sharePointFileUrlEntity);
                 }
 
-                if (targetEntity.Contains("bcgov_caseid") && targetEntity["bcgov_caseid"] != null)
+                else if (targetEntity.Contains("bcgov_caseid") && targetEntity["bcgov_caseid"] != null)
                 {
                     var caseId = (EntityReference)targetEntity["bcgov_caseid"];
                     var caseEntity = service.Retrieve(caseId.LogicalName.ToLowerInvariant(), caseId.Id, new ColumnSet("customerid"));
@@ -251,7 +329,7 @@ namespace BCGOV.Plugin.DocumentUrl
                     }
                 }
 
-                if (targetEntity.Contains("bcgov_emailid") && targetEntity["bcgov_emailid"] != null)
+                else if (targetEntity.Contains("bcgov_emailid") && targetEntity["bcgov_emailid"] != null)
                 {
                     var emailId = (EntityReference)targetEntity["bcgov_emailid"];
                     var emailEntity = service.Retrieve(emailId.LogicalName.ToLowerInvariant(), emailId.Id, new ColumnSet("regardingobjectid"));
@@ -275,7 +353,7 @@ namespace BCGOV.Plugin.DocumentUrl
                     }
                 }
 
-                if (targetEntity.Contains("bcgov_faxid") && targetEntity["bcgov_faxid"] != null)
+                else if (targetEntity.Contains("bcgov_faxid") && targetEntity["bcgov_faxid"] != null)
                 {
                     var faxId = (EntityReference)targetEntity["bcgov_faxid"];
                     var faxEntity = service.Retrieve(faxId.LogicalName.ToLowerInvariant(), faxId.Id, new ColumnSet("regardingobjectid"));
@@ -299,7 +377,7 @@ namespace BCGOV.Plugin.DocumentUrl
                     }
                 }
 
-                if (targetEntity.Contains("bcgov_letterid") && targetEntity["bcgov_letterid"] != null)
+                else if (targetEntity.Contains("bcgov_letterid") && targetEntity["bcgov_letterid"] != null)
                 {
                     var letterId = (EntityReference)targetEntity["bcgov_letterid"];
                     var letterEntity = service.Retrieve(letterId.LogicalName.ToLowerInvariant(), letterId.Id, new ColumnSet("regardingobjectid"));
@@ -323,7 +401,7 @@ namespace BCGOV.Plugin.DocumentUrl
                     }
                 }
 
-                if (targetEntity.Contains("bcgov_appointmentid") && targetEntity["bcgov_appointmentid"] != null)
+                else if (targetEntity.Contains("bcgov_appointmentid") && targetEntity["bcgov_appointmentid"] != null)
                 {
                     var appointmentId = (EntityReference)targetEntity["bcgov_appointmentid"];
                     var appointmentEntity = service.Retrieve(appointmentId.LogicalName.ToLowerInvariant(), appointmentId.Id, new ColumnSet("regardingobjectid"));
@@ -347,7 +425,7 @@ namespace BCGOV.Plugin.DocumentUrl
                     }
                 }
 
-                if (targetEntity.Contains("bcgov_phonecallid") && targetEntity["bcgov_phonecallid"] != null)
+                else if (targetEntity.Contains("bcgov_phonecallid") && targetEntity["bcgov_phonecallid"] != null)
                 {
                     var phoneCallId = (EntityReference)targetEntity["bcgov_phonecallid"];
                     var phoneCallEntity = service.Retrieve(phoneCallId.LogicalName.ToLowerInvariant(), phoneCallId.Id, new ColumnSet("regardingobjectid"));
@@ -371,7 +449,7 @@ namespace BCGOV.Plugin.DocumentUrl
                     }
                 }
 
-                if (targetEntity.Contains("bcgov_taskid") && targetEntity["bcgov_taskid"] != null)
+                else if (targetEntity.Contains("bcgov_taskid") && targetEntity["bcgov_taskid"] != null)
                 {
                     var taskId = (EntityReference)targetEntity["bcgov_taskid"];
                     var taskEntity = service.Retrieve(taskId.LogicalName.ToLowerInvariant(), taskId.Id, new ColumnSet("regardingobjectid"));

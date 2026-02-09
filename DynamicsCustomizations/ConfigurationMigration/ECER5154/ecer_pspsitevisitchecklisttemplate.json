@@ -1,0 +1,1207 @@
+{
+  "LogicalName": "ecer_pspsitevisitchecklisttemplate",
+  "PrimaryIdAttribute": "ecer_pspsitevisitchecklisttemplateid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001005"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "5fd3aa1c-c46c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Interviews with:  The ECE Program Coordinator/Chair,  1-2 ECE Instructors,  1-2 ECE Practicum Instructors/Supervisors,  1-2 ECE Mentors from a practicum site (this interview can be virtual), and  A group of students who have completed at least one practicum"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870006
+            },
+            {
+              "Value": 621870007
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001006"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "efc5f128-c46c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Observing a class (observe instructional methods utilized)"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870006
+            },
+            {
+              "Value": 621870007
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001007"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "d3c49e35-c46c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Review class resources and curriculum materials available to instructors and students; (texts, curriculum binders, exams, assignments)"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870006
+            },
+            {
+              "Value": 621870007
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001008"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "d58ba241-c46c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Review/sharing original copies of all student evaluation forms (ensure PSI shares copies post-site visit for further internal review)."
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870006
+            },
+            {
+              "Value": 621870007
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001009"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "a783cb53-c46c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Asking any additional questions to PSI"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870006
+            },
+            {
+              "Value": 621870007
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001010"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "37aed865-c46c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Meeting with Program Coordinator/Chair and other ECE faculty"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870003
+            },
+            {
+              "Value": 621870004
+            },
+            {
+              "Value": 621870005
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001011"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "291d178c-c46c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "PSI providing a virtual walk-thru of online learning platform, showing:  Student view, Instructor view , Course outlines and classes/presentations, exams, assignments , Student resources , Instructor resources , Student progress tracking abilities (coursework, attendance, grades) , Tech support resources"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870003
+            },
+            {
+              "Value": 621870004
+            },
+            {
+              "Value": 621870005
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001012"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "66046a9e-c46c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Clarifying practicum policies and expectations (in-person vs. virtual supervision)"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870003
+            },
+            {
+              "Value": 621870004
+            },
+            {
+              "Value": 621870005
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001013"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "b4ef29b1-c46c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Confirming projected enrollment and proposed program start date"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870003
+            },
+            {
+              "Value": 621870004
+            },
+            {
+              "Value": 621870005
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001014"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "9dd739bd-c46c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Asking any additional questions to PSI"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870003
+            },
+            {
+              "Value": 621870004
+            },
+            {
+              "Value": 621870005
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001015"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "009073ee-c46c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Virtual interviews with: The ECE Program Coordinator/Chair,  1-2 ECE Instructors, 1-2 ECE Practicum Instructors/Supervisors, 1-2 ECE Mentors from a practicum site, and  A group of students who have completed at least one practicum"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870003
+            },
+            {
+              "Value": 621870004
+            },
+            {
+              "Value": 621870005
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001016"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "df9d8afa-c46c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Observing an online class (synchronous preferably) (observe instructional methods utilized)"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870003
+            },
+            {
+              "Value": 621870004
+            },
+            {
+              "Value": 621870005
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001017"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "04827b06-c56c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Review online learning platform, including resources and curriculum materials available to instructors and students"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870003
+            },
+            {
+              "Value": 621870004
+            },
+            {
+              "Value": 621870005
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001018"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "d98b2819-c56c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Review/sharing original copies of all student evaluation forms (ensure PSI shares copies post-site visit for further internal review)"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870003
+            },
+            {
+              "Value": 621870004
+            },
+            {
+              "Value": 621870005
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001019"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "72838225-c56c-f011-b4cb-000d3ae89366"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Asking any additional questions to PSI"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870001
+            },
+            {
+              "Value": 621870003
+            },
+            {
+              "Value": 621870004
+            },
+            {
+              "Value": 621870005
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001000"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "3f138608-c36c-f011-b4cb-0022483caef2"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Meeting with Program Coordinator/Chair and other ECE faculty"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870006
+            },
+            {
+              "Value": 621870007
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001001"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "f4a1059e-c36c-f011-b4cb-0022483caef2"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "PSI providing a walk-thru of the campus, showing:  Campus facilities, Campus resources , ECE classroom spaces, including student resources and materials, ECE Curriculum documents"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870006
+            },
+            {
+              "Value": 621870007
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001002"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "3f9c37ac-c36c-f011-b4cb-0022483caef2"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Clarifying practicum policies and expectations"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870006
+            },
+            {
+              "Value": 621870007
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001003"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "596753b8-c36c-f011-b4cb-0022483caef2"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Confirming projected enrollment and proposed program start date"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870006
+            },
+            {
+              "Value": 621870007
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "001004"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisitchecklisttemplateid",
+          "Type": 1,
+          "Value": "b9f7c6c5-c36c-f011-b4cb-0022483caef2"
+        },
+        {
+          "Key": "ecer_item",
+          "Type": 16,
+          "Value": "Asking any additional questions to PSI"
+        },
+        {
+          "Key": "ecer_recognitiontype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_pspsitevisittype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            },
+            {
+              "Value": 621870002
+            },
+            {
+              "Value": 621870006
+            },
+            {
+              "Value": 621870007
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Count": 20
+}
