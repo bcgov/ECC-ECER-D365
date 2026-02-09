@@ -13,6 +13,28 @@ ECER.Jscripts.ApplicationAssessments = {
         this.crm_ExecutionContext = executionContext;
         //ECER.Jscripts.ApplicationAssessments.populateCharacterReferenceLookupIfEmpty(executionContext);
         ECER.Jscripts.ApplicationAssessments.showHideProfessionalDevelopment(executionContext);
+        ECER.Jscripts.ApplicationAssessments.showCorrespondingEducationAssessmentGrid(executionContext);
+    },
+
+    showCorrespondingEducationAssessmentGrid: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var applicationAttribute = formContext.getAttribute("ecer_applicationid");
+        if (applicationAttribute === null || applicationAttribute.getValue() === null) {
+            return;
+        }
+        var applicationId = applicationAttribute.getValue()[0].id;
+        Xrm.WebApi.retrieveRecord("ecer_application", applicationId).then(
+            function success(record) {
+                var isECEAssistant = record.ecer_iseceassistant;
+                // Per ECER-5550
+                // Assistant Certification only need 1 course of the 3 Areas of Instruction and do not need to meet minimal hours
+                // Hence a different grid without the Areas of Instruction Minimal Hours is used
+
+                crm_Utility.showHide(executionContext, isECEAssistant, "subgrid_educationassessmentsforassistant");
+                crm_Utility.showHide(executionContext, !isECEAssistant, "subgrid_educationassessments");
+            }
+        );
+        
     },
 
     showHideProfessionalDevelopment: function (executionContext) {

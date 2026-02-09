@@ -14,12 +14,14 @@ ECER.Jscripts.WorkExperienceReference = {
         this.crm_ExecutionContext = executionContext;
         ECER.Jscripts.WorkExperienceReference.showHideOnProvinceSelected(executionContext);
         ECER.Jscripts.WorkExperienceReference.defaultTypeOnCreation(executionContext);
-        ECER.Jscripts.WorkExperienceReference.showHide400500OnType(executionContext);
+        //ECER.Jscripts.WorkExperienceReference.showHide400500OnType(executionContext);
         ECER.Jscripts.WorkExperienceReference.filterOutRelationshipOfApplicant(executionContext);
         ECER.Jscripts.WorkExperienceReference.showHideReferenceDOB(executionContext);
         ECER.Jscripts.WorkExperienceReference.showHideLegacyChildcareAgeRange(executionContext);
         ECER.Jscripts.WorkExperienceReference.showHideIcraSections(executionContext);
         ECER.Jscripts.WorkExperienceReference.showHideChildcareAgeRangeNew(executionContext);
+        ECER.Jscripts.WorkExperienceReference.validateStartEndDate(executionContext);
+        ECER.Jscripts.WorkExperienceReference.showHide400500OnType(executionContext);
     },
 
     showHideLegacyChildcareAgeRange: function (executionContext) {
@@ -69,10 +71,11 @@ ECER.Jscripts.WorkExperienceReference = {
             return;
         }
         var applicationAttribute = formContext.getAttribute(applicationAttributeName);
-        var applicationId = applicationAttribute.getValue()[0].id.replace("{", "").replace("}", "");
+
         if (applicationAttribute === null || applicationAttribute.getValue() === null) {
             return;
         }
+        var applicationId = applicationAttribute.getValue()[0].id.replace("{", "").replace("}", "");
         Xrm.WebApi.retrieveRecord("ecer_application", applicationId, "?$select=ecer_type")
             .then(function (result) {
                 if (result) {
@@ -198,11 +201,19 @@ ECER.Jscripts.WorkExperienceReference = {
         // If 400 Hours
         var is400 = (typeAttributeValue === 621870000);
         var is500 = (typeAttributeValue === 621870001);
-
+        // ICRA and 500 hrs shares the same responses
+        var isICRA = (typeAttributeValue === 621870002)
         crm_Utility.showHide(executionContext, is400, details400SectionName);
         crm_Utility.showHide(executionContext, is400, response400SectionName);
         crm_Utility.showHide(executionContext, is500, details500SectionName);
-        crm_Utility.showHide(executionContext, is500, response500SectionName);
+        crm_Utility.showHide(executionContext, is500 || isICRA, response500SectionName);
+
+        var secWorkDetailsName = "tab_workinformation:section_workdetails";
+        var secIndependentName = "tab_workinformation:section_icraindependentpracticedetails";
+        var secICRAChildCareProgramDetailsName = "tab_workinformation:section_icrachildcaredetails";
+        crm_Utility.showHide(executionContext, !isICRA, secWorkDetailsName);
+        crm_Utility.showHide(executionContext, isICRA, secIndependentName);
+        crm_Utility.showHide(executionContext, isICRA, secICRAChildCareProgramDetailsName);
     },
 
     showHideOnProvinceSelected: function (executionContext) {

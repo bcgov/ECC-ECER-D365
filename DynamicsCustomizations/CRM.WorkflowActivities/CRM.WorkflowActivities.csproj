@@ -107,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddDateActivity.cs" />
+    <Compile Include="CalculateCourseHourTotal.cs" />
     <Compile Include="ConcatenateStringActivity.cs" />
     <Compile Include="DeleteThisRecord.cs" />
     <Compile Include="CheckIfChildRecordExistsWithRecordCountActivity.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="GetDateOnlyActivity.cs" />
     <Compile Include="GetDatePartAndNameActivity.cs" />
     <Compile Include="GetApplicationByID.cs" />
+    <Compile Include="CalculateCourseAreaOfInstructionHourTotal.cs" />
     <Compile Include="HasOptionSetAttributeChangedFromSpecifiedValueActivity.cs" />
     <Compile Include="RemoveItemFromQueueActivity.cs" />
     <Compile Include="DateDifferenceActivity.cs" />

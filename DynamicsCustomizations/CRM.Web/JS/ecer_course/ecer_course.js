@@ -9,6 +9,35 @@ if (typeof ECER.Jscripts === "undefined") {
 }
 
 ECER.Jscripts.Course = {
+    onload: function (executionContext) {
+        this.programProfileHasChanges(executionContext);
+    },
+    programProfileHasChanges: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+
+        // Check if course has program profile lookup value
+        // if not null, fetch the program profile record and check if it has changes made field set to true
+        // set new changes made field as visible or hidden based on the value
+
+        let programProfileLookup = formContext.getAttribute("ecer_programid")?.getValue();
+
+        if (programProfileLookup) {
+
+            let programProfileId = programProfileLookup[0].id.replace("{", "").replace("}", "");
+            Xrm.WebApi.retrieveRecord("ecer_program", programProfileId, "?$select=ecer_changesmade").then(
+                function (result) {
+                    let changesMade = result.ecer_changesmade === 621870000;
+
+                    formContext.getControl("ecer_newcode")?.setVisible(changesMade);
+                    formContext.getControl("ecer_newcoursename")?.setVisible(changesMade);
+                    formContext.getControl("ecer_newcoursehourdecimal")?.setVisible(changesMade);
+                },
+                function (error) {
+                    console.log(error.message);
+                }
+            );
+        }
+    },
     AddCourse: function (formContext, type) {
         var formParameters = {};
 

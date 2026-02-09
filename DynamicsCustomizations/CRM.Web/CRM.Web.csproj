@@ -67,6 +67,7 @@
     <Content Include="JS\contact\ecer_contact.js" />
     <Content Include="JS\ecer_applicationassessment\ecer_applicationassessment.js" />
     <Content Include="JS\ecer_application\ecer_application.js" />
+    <Content Include="JS\ecer_bulkpspcommunication\ecer_bulkpspcommunication.js" />
     <Content Include="JS\ecer_campus\ecer_campus.js" />
     <Content Include="JS\ecer_certificatecondition\ecer_certificatecondition.js" />
     <Content Include="JS\ecer_certificate\ecer_certificate.js" />
@@ -75,15 +76,19 @@
     <Content Include="JS\ecer_comment\ecer_decisioncomment.js" />
     <Content Include="JS\ecer_communicationcontent\ecer_communicationcontent.js" />
     <Content Include="JS\ecer_communication\ecer_communication.js" />
+    <Content Include="JS\ecer_courseprovincialrequirement\ecer_courseprovincialrequirement.js" />
     <Content Include="JS\ecer_course\ecer_course.js" />
     <Content Include="JS\ecer_email\ecer_email.js" />
     <Content Include="JS\ecer_historicaldecision\ecer_historicaldecision.js" />
+    <Content Include="JS\ecer_immediateaction\ecer_immediateaction.js" />
+    <Content Include="JS\ecer_internationalcertification.js\ecer_internationalcertification.js" />
     <Content Include="JS\ecer_investigationplanningallegation\ecer_investigationplanningallegation.js" />
     <Content Include="JS\ecer_investigationplanninginterview\ecer_interview.js" />
     <Content Include="JS\ecer_investigationplanninginvolvedperson\ecer_investigationplanninginvolvedperson.js" />
     <Content Include="JS\ecer_professionaldevelopment\ecer_professionaldevelopment_buttons.js" />
     <Content Include="JS\ecer_programapplication\ecer_programapplication.js" />
     <Content Include="JS\ecer_program\ecer_program.js" />
+    <Content Include="JS\ecer_provincialrequirement\ecer_provincialrequirement.js" />
     <Content Include="JS\ecer_psiprogramrep\ecer_psiprogramrep.js" />
     <Content Include="JS\ecer_pspinstitution\ecer_postsecondaryinstitution.js" />
     <Content Include="JS\ecer_pspinterviewquestion\ecer_pspinterviewquestion.js" />
@@ -91,6 +96,7 @@
     <Content Include="JS\ecer_pspobservation\ecer_pspobservation.js" />
     <Content Include="JS\ecer_pspreferral\ecer_pspreferal.js" />
     <Content Include="JS\ecer_pspsitevisit\ecer_pspsitevisit.js" />
+    <Content Include="JS\ecer_reconsiderationinvestigation\ecer_reconsiderationinvestigation.js" />
     <Content Include="JS\ecer_transcript\ecer_transcript.js" />
     <Content Include="JS\ecer_utility.js" />
     <Content Include="JS\ecer_workexperienceassessment\ecer_workexperienceassessment.js" />

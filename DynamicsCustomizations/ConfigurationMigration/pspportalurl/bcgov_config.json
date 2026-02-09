@@ -1,0 +1,45 @@
+{
+  "LogicalName": "bcgov_config",
+  "PrimaryIdAttribute": "bcgov_configid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "bcgov_key",
+          "Type": 16,
+          "Value": "Base URL"
+        },
+        {
+          "Key": "bcgov_value",
+          "Type": 16,
+          "Value": "https://dev-ecer-psp-portal.apps.silver.devops.gov.bc.ca/"
+        },
+        {
+          "Key": "bcgov_configid",
+          "Type": 1,
+          "Value": "2eb6082d-49ca-f011-8544-7ced8d067c64"
+        },
+        {
+          "Key": "bcgov_group",
+          "Type": 16,
+          "Value": "PSP Portal"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 1
+}

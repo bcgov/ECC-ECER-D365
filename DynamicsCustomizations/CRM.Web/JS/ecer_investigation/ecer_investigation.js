@@ -15,6 +15,8 @@ ECER.Jscripts.Investigation =
         ECER.Jscripts.Investigation.lockComplaintInfo(executionContext);
         ECER.Jscripts.Investigation.showHideParallelProcess(executionContext);
         ECER.Jscripts.Investigation.showHideReasonForPriorityAssignment(executionContext);
+        ECER.Jscripts.Investigation.registrantHasActiveCondition(executionContext);
+        ECER.Jscripts.Investigation.registrantHasSuspendedCertificate(executionContext);
         ECER.Jscripts.Investigation.displayFindingsOrAllegations(executionContext);
         ECER.Jscripts.Investigation.showHideImmediateActions(executionContext);
         ECER.Jscripts.Investigation.onChangeInvestigationOutcomeInfo(executionContext);
@@ -38,6 +40,71 @@ ECER.Jscripts.Investigation =
 
 
     },
+    registrantHasSuspendedCertificate: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var applicant = formContext.getAttribute("ecer_applicant").getValue();
+        if (applicant == null) {
+            return;
+        }
+        var formType = formContext.ui.getFormType();
+        if (formType !== 2 &&
+            formType !== 3 &&
+            formType !== 4) {
+            // Only care of Update, Read Only, Disabled if on Contact entity
+            return;
+        }
+
+
+        var registrantId = applicant[0].id;
+        registrantId = registrantId.replace("{", "").replace("}", "");
+        var uniqueId = registrantId.replace("-", "") + "HasCertificateSuspended";
+        formContext.ui.clearFormNotification(uniqueId);
+        var query = "?$filter=_ecer_registrantid_value eq " + registrantId + " and statuscode eq 621870004 and statecode eq 0 ";
+        Xrm.WebApi.retrieveMultipleRecords("ecer_certificate", query).then(
+            function success(results) {
+                if (results.entities.length > 0) {
+                    // Has Active Certificate Solution
+                    var message = "Registrant has suspended certificate";
+                    var level = "WARNING";
+                    formContext.ui.setFormNotification(message, level, uniqueId);
+                }
+            }
+        );
+
+    },
+    //ECER-5214
+    registrantHasActiveCondition: function (executionContext, registrantId) {
+        var formContext = executionContext.getFormContext();
+        var applicant = formContext.getAttribute("ecer_applicant").getValue();
+        if (applicant == null) {
+            return;
+        }
+        var formType = formContext.ui.getFormType();
+        if (formType !== 2 &&
+            formType !== 3 &&
+            formType !== 4) {
+            // Only care of Update, Read Only, Disabled if on Contact entity
+            return;
+        }
+
+
+        var registrantId = applicant[0].id;
+        registrantId = registrantId.replace("{", "").replace("}", "");
+        var uniqueId = registrantId.replace("-", "") + "HasActiveConditions";
+        formContext.ui.clearFormNotification(uniqueId);
+        var option = "?$filter=_ecer_registrantid_value eq " + registrantId + " and statecode eq 0";
+        Xrm.WebApi.retrieveMultipleRecords("ecer_certificateconditions", option).then(
+            function success(results) {
+                if (results.entities.length > 0) {
+                    // Has Active Certificate Solution
+                    var message = "Registrant has active terms and conditions currently";
+                    var level = "WARNING";
+                    formContext.ui.setFormNotification(message, level, uniqueId);
+                }
+            }
+        );
+    },
+
 
     //10 / day
     onChangeTDADFacility: function (executionContext) {
@@ -50,20 +117,61 @@ ECER.Jscripts.Investigation =
     onChangeInvestigationOutcomeInfo: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var required = "none";
-        var show = formContext.getAttribute("ecer_investigationoutcome") && formContext.getAttribute("ecer_investigationoutcome").getValue() != null;
+        var hide = false;	        //ECER-5391
+        var show =
+            formContext.getAttribute("ecer_investigationoutcome") &&
+            formContext.getAttribute("ecer_investigationoutcome").getValue() != null;
         if (show) {
             required = "required";
         }
 
         crm_Utility.showHide(executionContext, show, "ecer_finalreportsent");
-        crm_Utility.showHide(executionContext, show, "ecer_reportprintedandfiled");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_finalreportsent_1");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_reportprintedandfiled_1");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_finalreportsent");
-        crm_Utility.showHide(executionContext, show, "header_process_ecer_reportprintedandfiled");
-        crm_Utility.setRequiredLevel(executionContext, required, "ecer_finalreportsent");
-        crm_Utility.setRequiredLevel(executionContext, required, "ecer_reportprintedandfiled");
 
+        //ECER-5391 (Hide the 'Report printed and filed' field on form as it is no longer needed on form and BPF)
+        crm_Utility.showHide(executionContext, hide, "ecer_reportprintedandfiled");
+        //ECER-5391
+
+        crm_Utility.showHide(
+            executionContext,
+            show,
+            "header_process_ecer_finalreportsent_1"
+        );
+
+        //ECER-5391 (Hide 'Report printed and filed' step (field) on BPF as it is no longer needed on form and BPF)	
+        crm_Utility.showHide(
+            executionContext,
+            hide,
+            "header_process_ecer_reportprintedandfiled_1"
+        );
+        //ECER-5391	
+
+        crm_Utility.showHide(
+            executionContext,
+            show,
+            "header_process_ecer_finalreportsent"
+        );
+
+        //ECER-5391 (Hide 'Report printed and filed' step (field) on BPF as it is no longer needed on form and BPF)	
+        crm_Utility.showHide(
+            executionContext,
+            hide,
+            "header_process_ecer_reportprintedandfiled"
+        );
+        //ECER-5391	
+
+        crm_Utility.setRequiredLevel(
+            executionContext,
+            required,
+            "ecer_finalreportsent"
+        );
+
+        //ECER-5391 (comment this line of code as the 'Report printed and filed' field is no longer needed on form and BPF)	
+        //crm_Utility.setRequiredLevel(
+        //  executionContext,
+        //  required,
+        //  "ecer_reportprintedandfiled"
+        //);
+        //ECER-5391	
 
     },
 

@@ -15,8 +15,24 @@ ECER.Jscripts.Program =
         ECER.Jscripts.Program.courseSectionShowHide(executionContext);
         ECER.Jscripts.Program.filterHeaderStatusReason(executionContext);
         ECER.Jscripts.Program.restrictStatusReasonAccess(executionContext);
+        ECER.Jscripts.Program.hideShowChangesMadeFields(executionContext);
     },
+    hideShowChangesMadeFields: function (executionContext) {
+        let formContext = executionContext.getFormContext();
 
+        let changesMade = formContext.getAttribute("ecer_changesmade");
+
+        if (changesMade?.getValue() === 621870000) {
+            formContext.getControl("ecer_newprogramprofilename")?.setVisible(true);
+            formContext.getControl("ecer_newofferingtype")?.setVisible(true);
+            formContext.getControl("ecer_newdescriptiveprogramname")?.setVisible(true);
+        }
+        else {
+            formContext.getControl("ecer_newprogramprofilename")?.setVisible(false);
+            formContext.getControl("ecer_newofferingtype")?.setVisible(false);
+            formContext.getControl("ecer_newdescriptiveprogramname")?.setVisible(false);
+        }
+    },
     filterHeaderStatusReason: function (executionContext) {
         // ECER-5107
         crm_Utility.filterOutOptionSet(executionContext, "header_statuscode", "621870003"); // Remove Denied        
@@ -33,7 +49,7 @@ ECER.Jscripts.Program =
         crm_Utility.enableDisable(executionContext, isDisable, "header_statuscode");
         crm_Utility.enableDisable(executionContext, isDisable, "statuscode");
     },
-    
+
     courseSectionShowHide: function (executionContext) {
         var formContext = executionContext.getFormContext();
 
@@ -53,7 +69,7 @@ ECER.Jscripts.Program =
 
             return;
         }
-        
+
         // Basic
         if (Object.values(programTypeVal).indexOf(621870000) > -1) {
             courseTab.sections.get("section_course_basic").setVisible(true);
