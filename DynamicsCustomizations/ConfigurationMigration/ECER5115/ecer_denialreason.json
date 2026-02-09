@@ -1,0 +1,147 @@
+{
+  "LogicalName": "ecer_denialreason",
+  "PrimaryIdAttribute": "ecer_denialreasonid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_denialreason",
+          "Type": 16,
+          "Value": "Other"
+        },
+        {
+          "Key": "ecer_denialreasonid",
+          "Type": 1,
+          "Value": "dccf621f-a1d5-ee11-904c-000d3af4a207"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_denialreason",
+          "Type": 16,
+          "Value": "Did not meet the education requirement for certification. Refer to ADL for details."
+        },
+        {
+          "Key": "ecer_denialreasonid",
+          "Type": 1,
+          "Value": "44512a85-ae98-f011-b41c-6045bd602bed"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_denialreason",
+          "Type": 16,
+          "Value": "Did not meet the work experience requirement for certification. Refer to ADL for details."
+        },
+        {
+          "Key": "ecer_denialreasonid",
+          "Type": 1,
+          "Value": "a3c0ae91-ae98-f011-b41c-6045bd602bed"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_denialreason",
+          "Type": 16,
+          "Value": "Did not meet the good character requirement for certification. Refer to ADL for details."
+        },
+        {
+          "Key": "ecer_denialreasonid",
+          "Type": 1,
+          "Value": "a1aedaa3-ae98-f011-b41c-6045bd602bed"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_denialreason",
+          "Type": 16,
+          "Value": "Did not meet the professional development requirement for certification. Refer to ADL for details."
+        },
+        {
+          "Key": "ecer_denialreasonid",
+          "Type": 1,
+          "Value": "3db8d57a-b098-f011-b41c-6045bd602bed"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 5
+}

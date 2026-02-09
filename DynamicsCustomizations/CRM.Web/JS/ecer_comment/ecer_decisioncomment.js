@@ -11,9 +11,8 @@ if (typeof ECER.Jscripts === "undefined") {
 ECER.Jscripts.Decision_Comment = {
     onLoad: function (executionContext) {
         ECER.Jscripts.Decision_Comment.disableFormCreatedByAndCreatedOn(executionContext);
+        ECER.Jscripts.Decision_Comment.showDenialReason(executionContext);
     },
-
-
     disableFormCreatedByAndCreatedOn: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var formType = formContext.ui.getFormType();
@@ -99,6 +98,20 @@ ECER.Jscripts.Decision_Comment = {
                     });
                 }
             });
+        }
+    },
+    showDenialReason: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var decisionAttribute = formContext.getAttribute("ecer_decision");
+        var denialReasonControl = formContext.getControl("ecer_denialreason");
+        if (decisionAttribute && denialReasonControl) {
+            var decisionValue = decisionAttribute.getValue();
+            // Show denial reason if decision is "Denied" (621870006)
+            if (decisionValue === 621870006) {
+                denialReasonControl.setVisible(true);
+            } else {
+                denialReasonControl.setVisible(false);
+            }
         }
     }
 }

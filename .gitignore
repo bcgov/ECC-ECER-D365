@@ -44,3 +44,4 @@ DynamicsCustomizations/.vs/CRM/v16/.suo
 /DynamicsCustomizations/CRM.Plugins/bin/Debug
 /DynamicsCustomizations/CRM.Plugins/obj/Debug
 /DynamicsCustomizations/packages
+/DynamicsCustomizations/CRM.Web/CRM.Web.csproj.user
