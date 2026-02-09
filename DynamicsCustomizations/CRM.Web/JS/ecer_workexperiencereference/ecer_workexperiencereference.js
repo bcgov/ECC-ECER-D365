@@ -94,10 +94,12 @@ ECER.Jscripts.WorkExperienceReference = {
                                 }
                                 else {
                                     var applicantAttribute = formContext.getAttribute(applicantAttributeName);
-                                    if (applicantAttribute === null || applicantAttribute.getValue() === null) {
+                                    if (!applicantAttribute || !applicantAttribute.getValue()) {
                                         return;
                                     }
-                                    var applicantId = applicantAttribute.getValue()[0].id.replace("{", "").replace("}", "");
+                                    var applicantId = applicantAttribute.getValue()[0].id
+                                        .replace("{", "")
+                                        .replace("}", "");
                                     var dateToCompare = new Date();
                                     var latestCertificate = ECER.Jscripts.Application.getApplicantLatestCertificate(executionContext, applicantId, dateToCompare);
                                     if (latestCertificate !== null) {
