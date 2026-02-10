@@ -84,6 +84,7 @@
     <Content Include="JS\ecer_internationalcertification.js\ecer_internationalcertification.js" />
     <Content Include="JS\ecer_investigationplanningallegation\ecer_investigationplanningallegation.js" />
     <Content Include="JS\ecer_investigationplanninginterview\ecer_interview.js" />
+    <Content Include="JS\ecer_investigationplanninginvolvedpersonintake\ecer_investigationplanninginvolvedpersonintake.js" />
     <Content Include="JS\ecer_investigationplanninginvolvedperson\ecer_investigationplanninginvolvedperson.js" />
     <Content Include="JS\ecer_professionaldevelopment\ecer_professionaldevelopment_buttons.js" />
     <Content Include="JS\ecer_programapplicationcomponentgroup\ecer_programapplicationcomponentgroup.js" />
