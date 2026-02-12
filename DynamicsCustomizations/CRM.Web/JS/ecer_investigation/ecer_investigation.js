@@ -23,7 +23,88 @@ ECER.Jscripts.Investigation = {
     );
     ECER.Jscripts.Investigation.onChangeTDADFacility(executionContext);
     ECER.Jscripts.Investigation.hideBPFResponseDate(executionContext);
-  },
+        //ECER-5499
+        ECER.Jscripts.Investigation.allFindingsNotAddressedAlert(executionContext);
+        //ECER-5499
+    },
+
+    //ECER-5499
+    onSave: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var findingsSubgridHasNoRecords = ECER.Jscripts.Investigation.findingsSubgridHasNoRecords(executionContext);
+        if (findingsSubgridHasNoRecords) {
+            //prevent investigation record save
+            executionContext.getEventArgs().preventDefault();
+            formContext.ui.setFormNotification("The 'Conclusion' tab does not have any Findings Records. Add Findings records.", "ERROR", "findingsSubgridEmpty");
+
+        } else {
+            // proceed with investigation record save
+            formContext.ui.clearFormNotification("findingsSubgridEmpty");
+        }
+    },
+    //ECER-5499
+
+    // ECER-5499   (new function 1)	
+    findingsSubgridHasNoRecords: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var investigationOutcomesList = [621870006, 621870001, 621870005, 621870002, 621870003];
+        var investigationOutcomeAttribute = Xrm.Page.getAttribute("ecer_investigationoutcome");
+        var investigationOutcomeValue = investigationOutcomeAttribute.getValue();
+        var investigationOutcomeLabel = investigationOutcomeAttribute.getText();
+        var conclusionTabSubgridControl = formContext.getControl("findingssubgrid");
+        var conclusionTabSubgridRecordsCount = conclusionTabSubgridControl.getGrid().getTotalRecordCount();
+        formContext.ui.clearFormNotification("findingsSubgridEmpty");
+
+        if (investigationOutcomesList.includes(investigationOutcomeValue)) {
+            if (conclusionTabSubgridRecordsCount === 0 || conclusionTabSubgridRecordsCount === -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
+    // ECER-5499   (new function 1)   	
+
+
+    // ECER-5499   (new function 2)   	
+    allFindingsNotAddressedAlert: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var investigationStatusReasonValue = formContext.getAttribute("statuscode").getValue();
+        var allFindingsAddressed = formContext.getAttribute("ecer_allfindingsaddressed").getValue();
+        var conclusionTabSubgridControl = formContext.getControl("findingssubgrid");
+        var conclusionTabSubgridRecordsCount = conclusionTabSubgridControl.getGrid().getTotalRecordCount();
+
+        var comfirmDialogSettings = {
+            text: "On 'Conclusion' tab the  'All Findings Addressed' field is not set to Yes and the tab has 'Not Addressed' findings records. Do you still want to change the investigation Status Reason to 'Complete' ?",
+            title: "Confirmation Required",
+            confirmButtonLabel: "Yes",
+            cancelButtonLabel: "No"
+        };
+
+        var comfirmDialogSize = {
+            height: 200,
+            width: 500
+        };
+
+        if (investigationStatusReasonValue === 621870009 && allFindingsAddressed != true && conclusionTabSubgridRecordsCount != 0) {
+            Xrm.Navigation.openConfirmDialog(comfirmDialogSettings, comfirmDialogSize).then(
+                function (success) {
+                    if (success.confirmed) {
+                        console.log("User confirmed as 'Yes'");
+                    } else {
+                        //Revert the status reason to value before change
+                        previousStatusReasonValue = formContext.getAttribute("statuscode").getInitialValue();
+                        formContext.getAttribute("statuscode").setValue(previousStatusReasonValue);
+                        console.log("User confirmed as 'No'");
+                    }
+                }
+            );
+
+        } else {
+            // No action needed
+        }
+    },
+    // ECER-5499   (new function 2)   	
   //ECER-5195
   hideBPFResponseDate: function (executionContext) {
     var formContext = executionContext.getFormContext();
