@@ -22,7 +22,7 @@ ECER.Jscripts.BulkPSPCommunication =
         var attributeName = "ecer_instruction";
         var defaultContent =
             "Tags supported in 'Message' \n" +
-            "{{LastBusinessDateOfAugust}} - Last business day of August in the year of job execution(current year). Has a format of Day, Month Date, Year \n" +
+            "{{LastBusinessDateOfAugust}} - Last Friday of August in the year of job execution(current year). Has a format of Day, Month Date, Year \n" +
             "{{PSIName}} - Education Institute Name \n" +
             "{{CallculatedAcademicYear}} - Represents last 2 digits of next year. Example if current year is 2025, this value is 26. Useful for formatting text like : 2025/26 \n" +
             "{{CalculatedCurrentYear}} - Represents current year in the format of YYYY.";
