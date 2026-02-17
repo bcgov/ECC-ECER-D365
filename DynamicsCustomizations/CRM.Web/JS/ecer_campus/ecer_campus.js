@@ -7,68 +7,104 @@ if (typeof ECER.Jscripts === "undefined") {
     ECER.Jscripts = {}
 }
 
-ECER.Jscripts.Campus= {
+ECER.Jscripts.Campus = {
     crm_ExecutionContext: null,
     onLoad: function (executionContext) {
-        
-      
+        this.onChangeSatelliteOrTemporaryLocation(executionContext);
+    },
+    onChangeSatelliteOrTemporaryLocation: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var satelliteOrTemporaryLocationField = formContext.getAttribute("ecer_satelliteortemporarylocation");
+        if (satelliteOrTemporaryLocationField != null) {
+            var satelliteOrTemporaryLocationValue = satelliteOrTemporaryLocationField.getValue();
+
+            if (satelliteOrTemporaryLocationValue === 621870001) {
+                // show program intake
+                formContext.getControl("ecer_programintake").setVisible(true);
+            }
+            else if (satelliteOrTemporaryLocationValue === 621870000) {
+                // hide program intake
+                formContext.getControl("ecer_programintake").setVisible(false);
+            } else {
+                // check educational institution institution type
+                let educationalInstitution = formContext.getAttribute("ecer_postsecondaryinstitute")?.getValue();
+
+                if (educationalInstitution != null) {
+                    let educationalInstitutionId = educationalInstitution[0].id;
+                    Xrm.WebApi.retrieveRecord("ecer_postsecondaryinstitute", educationalInstitutionId, "?$select=ecer_psiinstitutiontype").then(
+                        function success(result) {
+                            let institutionType = result.ecer_psiinstitutiontype;
+                            if (institutionType === 621870000) {
+                                // hide program intake
+                                formContext.getControl("ecer_programintake").setVisible(false);
+                            } else {
+                                // show program intake
+                                formContext.getControl("ecer_programintake").setVisible(true);
+                            }
+                        },
+                        function (error) {
+                            console.log(error.message);
+                        }
+                    );
+                }
+                else {
+                    // show program intake
+                    formContext.getControl("ecer_programintake").setVisible(true);
+                }
+            }
+        }
     },
     //ECER-5157: populate address from PSI
     setCampusAddress: function (executionContext) {
         var formContext = executionContext.getFormContext();
-        var  sameaddressaspsiattribute =formContext.getAttribute("ecer_addresssameaspsi");
-        var  sameaddressaspsi= sameaddressaspsiattribute.getValue();
+        var sameaddressaspsiattribute = formContext.getAttribute("ecer_addresssameaspsi");
+        var sameaddressaspsi = sameaddressaspsiattribute.getValue();
 
 
-        if( sameaddressaspsiattribute && sameaddressaspsi)
-        {
-           var psi = formContext.getAttribute("ecer_postsecondaryinstitute").getValue("ecer_postsecondaryinstitute");
-           var psiid = psi[0].id.replace(/[{}]/g, "");
-           if(psi !== null){
+        if (sameaddressaspsiattribute && sameaddressaspsi) {
+            var psi = formContext.getAttribute("ecer_postsecondaryinstitute").getValue("ecer_postsecondaryinstitute");
+            var psiid = psi[0].id.replace(/[{}]/g, "");
+            if (psi !== null) {
 
-            Xrm.WebApi.retrieveRecord("ecer_postsecondaryinstitute", psiid).then(
-                function success(result) {
-                    var street1 = result.ecer_street1 ? result.ecer_street1 : null;
-                    var street2 = result.ecer_street2 ? result.ecer_street2: null;
-                    var street3 = result.ecer_street3 ? result.ecer_street3: null;
-                    var city = result.ecer_city ? result.ecer_city: null;
-                    var province = result._ecer_provinceid_value ? crm_Utility.generateLookupObject("ecer_province", result["_ecer_provinceid_value"], result["_ecer_provinceid_value@OData.Community.Display.V1.FormattedValue"]): null;
-                    var country = result._ecer_countryid_value ? crm_Utility.generateLookupObject("ecer_country", result["_ecer_countryid_value"], result["_ecer_countryid_value@OData.Community.Display.V1.FormattedValue"]): null;
-                    var postalcode = result.ecer_zippostalcode ? result.ecer_zippostalcode: null;
+                Xrm.WebApi.retrieveRecord("ecer_postsecondaryinstitute", psiid).then(
+                    function success(result) {
+                        var street1 = result.ecer_street1 ? result.ecer_street1 : null;
+                        var street2 = result.ecer_street2 ? result.ecer_street2 : null;
+                        var street3 = result.ecer_street3 ? result.ecer_street3 : null;
+                        var city = result.ecer_city ? result.ecer_city : null;
+                        var province = result._ecer_provinceid_value ? crm_Utility.generateLookupObject("ecer_province", result["_ecer_provinceid_value"], result["_ecer_provinceid_value@OData.Community.Display.V1.FormattedValue"]) : null;
+                        var country = result._ecer_countryid_value ? crm_Utility.generateLookupObject("ecer_country", result["_ecer_countryid_value"], result["_ecer_countryid_value@OData.Community.Display.V1.FormattedValue"]) : null;
+                        var postalcode = result.ecer_zippostalcode ? result.ecer_zippostalcode : null;
 
-                    formContext.getAttribute("ecer_street1").setValue(street1);
-                    formContext.getAttribute("ecer_street2").setValue(street2);
-                    formContext.getAttribute("ecer_street3").setValue(street3);
-                    formContext.getAttribute("ecer_city").setValue(city);
-                    formContext.getAttribute("ecer_province").setValue(province);
-                    formContext.getAttribute("ecer_country").setValue(country);
-                    formContext.getAttribute("ecer_postalcode").setValue(postalcode);
+                        formContext.getAttribute("ecer_street1").setValue(street1);
+                        formContext.getAttribute("ecer_street2").setValue(street2);
+                        formContext.getAttribute("ecer_street3").setValue(street3);
+                        formContext.getAttribute("ecer_city").setValue(city);
+                        formContext.getAttribute("ecer_province").setValue(province);
+                        formContext.getAttribute("ecer_country").setValue(country);
+                        formContext.getAttribute("ecer_postalcode").setValue(postalcode);
 
-                   
-                },
-                function (error) {
-                    console.log(error.message);
-                
-                }
-            );
 
-           
+                    },
+                    function (error) {
+                        console.log(error.message);
 
-           }else{
-            console.log("empty psi");
-           }
-          
+                    }
+                );
+
+
+
+            } else {
+                console.log("empty psi");
+            }
+
 
 
         }
-    
-    
+
+
 
 
     }
-    
-    
-   
+
 }
-
-
