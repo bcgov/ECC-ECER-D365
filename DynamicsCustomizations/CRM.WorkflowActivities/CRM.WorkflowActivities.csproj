@@ -108,6 +108,7 @@
   <ItemGroup>
     <Compile Include="AddDateActivity.cs" />
     <Compile Include="CalculateCourseHourTotal.cs" />
+    <Compile Include="CheckIfChildRecordCountOfSpecificOSValueActivity.cs" />
     <Compile Include="ConcatenateStringActivity.cs" />
     <Compile Include="DeleteThisRecord.cs" />
     <Compile Include="CheckIfChildRecordExistsWithRecordCountActivity.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="GetApplicationByID.cs" />
     <Compile Include="CalculateCourseAreaOfInstructionHourTotal.cs" />
     <Compile Include="HasOptionSetAttributeChangedFromSpecifiedValueActivity.cs" />
+    <Compile Include="HasOptionSetCollectionAttributeChangedActivity.cs" />
     <Compile Include="RemoveItemFromQueueActivity.cs" />
     <Compile Include="DateDifferenceActivity.cs" />
     <Compile Include="RevisedManipulateDateActivity.cs" />
@@ -127,7 +129,7 @@
     <Compile Include="GetQueueByName.cs" />
     <Compile Include="HasBooleanAttributeChangedActivity.cs" />
     <Compile Include="HasWholeNumberAttributeChangedActivity.cs" />
-    <Compile Include="HasOptionSetCollectionAttributeChangedActivity.cs" />
+    <Compile Include="Are2OptionSetCollectionAttributeMatchedActivity.cs" />
     <Compile Include="HasMoneyAttributeChangedActivity.cs" />
     <Compile Include="HasLookupAttributeChangedActivity.cs" />
     <Compile Include="HasDecimalAttributeChangedActivity.cs" />

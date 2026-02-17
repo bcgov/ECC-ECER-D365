@@ -97,12 +97,12 @@ namespace CRM.CustomWorkflow
                 query.Criteria.AddCondition("statecode", ConditionOperator.Equal, 0); // Active
                 if (programApplicationER != null && programProfileER == null)
                 {
-                    Tracing.Trace("Query for Program Application Courses");
+                    Tracing.Trace($"Query for Program Application Courses - Program Application: {programApplicationER.Id}");
                     query.Criteria.AddCondition("ecer_programapplication", ConditionOperator.Equal, programApplicationER.Id);
                 }
                 else if (programProfileER != null && programApplicationER == null)
                 {
-                    Tracing.Trace("Query for Program Profile Courses");
+                    Tracing.Trace($"Query for Program Profile Courses - Program Profile: {programProfileER.Id}");
                     query.Criteria.AddCondition("ecer_programid", ConditionOperator.Equal, programProfileER.Id);
                 }
                 var results = Service.RetrieveMultiple(query);
@@ -126,7 +126,7 @@ namespace CRM.CustomWorkflow
                     }
 
                     if (record.GetAttributeValue<decimal?>("ecer_newcoursehourdecimal").HasValue && 
-                        record.GetAttributeValue<decimal>("ecer_newcoursehourdecimal") > 0)
+                        record.GetAttributeValue<decimal>("ecer_newcoursehourdecimal") >= 0)
                     {
                         newHours = record.GetAttributeValue<decimal>("ecer_newcoursehourdecimal");
                     }
@@ -137,24 +137,32 @@ namespace CRM.CustomWorkflow
 
                     Tracing.Trace($"Hours: {hours}; New Hours: {newHours}");
                     var programType = record.GetAttributeValue<OptionSetValue>("ecer_programtype");
-                    var programTypeValue = programType.Value;
-                    switch(programTypeValue)
+                    if (programType != null)
                     {
-                        case 621870000: // Basic
-                            basicSubTotal += hours;
-                            basicNewSubTotal += newHours;
-                            Tracing.Trace($"Basic Subtotal: {basicSubTotal}; New Basic Subtotal:{basicNewSubTotal}");
-                            break;
-                        case 621870001: // ITE
-                            iteSubTotal += hours;
-                            iteNewSubTotal += newHours;
-                            Tracing.Trace($"ITE Subtotal: {iteSubTotal}; New ITE Subtotal:{iteNewSubTotal}");
-                            break;
-                        case 621870002: // SNE
-                            sneSubTotal += hours;
-                            sneNewSubTotal += newHours;
-                            Tracing.Trace($"SNE Subtotal: {sneSubTotal}; New SNE Subtotal:{sneNewSubTotal}");
-                            break;
+                        var programTypeValue = programType.Value;
+                        Tracing.Trace($"Program Type Value: {programTypeValue}");
+                        switch (programTypeValue)
+                        {
+                            case 621870000: // Basic
+                                basicSubTotal += hours;
+                                basicNewSubTotal += newHours;
+                                Tracing.Trace($"Basic Subtotal: {basicSubTotal}; New Basic Subtotal:{basicNewSubTotal}");
+                                break;
+                            case 621870001: // ITE
+                                iteSubTotal += hours;
+                                iteNewSubTotal += newHours;
+                                Tracing.Trace($"ITE Subtotal: {iteSubTotal}; New ITE Subtotal:{iteNewSubTotal}");
+                                break;
+                            case 621870002: // SNE
+                                sneSubTotal += hours;
+                                sneNewSubTotal += newHours;
+                                Tracing.Trace($"SNE Subtotal: {sneSubTotal}; New SNE Subtotal:{sneNewSubTotal}");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Tracing.Trace($"Course Record ID: {record.Id} does not contain Program Type");
                     }
                 }
 
