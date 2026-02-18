@@ -8,8 +8,11 @@ if (typeof ECER.Jscripts === "undefined") {
 
 ECER.Jscripts.ProgramApplication =
 {
+    crm_ExecutionContext: null,
+    crm_FormContext: null,
     onLoad: function (executionContext) {
-        var formContext = executionContext.getFormContext();
+        this.crm_ExecutionContext = executionContext;
+        this.crm_FormContext = executionContext.getFormContext();
 
         ECER.Jscripts.ProgramApplication.setSignature(executionContext);
         ECER.Jscripts.ProgramApplication.restrictStatusReasonAccess(executionContext);
@@ -19,6 +22,34 @@ ECER.Jscripts.ProgramApplication =
 
         this.showHideOtherAdmissionOption(executionContext);
         this.showHideFieldsBasedOnDeliveryMethod(executionContext);
+    },
+
+    setProgramApplicationLookupOnSubgridSelect: function (executionContext, groupLookupAttributeName, componentLookupAttributeName) {
+        // ECER.Jscripts.ProgramApplication.setProgramApplicationLookupOnSubgridSelect
+        var formContext = executionContext.getFormContext();
+        var selectedEntity = formContext.data.entity;
+        var recordId = selectedEntity.getId();
+        var recordName = selectedEntity.attributes.getByName("ecer_name").getValue();
+        var entityName = selectedEntity.getEntityName();
+
+        var programApplicationLookup = crm_Utility.generateLookupObject(entityName, recordId, recordName);
+        var groupLookupAttribute = this.crm_FormContext.getAttribute(groupLookupAttributeName);
+        if (groupLookupAttribute != null && groupLookupAttribute.getValue() != null) {
+            var currentGroupId = groupLookupAttribute.getValue()[0].id.replace('{', '').replace('}', '');
+            var recordIdWithoutBrackets = recordId.replace('{', '').replace('}', '');
+            if (currentGroupId == recordIdWithoutBrackets) {
+                // Ignore
+                return;
+            }
+        }
+
+        // Set Group Lookup
+        groupLookupAttribute.setValue(programApplicationLookup);
+        groupLookupAttribute.fireOnChange();
+        // Clear Component Lookup
+        var componentLookupAttribute = this.crm_FormContext.getAttribute(componentLookupAttributeName);
+        componentLookupAttribute.setValue(null);
+        componentLookupAttribute.fireOnChange();
     },
 
     setPSPRepresentative: function (executionContext) {
