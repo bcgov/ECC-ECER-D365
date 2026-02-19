@@ -620,6 +620,7 @@ ECER.Jscripts.Communication = {
 
     fieldMerge: function (executionContext) {
         var formContext = executionContext.getFormContext();
+        this.loadRelatedObjects(executionContext);
         var detailsAttributeName = "ecer_message";
         var currentDetailsAttribute = formContext.getAttribute(detailsAttributeName);
         var currentDetailsValue = currentDetailsAttribute.getValue();
