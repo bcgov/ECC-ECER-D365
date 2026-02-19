@@ -24,7 +24,8 @@ ECER.Jscripts.Investigation = {
     ECER.Jscripts.Investigation.onChangeTDADFacility(executionContext);
         ECER.Jscripts.Investigation.hideBPFResponseDate(executionContext);
 
-    }//ECER-5499
+    
+    //ECER-5499
 	ECER.Jscripts.Investigation.allFindingsNotAddressedAlert(executionContext);
     //ECER-5499
 },
@@ -180,7 +181,11 @@ allFindingsNotAddressedAlert: function (executionContext) {
       executionContext,
       required,
       "ecer_reportprintedandfiled"
-    );
+      );
+      // ECER-5487
+      var reconsiderationRequested = formContext.getAttribute("ecer_reconrequest") &&
+          formContext.getAttribute("ecer_reconrequest").getValue() === 621870000; // YES
+      crm_Utility.showHide(executionContext, show && reconsiderationRequested, "tab_reconsideration");
   },
 
   // Set Certification Type / Certificate Expiry Date / Certificate Status
