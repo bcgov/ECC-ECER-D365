@@ -20,21 +20,27 @@ ECER.Jscripts.ProgramCampus =
 
         let programProfile = formContext.getAttribute("ecer_programprofileid").getValue();
         let programApplication = formContext.getAttribute("ecer_programapplicationid").getValue();
+        let campus = formContext.getAttribute("ecer_campusid").getValue();
+
+        let educationalInstitution = formContext.getAttribute("ecer_educationalinstitutionid");
+
+        if (educationalInstitution.getValue() != null)
+            return; // if educational institution already has a value, do not override it
 
         if (programProfile !== null) {
             Xrm.WebApi.retrieveRecord("ecer_program", programProfile[0].id, "?$select=_ecer_postsecondaryinstitution_value").then(
                 function success(result) {
                     let educationalInstitution = result._ecer_postsecondaryinstitution_value;
                     if (educationalInstitution !== null) {
-                        formContext.getAttribute("ecer_educationalinstitutionid").setValue([
+                        educationalInstitution.setValue([
                             {
                                 id: educationalInstitution,
-                                name: result["_ecer_postsecondaryinstitution_value@OData.Community.Display.V1.FormattedValue"], 
+                                name: result["_ecer_postsecondaryinstitution_value@OData.Community.Display.V1.FormattedValue"],
                                 entityType: "ecer_postsecondaryinstitute"
                             }
                         ]);
 
-                        formContext.getAttribute("ecer_educationalinstitutionid").setSubmitMode("dirty");
+                        educationalInstitution.setSubmitMode("dirty");
                     }
                 },
                 function (error) {
@@ -47,21 +53,37 @@ ECER.Jscripts.ProgramCampus =
                 function success(result) {
                     let educationalInstitution = result._ecer_postsecondaryinstitute_value;
                     if (educationalInstitution !== null) {
-                        formContext.getAttribute("ecer_educationalinstitutionid").setValue([
+                        educationalInstitution.setValue([
                             {
                                 id: educationalInstitution,
-                                name: result["_ecer_postsecondaryinstitute_value@OData.Community.Display.V1.FormattedValue"], 
+                                name: result["_ecer_postsecondaryinstitute_value@OData.Community.Display.V1.FormattedValue"],
                                 entityType: "ecer_postsecondaryinstitute"
                             }
                         ]);
 
-                        formContext.getAttribute("ecer_educationalinstitutionid").setSubmitMode("dirty");
+                        educationalInstitution.setSubmitMode("dirty");
                     }
                 },
                 function (error) {
                     console.log(error.message);
                 }
             );
+        }
+        else if (campus !== null) {
+            Xrm.WebApi.retrieveRecord("ecer_postsecondaryinstitutecampus", campus[0].id, "?$select=_ecer_postsecondaryinstitute_value").then(
+                function success(result) {
+                    let educationalInstitution = result._ecer_postsecondaryinstitute_value;
+                    if (educationalInstitution !== null) {
+                        formContext.getAttribute("ecer_educationalinstitutionid").setValue([
+                            {
+                                id: educationalInstitution,
+                                name: result["_ecer_postsecondaryinstitute_value@OData.Community.Display.V1.FormattedValue"],
+                                entityType: "ecer_postsecondaryinstitute"
+                            }]);
+
+                        educationalInstitution.setSubmitMode("dirty");
+                    }
+                });
         }
     },
     mandatoryBasedOnCampus: function (executionContext) {
