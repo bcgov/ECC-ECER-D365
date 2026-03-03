@@ -39,63 +39,165 @@ ECER.Jscripts.Interview = {
       formContext.getAttribute("ecer_descriptionplaintext")?.setValue(null);
     }
   },
-  populateFromInvolvedPerson: function (executionContext) {
-    var lookupAttrName = "ecer_investigationplanninginvolve";
-    var destNameAttr = "ecer_name";
-    var destRoleAttr = "ecer_role";
-    var destEmailAttr = "ecer_email";
-    var destPhoneAttr = "ecer_phonenumber";
+    populateFromInvolvedPerson: function (executionContext) {
+        var lookupAttrName = "ecer_investigationplanninginvolve";
+        var destNameAttr = "ecer_name";
+        var destRoleAttr = "ecer_role";
+        var destEmailAttr = "ecer_email";
+        var destPhoneAttr = "ecer_phonenumber";
+        var destOtherRole = "ecer_otherrole";
 
-    var sourceTable = "ecer_investigationplanninginvolvedperson";
+        var sourceTable = "ecer_investigationplanninginvolvedperson";
 
-    var selectCols =
-      "?$select=ecer_firstname,ecer_lastname,ecer_role,emailaddress,ecer_phonenumber";
+        var selectCols =
+            "?$select=ecer_firstname,ecer_lastname,ecer_role,emailaddress,ecer_phonenumber,ecer_otherrole";
 
-    var formContext = executionContext.getFormContext();
-    var lookupAttr = formContext.getAttribute(lookupAttrName);
-    if (lookupAttr === null) {
-      console.log("Lookup field not on form");
-      return;
-    }
-
-    var lookupValue = lookupAttr.getValue();
-    if (lookupValue === null) {
-      console.log("Lookup empty – nothing to copy");
-      return;
-    }
-
-    var lookupId = lookupValue[0].id.replace(/[{}]/g, "").toLowerCase();
-
-    Xrm.WebApi.retrieveRecord(sourceTable, lookupId, selectCols).then(
-      function success(record) {
-        var current = formContext.getAttribute(lookupAttrName).getValue();
-        if (
-          !current ||
-          current[0].id.replace(/[{}]/g, "").toLowerCase() !== lookupId
-        ) {
-          return;
+        var formContext = executionContext.getFormContext();
+        var lookupAttr = formContext.getAttribute(lookupAttrName);
+        if (lookupAttr === null) {
+            console.log("Lookup field not on form");
+            return;
         }
 
-        var first = record.ecer_firstname || "";
-        var last = record.ecer_lastname || "";
-        var full = (first + " " + last).trim();
+        var lookupValue = lookupAttr.getValue();
+        if (lookupValue === null) {
+            console.log("Lookup empty â€“ nothing to copy");
+            return;
+        }
 
-        if (full) formContext.getAttribute(destNameAttr).setValue(full);
-        if (record.ecer_role !== undefined)
-          formContext.getAttribute(destRoleAttr).setValue(record.ecer_role);
-        if (record.emailaddress !== undefined)
-          formContext.getAttribute(destEmailAttr).setValue(record.emailaddress);
-        if (record.ecer_phonenumber !== undefined)
-          formContext
-            .getAttribute(destPhoneAttr)
-            .setValue(record.ecer_phonenumber);
-      },
-      function (error) {
-        console.log("Interview populate error: " + error.message);
-        Xrm.Utility.alertDialog("Couldn’t pull details from Involved Person.");
-      }
-    );
-  },
+        var lookupId = lookupValue[0].id.replace(/[{}]/g, "").toLowerCase();
+
+        Xrm.WebApi.retrieveRecord(sourceTable, lookupId, selectCols).then(
+            function success(record) {
+                var current = formContext.getAttribute(lookupAttrName).getValue();
+                if (
+                    !current ||
+                    current[0].id.replace(/[{}]/g, "").toLowerCase() !== lookupId
+                ) {
+                    return;
+                }
+
+                var first = record.ecer_firstname || "";
+                var last = record.ecer_lastname || "";
+                var full = (first + " " + last).trim();
+
+                if (full) formContext.getAttribute(destNameAttr).setValue(full);
+                //ECER-5316 - Allign Role from Involved Person to Interview Role
+                //Note: if Updating any roles either in Involved Person or Interviview Please upadte this JS
+                if (record.ecer_role !== undefined) {
+                    var interviewRole = null;
+                    switch (record.ecer_role) {
+                        //Witness
+                        case 621870000:
+                            interviewRole = 621870000;
+                            break;
+                        //Alleged Victim
+                        case 621870001:
+                            interviewRole = 621870001;
+                            break;
+                        //Child
+                        case 621870002:
+                            interviewRole = 621870002;
+                            break;
+                        //Parent or Guardian
+                        case 621870003:
+                            interviewRole = 621870003;
+                            break;
+                        //Parent of Alleged Victim
+                        case 621870004:
+                            interviewRole = 621870004;
+                            break;
+                        //Co-Worker
+                        case 621870005:
+                            interviewRole = 621870005;
+                            break;
+                        //Former Co-Worker
+                        case 621870006:
+                            interviewRole = 621870006;
+                            break;
+                        //Under Investigation Also
+                        case 621870007:
+                            interviewRole = 621870020;
+                            break;
+                        //Director
+                        case 621870008:
+                            interviewRole = 621870007;
+                            break;
+                        //Licensee
+                        case 621870009:
+                            interviewRole = 621870008;
+                            break;
+                        //Manager
+                        case 621870010:
+                            interviewRole = 621870009;
+                            break;
+                        //Supervisor
+                        case 621870011:
+                            interviewRole = 621870010;
+                            break;
+                        //Employer
+                        case 621870012:
+                            interviewRole = 621870011;
+                            break;
+                        //Former Employer
+                        case 621870013:
+                            interviewRole = 621870012;
+                            break;
+                        //Responsible Audit
+                        case 621870014:
+                            interviewRole = 621870013;
+                            break;
+                        //Private Citizen
+                        case 621870015:
+                            interviewRole = 621870014;
+                            break;
+                        //Relative
+                        case 621870016:
+                            interviewRole = 621870015;
+                            break;
+                        //Unknown
+                        case 621870017:
+                            interviewRole = 621870018;
+                            break;
+                        //Registrant
+                        case 621870018:
+                            interviewRole = 621870019;
+                            break;
+                        //Employee
+                        case 621870019:
+                            interviewRole = 621870016;
+                            break;
+                        //Practicum Student
+                        case 621870020:
+                            interviewRole = 621870017;
+                            break;
+                        //Other
+                        case 621870021:
+                            interviewRole = 621870021;
+                            break;
+
+                    }
+                    formContext.getAttribute(destRoleAttr).setValue(interviewRole);
+                }
+                if (record.ecer_role == 621870021) {
+                    if (record.ecer_otherrole !== undefined) {
+                        formContext.getAttribute(destOtherRole).setValue(record.ecer_otherrole);
+                    }
+
+                }
+                if (record.emailaddress !== undefined)
+                    formContext.getAttribute(destEmailAttr).setValue(record.emailaddress);
+                if (record.ecer_phonenumber !== undefined)
+                    formContext
+                        .getAttribute(destPhoneAttr)
+                        .setValue(record.ecer_phonenumber);
+            },
+            function (error) {
+                console.log("Interview populate error: " + error.message);
+                Xrm.Utility.alertDialog("Couldnâ€™t pull details from Involved Person.");
+            }
+        );
+    },
   showInvestigationBanner: function (executionContext, configJson) {
     "use strict";
     try {
