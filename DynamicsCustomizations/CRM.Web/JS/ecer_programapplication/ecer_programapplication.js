@@ -44,7 +44,6 @@ ECER.Jscripts.ProgramApplication =
         else {
             formContext.getControl("ecer_fromprogramprofileid").setVisible(false);
             formContext.getControl("ecer_fromprogramprofileid").setDisabled(true);
-            formContext.getAttribute("ecer_fromprogramprofileid").setValue(null);
         }
     },
 
