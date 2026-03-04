@@ -24,6 +24,20 @@ ECER.Jscripts.ProgramApplication =
         this.showHideOtherAdmissionOption(executionContext);
         this.showHideFieldsBasedOnDeliveryMethod(executionContext);
         this.showHideFromProgramProfile(executionContext);
+        this.addCustomFilterForFromProgramProfile(executionContext);
+    },
+
+    addCustomFilterForFromProgramProfile: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var fromProgramProfileControl = formContext.getControl("ecer_fromprogramprofileid");
+        if (fromProgramProfileControl == null) {
+            return;
+        }
+        // add custom filter program profile statuscode is Registry Review Completed
+        fromProgramProfileControl.addPreSearch(function () {
+            var filter = "<filter type='and'><condition attribute='statuscode' operator='eq' value='621870002' /></filter>";
+            fromProgramProfileControl.addCustomFilter(filter, "ecer_program");
+        });
     },
 
     showHideFromProgramProfile: function (executionContext) {
