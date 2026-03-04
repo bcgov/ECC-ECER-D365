@@ -19,9 +19,33 @@ ECER.Jscripts.ProgramApplication =
         ECER.Jscripts.ProgramApplication.filterHeaderStatusReason(executionContext);
         ECER.Jscripts.ProgramApplication.setPSPRepresentative(executionContext);
         ECER.Jscripts.ProgramApplication.setOrigin(executionContext);
+        ECER.Jscripts.ProgramApplication.filterStatusReason(executionContext);
 
         this.showHideOtherAdmissionOption(executionContext);
         this.showHideFieldsBasedOnDeliveryMethod(executionContext);
+        this.showHideFromProgramProfile(executionContext);
+    },
+
+    showHideFromProgramProfile: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+
+        //Application Type = Satellite Program, Add Online or Hybrid Delivery Method, or New Campus at Recognized Private Institution
+        // Show From Program Profile
+        var applicationType = formContext.getAttribute("ecer_applicationtype").getValue();
+
+        if (applicationType == 621870001 || applicationType == 621870002 || applicationType == 621870003) {
+            formContext.getControl("ecer_fromprogramprofileid").setVisible(true);
+
+            // if from program profile has no value make it editable
+            if (formContext.getAttribute("ecer_fromprogramprofileid").getValue() == null) {
+                formContext.getControl("ecer_fromprogramprofileid").setDisabled(false);
+            }
+        }
+        else {
+            formContext.getControl("ecer_fromprogramprofileid").setVisible(false);
+            formContext.getControl("ecer_fromprogramprofileid").setDisabled(true);
+            formContext.getAttribute("ecer_fromprogramprofileid").setValue(null);
+        }
     },
 
     setProgramApplicationLookupOnSubgridSelect: function (executionContext, groupLookupAttributeName, componentLookupAttributeName) {
@@ -128,6 +152,19 @@ ECER.Jscripts.ProgramApplication =
         var isDisable = !(programDirectorRole || programAnalystRole || programCooridnatorRole || sysAdminRole);
         crm_Utility.enableDisable(executionContext, isDisable, "header_statuscode");
         crm_Utility.enableDisable(executionContext, isDisable, "statuscode");
+    },
+
+    filterStatusReason: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+
+        var applicationType = formContext.getAttribute("ecer_applicationtype");
+        var statusReasonControl = formContext.getControl("header_statuscode");
+
+        if (!applicationType || !applicationType.getValue() || applicationType.getValue() == 621870001 || applicationType.getValue() == 621870002) {
+            return;
+        }
+
+        statusReasonControl.removeOption(621870014);
     },
 
     filterHeaderStatusReason: function (executionContext) {
