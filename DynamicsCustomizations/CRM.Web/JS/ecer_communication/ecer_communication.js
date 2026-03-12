@@ -596,7 +596,8 @@ ECER.Jscripts.Communication = {
         if (shortDateString === undefined ||
             shortDateString === null ||
             shortDateString.trim() === "" ||
-            Number.isNaN(Number(shortDateString.replace("-", "")))) {
+            !shortDateString.includes("-") ||
+            Number.isNaN(Number(shortDateString.replaceAll("-", "")))) {
             // Date should be in 2024-08-14
             // isNaN SPOJ the input parameter has to be parsed as Number and then it will return NaN
             return shortDateString;
@@ -613,6 +614,7 @@ ECER.Jscripts.Communication = {
                     day: 'numeric'
                 };
                 var date = new Date(dateTimeStamp);
+                date.setHours(date.getHours() + 8); // Add 8 hours for Pacific Time zone adjustment.
                 return date.toLocaleDateString('en-US', dateDisplayOptions);
             }
         }
