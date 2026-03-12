@@ -31,7 +31,7 @@ namespace BCGOV.Plugin.DocumentUrl
                 {
                     EntityReference target = context.InputParameters["Target"] as EntityReference;
 
-                    var documentEntity = service.Retrieve("bcgov_documenturl", target.Id, new ColumnSet("bcgov_filename", "bcgov_receiveddate", "bcgov_url"));
+                    var documentEntity = service.Retrieve("bcgov_documenturl", target.Id, new ColumnSet(true));
 
                     if (documentEntity.Contains("bcgov_filename") && !string.IsNullOrEmpty(documentEntity["bcgov_filename"].ToString()))
                         fileName = documentEntity["bcgov_filename"].ToString();
@@ -48,8 +48,7 @@ namespace BCGOV.Plugin.DocumentUrl
                     string authSecret = Helpers.GetSecureConfigKeyValue(configs, "AuthSecret", "Storage");
                     string authClientId = Helpers.GetSecureConfigKeyValue(configs, "AuthClientId", "Storage");
                     string url = Helpers.GetConfigKeyValue(configs, "InterfaceUrl", "Storage");
-                    string registryStorageBucketName = Helpers.GetConfigKeyValue(configs, "Registry Bucket Name", "Storage");
-                    string pspStorageBucketName = Helpers.GetConfigKeyValue(configs, "PSP Bucket Name", "Storage");
+                    string defaultStorageApplication = "Registry";
                     var bearerToken = Helpers.GetBearerToken(authUrl, authClientId, authSecret);
 
                     url = url + "/api/files/" + documentEntity.Id.ToString();
@@ -59,14 +58,14 @@ namespace BCGOV.Plugin.DocumentUrl
                         client.DefaultRequestHeaders.Add("Authorization", "Bearer " + bearerToken);
                         if(documentEntity.Contains("bcgov_url"))
                             client.DefaultRequestHeaders.Add("file-folder", documentEntity["bcgov_url"].ToString());
-                        if (documentEntity.Contains("ecer_bucketname"))
+                        if (documentEntity.Contains("ecer_applicationname"))
                         {
-                            client.DefaultRequestHeaders.Add("bucketname", documentEntity["ecer_bucketname"].ToString());
+                            client.DefaultRequestHeaders.Add("application", documentEntity["ecer_applicationname"].ToString());
                         }
                         else
                         {
                             // Default bucket name
-                            client.DefaultRequestHeaders.Add("bucketname", registryStorageBucketName);
+                            client.DefaultRequestHeaders.Add("application", defaultStorageApplication);
                         }
                         var response = client.GetAsync(url).Result;
 
