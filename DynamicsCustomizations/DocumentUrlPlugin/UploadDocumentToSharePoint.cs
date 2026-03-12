@@ -47,6 +47,9 @@ namespace BCGOV.Plugin.DocumentUrl
                     string authSecret = Helpers.GetSecureConfigKeyValue(configs, "AuthSecret", "Storage");
                     string authClientId = Helpers.GetSecureConfigKeyValue(configs, "AuthClientId", "Storage");
                     string url = Helpers.GetConfigKeyValue(configs, "InterfaceUrl", "Storage");
+                    string registryStorageBucketName = Helpers.GetConfigKeyValue(configs, "Registry Bucket Name", "Storage");
+                    string pspStorageBucketName = Helpers.GetConfigKeyValue(configs, "PSP Bucket Name", "Storage");
+                    string investigationStorageBucketName = Helpers.GetConfigKeyValue(configs, "Investigation Bucket Name", "Storage");
                     traceService.Trace($"authURL: {authUrl}");
                     traceService.Trace($"authSecret: {authSecret}");
                     traceService.Trace($"authClientId: {authClientId}");
@@ -71,6 +74,7 @@ namespace BCGOV.Plugin.DocumentUrl
                         sharePointFileUrlEntity["bcgov_filesize"] = Helpers.GetFileSize(fileStream.Length);
                         sharePointFileUrlEntity["bcgov_fileextension"] = fileName.Substring(fileName.LastIndexOf("."));
                         sharePointFileUrlEntity["bcgov_url"] = string.Format("{0}/{1}", regardingObjectLogicalName, regardingObjectId.ToString());
+                        var bucketName = registryStorageBucketName;
 
                         if (!string.IsNullOrEmpty(tag1))
                         {
@@ -139,6 +143,7 @@ namespace BCGOV.Plugin.DocumentUrl
                         else if (regardingObjectLogicalName.Equals("ecer_investigation", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["ecer_investigationid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            bucketName = investigationStorageBucketName;
                         }
                         else if (regardingObjectLogicalName.Equals("ecer_certificate", StringComparison.InvariantCultureIgnoreCase))
                         {
@@ -147,14 +152,38 @@ namespace BCGOV.Plugin.DocumentUrl
                         else if (regardingObjectLogicalName.Equals("ecer_investigationplanninginterview", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["ecer_investigationinterviewid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            bucketName = investigationStorageBucketName;
                         }
                         else if (regardingObjectLogicalName.Equals("ecer_postsecondaryinstitutesitevisit", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["ecer_pspsitevisitid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            bucketName = pspStorageBucketName;
                         }
                         else if (regardingObjectLogicalName.Equals("ecer_communication", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["ecer_communicationid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            // Need to check communication
+                            var communication = service.Retrieve(regardingObjectLogicalName, regardingObjectId, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
+                            if (communication != null)
+                            {
+                                var parentCommunicationER = communication.GetAttributeValue<EntityReference>("ecer_parentcommunicationid");
+                                var isRoot = communication.GetAttributeValue<bool>("ecer_isroot");
+                                if (!isRoot && parentCommunicationER != null)
+                                {
+                                    communication = service.Retrieve(parentCommunicationER.LogicalName, parentCommunicationER.Id, new Microsoft.Xrm.Sdk.Query.ColumnSet(true));
+                                }
+                                // If associated to Educational Institution
+                                var educationalInstitutionER = communication.GetAttributeValue<EntityReference>("ecer_educationinstitutionid");
+                                var investigationER = communication.GetAttributeValue<EntityReference>("");
+                                if (educationalInstitutionER != null)
+                                {
+                                    bucketName = pspStorageBucketName;
+                                }
+                                else if (investigationER != null)
+                                {
+                                    bucketName = investigationStorageBucketName;
+                                }
+                            }
                         }
                         else if (regardingObjectLogicalName.Equals("ecer_previousname", StringComparison.InvariantCultureIgnoreCase))
                         {
@@ -163,6 +192,7 @@ namespace BCGOV.Plugin.DocumentUrl
                         else if (regardingObjectLogicalName.Equals("ecer_postsecondaryinstituteprogramapplicaiton", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["ecer_programapplicationid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            bucketName = pspStorageBucketName;
                         }
                         else if (regardingObjectLogicalName.Equals("ecer_professionaldevelopment", StringComparison.InvariantCultureIgnoreCase))
                         {
@@ -171,10 +201,12 @@ namespace BCGOV.Plugin.DocumentUrl
                         else if (regardingObjectLogicalName.Equals("ecer_program", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["ecer_programprofileid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            bucketName = pspStorageBucketName;
                         }
                         else if (regardingObjectLogicalName.Equals("ecer_postsecondaryinstitute", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["ecer_psiid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            bucketName = pspStorageBucketName;
                         }
                         else if (regardingObjectLogicalName.Equals("ecer_certificatesummary", StringComparison.InvariantCultureIgnoreCase)) {
                             sharePointFileUrlEntity["ecer_certificatesummaryid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
@@ -194,6 +226,7 @@ namespace BCGOV.Plugin.DocumentUrl
                         else if (regardingObjectLogicalName.Equals("ecer_bulkpspcommunication", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["ecer_bulkpspcommunicationid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            bucketName = pspStorageBucketName;
                         }
                         else if (regardingObjectLogicalName.Equals("ecer_reconsiderationrequest", StringComparison.InvariantCultureIgnoreCase))
                         {
@@ -202,19 +235,24 @@ namespace BCGOV.Plugin.DocumentUrl
                         else if (regardingObjectLogicalName.Equals("ecer_reconsiderationinvestigationoutcome", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["ecer_reconsiderationinvestigationoutcomeid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            bucketName = investigationStorageBucketName;
                         }
                         else if (regardingObjectLogicalName.Equals("ecer_programapplicationcomponentgroup", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["ecer_programapplicationcomponentgroupid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            bucketName = pspStorageBucketName;
                         }
                         else if (regardingObjectLogicalName.Equals("ecer_programapplicationcomponent", StringComparison.InvariantCultureIgnoreCase))
                         {
                             sharePointFileUrlEntity["ecer_programapplicationcomponentid"] = new EntityReference(regardingObjectLogicalName, regardingObjectId);
+                            bucketName = pspStorageBucketName;
                         }
                         else
                             throw new InvalidPluginExecutionException(string.Format("Unknown RegardingObjectType '{0}' to associate document..", regardingObjectLogicalName));
+                        sharePointFileUrlEntity["ecer_bucketname"] = bucketName; 
                         traceService.Trace("Constructed Document URL entity");
                         traceService.Trace("Preparing API call contents");
+                        traceService.Trace($"Request Header - bucketname: {bucketName}");
                         MultipartFormDataContent multipartContent = new MultipartFormDataContent();
 
                         fileStream.Position = 0;
@@ -234,6 +272,7 @@ namespace BCGOV.Plugin.DocumentUrl
                             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
                             client.DefaultRequestHeaders.Add("file-classification", "Unclassified");
                             client.DefaultRequestHeaders.Add("file-folder", string.Format("{0}/{1}", regardingObjectLogicalName, regardingObjectId.ToString()));
+                            client.DefaultRequestHeaders.Add("bucketname", bucketName);
 
                             if (!string.IsNullOrEmpty(tag1))
                                 client.DefaultRequestHeaders.Add("file-tag", "Tag1=" + tag1);

@@ -48,7 +48,8 @@ namespace BCGOV.Plugin.DocumentUrl
                     string authSecret = Helpers.GetSecureConfigKeyValue(configs, "AuthSecret", "Storage");
                     string authClientId = Helpers.GetSecureConfigKeyValue(configs, "AuthClientId", "Storage");
                     string url = Helpers.GetConfigKeyValue(configs, "InterfaceUrl", "Storage");
-
+                    string registryStorageBucketName = Helpers.GetConfigKeyValue(configs, "Registry Bucket Name", "Storage");
+                    string pspStorageBucketName = Helpers.GetConfigKeyValue(configs, "PSP Bucket Name", "Storage");
                     var bearerToken = Helpers.GetBearerToken(authUrl, authClientId, authSecret);
 
                     url = url + "/api/files/" + documentEntity.Id.ToString();
@@ -58,7 +59,15 @@ namespace BCGOV.Plugin.DocumentUrl
                         client.DefaultRequestHeaders.Add("Authorization", "Bearer " + bearerToken);
                         if(documentEntity.Contains("bcgov_url"))
                             client.DefaultRequestHeaders.Add("file-folder", documentEntity["bcgov_url"].ToString());
-
+                        if (documentEntity.Contains("ecer_bucketname"))
+                        {
+                            client.DefaultRequestHeaders.Add("bucketname", documentEntity["ecer_bucketname"].ToString());
+                        }
+                        else
+                        {
+                            // Default bucket name
+                            client.DefaultRequestHeaders.Add("bucketname", registryStorageBucketName);
+                        }
                         var response = client.GetAsync(url).Result;
 
                         if (response.StatusCode == System.Net.HttpStatusCode.OK)
