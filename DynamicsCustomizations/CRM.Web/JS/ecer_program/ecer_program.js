@@ -21,17 +21,11 @@ ECER.Jscripts.Program =
         let formContext = executionContext.getFormContext();
 
         let changesMade = formContext.getAttribute("ecer_changesmade");
-
-        if (changesMade?.getValue() === 621870000) {
-            formContext.getControl("ecer_newprogramprofilename")?.setVisible(true);
-            formContext.getControl("ecer_newofferingtype")?.setVisible(true);
-            formContext.getControl("ecer_newdescriptiveprogramname")?.setVisible(true);
-        }
-        else {
-            formContext.getControl("ecer_newprogramprofilename")?.setVisible(false);
-            formContext.getControl("ecer_newofferingtype")?.setVisible(false);
-            formContext.getControl("ecer_newdescriptiveprogramname")?.setVisible(false);
-        }
+        let show = (changesMade?.getValue() === 621870000);
+        crm_Utility.showHide(executionContext, show, "ecer_newprogramprofilename");
+        crm_Utility.showHide(executionContext, show, "ecer_newofferingtype");
+        crm_Utility.showHide(executionContext, show, "ecer_newdescriptiveprogramname");
+        crm_Utility.showHide(executionContext, show, "ecer_newdeliverymethod");
     },
     filterHeaderStatusReason: function (executionContext) {
         // ECER-5107
