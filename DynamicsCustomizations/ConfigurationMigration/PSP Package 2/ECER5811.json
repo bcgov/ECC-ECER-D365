@@ -1,0 +1,74 @@
+{
+  "LogicalName": "ecer_communicationcontent",
+  "PrimaryIdAttribute": "ecer_communicationcontentid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870003
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\">Hello,</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">We need the following information to continue assessing your application:</p><p style=\"margin: 0;\">[ecer_postsecondaryinstituteprogramapplicaiton.ecer_rfaicomponentcontent]</p><p style=\"margin: 0;\">To provide this information, reply to this message and/or attach any relevant supporting documentation.</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">Sincerely,<br>ECE Registry Post-Secondary Programs Team</p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Action required: Request for additional information"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "PSP Action required: Request for additional information"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "37ef4095-800e-f111-8407-7ced8d050b63"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": 1
+        }
+      ]
+    }
+  ],
+  "Count": 1
+}

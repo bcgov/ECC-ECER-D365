@@ -1,0 +1,45 @@
+{
+  "LogicalName": "bcgov_config",
+  "PrimaryIdAttribute": "bcgov_configid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "bcgov_key",
+          "Type": 16,
+          "Value": "Investigation Bucket Name"
+        },
+        {
+          "Key": "bcgov_value",
+          "Type": 16,
+          "Value": "myeceregistry-efx-dev"
+        },
+        {
+          "Key": "bcgov_configid",
+          "Type": 1,
+          "Value": "819b861f-281e-f111-8341-6045bd5fe556"
+        },
+        {
+          "Key": "bcgov_group",
+          "Type": 16,
+          "Value": "Storage"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 1
+}

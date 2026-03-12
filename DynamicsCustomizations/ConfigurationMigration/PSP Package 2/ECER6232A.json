@@ -1,0 +1,83 @@
+{
+  "LogicalName": "bcgov_config",
+  "PrimaryIdAttribute": "bcgov_configid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "bcgov_key",
+          "Type": 16,
+          "Value": "Registry Bucket Name"
+        },
+        {
+          "Key": "bcgov_value",
+          "Type": 16,
+          "Value": "myeceregistry-efx-dev"
+        },
+        {
+          "Key": "bcgov_configid",
+          "Type": 1,
+          "Value": "b877dfb3-751d-f111-8341-6045bd5c8098"
+        },
+        {
+          "Key": "bcgov_group",
+          "Type": 16,
+          "Value": "Storage"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "bcgov_key",
+          "Type": 16,
+          "Value": "PSP Bucket Name"
+        },
+        {
+          "Key": "bcgov_value",
+          "Type": 16,
+          "Value": "ecepostsecondaryprograms-efx-dev"
+        },
+        {
+          "Key": "bcgov_configid",
+          "Type": 1,
+          "Value": "fddc2cc6-751d-f111-8341-6045bd5c8098"
+        },
+        {
+          "Key": "bcgov_group",
+          "Type": 16,
+          "Value": "Storage"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 2
+}

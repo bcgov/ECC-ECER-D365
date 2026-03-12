@@ -1,0 +1,4000 @@
+{
+  "LogicalName": "ecer_course",
+  "PrimaryIdAttribute": "ecer_courseid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "ad18e341-7914-ef11-9f89-000d3af46033",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2024-09-01 - 2025-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "5877d36c-5d95-ef11-8a69-000d3a0c529e"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Practicum"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC3003 VanWest College ECE Practicum & Seminar 3"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Practicum & Seminar 3"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC3003"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "50beec50-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2024-09-01 - 2025-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "58630e6a-5d95-ef11-8a68-000d3a846ac4"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1800 VanWest College ECE Curriculum 3 – Science and Math"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Curriculum 3 – Science and Math"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1800"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "50beec50-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2024-09-01 - 2025-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "90630e6a-5d95-ef11-8a68-000d3a846ac4"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1000 VanWest College History, Philosophies, and Foundations of ECE"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "History, Philosophies, and Foundations of ECE"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1000"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "ad18e341-7914-ef11-9f89-000d3af46033",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "14921be9-be01-f011-bae3-000d3ae90f85",
+            "LogicalName": "ecer_program",
+            "Name": "VanWest College 2025-09-01 - 2026-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "3a082def-be01-f011-bae3-000d3ae84b66"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Practicum"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC3003 VanWest College ECE Practicum & Seminar 3"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Practicum & Seminar 3"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC3003"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "50beec50-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "14921be9-be01-f011-bae3-000d3ae90f85",
+            "LogicalName": "ecer_program",
+            "Name": "VanWest College 2025-09-01 - 2026-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "5d082def-be01-f011-bae3-000d3ae84b66"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1800 VanWest College ECE Curriculum 3 – Science and Math"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Curriculum 3 – Science and Math"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1800"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "535bf286-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Health, Safety and Nutrition",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "14921be9-be01-f011-bae3-000d3ae90f85",
+            "LogicalName": "ecer_program",
+            "Name": "VanWest College 2025-09-01 - 2026-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "8f082def-be01-f011-bae3-000d3ae84b66"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Health, Safety & Nutrition"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1300 VanWest College Health, Safety, and Nutrition in ECE"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Health, Safety, and Nutrition in ECE"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1300"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "e452def8-293b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "14921be9-be01-f011-bae3-000d3ae90f85",
+            "LogicalName": "ecer_program",
+            "Name": "VanWest College 2025-09-01 - 2026-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "2d0a2def-be01-f011-bae3-000d3ae84b66"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1500 VanWest College Program Planning and Development in ECE"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Program Planning and Development in ECE"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1500"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "e452def8-293b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "14921be9-be01-f011-bae3-000d3ae90f85",
+            "LogicalName": "ecer_program",
+            "Name": "VanWest College 2025-09-01 - 2026-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "d54625f5-be01-f011-bae3-000d3ae84b66"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1900 VanWest College ECE Curriculum 4 – Creative Expression"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Curriculum 4 – Creative Expression"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1900"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "822bbc20-3f92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Child Guidance",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "14921be9-be01-f011-bae3-000d3ae90f85",
+            "LogicalName": "ecer_program",
+            "Name": "VanWest College 2025-09-01 - 2026-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "294725f5-be01-f011-bae3-000d3ae84b66"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Child Guidance"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1200 VanWest College Positive Approaches to Guiding Children’s Behaviours"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Positive Approaches to Guiding Children’s Behaviours"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1200"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "50beec50-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "14921be9-be01-f011-bae3-000d3ae90f85",
+            "LogicalName": "ecer_program",
+            "Name": "VanWest College 2025-09-01 - 2026-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "3a4825f5-be01-f011-bae3-000d3ae84b66"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1700 VanWest College ECE Curriculum 2 – Language and Literacy"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Curriculum 2 – Language and Literacy"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1700"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "50beec50-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "14921be9-be01-f011-bae3-000d3ae90f85",
+            "LogicalName": "ecer_program",
+            "Name": "VanWest College 2025-09-01 - 2026-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "463c35ef-be01-f011-bae3-000d3ae90f85"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1000 VanWest College History, Philosophies, and Foundations of ECE"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "History, Philosophies, and Foundations of ECE"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1000"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "ad18e341-7914-ef11-9f89-000d3af46033",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "14921be9-be01-f011-bae3-000d3ae90f85",
+            "LogicalName": "ecer_program",
+            "Name": "VanWest College 2025-09-01 - 2026-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "763c35ef-be01-f011-bae3-000d3ae90f85"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Practicum"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC3001 VanWest College ECE Practicum & Seminar 1"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Practicum & Seminar 1"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC3001"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "8837511e-2a3b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Practicum - Special Needs",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "14921be9-be01-f011-bae3-000d3ae90f85",
+            "LogicalName": "ecer_program",
+            "Name": "VanWest College 2025-09-01 - 2026-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "80ac34f5-be01-f011-bae3-000d3ae90f85"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Practicum"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC3002 VanWest College ECE Practicum & Seminar 2"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Practicum & Seminar 2"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC3002"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "50beec50-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "14921be9-be01-f011-bae3-000d3ae90f85",
+            "LogicalName": "ecer_program",
+            "Name": "VanWest College 2025-09-01 - 2026-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "d6ac34f5-be01-f011-bae3-000d3ae90f85"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1600 VanWest College ECE Curriculum 1 – Music & Movement"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Curriculum 1 – Music & Movement"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1600"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "612f6774-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Interpersonal Skills/Community/Family",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "14921be9-be01-f011-bae3-000d3ae90f85",
+            "LogicalName": "ecer_program",
+            "Name": "VanWest College 2025-09-01 - 2026-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "c2e087ee-be01-f011-bae3-000d3af35638"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Interpersonal Skills/Community Relations/Families"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1400 VanWest College Interpersonal Communication and Professionalism in ECE"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Interpersonal Communication and Professionalism in ECE"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1400"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "06898aea-293b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Child Growth and Development",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "14921be9-be01-f011-bae3-000d3ae90f85",
+            "LogicalName": "ecer_program",
+            "Name": "VanWest College 2025-09-01 - 2026-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 100.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "98e187ee-be01-f011-bae3-000d3af35638"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Child Growth and Development"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1100 VanWest College Understanding Child Growth and Development"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Understanding Child Growth and Development"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 100.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1100"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "535bf286-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Health, Safety and Nutrition",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2024-09-01 - 2025-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "5f12b964-5d95-ef11-8a68-000d3af37ece"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Health, Safety & Nutrition"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1300 VanWest College Health, Safety, and Nutrition in ECE"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Health, Safety, and Nutrition in ECE"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1300"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "ad18e341-7914-ef11-9f89-000d3af46033",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2024-09-01 - 2025-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "7ac4cd67-5d95-ef11-8a69-0022483c12f7"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Practicum"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC3001 VanWest College ECE Practicum & Seminar 1"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Practicum & Seminar 1"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC3001"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "612f6774-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Interpersonal Skills/Community/Family",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2024-09-01 - 2025-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "6b06e56d-5d95-ef11-8a69-0022483c12f7"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Interpersonal Skills/Community Relations/Families"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1400 VanWest College Interpersonal Communication and Professionalism in ECE"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Interpersonal Communication and Professionalism in ECE"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1400"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "50beec50-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2024-09-01 - 2025-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "bdc0ad70-5d95-ef11-8a69-0022483c8ef4"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1500 VanWest College Program Planning and Development in ECE"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Program Planning and Development in ECE"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1500"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "ad18e341-7914-ef11-9f89-000d3af46033",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Practicum",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2024-09-01 - 2025-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "99664f6c-5d95-ef11-8a69-002248ade8a0"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Practicum"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC3002 VanWest College ECE Practicum & Seminar 2"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Practicum & Seminar 2"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC3002"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "50beec50-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2024-09-01 - 2025-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "2c939f6b-5d95-ef11-8a68-002248b0bb2f"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1900 VanWest College ECE Curriculum 4 – Creative Expression"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Curriculum 4 – Creative Expression"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1900"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "06898aea-293b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Child Growth and Development",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 100.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "c597527e-a9e4-ef11-9341-002248b107c8"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Child Growth and Development"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1100 VanWest College Understanding Child Growth and Development"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Understanding Child Growth and Development"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 100.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1100"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "e452def8-293b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "862bd28a-a9e4-ef11-9341-002248b107c8"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1000 VanWest College History, Philosophies, and Foundations of ECE"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "History, Philosophies, and Foundations of ECE"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1000"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "e452def8-293b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "36c416a9-a9e4-ef11-9341-002248b107c8"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1500 VanWest College Program Planning and Development in ECE"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Program Planning and Development in ECE"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1500"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "e452def8-293b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "d66e4cb5-a9e4-ef11-9341-002248b107c8"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1600 VanWest College ECE Curriculum 1 – Music & Movement"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Curriculum 1 – Music & Movement"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1600"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "e452def8-293b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "4ca46cc1-a9e4-ef11-9341-002248b107c8"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1700 VanWest College ECE Curriculum 2 – Language and Literacy"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Curriculum 2 – Language and Literacy"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1700"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "e452def8-293b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "e217e2d3-a9e4-ef11-9341-002248b107c8"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1800 VanWest College ECE Curriculum 3 – Science and Math"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Curriculum 3 – Science and Math"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1800"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "e452def8-293b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "b1e73de0-a9e4-ef11-9341-002248b107c8"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1900 VanWest College ECE Curriculum 4 – Creative Expression"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Curriculum 4 – Creative Expression"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1900"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "822bbc20-3f92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Child Guidance",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "a96ec6f2-a9e4-ef11-9341-002248b107c8"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Child Guidance"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1200 VanWest College Positive Approaches to Guiding Children’s Behaviours"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Positive Approaches to Guiding Children’s Behaviours"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1200"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "8837511e-2a3b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Practicum - Special Needs",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "c4fc9229-aae4-ef11-9341-002248b107c8"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Practicum"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC3001 VanWest College ECE Practicum & Seminar 1"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Practicum & Seminar 1"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC3001"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "8837511e-2a3b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Practicum - Special Needs",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "c780c135-aae4-ef11-9341-002248b107c8"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Practicum"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC3002 VanWest College ECE Practicum & Seminar 2"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Practicum & Seminar 2"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC3002"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "8837511e-2a3b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Practicum - Special Needs",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "0934f447-aae4-ef11-9341-002248b107c8"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Practicum"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC3003 VanWest College ECE Practicum & Seminar 3"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Practicum & Seminar 3"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 160.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC3003"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "50beec50-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "17951a25-e4cd-ef11-8ee9-002248b31b01"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1200 VanWest College Positive Approaches to Guiding children's Behaviours"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Positive Approaches to Guiding children's Behaviours"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1200"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "612f6774-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Interpersonal Skills/Community/Family",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "ab9e675d-e4cd-ef11-8ee9-002248b31b01"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Interpersonal Skills/Community Relations/Families"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1400 VanWest College Interpersonal Communication and Professionalism in ECE"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Interpersonal Communication and Professionalism in ECE"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1400"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "535bf286-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Health, Safety and Nutrition",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2023-09-01 - 2024-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "8dcc91ab-e5cd-ef11-8ee9-002248b31b01"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Health, Safety & Nutrition"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1300 VanWest College Health, Safety, and Nutrition in ECE"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Health, Safety, and Nutrition in ECE"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1300"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "06898aea-293b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Child Growth and Development",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2024-09-01 - 2025-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 100.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "122af434-d6fa-ef11-bae1-6045bd5bac69"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Child Growth and Development"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1100 VanWest College Understanding Child Growth and Development"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Understanding Child Growth and Development"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 100.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1100"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "e452def8-293b-ef11-a316-0022486dc4b6",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2024-09-01 - 2025-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "33753d84-d6fa-ef11-bae1-6045bd5bac69"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1700 VanWest College ECE Curriculum 2 – Language and Literacy"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Curriculum 2 – Language and Literacy"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1700"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "822bbc20-3f92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Child Guidance",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2024-09-01 - 2025-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "9facb7cc-d6fa-ef11-bae1-6045bd5bac69"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Child Guidance"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1200 VanWest College Positive Approaches to Guiding Children’s Behaviours"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "Positive Approaches to Guiding Children’s Behaviours"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1200"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_provincialrequirement",
+          "Type": 2,
+          "Value": {
+            "Id": "50beec50-1b92-ef11-8a69-7c1e524093cc",
+            "LogicalName": "ecer_provincialrequirement",
+            "Name": "Program Development, Curriculum and Foundations",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 2,
+          "Value": {
+            "Id": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_program",
+            "Name": "Van-West College 2024-09-01 - 2025-09-01",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitutionid",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newcoursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_courseid",
+          "Type": 1,
+          "Value": "4095ae67-5d95-ef11-8a68-6045bd5d5a0e"
+        },
+        {
+          "Key": "ecer_programareas",
+          "Type": 16,
+          "Value": "Program Development, Curriculum and Foundations"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "EC1600 VanWest College ECE Curriculum 1 – Music & Movement"
+        },
+        {
+          "Key": "ecer_coursename",
+          "Type": 16,
+          "Value": "ECE Curriculum 1 – Music & Movement"
+        },
+        {
+          "Key": "ecer_coursehourdecimal",
+          "Type": 16,
+          "Value": 50.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_code",
+          "Type": 16,
+          "Value": "EC1600"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 40
+}

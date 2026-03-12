@@ -1,0 +1,74 @@
+{
+  "LogicalName": "ecer_communicationcontent",
+  "PrimaryIdAttribute": "ecer_communicationcontentid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\">Hello,</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">We are pleased to grant interim recognition for “[ecer_postsecondaryinstituteprogramapplicaiton.ecer_name]” at [ecer_postsecondaryinstitute.ecer_name].</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">Please find the attached Interim Recognition Letter for full details.</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">Sincerely,<br>ECE Registry Post-Secondary Programs Team&nbsp;</p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Interim recognition granted"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "PSP : Notify PSP Reps when an interim recognition letter is issued"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870003
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "fc278f56-200c-f111-8407-7ced8d0509e3"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": 1
+        }
+      ]
+    }
+  ],
+  "Count": 1
+}

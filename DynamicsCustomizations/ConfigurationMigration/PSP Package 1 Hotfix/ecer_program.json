@@ -1,0 +1,400 @@
+{
+  "LogicalName": "ecer_program",
+  "PrimaryIdAttribute": "ecer_programid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtypes",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 1,
+          "Value": "14921be9-be01-f011-bae3-000d3ae90f85"
+        },
+        {
+          "Key": "ecer_basicearlychildhoodeducatorcoursestotalhours",
+          "Type": 16,
+          "Value": 1030.0000000000
+        },
+        {
+          "Key": "ecer_type",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_itecoursestotalhours",
+          "Type": 16,
+          "Value": 0.0000000000
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "VanWest College 2025-09-01 - 2026-09-01"
+        },
+        {
+          "Key": "ecer_enddate",
+          "Type": 16,
+          "Value": "2026-09-01T00:00:00"
+        },
+        {
+          "Key": "ecer_startdate",
+          "Type": 16,
+          "Value": "2025-09-01T00:00:00"
+        },
+        {
+          "Key": "ecer_offeringtype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "ecer_idnumber",
+          "Type": 16,
+          "Value": "02192"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "ecer_newsnetotalhours",
+          "Type": 16,
+          "Value": 0.0000000000
+        },
+        {
+          "Key": "ecer_snecoursestotalhours",
+          "Type": 16,
+          "Value": "0"
+        },
+        {
+          "Key": "ecer_snecoursestotalhoursdecimal",
+          "Type": 16,
+          "Value": 0.0000000000
+        },
+        {
+          "Key": "ecer_haschanges",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_postsecondaryinstitution",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newitetotalhours",
+          "Type": 16,
+          "Value": 0.0000000000
+        },
+        {
+          "Key": "ecer_changesmade",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_newofferingtype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "ecer_newbasictotalhours",
+          "Type": 16,
+          "Value": 1030.0000000000
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtypes",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 1,
+          "Value": "a11006fb-9e8d-ef11-8a6a-002248b1c9b3"
+        },
+        {
+          "Key": "ecer_basicearlychildhoodeducatorcoursestotalhours",
+          "Type": 16,
+          "Value": 1030.0000000000
+        },
+        {
+          "Key": "ecer_type",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_itecoursestotalhours",
+          "Type": 16,
+          "Value": 0.0000000000
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Van-West College 2023-09-01 - 2024-09-01"
+        },
+        {
+          "Key": "ecer_enddate",
+          "Type": 16,
+          "Value": "2024-09-01T00:00:00"
+        },
+        {
+          "Key": "ecer_startdate",
+          "Type": 16,
+          "Value": "2023-09-01T00:00:00"
+        },
+        {
+          "Key": "ecer_offeringtype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "ecer_assessmentnotes",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\">Certification Team Note: Any education completed prior to May 2024 can be considered an Equivalency Application</p><p style=\"margin: 0;\">Post-Secondary Programs Team Note: While interim recognition was granted by Registry in 2023 - see conditions (contingent on PTIB approvals, etc.). All conditions met and program began May 2024.</p></div>"
+        },
+        {
+          "Key": "ecer_idnumber",
+          "Type": 16,
+          "Value": "01865"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 621870003
+          }
+        },
+        {
+          "Key": "ecer_newsnetotalhours",
+          "Type": 16,
+          "Value": 0.0000000000
+        },
+        {
+          "Key": "ecer_snecoursestotalhours",
+          "Type": 16,
+          "Value": "0"
+        },
+        {
+          "Key": "ecer_snecoursestotalhoursdecimal",
+          "Type": 16,
+          "Value": 0.0000000000
+        },
+        {
+          "Key": "ecer_postsecondaryinstitution",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newitetotalhours",
+          "Type": 16,
+          "Value": 0.0000000000
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_newofferingtype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "ecer_newbasictotalhours",
+          "Type": 16,
+          "Value": 1030.0000000000
+        }
+      ]
+    },
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_programtypes",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "ecer_programid",
+          "Type": 1,
+          "Value": "a31006fb-9e8d-ef11-8a6a-002248b1c9b3"
+        },
+        {
+          "Key": "ecer_basicearlychildhoodeducatorcoursestotalhours",
+          "Type": 16,
+          "Value": 1030.0000000000
+        },
+        {
+          "Key": "ecer_type",
+          "Type": 4,
+          "Value": {
+            "Value": 621870000
+          }
+        },
+        {
+          "Key": "ecer_itecoursestotalhours",
+          "Type": 16,
+          "Value": 0.0000000000
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Van-West College 2024-09-01 - 2025-09-01"
+        },
+        {
+          "Key": "ecer_enddate",
+          "Type": 16,
+          "Value": "2025-09-01T00:00:00"
+        },
+        {
+          "Key": "ecer_startdate",
+          "Type": 16,
+          "Value": "2024-09-01T00:00:00"
+        },
+        {
+          "Key": "ecer_offeringtype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "ecer_assessmentnotes",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\">Certification Team Note: Any education completed prior to May 2024 can be considered an Equivalency Application</p><p style=\"margin: 0;\">Post-Secondary Programs Team Note: While interim recognition was granted by Registry in 2023 - see conditions (contingent on PTIB approvals, etc.). All conditions met and program began May 2024.</p></div>"
+        },
+        {
+          "Key": "ecer_idnumber",
+          "Type": 16,
+          "Value": "01866"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 621870003
+          }
+        },
+        {
+          "Key": "ecer_newsnetotalhours",
+          "Type": 16,
+          "Value": 0.0000000000
+        },
+        {
+          "Key": "ecer_snecoursestotalhours",
+          "Type": 16,
+          "Value": "0"
+        },
+        {
+          "Key": "ecer_snecoursestotalhoursdecimal",
+          "Type": 16,
+          "Value": 0.0000000000
+        },
+        {
+          "Key": "ecer_postsecondaryinstitution",
+          "Type": 2,
+          "Value": {
+            "Id": "888a4e4d-9d8d-ef11-8a6a-002248b1c9b3",
+            "LogicalName": "ecer_postsecondaryinstitute",
+            "Name": "VanWest College",
+            "KeyAttributes": [],
+            "RowVersion": null
+          }
+        },
+        {
+          "Key": "ecer_newitetotalhours",
+          "Type": 16,
+          "Value": 0.0000000000
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_newofferingtype",
+          "Type": 8,
+          "Value": [
+            {
+              "Value": 621870000
+            }
+          ]
+        },
+        {
+          "Key": "ecer_newbasictotalhours",
+          "Type": 16,
+          "Value": 1030.0000000000
+        }
+      ]
+    }
+  ],
+  "Count": 3
+}

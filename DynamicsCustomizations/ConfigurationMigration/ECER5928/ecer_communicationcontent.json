@@ -1,0 +1,74 @@
+{
+  "LogicalName": "ecer_communicationcontent",
+  "PrimaryIdAttribute": "ecer_communicationcontentid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_communicationtype",
+          "Type": 4,
+          "Value": {
+            "Value": 621870002
+          }
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        },
+        {
+          "Key": "ecer_sourcetotext",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_text",
+          "Type": 16,
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\">Hello,</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">The ECE Registry is granting an extension to the interim recognition provided for “[ecer_postsecondaryinstituteprogramapplicaiton.ecer_name]” at [ecer_postsecondaryinstitute.ecer_name] until [ecer_postsecondaryinstituteprogramapplicaiton.ecer_interimrecognitionextendeduntilshort]. Please find the attached Extension to Interim Recognition Letter, which outlines the details of this extension and any conditions that apply.</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">Sincerely,<br>ECE Registry Post-Secondary Programs Team&nbsp;</p></div>"
+        },
+        {
+          "Key": "ecer_subject",
+          "Type": 16,
+          "Value": "Extension of interim recognition"
+        },
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "PSP : Notify PSP Reps when extension to interim recognition is granted"
+        },
+        {
+          "Key": "ecer_for",
+          "Type": 4,
+          "Value": {
+            "Value": 621870003
+          }
+        },
+        {
+          "Key": "ecer_texttosource",
+          "Type": 16,
+          "Value": false
+        },
+        {
+          "Key": "ecer_communicationcontentid",
+          "Type": 1,
+          "Value": "9833b534-2809-f111-8407-7ced8d0509e3"
+        },
+        {
+          "Key": "ecer_displayorder",
+          "Type": 16,
+          "Value": 1
+        }
+      ]
+    }
+  ],
+  "Count": 1
+}
