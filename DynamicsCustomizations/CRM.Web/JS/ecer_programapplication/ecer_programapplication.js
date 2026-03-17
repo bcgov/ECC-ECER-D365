@@ -270,15 +270,66 @@ ECER.Jscripts.ProgramApplication =
         var formContext = executionContext.getFormContext();
         var deliveryMethodAttribute = formContext.getAttribute("ecer_deliverytype");
 
+
+        formContext.getControl("ecer_onlinemethodsofinstruction")?.setVisible(false);
+        formContext.getControl("ecer_deliverymethodforpracticuminstructor")?.setVisible(false);
+        let section = formContext.ui.tabs.get("tab_general").sections.get("tab_general_section_5");
+
+        section?.setVisible(false);
+
         //when delivery method is 621870001 / 621870002 then show else hide
-        if (deliveryMethodAttribute?.getValue() === 621870001 || deliveryMethodAttribute?.getValue() === 621870002) {
+        if (deliveryMethodAttribute?.getValue() != null
+            && deliveryMethodAttribute?.getValue() != 621870000) {
+
             formContext.getControl("ecer_onlinemethodsofinstruction")?.setVisible(true);
             formContext.getControl("ecer_deliverymethodforpracticuminstructor")?.setVisible(true);
-        }
-        else {
-            formContext.getControl("ecer_onlinemethodsofinstruction")?.setVisible(false);
-            formContext.getControl("ecer_deliverymethodforpracticuminstructor")?.setVisible(false);
+
+            // additionally show section tab_general_section_5 when delivery method is 621870001 (Hybrid)
+            if (deliveryMethodAttribute?.getValue() == 621870001) {
+                formContext.ui.tabs.get("tab_general").sections.get("tab_general_section_5").setVisible(true);
+            }
         }
 
+        let fields = ["ecer_onlinedeliveryhourspercentage", "ecer_inpersonhourspercentage"];
+
+        // if tab_general_section_5 is hidden and fields in it have value, clear the value of the fields in this section
+        if (!section.getVisible() == false) {
+
+            fields.forEach(field => {
+                if (formContext.getAttribute(field).getValue() != null)
+                    formContext.getAttribute(field).setValue(null);
+            })
+        }
+
+        //if form is dirty save form
+        if (formContext.data.getIsDirty()) {
+            formContext.data.save();
+        }
+    },
+    ensureValidPercentage: function (executionContext) {
+        // when record is being saved check sum of ecer_onlinedeliveryhourspercentage and ecer_inpersonhourspercentage should be 100 when delivery method is Hybrid (621870001) otherwise show a dialog and prevent save
+        let formContext = executionContext.getFormContext();
+
+        let deliveryMethodAttribute = formContext.getAttribute("ecer_deliverytype");
+
+        if (deliveryMethodAttribute?.getValue() == 621870001) {
+            let fields = ["ecer_onlinedeliveryhourspercentage", "ecer_inpersonhourspercentage"];
+
+            let sum = 0;
+            fields.forEach(field => {
+                let value = formContext.getAttribute(field).getValue() ?? 0;
+                if (value != null) {
+                    sum += value;
+                }
+            })
+
+            if (sum > 0 && sum != 100) {
+                // show alert and prevent save
+                Xrm.Navigation.openAlertDialog({ text: "The sum of Online Delivery Hours Percentage and In-Person Delivery Hours Percentage should be 100." }).then(function () {
+                    // callback function after alert is closed, do nothing here
+                });
+                executionContext.getEventArgs().preventDefault();
+            }
+        }
     }
-}// JavaScript source code
+}
