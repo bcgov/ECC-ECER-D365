@@ -306,30 +306,57 @@ ECER.Jscripts.ProgramApplication =
             formContext.data.save();
         }
     },
+    resetFields: function (attribute) { 
+        attribute.setValue(null);
+        attribute.setSubmitMode("always");
+    },
     ensureValidPercentage: function (executionContext) {
         // when record is being saved check sum of ecer_onlinedeliveryhourspercentage and ecer_inpersonhourspercentage should be 100 when delivery method is Hybrid (621870001) otherwise show a dialog and prevent save
         let formContext = executionContext.getFormContext();
 
         let deliveryMethodAttribute = formContext.getAttribute("ecer_deliverytype");
 
-        if (deliveryMethodAttribute?.getValue() == 621870001) {
-            let fields = ["ecer_onlinedeliveryhourspercentage", "ecer_inpersonhourspercentage"];
+        let onlineDeliveryHoursPercentage = formContext.getAttribute("ecer_onlinedeliveryhourspercentage");
+        let inPersonDeliveryHoursPercentage = formContext.getAttribute("ecer_inpersonhourspercentage");
 
-            let sum = 0;
-            fields.forEach(field => {
-                let value = formContext.getAttribute(field).getValue() ?? 0;
-                if (value != null) {
-                    sum += value;
-                }
-            })
+        // only when delivery type is hybrid and one or both percentage fields have been entered
+        if (deliveryMethodAttribute?.getValue() == 621870001
+            && (onlineDeliveryHoursPercentage.getIsDirty() || inPersonDeliveryHoursPercentage.getIsDirty())) {
 
-            if (sum > 0 && sum != 100) {
-                // show alert and prevent save
-                Xrm.Navigation.openAlertDialog({ text: "The sum of Online Delivery Hours Percentage and In-Person Delivery Hours Percentage should be 100." }).then(function () {
+            let onlineDeliveryHoursPercentageValue = onlineDeliveryHoursPercentage.getValue();
+            let inPersonDeliveryHoursPercentageValue = inPersonDeliveryHoursPercentage.getValue();
+
+            if (onlineDeliveryHoursPercentageValue == null
+                || inPersonDeliveryHoursPercentageValue == null
+                || onlineDeliveryHoursPercentageValue == 0
+                || inPersonDeliveryHoursPercentageValue == 0) {
+
+                // set both fields to null and include in save operation
+                this.resetFields(onlineDeliveryHoursPercentage);
+                this.resetFields(inPersonDeliveryHoursPercentage);
+
+                Xrm.Navigation.openAlertDialog({ text: "Percentage of instruction hours Online Deliver / In person cannot be 0 or blank. Please renter." }).then(function () {
                     // callback function after alert is closed, do nothing here
                 });
-                executionContext.getEventArgs().preventDefault();
+
+                return;
             }
+
+            let sum = onlineDeliveryHoursPercentageValue + inPersonDeliveryHoursPercentageValue;
+
+            if (sum != 100) {
+                // set both fields to null and include in save operation
+                this.resetFields(onlineDeliveryHoursPercentage);
+                this.resetFields(inPersonDeliveryHoursPercentage);
+
+                // show alert and prevent save
+                Xrm.Navigation.openAlertDialog({ text: "Sum of Online Delivery Hours Percentage and In-Person Delivery Hours Percentage must be 100. Please renter." }).then(function () {
+                    // callback function after alert is closed, do nothing here
+                });
+            }
+        }
+        else {
+            console.log("Delivery method is not Hybrid or percentage fields are not dirty, skipping validation.");
         }
     }
 }
