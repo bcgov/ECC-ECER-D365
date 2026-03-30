@@ -85,7 +85,6 @@ ECER.Jscripts.Course = {
     enableRuleForRibbonButton: function (formContext, selectedControl) {
         console.log("enableRuleForRibbonButton called");
         // get entity logical name
-        debugger;
         let selectedControlParent = selectedControl.getParentForm();
 
         if (selectedControlParent && selectedControlParent.parentFormContext) {

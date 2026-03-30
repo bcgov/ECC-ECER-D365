@@ -25,8 +25,13 @@ ECER.Jscripts.ProgramApplication =
         this.showHideFieldsBasedOnDeliveryMethod(executionContext);
         this.showHideFromProgramProfile(executionContext);
         this.addCustomFilterForFromProgramProfile(executionContext);
+        this.showHideCourseTabs(executionContext);
     },
-
+    onSave: function (executionContext) {
+        this.ensureValidPercentage(executionContext);
+        this.showHideFromProgramProfile(executionContext);
+        this.showHideCourseTabs(executionContext);
+    },
     addCustomFilterForFromProgramProfile: function (executionContext) {
         var formContext = executionContext.getFormContext();
         var fromProgramProfileControl = formContext.getControl("ecer_fromprogramprofileid");
@@ -306,7 +311,7 @@ ECER.Jscripts.ProgramApplication =
             formContext.data.save();
         }
     },
-    resetFields: function (attribute) { 
+    resetFields: function (attribute) {
         attribute.setValue(null);
         attribute.setSubmitMode("always");
     },
@@ -357,6 +362,25 @@ ECER.Jscripts.ProgramApplication =
         }
         else {
             console.log("Delivery method is not Hybrid or percentage fields are not dirty, skipping validation.");
+        }
+    },
+    showHideCourseTabs: function (executionContext) {
+
+        let formContext = executionContext.getFormContext();
+        let courseTab = "tab_4";
+        let fromProgramProfileCourseTab = "tab_17";
+
+        // check if from program profile has value, if yes show course from program profile tab else hide it
+        // do the oppsite for course tab, if from program profile has value hide course tab else show it
+        let fromProgramProfile = formContext.getAttribute("ecer_fromprogramprofileid")?.getValue();
+
+        if (fromProgramProfile != null) {
+            formContext.ui.tabs.get(fromProgramProfileCourseTab)?.setVisible(true);
+            formContext.ui.tabs.get(courseTab)?.setVisible(false);
+        }
+        else {
+            formContext.ui.tabs.get(fromProgramProfileCourseTab)?.setVisible(false);
+            formContext.ui.tabs.get(courseTab)?.setVisible(true);
         }
     }
 }
