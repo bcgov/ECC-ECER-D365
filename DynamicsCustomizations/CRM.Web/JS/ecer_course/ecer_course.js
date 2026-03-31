@@ -81,5 +81,24 @@ ECER.Jscripts.Course = {
                 console.log(error);
             }
         );
+    },
+    enableRuleForRibbonButton: function (formContext, selectedControl) {
+        console.log("enableRuleForRibbonButton called");
+        // get entity logical name
+        let selectedControlParent = selectedControl.getParentForm();
+
+        if (selectedControlParent && selectedControlParent.parentFormContext) {
+            // this is the subgrid control name in the program quick view form
+            // these are supported methods
+            let subgrid = selectedControlParent.getControl("ProgramProfileQuickViewCourseSubgrid");
+            let parentEntityTypeName = selectedControlParent.parentFormContext.data.entity.getEntityName();
+
+            //hide if program application and subgrid is present
+            return !(parentEntityTypeName === "ecer_postsecondaryinstituteprogramapplicaiton" && subgrid);
+        }
+        else {
+            console.log("Parent form not found");
+            return true;
+        }
     }
 }
