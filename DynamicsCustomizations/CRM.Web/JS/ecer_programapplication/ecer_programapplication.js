@@ -336,11 +336,10 @@ ECER.Jscripts.ProgramApplication =
                 || onlineDeliveryHoursPercentageValue == 0
                 || inPersonDeliveryHoursPercentageValue == 0) {
 
-                // set both fields to null and include in save operation
-                this.resetFields(onlineDeliveryHoursPercentage);
-                this.resetFields(inPersonDeliveryHoursPercentage);
+                // old - set both fields to null and include in save operation using resetFields function
+                // more recently asked only a prompt is enough
 
-                Xrm.Navigation.openAlertDialog({ text: "Percentage of instruction hours Online Deliver / In person cannot be 0 or blank. Please renter." }).then(function () {
+                Xrm.Navigation.openAlertDialog({ text: "Percentage of instruction hours Online Deliver / In person cannot be 0 or blank. Please re-nter." }).then(function () {
                     // callback function after alert is closed, do nothing here
                 });
 
@@ -350,12 +349,10 @@ ECER.Jscripts.ProgramApplication =
             let sum = onlineDeliveryHoursPercentageValue + inPersonDeliveryHoursPercentageValue;
 
             if (sum != 100) {
-                // set both fields to null and include in save operation
-                this.resetFields(onlineDeliveryHoursPercentage);
-                this.resetFields(inPersonDeliveryHoursPercentage);
+                // old - set both fields to null and include in save operation using resetFields function
+                // more recently asked only a prompt is enough
 
-                // show alert and prevent save
-                Xrm.Navigation.openAlertDialog({ text: "Sum of Online Delivery Hours Percentage and In-Person Delivery Hours Percentage must be 100. Please renter." }).then(function () {
+                Xrm.Navigation.openAlertDialog({ text: "Sum of Online Delivery Hours Percentage and In-Person Delivery Hours Percentage must be 100. Please re-nter." }).then(function () {
                     // callback function after alert is closed, do nothing here
                 });
             }
