@@ -1,0 +1,36 @@
+ECER-5942
+- Document Template: Notice of Immediate Action
+ECER-6238
+- Nothing to deploy.  Update lower enivronments using configuration from TEST
+ECER-6247
+- Nothing to deploy.  Not happening in PROD.  Caused by Post deployment merge back.  UAT environment was updated since
+ECER-6248
+- No need to deploy.  Not happening in PROD.  Caused by Post deployment merge back.  EFX TEST and UAT has already been updated
+ECER-6275
+Power Automate: TBD-ECER - Program Profile Courses Total Hours - Need to Turn OFF
+Entity: Program Profile - No real changes
+ - Column: New Basic Total Hours
+ - Column: New ITE Total Hours
+ - Column: New SNE Total Hours
+ 
+ECER-6281
+Power Automate: ECER - Link Character Reference to Assessment
+Entity: Application Assessment
+ - Column: Link Existing Character Reference
+ - Form: ECER - Application Assessment Main Form
+Entity: Character Reference - Metadata only
+ECER-6284
+- Deploy with ECER-6311 for same security role changes
+ECER-6285 
+Power Automate: ECER - Investigation change to Active Stage
+ECER-6310
+Security Role: Investigation - Baseline
+ECER-6311
+Model Driven App: Certifications - Added existing dashboard PSP Referral Application
+Security Role: Certifications - Baseline
+Post Deployment Steps: update Business Unit hierarchy by setting:
+PSP BU parent = Registry BU
+ECER-6328
+Power Automate: ECER - On Program Profile becomes Registry Review Complete
+
+

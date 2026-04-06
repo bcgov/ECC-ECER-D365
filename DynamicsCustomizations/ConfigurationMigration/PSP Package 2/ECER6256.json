@@ -1,0 +1,45 @@
+{
+  "LogicalName": "ecer_defaultcontents",
+  "PrimaryIdAttribute": "ecer_defaultcontentsid",
+  "Records": [
+    {
+      "Attributes": [
+        {
+          "Key": "ecer_name",
+          "Type": 16,
+          "Value": "Program Application"
+        },
+        {
+          "Key": "ecer_multiplelineoftext",
+          "Type": 16,
+          "Value": "• I confirm that the information provided in this submission is complete and accurate\n• I understand that the ECE Registry may require additional information to complete their review\n• I understand that I am submitting this information on behalf of [name of institution]\n• Should interim recognition be granted, I agree to notify the ECE Registry of any changes to curriculum, program or location \n• I agree to participate in the program profile review on an annual basis"
+        },
+        {
+          "Key": "ecer_defaultcontentsid",
+          "Type": 1,
+          "Value": "1d84d075-411e-f111-8342-7ced8d050b63"
+        },
+        {
+          "Key": "statuscode",
+          "Type": 4,
+          "Value": {
+            "Value": 1
+          }
+        },
+        {
+          "Key": "ecer_group",
+          "Type": 16,
+          "Value": "Declarations"
+        },
+        {
+          "Key": "statecode",
+          "Type": 4,
+          "Value": {
+            "Value": 0
+          }
+        }
+      ]
+    }
+  ],
+  "Count": 1
+}
