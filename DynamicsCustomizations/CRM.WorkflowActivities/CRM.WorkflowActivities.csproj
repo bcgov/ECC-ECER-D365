@@ -113,6 +113,8 @@
     <Compile Include="DeleteThisRecord.cs" />
     <Compile Include="CheckIfChildRecordExistsWithRecordCountActivity.cs" />
     <Compile Include="DoesOptionSetCollectionHasOptionActivity.cs" />
+    <Compile Include="GetDefaultContentsByGroupAndKey.cs" />
+    <Compile Include="GetConfigValueByGroupAndKey.cs" />
     <Compile Include="GetContactByRegistrationNumber.cs" />
     <Compile Include="GetContactByID.cs" />
     <Compile Include="GetDateOnlyActivity.cs" />
@@ -121,6 +123,7 @@
     <Compile Include="CalculateCourseAreaOfInstructionHourTotal.cs" />
     <Compile Include="HasOptionSetAttributeChangedFromSpecifiedValueActivity.cs" />
     <Compile Include="HasOptionSetCollectionAttributeChangedActivity.cs" />
+    <Compile Include="StringReplaceActivity.cs" />
     <Compile Include="RemoveItemFromQueueActivity.cs" />
     <Compile Include="DateDifferenceActivity.cs" />
     <Compile Include="RevisedManipulateDateActivity.cs" />
