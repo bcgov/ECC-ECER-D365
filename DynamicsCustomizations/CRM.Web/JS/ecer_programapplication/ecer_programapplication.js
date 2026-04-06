@@ -297,15 +297,6 @@ ECER.Jscripts.ProgramApplication =
 
         let fields = ["ecer_onlinedeliveryhourspercentage", "ecer_inpersonhourspercentage"];
 
-        // if tab_general_section_5 is hidden and fields in it have value, clear the value of the fields in this section
-        if (!section.getVisible() == false) {
-
-            fields.forEach(field => {
-                if (formContext.getAttribute(field).getValue() != null)
-                    formContext.getAttribute(field).setValue(null);
-            })
-        }
-
         //if form is dirty save form
         if (formContext.data.getIsDirty()) {
             formContext.data.save();
@@ -336,29 +327,17 @@ ECER.Jscripts.ProgramApplication =
                 || onlineDeliveryHoursPercentageValue == 0
                 || inPersonDeliveryHoursPercentageValue == 0) {
 
-                // set both fields to null and include in save operation
-                this.resetFields(onlineDeliveryHoursPercentage);
-                this.resetFields(inPersonDeliveryHoursPercentage);
+                // old - set both fields to null and include in save operation using resetFields function
+                // more recently asked only a prompt is enough
 
-                Xrm.Navigation.openAlertDialog({ text: "Percentage of instruction hours Online Deliver / In person cannot be 0 or blank. Please renter." }).then(function () {
+                Xrm.Navigation.openAlertDialog({ text: "Please verify and try again. Percentage of instruction hours Online Delivery / In-person cannot be 0 or blank." }).then(function () {
                     // callback function after alert is closed, do nothing here
                 });
 
                 return;
             }
 
-            let sum = onlineDeliveryHoursPercentageValue + inPersonDeliveryHoursPercentageValue;
-
-            if (sum != 100) {
-                // set both fields to null and include in save operation
-                this.resetFields(onlineDeliveryHoursPercentage);
-                this.resetFields(inPersonDeliveryHoursPercentage);
-
-                // show alert and prevent save
-                Xrm.Navigation.openAlertDialog({ text: "Sum of Online Delivery Hours Percentage and In-Person Delivery Hours Percentage must be 100. Please renter." }).then(function () {
-                    // callback function after alert is closed, do nothing here
-                });
-            }
+            // removed sum should be 100 validation as per latest requirement, only check if both fields are filled and not 0
         }
         else {
             console.log("Delivery method is not Hybrid or percentage fields are not dirty, skipping validation.");
