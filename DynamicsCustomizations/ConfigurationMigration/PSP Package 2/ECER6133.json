@@ -33,7 +33,7 @@
         {
           "Key": "ecer_text",
           "Type": 16,
-          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: Segoe UI; font-size: 11pt;\"><p style=\"margin: 0;\">Hello,</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">We need the following information to continue assessing your application:</p><p style=\"margin: 0;\">[ecer_postsecondaryinstituteprogramapplicaiton.ecer_rfaicomponentcontent]</p><p style=\"margin: 0;\">To provide this information, reply to this message and/or attach any relevant supporting documentation.&nbsp;</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">Sincerely,<br>ECE Registry Post-Secondary Programs Team</p></div>"
+          "Value": "<div class=\"ck-content\" data-wrapper=\"true\" dir=\"ltr\" style=\"--ck-image-style-spacing: 1.5em; --ck-inline-image-style-spacing: calc(var(--ck-image-style-spacing) / 2); font-family: Segoe UI; font-size: 11pt;\"><div class=\"ck-content stickystyles-wrapper-insert\" style=\"font-family:Segoe UI;font-size:11pt;\" dir=\"ltr\" data-wrapper=\"true\"><p style=\"margin: 0;\">Hello,</p><p style=\"margin: 0;\">&nbsp;</p><p style=\"margin: 0;\">Based on discussions held and observations made during the recognition evaluation meeting, we require the following information prior to a decision being made to grant (interim or ongoing) recognition:</p><p style=\"margin: 0;\">[ecer_postsecondaryinstituteprogramapplicaiton.ecer_rfaicomponentcontent]</p><p style=\"margin: 0;\">To provide this information, reply to this message and/or attach any relevant supporting documentation.</p><p style=\"margin: 0;\">Sincerely,<br>ECE Registry Post-Secondary Programs Team</p></div></div>"
         },
         {
           "Key": "ecer_subject",
@@ -43,7 +43,7 @@
         {
           "Key": "ecer_name",
           "Type": 16,
-          "Value": "PSP Action required: Request for additional information"
+          "Value": "PSP Action required: Request for additional information (Interim Or Ongoing) Recognition"
         },
         {
           "Key": "ecer_for",
@@ -60,7 +60,7 @@
         {
           "Key": "ecer_communicationcontentid",
           "Type": 1,
-          "Value": "37ef4095-800e-f111-8407-7ced8d050b63"
+          "Value": "4c83c205-971d-f111-8342-7ced8d050b63"
         },
         {
           "Key": "ecer_displayorder",
