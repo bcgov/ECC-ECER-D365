@@ -26,11 +26,13 @@ ECER.Jscripts.ProgramApplication =
         this.showHideFromProgramProfile(executionContext);
         this.addCustomFilterForFromProgramProfile(executionContext);
         this.showHideCourseTabs(executionContext);
+        this.showHideTabsBasedOnApplicationType(executionContext);
     },
     onSave: function (executionContext) {
         this.ensureValidPercentage(executionContext);
         this.showHideFromProgramProfile(executionContext);
         this.showHideCourseTabs(executionContext);
+        this.showHideTabsBasedOnApplicationType(executionContext);
     },
     addCustomFilterForFromProgramProfile: function (executionContext) {
         var formContext = executionContext.getFormContext();
@@ -177,12 +179,23 @@ ECER.Jscripts.ProgramApplication =
 
         var applicationType = formContext.getAttribute("ecer_applicationtype");
         var statusReasonControl = formContext.getControl("header_statuscode");
+        var satelliteType = 621870001;
+        var approvedStatusReason = 621870014;
+        var interimRecognizedStatusReason = 621870006;
+        var ongoingRecognizedStatusReason = 621870008;
 
-        if (!applicationType || !applicationType.getValue() || applicationType.getValue() == 621870001 || applicationType.getValue() == 621870002) {
+        if (!applicationType || !applicationType.getValue()) {
             return;
         }
-
-        statusReasonControl.removeOption(621870014);
+        // IF Application Type is Satellite OR Add Delivery Method
+        if (applicationType.getValue() == satelliteType) {
+            statusReasonControl.removeOption(interimRecognizedStatusReason);
+            statusReasonControl.removeOption(ongoingRecognizedStatusReason);
+        }
+        else {
+            // Remove Option: "Approved" for everything else
+            statusReasonControl.removeOption(approvedStatusReason);
+        }
     },
 
     filterHeaderStatusReason: function (executionContext) {
@@ -346,8 +359,8 @@ ECER.Jscripts.ProgramApplication =
     showHideCourseTabs: function (executionContext) {
 
         let formContext = executionContext.getFormContext();
-        let courseTab = "tab_4";
-        let fromProgramProfileCourseTab = "tab_17";
+        let courseTab = "tab_courses";
+        let fromProgramProfileCourseTab = "tab_coursesfromprofile";
 
         // check if from program profile has value, if yes show course from program profile tab else hide it
         // do the oppsite for course tab, if from program profile has value hide course tab else show it
@@ -360,6 +373,43 @@ ECER.Jscripts.ProgramApplication =
         else {
             formContext.ui.tabs.get(fromProgramProfileCourseTab)?.setVisible(false);
             formContext.ui.tabs.get(courseTab)?.setVisible(true);
+        }
+    },
+    showHideTabsBasedOnApplicationType: function (executionContext) {
+        let formContext = executionContext.getFormContext();
+
+        let applicationType = formContext.getAttribute("ecer_applicationtype")?.getValue();
+
+        let tabsToHideForSatellite = ["tab_interimanalysis", "tab_ongoinganalysis"];
+        let tabsToShowForSatellite = ["tab_satelliteapproval"];
+
+        // when satellite
+        if (applicationType == 621870001) {
+
+            tabsToHideForSatellite.forEach(tabName => {
+                formContext.ui.tabs.get(tabName)?.setVisible(false);
+            });
+
+            tabsToShowForSatellite.forEach(tabName => {
+                formContext.ui.tabs.get(tabName)?.setVisible(true);
+            });
+
+            // Filter Out Status Reason
+
+
+            // Hide BPF
+            formContext.ui.process.setVisible(false);
+        }
+        else {
+            tabsToHideForSatellite.forEach(tabName => {
+                formContext.ui.tabs.get(tabName)?.setVisible(true);
+            });
+            tabsToShowForSatellite.forEach(tabName => {
+                formContext.ui.tabs.get(tabName)?.setVisible(false);
+            });
+
+            // Show BPF
+            formContext.ui.process.setVisible(true);
         }
     }
 }
