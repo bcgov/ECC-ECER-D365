@@ -26,11 +26,13 @@ ECER.Jscripts.ProgramApplication =
         this.showHideFromProgramProfile(executionContext);
         this.addCustomFilterForFromProgramProfile(executionContext);
         this.showHideCourseTabs(executionContext);
+        this.showHideTabsBasedOnApplicationType(executionContext);
     },
     onSave: function (executionContext) {
         this.ensureValidPercentage(executionContext);
         this.showHideFromProgramProfile(executionContext);
         this.showHideCourseTabs(executionContext);
+        this.showHideTabsBasedOnApplicationType(executionContext);
     },
     addCustomFilterForFromProgramProfile: function (executionContext) {
         var formContext = executionContext.getFormContext();
@@ -360,6 +362,40 @@ ECER.Jscripts.ProgramApplication =
         else {
             formContext.ui.tabs.get(fromProgramProfileCourseTab)?.setVisible(false);
             formContext.ui.tabs.get(courseTab)?.setVisible(true);
+        }
+    },
+    showHideTabsBasedOnApplicationType: function (executionContext) {
+        let formContext = executionContext.getFormContext();
+
+        let applicationType = formContext.getAttribute("ecer_applicationtype")?.getValue();
+
+        let tabsToHideForSatellite = ["tab_8", "tab_10"];
+        let tabsToShowForSatellite = ["tab_19"];
+
+        // when satellite
+        if (applicationType == 621870001) {
+
+            tabsToHideForSatellite.forEach(tabName => {
+                formContext.ui.tabs.get(tabName)?.setVisible(false);
+            });
+
+            tabsToShowForSatellite.forEach(tabName => {
+                formContext.ui.tabs.get(tabName)?.setVisible(true);
+            });
+
+            // Hide BPF
+            formContext.ui.process.setVisible(false);
+        }
+        else {
+            tabsToHideForSatellite.forEach(tabName => {
+                formContext.ui.tabs.get(tabName)?.setVisible(true);
+            });
+            tabsToShowForSatellite.forEach(tabName => {
+                formContext.ui.tabs.get(tabName)?.setVisible(false);
+            });
+
+            // Show BPF
+            formContext.ui.process.setVisible(true);
         }
     }
 }
