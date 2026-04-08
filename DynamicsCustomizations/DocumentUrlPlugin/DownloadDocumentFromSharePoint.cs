@@ -24,6 +24,7 @@ namespace BCGOV.Plugin.DocumentUrl
             DateTime receivedDate = DateTime.Now;
             bool isSuccess = false;
             string userMessage = string.Empty;
+            EntityReference documentURLER = null;
 
             try
             {
@@ -42,6 +43,9 @@ namespace BCGOV.Plugin.DocumentUrl
                     if (documentEntity.Contains("bcgov_receiveddate"))
                         receivedDate = ((DateTime)documentEntity["bcgov_receiveddate"]).ToLocalTime();
 
+                    if (documentEntity.Contains("ecer_fromdocumenturlid"))
+                        documentURLER = documentEntity.GetAttributeValue<EntityReference>("ecer_fromdocumenturlid");
+
                     var configs = Helpers.GetSystemConfigurations(service, "Storage", string.Empty);
 
                     string authUrl = Helpers.GetConfigKeyValue(configs, "AuthUrl", "Storage");
@@ -50,8 +54,12 @@ namespace BCGOV.Plugin.DocumentUrl
                     string url = Helpers.GetConfigKeyValue(configs, "InterfaceUrl", "Storage");
                     string defaultStorageApplication = "Registry";
                     var bearerToken = Helpers.GetBearerToken(authUrl, authClientId, authSecret);
-
-                    url = url + "/api/files/" + documentEntity.Id.ToString();
+                    var pathToFile = "/api/files/" + documentEntity.Id.ToString();
+                    if (documentURLER != null)
+                    {
+                        pathToFile = "/api/files/" + documentURLER.Id.ToString();
+                    }
+                    url = url + pathToFile;
 
                     using (var client = new HttpClient())
                     {
