@@ -46,3 +46,27 @@ function disableGridRowExceptTags(executionContext) {
         }
     });
 }
+
+function reUseDocumentURLButtonClick(formContext) {
+    var recordId = formContext.data.entity.getId();
+    var entityFormOptions = {};
+
+    var entityFormOptions = {
+        entityName: "bcgov_documenturl",
+        createFromEntity: {
+            entityType: "bcgov_documenturl",
+            id: recordId,
+            name: formContext.getAttribute("bcgov_filename").getValue()
+        },
+        openInNewWindow: true
+    };
+
+    Xrm.Navigation.openForm(entityFormOptions).then(
+        function (success) {
+            console.log(success);
+        },
+        function (error) {
+            console.log(error);
+        }
+    );
+}
