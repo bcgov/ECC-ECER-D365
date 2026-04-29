@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CallCertificateSummaryAPI.cs" />
+    <Compile Include="DeleteDocumentFromSharePoint.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="MoveDocumentInSharePoint.cs" />
     <Compile Include="CreateDocumentHierarchy.cs" />
