@@ -411,5 +411,44 @@ ECER.Jscripts.ProgramApplication =
             // Show BPF
             formContext.ui.process.setVisible(true);
         }
+    },
+     //ECER-6227
+	
+    warningMsgOnStatusReasonDetailChange: function (executionContext) {
+        var formContext = executionContext.getFormContext();
+        var programApplicationStatusReasonValue = formContext.getControl("header_statuscode").getAttribute().getValue();
+        var currentStatusReasonDetailValue = formContext.getControl("header_ecer_statusreasondetail").getAttribute().getValue();
+        var previousStatusReasonDetailValue = formContext.getControl("header_ecer_statusreasondetail").getAttribute().getInitialValue();
+
+        var comfirmDialogSettings = {
+            text: "Warning: If you change the Status Reason Detail from " + '"' + "RFAI Requested" + '"' + ", users may not be able to edit their responses in the portal. Do you want to proceed with the change ?",
+            title: "Confirmation Required",
+            confirmButtonLabel: "Yes",
+            cancelButtonLabel: "No"
+        };
+
+        var comfirmDialogSize = {
+            height: 200,
+            width: 500
+        };
+
+        // check if status reason is 'Review and Analysis' or 'Interim Recognition'
+        if ((programApplicationStatusReasonValue === 621870001 || programApplicationStatusReasonValue === 621870006) && (previousStatusReasonDetailValue === 621870000 && previousStatusReasonDetailValue != currentStatusReasonDetailValue)) {
+            Xrm.Navigation.openConfirmDialog(comfirmDialogSettings, comfirmDialogSize).then(
+                function (success) {
+                    if (success.confirmed) {
+                        console.log("User confirmed as 'Yes'");
+                    } else {
+                        //Revert the status reason detail to its value before change
+                        formContext.getControl("header_ecer_statusreasondetail").getAttribute().setValue(previousStatusReasonDetailValue);
+                        console.log("User confirmed as 'No'");
+                    }
+                }
+            );
+        } else {
+            // No action requred
+        }
     }
+
+    //ECER-6227
 }
