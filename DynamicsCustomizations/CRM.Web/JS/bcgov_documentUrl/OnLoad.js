@@ -1,5 +1,6 @@
 ﻿function OnLoad(executionContext) {
     var formContext = executionContext.getFormContext();
+    /* Show everylookup
     if (formContext.ui.getFormType() == 2) { // Update
 
         ShowLookup(formContext, "bcgov_customer");
@@ -23,6 +24,26 @@
         ShowLookup(formContext, "ecer_psiid");
         ShowLookup(formContext, "ecer_certificatesummaryid");
         ShowLookup(formContext, "ecer_transcriptid");
+        
+    }
+    */
+    showHideSharedDocumentTab(executionContext);
+};
+
+function showHideSharedDocumentTab(executionContext) {
+    var formContext = executionContext.getFormContext();
+    var showTab = false;
+    var programApplicationAttributeName = "ecer_programapplicationid";
+    var programApplicationAttribute = formContext.getAttribute(programApplicationAttributeName);
+    if (programApplicationAttribute != null && programApplicationAttribute.getValue() != null) {
+        showTab = true;
+    }
+    var shareDocumentURLTabName = "tab_shareddocuments";
+    var tabObj = formContext.ui.tabs.get(shareDocumentURLTabName);
+
+    if (tabObj != null) {
+        // Set to true to show, false to hide
+        tabObj.setVisible(showTab);
     }
 };
 
