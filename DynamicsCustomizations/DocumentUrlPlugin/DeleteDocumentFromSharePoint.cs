@@ -74,7 +74,7 @@ namespace BCGOV.Plugin.DocumentUrl
                         traceService.Trace($"URL: {url}");
                         traceService.Trace($"Request Header - application: {defaultStorageApplication}");
                         traceService.Trace($"Request Header - file-folder: {documentEntity["bcgov_url"].ToString()}");
-                        var response = client.GetAsync(url).Result;
+                        var response = client.DeleteAsync(url).Result;
                         traceService.Trace($"HTTP Status Code: {response.StatusCode.ToString()}");
                         if (!(response.StatusCode == System.Net.HttpStatusCode.OK))
                         {
