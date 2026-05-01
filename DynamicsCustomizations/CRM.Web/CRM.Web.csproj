@@ -97,6 +97,7 @@
     <Content Include="JS\ecer_pspinterview\ecer_pspinterview.js" />
     <Content Include="JS\ecer_pspobservation\ecer_pspobservation.js" />
     <Content Include="JS\ecer_pspreferral\ecer_pspreferal.js" />
+    <Content Include="JS\ecer_pspsitevisitchecklisttemplate\ecer_pspsitevisitchecklisttemplate.js" />
     <Content Include="JS\ecer_pspsitevisit\ecer_pspsitevisit.js" />
     <Content Include="JS\ecer_reconsiderationinvestigation\ecer_reconsiderationinvestigation.js" />
     <Content Include="JS\ecer_transcript\ecer_transcript.js" />
