@@ -211,6 +211,7 @@ ECER.Jscripts.Application =
         var typeAttributeName = "ecer_type";
         var typeAttribute = formContext.getAttribute(typeAttributeName);
         var isNew = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870000;
+        var isICRA = typeAttribute != null && typeAttribute.getValue() != null && typeAttribute.getValue() == 621870004;
 
         // ECER-4322
         // If Education Origin == Inside BC or Outside BC, hide Comprehensive Evaluation Report Received field 
@@ -224,7 +225,7 @@ ECER.Jscripts.Application =
         // If ECE Assistant is YES, hide Program Confirmation Form Received field and BPF field
         var isECEAssistant = formContext.getAttribute("ecer_iseceassistant").getValue();
 
-        var show = isNew && isNotRecognized;
+        var show = (isNew && isNotRecognized) || isICRA;
 
         // Completeness Review
         crm_Utility.showHide(executionContext, show && !isECEAssistant, "header_process_ecer_programconfirmationformreceived");
