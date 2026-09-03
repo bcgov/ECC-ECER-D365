@@ -1,4 +1,4 @@
-var isNew = typeValue === 621870000;if (typeof ECER === "undefined") {
+if (typeof ECER === "undefined") {
     var ECER = {};
 }
 
